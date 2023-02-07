@@ -1,0 +1,180 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.nav-item {
+  position: relative;
+  display: block;
+  cursor: pointer;
+  padding: 8px 0px;
+  text-decoration: none;
+  color: #ae0d00;
+}
+.nav-item:hover {
+  color: #fff;
+  text-decoration: none;
+}
+.nav-item:before,
+.nav-item:after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  bottom: -2px;
+  background: #fff;
+}
+.nav-item:before {
+  left: 0;
+}
+.nav-item:after {
+  right: 0;
+  background: #ae0d00;
+  transition: width 0.8s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.nav-item:hover:before {
+  background: #fff;
+  width: 100%;
+  transition: width 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.nav-item:hover:after {
+  background: transparent;
+  width: 100%;
+  transition: 0s;
+}
+
+.background {
+  background-size: cover;
+  background-color: white;
+  /* display: none; */
+  background-repeat: no-repeat;
+  background-position: center center;
+  overflow: hidden;
+  will-change: transform;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  height: 130vh;
+  position: fixed;
+  width: 100%;
+  transform: translateY(30vh);
+  transition: all 1.2s cubic-bezier(0.22, 0.44, 0, 1);
+}
+
+.background:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* background-color: rgba(0, 0, 0, 0.3); */
+}
+
+.background:first-child {
+  /* background-image: url(/img/section-img-01.jpg); */
+  /* background-color: whitesmoke; */
+  transform: translateY(-15vh);
+}
+
+.background:first-child .content-wrapper {
+  transform: translateY(15vh);
+}
+
+/* Set stacking context of slides */
+.background:nth-child(1) {
+  z-index: 10;
+}
+
+.background:nth-child(2) {
+  z-index: 9;
+}
+
+.background:nth-child(3) {
+  z-index: 8;
+}
+.background:nth-child(4) {
+  z-index: 7;
+}
+.background:nth-child(5) {
+  z-index: 6;
+}
+.background:nth-child(6) {
+  z-index: 5;
+}
+.background:nth-child(7) {
+  z-index: 4;
+}
+.background:nth-child(8) {
+  z-index: 3;
+}
+.background:nth-child(9) {
+  z-index: 2;
+}
+.background:nth-child(10) {
+  z-index: 1;
+}
+
+.content-wrapper {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  /* text-align: center; */
+  flex-flow: column nowrap;
+  /* color: #fff; */
+  font-family: Montserrat;
+  /* text-transform: uppercase; */
+  transform: translateY(40vh);
+  will-change: transform;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transition: all 1.7s cubic-bezier(0.22, 0.44, 0, 1);
+}
+
+.content-wrapper p,
+a {
+  text-align: unset;
+  font-family: Montserrat;
+  text-transform: none;
+}
+
+.content-title {
+  /* font-size: 12vh; */
+  line-height: 1.4;
+}
+
+.background.up-scroll {
+  transform: translate3d(0, -15vh, 0);
+}
+
+.background.up-scroll .content-wrapper {
+  transform: translateY(15vh);
+}
+
+.background.up-scroll + .background {
+  transform: translate3d(0, 30vh, 0);
+}
+
+.background.up-scroll + .background .content-wrapper {
+  transform: translateY(30vh);
+}
+
+.background.down-scroll {
+  transform: translate3d(0, -130vh, 0);
+}
+
+.background.down-scroll .content-wrapper {
+  transform: translateY(40vh);
+}
+
+.background.down-scroll + .background:not(.down-scroll) {
+  transform: translate3d(0, -15vh, 0);
+}
+
+.background.down-scroll + .background:not(.down-scroll) .content-wrapper {
+  transform: translateY(15vh);
+}
+
+/* TWEENMAX */
+
+/* TWEENMAX END */
