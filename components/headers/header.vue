@@ -26,9 +26,8 @@ module.exports = {
 
         <div class="fixed inset-0 z-40 flex">
           <TransitionChild as="template" enter="transition ease-in-out duration-300 transform"
-            enter-from="-translate-x-full" enter-to="translate-x-0"
-            leave="transition ease-in-out duration-300 transform" leave-from="translate-x-0"
-            leave-to="-translate-x-full">
+            enter-from="-translate-x-full" enter-to="translate-x-0" leave="transition ease-in-out duration-300 transform"
+            leave-from="translate-x-0" leave-to="-translate-x-full">
             <DialogPanel class="relative flex w-full max-w-xs flex-col overflow-y-auto bg-white pb-12 shadow-xl">
               <div class="flex px-4 pt-5 pb-2">
                 <button type="button" class="-m-2 inline-flex items-center justify-center rounded-md p-2 text-gray-400"
@@ -93,25 +92,25 @@ module.exports = {
         <!-- <div class="mx-auto flex h-10 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8"> -->
         <!-- Currency selector -->
         <!-- <form>
-              <div>
-                <label for="desktop-currency" class="sr-only">Currency</label>
-                <div
-                  class="group relative -ml-2 rounded-md border-transparent bg-gray-900 focus-within:ring-2 focus-within:ring-white">
-                  <select id="desktop-currency" name="currency"
-                    class="flex items-center rounded-md border-transparent bg-gray-900 bg-none py-0.5 pl-2 pr-5 text-sm font-medium text-white focus:border-transparent focus:outline-none focus:ring-0 group-hover:text-gray-100">
-                    <option v-for="currency in currencies" :key="currency">{{ currency }}</option>
-                  </select>
-                  <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center">
-                    <ChevronDownIcon class="h-5 w-5 text-gray-300" aria-hidden="true" />
-                  </div>
-                </div>
-              </div>
-            </form> -->
+                                                            <div>
+                                                              <label for="desktop-currency" class="sr-only">Currency</label>
+                                                              <div
+                                                                class="group relative -ml-2 rounded-md border-transparent bg-gray-900 focus-within:ring-2 focus-within:ring-white">
+                                                                <select id="desktop-currency" name="currency"
+                                                                  class="flex items-center rounded-md border-transparent bg-gray-900 bg-none py-0.5 pl-2 pr-5 text-sm font-medium text-white focus:border-transparent focus:outline-none focus:ring-0 group-hover:text-gray-100">
+                                                                  <option v-for="currency in currencies" :key="currency">{{ currency }}</option>
+                                                                </select>
+                                                                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center">
+                                                                  <ChevronDownIcon class="h-5 w-5 text-gray-300" aria-hidden="true" />
+                                                                </div>
+                                                              </div>
+                                                            </div>
+                                                          </form> -->
 
         <!-- <div class="flex items-center space-x-6">
-              <a href="#" class="text-sm font-medium text-white hover:text-gray-100">Sign in</a>
-              <a href="#" class="text-sm font-medium text-white hover:text-gray-100">Create an account</a>
-            </div> -->
+                                                            <a href="#" class="text-sm font-medium text-white hover:text-gray-100">Sign in</a>
+                                                            <a href="#" class="text-sm font-medium text-white hover:text-gray-100">Create an account</a>
+                                                          </div> -->
         <!-- </div> -->
         <!-- </div> -->
 
@@ -119,31 +118,28 @@ module.exports = {
         <div class="bg-white">
           <div class="">
             <div class="border-b border-gray-200">
-              <div class="flex mx-2 md:mx-4 xl:mx-6 h-20 xl:py-2 items-center justify-between">
+              <div class="flex mx-2 md:mx-4 xl:mx-6 h-24 xl:py-2 items-center justify-evenly">
                 <!-- Logo (lg+) -->
-                <div class="hidden lg:flex lg:flex-1 lg:items-center">
+                <div class="hidden lg:flex lg:flex-1 lg:items-center xl:my-3 ml-32">
                   <a href="/">
                     <span class="sr-only">Your Company</span>
-                    <img class="sm:h-16 xl:h-16 w-auto" src="~/assets/logo/tic-logo-01.svg" alt="" />
+                    <img class="sm:h-16 xl:h-20 w-auto" src="~/assets/logo/tic-logo-01.svg" alt="" />
                   </a>
                 </div>
 
                 <div class="hidden h-full lg:flex ">
-                  <!-- Flyout menus -->
-                  <!-- <div class="container-shit borderYtoX">
-                    <a>HOMES</a>
-                    <a>ARTICLES</a>
-                    <a>PORTFOLIO</a>
-                    <a>ABOUT</a>
-                    <a>CONTACT</a>
-                  </div> -->
                   <PopoverGroup as="div" class="inset-x-0 bottom-0 px-2 ">
-                    <div class="flex h-full justify-center space-x-6 ">
+                    <div class="flex h-full justify-center space-x-6 mr-32">
                       <Popover v-for="category in navigation.categories" :key="category.name" class="flex"
                         v-slot="{ open }">
                         <div class="relative flex">
-                          <PopoverButton
-                            :class="[open ? 'border-blood text-blood' : ' border-transparent text-zinc-900 hover:text-zinc-600', 'relative z-10 -mb-px flex items-center border-b-2 pt-px text-sm focus:outline-none font-medium transition-colors duration-200 ease-out']">
+                          <PopoverButton :class="[
+                            open
+                              ? 'border-blood text-blood'
+                              : ' border-transparent text-zinc-900 hover:text-zinc-600',
+                            'relative z-10 -mb-px flex items-center border-b-2 pt-px text-xl focus:outline-none ',
+                            'uppercase font-medium transition-colors duration-200 ease-out'
+                          ]">
                             {{ category.name }}</PopoverButton>
                         </div>
 
@@ -163,7 +159,7 @@ module.exports = {
                                       <img :src="item.image" class="h-full w-full object-cover " />
                                     </div>
                                     <a :href="`/${category.name.toLocaleLowerCase()}/${item.id}`"
-                                      class="mt-4 block font-medium text-gray-900">
+                                      class="mt-4 block  font-medium text-gray-900">
                                       <span class="absolute inset-0 z-10" aria-hidden="true" />
                                       {{ item.title }}
                                     </a>
@@ -177,7 +173,7 @@ module.exports = {
                       </Popover>
 
                       <a v-for="page in navigation.pages" :key="page.name" :href="page.href"
-                        class="flex items-center text-sm font-medium text-gray-700 hover:text-gray-800">{{
+                        class="flex items-center uppercase text-xl font-medium text-zinc-900 hover:text-gray-800">{{
                           page.name
                         }}</a>
                     </div>
