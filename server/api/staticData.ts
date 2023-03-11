@@ -69,7 +69,7 @@ export default {
             "Pre-exports vehicles Inspections & Confirmation of Conformity verification service to ensure shipments conform to local importing standards to be cleared at destination.",
           more: true,
           apply: false,
-          image: "../img/industries/vehicle.jpg",
+          image: "/img/industries/vehicle.jpg",
           details: [
             {
               id: 1,
