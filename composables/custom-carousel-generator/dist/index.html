@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Custom Carousel Generator</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Image Carousel</title>
+    
+    <style title="carousel">
+      #my-carousel.carousel {
+  width: 85%; }
+  #my-carousel.carousel .prev {
+    transform: translate(-100%, 0); }
+  #my-carousel.carousel .queue {
+    transform: translate(100%, 0); }
+
+#my-carousel .carousel__viewport-wrapper {
+  border-radius: 3%; }
+  #my-carousel .carousel__viewport-wrapper:hover .carousel__controls-background--arrow {
+    opacity: 0.5; }
+  #my-carousel .carousel__viewport-wrapper:hover .carousel__controls-background--indicator {
+    opacity: 0.5; }
+
+#my-carousel .carousel__viewport {
+  padding-bottom: 75%; }
+
+#my-carousel .carousel__slide-container {
+  background-color: black;
+  transition: transform 0.3s ease-in; }
+
+#my-carousel .carousel__slide-overlay {
+  background-color: black;
+  opacity: 0.4;
+  display: none; }
+
+#my-carousel .carousel__indicator-bar {
+  visibility: visible; }
+  #my-carousel .carousel__indicator-bar--interior:hover .carousel__controls-background--indicator {
+    opacity: 0.5; }
+
+#my-carousel .carousel__indicator-marker {
+  border: 1px solid #ffffff;
+  opacity: 0.6; }
+  #my-carousel .carousel__indicator-marker--active {
+    background-color: #ffffff;
+    box-shadow: 0 0 5px 0 #ffffff;
+    pointer-events: none;
+    opacity: 1; }
+
+#my-carousel .carousel__controls svg {
+  opacity: 0.7; }
+
+#my-carousel .carousel__controls path {
+  stroke: white; }
+
+#my-carousel .carousel__controls-background {
+  background-color: black; }
+  #my-carousel .carousel__controls-background::after {
+    background-color: black; }
+  #my-carousel .carousel__controls-background--arrow {
+    box-shadow: 0 0 8px 9px black;
+    opacity: 0; }
+  #my-carousel .carousel__controls-background--indicator {
+    box-shadow: 0 0 8px 9px black;
+    opacity: 0; }
+
+.carousel,
+.carousel *,
+.carousel *::before,
+.carousel *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; }
+
+.carousel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  overflow: hidden; }
+  .carousel__viewport-wrapper {
+    position: relative;
+    width: 100%;
+    overflow: hidden; }
+  .carousel__viewport {
+    position: relative;
+    width: 100%;
+    background-color: black;
+    pointer-events: none; }
+    @media (max-width: 37.5em) {
+      .carousel__viewport {
+        max-width: 100%;
+        max-height: 100%; } }
+  .carousel__controls {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    border: none;
+    background-color: transparent;
+    z-index: 100;
+    cursor: pointer;
+    outline: none;
+    width: 5%;
+    max-width: 54px;
+    min-width: 20px;
+    z-index: 10; }
+    @media (max-width: 37.5em) {
+      .carousel__controls {
+        display: none; } }
+    .carousel__controls svg {
+      width: 100%;
+      max-width: 46px;
+      padding: 20%;
+      transition: opacity 0.3s;
+      z-index: 20; }
+    .carousel__controls--left {
+      left: 0;
+      border-radius: 0 10px 10px 0; }
+    .carousel__controls--right {
+      right: 0;
+      border-radius: 10px 0 0 10px; }
+    .carousel__controls:focus .carousel__focus-ring {
+      border: 2px solid orangered;
+      box-shadow: 0 0 6px orangered; }
+    .carousel__controls:hover svg {
+      opacity: 1 !important; }
+  .carousel__controls-background {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border: none;
+    border-radius: inherit;
+    transition: opacity 0.5s ease-in-out;
+    z-index: -20; }
+    .carousel__controls-background::after {
+      content: '';
+      position: absolute;
+      top: -1px;
+      left: 0;
+      bottom: -1px;
+      right: 0;
+      border-radius: inherit;
+      border: none; }
+  .carousel__icon-left {
+    left: 0; }
+  .carousel__icon-right {
+    right: 0; }
+  .carousel__focus-ring {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border: none;
+    border-radius: inherit; }
+  .carousel__indicator-bar {
+    padding: 0.12vw 0.4vw;
+    padding-top: 0;
+    border-radius: 10px 10px 0 0;
+    z-index: 100;
+    transition: background-color 0.4s;
+    backface-visibility: hidden; }
+    .carousel__indicator-bar--interior {
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      transform: translateX(-50%); }
+    .carousel__indicator-bar--exterior {
+      position: relative; }
+  .carousel__indicator-wrapper {
+    display: flex; }
+  .carousel__indicator-marker {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin: 8px 5px;
+    cursor: pointer; }
+    @media (max-width: 37.5em) {
+      .carousel__indicator-marker {
+        margin: 5px; } }
+  .carousel__slide-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 1; }
+    .carousel__slide-container--no-trans {
+      transition: transform 0s !important; }
+    .carousel__slide-container--flick-trans {
+      transition: transform 0.2s ease-out !important; }
+    .carousel__slide-container--jumper {
+      transition: transform 0.075s !important; }
+  .carousel__slide-overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    pointer-events: none; }
+  .carousel__slide-wrapper {
+    flex-shrink: 0;
+    position: relative; }
+    .carousel__slide-wrapper--landscape {
+      width: 100% !important; }
+    .carousel__slide-wrapper--portrait {
+      height: 100% !important; }
+  .carousel__slide {
+    display: block;
+    width: 100%;
+    height: 100%; }
+    .carousel__slide--landscape-contain {
+      width: 100%;
+      height: auto; }
+    .carousel__slide--portrait-contain {
+      height: 100%;
+      width: auto; }
+    .carousel__slide--landscape-cover {
+      max-width: none !important;
+      height: 100%; }
+    .carousel__slide--portrait-cover {
+      max-height: none !important;
+      width: 100%; }
+  .carousel .hide {
+    visibility: hidden;
+    transition: none !important; }
+  .carousel__image-attribution {
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding: 8px 14px;
+    color: #d2d2d2;
+    font-size: 12px;
+    font-family: sans-serif;
+    border-radius: 0 0 10px 0;
+    z-index: 100;
+    transition: background-color 0.4s, color 0.4s;
+    pointer-events: auto; }
+    .carousel__image-attribution:hover {
+      background-color: rgba(0, 0, 0, 0.6);
+      color: #e1e1e1; }
+
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav class="tab-nav">
+        <ul role="tablist" class="tab-nav__list">
+          <li class="tab-nav__item tab-nav__item--active">
+            <button id="settings-tab" role="tab" aria-selected="true" aria-controls="settings-panel" class="tab-nav__btn tab-nav__btn--active">Settings</button>
+          </li>
+          <li class="tab-nav__item">
+            <button id="source-code-tab" role="tab" aria-selected="false" aria-controls="source-code-panel" class="tab-nav__btn">Source Code</button>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <div id="settings-panel" class="content-panel" role="tabpanel" aria-labelledby="settings-tab">
+        <div class="preview">
+          <h2 class="preview__heading">Preview</h2>
+          <div class="preview__wrapper">
+            <h3 class="preview__form-heading">Test your customized Carousel with the Unsplash API</h3>
+            <form class="preview__search-form">
+              <input type="text" class="preview__search-input" placeholder="Search for new images">
+              <div>
+                <label class="preview__label" for="unsplash-quant">Quantity</label>
+                <select name="unsplash-quant" class="preview__search-select" id="unsplash-quant">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5" selected>5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                  <option value="10">10</option>
+                </select>
+                <button type="submit" class="preview__search-submit" id="carousel-search">Submit</button>
+              </div>
+            </form>
+            <div id="my-carousel" class="carousel"></div>
+          </div>
+        </div>
+
+
+        <form class="settings" autocomplete="off">
+          <ul class="settings__list">
+            <li class="settings__item">
+              <h2 class="settings__heading">Carousel</h2>
+              <div class="settings__collapse-btn-wrapper">
+                <button type="button" class="settings__collapse-btn" aria-expanded="true" aria-controls="carousel-settings">&minus;</button>
+              </div>
+              <div id="carousel-settings" class="settings__collapse-container">
+                <div class="settings__group">
+                  <div class="settings__input-group">
+                    <label class="settings__label" for="carousel-namespace">Namespace ID</label>
+                    <input type="text" class="settings__text" id="carousel-namespace" placeholder="i.e. my-carousel" name="carouselNamespace">
+                  </div>
+                  <div class="settings__input-group">
+                    <span class="settings__input-description">A unique string used as html ID for Carousel instance</span>
+                  </div>
+                </div>
+                <hr class="settings__divider">
+                <div class="settings__group">
+                  <div class="settings__input-group">
+                    <label for="carousel-autoplay" class="settings__label settings__label--checkbox">
+                      <div class="settings__checkbox-wrapper">
+                        <input type="checkbox" id="carousel-autoplay" data-target="autoplay-properties" name="carouselAutoplay">
+                        <span class="settings__checkbox"></span>
+                      </div>
+                      Autoplay
+                    </label>
+                  </div>
+                  <div class="settings__input-group disabled autoplay-properties">
+                    <input id="autoplay-duration" class="settings__width-input" type="number" min="1" max="12" value="5" step="0.5" name="autoplayDuration" disabled>
+                    <span class="settings__unit">secs</span>
+                  </div>
+                </div>
+              </div>
+            </li>
+
+            <li class="settings__item">
+              <h2 class="settings__heading">Viewport</h2>
+              <div class="settings__collapse-btn-wrapper">
+                <button type="button" class="settings__collapse-btn" aria-expanded="true" aria-controls="viewport-settings">&minus;</button>
+              </div>
+              <div id="viewport-settings" class="settings__collapse-container">
+                <div class="settings__group">
+                  <div class="settings__input-group">
+                    <label class="settings__label" for="viewport-width">Width</label>
+                      <div class="settings__value-units-group">
+                        <input id="viewport-width" class="settings__width-input" type="number" min="10" max="100" value="85" name="percentWidth">
+                        <select name="widthUnits" id="width-units">
+                          <option value="%">%</option>
+                          <option value="px">px</option>
+                        </select>
+                      </div>
+                      <input class="settings__width-range" type="range" min="10" max="100" step="1"  value="85" name="percentWidth">
+                  </div>
+                  <div class="settings__input-group">
+                    <label class="settings__label" for="aspect-ratio">Aspect Ratio</label>
+                    <select name="aspectRatio" id="aspect-ratio">
+                      <option value="4:3">4:3</option>
+                      <option value="3:2">3:2</option>
+                      <option value="1:1">1:1</option>
+                      <option value="16:9">16:9</option>
+                      <option value="10:3">10:3</option>
+                      <option value="3:4">3:4</option>
+                      <option value="2:3">2:3</option>
+                    </select>
+                  </div>
+                </div>
+                <hr class="settings__divider">
+                <div class="settings__group">
+                  <div class="settings__input-group">
+                    <label for="viewport-border" class="settings__label settings__label--checkbox">
+                      <div class="settings__checkbox-wrapper">
+                        <input type="checkbox" id="viewport-border" data-target="border-properties" name="viewportBorder">
+                        <span class="settings__checkbox"></span>
+                      </div>
+                      Border
+                    </label>
+                  </div>
+                  <div class="settings__input-group disabled border-properties">
+                    <input class="settings__color" type="color" id="viewport-border-color" value="#000000" name="viewportBorderColor" disabled>
+                  </div>
+                  <div class="settings__input-group disabled border-properties">
+                    <label class="settings__label" for="border-thickness">Thickness</label>
+                    <input id="border-thickness" class="settings__number--two-digit" type="number" min="1" max="10" value="1" name="viewportBorderThickness" disabled>
+                  </div>
+                </div>
+                <hr class="settings__divider">
+                <div class="settings__group">
+                  <div class="settings__input-group">
+                    <label class="settings__label" for="viewport-rounding">Rounded Corners</label>
+                    <select name="roundingUnits" id="viewport-border-radius">
+                      <option value="px">circular (px)</option>
+                      <option value="%">elliptical (%)</option>
+                    </select>
+                  </div>
+                  <div class="settings__input-group">
+                    <input type="range" min="0" max="50" step="1" id="viewport-rounding" value="3" name="viewportRounding">
+                  </div>
+                </div>
+              </div>
+            </li>
+
+            <li class="settings__item">
+              <h2 class="settings__heading">Image</h2>
+              <div class="settings__collapse-btn-wrapper">
+                <button type="button" class="settings__collapse-btn" aria-expanded="true" aria-controls="image-settings">&minus;</button>
+              </div>
+              <div id="image-settings" class="settings__collapse-container">
+                <div class="settings__group">
+                  <div class="settings__input-group">
+                    <label class="settings__label" for="viewport-width">Size</label>
+                      <select name="imageSize" id="image-size">
+                        <option value="contain">contain</option>
+                        <option value="cover">cover</option>
+                      </select>
+                  </div>
+                  <div class="settings__input-group">
+                    <label class="settings__label" for="end-cap-color">End-caps</label>
+                    <input class="settings__color" type="color" id="end-cap-color" value="#000000" name="endCapColor">
+                  </div>
+                </div>
+                <hr class="settings__divider">
+                <div class="settings__group">
+                  <div class="settings__input-group">
+                    <label for="image-overlay" class="settings__label settings__label--checkbox">
+                      <div class="settings__checkbox-wrapper">
+                        <input type="checkbox" id="image-overlay" data-target="overlay-properties" name="imageOverlay">
+                        <span class="settings__checkbox"></span>
+                      </div>
+                      Overlay
+                    </label>
+                  </div>
+                  <div class="settings__input-group disabled overlay-properties">
+                    <input class="settings__color" type="color" id="image-overlay-color" value="#000000" name="imageOverlayColor" disabled>
+                  </div>
+                  <div class="settings__input-group disabled overlay-properties">
+                    <label class="settings__label" for="overlay-opacity">Opacity</label>
+                    <input id="image-overlay-opacity" class="settings__number--three-digit" type="number" min="1" max="100" value="20" name="imageOverlayOpacity" disabled>
+                  </div>
+                </div>
+                <hr class="settings__divider">
+                <div class="settings__group">
+                  <div class="settings__input-group">
+                    <label class="settings__label" for="slide-animation">Slide Animation</label>
+                      <select name="transitionStyle" id="slide-animation">
+                        <option value="horizontal">horizontal</option>
+                        <option value="viewmaster">view-master</option>
+                        <option value="vertical">vertical</option>
+                        <option value="dissolve">dissolve</option>
+                      </select>
+                  </div>
+                </div>
+              </div>
+            </li>
+
+            <li class="settings__item">
+              <h2 class="settings__heading">Controls</h2>
+              <div class="settings__collapse-btn-wrapper">
+                <button type="button" class="settings__collapse-btn" aria-expanded="true" aria-controls="controls-settings">&minus;</button>
+              </div>
+              <div id="controls-settings" class="settings__collapse-container">
+                <div class="settings__group">
+                  <div class="settings__input-group">
+                    <label class="settings__label" for="arrow-color">Arrows</label>
+                    <input class="settings__color" type="color" id="arrow-color" value="#ffffff" name="arrowColor">
+                  </div>
+                  <div class="settings__input-group">
+                    <label class="settings__label" for="arrow-opacity">Opacity</label>
+                    <input id="arrow-opacity" class="settings__number--three-digit" type="number" min="1" max="100" value="70" name="arrowOpacity">
+                  </div>
+                </div>
+                <hr class="settings__divider">
+                <div class="settings__group">
+                  <div class="settings__input-group">
+                    <label for="indicator-bar" class="settings__label settings__label--checkbox">
+                      <div class="settings__checkbox-wrapper">
+                        <input type="checkbox" id="indicator-bar" data-target="indicator-bar-properties" name="indicatorBar" checked>
+                        <span class="settings__checkbox"></span>
+                      </div>
+                      Indicator Bar
+                    </label>
+                  </div>
+                  <div class="settings__input-group indicator-bar-properties">
+                    <label class="settings__label" for="indicator-bar-location">Location</label>
+                    <select name="indicatorBarLocation" id="indicator-bar-location">
+                      <option value="interior">interior</option>
+                      <option value="exterior">exterior</option>
+                    </select>
+                  </div>
+                  <div class="settings__input-group indicator-bar-properties">
+                    <label class="settings__label" for="indicator-bar-opacity">Opacity</label>
+                    <input id="indicator-bar-opacity" class="settings__number--three-digit" type="number" min="1" max="100" value="60" name="indicatorBarOpacity">
+                  </div>
+                  <div class="settings__wrap-group">
+                  <div class="settings__input-group indicator-bar-properties">
+                    <label class="settings__label" for="indicator-bar-style">Style</label>
+                    <select name="indicatorBarStyle" id="indicator-bar-style">
+                      <option value="1">one color</option>
+                      <option value="2">two colors</option>
+                    </select>
+                  </div>
+                  <div class="settings__wrap-group">
+                    <div class="settings__input-group indicator-bar-properties">
+                      <label class="settings__label" for="indicator-active-color">Active</label>
+                      <input class="settings__color" type="color" id="indicator-active-color" value="#ffffff" name="indicatorActiveColor">
+                    </div>
+                    <div class="settings__input-group indicator-bar-properties removed">
+                      <label class="settings__label" for="indicator-inactive-color">Inactive</label>
+                      <input class="settings__color" type="color" id="indicator-inactive-color" value="#ffffff" name="indicatorInactiveColor">
+                    </div>
+                  </div>
+                  </div>
+                </div>
+                <hr class="settings__divider">
+                <div class="settings__group settings__group--space">
+                  <div class="settings__wrap-group">
+                    <div class="settings__input-group">
+                      <label for="arrow-background" class="settings__label settings__label--checkbox">
+                        <div class="settings__checkbox-wrapper">
+                          <input type="checkbox" id="arrow-background" data-target="arrow-background-properties" name="arrowBackground" checked>
+                          <span class="settings__checkbox"></span>
+                        </div>
+                        Arrow Background
+                      </label>
+                    </div>
+                    <div class="settings__input-group arrow-background-properties">
+                      <label class="settings__label" for="arrow-background-visibility">Visibility</label>
+                      <select name="arrowBackgroundVisibility" id="arrow-background-visibility">
+                        <option value="viewport">viewport hover</option>
+                        <option value="always">always</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="settings__wrap-group">
+                    <div class="settings__input-group">
+                      <label for="indicator-background" class="settings__label settings__label--checkbox">
+                        <div class="settings__checkbox-wrapper">
+                          <input type="checkbox" id="indicator-background" data-target="indicator-background-properties" name="indicatorBackground" checked>
+                          <span class="settings__checkbox"></span>
+                        </div>
+                        Indicator Background
+                      </label>
+                    </div>
+                    <div class="settings__input-group indicator-background-properties">
+                      <label class="settings__label" for="indicator-background-visibility">Visibility</label>
+                      <select name="indicatorBackgroundVisibility" id="indicator-background-visibility">
+                        <option value="local">local hover</option>
+                        <option value="viewport">viewport hover</option>
+                        <option value="always">always</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="settings__group">
+                  <div class="settings__input-group">
+                    <label class="settings__label" for="controls-background-color">Background Style</label>
+                    <input class="settings__color" type="color" id="controls-background-color" value="#000000" name="controlsBackgroundColor">
+                  </div>
+                  <div class="settings__input-group">
+                    <label class="settings__label" for="controls-background-opacity">Opacity</label>
+                    <input id="controls-background-opacity" class="settings__number--three-digit" type="number" min="1" max="100" value="50" name="controlsBackgroundOpacity">
+                  </div>
+                  <div class="settings__input-group">
+                    <label for="controls-background-feather" class="settings__label settings__label--checkbox">
+                      <div class="settings__checkbox-wrapper">
+                        <input type="checkbox" id="controls-background-feather" name="controlsBackgroundFeather" checked>
+                        <span class="settings__checkbox"></span>
+                      </div>
+                      Feather
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </form>
+      </div>
+
+
+    <div id="source-code-panel" class="content-panel removed" role="tabpanel" aria-labelledby="source-code-tab">
+      <div class="sourcecode">
+        <h2 class="sourcecode__heading">HTML</h2>
+        <pre class="sourcecode__block"><code id="sourcecode-html"></code></pre>
+        <h2 class="sourcecode__heading">JS Carousel Instance</h2>
+        <pre class="sourcecode__block"><code id="sourcecode-instance"></code></pre>
+        <h2 class="sourcecode__heading">Carousel Class</h2>
+        <pre class="sourcecode__block"><code id="sourcecode-class"></code></pre>
+        <h2 class="sourcecode__heading">Custom CSS</h2>
+        <pre class="sourcecode__block"><code id="sourcecode-custom-css"></code></pre>
+        <h2 class="sourcecode__heading">Static CSS</h2>
+        <pre class="sourcecode__block"><code id="sourcecode-static-css"></code></pre>
+      </div>
+    </div>
+
+    </main>
+
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  </body>
+</html>
+<!-- partial -->
+  <script  src="./script.js"></script>
+
+</body>
+</html>
