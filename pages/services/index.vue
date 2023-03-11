@@ -38,8 +38,11 @@
     </div>
 </template>
 <script setup>
-const categories = await $fetch('/api/data')
-const services = ref(categories.api.categories[1])
+import data from "~/server/api/staticData"
+// import navigation from "~/data/db"
+// const data = await $fetch('/api/data')
+// const categories = await $fetch('/api/data')
+const services = ref(data.categories[1])
 
 </script>
 

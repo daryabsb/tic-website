@@ -82,8 +82,11 @@ module.exports = {
 
 <script setup>
 import { CameraIcon } from '@heroicons/vue/20/solid'
-const categories = await $fetch('/api/data')
-const industries = ref(categories.api.categories[0])
+import data from "~/server/api/staticData"
+// import navigation from "~/data/db"
+// const data = await $fetch('/api/data')
+// const categories = await $fetch('/api/data')
+const industries = ref(data.categories[0])
 const routes = useRoute()
 const id = routes.params.id
 

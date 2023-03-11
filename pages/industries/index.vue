@@ -60,8 +60,8 @@
                         <p class="mt-2 text-sm text-gray-500">{{ industry.text }}</p>
                         <div class="mt-10 flex items-center justify-start gap-x-6">
 
-                            <a :href="`/industries/${industry.id}`"
-                                class="text-base font-thin leading-7 text-blood">Learn more
+                            <a :href="`/industries/${industry.id}`" class="text-base font-thin leading-7 text-blood">Learn
+                                more
                                 <span aria-hidden="true">→</span></a>
                         </div>
                     </div>
@@ -83,8 +83,11 @@
 </template>
 <script setup>
 // import data from "~/data/db"
-const categories = await $fetch('/api/data')
+import data from "~/server/api/staticData"
+// import navigation from "~/data/db"
+// const data = await $fetch('/api/data')
+// const categories = await $fetch('/api/data')
 // var wpcf7 = { "api": { "root": "https:\/\/golin.com\/wp-json\/", "namespace": "contact-form-7\/v1" } };
-const industries = ref(categories.api.categories[0])
+const industries = ref(data.categories[0])
 
 </script>

@@ -45,10 +45,12 @@
 
 <script setup>
 import { LifebuoyIcon, NewspaperIcon, PhoneIcon } from '@heroicons/vue/24/outline'
-
-const data = await $fetch('/api/data')
-const company = ref(data.api.about.company)
-const values = ref(data.api.about.values)
+import data from "~/server/api/staticData"
+// import navigation from "~/data/db"
+// const data = await $fetch('/api/data')
+// const data = await $fetch('/api/data')
+const company = ref(data.about.company)
+const values = ref(data.about.values)
 
 const supportLinks = [
     {

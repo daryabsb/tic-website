@@ -26,8 +26,11 @@
 
 <script setup>
 import { CloudArrowUpIcon, LockClosedIcon, ServerIcon } from '@heroicons/vue/20/solid'
-const data = await $fetch('/api/data')
-const team = ref(data.api.about.team)
+import data from "~/server/api/staticData"
+// import navigation from "~/data/db"
+// const data = await $fetch('/api/data')
+// const data = await $fetch('/api/data')
+const team = ref(data.about.team)
 const features = [
     {
         name: 'Push to deploy.',

@@ -221,9 +221,10 @@ import {
     XMarkIcon,
 } from '@heroicons/vue/24/outline'
 import { ChevronDownIcon } from '@heroicons/vue/20/solid'
+import data from "~/server/api/staticData"
 // import navigation from "~/data/db"
-const data = await $fetch('/api/data')
-const navigation = ref(data.api);
+// const data = await $fetch('/api/data')
+const navigation = ref(data);
 
 const navItems = [
     { title: "Services", href: "/services" },

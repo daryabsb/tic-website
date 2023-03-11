@@ -1,15 +1,20 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  ssr: false,
   app: {
     head: {
       charset: "utf-8",
       viewport: "width=500, initial-scale=1",
-      title: "Logos 0|0",
+      title: "Tic Quality Control",
       meta: [
         // <meta name="description" content="My amazing site">
-        { name: "description", content: "My amazing site." },
+        { name: "description", content: "Tic Quality Control." },
       ],
       link: [
+        {
+          rel: "icon",
+          href: "/favicon.ico",
+        },
         {
           rel: "stylesheet",
           href: "https://fonts.googleapis.com/css?family=Montserrat:400,900",
