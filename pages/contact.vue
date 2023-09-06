@@ -112,8 +112,9 @@ module.exports = {
                                     </svg>
                                 </div>
                                 <h3 class="text-lg font-medium text-white">Contact information</h3>
-                                <p class="mt-6 max-w-3xl text-base text-teal-50">Office 1304, Fairmont Dubai, Sheikh
-                                    Zayed Road, Dubai, UAE.</p>
+                                <p class="mt-6 max-w-3xl text-base text-teal-50">Office 2206, Clover Bay Tower, 
+                                    Marasi Drive, Business Bay, Dubai, UAE.</p>
+                                <p class="mt-6 max-w-3xl text-base text-teal-50">PO BOX 28129</p>
                                 <dl class="mt-8 space-y-6">
                                     <dt><span class="sr-only">Phone number</span></dt>
                                     <dd class="flex text-base text-teal-50">
