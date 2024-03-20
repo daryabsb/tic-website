@@ -1,0 +1,6 @@
+const index_vue_vue_type_style_index_0_scoped_c8254b50_lang = "*[data-v-c8254b50]{box-sizing:border-box}body[data-v-c8254b50],html[data-v-c8254b50]{margin:0;padding:0}body[data-v-c8254b50]{align-items:center;display:flex;height:100vh;justify-content:center}.carousel[data-v-c8254b50]{height:100%;overflow:hidden;position:relative;width:100%}.carousel .carousel-item[data-v-c8254b50]{color:#fff;font-size:40px;font-weight:600;height:100%;justify-content:center;top:0}.carousel .carousel-dot-wrapper[data-v-c8254b50],.carousel .carousel-item[data-v-c8254b50]{align-items:center;display:flex;left:0;position:absolute;width:100%}.carousel .carousel-dot-wrapper[data-v-c8254b50]{bottom:0;justify-content:space-evenly;padding:15px 8px;z-index:10}.carousel .carousel-dot[data-v-c8254b50]{background-color:#818cf8;border-radius:9999px;cursor:pointer;height:12px;transition:.3s;width:12px}.carousel .carousel-dot.active[data-v-c8254b50],.carousel .carousel-dot[data-v-c8254b50]:hover{background-color:#a78bfa;outline:2px solid #a78bfa}.carousel .carousel-dot.active[data-v-c8254b50]{outline-offset:2px}";
+
+const indexStyles_e89c344a = [index_vue_vue_type_style_index_0_scoped_c8254b50_lang];
+
+export { indexStyles_e89c344a as default };
+//# sourceMappingURL=index-styles.e89c344a.mjs.map
