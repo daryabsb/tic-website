@@ -1,1 +1,0 @@
-import{O as s,o,J as t,K as c,P as a}from"./entry.ac3f078f.js";const n={},r={class:"background"},d={class:"content-wrapper"};function _(e,l){return o(),t("section",r,[c("div",d,[a(e.$slots,"default")])])}const f=s(n,[["render",_]]);export{f as default};
