@@ -133,6 +133,9 @@ module.exports = {
                                 <dl class="mt-48 space-y-6">
                                     <dt>
                                         <p class="mt-6 max-w-3xl text-base text-teal-50">Help line</p>
+                                        <p class="max-w-3xl text-base text-teal-50">An interested party can make
+                                            inquiries, complaints or feedback about the Compliance Code via our listed
+                                            helpline</p>
                                     </dt>
                                     <dt><span class="sr-only">Help line</span></dt>
                                     <dd class="flex text-base text-teal-50">
