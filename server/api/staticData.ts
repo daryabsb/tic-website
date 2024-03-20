@@ -1,8 +1,4 @@
-import {
-  LifebuoyIcon,
-  NewspaperIcon,
-  PhoneIcon,
-} from "@heroicons/vue/24/outline";
+import { LifebuoyIcon, NewspaperIcon, PhoneIcon } from "@heroicons/vue/24/outline";
 export default {
   about: {
     company: `
@@ -33,6 +29,30 @@ export default {
         icon: PhoneIcon,
       },
     ],
+    compliance: {
+      title: "Our compliance principle to TIC council",
+      text: `Our commitment to compliance is a cornerstone of our operations, 
+        embodying the highest standards of ethical conduct, 
+        integrity, and adherence to all applicable laws and regulations. 
+        In alignment with the TIC Council's requirements, 
+        we have established a comprehensive framework that guides our interactions with employees, 
+        stakeholders, and the community. This commitment is reflected in our robust governance structure, 
+        comprehensive employee training, strict confidentiality protocols, and our dedication to health, 
+        safety, and financial integrity. We actively extend these principles to our business partners, 
+        ensuring a culture of compliance that permeates every facet of our operations.`,
+      text_p: [
+        `Our commitment to compliance is a cornerstone of our operations, 
+        embodying the highest standards of ethical conduct, 
+        integrity, and adherence to all applicable laws and regulations. 
+        In alignment with the TIC Council's requirements, 
+        we have established a comprehensive framework that guides our interactions with employees, 
+        stakeholders, and the community.`,
+        `This commitment is reflected in our robust governance structure, 
+        comprehensive employee training, strict confidentiality protocols, and our dedication to health, 
+        safety, and financial integrity. We actively extend these principles to our business partners, 
+        ensuring a culture of compliance that permeates every facet of our operations.`,
+      ],
+    },
     team: {
       title: "Our team",
       text:
@@ -73,8 +93,7 @@ export default {
           details: [
             {
               id: 1,
-              title:
-                "PRE-EXPORT VEHICLE INSPECTION & CONFIRMATION OF CONFORMITY (COC) CERTIFICATES",
+              title: "PRE-EXPORT VEHICLE INSPECTION & CONFIRMATION OF CONFORMITY (COC) CERTIFICATES",
               text: `
                     <p>Pre-export vehicle inspections are crucial for exporting cars to international countries and Confirmation of Conformity (COC) Certificates are required for vehicles to enter certain countries.</p>
                     <p>TIC is an approved quality control company that can provide quick and efficient vehicle inspections and COC certificates that meet specific vehicle requirements that are assigned by a country’s government. We provide inspections and COC Certificates for heavy machinery, and agriculture machinery that is imported into a country with assurance that all machinery and vehicle inspections ensure compliance and meet safety requirements.</p>
@@ -83,8 +102,7 @@ export default {
             },
             {
               id: 2,
-              title:
-                "Kurdistan – Certificate of Conformity for Exports of Used Vehicles",
+              title: "Kurdistan – Certificate of Conformity for Exports of Used Vehicles",
               text: `
                     <p>TIC Quality Control have been appointed as the sole Certification Body authorised to issue Certificates of Conformity for Used Vehicles entering Kurdistan through the Parvez Khan border crossing. </p>
                     <p>Kurdistan’s Consignment Based Conformity Assessment (CBCA) requires the conformity of regulated products including used Vehicles entering the borders of Kurdistan.</p>
@@ -94,8 +112,7 @@ export default {
             },
             {
               id: 3,
-              title:
-                "What are the legal requirements of the CBCA programme for Used Vehicles entering Kurdistan?",
+              title: "What are the legal requirements of the CBCA programme for Used Vehicles entering Kurdistan?",
               text: `
                     <p>TIC Quality Control will conduct a pre-export inspection based on the legal requirements of the CBCA programme for Used Vehicles, below listed some of the requirements:</p>
                     <ul role="list">
@@ -340,8 +357,7 @@ export default {
             },
             {
               id: 2,
-              title:
-                "Pre-Shipment Inspections / Loading and Discharge Supervision",
+              title: "Pre-Shipment Inspections / Loading and Discharge Supervision",
               text: ` 
                   <ul role="list">
                     <li>Loading and discharge supervision</li>
@@ -418,8 +434,7 @@ export default {
             },
             {
               id: 2,
-              title:
-                "Pre-Shipment Inspections / Loading and Discharge Supervision:",
+              title: "Pre-Shipment Inspections / Loading and Discharge Supervision:",
               text: `
                   <ul role="list">
                     <li>Loading and discharge supervision </li>
@@ -512,8 +527,7 @@ export default {
             },
             {
               id: 3,
-              title:
-                "We provide you with a full visual and physical inspection including:",
+              title: "We provide you with a full visual and physical inspection including:",
               text: `
                   <ul role="list">
                     <li>Size and Shape</li>
@@ -614,12 +628,10 @@ export default {
           title: "Marine Industry Inspections",
           subtitle: "",
           href: "/industries/marine-industry",
-          text:
-            "We offer services to help support the marine industry manage their compliances and regulations. ",
+          text: "We offer services to help support the marine industry manage their compliances and regulations. ",
           more: true,
           apply: false,
-          image:
-            "/img/industries/Vessel Inspection & Audit Coordination Department.jpg",
+          image: "/img/industries/Vessel Inspection & Audit Coordination Department.jpg",
           details: [
             {
               id: 1,
@@ -924,8 +936,7 @@ export default {
             },
             {
               id: 4,
-              title:
-                "Below are the NDT methods plays a major role in corrosion analysis:",
+              title: "Below are the NDT methods plays a major role in corrosion analysis:",
               text: `
                     <ul role="list">
                       <li>Phased array Ultrasonic testing - PAUT</li>
@@ -958,8 +969,7 @@ export default {
             "Steel manufacturing and fabrication is an important trade catering to almost all industrial sectors. Steel products are essential to industries such as transportation, construction, energy, agriculture, mining, and consumer goods manufacturing.",
           more: true,
           apply: false,
-          image:
-            "/img/services/the-impact-of-lean-manufacturing-on-structural-steel-fabricating-1.jpg",
+          image: "/img/services/the-impact-of-lean-manufacturing-on-structural-steel-fabricating-1.jpg",
           details: [
             {
               id: 1,

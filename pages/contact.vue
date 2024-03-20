@@ -111,7 +111,7 @@ module.exports = {
                                     </svg>
                                 </div>
                                 <h3 class="text-lg font-medium text-white">Contact information</h3>
-                                <p class="mt-6 max-w-3xl text-base text-teal-50">Office 2206, Clover Bay Tower, 
+                                <p class="mt-6 max-w-3xl text-base text-teal-50">Office 2206, Clover Bay Tower,
                                     Marasi Drive, Business Bay, Dubai, UAE.</p>
                                 <p class="mt-6 max-w-3xl text-base text-teal-50">PO BOX 28129</p>
                                 <dl class="mt-8 space-y-6">
@@ -124,6 +124,25 @@ module.exports = {
                                     <dd class="flex text-base text-teal-50">
                                         <EnvelopeIcon class="h-6 w-6 flex-shrink-0 text-teal-200" aria-hidden="true" />
                                         <span class="ml-3">info@ticqc.ae</span>
+                                    </dd>
+                                </dl>
+                                <!-- 
+
+                                     { id: 1, country: 'Help line', address: ["+971 56 410 6001", "info@ticqc.ae"] },
+                                 -->
+                                <dl class="mt-48 space-y-6">
+                                    <dt>
+                                        <p class="mt-6 max-w-3xl text-base text-teal-50">Help line</p>
+                                    </dt>
+                                    <dt><span class="sr-only">Help line</span></dt>
+                                    <dd class="flex text-base text-teal-50">
+                                        <PhoneIcon class="h-6 w-6 flex-shrink-0 text-teal-200" aria-hidden="true" />
+                                        <span class="ml-3">+971 56 410 6001</span>
+                                    </dd>
+                                    <dt><span class="sr-only">Email</span></dt>
+                                    <dd class="flex text-base text-teal-50">
+                                        <EnvelopeIcon class="h-6 w-6 flex-shrink-0 text-teal-200" aria-hidden="true" />
+                                        <span class="ml-3">help@ticqc.ae</span>
                                     </dd>
                                 </dl>
 

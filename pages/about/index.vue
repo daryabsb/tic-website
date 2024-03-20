@@ -23,18 +23,21 @@
                 <div v-for="val in values" :key="val.id" class="flex flex-col rounded-2xl bg-white shadow-xl">
                     <div class="relative flex-1 px-6 pt-16 pb-4 md:px-8">
                         <div
-                            class="absolute top-0 inline-block -translate-y-1/2 transform rounded-xl bg-indigo-600 p-5 shadow-lg">
+                            class="absolute top-0 inline-block -translate-y-1/2 transform rounded-xl bg-red-600 p-5 shadow-lg">
                             <component :is="val.icon" class="h-6 w-6 text-white" aria-hidden="true" />
                         </div>
                         <h3 class="text-xl font-medium text-gray-900">{{ val.title }}</h3>
                         <p class="mt-4 text-base text-gray-500">{{ val.text }}</p>
                     </div>
                     <div class="rounded-bl-2xl rounded-br-2xl bg-gray-50 p-6 md:px-8">
-                        <a href="/contact" class="text-base font-medium text-indigo-700 hover:text-indigo-600">Contact
+                        <a href="/contact" class="text-base font-medium text-red-700 hover:text-red-600">Contact
                             us<span aria-hidden="true"> &rarr;</span></a>
                     </div>
                 </div>
             </div>
+        </section>
+        <section class="relative z-10 mx-auto max-w-7xl px-6 pb-32 lg:px-8" aria-labelledby="contact-heading">
+            <AboutCompliance />
         </section>
         <section class="relative z-10 mx-auto max-w-7xl px-6 pb-32 lg:px-8" aria-labelledby="contact-heading">
             <AboutTeam />
