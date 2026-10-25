@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Training catalogue — TIC Quality Control</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira:wght@500;600;700;800&family=Open+Sans:wght@400;600&display=swap">
+<style>
+body{margin:0;background:#FFFFFF;color:#1E1E1E;font-family:"Open Sans",Arial,sans-serif;font-size:17px;line-height:1.6}
+a{color:#1E1E1E}a:hover{color:#EB232B}
+.wrap{max-width:1280px;margin:0 auto;padding-left:clamp(16px,5.5vw,80px);padding-right:clamp(16px,5.5vw,80px)}
+.h2{font-family:Saira,Arial,sans-serif;font-weight:700;font-size:26px;line-height:1.15;letter-spacing:.02em;text-transform:uppercase;color:#3D3D3D;margin:0}
+.rule{height:3px;background:#EB232B;width:120px;margin-top:12px}
+.eyebrow{font-family:Saira,Arial,sans-serif;font-weight:600;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:#EB232B}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 20px;background:#EB232B;color:#FFFFFF;font-family:Saira,Arial,sans-serif;font-weight:600;font-size:14px;letter-spacing:.06em;text-transform:uppercase;text-decoration:none}
+.tab{display:inline-flex;align-items:center;min-height:44px;padding:0 18px;font-family:Saira,Arial,sans-serif;font-weight:600;font-size:14px;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;color:#1E1E1E;border:2px solid #D9D9D9}
+.tab.on{border-color:#111111;background:#111111;color:#FFFFFF}
+.course{display:flex;flex-wrap:wrap;gap:16px 32px;padding:24px 0;border-top:1px solid #D9D9D9;align-items:flex-start}
+.course .t{flex:1 1 360px;min-width:0;display:flex;flex-direction:column;gap:6px}
+.course b{font-family:Saira,Arial,sans-serif;font-weight:700;font-size:19px;text-transform:uppercase;line-height:1.2}
+.course .f{flex:1 1 420px;min-width:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px 16px;font-size:14px}
+.course .f span{display:flex;flex-direction:column}
+.course .f i{font-style:normal;font-family:Saira,Arial,sans-serif;font-weight:600;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#6B6B6B}
+</style>
+</helmet>
+<div style="display:flex;flex-direction:column;min-width:0">
+  <dc-import name="Header" hint-size="100%,132px"></dc-import>
+  <dc-import name="PageHead" title="Training catalogue" intro="One page per course, with the fields no competitor shows: standard, level, duration, format, next dates, price with currency and tax, what the certificate says and who issues it, trainer and prerequisites. Training is general knowledge; it endorses no method and has no bearing on any TIC inspection or certification decision." section="Resources" section-href="B-News.dc.html" cap="" variant="band" hint-size="100%,240px"></dc-import>
+
+  <div class="wrap" style="padding-top:40px;padding-bottom:72px;display:flex;flex-direction:column;gap:28px">
+    <div style="display:flex;flex-wrap:wrap;gap:8px"><a class="tab on" href="B-Training.dc.html">All courses</a><a class="tab" href="B-Training.dc.html">Awareness</a><a class="tab" href="B-Training.dc.html">Internal auditor</a><a class="tab" href="B-Training.dc.html">Online</a><a class="tab" href="B-Training.dc.html">Classroom</a></div>
+    <div style="display:flex;flex-direction:column">
+      <div class="course"><div class="t"><span class="eyebrow">Internal auditor</span><b>ISO 9001:2015 internal auditor</b><span style="font-size:15px;color:#3D3D3D">[Two sentences on who it is for and what it covers.]</span></div><div class="f"><span><i>Level</i>Intermediate</span><span><i>Duration</i>2 days</span><span><i>Format</i>Classroom, Dubai · Online</span><span><i>Next dates</i>[date] · [date]</span><span><i>Price</i>[AED, incl. VAT]</span><span><i>Certificate</i>Certificate of attendance, issued by TIC Quality Control</span><span><i>Trainer</i>[name]</span><span><i>Prerequisites</i>[none / awareness course]</span><span style="grid-column:1/-1"><a class="btn" href="B-Training.dc.html" style="align-self:flex-start">Register</a></span></div></div>
+      <div class="course"><div class="t"><span class="eyebrow">Internal auditor</span><b>ISO 14001:2015 internal auditor</b><span style="font-size:15px;color:#3D3D3D">[Two sentences.]</span></div><div class="f"><span><i>Level</i>Intermediate</span><span><i>Duration</i>2 days</span><span><i>Format</i>Classroom, [city] · Online</span><span><i>Next dates</i>[date]</span><span><i>Price</i>[currency, tax]</span><span><i>Certificate</i>Attendance, TIC Quality Control</span><span style="grid-column:1/-1"><a class="btn" href="B-Training.dc.html">Register</a></span></div></div>
+      <div class="course"><div class="t"><span class="eyebrow">Awareness</span><b>ISO 45001:2018 awareness</b><span style="font-size:15px;color:#3D3D3D">[Two sentences.]</span></div><div class="f"><span><i>Level</i>Introductory</span><span><i>Duration</i>1 day</span><span><i>Format</i>Online</span><span><i>Next dates</i>[date]</span><span><i>Price</i>[currency, tax]</span><span><i>Certificate</i>Attendance, TIC Quality Control</span><span style="grid-column:1/-1"><a class="btn" href="B-Training.dc.html">Register</a></span></div></div>
+      <div class="course"><div class="t"><span class="eyebrow">Awareness</span><b>Halal requirements — internal audit webinar</b><span style="font-size:15px;color:#3D3D3D">[Two sentences. Moved here from the old webinar page.]</span></div><div class="f"><span><i>Level</i>Introductory</span><span><i>Duration</i>3 hours</span><span><i>Format</i>Online</span><span><i>Next dates</i>[date]</span><span><i>Price</i>[currency, tax]</span><span><i>Certificate</i>Attendance, TIC Quality Control</span><span style="grid-column:1/-1"><a class="btn" href="B-Training.dc.html">Register</a></span></div></div>
+      <div class="course" style="border-bottom:1px solid #D9D9D9"><div class="t"><span class="eyebrow">Awareness</span><b>[Course title]</b><span style="font-size:15px;color:#3D3D3D">[Two sentences.]</span></div><div class="f"><span><i>Level</i>[level]</span><span><i>Duration</i>[days]</span><span><i>Format</i>[format]</span><span><i>Next dates</i>[date]</span><span><i>Price</i>[currency, tax]</span><span><i>Certificate</i>[what it says]</span><span style="grid-column:1/-1"><a class="btn" href="B-Training.dc.html">Register</a></span></div></div>
+    </div>
+    <p style="margin:0;font-size:14px;color:#6B6B6B">Expired dates archive themselves. Ten courses exist today (five awareness, five internal-auditor); dates, prices and trainers to be supplied by the training owner.</p>
+  </div>
+
+  <dc-import name="Footer" hint-size="100%,600px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":2600}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Shared page header — TIC Quality Control</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira:wght@500;600;700;800&family=Open+Sans:wght@400;600&display=swap">
+<style>
+body{margin:0}
+.ph{font-family:"Open Sans",Arial,sans-serif;color:#1E1E1E}
+.ph .wrap{max-width:1280px;margin:0 auto;padding-left:clamp(16px,5.5vw,80px);padding-right:clamp(16px,5.5vw,80px)}
+.ph .photo{position:relative;background-color:#3D3D3D;background-image:linear-gradient(#4A4A4A 1px,transparent 1px),linear-gradient(90deg,#4A4A4A 1px,transparent 1px);background-size:48px 48px;overflow:hidden}
+.ph .note{position:absolute;inset:0;display:flex;align-items:flex-start;justify-content:flex-end;text-align:right;padding:24px 40px;font-size:14px;color:#D9D9D9;line-height:1.4}
+.ph .cap{position:absolute;right:0;bottom:0;background:#EB232B;color:#FFFFFF;font-family:Saira,Arial,sans-serif;font-weight:600;font-size:13px;letter-spacing:.1em;text-transform:uppercase;padding:8px 14px}
+.ph .crumb{display:flex;flex-wrap:wrap;gap:8px;font-size:14px;color:#6B6B6B}
+.ph .crumb a{color:#3D3D3D;text-decoration:none}
+.ph h1{margin:0;font-family:Saira,Arial,sans-serif;font-weight:800;font-size:44px;line-height:1.05;letter-spacing:.01em;text-transform:uppercase;color:#1E1E1E}
+.ph p{margin:0;font-size:18px;color:#3D3D3D;max-width:720px}
+</style>
+</helmet>
+<div class="ph">
+  <sc-if value="{{isPhoto}}" hint-placeholder-val="{{ true }}">
+    <div class="photo" style="min-height:420px;display:flex;align-items:flex-end">
+      <div class="note">Real photograph for this page (to be supplied by the owning office)</div>
+      <div class="wrap" style="position:relative;width:100%;padding-top:80px;display:flex">
+        <div style="background:#FFFFFF;padding:36px 40px 32px;max-width:760px;display:flex;flex-direction:column;gap:14px;border-top:6px solid #EB232B">
+          <div class="crumb"><a href="DirectionB.dc.html">Home</a><span>›</span><a href="{{sectionHref}}">{{section}}</a><span>›</span><span>{{title}}</span></div>
+          <h1>{{title}}</h1>
+          <p>{{intro}}</p>
+        </div>
+      </div>
+      <div class="cap">{{cap}}</div>
+    </div>
+  </sc-if>
+  <sc-if value="{{isBand}}" hint-placeholder-val="{{ false }}">
+    <div style="background:#F3F3F3;border-bottom:1px solid #D9D9D9">
+      <div class="wrap" style="display:flex;flex-direction:column;gap:14px;padding-top:48px;padding-bottom:48px">
+        <div class="crumb"><a href="DirectionB.dc.html">Home</a><span>›</span><a href="{{sectionHref}}">{{section}}</a><span>›</span><span>{{title}}</span></div>
+        <h1>{{title}}</h1>
+        <p>{{intro}}</p>
+      </div>
+    </div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"title":{"editor":"text","default":"Page title"},"intro":{"editor":"text","default":"One or two sentences that say what this page is for, in plain English."},"section":{"editor":"text","default":"Section"},"sectionHref":{"editor":"text","default":"DirectionB.dc.html"},"cap":{"editor":"text","default":"Place · Subject"},"variant":{"editor":"enum","options":["photo","band"],"default":"photo"},"$preview":{"width":1440,"height":460}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const v = this.props.variant ?? 'photo';
+    return {
+      title: this.props.title ?? 'Page title',
+      intro: this.props.intro ?? 'One or two sentences that say what this page is for, in plain English.',
+      section: this.props.section ?? 'Section',
+      sectionHref: this.props.sectionHref ?? 'DirectionB.dc.html',
+      cap: this.props.cap ?? 'Place · Subject',
+      isPhoto: v === 'photo',
+      isBand: v === 'band'
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Shared header — TIC Quality Control</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira:wght@500;600;700;800&family=Open+Sans:wght@400;600&family=Cairo:wght@600&display=swap">
+<style>
+body{margin:0}
+.hdr{font-family:"Open Sans",Arial,sans-serif;color:#1E1E1E;background:#FFFFFF}
+.hdr .wrap{max-width:1280px;margin:0 auto;padding-left:clamp(16px,5.5vw,80px);padding-right:clamp(16px,5.5vw,80px)}
+.hdr .util{background:#111111}
+.hdr .util a{font-size:13px;text-decoration:none;color:#D9D9D9;display:inline-flex;align-items:center;gap:8px;min-height:36px}
+.hdr .util a:hover{color:#FFFFFF}
+.hdr .util select{min-height:28px;background:#111111;color:#FFFFFF;border:1px solid #6B6B6B;font-family:"Open Sans",Arial,sans-serif;font-size:13px;padding:2px 8px}
+.hdr .util label{display:inline-flex;align-items:center;gap:8px;font-size:12px;color:#D9D9D9;font-family:Saira,Arial,sans-serif;letter-spacing:.1em;text-transform:uppercase}
+.hdr .nav a{font-family:Saira,Arial,sans-serif;font-weight:600;font-size:14px;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;color:#1E1E1E;padding:14px 0;display:inline-block}
+.hdr .nav a:hover{color:#EB232B}
+.hdr .cta{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 20px;background:#EB232B;color:#FFFFFF;font-family:Saira,Arial,sans-serif;font-weight:600;font-size:14px;letter-spacing:.06em;text-transform:uppercase;text-decoration:none}
+.hdr .cta:hover{background:#BD2130;color:#FFFFFF}
+</style>
+</helmet>
+<div class="hdr">
+  <div class="util">
+    <div class="wrap" style="display:flex;flex-wrap:wrap;gap:4px 28px;align-items:center;min-height:36px;justify-content:flex-end">
+      <a href="B-Verify.dc.html" style="font-weight:600;color:#FFFFFF"><span style="width:8px;height:8px;background:#EB232B;display:inline-block"></span>Verify a certificate</a>
+      <a href="B-Login.dc.html">Client area</a>
+      <label for="lang">Language<select id="lang"><option selected>English</option><option style="font-family:Cairo,Arial,sans-serif">العربية</option><option>中文</option></select></label>
+      <a href="B-Search.dc.html"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#D9D9D9" stroke-width="2"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4-4"></path></svg>Search</a>
+    </div>
+  </div>
+  <div class="wrap nav" style="display:flex;flex-wrap:wrap;align-items:center;gap:12px 36px;min-height:96px;padding-top:14px;padding-bottom:14px;border-bottom:3px solid #EB232B">
+    <a href="DirectionB.dc.html" style="padding:0;display:inline-flex;align-items:center;gap:18px"><img src="/_blob/44349e061e95ffc81bd21d9737f21be0" alt="TIC — Testing, Inspection, Certification" style="height:60px;width:auto;display:block"><span style="width:1px;height:44px;background:#D9D9D9"></span><span style="font-family:Saira,Arial,sans-serif;font-weight:600;font-size:18px;letter-spacing:.1em;text-transform:uppercase;color:#1E1E1E">TIC Quality Control</span></a>
+    <div style="flex:1 1 auto;display:flex;flex-wrap:wrap;gap:0 30px;justify-content:flex-end;align-items:center">
+      <a href="B-Services.dc.html">Services</a><a href="B-Industries.dc.html">Industries</a><a href="B-Programs.dc.html">Government &amp; Trade Programs</a><a href="B-About.dc.html">About</a><a href="B-News.dc.html">Resources</a><a href="B-Contact.dc.html">Contact</a>
+      <a class="cta" href="B-Contact.dc.html">Request a quote</a>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":132}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

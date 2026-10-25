@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Search results — TIC Quality Control</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira:wght@500;600;700;800&family=Open+Sans:wght@400;600&display=swap">
+<style>
+body{margin:0;background:#FFFFFF;color:#1E1E1E;font-family:"Open Sans",Arial,sans-serif;font-size:17px;line-height:1.6}
+a{color:#1E1E1E}a:hover{color:#EB232B}
+.wrap{max-width:1280px;margin:0 auto;padding-left:clamp(16px,5.5vw,80px);padding-right:clamp(16px,5.5vw,80px)}
+.eyebrow{font-family:Saira,Arial,sans-serif;font-weight:600;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:#EB232B}
+.inp{min-height:56px;border:2px solid #1E1E1E;background:#FFFFFF;padding:0 16px;font-family:"Open Sans",Arial,sans-serif;font-size:18px;color:#1E1E1E;flex:1 1 300px;min-width:0}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:56px;padding:0 30px;background:#EB232B;color:#FFFFFF;font-family:Saira,Arial,sans-serif;font-weight:600;font-size:15px;letter-spacing:.06em;text-transform:uppercase;border:0;cursor:pointer}
+.tab{display:inline-flex;align-items:center;min-height:44px;padding:0 18px;font-family:Saira,Arial,sans-serif;font-weight:600;font-size:14px;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;color:#1E1E1E;border:2px solid #D9D9D9}
+.tab.on{border-color:#111111;background:#111111;color:#FFFFFF}
+.res{display:flex;flex-direction:column;gap:4px;padding:20px 0;border-top:1px solid #D9D9D9;text-decoration:none}
+.res b{font-family:Saira,Arial,sans-serif;font-weight:700;font-size:19px;text-transform:uppercase;color:#1E1E1E;line-height:1.2}
+.res span{font-size:15px;color:#3D3D3D}
+.res em{font-style:normal;font-size:13px;color:#6B6B6B}
+</style>
+</helmet>
+<div style="display:flex;flex-direction:column;min-width:0">
+  <dc-import name="Header" hint-size="100%,132px"></dc-import>
+  <div style="background:#F3F3F3;border-bottom:1px solid #D9D9D9">
+    <div class="wrap" style="display:flex;flex-direction:column;gap:16px;padding-top:40px;padding-bottom:40px">
+      <h1 style="margin:0;font-family:Saira,Arial,sans-serif;font-weight:800;font-size:36px;text-transform:uppercase;color:#1E1E1E">Search</h1>
+      <form style="display:flex;flex-wrap:wrap;gap:12px;margin:0;max-width:800px" onsubmit="return false"><input class="inp" value="Iraq certificate" aria-label="Search the site"><button class="btn" type="submit">Search</button></form>
+      <p style="margin:0;font-size:14px;color:#6B6B6B">Looking for a certificate number? Use <a href="B-Verify.dc.html">Verify a certificate</a> instead — certificates are not searchable here.</p>
+    </div>
+  </div>
+  <div class="wrap" style="padding-top:32px;padding-bottom:72px;display:flex;flex-direction:column;gap:24px">
+    <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center"><span style="font-size:14px;color:#6B6B6B;margin-right:12px">[n] results</span><a class="tab on" href="B-Search.dc.html">All</a><a class="tab" href="B-Search.dc.html">Programs</a><a class="tab" href="B-Search.dc.html">Services</a><a class="tab" href="B-Search.dc.html">Updates and news</a><a class="tab" href="B-Search.dc.html">Downloads</a><a class="tab" href="B-Search.dc.html">Questions</a><a class="tab" href="B-Search.dc.html">Offices</a></div>
+    <div style="display:flex;flex-direction:column">
+      <a class="res" href="B-Program-Iraq.dc.html"><span class="eyebrow">Program</span><b>Iraq Certificate of Conformity</b><span>Most goods imported into Iraq need a Certificate of Conformity before customs clearance. TIC, with LOX, is appointed by COSQC…</span><em>Government &amp; Trade Programs · Baghdad office · updated [date]</em></a>
+      <a class="res" href="B-Article.dc.html"><span class="eyebrow">Insight</span><b>How to get an Iraq Certificate of Conformity</b><span>[Standfirst…]</span><em>Resources › Insights · [author] · [date]</em></a>
+      <a class="res" href="B-Downloads.dc.html"><span class="eyebrow">Download</span><b>Iraq CoC — regulated product list</b><span>Version [v], [date], owned by the Baghdad office. PDF, English and Arabic.</span><em>Downloads library</em></a>
+      <a class="res" href="B-QA.dc.html"><span class="eyebrow">Question</span><b>How long is an Iraq Certificate of Conformity valid?</b><span>[Answer…]</span><em>Questions and answers · Iraq CoC</em></a>
+      <a class="res" href="B-Office-Baghdad.dc.html" style="border-bottom:1px solid #D9D9D9"><span class="eyebrow">Office</span><b>Baghdad office</b><span>Runs the Iraq CoC program; WhatsApp, phone and staffed hours.</span><em>Our offices</em></a>
+    </div>
+  </div>
+  <dc-import name="Footer" hint-size="100%,600px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1800}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

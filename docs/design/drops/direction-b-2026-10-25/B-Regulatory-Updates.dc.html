@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Regulatory updates — TIC Quality Control</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira:wght@500;600;700;800&family=Open+Sans:wght@400;600&display=swap">
+<style>
+body{margin:0;background:#FFFFFF;color:#1E1E1E;font-family:"Open Sans",Arial,sans-serif;font-size:17px;line-height:1.6}
+a{color:#1E1E1E}a:hover{color:#EB232B}
+.wrap{max-width:1280px;margin:0 auto;padding-left:clamp(16px,5.5vw,80px);padding-right:clamp(16px,5.5vw,80px)}
+.eyebrow{font-family:Saira,Arial,sans-serif;font-weight:600;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:#EB232B}
+.lbl{font-family:Saira,Arial,sans-serif;font-weight:600;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#3D3D3D}
+.tri{display:inline-flex;align-items:center;gap:10px;font-family:Saira,Arial,sans-serif;font-weight:600;font-size:14px;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;color:#1E1E1E}
+.tri::before{content:"";width:0;height:0;border-top:6px solid transparent;border-bottom:6px solid transparent;border-left:9px solid #EB232B}
+.sel{min-height:44px;border:2px solid #1E1E1E;background:#FFFFFF;padding:0 12px;font-family:"Open Sans",Arial,sans-serif;font-size:15px;color:#1E1E1E}
+.upd{display:flex;flex-wrap:wrap;gap:8px 24px;padding:20px 0;border-top:1px solid #D9D9D9;text-decoration:none;align-items:flex-start}
+.upd .d{flex:0 0 120px;font-size:14px;color:#6B6B6B;padding-top:3px}
+.upd .p{flex:0 0 180px;padding-top:4px}
+.upd .t{flex:1 1 400px;display:flex;flex-direction:column;gap:4px}
+.upd b{font-family:Saira,Arial,sans-serif;font-weight:700;font-size:18px;text-transform:uppercase;line-height:1.2;color:#1E1E1E}
+.upd span{font-size:15px;color:#3D3D3D}
+.upd em{font-style:normal;font-size:13px;color:#6B6B6B}
+.side{flex:0 1 320px;min-width:0;display:flex;flex-direction:column;gap:20px}
+</style>
+</helmet>
+<div style="display:flex;flex-direction:column;min-width:0">
+  <dc-import name="Header" hint-size="100%,132px"></dc-import>
+  <dc-import name="PageHead" title="Regulatory updates" intro="Dated notices of every change in the programs we run — new regulated product lists, changed routes, fees and documents — signed by the office that owns the program. The same page is listed under Programs and under Resources." section="Government &amp; Trade Programs" section-href="B-Programs.dc.html" cap="" variant="band" hint-size="100%,240px"></dc-import>
+
+  <div class="wrap" style="display:flex;flex-wrap:wrap;gap:64px;padding-top:56px;padding-bottom:72px;align-items:flex-start">
+    <div class="side">
+      <label style="display:flex;flex-direction:column;gap:6px"><span class="lbl">Program</span><select class="sel"><option>All programs</option><option>Iraq</option><option>Kurdistan Region of Iraq</option><option>Egypt</option><option>Botswana</option><option>Libya</option><option>Saudi Arabia</option></select></label>
+      <label style="display:flex;flex-direction:column;gap:6px"><span class="lbl">Year</span><select class="sel"><option>2026</option><option>2025</option><option>2024</option></select></label>
+      <div style="background:#F3F3F3;padding:20px;display:flex;flex-direction:column;gap:8px"><span class="eyebrow">Get updates by email</span><span style="font-size:14px;color:#3D3D3D">One email when a program changes. No newsletters.</span><input class="sel" placeholder="name@company.com" style="width:100%;box-sizing:border-box"><a class="tri" href="B-Regulatory-Updates.dc.html" style="min-height:44px">Subscribe</a></div>
+    </div>
+    <div style="flex:1 1 560px;min-width:0;display:flex;flex-direction:column">
+      <a class="upd" href="B-Article.dc.html"><span class="d">[date]</span><span class="eyebrow p">Iraq · COSQC</span><span class="t"><b>[Title of the latest COSQC circular]</b><span>[One-sentence summary of what changed and from when.]</span><em>[Named author, Baghdad office]</em></span></a>
+      <a class="upd" href="B-Article.dc.html"><span class="d">[date]</span><span class="eyebrow p">Egypt · GOEIC</span><span class="t"><b>[Title of the latest GOEIC notice]</b><span>[One-sentence summary.]</span><em>[Named author, Cairo office]</em></span></a>
+      <a class="upd" href="B-Article.dc.html"><span class="d">[date]</span><span class="eyebrow p">Botswana · BOBS</span><span class="t"><b>[Regulated product list revised]</b><span>[One-sentence summary.]</span><em>[Named author]</em></span></a>
+      <a class="upd" href="B-Article.dc.html"><span class="d">[date]</span><span class="eyebrow p">Saudi Arabia · SFDA</span><span class="t"><b>Designation status</b><span>Document review and advisory support continues while designation is in progress.</span><em>Quality/Accreditation Manager</em></span></a>
+      <a class="upd" href="B-Article.dc.html" style="border-bottom:1px solid #D9D9D9"><span class="d">Sep 2024</span><span class="eyebrow p">Iraq · COSQC</span><span class="t"><b>TIC and LOX begin issuing certificates</b><span>Certificates issued under the COSQC appointment of 22 May 2024.</span><em>Baghdad office</em></span></a>
+    </div>
+  </div>
+
+  <dc-import name="Footer" hint-size="100%,600px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":2400}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

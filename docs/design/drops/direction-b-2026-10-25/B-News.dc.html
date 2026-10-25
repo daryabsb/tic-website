@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>News and insights — TIC Quality Control</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira:wght@500;600;700;800&family=Open+Sans:wght@400;600&display=swap">
+<style>
+body{margin:0;background:#FFFFFF;color:#1E1E1E;font-family:"Open Sans",Arial,sans-serif;font-size:17px;line-height:1.6}
+a{color:#1E1E1E}a:hover{color:#EB232B}
+.wrap{max-width:1280px;margin:0 auto;padding-left:clamp(16px,5.5vw,80px);padding-right:clamp(16px,5.5vw,80px)}
+.h2{font-family:Saira,Arial,sans-serif;font-weight:700;font-size:26px;line-height:1.15;letter-spacing:.02em;text-transform:uppercase;color:#3D3D3D;margin:0}
+.rule{height:3px;background:#EB232B;width:120px;margin-top:12px}
+.eyebrow{font-family:Saira,Arial,sans-serif;font-weight:600;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:#EB232B}
+.tri{display:inline-flex;align-items:center;gap:10px;font-family:Saira,Arial,sans-serif;font-weight:600;font-size:14px;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;color:#1E1E1E}
+.tri::before{content:"";width:0;height:0;border-top:6px solid transparent;border-bottom:6px solid transparent;border-left:9px solid #EB232B}
+.photo{position:relative;background-color:#B9B9BB;background-image:linear-gradient(#A9A9AB 1px,transparent 1px),linear-gradient(90deg,#A9A9AB 1px,transparent 1px);background-size:48px 48px;overflow:hidden}
+.cap{position:absolute;left:0;bottom:0;background:#EB232B;color:#FFFFFF;font-family:Saira,Arial,sans-serif;font-weight:600;font-size:12px;letter-spacing:.1em;text-transform:uppercase;padding:6px 12px}
+.tab{display:inline-flex;align-items:center;min-height:44px;padding:0 18px;font-family:Saira,Arial,sans-serif;font-weight:600;font-size:14px;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;color:#1E1E1E;border:2px solid #D9D9D9}
+.tab.on{border-color:#111111;background:#111111;color:#FFFFFF}
+.art{flex:1 1 340px;min-width:0;text-decoration:none;display:flex;flex-direction:column;border:1px solid #D9D9D9;background:#FFFFFF}
+.art .body{padding:22px;display:flex;flex-direction:column;gap:8px}
+.art b{font-family:Saira,Arial,sans-serif;font-weight:700;font-size:19px;text-transform:uppercase;color:#1E1E1E;line-height:1.2}
+.art span{font-size:14px;color:#6B6B6B}
+.art p{margin:0;font-size:15px;color:#3D3D3D}
+.sel{min-height:44px;border:2px solid #1E1E1E;background:#FFFFFF;padding:0 12px;font-family:"Open Sans",Arial,sans-serif;font-size:15px;color:#1E1E1E}
+.pg a{display:inline-flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;border:1px solid #D9D9D9;text-decoration:none;font-family:Saira,Arial,sans-serif;font-weight:600}
+.pg a.on{background:#111111;color:#FFFFFF;border-color:#111111}
+</style>
+</helmet>
+<div style="display:flex;flex-direction:column;min-width:0">
+  <dc-import name="Header" hint-size="100%,132px"></dc-import>
+  <dc-import name="PageHead" title="News and insights" intro="News: dated announcements with an author — the 34 existing posts kept, their addresses fixed. Insights: longer explainers by named colleagues, written only when someone commits to write them. Both share this list." section="Resources" section-href="B-News.dc.html" cap="" variant="band" hint-size="100%,240px"></dc-import>
+
+  <div class="wrap" style="padding-top:40px;padding-bottom:72px;display:flex;flex-direction:column;gap:32px">
+    <div style="display:flex;flex-wrap:wrap;gap:12px 24px;align-items:center;justify-content:space-between">
+      <div style="display:flex;flex-wrap:wrap;gap:8px"><a class="tab on" href="B-News.dc.html">All</a><a class="tab" href="B-News.dc.html">News</a><a class="tab" href="B-News.dc.html">Insights</a><a class="tab" href="B-Regulatory-Updates.dc.html">Regulatory updates</a></div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px"><select class="sel"><option>All programs and services</option><option>Iraq CoC</option><option>Egypt GOEIC</option><option>Inspection</option><option>Testing</option></select><select class="sel"><option>All offices</option><option>Dubai</option><option>Baghdad</option><option>Cairo</option><option>Noida</option></select></div>
+    </div>
+
+    <a href="B-Article.dc.html" class="photo" style="min-height:360px;text-decoration:none;display:flex;align-items:flex-end">
+      <div style="position:relative;background:#FFFFFF;margin:32px;padding:24px 28px;max-width:560px;display:flex;flex-direction:column;gap:6px"><span class="eyebrow">Insight · Government &amp; Trade Programs</span><b style="font-family:Saira,Arial,sans-serif;font-weight:700;font-size:26px;text-transform:uppercase;line-height:1.1;color:#1E1E1E">How to get an Iraq Certificate of Conformity</b><span style="font-size:14px;color:#6B6B6B">[date] · by [named author], Baghdad office · 8 min read</span></div>
+      <div class="cap">Featured</div>
+    </a>
+
+    <div style="display:flex;flex-wrap:wrap;gap:24px">
+      <a class="art" href="B-Article.dc.html"><div class="photo" style="height:170px"><div class="cap">Insight</div></div><div class="body"><span class="eyebrow">Insight · Egypt</span><b>What the 45-day rule means in Egypt</b><p>[One-sentence summary.]</p><span>[date] · [named author], Cairo</span></div></a>
+      <a class="art" href="B-Article.dc.html"><div class="photo" style="height:170px"><div class="cap">Insight</div></div><div class="body"><span class="eyebrow">Insight · Marine</span><b>What a draft survey measures</b><p>[One-sentence summary.]</p><span>[date] · [named author], Dubai</span></div></a>
+      <a class="art" href="B-Article.dc.html"><div class="photo" style="height:170px"><div class="cap">News</div></div><div class="body"><span class="eyebrow">News</span><b>[Company news headline]</b><p>[One-sentence summary.]</p><span>[date] · [named author], head office</span></div></a>
+      <a class="art" href="B-Article.dc.html"><div class="photo" style="height:170px"><div class="cap">News</div></div><div class="body"><span class="eyebrow">News</span><b>[Existing post, address fixed]</b><p>[One-sentence summary.]</p><span>[date] · [author]</span></div></a>
+      <a class="art" href="B-Article.dc.html"><div class="photo" style="height:170px"><div class="cap">News</div></div><div class="body"><span class="eyebrow">News</span><b>[Existing post]</b><p>[One-sentence summary.]</p><span>[date] · [author]</span></div></a>
+      <a class="art" href="B-Article.dc.html"><div class="photo" style="height:170px"><div class="cap">News</div></div><div class="body"><span class="eyebrow">News</span><b>[Existing post]</b><p>[One-sentence summary.]</p><span>[date] · [author]</span></div></a>
+    </div>
+
+    <div class="pg" style="display:flex;gap:8px;justify-content:center"><a class="on" href="B-News.dc.html">1</a><a href="B-News.dc.html">2</a><a href="B-News.dc.html">3</a><a href="B-News.dc.html">4</a><a href="B-News.dc.html" style="padding:0 16px">Next</a></div>
+  </div>
+
+  <dc-import name="Footer" hint-size="100%,600px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":2800}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

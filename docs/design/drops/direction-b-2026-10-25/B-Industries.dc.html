@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Industries — TIC Quality Control</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira:wght@500;600;700;800&family=Open+Sans:wght@400;600&display=swap">
+<style>
+body{margin:0;background:#FFFFFF;color:#1E1E1E;font-family:"Open Sans",Arial,sans-serif;font-size:17px;line-height:1.6}
+a{color:#1E1E1E}a:hover{color:#EB232B}
+.wrap{max-width:1280px;margin:0 auto;padding-left:clamp(16px,5.5vw,80px);padding-right:clamp(16px,5.5vw,80px)}
+.h2{font-family:Saira,Arial,sans-serif;font-weight:700;font-size:28px;line-height:1.15;letter-spacing:.02em;text-transform:uppercase;color:#3D3D3D;margin:0}
+.rule{height:3px;background:#EB232B;width:120px;margin-top:12px}
+.photo{position:relative;background-color:#B9B9BB;background-image:linear-gradient(#A9A9AB 1px,transparent 1px),linear-gradient(90deg,#A9A9AB 1px,transparent 1px);background-size:48px 48px;overflow:hidden}
+.cap{position:absolute;left:0;bottom:0;background:#EB232B;color:#FFFFFF;font-family:Saira,Arial,sans-serif;font-weight:600;font-size:12px;letter-spacing:.1em;text-transform:uppercase;padding:6px 12px}
+.ind{flex:1 1 300px;min-width:0;text-decoration:none;display:flex;flex-direction:column;border:1px solid #D9D9D9;background:#FFFFFF}
+.ind .body{padding:22px;display:flex;flex-direction:column;gap:8px}
+.ind b{font-family:Saira,Arial,sans-serif;font-weight:700;font-size:20px;text-transform:uppercase;color:#1E1E1E;line-height:1.15}
+.ind span{font-size:15px;color:#3D3D3D}
+</style>
+</helmet>
+<div style="display:flex;flex-direction:column;min-width:0">
+  <dc-import name="Header" hint-size="100%,132px"></dc-import>
+  <dc-import name="PageHead" title="Industries" intro="A second door into the same services: if you know your sector better than our service names, start here. Each industry page lists the services and programs that matter to it, and the offices that deliver them." section="Industries" section-href="B-Industries.dc.html" cap="Jebel Ali · Consumer goods" variant="band" hint-size="100%,240px"></dc-import>
+
+  <div class="wrap" style="padding-top:64px;padding-bottom:72px;display:flex;flex-direction:column;gap:32px">
+    <div><h2 class="h2">Eight industries</h2><div class="rule"></div></div>
+    <div style="display:flex;flex-wrap:wrap;gap:24px">
+      <a class="ind" href="B-Industry-Food.dc.html"><div class="photo" style="height:180px"><div class="cap">Agriculture &amp; Food</div></div><div class="body"><b>Agriculture &amp; Food</b><span>Grain, rice, sugar, oilseeds, fresh and processed food, halal, GAFTA superintendence.</span></div></a>
+      <a class="ind" href="B-Industry-Food.dc.html"><div class="photo" style="height:180px"><div class="cap">Oil &amp; Gas</div></div><div class="body"><b>Oil &amp; Gas and Petrochemicals</b><span>Custody transfer, tank calibration, cargo measurement, petroleum testing.</span></div></a>
+      <a class="ind" href="B-Industry-Food.dc.html"><div class="photo" style="height:180px"><div class="cap">Marine</div></div><div class="body"><b>Marine &amp; Shipping</b><span>Draft, ullage, bunker, on/off hire and cleanliness surveys.</span></div></a>
+      <a class="ind" href="B-Industry-Food.dc.html"><div class="photo" style="height:180px"><div class="cap">Consumer</div></div><div class="body"><b>Consumer Products &amp; Retail</b><span>Textiles, electrical, toys, cosmetics, ceramics, appliances; pre-shipment inspection.</span></div></a>
+      <a class="ind" href="B-Industry-Food.dc.html"><div class="photo" style="height:180px"><div class="cap">Vehicles</div></div><div class="body"><b>Vehicles &amp; Automotive</b><span>Pre-purchase, damage and pre-export inspection; Kurdistan Region vehicle CoC.</span></div></a>
+      <a class="ind" href="B-Industry-Food.dc.html"><div class="photo" style="height:180px"><div class="cap">Industrial</div></div><div class="body"><b>Industrial Equipment &amp; Manufacturing</b><span>Vendor inspection, NDT, metals and minerals.</span></div></a>
+      <a class="ind" href="B-Industry-Food.dc.html"><div class="photo" style="height:180px"><div class="cap">Construction</div></div><div class="body"><b>Construction &amp; Infrastructure</b><span>Construction materials conformity — a regulated group in the Iraq program.</span></div></a>
+      <a class="ind" href="B-Industry-Food.dc.html"><div class="photo" style="height:180px"><div class="cap">Government</div></div><div class="body"><b>Government &amp; Public Sector</b><span>Regulators and ministries as clients: inspection programs, e-waste control, advisory.</span></div></a>
+    </div>
+  </div>
+
+  <dc-import name="CTABand" hint-size="100%,240px"></dc-import>
+  <dc-import name="Footer" hint-size="100%,600px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":2400}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

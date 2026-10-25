@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Shared contact band — TIC Quality Control</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira:wght@500;600;700;800&family=Open+Sans:wght@400;600&display=swap">
+<style>
+body{margin:0}
+.cta{font-family:"Open Sans",Arial,sans-serif;background:#EB232B;color:#FFFFFF}
+.cta .wrap{max-width:1280px;margin:0 auto;padding-left:clamp(16px,5.5vw,80px);padding-right:clamp(16px,5.5vw,80px)}
+.cta h2{margin:0;font-family:Saira,Arial,sans-serif;font-weight:700;font-size:28px;line-height:1.15;letter-spacing:.02em;text-transform:uppercase;color:#FFFFFF}
+.cta .b{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 28px;font-family:Saira,Arial,sans-serif;font-weight:600;font-size:15px;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;background:#FFFFFF;color:#1E1E1E}
+.cta .b:hover{background:#F3F3F3;color:#1E1E1E}
+.cta .b.dark{background:#111111;color:#FFFFFF}
+.cta .b.dark:hover{background:#3D3D3D;color:#FFFFFF}
+</style>
+</helmet>
+<div class="cta">
+  <div class="wrap" style="display:flex;flex-wrap:wrap;gap:24px 48px;align-items:center;justify-content:space-between;padding-top:48px;padding-bottom:48px">
+    <div style="flex:1 1 360px;min-width:0;display:flex;flex-direction:column;gap:6px">
+      <h2>Talk to the office nearest you</h2>
+      <p style="margin:0;font-size:16px;color:#FFFFFF">WhatsApp, phone or the quote form. Answered by a named person within one working day.</p>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:12px">
+      <a class="b" href="B-Contact.dc.html">WhatsApp</a>
+      <a class="b" href="B-Contact.dc.html">Call us</a>
+      <a class="b dark" href="B-Contact.dc.html">Request a quote</a>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":240}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

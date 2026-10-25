@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Contact and offices — TIC Quality Control (Direction B)</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira:wght@500;600;700;800&family=Open+Sans:wght@400;600&family=Cairo:wght@600&display=swap">
+<style>
+body{margin:0;background:#FFFFFF;color:#1E1E1E;font-family:"Open Sans",Arial,sans-serif;font-size:17px;line-height:1.6}
+a{color:#1E1E1E}a:hover{color:#EB232B}
+.saira{font-family:Saira,Arial,sans-serif;text-transform:uppercase}
+.wrap{max-width:1280px;margin:0 auto;padding-left:clamp(16px,5.5vw,80px);padding-right:clamp(16px,5.5vw,80px)}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 30px;background:#EB232B;color:#FFFFFF;font-family:Saira,Arial,sans-serif;font-weight:600;font-size:15px;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;border:0;cursor:pointer}
+.btn:hover{background:#BD2130;color:#FFFFFF}
+.h2{font-family:Saira,Arial,sans-serif;font-weight:700;font-size:28px;line-height:1.15;letter-spacing:.02em;text-transform:uppercase;color:#3D3D3D;margin:0}
+.rule{height:3px;background:#EB232B;width:120px;margin-top:12px}
+.eyebrow{font-family:Saira,Arial,sans-serif;font-weight:600;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:#EB232B}
+.lbl{font-family:Saira,Arial,sans-serif;font-weight:600;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#3D3D3D}
+.inp{min-height:48px;border:2px solid #1E1E1E;background:#FFFFFF;padding:0 14px;font-family:"Open Sans",Arial,sans-serif;font-size:16px;color:#1E1E1E;width:100%;box-sizing:border-box}
+.tri{display:inline-flex;align-items:center;gap:10px;font-family:Saira,Arial,sans-serif;font-weight:600;font-size:14px;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;color:#1E1E1E}
+.tri::before{content:"";width:0;height:0;border-top:6px solid transparent;border-bottom:6px solid transparent;border-left:9px solid #EB232B}
+.crumb{display:flex;flex-wrap:wrap;gap:8px;font-size:14px;color:#6B6B6B}
+.crumb a{color:#3D3D3D;text-decoration:none}
+.photo{position:relative;background-color:#B9B9BB;background-image:linear-gradient(#A9A9AB 1px,transparent 1px),linear-gradient(90deg,#A9A9AB 1px,transparent 1px);background-size:48px 48px;overflow:hidden}
+.photo .note{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;font-size:14px;color:#3D3D3D}
+.cap{position:absolute;left:0;bottom:0;background:#EB232B;color:#FFFFFF;font-family:Saira,Arial,sans-serif;font-weight:600;font-size:12px;letter-spacing:.1em;text-transform:uppercase;padding:6px 12px}
+.off{flex:1 1 280px;min-width:0;border:1px solid #D9D9D9;display:flex;flex-direction:column;text-decoration:none}
+.off .body{padding:18px 20px;display:flex;flex-direction:column;gap:4px}
+.off b{font-family:Saira,Arial,sans-serif;font-weight:700;font-size:18px;text-transform:uppercase;color:#1E1E1E}
+.off span{font-size:14px;color:#3D3D3D}
+.off .meta{font-size:13px;color:#6B6B6B}
+.chan{flex:1 1 200px;min-width:0;background:#FFFFFF;border:1px solid #D9D9D9;padding:20px;display:flex;flex-direction:column;gap:4px;text-decoration:none}
+.chan b{font-size:17px;color:#1E1E1E}
+.chan span{font-size:14px;color:#6B6B6B}
+.region{font-family:Saira,Arial,sans-serif;font-weight:600;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:#3D3D3D;padding:8px 0;border-bottom:3px solid #EB232B;flex:1 1 100%}
+</style>
+</helmet>
+
+<div style="display:flex;flex-direction:column;min-width:0">
+
+  <dc-import name="Header" hint-size="100%,132px"></dc-import>
+
+  <!-- Title band -->
+  <div style="background:#F3F3F3;border-bottom:1px solid #D9D9D9">
+    <div class="wrap" style="display:flex;flex-direction:column;gap:14px;padding-top:48px;padding-bottom:48px">
+      <div class="crumb"><a href="DirectionB.dc.html">Home</a><span>›</span><span>Contact</span></div>
+      <h1 class="saira" style="margin:0;font-weight:800;font-size:44px;line-height:1.05;color:#1E1E1E">Contact TIC Quality Control</h1>
+      <p style="margin:0;font-size:18px;color:#3D3D3D;max-width:760px">One form for quotes and questions, routed to the office that handles your country and service. Or go straight to the office nearest you — every one lists its phone, WhatsApp and the hours it is staffed.</p>
+    </div>
+  </div>
+
+  <!-- Form + channels -->
+  <div class="wrap" style="display:flex;flex-wrap:wrap;gap:64px;padding-top:64px;padding-bottom:72px;align-items:flex-start">
+    <div id="quote" style="flex:1 1 560px;min-width:0;display:flex;flex-direction:column;gap:24px">
+      <div><h2 class="h2">Request a quote</h2><div class="rule"></div></div>
+      <form style="display:flex;flex-wrap:wrap;gap:16px 24px;margin:0" onsubmit="return false">
+        <label style="flex:1 1 240px;display:flex;flex-direction:column;gap:6px"><span class="lbl">Your name</span><input class="inp" placeholder="Full name"></label>
+        <label style="flex:1 1 240px;display:flex;flex-direction:column;gap:6px"><span class="lbl">Company</span><input class="inp" placeholder="Company"></label>
+        <label style="flex:1 1 240px;display:flex;flex-direction:column;gap:6px"><span class="lbl">Email</span><input class="inp" type="email" placeholder="name@company.com"></label>
+        <label style="flex:1 1 240px;display:flex;flex-direction:column;gap:6px"><span class="lbl">Phone or WhatsApp</span><input class="inp" placeholder="+"></label>
+        <label style="flex:1 1 240px;display:flex;flex-direction:column;gap:6px"><span class="lbl">What do you need?</span><select class="inp"><option>Inspection</option><option>Testing</option><option>Certification</option><option>Government &amp; Trade Program (CoC / CoI)</option><option>Audit</option><option>Training</option><option>Something else</option></select></label>
+        <label style="flex:1 1 240px;display:flex;flex-direction:column;gap:6px"><span class="lbl">Destination country</span><input class="inp" placeholder="e.g. Iraq"></label>
+        <label style="flex:1 1 100%;display:flex;flex-direction:column;gap:6px"><span class="lbl">Tell us about the shipment or product</span><textarea class="inp" rows="5" style="padding:12px 14px" placeholder="Product, quantity, where the goods are, and when they will be ready"></textarea></label>
+        <div style="flex:1 1 100%;display:flex;flex-wrap:wrap;gap:16px;align-items:center"><button class="btn" type="submit">Send request</button><span style="font-size:14px;color:#6B6B6B">Answered by a named person within one working day. Your details are used only to answer you (privacy policy).</span></div>
+      </form>
+    </div>
+    <div style="flex:0 1 360px;min-width:0;display:flex;flex-direction:column;gap:16px">
+      <span class="eyebrow">Head office · Dubai</span>
+      <a class="chan" href="B-Contact.dc.html"><span class="lbl">WhatsApp</span><b>[number]</b><span>Sun–Thu, 9:00–18:00 GST</span></a>
+      <a class="chan" href="B-Contact.dc.html"><span class="lbl">Phone</span><b>[number]</b><span>Sun–Thu, 9:00–18:00 GST</span></a>
+      <a class="chan" href="B-Contact.dc.html"><span class="lbl">Email</span><b>info@ticqc.com</b><span>Answered within one working day</span></a>
+      <div class="chan" style="background:#F3F3F3;border-color:#F3F3F3"><span class="lbl">Address</span><b style="font-size:15px;font-weight:400">Office 2101, Clover Bay Tower, Business Bay, Dubai, United Arab Emirates</b><a class="tri" href="B-Contact.dc.html" style="margin-top:6px">Open in maps</a></div>
+      <a class="tri" href="B-Verify.dc.html">Verify a certificate instead</a>
+    </div>
+  </div>
+
+  <!-- Offices -->
+  <div id="offices" style="background:#F3F3F3">
+    <div class="wrap" style="padding-top:72px;padding-bottom:88px;display:flex;flex-direction:column;gap:32px">
+      <div style="display:flex;flex-wrap:wrap;gap:48px;align-items:center">
+        <div style="flex:1 1 360px;min-width:0"><h2 class="h2">Our offices</h2><div class="rule"></div><p style="margin:14px 0 0;color:#3D3D3D">Fourteen addresses in twelve countries. Each opens its own page with the services and programs sold there, named contacts and a photo of the team.</p></div>
+        <div class="photo" style="flex:1 1 420px;min-width:0;min-height:220px"><div class="note">Map (interactive on the live site)</div><div class="cap">14 offices · 12 countries</div></div>
+      </div>
+
+      <div style="display:flex;flex-wrap:wrap;gap:16px">
+        <span class="region">Middle East</span>
+        <a class="off" href="B-Contact.dc.html"><div class="photo" style="height:120px"><div class="cap">Head office</div></div><div class="body"><b>Dubai</b><span>United Arab Emirates · Office 2101, Clover Bay Tower, Business Bay</span><span>WhatsApp [number] · phone [number]</span><span class="meta">Sun–Thu 9:00–18:00 GST · All services and programs</span></div></a>
+        <a class="off" href="B-Contact.dc.html"><div class="photo" style="height:120px"></div><div class="body"><b>Sharjah</b><span>United Arab Emirates · Hamriyah Free Zone</span><span>WhatsApp [number] · phone [number]</span><span class="meta">[hours] · [services]</span></div></a>
+        <a class="off" href="B-Contact.dc.html"><div class="photo" style="height:120px"></div><div class="body"><b>Baghdad</b><span>Iraq · Al-Mansour</span><span>WhatsApp [number] · phone [number]</span><span class="meta">[hours] · Iraq CoC, Kurdistan Region vehicle CoC</span></div></a>
+        <a class="off" href="B-Contact.dc.html"><div class="photo" style="height:120px"></div><div class="body"><b>Amman</b><span>Jordan</span><span>WhatsApp [number] · phone [number]</span><span class="meta">[hours] · [services]</span></div></a>
+        <a class="off" href="B-Contact.dc.html"><div class="photo" style="height:120px"></div><div class="body"><b>Riyadh</b><span>Saudi Arabia</span><span>WhatsApp [number] · phone [number]</span><span class="meta">[hours] · [services]</span></div></a>
+        <a class="off" href="B-Contact.dc.html"><div class="photo" style="height:120px"></div><div class="body"><b>Cairo</b><span>Egypt · Zamalek</span><span>WhatsApp [number] · phone [number]</span><span class="meta">[hours] · Egypt GOEIC Certificate of Inspection</span></div></a>
+
+        <span class="region" style="margin-top:16px">Asia</span>
+        <a class="off" href="B-Contact.dc.html"><div class="photo" style="height:120px"></div><div class="body"><b>Noida</b><span>India</span><span>WhatsApp [number] · phone [number]</span><span class="meta">[hours] · [services]</span></div></a>
+        <a class="off" href="B-Contact.dc.html"><div class="photo" style="height:120px"></div><div class="body"><b>Gandhidham</b><span>India · Gujarat</span><span>WhatsApp [number] · phone [number]</span><span class="meta">[hours] · [services]</span></div></a>
+        <a class="off" href="B-Contact.dc.html"><div class="photo" style="height:120px"></div><div class="body"><b>Lahore</b><span>Pakistan</span><span>WhatsApp [number] · phone [number]</span><span class="meta">[hours] · [services]</span></div></a>
+        <a class="off" href="B-Contact.dc.html"><div class="photo" style="height:120px"></div><div class="body"><b>Guangzhou</b><span>China · 广州</span><span>WhatsApp / WeChat [number] · phone [number]</span><span class="meta">[hours] · Inspections for all CoC programs</span></div></a>
+        <a class="off" href="B-Contact.dc.html"><div class="photo" style="height:120px"></div><div class="body"><b>Maharagama</b><span>Sri Lanka · High Level Road</span><span>WhatsApp [number] · phone [number]</span><span class="meta">[hours] · [services]</span></div></a>
+        <a class="off" href="B-Contact.dc.html"><div class="photo" style="height:120px"></div><div class="body"><b>Bangkok</b><span>Thailand</span><span>WhatsApp [number] · phone [number]</span><span class="meta">[hours] · [services]</span></div></a>
+        <a class="off" href="B-Contact.dc.html"><div class="photo" style="height:120px"></div><div class="body"><b>Kuala Lumpur</b><span>Malaysia</span><span>WhatsApp [number] · phone [number]</span><span class="meta">[hours] · [services]</span></div></a>
+
+        <span class="region" style="margin-top:16px">Americas</span>
+        <a class="off" href="B-Contact.dc.html" style="flex:0 1 calc(33.333% - 11px)"><div class="photo" style="height:120px"></div><div class="body"><b>São Paulo</b><span>Brazil</span><span>WhatsApp [number] · phone [number]</span><span class="meta">[hours] · [services]</span></div></a>
+      </div>
+      <p style="margin:0;font-size:14px;color:#6B6B6B">Addresses, phones, hours and services come from each office’s inventory form (questionnaire Part D) and are owned by that office after launch.</p>
+    </div>
+  </div>
+
+  <dc-import name="Footer" hint-size="100%,560px"></dc-import>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":3000}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

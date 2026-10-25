@@ -1,0 +1,642 @@
+TIC QUALITY CONTROL
+
+BRAND
+GUIDELINES
+
+IDENTITY STANDARDS & BRAND MANUAL · EDITION 1 · 2026
+CONTENTS                                      12 Typography: Saira
+
+WHAT'S INSIDE                                 13 Typography: Open Sans & hierarchy
+
+01 About this document                        14 Graphic language
+02 Brand foundations
+03 Logo anatomy & construction                15 Layout system
+04 Logo versions
+05 Colour schemes                             16 Photography & icons
+06 Clear space & minimum size
+07 The company name rule                      17 Stationery
+08 Backgrounds
+09 Logo misuse                                18 Presentations
+10 Colour palette
+11 Colour use & accessibility                 19 Digital & social
+
+TIC QUALITY CONTROL -- BRAND GUIDELINES 2026  20 Field applications
+
+                                              21 Writing & naming
+
+                                              22 Asset library & governance
+
+                                                                                                          HOW TO USE THIS BOOK
+                                                                                                              Sections 03­16 are the standards: they
+                                                                                                              define what the brand is. Sections 17­22
+                                                                                                              are the manual: they show how to apply
+                                                                                                              it and which file to use. The short rules
+                                                                                                            are repeated in TIC Brand Manual ­
+                                                                                                            Quick Rules for staff who only need the
+                                                                                                              essentials.
+
+                                              CONTENTS                                                                                                   02
+01 · ABOUT THIS DOCUMENT
+
+WHY THIS EXISTS
+
+TIC Quality Control has grown across twenty-plus countries with one logo file and no
+written rules. The result shows: five different reds in circulation, no one-colour or reversed
+logo versions, two type systems, and no presentation template. This edition does not
+change the logo -- it documents it, and gives every office the same kit built around it.
+
+WHAT CHANGED IN 2026                             WHO MUST FOLLOW IT                                       THE THREE NON-NEGOTIABLES
+    The logo is unchanged. It is now supplied        Every TIC office and every employee
+    as a complete, generated file set: five          producing documents, reports, slides,                1. USE ONLY THE LOGO FILES IN
+    versions, four colour schemes,                   emails or social posts.                              02 LOGO -- NEVER REDRAW.
+    SVG/PDF/PNG -- all derived from the
+    original 2024 artwork.                           Agencies, printers and web developers                2. ONE RED, TWO TYPEFACES.
+                                                     working for TIC.
+    One red: TIC Red #EE3124 / Pantone 485                                                                3. THE COMPANY NAME "TIC
+    C.                                               Partners who display the TIC logo (co-               QUALITY CONTROL" ALWAYS
+                                                     branding, accreditation listings).                   APPEARS WITH THE LOGO.
+    Type standardised on Saira + Open Sans
+    (already used in the 2026 brochures);        OWNER
+    Myriad is retired.                           Marketing & Design, TIC Quality Control HQ
+                                                 (Dubai). Requests for new applications or
+    Four logo schemes (Colour, Mono Black,       exceptions go there before anything is printed
+    Mono White, Reversed) and five lockups,      or published.
+    each supplied as SVG, PDF and PNG.
+
+    The CEO-approved letterhead (V01, 23 Feb
+    2026) is the master for every document: its
+    header, footer, shiny-red band and world
+    map are inherited by all stationery, the
+    PowerPoint template and this book.
+
+    New stationery kit and a real PowerPoint
+    template with layouts.
+
+TIC QUALITY CONTROL -- BRAND GUIDELINES 2026                                                    01 ABOUT                                 03
+02 · BRAND FOUNDATIONS
+
+WHAT THE BRAND STANDS FOR
+
+POSITIONING                                                PRECISE                                        INDEPENDENT
+
+The independent assurance partner                          We measure, we do not guess. Clean grids,      Impartiality is the product. Neutral charcoal
+governments and traders rely on to know that               exact alignment, square corners, numbers set   and white carry most of every layout; red is
+what crosses a border is what it claims to be.             large and clear. Nothing decorative that does  used with discipline to mark what matters.
+                                                           not carry information.
+PROMISE
+Testing, inspection and certification that are impartial,  RELIABLE                                       GLOBAL, LOCAL
+traceable and recognised -- delivered with the
+consistency of one global system and the presence of a     The same logo, the same colours, the same      One system, applied by every office.
+local office.                                              type in Dubai, Cairo, Gaborone and Erbil.      Photography shows real inspectors in real
+                                                           Consistency is how a client recognises that a  ports, plants and labs -- the places where our
+PROOF POINTS                                               certificate is ours.                           work happens.
+    ISO/IEC 17020 accredited inspection body
+    ISO 9001 · ISO 14001 · ISO 45001 certified             TONE OF VOICE
+    TIC Council member -- independent and impartial        Formal, factual, short. We state what was tested, what was found and what it means. No superlatives,
+    Appointed for government VOC programs                  no exclamation marks, no jargon without a plain-language gloss. We write "program", "VOC",
+    (Botswana, Egypt, Libya, Iraq & Kurdistan Region,      "Certificate of Conformity (CoC)". See section 21.
+    Saudi Arabia)
+
+    Offices in 20+ countries
+
+TIC QUALITY CONTROL -- BRAND GUIDELINES 2026               02 FOUNDATIONS                                                                                        04
+03 · LOGO ANATOMY & CONSTRUCTION                                                                            03 LOGO  ONE UNIT: THE TILE
+                                                                                                                     The logo is a lowercase tic built from square tiles --
+HOW THE LOGO IS BUILT                                                                                                about 6.5 tiles wide and 4 tiles high, with the tagline
+                                                                                                                     bar beneath. Every tile is cut on a diagonal into two
+                                                                                                      6.5u           triangles. The unit u (one tile) drives every other
+                                                                                                                     measurement in this book: clear space, minimum sizes,
+              1u                                                                                                     the position of the company name.
+
+TIC QUALITY CONTROL -- BRAND GUIDELINES 2026                                                                         THREE FILLS, ONE KEYLINE
+                                                                                                                     Triangles are filled in three tones -- black, a graphite-
+                                                                                                                     to-silver gradient and a white-to-silver gradient --
+                                                                                                                     and sit on red squares that show as a TIC Red keyline.
+                                                                                                                     The gradient is part of the artwork; the one-colour and
+                                                                                                                     reversed versions (section 05) are generated from the
+                                                                                                                     same paths for where a gradient cannot print.
+
+                                                                                                                     THE I-DOT
+                                                                                                                     A TIC Red rectangle inside a black frame, sitting above
+                                                                                                                     the stem of the i. It is the only red-filled element in the
+                                                                                                                     mark.
+
+                                                                                                                     THE TAGLINE BAR
+                                                                                                                     Two blocks under the tiles: a black block with T I C
+                                                                                                                     letter-spaced, and a TIC Red block with Testing |
+                                                                                                                     Inspection | Certification. The type (Myriad Pro Bold)
+                                                                                                                     is outlined inside the artwork -- never retype it, and
+                                                                                                                     never use Myriad anywhere else.
+
+                                                                                                                     DO NOT REDRAW
+                                                                                                                     Keyline weights vary slightly from tile to tile and the
+                                                                                                                     black TIC block is a little taller than the red bar -- these
+                                                                                                                     are part of the file. Always place the supplied files;
+                                                                                                                     never rebuild or "tidy" the logo.
+
+                                                                                                                                                                                                                          05
+04 · LOGO VERSIONS
+
+FIVE LOCKUPS FOR EVERY SITUATION
+
+The Primary logo is the default. Use the others only for the purposes listed; never invent a
+sixth.
+
+PRIMARY                                          LOCKUP -- HORIZONTAL                                                                  LOCKUP -- STACKED
+
+Tiles + tagline bar. Default for everything:     Primary | red rule | TIC QUALITY CONTROL. Document headers, email, website            Primary over the company name. Covers, posters,
+documents, slides, print, web.                   header, co-branding.                                                                  signage, social, Zoom.
+
+MARK                                             TAGLINE BAR                                                                            FILE NAMING
+                                                                                                                                        TIC-Logo-Kind-Scheme.ext
+Tiles only. Avatars, favicons, app icons,        The bar alone, stretched to full width, as a page or slide footer. Never as the only
+watermarks, embroidery, very small spaces (< 25  identifier on a piece.                                                                 Kind: Primary · Mark · Tagline-Bar ·
+mm).                                                                                                                                    Lockup-Horizontal · Lockup-Stacked
+                                                                                                                                        Scheme: Colour · Mono-Black · Mono-
+                                                                                                                                        White · Reversed
+                                                                                                                                        ext: SVG (web, Illustrator, Figma) · PDF
+                                                                                                                                        (print, InDesign, Word) · PNG 600 / 1500 /
+                                                                                                                                        3000 px (Office, email, social)
+
+TIC QUALITY CONTROL -- BRAND GUIDELINES 2026                                                  04 LOGO                                                                                   06
+05 · COLOUR SCHEMES
+
+FOUR SCHEMES, ONE LOGO
+
+Pick the scheme by the background, never by taste.
+
+COLOUR                                        MONO BLACK                               MONO WHITE                           REVERSED
+
+Default. White or Light Grey backgrounds      One-colour print, fax, rubber stamps,    All white. On photographs, TIC Red,  On TIC Black / dark Charcoal only: white and
+only.                                         newspaper, engraving on light material.  Charcoal, foil, etched glass.        Steel tiles keep the red keyline and i-dot.
+
+DECISION RULE                             SCHEME                                       WHY THE COLOUR VERSION ONLY LIVES ON WHITE
+                                          Colour                                       The white triangles are part of the letterforms. On any colour or photo they
+  BACKGROUND                              Reversed (preferred) or Mono White           disappear and the t, i and c fall apart. Rather than a tinted plate, use the
+  White, Light Grey, light photo area                                                  Reversed or Mono White scheme -- the keyline still draws every tile.
+  TIC Black, Charcoal, dark photo         Mono White
+  area                                    Mono Black (or Mono White on dark
+  TIC Red, any other colour               stock)
+  One-colour production                   Place a white plate first, then Colour
+
+  Busy photo
+
+TIC QUALITY CONTROL -- BRAND GUIDELINES 2026                                           05 LOGO                                                                            07
+06 · CLEAR SPACE & MINIMUM SIZE
+
+GIVE IT ROOM, KEEP IT LEGIBLE
+
+u                                             u                                                             VERSION               MINIMUM PRINT WIDTH  MINIMUM SCREEN WIDTH
+                                                                                                            Primary               25 mm                120 px
+                                                                                                            Lockup -- Horizontal  45 mm                200 px
+                                                                                                            Lockup -- Stacked     25 mm                120 px
+                                                                                                            Mark                  8 mm                 32 px (favicon: 16 px, i-dot only)
+                                                                                                            Tagline bar           60 mm                280 px
+
+                                                                                                            25 mm                 8 mm  45 mm
+
+u                                             u                                                             RECOMMENDED SIZES
+                                                                                                                A4 letterhead: Lockup Horizontal 55 mm wide
+Clear space = one tile (u) on every side, measured from the outer edge of the keyline and the tagline bar.      Business card: Primary 28 mm wide
+No text, rules, photos, other logos or page edges inside it. The supplied files already contain ¼u of           16:9 slide: Primary 1.1 in wide (corner), stacked lockup 3.2 in on covers
+padding; add the rest in layout.                                                                                Email signature: Primary 180 px (PNG 600 px for retina)
+                                                                                                                Roll-up banner 850 mm: stacked lockup 350 mm
+
+TIC QUALITY CONTROL -- BRAND GUIDELINES 2026                                                                       06 LOGO                                                                 08
+07 · THE COMPANY NAME RULE
+
+THE LOGO NEVER TRAVELS ALONE
+
+"tic" is a lowercase lettermark; on its own it is not a company name. Every piece that carries
+the logo must also carry TIC QUALITY CONTROL in words -- in the lockup, in a header, or
+in a footer.
+
+OPTION A -- HORIZONTAL LOCKUP                                                OPTION B -- STACKED LOCKUP                              TIC QUALITY CONTROL · info@ticqc.com ·
+                                                                                                                                     www.ticqc.com
+As on the letterhead header: the name in Helvetica Neue Bold caps, Charcoal  Covers, square formats, signage. Name on one line,
+#414142, tracked 5 %, baseline on the bottom of the logo. Default for        same Helvetica Neue Bold style, as wide as the logo,  OPTION C -- PRIMARY + NAME
+headers, signatures and anything wider than it is tall.                      centred under the bar.                                ELSEWHERE
+
+                                                                                                                                   When the primary logo stands alone (e.g. a slide
+                                                                                                                                   corner), the name must appear on the same page in
+                                                                                                                                   the header, footer or contact block in Saira caps.
+
+WRITING THE NAME                                                                 CO-BRANDING
+    In lockups and headers: TIC QUALITY CONTROL (caps, Helvetica Neue                Partner logos sit to the right of ours, separated by a 0.5pt Hairline rule,
+    Bold, Charcoal -- exactly as on the letterhead; in Office files use Arial        matched in visual weight (not in width).
+    Bold).
+                                                                                     Accreditation marks (ANAB, EIAC, EGAC, TIC Council, ISO) are never
+    In running text: TIC Quality Control on first mention, then TIC.                 inside the clear space and never larger than the TIC logo.
+
+    Never "Tic", "T.I.C.", "TICQC" (the domain is not the name) or "TIC Quality      The LOX brand is a separate company: never combine the two logos
+    Control LLC" unless legally required on that document.                           into one lockup.
+
+    The tagline is always written in full with pipes: TESTING | INSPECTION |
+    CERTIFICATION. Never "Testing, Inspection & Certification" inside the
+    bar.
+
+TIC QUALITY CONTROL -- BRAND GUIDELINES 2026                                                    07 LOGO                                                                                09
+08 · BACKGROUNDS
+
+WHERE THE LOGO MAY SIT
+
+ WHITE -- COLOUR                 LIGHT GREY -- COLOUR   TIC BLACK -- REVERSED                    TIC RED -- MONO WHITE
+
+ DARK PHOTO AREA -- MONO WHITE   BUSY PHOTO -- WHITE PLATE + COLOUR  COLOUR VERSION ON A PHOTO   COLOUR VERSION ON STEEL OR ANY
+
+TIC QUALITY CONTROL -- BRAND GUIDELINES 2026           08 LOGO                                  MID-TONE
+
+                                                                                                                                                                         10
+09 · LOGO MISUSE
+
+WHAT NEVER HAPPENS TO THE LOGO
+
+These are the recurring mistakes found in old documents and decks. The fix is always the
+same: delete and place the supplied file again.
+
+ STRETCHED OR SQUASHED      ROTATED OR TILTED                                 GRADIENT REMOVED OR FLATTENED   RECOLOURED
+
+ DROP SHADOW, GLOW, BEVEL               Testing, Inspection & Certification   MARK WITHOUT THE COMPANY NAME   OUTLINED, TRANSPARENT OR LOW-
+
+                            TAGLINE RETYPED OR REWORDED                      ANYWHERE                        OPACITY
+
+TIC QUALITY CONTROL -- BRAND GUIDELINES 2026                                              09 LOGO                                            11
+10 · COLOUR PALETTE
+
+FOUR PRIMARY COLOURS CARRY THE IDENTITY
+
+TIC Red is the signal; black, steel and white do the work. Secondary colours exist for text
+and surfaces only.
+
+TIC RED                                       TIC BLACK                                STEEL                                  WHITE
+
+#EE3124 · RGB 238 49 36                       #111111 · RGB 17 17 17                   #A7A9AC · RGB 167 169 172              #FFFFFF · RGB 255 255 255
+CMYK 0 90 90 0 · Pantone 485 C                CMYK 0 0 0 100 · Pantone Black 6 C       CMYK 0 0 0 40 · Pantone Cool Gray 6 C  CMYK 0 0 0 0 · Pantone --
+
+SECONDARY -- TEXT & SURFACES
+
+BAND RED              BAND RED                CHARCOAL                            INK                  BODY GREY              HAIRLINE             LIGHT GREY
+
+(CENTRE)              (EDGE)                  #414142 · RGB 65 65                 #1E1E1E · RGB 30 30  #6B6B6B · RGB 107      #D9D9D9 · RGB 217    #F3F3F3 · RGB 243
+                                              66                                  30                   107 107                217 217              243 243
+#EB232B · RGB 235 35  #BD2130 · RGB 189       CMYK 0 0 0 85 ·                     CMYK 0 0 0 95 ·      CMYK 0 0 0 65 ·        CMYK 0 0 0 18 ·      CMYK 0 0 0 5 ·
+43                    33 48                   Pantone Cool Gray 11                Pantone Black 7 C    Pantone Cool Gray 9 C  Pantone Cool Gray 2  Pantone Cool Gray 1
+CMYK 0 95 85 0 ·      CMYK 15 100 85 5 ·      C                                                                               C                    C
+Pantone 185 C         Pantone 1797 C
+
+PRINT                                                                                  FILES
+Coated stock: Pantone references above. Four-colour: the CMYK values. TIC Red must      03 Colours/TIC-Colours.ase (Illustrator, InDesign, Photoshop) · TIC-
+not be built from a "rich" mix -- 0/90/90/0 only. Uncoated stock: Pantone 485 U, Cool  Colours.gpl (Inkscape, Affinity) · tic-colours.css / .json (web). The Office
+Gray 6 U.                                                                              templates carry the same values as theme colours.
+
+TIC QUALITY CONTROL -- BRAND GUIDELINES 2026                                                           10 COLOUR                                                        12
+11 · COLOUR USE & ACCESSIBILITY
+
+PROPORTION AND CONTRAST
+
+PROPORTION ON A TYPICAL PAGE                  LIGHT 20 %  CHARCOAL       RED                                     NOT ALLOWED      White on Steel
+                                                          12 %                                                      Black on Red
+                               WHITE 60 %
+
+Red is an accent -- rules, bullets, the i-dot, one highlighted figure, a call to action. If a page is more than  Steel on Red     Steel text on White
+about 10 % red it is shouting. Steel is reserved for the logo and icons; it is not a text colour.
+
+ALLOWED PAIRS (WCAG AA FOR TEXT)
+
+TEXT         ON             CONTRAST USE                                                                         GRADIENTS
+                                                                                                                 One gradient only: the shiny red of the tagline band on the approved letterhead --
+Ink #1E1E1E  White          16.1 : 1          Body text                                                          a radial gradient from Band Red centre #EB232B to Band Red edge #BD2130,
+                                                                                                                 centred in the red block. It is part of the band artwork; use the supplied band,
+Charcoal     White / Light  10.4 : 1          Headings                                                           never rebuild it, and use no other gradient.
+#3D3D3D      Grey
+                                                                                                                 TINTS
+White        TIC Red        4.6 : 1           Buttons, bars, caps  9 pt                                          Red and black are not tinted. Need something lighter? Use Light Grey or Hairline.
+                                                                                                                 Charts: use Red, Charcoal, Steel, Body Grey, then Hairline -- in that order.
+White        TIC Black /    18 : 1 / 10 :     Dark bands
+             Charcoal       1
+
+TIC Red      White          4.6 : 1           Large headings, numbers  14 pt --
+                                              not body text
+
+Body Grey    White          5.3 : 1           Captions, metadata
+#6B6B6B
+
+TIC QUALITY CONTROL -- BRAND GUIDELINES 2026                                                                     11 COLOUR                             13
+12 · TYPOGRAPHY: SAIRA
+
+THE VOICE OF HEADLINES
+
+AA                                                           VERIFICATION OF CONFORMITY
+                                                             PRE-SHIPMENT INSPECTION
+SAIRA                                                        TESTING LABORATORIES
+                                                             CERTIFICATION PROGRAMS
+A wide, engineered sans with a technical, almost             OFFICES IN 20+ COUNTRIES
+stencilled feel that echoes the tile grid of the logo. Free
+(SIL OFL), on Google Fonts, so every office and every        ABCDEFGHIJKLMNOPQRSTUVWXYZ
+web page can use it.                                         abcdefghijklmnopqrstuvwxyz
+                                                             0123456789 %&@$£ ( ) | -- " "
+WEIGHTS IN USE
+ExtraBold 800 -- display headlines
+Bold 700 -- headings, company name
+SemiBold 600 -- sub-headings, labels, tagline
+Medium 500 -- large numbers
+Regular 400 -- rarely; sub-titles on covers
+
+                                                             17020 20+                                                                           9001
+
+                                                             Numbers: Saira Medium, tight line-height, TIC Red for the one figure that matters.
+
+TIC QUALITY CONTROL -- BRAND GUIDELINES 2026                 12 TYPOGRAPHY                                                                       14
+13 · TYPOGRAPHY: OPEN SANS & HIERARCHY                                                    HIERARCHY -- A4 DOCUMENT
+
+THE VOICE OF THE TEXT                                                                     H1 · REPORT TITLE 24­32 PT
+
+Aa                                                                                        H2 · SECTION 16­18 PT
+
+OPEN SANS                                                                                 H3 · SUB-SECTION 11­13 PT
+
+Neutral, highly legible at small sizes, with a large x-height that stays readable in      LABEL · 8 PT · TRACKING +12 %
+reports, tables and on screens. Light 300 · Regular 400 · SemiBold 600 · Bold 700.
+                                                                                          Body · Open Sans Regular 10.5 / 15 pt, Ink. TIC Quality Control
+Light -- large introductory paragraphs on covers and section openers.                     performs pre-shipment inspection, testing and certification against
+                                                                                          the destination country's standards, and issues the Certificate of
+Regular -- all body copy, tables, forms, captions.                                        Conformity required by customs.
+
+SemiBold -- emphasis within text, table headers, labels.                                  Caption · Open Sans 8.5 pt, Body Grey. Figure 1 -- Inspection at the port of Jebel Ali,
+                                                                                          2026.
+Bold -- only for stand-alone short statements; never whole paragraphs.
+                                                                                          HIERARCHY -- 16:9 SLIDE
+RULES                                                                                     Title 36­40 pt Saira Bold caps · Sub-title 20 pt Saira SemiBold · Body 18­20 pt Open
+    Headings: Saira, CAPITALS, tracking +2 to +4 %. Never Open Sans caps for              Sans, minimum 12 pt · Big figures 72­96 pt Saira Medium · Footer 9 pt.
+    headings; never Saira for body text.
+    Body: Open Sans, sentence case, left aligned, ragged right. No justification, no      HIERARCHY -- WEB
+    centred paragraphs (except covers).                                                   H1 48 px · H2 32 px · H3 22 px · body 17­18 px / 1.6 · buttons Saira SemiBold 15 px
+    Line length 55­75 characters; line height 1.45­1.5.                                   caps tracked +6 %.
+    One typeface per element. No italics in Saira; Open Sans Italic only for titles of
+    publications. Myriad Pro appears only inside the logo artwork -- never in text.       13 TYPOGRAPHY                                                                            15
+    Arabic companions when needed: Cairo for headings and body (Google Fonts).
+    Right-to-left layouts mirror the grid; the logo is never mirrored.
+    Fallback when fonts cannot be installed: Arial for both roles. Never Calibri or
+    Times.
+    Artwork fonts: the letterhead master uses Helvetica Neue Bold (company
+    name) and Myriad Pro (address, contact and band). They live only inside the
+
+TIC aQpUpArLoITvYeCdOaNrTtwROoLrk--aBnRdANthDeGlUoIgDoE;LdINoEnSo2t0u2s6e them for text.
+14 · GRAPHIC LANGUAGE
+
+EIGHT DEVICES, USED THE SAME WAY EVERYWHERE
+
+The logo supplies the whole vocabulary: a red line, a cut square, a triangle. Nothing else is
+needed -- no swooshes, no circles, no rounded corners.
+
+HEADER LINE                                   2 · TAGLINE BAND                                     SECTION TITLE                             4 · TILE PATTERN
+
+1 · RED RULE                                  The approved letterhead band: black block         3 · SLANTED TITLE TAB                        The logo's split tiles as a texture: keyline
+                                              (32 % of the width) with T I C, then the shiny-                                                only (Steel at 15­30 %), or tonal fills --
+1 mm (print) / 3 px (screen) TIC Red, full    red block with TESTING | INSPECTION |             Charcoal parallelogram, right edge cut at    Charcoal on Black, Light Grey on White.
+width of the text column, under headers       CERTIFICATION in tracked caps. Always full        60°, white Saira SemiBold caps, tracking     Covers, dividers, Zoom backgrounds,
+and above footers. The single most used       width at the bottom edge; height 12.9 mm on       +6 %. Section openers in brochures, slide    exhibition walls. Never behind body text,
+device.                                       A4, 0.36 in on slides. Use the supplied           section labels, photo captions in Red.       never in colour.
+                                              artwork (tb.bar / band PNG) -- never redraw
+    Diamond bullet for lists                  it.
+    Always TIC Red, 0.5 em
+    square                                       OIL & GAS                                         WHY TIC --                                8 · CUT SQUARE
+    Triangle marker for steps
+5 · BULLETS & MARKERS                         6 · CAPTION BAR                                   7 · DARK BAND                                Solid squares, half-squares (triangles)
+                                                                                                                                             and outlined squares in Red, Charcoal
+Red diamond (rotated square) for lists;       White Saira caps on a TIC Red block, bottom-      TIC Black (or Charcoal) full-width band      and Steel, as icon containers, chart
+red right-pointing triangle for process       left of the photo, flush to the edge. Identifies  with the tile pattern at low opacity, white  markers and decorative corners. Always
+steps and "next" links. Never round dots      the sector, place or program.                     text and red accents. For "Why TIC", key     axis-aligned -- never rotated 45°, except
+or dashes.                                                                                      figures, closing slides.                     the diamond bullet.
+
+TIC QUALITY CONTROL -- BRAND GUIDELINES 2026                                                    14 GRAPHIC LANGUAGE                                                                        16
+15 · LAYOUT SYSTEM
+
+ONE GRID FOR PAPER AND SCREEN
+
+                                                                   info@ticqc.com | www.ticqc.com       SLIDE TITLE HERE                                                                               PRINCIPLES
+                                                                                                                                                                                                           Align to the grid. Everything
+A4 portrait · margins 20 mm sides, 45 mm top (below the header                                                TIC Quality Control · Confidential · 12                                                      starts on a column; the red
+rule), 35 mm bottom (above the footer). Header: horizontal lockup                                                                                                                                          rule under a title is as wide as
+55 mm wide at 15 mm from top-left. Tagline band 10 mm at the                                       16:9 slide · 13.333 × 7.5 in. Margins 0.5 in. Primary logo 1.1 in wide top-right. Title Saira Bold      the title's column, not the
+bottom edge. Column grid: 12 columns, 4 mm gutter.                                                 caps top-left with the red rule. Content area between the rule and the footer. Tagline band 0.32        page.
+                                                                                                   in high at the bottom; footer text 9 pt Body Grey.
+TIC QUALITY CONTROL -- BRAND GUIDELINES 2026                                                                                                                                                               Top-left to bottom-right.
+                                                                                                                                                                                   15 LAYOUT               Logo top-left (documents) or
+                                                                                                                                                                                                           top-right (slides, to leave room
+                                                                                                                                                                                                           for titles); the tagline band
+                                                                                                                                                                                                           always closes the page at the
+                                                                                                                                                                                                           bottom.
+
+                                                                                                                                                                                                           Generous white space. The
+                                                                                                                                                                                                           brand is calm. One idea per
+                                                                                                                                                                                                           slide, one message per panel.
+
+                                                                                                                                                                                                           Square corners. Boxes,
+                                                                                                                                                                                                           photos, buttons and tabs are
+                                                                                                                                                                                                           rectangular. The only diagonals
+                                                                                                                                                                                                           are the logo tiles and the
+                                                                                                                                                                                                           slanted tab.
+
+                                                                                                                                                                                                           Hierarchy by size and
+                                                                                                                                                                                                           weight, not colour. Red marks
+                                                                                                                                                                                                           one thing per page.
+
+                                                                                                                                                                                                       OTHER FORMATS
+
+                                                                                                                                                                                                       FORMAT MARGINS LOGO
+
+                                                                                                                                                                                                       Business  5 mm   Primary
+                                                                                                                                                                                                       card             28 mm
+                                                                                                                                                                                                       85×55
+
+                                                                                                                                                                                                       DL        10 mm  Hor1iz7ontal
+                                                                                                                                                                                                                        lockup 50
+                                                                                                                                                                                                       envelope
+                                                                                                                                                                                                                        mm
+16 · PHOTOGRAPHY & ICONS                                                             ICONS
+
+REAL WORK, CLEAR SYMBOLS
+
+PHOTOGRAPHY
+
+PORT  L A B O R AT O R Y                      OIL & GAS                                  Outline style, 2 px stroke at 48 px, square caps and joins, Charcoal.
+                                                                                         One red element per icon -- a filled square, a tick, a line -- never more.
+Subject: inspectors at work -- ports, container yards, factories, labs, oil & gas        Built on a 48 px grid with 4 px padding; corners square; no rounded line ends.
+sites, agricultural stores. People in PPE, hands on the product, documentation           Sets: Services (testing, inspection, certification, audit, verification), Sectors (oil &
+in view.                                                                                 gas, food, consumer goods, industrial, agriculture, vehicles, e-waste), Process
+                                                                                         (apply, review, inspect, test, report, certify).
+Look: natural daylight or clean industrial light, true colours, slight cool-neutral
+grade. No HDR, no heavy filters, no orange-teal.                                         Existing brochure icons (about 12) are the reference; redraw anything that does
+                                                                                         not match this spec before reuse.
+Composition: straight horizons, room on one side for a title or caption bar.
+Wide establishing shots for covers; medium shots for inside pages.                   CHARTS
+                                                                                         Series order: TIC Red, Charcoal, Steel, Body Grey, Hairline. Red for the series the
+Avoid: handshakes, staged smiles at the camera, generic skylines, 3D renders,            reader should look at.
+AI-generated imagery presented as real, and any photo where the logo would               Saira Medium for values, Open Sans for axes; no 3D, no gridlines heavier than
+sit on a busy area.                                                                      Hairline, square markers.
+
+Treatment: full colour, or Charcoal duotone for dark bands. Overlay for text:
+TIC Black at 40­60 % from the text side only.
+
+Rights: only licensed stock (Adobe Stock, iStock) or TIC's own photos with
+permission from the people shown.
+
+TIC QUALITY CONTROL -- BRAND GUIDELINES 2026                                                16 PHOTOGRAPHY  18
+17 · STATIONERY
+
+PAPER THAT CARRIES THE BRAND
+
+LETTERHEAD A4 -- THE APPROVED MASTER                            BUSINESS CARD 85 × 55 MM                                           ENVELOPES DL & C4
+
+CEO-approved V01 (23 Feb 2026). Word file Letterhead/TIC        Front: logo, name block. Back: black with the reversed logo. Edit  Horizontal lockup top-left, tagline band along the bottom edge. Print
+Letterhead - V01 - 26.02.23.docx ; office versions in           names in TIC Business Card - Editable.svg (Illustrator /           PDFs in 05 Stationery/Envelopes/ . Window position (DL): 90
+ Letterhead/Offices ; printers get the Print PDF. Fixed: logo,  Inkscape), export the print PDF with 3 mm bleed. 350 gsm matt, no  × 45 mm at 20 mm from the left, 15 mm from the bottom -- the band
+name, rules, map, band, contact-line format. Dynamic: address,  lamination or a soft-touch finish; square corners.                 clears it.
+phone, local legal name.
+
+DOCUMENT COVERS & REPORTS                                                            PRINTING CHECKLIST
+A4 report cover in 05 Stationery/Document Covers/ : photo area, stacked lockup,      Send PDFs only (never Word files) · CMYK, 300 dpi, 3 mm bleed · Pantone 485 C for
+slanted title tab, tagline band. Inside pages use the letterhead grid (section 15).  spot jobs · ask for a proof of the red before the run · keep square corners (no die-cut
+Proposals, technical reports and profiles all start from this cover.                 rounding).
+
+TIC QUALITY CONTROL -- BRAND GUIDELINES 2026                                         17 STATIONERY                                                                            19
+18 · PRESENTATIONS
+
+ONE TEMPLATE, FOURTEEN LAYOUTS
+
+Every TIC deck starts from 06 PowerPoint/TIC Presentation Template.potx . Nothing is built
+from a blank file or an old deck.
+
+INSTALL                                                     RULES                                                      SHARING
+Install the fonts first (04 Typography). Copy the .potx to  One message per slide · max 6 bullets, 12 words each ·     Send decks as PDF unless the recipient must edit.
+ %AppData%\Microsoft\Templates\ ; then File > New >         body never below 12 pt · photos full-bleed or inside the   Company profile and program presentations are
+Personal > TIC Presentation Template. Use Home >            content area, never floating · charts in the brand series  maintained by Marketing; offices adapt content, not
+Layout to pick a layout; never draw your own title box.     colours · the logo and footer band are on the master --    design. Export at 16:9 only.
+                                                            do not move, resize or cover them.
+
+TIC QUALITY CONTROL -- BRAND GUIDELINES 2026                                                18 PRESENTATIONS                                                                20
+19 · DIGITAL & SOCIAL
+
+ON SCREEN THE RULES ARE THE SAME
+
+EMAIL SIGNATURE                                                       VIDEO CALL BACKGROUNDS                                                    SOCIAL MEDIA
+
+HTML signature in 05 Stationery/Email Signature/ with                 Light (default) and dark. The logo sits bottom-right so it is not hidden  LinkedIn banner 1584 × 396, avatar 400 × 400 (Mark only), post
+install notes for Outlook and Gmail. Name in bold, title, phone, the  by the speaker. Do not add photos, offices or bookshelves behind the      template 1080 × 1080. Posts: white background, slanted title tab, one
+logo PNG, the red rule, the tagline line. No quotes, no images of     brand.                                                                    photo with a caption bar, the tagline band at the bottom. Captions in
+certificates, no coloured text other than the brand red.                                                                                        Open Sans; hashtags at the end; no emoji.
+
+WEBSITE
+Header: horizontal lockup, 48 px high on desktop, Mark only on mobile. Nav in Saira SemiBold caps 14 px. Buttons TIC Red, white Saira caps, square. Body Open Sans 17­18 px. Footer:
+dark band with the tile pattern and the tagline band as the last element on every page. Favicon: the Mark at 32 px, the i-dot alone at 16 px. CSS tokens in 03 Colours/tic-
+colours.css .
+
+TIC QUALITY CONTROL -- BRAND GUIDELINES 2026                          19 DIGITAL                                                                                                      21
+20 · FIELD APPLICATIONS
+
+WHERE INSPECTORS MEET THE PUBLIC
+
+INSPECTION TAPE                                                                                         SITE & VEHICLE
+                                                                                                            PPE and uniforms: white or Charcoal garments; the Mark embroidered (Mono
+50 mm security/packing tape, white, repeating every 333 mm: Mark · INSPECTED in a red block · tagline.      White on dark, Colour on white) on the left chest at 60 mm; TIC QUALITY
+Artwork in 05 Stationery/Inspection Tape & Sticker/ . Red = Pantone 485 C; black = Black 6                  CONTROL in Saira Bold across the back at 200 mm, with the tagline beneath.
+C. The old version mixed two reds and a condensed font -- replace all stock.
+                                                                                                            Vehicles: white vehicles; stacked lockup on front doors (450 mm); tagline band
+                                                                                                            along the lower body; website on the rear. No wraps, no photos.
+
+                                                                                                            Signage: stacked lockup on white, or reversed on TIC Black; letters cut from
+                                                                                                            Saira Bold. Clear space doubles (2u) at sizes over 1 m.
+
+                                                                                                            Exhibition: white walls, one dark band with the tile pattern, red used only for
+                                                                                                            the stand name and one call to action. Roll-ups: stacked lockup top, photo
+                                                                                                            middle, tagline band bottom.
+
+                                                                                                            Stamps: Mono Black Mark + TIC QUALITY CONTROL in Saira, rectangular, 40 ×
+                                                                                                            20 mm; the company stamp is the only place the Mark appears without the
+                                                                                                            keyline colour.
+
+SEALS & STICKERS                                                                                        CERTIFICATES
+                                                                                                        Certificates of Conformity and inspection reports follow the letterhead grid with the
+60 mm "INSPECTED BY TIC" seal with space for date, inspector ID and a QR code to the certificate check  horizontal lockup, the red rule and a security panel (certificate number, QR code,
+page. Square or hexagonal die-cut; no circles.                                                          issuing office). Their layout is controlled centrally; offices never redesign them.
+
+TIC QUALITY CONTROL -- BRAND GUIDELINES 2026                                                            20 FIELD                                                                               22
+21 · WRITING & NAMING
+
+CONSISTENCY IN WORDS
+
+TONE OF VOICE                                                                         NAMING THE COMPANY AND ITS SERVICES             NOT
+    Factual. We say what was inspected, against which standard, with what result.                                                     Tic, T.I.C., TICQC, TIC QC
+    We do not say "world-class" or "leading".                                           WRITE                                         Testing, Inspection & Certification
+    Short. Sentences under 20 words. One idea per paragraph. Headlines under six        TIC Quality Control (first mention), TIC      in the bar
+    words.                                                                              TESTING | INSPECTION | CERTIFICATION (bar);   VoC, V.O.C., PVoC when not the
+                                                                                        testing, inspection and certification (text)  program's own name
+    Plain. Technical terms explained once: "Verification of Conformity (VOC): the       Verification of Conformity (VOC) program
+    inspection and testing a shipment must pass before export."                                                                       COC, certificate of conformance
+    Calm. No exclamation marks, no capital letters for emphasis in text, no emoji in    Certificate of Conformity (CoC)               pre shipment inspection
+    corporate channels.                                                                 Pre-shipment Inspection (PSI)                 e-waste programme, EWaste
+    Respectful of institutions. Government partners are named with their official       E-Waste Management Program                    Kurdistan, North Iraq
+    titles and acronyms (BOBS, GOEIC, SFDA).                                            Kurdistan Region of Iraq
+
+SPELLING & STYLE                                                                      FILE NAMING
+    US spelling in program names ("program"); otherwise consistent within a           TIC - Type - Subject - Language - Vnn - YYYY.MM.DD.ext
+    document.
+    Numbers: figures for 10 and above, "20+ countries", "ISO/IEC 17020" with the       TIC - Brochure - E-Waste Program - EN - V02 - 2026.10.05.pdf
+    slash, "ISO 9001:2015" with the year when precision matters.                      Final files carry "FINAL" after the version; print files carry "PRINT". Working files stay in the
+                                                                                      office's design folder; only PDFs go to clients.
+    Dates: 21 October 2026. Currency: USD 1,200 / AED 4,400.
+    Capitalise: Certificate of Conformity, Advance Eco Levy, Pre-shipment Inspection
+    (as program names). Lowercase: inspection, testing, certification as activities.
+
+TIC QUALITY CONTROL -- BRAND GUIDELINES 2026                                          21 WRITING                                                                                         23
+22 · ASSET LIBRARY & GOVERNANCE
+
+WHERE EVERYTHING LIVES, AND WHO DECIDES
+
+THE BRAND FOLDER                                                                         GOVERNANCE
+                                                                                             Owner: Marketing & Design at HQ maintains the brand folder; it is the single
+FOLDER          CONTENTS                                                                     source. Offices do not keep their own logo copies.
+                                                                                             Approval: anything printed in more than 100 copies, anything on a building or
+01 Brand        This book (PDF), the Quick Rules manual (PDF + Word), the web version        vehicle, any new template, and any co-branded material is approved by HQ
+Guidelines      (HTML)                                                                       Design before production.
+
+02 Logo         Primary · Mark · Tagline-Bar · Lockup-Horizontal · Lockup-Stacked, each      Exceptions: a regulator or partner may require a specific placement; request it
+                in Colour · Mono-Black · Mono-White · Reversed, as SVG · PDF · PNG           in writing, HQ supplies the artwork.
+                                                                                             Review: this book is reviewed every twelve months; the version is on the cover
+03 Colours      ASE, GPL, CSS, JSON swatches and the Office theme values                     and in the footer.
+                                                                                             Legacy files: the 2022 business cards and the loose logo copies in old
+04 Typography Saira and Open Sans TTFs with licences and install notes                       documents are retired; the master artwork (Tic Logo ­ 24.04.24) lives on as the
+                                                                                             source of 02 Logo. Existing printed stock may be used up.
+05 Stationery   Approved letterhead (Dubai + office versions), business card,
+                envelopes, email signature, Zoom, social, document covers, tape &             BEFORE YOU PUBLISH -- THE 10-SECOND CHECK
+                sticker                                                                         2026 logo file, correct scheme for the background
+                                                                                                Clear space respected, above minimum size
+06 PowerPoint Template (.potx), editable copy, sample deck, previews                            "TIC QUALITY CONTROL" appears in words
+                                                                                                Only TIC Red #EE3124; only Saira + Open Sans
+(older          The pre-2026 files beside this folder -- Logo, Letterhead, Brochure,            Tagline band at the bottom edge, wording unchanged
+folders)        Sticker, Tapes... -- are kept for reference only. Do not use.                   Square corners, no shadows, no gradients
+                                                                                                Photos licensed and on-brand
+WHICH FILE DO I NEED?                                                                           Contact details current (info@ticqc.com · www.ticqc.com)
+
+I AM MAKING...           USE
+
+A Word letter or report  The approved letterhead .docx for your office
+
+A slide deck             PowerPoint .potx
+
+An email or web page     Logo PNG 600 px (or SVG on web); CSS tokens
+
+Print (brochure, banner, sign) Logo PDF or SVG; Pantone / CMYK values
+
+Social post              Post template PNG/SVG; Mark PNG 600 px for avatars
+
+Embroidery, engraving, stamp Mono-Black or Mono-White SVG of the Mark
+
+TIC QUALITY CONTROL -- BRAND GUIDELINES 2026                                             22 ASSETS  24
+BRAND GUIDELINES · EDITION 1 · OCTOBER 2026
+    Office 2101, Clover Bay Tower, Business Bay, Dubai, UAE
+             +971 4 225 5555 · info@ticqc.com · www.ticqc.com
+
+Questions about the brand: Marketing & Design, HQ Dubai.
+

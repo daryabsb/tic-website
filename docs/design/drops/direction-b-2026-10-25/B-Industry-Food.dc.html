@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Agriculture and Food — TIC Quality Control</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira:wght@500;600;700;800&family=Open+Sans:wght@400;600&display=swap">
+<style>
+body{margin:0;background:#FFFFFF;color:#1E1E1E;font-family:"Open Sans",Arial,sans-serif;font-size:17px;line-height:1.6}
+a{color:#1E1E1E}a:hover{color:#EB232B}
+.wrap{max-width:1280px;margin:0 auto;padding-left:clamp(16px,5.5vw,80px);padding-right:clamp(16px,5.5vw,80px)}
+.h2{font-family:Saira,Arial,sans-serif;font-weight:700;font-size:28px;line-height:1.15;letter-spacing:.02em;text-transform:uppercase;color:#3D3D3D;margin:0}
+.h2.w{color:#FFFFFF}
+.rule{height:3px;background:#EB232B;width:120px;margin-top:12px}
+.eyebrow{font-family:Saira,Arial,sans-serif;font-weight:600;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:#EB232B}
+.tri{display:inline-flex;align-items:center;gap:10px;font-family:Saira,Arial,sans-serif;font-weight:600;font-size:14px;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;color:#1E1E1E}
+.tri::before{content:"";width:0;height:0;border-top:6px solid transparent;border-bottom:6px solid transparent;border-left:9px solid #EB232B}
+.photo{position:relative;background-color:#B9B9BB;background-image:linear-gradient(#A9A9AB 1px,transparent 1px),linear-gradient(90deg,#A9A9AB 1px,transparent 1px);background-size:48px 48px;overflow:hidden}
+.cap{position:absolute;left:0;bottom:0;background:#EB232B;color:#FFFFFF;font-family:Saira,Arial,sans-serif;font-weight:600;font-size:12px;letter-spacing:.1em;text-transform:uppercase;padding:6px 12px}
+.card{flex:1 1 280px;min-width:0;text-decoration:none;display:flex;flex-direction:column;gap:8px;padding:22px;border:1px solid #D9D9D9;background:#FFFFFF}
+.card b{font-family:Saira,Arial,sans-serif;font-weight:700;font-size:18px;text-transform:uppercase;color:#1E1E1E;line-height:1.15}
+.card span{font-size:15px;color:#3D3D3D}
+.dia li{position:relative;padding-left:22px;list-style:none;margin:0}
+.dia li::before{content:"";position:absolute;left:0;top:.62em;width:8px;height:8px;background:#EB232B;transform:rotate(45deg)}
+.tiles{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.07) 1px,transparent 1px);background-size:48px 48px;pointer-events:none}
+.fig{flex:1 1 200px;min-width:0;display:flex;flex-direction:column;gap:6px;padding-left:20px;border-left:3px solid #EB232B}
+.fig b{font-family:Saira,Arial,sans-serif;font-weight:500;font-size:40px;line-height:1;color:#FFFFFF}
+.fig span{font-size:15px;color:#D9D9D9}
+.plate{position:relative;background:#FFFFFF;margin:20px;padding:14px 18px;display:flex;flex-direction:column;gap:2px}
+.plate b{font-family:Saira,Arial,sans-serif;font-weight:700;font-size:17px;text-transform:uppercase;color:#1E1E1E}
+.plate span{font-size:13px;color:#6B6B6B}
+</style>
+</helmet>
+<div style="display:flex;flex-direction:column;min-width:0">
+  <dc-import name="Header" hint-size="100%,132px"></dc-import>
+  <dc-import name="PageHead" title="Agriculture &amp; Food" intro="Grain, rice, sugar, oilseeds, fresh and processed food. We inspect at origin and at discharge, supervise loading, test through named partner laboratories, certify halal and superintend GAFTA contracts — and issue the Certificates of Conformity your importing market requires." section="Industries" section-href="B-Industries.dc.html" cap="Kandla · Rice loading" variant="photo" hint-size="100%,420px"></dc-import>
+
+  <div class="wrap" style="padding-top:64px;padding-bottom:64px;display:flex;flex-direction:column;gap:32px">
+    <div><h2 class="h2">Services for food and agricultural trade</h2><div class="rule"></div></div>
+    <div style="display:flex;flex-wrap:wrap;gap:20px">
+      <a class="card" href="B-Service-PSI.dc.html"><span class="eyebrow">Inspection</span><b>Pre-shipment inspection</b><span>Quality, quantity, packing and marking before loading.</span></a>
+      <a class="card" href="B-Services-Inspection.dc.html"><span class="eyebrow">Inspection</span><b>Loading and discharge supervision</b><span>Our inspector present at the silo, the quay and the hold.</span></a>
+      <a class="card" href="B-Services-Inspection.dc.html"><span class="eyebrow">Inspection</span><b>GAFTA superintendence</b><span>Grain and feed contracts, as a GAFTA-approved superintendent (India).</span></a>
+      <a class="card" href="B-Services.dc.html"><span class="eyebrow">Testing</span><b>Food and agricultural testing</b><span>Physical, chemical and microbiological, through [named partner laboratory, accreditation no.].</span></a>
+      <a class="card" href="B-Services.dc.html"><span class="eyebrow">Certification</span><b>Halal certification</b><span>[Scheme and accreditation to be confirmed by the Quality/Accreditation Manager.]</span></a>
+      <a class="card" href="B-Programs.dc.html"><span class="eyebrow">Programs</span><b>Certificates of Conformity</b><span>Iraq, Egypt, Botswana and Libya requirements for food shipments.</span></a>
+    </div>
+  </div>
+
+  <div style="background:#111111;color:#FFFFFF;position:relative">
+    <div class="tiles"></div>
+    <div class="wrap" style="position:relative;display:flex;flex-wrap:wrap;gap:48px;padding-top:64px;padding-bottom:64px;align-items:center">
+      <div style="flex:1 1 320px;min-width:0;display:flex;flex-direction:column;gap:16px"><div><h2 class="h2 w">Why food traders use TIC</h2><div class="rule"></div></div><p style="margin:0;color:#D9D9D9">Independent, accredited and present at the ports the trade actually uses — with offices at origin in India, Pakistan, Thailand and Brazil and at destination in Iraq, Egypt, Jordan and Saudi Arabia.</p></div>
+      <div style="flex:2 1 520px;min-width:0;display:flex;flex-wrap:wrap;gap:32px">
+        <div class="fig"><b>GAFTA</b><span>Approved superintendent, India</span></div>
+        <div class="fig"><b>17020</b><span>ISO/IEC accredited inspection</span></div>
+        <div class="fig"><b>[n]</b><span>Food shipments inspected in 2025 (owner to confirm)</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap" style="display:flex;flex-wrap:wrap;gap:48px;padding-top:64px;padding-bottom:64px;align-items:flex-start">
+    <div style="flex:1 1 360px;min-width:0;display:flex;flex-direction:column;gap:20px">
+      <div><h2 class="h2">Where we do it</h2><div class="rule"></div></div>
+      <ul class="dia" style="padding:0;margin:0;display:flex;flex-direction:column;gap:10px;color:#3D3D3D"><li>Origin: Noida and Gandhidham (India), Lahore, Bangkok, Kuala Lumpur, São Paulo</li><li>Destination: Baghdad, Cairo, Amman, Riyadh, Dubai and Sharjah</li><li>Transit and testing: Guangzhou, Maharagama</li></ul>
+      <a class="tri" href="B-Contact.dc.html">All offices</a>
+    </div>
+    <div style="flex:1 1 420px;min-width:0;display:flex;flex-direction:column;gap:20px">
+      <div><h2 class="h2">Insights for this industry</h2><div class="rule"></div></div>
+      <a href="B-Article.dc.html" class="photo" style="min-height:200px;text-decoration:none;display:flex;align-items:flex-end"><div class="plate"><span class="eyebrow">Insight</span><b>What a draft survey measures</b><span>[date] · [named author]</span></div></a>
+      <a class="tri" href="B-News.dc.html">All insights</a>
+    </div>
+  </div>
+
+  <dc-import name="CTABand" hint-size="100%,240px"></dc-import>
+  <dc-import name="Footer" hint-size="100%,600px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":3000}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

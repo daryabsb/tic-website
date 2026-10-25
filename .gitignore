@@ -1,0 +1,41 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Django / Wagtail
+media/
+private/
+staticfiles/
+*.sqlite3
+db.sqlite3
+
+# Env and secrets
+.env
+.env.*
+!.env.example
+deploy/.env
+deploy/.env.*
+!deploy/.env.example
+
+# Node (font/asset tooling only)
+node_modules/
+
+# Editors and OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Fonts build cache
+.fontcache/
+
+# Old Nuxt site: lives on branch legacy/nuxt-2023, never on main
+.nuxt/
+.output/
+.nitro/
+dist/

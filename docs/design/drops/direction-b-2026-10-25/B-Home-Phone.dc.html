@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Home on a phone — TIC Quality Control (Direction B)</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira:wght@500;600;700;800&family=Open+Sans:wght@400;600&family=Cairo:wght@600&display=swap">
+<style>
+body{margin:0;background:#FFFFFF;color:#1E1E1E;font-family:"Open Sans",Arial,sans-serif;font-size:17px;line-height:1.55}
+a{color:#1E1E1E}
+.saira{font-family:Saira,Arial,sans-serif;text-transform:uppercase}
+.btn{display:flex;align-items:center;justify-content:center;min-height:52px;padding:0 20px;background:#EB232B;color:#FFFFFF;font-family:Saira,Arial,sans-serif;font-weight:600;font-size:15px;letter-spacing:.06em;text-transform:uppercase;text-decoration:none}
+.btn.dark{background:#111111}
+.btn.white{background:#FFFFFF;color:#1E1E1E}
+.h2{font-family:Saira,Arial,sans-serif;font-weight:700;font-size:26px;line-height:1.15;letter-spacing:.02em;text-transform:uppercase;color:#3D3D3D;margin:0}
+.h2.w{color:#FFFFFF}
+.rule{height:3px;background:#EB232B;width:88px;margin-top:10px}
+.eyebrow{font-family:Saira,Arial,sans-serif;font-weight:600;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#EB232B}
+.tri{display:inline-flex;align-items:center;gap:10px;font-family:Saira,Arial,sans-serif;font-weight:600;font-size:14px;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;color:#1E1E1E}
+.tri::before{content:"";width:0;height:0;border-top:6px solid transparent;border-bottom:6px solid transparent;border-left:9px solid #EB232B}
+.photo{position:relative;background-color:#B9B9BB;background-image:linear-gradient(#A9A9AB 1px,transparent 1px),linear-gradient(90deg,#A9A9AB 1px,transparent 1px);background-size:48px 48px;overflow:hidden}
+.photo.dark{background-color:#3D3D3D;background-image:linear-gradient(#4A4A4A 1px,transparent 1px),linear-gradient(90deg,#4A4A4A 1px,transparent 1px)}
+.cap{position:absolute;left:0;bottom:0;background:#EB232B;color:#FFFFFF;font-family:Saira,Arial,sans-serif;font-weight:600;font-size:12px;letter-spacing:.1em;text-transform:uppercase;padding:6px 12px}
+.proof{display:flex;flex-direction:column;gap:2px;padding:14px 0;border-top:1px solid #D9D9D9;text-decoration:none}
+.proof b{font-family:Saira,Arial,sans-serif;font-weight:700;font-size:17px;text-transform:uppercase;color:#1E1E1E}
+.proof span{font-size:14px;color:#3D3D3D}
+.svc{text-decoration:none;display:flex;flex-direction:column;background:#FFFFFF;border:1px solid #D9D9D9}
+.svc b{font-family:Saira,Arial,sans-serif;font-weight:700;font-size:16px;text-transform:uppercase;color:#1E1E1E;padding:12px 14px}
+.ind{display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-top:1px solid #D9D9D9;text-decoration:none;font-family:Saira,Arial,sans-serif;font-weight:600;font-size:16px;text-transform:uppercase;color:#1E1E1E;min-height:48px}
+.fig{display:flex;flex-direction:column;gap:2px;padding-left:14px;border-left:3px solid #EB232B;flex:1 1 40%}
+.fig b{font-family:Saira,Arial,sans-serif;font-weight:500;font-size:34px;line-height:1;color:#FFFFFF}
+.fig span{font-size:13px;color:#D9D9D9}
+.tiles{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.07) 1px,transparent 1px);background-size:48px 48px;pointer-events:none}
+.plate{position:relative;background:#FFFFFF;margin:14px;padding:12px 14px;display:flex;flex-direction:column;gap:2px}
+.plate b{font-family:Saira,Arial,sans-serif;font-weight:700;font-size:16px;text-transform:uppercase;color:#1E1E1E}
+.plate span{font-size:13px;color:#6B6B6B}
+.foot a{color:#FFFFFF;text-decoration:none;font-size:15px;min-height:44px;display:flex;align-items:center;border-top:1px solid #3D3D3D}
+</style>
+</helmet>
+
+<div style="width:390px;box-sizing:border-box;display:flex;flex-direction:column;background:#FFFFFF">
+
+  <!-- Header: Mark only on mobile -->
+  <div style="background:#111111;display:flex;align-items:center;justify-content:flex-end;gap:12px;padding:0 16px;min-height:32px">
+    <a href="B-Verify.dc.html" style="font-size:12px;color:#FFFFFF;text-decoration:none;font-weight:600;min-height:32px;display:inline-flex;align-items:center;gap:6px"><span style="width:6px;height:6px;background:#EB232B;display:inline-block"></span>Verify a certificate</a>
+    <label for="plang" style="display:inline-flex;align-items:center;gap:6px;font-size:11px;color:#D9D9D9;font-family:Saira,Arial,sans-serif;letter-spacing:.1em;text-transform:uppercase">Language<select id="plang" style="min-height:26px;background:#111111;color:#FFFFFF;border:1px solid #6B6B6B;font-size:12px"><option selected>English</option><option>العربية</option><option>中文</option></select></label>
+  </div>
+  <div style="background:#FFFFFF;border-bottom:3px solid #EB232B;display:flex;align-items:center;justify-content:space-between;padding:8px 16px;min-height:64px">
+    <a href="B-Home-Phone.dc.html" style="display:inline-flex;align-items:center"><img src="/_blob/44349e061e95ffc81bd21d9737f21be0" alt="TIC — Testing, Inspection, Certification" style="height:46px;width:auto;display:block"></a>
+    <div style="display:flex;gap:4px;align-items:center">
+      <a href="B-Search.dc.html" aria-label="Search" style="width:44px;height:44px;display:inline-flex;align-items:center;justify-content:center"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1E1E1E" stroke-width="2"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4-4"></path></svg></a>
+      <button type="button" aria-label="Menu" style="width:44px;height:44px;background:transparent;border:0;display:inline-flex;align-items:center;justify-content:center;padding:0"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1E1E1E" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"></path></svg></button>
+    </div>
+  </div>
+
+  <!-- 1. Hero -->
+  <div class="photo dark" style="min-height:420px;display:flex;align-items:flex-end">
+    <div style="position:relative;background:#FFFFFF;margin:16px;padding:22px 20px;display:flex;flex-direction:column;gap:14px;border-top:5px solid #EB232B;width:100%;box-sizing:border-box">
+      <span class="eyebrow">Testing · Inspection · Certification</span>
+      <h1 class="saira" style="margin:0;font-weight:800;font-size:30px;line-height:1.05;color:#1E1E1E">Independent proof, wherever your cargo goes.</h1>
+      <p style="margin:0;font-size:16px;color:#3D3D3D">Inspection, testing and certification from offices in 12 countries. Every report can be checked.</p>
+      <a class="btn" href="B-Contact.dc.html">Request a quote</a>
+      <a class="btn dark" href="B-Verify.dc.html">Verify a certificate</a>
+    </div>
+  </div>
+
+  <!-- 2. Proof strip -->
+  <div style="padding:8px 16px 16px">
+    <a class="proof" href="B-Home-Phone.dc.html" style="border-top:0"><b>ANAB · ISO/IEC 17020</b><span>Certificate AI-3314 · valid to Oct 2028</span></a>
+    <a class="proof" href="B-Program-Iraq.dc.html"><b>GOEIC · Egypt</b><span>Register record 73</span></a>
+    <a class="proof" href="B-Program-Iraq.dc.html"><b>COSQC · Iraq</b><span>Appointed inspection body · 2024</span></a>
+    <a class="proof" href="B-Home-Phone.dc.html"><b>TIC Council</b><span>Full member</span></a>
+  </div>
+
+  <!-- 3. Services -->
+  <div style="background:#F3F3F3;padding:36px 16px;display:flex;flex-direction:column;gap:20px">
+    <div><h2 class="h2">What do you need?</h2><div class="rule"></div></div>
+    <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px">
+      <a class="svc" href="B-Service-PSI.dc.html"><div class="photo" style="height:96px"></div><b>Inspection</b></a>
+      <a class="svc" href="B-Service-PSI.dc.html"><div class="photo" style="height:96px"></div><b>Testing</b></a>
+      <a class="svc" href="B-Service-PSI.dc.html"><div class="photo" style="height:96px"></div><b>Certification</b></a>
+      <a class="svc" href="B-Program-Iraq.dc.html"><div class="photo" style="height:96px"></div><b>Programs</b></a>
+      <a class="svc" href="B-Home-Phone.dc.html"><div class="photo" style="height:96px"></div><b>Training</b></a>
+      <a class="svc" href="B-Service-PSI.dc.html"><div class="photo" style="height:96px"></div><b>Audits</b></a>
+    </div>
+  </div>
+
+  <!-- Why TIC -->
+  <div style="background:#111111;color:#FFFFFF;position:relative;padding:36px 16px;display:flex;flex-direction:column;gap:20px">
+    <div class="tiles"></div>
+    <div style="position:relative"><h2 class="h2 w">Why TIC</h2><div class="rule"></div></div>
+    <p style="position:relative;margin:0;font-size:15px;color:#D9D9D9">A Type A inspection body — fully independent of the parties we inspect for. Every certificate carries a number you can check.</p>
+    <div style="position:relative;display:flex;flex-wrap:wrap;gap:20px 12px">
+      <div class="fig"><b>2020</b><span>Founded in Dubai</span></div>
+      <div class="fig"><b>12</b><span>Countries</span></div>
+      <div class="fig"><b>5</b><span>Export programs</span></div>
+      <div class="fig"><b style="color:#EB232B">17020</b><span>ISO/IEC accredited</span></div>
+    </div>
+  </div>
+
+  <!-- 4. Industries -->
+  <div style="padding:36px 16px;display:flex;flex-direction:column;gap:16px">
+    <div><h2 class="h2">Who do you serve?</h2><div class="rule"></div></div>
+    <div style="display:flex;flex-direction:column">
+      <a class="ind" href="B-Home-Phone.dc.html">Agriculture &amp; Food<span style="color:#EB232B">→</span></a>
+      <a class="ind" href="B-Home-Phone.dc.html">Oil &amp; Gas<span style="color:#EB232B">→</span></a>
+      <a class="ind" href="B-Home-Phone.dc.html">Marine &amp; Shipping<span style="color:#EB232B">→</span></a>
+      <a class="ind" href="B-Home-Phone.dc.html">Consumer Products<span style="color:#EB232B">→</span></a>
+      <a class="ind" href="B-Home-Phone.dc.html">Vehicles<span style="color:#EB232B">→</span></a>
+      <a class="ind" href="B-Home-Phone.dc.html">Industrial Equipment<span style="color:#EB232B">→</span></a>
+      <a class="ind" href="B-Home-Phone.dc.html">Construction<span style="color:#EB232B">→</span></a>
+      <a class="ind" href="B-Home-Phone.dc.html" style="border-bottom:1px solid #D9D9D9">Government<span style="color:#EB232B">→</span></a>
+    </div>
+  </div>
+
+  <!-- 5. Programs -->
+  <div style="background:#F3F3F3;padding:36px 16px;display:flex;flex-direction:column;gap:16px">
+    <div><h2 class="h2">Export programs</h2><div class="rule"></div></div>
+    <a class="photo" href="B-Program-Iraq.dc.html" style="min-height:200px;display:flex;align-items:flex-end;text-decoration:none"><div class="plate"><span class="eyebrow">Iraq · COSQC</span><b>Certificate of Conformity</b><span>Last updated: [date]</span></div></a>
+    <a class="photo" href="B-Program-Iraq.dc.html" style="min-height:130px;display:flex;align-items:flex-end;text-decoration:none"><div class="plate"><b>Kurdistan Region vehicle CoC</b><span>Last updated: [date]</span></div></a>
+    <a class="photo" href="B-Program-Iraq.dc.html" style="min-height:130px;display:flex;align-items:flex-end;text-decoration:none"><div class="plate"><b>Egypt · GOEIC</b><span>Last updated: [date]</span></div></a>
+    <a class="tri" href="B-Program-Iraq.dc.html" style="min-height:44px">Botswana, Libya and all programs</a>
+  </div>
+
+  <!-- 6. Where we are -->
+  <div style="padding:36px 16px;display:flex;flex-direction:column;gap:16px">
+    <div><h2 class="h2">Where we are</h2><div class="rule"></div></div>
+    <p style="margin:0;font-size:15px;color:#3D3D3D">Head office in Dubai; staffed offices in 12 countries, each with local phone and WhatsApp.</p>
+    <div class="photo" style="height:180px"><div class="cap">14 offices · 12 countries</div></div>
+    <a class="tri" href="B-Contact.dc.html" style="min-height:44px">All offices and contacts</a>
+  </div>
+
+  <!-- 7. Updates -->
+  <div style="border-top:1px solid #D9D9D9;padding:36px 16px;display:flex;flex-direction:column;gap:16px">
+    <div><h2 class="h2">Updates and news</h2><div class="rule"></div></div>
+    <a href="B-Program-Iraq.dc.html" style="text-decoration:none;display:flex;flex-direction:column;gap:4px;padding:14px 0;border-top:1px solid #D9D9D9"><span class="eyebrow">Regulatory · Iraq</span><b class="saira" style="font-size:16px;font-weight:700;line-height:1.25;color:#1E1E1E">[Title of the latest COSQC circular]</b><span style="font-size:13px;color:#6B6B6B">[date]</span></a>
+    <a href="B-Program-Iraq.dc.html" style="text-decoration:none;display:flex;flex-direction:column;gap:4px;padding:14px 0;border-top:1px solid #D9D9D9"><span class="eyebrow">Regulatory · Egypt</span><b class="saira" style="font-size:16px;font-weight:700;line-height:1.25;color:#1E1E1E">[Title of the latest GOEIC notice]</b><span style="font-size:13px;color:#6B6B6B">[date]</span></a>
+    <a href="B-Home-Phone.dc.html" style="text-decoration:none;display:flex;flex-direction:column;gap:4px;padding:14px 0;border-top:1px solid #D9D9D9;border-bottom:1px solid #D9D9D9"><span class="eyebrow">News</span><b class="saira" style="font-size:16px;font-weight:700;line-height:1.25;color:#1E1E1E">[Company news headline]</b><span style="font-size:13px;color:#6B6B6B">[date]</span></a>
+  </div>
+
+  <!-- 8. Reach us -->
+  <div style="background:#EB232B;color:#FFFFFF;padding:32px 16px;display:flex;flex-direction:column;gap:14px">
+    <h2 class="h2 w">Talk to the office nearest you</h2>
+    <p style="margin:0;font-size:15px">Answered by a named person within one working day.</p>
+    <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px"><a class="btn white" href="B-Contact.dc.html">WhatsApp</a><a class="btn white" href="B-Contact.dc.html">Call us</a></div>
+    <a class="btn dark" href="B-Contact.dc.html">Request a quote</a>
+  </div>
+
+  <!-- 9. Footer -->
+  <div class="foot" style="background:#111111;color:#FFFFFF;position:relative">
+    <div class="tiles"></div>
+    <div style="position:relative;padding:32px 16px 24px;display:flex;flex-direction:column;gap:14px">
+      <div style="background:#FFFFFF;padding:10px 12px;align-self:flex-start"><img src="/_blob/44349e061e95ffc81bd21d9737f21be0" alt="TIC — Testing, Inspection, Certification" style="width:120px;height:auto;display:block"></div>
+      <p style="margin:0;font-size:13px;color:#D9D9D9;line-height:1.6">TIC Quality Control L.L.C. · Office 2101, Clover Bay Tower, Business Bay, Dubai, UAE · [phone]</p>
+      <div style="display:flex;flex-direction:column">
+        <a href="B-Service-PSI.dc.html">Services</a><a href="B-Program-Iraq.dc.html">Programs</a><a href="B-Home-Phone.dc.html">About</a><a href="B-Home-Phone.dc.html">Accreditations</a><a href="B-Home-Phone.dc.html">Impartiality · Complaints and appeals</a><a href="B-Contact.dc.html">Our offices</a><a href="B-Home-Phone.dc.html" style="border-bottom:1px solid #3D3D3D">Privacy · Terms</a>
+      </div>
+      <p style="margin:0;font-size:12px;color:#D9D9D9">ANAB ISO/IEC 17020 · AI-3314 · GOEIC record 73 · TIC Council member<br>© 2026 TIC Quality Control L.L.C.</p>
+    </div>
+    <img src="/_blob/6a8bf4aa0ca992927a42da09eebfb91a" alt="TIC — Testing | Inspection | Certification" style="position:relative;display:block;width:100%;height:auto">
+  </div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":3900}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

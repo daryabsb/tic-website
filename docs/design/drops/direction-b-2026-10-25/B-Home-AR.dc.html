@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>الصفحة الرئيسية — تي آي سي لمراقبة الجودة</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Saira:wght@600;700&display=swap">
+<style>
+body{margin:0;background:#FFFFFF;color:#1E1E1E;font-family:Cairo,Arial,sans-serif;font-size:17px;line-height:1.8}
+a{color:#1E1E1E}a:hover{color:#EB232B}
+.wrap{max-width:1280px;margin:0 auto;padding-left:clamp(16px,5.5vw,80px);padding-right:clamp(16px,5.5vw,80px)}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 30px;background:#EB232B;color:#FFFFFF;font-family:Cairo,Arial,sans-serif;font-weight:700;font-size:16px;text-decoration:none;border:0}
+.btn.dark{background:#111111}
+.btn.white{background:#FFFFFF;color:#1E1E1E}
+.h2{font-family:Cairo,Arial,sans-serif;font-weight:800;font-size:30px;line-height:1.3;color:#3D3D3D;margin:0}
+.h2.w{color:#FFFFFF}
+.rule{height:3px;background:#EB232B;width:120px;margin-top:10px}
+.eyebrow{font-family:Cairo,Arial,sans-serif;font-weight:700;font-size:14px;color:#EB232B}
+.tri{display:inline-flex;align-items:center;gap:10px;font-family:Cairo,Arial,sans-serif;font-weight:700;font-size:15px;text-decoration:none;color:#1E1E1E}
+.tri::before{content:"";width:0;height:0;border-top:6px solid transparent;border-bottom:6px solid transparent;border-right:9px solid #EB232B}
+.tri.w{color:#FFFFFF}
+.photo{position:relative;background-color:#B9B9BB;background-image:linear-gradient(#A9A9AB 1px,transparent 1px),linear-gradient(90deg,#A9A9AB 1px,transparent 1px);background-size:48px 48px;overflow:hidden}
+.photo.dark{background-color:#3D3D3D;background-image:linear-gradient(#4A4A4A 1px,transparent 1px),linear-gradient(90deg,#4A4A4A 1px,transparent 1px)}
+.cap{position:absolute;right:0;bottom:0;background:#EB232B;color:#FFFFFF;font-family:Cairo,Arial,sans-serif;font-weight:700;font-size:13px;padding:6px 14px}
+.nav a{font-family:Cairo,Arial,sans-serif;font-weight:700;font-size:16px;text-decoration:none;color:#1E1E1E;padding:14px 0;display:inline-block}
+.util a{font-size:13px;text-decoration:none;color:#D9D9D9}
+.proof{flex:1 1 260px;min-width:0;padding:18px 24px;border-right:1px solid #D9D9D9;display:flex;flex-direction:column;gap:2px;text-decoration:none}
+.proof:first-child{border-right:0;padding-right:0}
+.proof b{font-family:Saira,Arial,sans-serif;font-weight:700;font-size:20px;color:#1E1E1E}
+.proof span{font-size:14px;color:#3D3D3D}
+.svc{flex:1 1 300px;min-width:0;text-decoration:none;display:flex;flex-direction:column;background:#FFFFFF;border:1px solid #D9D9D9}
+.svc .body{padding:22px;display:flex;flex-direction:column;gap:6px}
+.svc b{font-family:Cairo,Arial,sans-serif;font-weight:800;font-size:20px;color:#1E1E1E}
+.svc span{font-size:15px;color:#3D3D3D}
+.ind{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:14px 0;border-top:1px solid #D9D9D9;text-decoration:none;font-family:Cairo,Arial,sans-serif;font-weight:700;font-size:18px;color:#1E1E1E}
+.ind:last-child{border-bottom:1px solid #D9D9D9}
+.fig{flex:1 1 200px;min-width:0;display:flex;flex-direction:column;gap:4px;padding-right:20px;border-right:3px solid #EB232B}
+.fig b{font-family:Saira,Arial,sans-serif;font-weight:600;font-size:44px;line-height:1;color:#FFFFFF}
+.fig span{font-size:15px;color:#D9D9D9}
+.tiles{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.07) 1px,transparent 1px);background-size:48px 48px;pointer-events:none}
+.plate{position:relative;background:#FFFFFF;margin:20px;padding:12px 18px;display:flex;flex-direction:column;gap:2px}
+.plate b{font-family:Cairo,Arial,sans-serif;font-weight:800;font-size:18px;color:#1E1E1E}
+.plate span{font-size:13px;color:#6B6B6B}
+.foot a{color:#FFFFFF;text-decoration:none;font-size:15px}
+.foot h4{font-family:Cairo,Arial,sans-serif;font-weight:700;font-size:14px;color:#FFFFFF;margin:0 0 12px}
+</style>
+</helmet>
+<div style="display:flex;flex-direction:column;min-width:0">
+
+  <!-- شريط الأدوات -->
+  <div class="util" style="background:#111111">
+    <div class="wrap" style="display:flex;flex-wrap:wrap;gap:4px 28px;align-items:center;min-height:36px;justify-content:flex-start">
+      <a href="B-Verify.dc.html" style="font-weight:700;color:#FFFFFF;display:inline-flex;align-items:center;gap:8px"><span style="width:8px;height:8px;background:#EB232B;display:inline-block"></span>التحقق من شهادة</a>
+      <a href="B-Login.dc.html">بوابة العملاء</a>
+      <label for="lang-ar" style="display:inline-flex;align-items:center;gap:8px;font-size:12px;color:#D9D9D9">اللغة<select id="lang-ar" style="min-height:28px;background:#111111;color:#FFFFFF;border:1px solid #6B6B6B;font-family:Cairo,Arial,sans-serif;font-size:13px"><option selected>العربية</option><option>English</option><option>中文</option></select></label>
+      <a href="B-Search.dc.html">بحث</a>
+    </div>
+  </div>
+  <!-- الترويسة: الشعار لا يُعكس أبداً -->
+  <div style="background:#FFFFFF">
+    <div class="wrap nav" style="display:flex;flex-wrap:wrap;align-items:center;gap:12px 36px;min-height:96px;padding-top:14px;padding-bottom:14px;border-bottom:3px solid #EB232B">
+      <a href="B-Home-AR.dc.html" style="padding:0;display:inline-flex;align-items:center;gap:18px"><img src="/_blob/44349e061e95ffc81bd21d9737f21be0" alt="TIC — الفحص والتفتيش وإصدار الشهادات" style="height:60px;width:auto;display:block"><span style="width:1px;height:44px;background:#D9D9D9"></span><span style="font-family:Cairo,Arial,sans-serif;font-weight:800;font-size:18px;color:#1E1E1E">تي آي سي لمراقبة الجودة</span></a>
+      <div style="flex:1 1 auto;display:flex;flex-wrap:wrap;gap:0 30px;justify-content:flex-end;align-items:center">
+        <a href="B-Services.dc.html">الخدمات</a><a href="B-Industries.dc.html">القطاعات</a><a href="B-Programs.dc.html">البرامج الحكومية والتجارية</a><a href="B-About.dc.html">من نحن</a><a href="B-News.dc.html">الموارد</a><a href="B-Contact.dc.html">اتصل بنا</a>
+        <a class="btn" href="B-Contact.dc.html" style="min-height:44px;padding:0 20px;font-size:15px">اطلب عرض سعر</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ١. الصورة والجملة -->
+  <div class="photo dark" style="min-height:640px;display:flex;align-items:flex-end">
+    <div class="wrap" style="position:relative;width:100%;padding-top:120px;display:flex">
+      <div style="background:#FFFFFF;padding:44px 48px 40px;max-width:720px;display:flex;flex-direction:column;gap:18px;border-top:6px solid #EB232B">
+        <div class="eyebrow">الفحص · التفتيش · إصدار الشهادات</div>
+        <h1 style="margin:0;font-family:Cairo,Arial,sans-serif;font-weight:800;font-size:46px;line-height:1.25;color:#1E1E1E">إثبات مستقل، أينما ذهبت بضائعك.</h1>
+        <p style="margin:0;font-size:18px;color:#3D3D3D">نفتّش البضائع ونفحصها ونصدر شهاداتها للمصدّرين والمستوردين والجهات الحكومية من مكاتبنا في ١٢ دولة — وكل تقرير نصدره يمكن التحقق منه.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:14px;padding-top:4px"><a class="btn" href="B-Contact.dc.html">اطلب عرض سعر</a><a class="btn dark" href="B-Verify.dc.html">تحقق من شهادة</a></div>
+      </div>
+    </div>
+    <div class="cap">أم قصر · الإشراف على التفريغ</div>
+  </div>
+
+  <!-- ٢. شريط الإثبات -->
+  <div style="background:#FFFFFF;border-bottom:1px solid #D9D9D9">
+    <div class="wrap" style="display:flex;flex-wrap:wrap;padding-top:14px;padding-bottom:14px">
+      <a class="proof" href="B-Accreditations.dc.html"><b>ANAB</b><span>ISO/IEC 17020 · جهة تفتيش من النوع A</span><span>شهادة AI-3314 · سارية حتى أكتوبر 2028</span><span class="tri" style="margin-top:6px">عرض السجل</span></a>
+      <a class="proof" href="B-Programs.dc.html"><b>GOEIC</b><span>سجل الفحص قبل الشحن — مصر</span><span>القيد رقم 73</span><span class="tri" style="margin-top:6px">عرض السجل</span></a>
+      <a class="proof" href="B-Program-Iraq.dc.html"><b>COSQC</b><span>برنامج شهادة المطابقة — العراق</span><span>جهة تفتيش معتمدة · 2024</span><span class="tri" style="margin-top:6px">عرض كتاب التعيين</span></a>
+      <a class="proof" href="B-Accreditations.dc.html"><b>TIC Council</b><span>عضو كامل</span><span>تي آي سي لمراقبة الجودة — الإمارات</span><span class="tri" style="margin-top:6px">عرض الدليل</span></a>
+    </div>
+  </div>
+
+  <!-- ٣. ماذا تحتاج؟ -->
+  <div style="background:#F3F3F3">
+    <div class="wrap" style="padding-top:80px;padding-bottom:80px;display:flex;flex-direction:column;gap:36px">
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:16px"><div><h2 class="h2">ماذا تحتاج؟</h2><div class="rule"></div></div><a class="tri" href="B-Services.dc.html">جميع الخدمات</a></div>
+      <div style="display:flex;flex-wrap:wrap;gap:24px">
+        <a class="svc" href="B-Services-Inspection.dc.html"><div class="photo" style="height:190px"><div class="cap">التفتيش</div></div><div class="body"><b>التفتيش</b><span>الفحص قبل الشحن، الإشراف على التحميل والتفريغ، تفتيش الحاويات، المعاينات البحرية، المركبات.</span></div></a>
+        <a class="svc" href="B-Services.dc.html"><div class="photo" style="height:190px"><div class="cap">الفحص المخبري</div></div><div class="body"><b>الفحص المخبري</b><span>الأغذية والمنتجات الزراعية، السلع الاستهلاكية، النفط والغاز، المعادن — عبر مختبرات شريكة مُسمّاة.</span></div></a>
+        <a class="svc" href="B-Services.dc.html"><div class="photo" style="height:190px"><div class="cap">إصدار الشهادات</div></div><div class="body"><b>إصدار الشهادات</b><span>شهادات مطابقة المنتجات، والحلال، وشهادات الأنظمة للأسواق التي تبيع فيها.</span></div></a>
+        <a class="svc" href="B-Programs.dc.html"><div class="photo" style="height:190px"><div class="cap">البرامج</div></div><div class="body"><b>البرامج الحكومية والتجارية</b><span>شهادات المطابقة والفحص للعراق وإقليم كردستان ومصر وبوتسوانا وليبيا.</span></div></a>
+        <a class="svc" href="B-Training.dc.html"><div class="photo" style="height:190px"><div class="cap">التدريب</div></div><div class="body"><b>التدريب</b><span>دورات للمصدّرين والمفتشين وفرق الجودة، في مكاتبنا وعبر الإنترنت.</span></div></a>
+        <a class="svc" href="B-Services.dc.html"><div class="photo" style="height:190px"><div class="cap">التدقيق</div></div><div class="body"><b>التدقيق</b><span>تدقيق المصانع والموردين قبل الالتزام بشحنة أو عقد.</span></div></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- لماذا TIC -->
+  <div style="background:#111111;color:#FFFFFF;position:relative">
+    <div class="tiles"></div>
+    <div class="wrap" style="position:relative;display:flex;flex-wrap:wrap;gap:48px;padding-top:72px;padding-bottom:72px;align-items:center">
+      <div style="flex:1 1 360px;min-width:0;display:flex;flex-direction:column;gap:16px"><div><h2 class="h2 w">لماذا TIC</h2><div class="rule"></div></div><p style="margin:0;color:#D9D9D9">الحياد هو المنتج. نحن جهة تفتيش من النوع A — مستقلة تماماً عن الأطراف التي نفتّش لصالحها — وكل شهادة نصدرها تحمل رقماً يمكنك التحقق منه في سجل عام.</p><a class="tri w" href="B-Accreditations.dc.html">اعتماداتنا وموافقاتنا</a></div>
+      <div style="flex:2 1 520px;min-width:0;display:flex;flex-wrap:wrap;gap:32px">
+        <div class="fig"><b>2020</b><span>تأسست في دبي</span></div>
+        <div class="fig"><b>12</b><span>دولة فيها مكتب</span></div>
+        <div class="fig"><b>5</b><span>برامج حكومية وتجارية</span></div>
+        <div class="fig"><b style="color:#EB232B">17020</b><span>اعتماد ISO/IEC</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ٤. القطاعات -->
+  <div class="wrap" style="display:flex;flex-wrap:wrap;gap:64px;padding-top:80px;padding-bottom:80px">
+    <div style="flex:1 1 320px;min-width:0;display:flex;flex-direction:column;gap:16px"><div><h2 class="h2">أي قطاع تخدم؟</h2><div class="rule"></div></div><p style="margin:0;color:#3D3D3D">باب ثانٍ للزائر الذي يعرف قطاعه أكثر مما يعرف أسماء خدماتنا.</p></div>
+    <div style="flex:2 1 560px;min-width:0;display:flex;flex-direction:column">
+      <a class="ind" href="B-Industry-Food.dc.html">الزراعة والأغذية<span style="color:#EB232B">←</span></a>
+      <a class="ind" href="B-Industries.dc.html">النفط والغاز والبتروكيماويات<span style="color:#EB232B">←</span></a>
+      <a class="ind" href="B-Industries.dc.html">البحرية والشحن<span style="color:#EB232B">←</span></a>
+      <a class="ind" href="B-Industries.dc.html">المنتجات الاستهلاكية والتجزئة<span style="color:#EB232B">←</span></a>
+      <a class="ind" href="B-Industries.dc.html">المركبات والسيارات<span style="color:#EB232B">←</span></a>
+      <a class="ind" href="B-Industries.dc.html">المعدات الصناعية والتصنيع<span style="color:#EB232B">←</span></a>
+      <a class="ind" href="B-Industries.dc.html">الإنشاءات والبنية التحتية<span style="color:#EB232B">←</span></a>
+      <a class="ind" href="B-Industries.dc.html">الحكومة والقطاع العام<span style="color:#EB232B">←</span></a>
+    </div>
+  </div>
+
+  <!-- ٥. برامج التصدير -->
+  <div style="background:#F3F3F3">
+    <div class="wrap" style="padding-top:80px;padding-bottom:80px;display:flex;flex-direction:column;gap:36px">
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:16px"><div><h2 class="h2">برامج التصدير</h2><div class="rule"></div></div><a class="tri" href="B-Programs.dc.html">جميع البرامج والتحديثات التنظيمية</a></div>
+      <div style="display:flex;flex-wrap:wrap;gap:24px">
+        <a href="B-Program-Iraq.dc.html" class="photo" style="flex:2 1 520px;min-width:0;min-height:340px;text-decoration:none;display:flex;align-items:flex-end"><div class="plate" style="margin:32px;padding:22px 28px;max-width:420px"><span class="eyebrow">العراق · COSQC / ICIGI</span><b style="font-size:24px">شهادة المطابقة</b><span>آخر تحديث: [التاريخ] · مكتب بغداد</span></div><div class="cap">العراق</div></a>
+        <div style="flex:1 1 300px;min-width:0;display:flex;flex-direction:column;gap:24px">
+          <a href="B-Programs.dc.html" class="photo" style="flex:1 1 auto;min-height:158px;text-decoration:none;display:flex;align-items:flex-end"><div class="plate"><b>شهادة مطابقة المركبات — إقليم كردستان العراق</b><span>آخر تحديث: [التاريخ]</span></div></a>
+          <a href="B-Programs.dc.html" class="photo" style="flex:1 1 auto;min-height:158px;text-decoration:none;display:flex;align-items:flex-end"><div class="plate"><b>مصر · GOEIC</b><span>آخر تحديث: [التاريخ]</span></div></a>
+        </div>
+        <div style="flex:1 1 300px;min-width:0;display:flex;flex-direction:column;gap:24px">
+          <a href="B-Programs.dc.html" class="photo" style="flex:1 1 auto;min-height:158px;text-decoration:none;display:flex;align-items:flex-end"><div class="plate"><b>بوتسوانا · BOBS</b><span>آخر تحديث: [التاريخ]</span></div></a>
+          <a href="B-Programs.dc.html" class="photo" style="flex:1 1 auto;min-height:158px;text-decoration:none;display:flex;align-items:flex-end"><div class="plate"><b>ليبيا · شهادة الفحص</b><span>آخر تحديث: [التاريخ]</span></div></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ٦. أين نحن -->
+  <div class="wrap" style="display:flex;flex-wrap:wrap;gap:48px;padding-top:80px;padding-bottom:80px;align-items:center">
+    <div class="photo" style="flex:1 1 520px;min-width:0;min-height:380px"><div class="cap">14 مكتباً · 12 دولة</div></div>
+    <div style="flex:1 1 400px;min-width:0;display:flex;flex-direction:column;gap:20px">
+      <div><h2 class="h2">أين نحن</h2><div class="rule"></div></div>
+      <p style="margin:0;color:#3D3D3D">المقر الرئيسي في دبي. تعرض صفحة كل مكتب هاتفه المحلي ورقم واتساب وساعات الدوام والبرامج التي يقدّمها.</p>
+      <p style="margin:0;color:#3D3D3D">دبي · الشارقة · بغداد · عمّان · الرياض · القاهرة · نويدا · غانديدام · لاهور · غوانزو · ماهاراغاما · بانكوك · كوالالمبور · ساو باولو</p>
+      <a class="tri" href="B-Contact.dc.html">جميع المكاتب وأرقام الهاتف وواتساب</a>
+    </div>
+  </div>
+
+  <!-- ٨. تواصل معنا -->
+  <div style="background:#EB232B;color:#FFFFFF">
+    <div class="wrap" style="display:flex;flex-wrap:wrap;gap:32px 48px;align-items:center;justify-content:space-between;padding-top:52px;padding-bottom:52px">
+      <div style="flex:1 1 360px;min-width:0;display:flex;flex-direction:column;gap:6px"><h2 class="h2 w">تحدّث مع أقرب مكتب إليك</h2><p style="margin:0;font-size:17px">واتساب أو الهاتف أو نموذج طلب عرض السعر. يجيبك شخص بالاسم خلال يوم عمل واحد.</p></div>
+      <div style="display:flex;flex-wrap:wrap;gap:12px"><a class="btn white" href="B-Contact.dc.html">واتساب</a><a class="btn white" href="B-Contact.dc.html">اتصل بنا</a><a class="btn dark" href="B-Contact.dc.html">اطلب عرض سعر</a></div>
+    </div>
+  </div>
+
+  <!-- ٩. التذييل -->
+  <div class="foot" style="background:#111111;color:#FFFFFF;position:relative">
+    <div class="tiles"></div>
+    <div class="wrap" style="position:relative;display:flex;flex-wrap:wrap;gap:40px 48px;padding-top:56px;padding-bottom:40px">
+      <div style="flex:1 1 260px;min-width:0;display:flex;flex-direction:column;gap:16px">
+        <div style="background:#FFFFFF;padding:14px 16px;align-self:flex-start"><img src="/_blob/44349e061e95ffc81bd21d9737f21be0" alt="TIC" style="width:150px;height:auto;display:block"></div>
+        <p style="margin:0;font-size:14px;color:#D9D9D9">تي آي سي لمراقبة الجودة ذ.م.م<br>مكتب 2101، برج كلوفر باي، الخليج التجاري، دبي، الإمارات العربية المتحدة<br>[الهاتف]</p>
+      </div>
+      <div style="flex:1 1 160px;min-width:0;display:flex;flex-direction:column;gap:8px"><h4>الخدمات</h4><a href="B-Services.dc.html">التفتيش</a><a href="B-Services.dc.html">الفحص المخبري</a><a href="B-Services.dc.html">إصدار الشهادات</a><a href="B-Services.dc.html">التدقيق</a><a href="B-Training.dc.html">التدريب</a></div>
+      <div style="flex:1 1 160px;min-width:0;display:flex;flex-direction:column;gap:8px"><h4>البرامج</h4><a href="B-Program-Iraq.dc.html">شهادة المطابقة — العراق</a><a href="B-Programs.dc.html">مركبات إقليم كردستان</a><a href="B-Programs.dc.html">مصر GOEIC</a><a href="B-Programs.dc.html">بوتسوانا</a><a href="B-Programs.dc.html">ليبيا</a></div>
+      <div style="flex:1 1 180px;min-width:0;display:flex;flex-direction:column;gap:8px"><h4>الثقة</h4><a href="B-Accreditations.dc.html">الاعتمادات والموافقات</a><a href="B-Impartiality.dc.html">الحياد</a><a href="B-Complaints.dc.html">الشكاوى والطعون</a><a href="B-Verify.dc.html">التحقق من شهادة</a><a href="B-Impartiality.dc.html">الخصوصية · الشروط</a></div>
+    </div>
+    <div class="wrap" style="position:relative;display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;padding-top:20px;padding-bottom:28px;border-top:1px solid #3D3D3D">
+      <p style="margin:0;font-size:13px;color:#D9D9D9">ANAB ISO/IEC 17020 · AI-3314 · GOEIC القيد 73 · عضو TIC Council · © 2026 تي آي سي لمراقبة الجودة ذ.م.م</p>
+    </div>
+    <img src="/_blob/6a8bf4aa0ca992927a42da09eebfb91a" alt="TIC — Testing | Inspection | Certification" style="position:relative;display:block;width:100%;height:auto">
+  </div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":4200}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>
