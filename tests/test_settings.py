@@ -25,20 +25,27 @@ def test_site_is_not_indexable_by_default():
     assert settings.SITE_INDEXABLE is False
 
 
-def test_core_page_types_are_installed_and_mcp_is_not():
-    """D19: offices, people, policy pages and news come from the core; no MCP in V1."""
+def test_core_is_plumbing_only():
+    """D22: the core supplies the admin and the plumbing; every TIC page type is a TIC
+    app (master plan 03). No core page-type app, no MCP in V1."""
     assert settings.INSTALLED_APPS[0] == "apps.pages"
     for core_app in (
+        "zeneon_cms.core",
+        "zeneon_cms.requests",
+        "zeneon_cms.notify",
+        "zeneon_cms.seo",
+        "zeneon_cms.security",
+    ):
+        assert core_app in settings.INSTALLED_APPS
+    for page_app in (
         "zeneon_cms.services",
         "zeneon_cms.locations",
         "zeneon_cms.people",
         "zeneon_cms.legal",
         "zeneon_cms.news",
-        "zeneon_cms.requests",
-        "zeneon_cms.notify",
+        "zeneon_cms.mcp",
     ):
-        assert core_app in settings.INSTALLED_APPS
-    assert "zeneon_cms.mcp" not in settings.INSTALLED_APPS
+        assert page_app not in settings.INSTALLED_APPS
 
 
 def test_request_attachments_have_a_private_storage_outside_media():
@@ -51,7 +58,6 @@ def test_request_attachments_have_a_private_storage_outside_media():
 def test_core_configuration_follows_the_plan():
     assert conf.get("requests.code_prefix") == "TIC"
     assert conf.get("notify.channels") == ["zeneon_cms.notify.channels.EmailChannel"]
-    assert conf.get("labels.location.plural") == "Our offices"
     assert conf.get("security.translator_languages") == ["ar"]
     assert conf.get("i18n.switcher_labels") == {"en": "English", "ar": "العربية"}
     assert "/*/verify/" in conf.get("seo.robots_disallow")

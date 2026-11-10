@@ -2,10 +2,9 @@
 
 HomePage is the root of each language tree. Its hero is four fields (one photo, one
 sentence, two buttons — proposal 01 §5.2 item 1); the rest of the home page is one
-StreamField, ``sections``, whose blocks arrive with ticket #9. Services, offices, people,
-policy pages and news are core page types (zeneon_cms.services, .locations, .people,
-.legal, .news); programs, industries, trust, resources and verify are TIC apps that
-follow in gate 1 to 3.
+StreamField, ``sections``. Every other page type of master plan 03 (services, industries,
+programs, offices, leadership, policy pages, resources, news, verify) is a TIC app that
+follows in gate 1 to 3 (D22); the core supplies the admin and the plumbing only.
 """
 
 from django.db import models
@@ -85,14 +84,8 @@ class HomePage(ScriptNormalisationMixin, Page):
     og_image = _image(_("share image"), _("1200 x 630. Blank uses the site's default share image."))
 
     parent_page_types = ["wagtailcore.Page"]
-    subpage_types = [
-        "zeneon_services.ServiceIndexPage",
-        "zeneon_locations.LocationIndexPage",
-        "zeneon_people.TeamIndexPage",
-        "zeneon_news.NewsIndexPage",
-        "zeneon_legal.LegalPage",
-        "pages.AboutPage",
-    ]
+    # The index pages of the TIC apps are added here as each app lands (gate 1 to 3).
+    subpage_types = ["pages.AboutPage"]
 
     override_translatable_fields = _translatable(
         "hero_image_alt",
@@ -126,8 +119,8 @@ class HomePage(ScriptNormalisationMixin, Page):
 
 
 class AboutPage(ScriptNormalisationMixin, Page):
-    """About — Our story (master plan 03). Leadership, Our group, Accreditations and the
-    policy pages are its children (#21, #22)."""
+    """About — Our story (master plan 03). Leadership, Our group, Accreditations, the
+    policy pages, Complaints and Careers are its children (#21, #22, TIC apps)."""
 
     intro = models.TextField(_("intro"), max_length=600, blank=True)
     header_image = _image(_("header photo"))
@@ -137,10 +130,7 @@ class AboutPage(ScriptNormalisationMixin, Page):
     og_image = _image(_("share image"))
 
     parent_page_types = ["pages.HomePage"]
-    subpage_types = [
-        "zeneon_people.TeamIndexPage",
-        "zeneon_legal.LegalPage",
-    ]
+    subpage_types = []  # LeadershipPage, GroupPage, AccreditationsPage, ContentPage... (#21, #22)
 
     override_translatable_fields = _translatable(
         "intro",

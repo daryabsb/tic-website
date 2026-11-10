@@ -55,14 +55,8 @@ def request_url():
 
 @register.simple_tag
 def latest_articles(count=3):
-    from zeneon_cms.news.models import ArticlePage
-
-    return list(
-        ArticlePage.objects.live()
-        .public()
-        .filter(locale__language_code=get_language())
-        .order_by("-date", "-first_published_at")[:count]
-    )
+    """The newest articles of the active language. Empty until the TIC news app (#23)."""
+    return []
 
 
 @register.filter
@@ -74,12 +68,6 @@ def is_within(page, item):
 
 @register.simple_tag
 def office_list():
-    """Live office pages of the active language, head office first (core locations)."""
-    from zeneon_cms.locations.models import LocationPage
-
-    return list(
-        LocationPage.objects.live()
-        .public()
-        .filter(locale__language_code=get_language())
-        .order_by("-is_main", "sort_order", "title")
-    )
+    """Live office pages of the active language, head office first. Empty until
+    OfficePage (#20)."""
+    return []

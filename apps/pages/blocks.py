@@ -153,7 +153,7 @@ class ProgramsBlock(blocks.StructBlock):
 
 
 class OfficesBlock(blocks.StructBlock):
-    """ "Where we are": map plate, text, the office list from the core's locations."""
+    """ "Where we are": map plate, text, the office list (OfficePage, #20)."""
 
     heading = blocks.CharBlock(label=_("heading"), max_length=80, default="Where we are")
     text = blocks.TextBlock(label=_("text"), max_length=300, required=False)
@@ -169,7 +169,7 @@ class OfficesBlock(blocks.StructBlock):
 
 
 class NewsBlock(blocks.StructBlock):
-    """The newest three articles of the active language (regulatory updates and news)."""
+    """The newest three articles of the active language (TIC news app, #23)."""
 
     heading = blocks.CharBlock(
         label=_("heading"), max_length=80, default="Regulatory updates and news"

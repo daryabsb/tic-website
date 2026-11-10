@@ -19,12 +19,20 @@ ALLOWED_HOSTS = config("ALLOWED_HOSTS", default="", cast=Csv())
 SITE_INDEXABLE = config("SITE_INDEXABLE", default=False, cast=bool)
 
 # Site apps first (their templates win), then the zeneon-cms core, Wagtail, Django, axes.
-# TIC uses the core's services, locations (offices), people (leadership), legal (policy
-# pages) and news (news, insights, regulatory updates): D19. The MCP server is not
-# mounted for TIC in V1 (master plan 16).
+# The core is the admin and the plumbing only (requests, notify, seo, security,
+# translation, review, caching, admin skin). Every TIC page type is a TIC app, as
+# master plan 03 lists them (D22): the core's generic page-type apps are excluded. The
+# MCP server is not mounted for TIC in V1 (master plan 16).
 INSTALLED_APPS = installed_apps(
     ["apps.pages"],
-    exclude=["zeneon_cms.mcp"],
+    exclude=[
+        "zeneon_cms.services",
+        "zeneon_cms.locations",
+        "zeneon_cms.people",
+        "zeneon_cms.legal",
+        "zeneon_cms.news",
+        "zeneon_cms.mcp",
+    ],
 )
 
 MIDDLEWARE = list(CORE_MIDDLEWARE)

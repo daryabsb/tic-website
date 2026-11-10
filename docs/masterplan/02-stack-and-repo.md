@@ -9,7 +9,7 @@ Two repositories change: `zeneon-cms` gains the small generic pieces TIC needs (
 | CMS, pages, i18n, RTL, SEO tags, caching, security headers, admin skin, translation sheets, proofreader hook | zeneon-cms (pinned SHA) | Core (exists) |
 | Structured requests: schemas, submissions, attachments, events, Requests admin, sent screen | `zeneon_cms.requests` | Core (exists) |
 | Email delivery with retries, delivery log | `zeneon_cms.notify` (email channel only) | Core (exists) |
-| News / insights / regulatory updates | `zeneon_cms.news` with a `kind` field | Core (exists; `kind` is new) |
+| News / insights / regulatory updates | TIC `news` app in this repo (D22; the core's `news` is not installed) | Client |
 | hCaptcha spam provider | `zeneon_cms.contact.spam` provider setting | Core (new, small) |
 | Routing a request to an office by country and service | `requests.routing` hook + `RoutingRule` model | Core (new, generic: "route to a recipient by answer values") |
 | Review-by date mixin and reminder command | `zeneon_cms.pages.ReviewByMixin`, `send_review_reminders` | Core (new, generic) |

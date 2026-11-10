@@ -15,13 +15,6 @@ TURNSTILE_TEST_SITE_KEY = "1x00000000000000000000AA"
 TURNSTILE_TEST_SECRET_KEY = "1x0000000000000000000000000000000AA"  # noqa: S105 - public test key
 
 ZENEON_CMS = {
-    # What TIC calls the core's generic page types (master plan 03, D19).
-    "labels": {
-        "service": {"singular": "Service", "plural": "Services"},
-        "person": {"singular": "Person", "plural": "Leadership"},
-        "location": {"singular": "Office", "plural": "Our offices"},
-        "article": {"singular": "Article", "plural": "News and insights"},
-    },
     "contact": {
         "recipient_fallback": "info@ticqc.com",
         "turnstile_site_key": config("TURNSTILE_SITE_KEY", default=TURNSTILE_TEST_SITE_KEY),
@@ -61,15 +54,6 @@ ZENEON_CMS = {
             "translators": "Translators: ar",
         },
         "translator_languages": ["ar"],
-    },
-    # Policy pages (Impartiality, Complaints, Privacy, Terms...) live under About (#22).
-    "legal": {"parent_page_types": ["pages.HomePage", "pages.AboutPage"]},
-    "locations": {"index_parent_page_types": ["pages.HomePage"]},
-    "people": {"index_parent_page_types": ["pages.HomePage", "pages.AboutPage"]},
-    "news": {
-        "index_parent_page_types": ["pages.HomePage"],
-        "per_page": 12,
-        "body_help_text": "Plain English. A named author and a date on every article.",
     },
     "seo": {
         "organisation_type": "Organization",
