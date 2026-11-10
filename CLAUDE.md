@@ -15,7 +15,8 @@ When Darya says **"start tic"** (or just "start" in this folder):
 - No React, no SPA. Django templates, HTMX where a step needs it, one small plain-JS module at most per feature (upload, verify). The design drop's `.dc.html` files are the design; take their markup and CSS, drop the `<x-dc>` wrapper and the `data-dc-script` block.
 - One ticket per session. Every decision is written on its issue and in `docs/masterplan/DECISIONS.md`, never only in chat.
 - Task tickets are worked together: Claude drives, Darya logs in and clicks.
-- Anything not TIC-specific is built in `E:/api/zeneon-cms` on a branch and pinned here by SHA (rule 6). Same layout and deploy as `E:/api/zeneonix-website` and `E:/api/mlp-website`.
+- zeneon-cms is Darya's Wagtail admin template and plumbing (requests, notify, seo, security, translation). Every TIC page type is implemented in this repo from TIC's own plan (`docs/masterplan/03`). Nothing is cloned or assumed from zeneonix-website, mlp-website or the core's page-type apps: TIC is an independent business, one client of the template like any future client (D22).
+- Plumbing that is not TIC-specific (captcha provider, routing hook, review-by mixin) is built in `E:/api/zeneon-cms` on a branch and pinned here by SHA (rule 6). Same deploy layout as `E:/api/zeneonix-website` and `E:/api/mlp-website`; layout only.
 - The logo is never redrawn or recoloured: only the files in `docs/design/guideline/assets/logo/`. One red (#EB232B) as accent, under 10 % of any page. Square corners, no shadows, no gradients but the supplied tagline band.
 - Company name: "TIC Quality Control", then "TIC". Never "TICQC". "Program", not "programme". "Kurdistan Region of Iraq".
 - Nothing invented: a fact the proposal marks "to be confirmed" stays a bracketed placeholder in seed and templates until a director supplies it. No stock photos; a grey plate with a caption until a real photo arrives.
