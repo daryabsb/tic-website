@@ -6,18 +6,39 @@ behind the Zeneonix and MLP sites — with Arabic as the first full second langu
 verification tool, one program page per government inspection program, one page per office, and
 a quote form routed by country to the office that handles it.
 
-**Status:** plan written, build not started. Design is done (Direction B, see `docs/design/`).
-The content proposal is out for comment with the directors until the reply deadline; the build
-starts on the proposal's working assumptions and the decision log catches what changes.
+**Status:** build, gate 0. The project scaffold is in: settings, `apps.pages` (HomePage with the
+hero fields and the eight home sections, AboutPage), the shared parts as templates with the
+drop's CSS, self-hosted fonts, the seed, tests, CI and the deploy files. The core is pinned by
+SHA in `requirements/base.in` (D2). Design is done (Direction B, `docs/design/`). The proposal
+round closed with no objections (10 Nov 2026); the build runs on its working assumptions.
 
 **History:** the 2023 Nuxt site that used to live on `main` is kept whole on the branch
 `legacy/nuxt-2023` and the tag `nuxt-site-final`. It is not used anywhere; it is a backup.
 
 ## Run locally
 
-Same as the Zeneonix site (see its README): Docker with Postgres 16 and the site, or a venv against
-a local Postgres 16 with `pip install -e ../zeneon-cms`. The scaffold ticket (gate 0) fills this
-section in with the real commands once `deploy/compose.dev.yaml` and `requirements/` exist.
+Docker (Postgres 16 + the site, the seeded English home on http://localhost:8000/en/):
+
+```sh
+GH_TOKEN=$(gh auth token) docker compose -f deploy/compose.dev.yaml up --build
+```
+
+Or a venv against any local Postgres 16 (copy `.env.example` to `.env` and set `DATABASE_URL`):
+
+```sh
+py -3.12 -m venv .venv && .venv/Scripts/pip install --no-deps -r requirements/dev.txt
+# no SSH key for zeneon-cms? drop its line from the lock and: pip install --no-deps -e ../zeneon-cms
+# Windows also needs: pip install tzdata colorama pywin32 (the locks are compiled on Linux)
+# re-lock after a change to requirements/*.in or the core pin: bash scripts/lock.sh
+python manage.py migrate
+python manage.py zeneon_setup_locales --title "ar=تي آي سي لمراقبة الجودة"
+python manage.py seed_site
+python manage.py createsuperuser
+python manage.py runserver
+pytest
+```
+
+Fonts are built once by `python scripts/build_fonts.py` (fontTools + brotli) and committed.
 
 ## Where things are
 

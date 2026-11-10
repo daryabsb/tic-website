@@ -1,0 +1,93 @@
+# TIC stack, production (master plan 13; ticket #7).
+# Copied to /srv/stacks/tic/prod/compose.yaml. bin/deploy runs it as project
+# "tic-prod" and exports IMAGE_TAG (a git sha). Staging: compose.staging.yaml.
+#
+# Platform contract (server-platform README):
+# - "web" joins the shared "edge" network (alias tic-prod-web, used by Caddy); "db" is
+#   on the private network only
+# - no "ports:" anywhere; Caddy is the only container that publishes ports
+# - every service: restart, healthcheck, resource limits
+#
+# bin/deploy (server-platform) pulls, migrates and starts "web". No MCP container for
+# TIC in V1 (master plan 16).
+#
+# One-time on the server, before the first deploy (deploy/server-setup.sh does it):
+#   media/ and private/ owned by uid 10001 ("app" in the image)
+name: tic-prod
+
+x-app: &app
+  image: ${TIC_IMAGE:-ghcr.io/daryabsb/tic-website}:${IMAGE_TAG:?IMAGE_TAG is set by bin/deploy}
+  restart: unless-stopped
+  env_file: .env
+  volumes:
+    - ./media:/app/media
+    # Request attachments (D25): outside media/, never served by Caddy.
+    - ./private:/app/private
+  depends_on:
+    db:
+      condition: service_healthy
+  read_only: true
+  tmpfs:
+    - /tmp
+  cap_drop:
+    - ALL
+  security_opt:
+    - no-new-privileges:true
+
+services:
+  web:
+    <<: *app
+    networks:
+      internal:
+      edge:
+        aliases:
+          - tic-prod-web
+    healthcheck:
+      test: ["CMD", "python", "/app/deploy/healthcheck.py"]
+      interval: 15s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
+    deploy:
+      resources:
+        limits:
+          cpus: "1.0"
+          memory: 512M
+    cpu_shares: 512
+
+
+  db:
+    # postgres:16-bookworm, same digest as MLP
+    image: postgres:16-bookworm@sha256:0ea6700a3b4f0ae6ce746519073558aed4d88a79d8d07622a9a644946c7319c4
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:?set POSTGRES_DB in .env}
+      POSTGRES_USER: ${POSTGRES_USER:?set POSTGRES_USER in .env}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD in .env}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - internal
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -h 127.0.0.1 -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 90s
+      start_interval: 2s
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 512M
+    cpu_shares: 512
+
+volumes:
+  pgdata:
+    name: tic-prod-pgdata
+
+networks:
+  internal:
+    name: tic-prod-internal
+  edge:
+    external: true

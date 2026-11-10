@@ -1,0 +1,19 @@
+{% extends "base.html" %}{% load i18n static wagtailcore_tags wagtailimages_tags zeneon tic %}
+{% comment %}Home (proposal 01 §5.2; design DirectionB.dc.html). The hero is the page's fields: one real photo (or the grey plate with the caption until one arrives), one sentence, two buttons. Everything below is the sections StreamField in the editor's order.{% endcomment %}
+{% block body_class %}page-home{% endblock %}
+{% block content %}{% request_url as req_url %}
+<section class="photo photo--dark hero" aria-labelledby="hero-heading">
+  {% if page.hero_image %}{% image page.hero_image width-2400 as hero %}<img src="{{ hero.url }}" alt="{{ page.hero_image_alt }}" width="{{ hero.width }}" height="{{ hero.height }}" fetchpriority="high">{% else %}<div class="photo__note">{% translate "Real photograph of our inspectors at work (to be supplied by the office)" %}</div>{% endif %}
+  <div class="wrap hero__wrap"><div class="hero__plate">
+    {% if page.hero_eyebrow %}<p class="eyebrow">{{ page.hero_eyebrow }}</p>{% endif %}
+    <h1 class="h1" id="hero-heading">{{ page.hero_heading }}</h1>
+    <p class="lead">{{ page.hero_sentence }}</p>
+    <div class="hero__actions">
+      <a class="btn" href="{{ req_url }}">{% translate "Request a quote" %}</a>
+      <a class="btn btn--dark" href="{% locale_home_url %}verify/">{% translate "Verify a certificate" %}</a>
+    </div>
+  </div></div>
+  {% if page.hero_caption %}<div class="cap cap--end">{{ page.hero_caption }}</div>{% endif %}
+</section>
+{% for block in page.sections %}{% include_block block %}{% endfor %}
+{% endblock %}

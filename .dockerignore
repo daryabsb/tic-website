@@ -1,0 +1,36 @@
+# Build context for deploy/Dockerfile: application code only. Never secrets.
+.git
+.github
+.claude
+.venv
+**/__pycache__
+**/*.py[cod]
+.pytest_cache
+.ruff_cache
+.coverage
+.coverage.*
+coverage.xml
+htmlcov
+.fontcache
+
+# Secrets and local state
+.env
+.env.*
+**/.env
+**/.env.*
+*.pem
+*.key
+media
+private
+staticfiles
+node_modules
+
+# Not needed at runtime
+docs
+e2e
+tests
+conftest.py
+README.md
+*.log
+deploy/*
+!deploy/healthcheck.py

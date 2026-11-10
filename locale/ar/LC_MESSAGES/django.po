@@ -1,0 +1,56 @@
+# Arabic UI strings of the TIC site frame (master plan 08). Filled at #28; every
+# msgstr here is reviewed by the office named in P-5. The .mo file is built by the
+# tests (polib) and by the image (msgfmt); it is not in git.
+msgid ""
+msgstr ""
+"Project-Id-Version: tic-website\n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=(n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5);\n"
+
+msgid "Verify a certificate"
+msgstr "التحقق من شهادة"
+
+msgid "Client area"
+msgstr "بوابة العملاء"
+
+msgid "Language"
+msgstr "اللغة"
+
+msgid "Search"
+msgstr "بحث"
+
+msgid "TIC Quality Control"
+msgstr "تي آي سي لمراقبة الجودة"
+
+msgid "Request a quote"
+msgstr "اطلب عرض سعر"
+
+msgid "Menu"
+msgstr "القائمة"
+
+msgid "Main"
+msgstr "الرئيسية"
+
+msgid "Skip to content"
+msgstr "انتقل إلى المحتوى"
+
+msgid "Talk to the office nearest you"
+msgstr "تحدّث مع أقرب مكتب إليك"
+
+msgid "WhatsApp, phone or the quote form. Answered by a named person within one working day."
+msgstr "واتساب أو الهاتف أو نموذج طلب عرض السعر. يجيبك شخص بالاسم خلال يوم عمل واحد."
+
+msgid "WhatsApp"
+msgstr "واتساب"
+
+msgid "Call us"
+msgstr "اتصل بنا"
+
+msgid "Home"
+msgstr "الرئيسية"
+
+msgid "Page not found"
+msgstr "الصفحة غير موجودة"

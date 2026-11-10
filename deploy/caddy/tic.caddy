@@ -1,0 +1,31 @@
+# TIC production site (master plan 13). Copied to
+# /srv/platform/caddy/sites/tic-prod.caddy AT LAUNCH, replacing
+# tic-coming-soon.caddy (same hosts; never install both files together).
+www.ticqc.com {
+	import cloudflare_tls ticqc.com
+	import headers_public
+	redir https://ticqc.com{uri} permanent
+}
+
+ticqc.com {
+	import cloudflare_tls ticqc.com
+	import umami_proxy
+	@admin path /admin/* /django-admin/*
+	handle @admin {
+		import headers_admin
+		reverse_proxy tic-prod-web:8000 {
+			lb_try_duration 15s
+		}
+	}
+	handle /static/* {
+		import headers_public
+		encode zstd gzip
+		reverse_proxy tic-prod-web:8000 {
+			lb_try_duration 15s
+		}
+	}
+	handle {
+		import headers_public
+		import django_app tic-prod-web:8000 /srv/stacks/tic/prod/media
+	}
+}

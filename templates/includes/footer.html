@@ -1,0 +1,23 @@
+{% load i18n static wagtailcore_tags zeneon tic %}{% site_nav as nav %}{# Footer (brand book 19; design Footer.dc.html): dark band with the tile pattern, the logo on a white plate, link columns from the live site tree, the marks we may show with their numbers, the countries line, and the tagline band as the last element on every page. Link columns fill up as the sections arrive (gates 1 to 3). #}
+<footer class="foot band">
+  <div class="wrap foot__in">
+    <div class="foot__brand">
+      <div class="foot__plate"><img src="{% static 'img/logo/tic-logo-primary.png' %}" alt="{% translate 'TIC — Testing, Inspection, Certification' %}" width="1200" height="812"></div>
+      <p class="foot__small">{{ settings.zeneon_core.SiteSettings.organisation_name|default:"TIC Quality Control L.L.C." }}<br>{% translate "Office 2101, Clover Bay Tower" %}<br>{% translate "Business Bay, Dubai, United Arab Emirates" %}{% if settings.zeneon_core.SiteSettings.main_phone %}<br><bdi>{{ settings.zeneon_core.SiteSettings.main_phone }}</bdi>{% endif %}</p>
+    </div>
+    {% if nav %}<div class="foot__col"><h4>{% translate "Site" %}</h4>{% for item in nav %}<a href="{% pageurl item %}">{{ item.title }}</a>{% endfor %}</div>{% endif %}
+    <div class="foot__col"><h4>{% translate "Trust" %}</h4>
+      <a href="{% locale_home_url %}verify/">{% translate "Verify a certificate" %}</a>
+      {% for item in nav %}{% if item.slug == "about" %}{% for child in item.get_children.live.public.in_menu %}<a href="{% pageurl child %}">{{ child.title }}</a>{% endfor %}{% endif %}{% endfor %}
+    </div>
+  </div>
+  <div class="wrap foot__bottom">
+    <div class="marks">
+      <div class="mark"><b>ANAB</b><span>ISO/IEC 17020 · AI-3314</span></div>
+      <div class="mark"><b>GOEIC</b><span>{% translate "Register record 73" %}</span></div>
+      <div class="mark"><b>TIC Council</b><span>{% translate "Full member" %}</span></div>
+    </div>
+    <p class="foot__line">{% translate "Offices in UAE, Iraq, Jordan, Saudi Arabia, Egypt, India, Pakistan, China, Sri Lanka, Thailand, Malaysia and Brazil" %} · © {% now "Y" %} {{ settings.zeneon_core.SiteSettings.organisation_name|default:"TIC Quality Control L.L.C." }}</p>
+  </div>
+  <img class="foot__tagline" src="{% static 'img/logo/tic-tagline-bar.png' %}" alt="{% translate 'TIC — Testing | Inspection | Certification' %}" width="1178" height="96">
+</footer>

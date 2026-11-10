@@ -1,0 +1,75 @@
+# Local stack: Postgres 16 and the site from deploy/Dockerfile (ticket #3).
+# From the repo root:
+#
+#   GH_TOKEN=$(gh auth token) docker compose -f deploy/compose.dev.yaml up --build
+#
+# then open http://localhost:8000/ (empty home) and http://localhost:8000/admin/.
+# Make an admin user once:
+#
+#   docker compose -f deploy/compose.dev.yaml exec web python manage.py createsuperuser
+#
+# GH_TOKEN reads the private zeneon-cms repo during the build (build secret, never
+# stored in the image). "web" runs the development settings (DEBUG, plain HTTP), so the
+# admin works on localhost. Only the database port is published for a venv runserver
+# (127.0.0.1:5435; other local Postgres use 5432-5434). No real secret is in this file.
+name: tic-dev
+
+x-db-env: &db-env
+  POSTGRES_DB: tic
+  POSTGRES_USER: tic
+  POSTGRES_PASSWORD: tic-local-only  # local only, never a real secret
+
+services:
+  db:
+    # postgres:16-bookworm, same digest as deploy/compose.yaml and MLP
+    image: postgres:16-bookworm@sha256:0ea6700a3b4f0ae6ce746519073558aed4d88a79d8d07622a9a644946c7319c4
+    environment: *db-env
+    ports:
+      - "127.0.0.1:5435:5432"
+    volumes:
+      - tic-dev-pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  web:
+    build:
+      context: ..
+      dockerfile: deploy/Dockerfile
+      secrets:
+        - gh_token
+    image: tic-website:dev
+    environment:
+      DJANGO_ENV: development
+      DATABASE_URL: postgres://tic:tic-local-only@db:5432/tic
+      ALLOWED_HOSTS: localhost,127.0.0.1
+      WAGTAILADMIN_BASE_URL: http://localhost:8000
+    # Fresh database: migrate (creates the empty English home), the Arabic home
+    # translation, the seed, then the dev server (serves static files with DEBUG on).
+    command:
+      - sh
+      - -c
+      - >-
+        python manage.py migrate --noinput
+        && python manage.py zeneon_setup_locales --title "ar=تي آي سي لمراقبة الجودة"
+        && python manage.py seed_site
+        && python manage.py runserver 0.0.0.0:8000
+    ports:
+      - "127.0.0.1:8000:8000"
+    volumes:
+      - tic-dev-media:/app/media
+      - tic-dev-private:/app/private
+    depends_on:
+      db:
+        condition: service_healthy
+
+secrets:
+  gh_token:
+    environment: GH_TOKEN
+
+volumes:
+  tic-dev-pgdata:
+  tic-dev-media:
+  tic-dev-private:

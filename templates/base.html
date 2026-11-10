@@ -1,0 +1,30 @@
+{% load i18n static wagtailcore_tags zeneon zeneon_seo %}<!doctype html>
+{% get_current_language as LANGUAGE_CODE %}{% get_current_language_bidi as LANGUAGE_BIDI %}
+<html lang="{{ LANGUAGE_CODE }}" dir="{{ LANGUAGE_BIDI|yesno:'rtl,ltr' }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {# Head tags, hreflang, JSON-LD and the Umami tag from the core's seo app. #}
+  <title>{% block title %}{% seo_title suffix="TIC Quality Control" %}{% endblock %}</title>
+  {% block meta %}{% seo_head %}{% endblock %}
+  {% block structured_data %}{% seo_structured_data %}{% endblock %}
+  {# Brand faces, self-hosted (master plan 08, 12): never Google Fonts. #}
+  {% if LANGUAGE_BIDI %}<link rel="preload" href="{% static 'fonts/cairo-arabic.woff2' %}" as="font" type="font/woff2" crossorigin>{% else %}<link rel="preload" href="{% static 'fonts/saira-latin.woff2' %}" as="font" type="font/woff2" crossorigin><link rel="preload" href="{% static 'fonts/open-sans-latin.woff2' %}" as="font" type="font/woff2" crossorigin>{% endif %}
+  <link rel="stylesheet" href="{% static 'css/fonts.css' %}">
+  <link rel="stylesheet" href="{% static 'css/tokens.css' %}">
+  <link rel="stylesheet" href="{% static 'css/site.css' %}">
+  <link rel="icon" href="{% static 'img/logo/favicon.svg' %}" type="image/svg+xml">
+  <meta name="theme-color" content="#111111">
+  {% block analytics %}{% umami_tag %}{% endblock %}
+  {% block head %}{% endblock %}
+</head>
+<body class="{% block body_class %}{% endblock %}">
+  <a class="skip-link" href="#main">{% translate "Skip to content" %}</a>
+  {% block header %}{% include "includes/header.html" %}{% endblock %}
+  <main class="site-main" id="main" tabindex="-1">
+    {% block content %}{% endblock %}
+  </main>
+  {% block footer %}{% include "includes/footer.html" %}{% endblock %}
+  {% block body_end %}{% endblock %}
+</body>
+</html>

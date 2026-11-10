@@ -1,0 +1,75 @@
+# English page copy (docs/design/content/English.md). Shape shared with ar.yaml.
+home:
+  title: "TIC Quality Control"
+  seo_title: "TIC Quality Control — Testing, inspection and certification"
+  search_description: "Independent testing, inspection and certification from offices in 12 countries. Certificates of Conformity for Iraq, Egypt, Botswana and Libya. Every report can be checked."
+  hero_eyebrow: "Testing · Inspection · Certification"
+  hero_heading: "Independent proof, wherever your cargo goes."
+  hero_sentence: "We inspect, test and certify goods for exporters, importers and governments from offices in 12 countries — and every report we issue can be checked."
+  hero_caption: "Umm Qasr · Discharge survey"
+  sections:
+    - type: proof_strip
+      value:
+        items:
+          - {body: "ANAB", line_1: "ISO/IEC 17020 · Type A inspection body", line_2: "Certificate AI-3314 · valid to Oct 2028", link_label: "View register", link_url: "https://anab.ansi.org/"}
+          - {body: "GOEIC", line_1: "Egypt pre-shipment inspection register", line_2: "Record 73", link_label: "View register", link_url: "https://www.goeic.gov.eg/"}
+          - {body: "COSQC", line_1: "Iraq Certificate of Conformity program", line_2: "Appointed inspection body · 2024", link_label: "View appointment", link_url: "https://cosqc.gov.iq/"}
+          - {body: "TIC Council", line_1: "Full member", line_2: "TIC Quality Control UAE", link_label: "View directory", link_url: "https://www.tic-council.org/"}
+    - type: cards
+      value:
+        heading: "What do you need?"
+        link_label: "All services"
+        cards:
+          - {caption: "Inspection", title: "Inspection", text: "Pre-shipment, loading and discharge, container loading, marine and cargo surveys, vehicles, GAFTA."}
+          - {caption: "Testing", title: "Testing", text: "Food and agricultural, consumer products, oil and gas, minerals and metals — through named partner laboratories."}
+          - {caption: "Certification", title: "Certification", text: "Product conformity, halal and scheme certification for the markets you sell into."}
+          - {caption: "Programs", title: "Government & Trade Programs", text: "Certificates of Conformity and Inspection for Iraq, the Kurdistan Region, Egypt, Botswana and Libya."}
+          - {caption: "Training", title: "Training", text: "Courses for exporters, inspectors and quality teams, by our offices and online."}
+          - {caption: "Audits", title: "Audits", text: "Factory and supplier audits before you commit to a shipment or a contract."}
+    - type: dark_band
+      value:
+        heading: "Why TIC"
+        text: "Impartiality is the product. We are a Type A inspection body — fully independent of the parties we inspect for — and every certificate we issue carries a number you can check in a public register."
+        link_label: "Our accreditations and approvals"
+        figures:
+          - {value: "2020", label: "Founded in Dubai", owner: "Proposal 01 §5.6 (to be confirmed)"}
+          - {value: "12", label: "Countries with a staffed office", owner: "Proposal 01 §5.2, Q-26"}
+          - {value: "5", label: "Government & trade programs", owner: "Proposal 01 §5.5"}
+          - {value: "17020", label: "ISO/IEC accredited since [year]", owner: "ANAB register, AI-3314", highlight: true}
+    - type: link_list
+      value:
+        heading: "Who do you serve?"
+        text: "A second door for the visitor who thinks “I am a food importer — what do you do for people like me?” Both menus lead to the same service pages."
+        links:
+          - {label: "Agriculture & Food"}
+          - {label: "Oil & Gas and Petrochemicals"}
+          - {label: "Marine & Shipping"}
+          - {label: "Consumer Products & Retail"}
+          - {label: "Vehicles & Automotive"}
+          - {label: "Industrial Equipment & Manufacturing"}
+          - {label: "Construction & Infrastructure"}
+          - {label: "Government & Public Sector"}
+    - type: programs
+      value:
+        heading: "Export programs"
+        link_label: "All programs and regulatory updates"
+        featured: {caption: "Iraq", eyebrow: "Iraq · COSQC / ICIGI", title: "Certificate of Conformity", meta: "Last updated: [date] · Baghdad office"}
+        cards:
+          - {title: "Kurdistan Region vehicle CoC", meta: "Last updated: [date]"}
+          - {title: "Egypt · GOEIC", meta: "Last updated: [date]"}
+          - {title: "Botswana · BOBS", meta: "Last updated: [date]"}
+          - {title: "Libya · Certificate of Inspection", meta: "Last updated: [date]"}
+    - type: offices
+      value:
+        heading: "Where we are"
+        text: "Head office in Dubai. Each office page lists its local phone, WhatsApp, staffed hours and the programs it sells."
+        caption: "14 offices · 12 countries"
+        link_label: "All offices, phones and WhatsApp"
+    - type: news
+      value:
+        heading: "Regulatory updates and news"
+        link_label: "All updates"
+    - type: contact_band
+      value:
+        heading: "Talk to the office nearest you"
+        text: "WhatsApp, phone or the quote form. Answered by a named person within one working day; hours published on every office page."

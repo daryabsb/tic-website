@@ -1,0 +1,32 @@
+# Runtime dependencies. Exact pins live in base.txt, dev.txt, prod.txt.
+# Lock for Linux / Python 3.12 (the image) from any machine, with uv:
+#
+#   bash scripts/lock.sh            # keeps current pins, adds what is new
+#   bash scripts/lock.sh --upgrade  # newest versions inside the ranges
+#
+# Same options as the Zeneonix site (--allow-unsafe --no-emit-index-url --strip-extras).
+# The script resolves the private core from its local clone at the pinned SHA
+# (../zeneon-cms), then writes the ssh URL below back into the locks.
+
+# The CMS core, pinned by commit SHA (D2): the tip of main on 2026-11-10. Core work for
+# TIC (#14 hCaptcha, #15 routing, #16 review-by) lands on a branch and moves this pin.
+# No "mcp" extra: TIC runs no MCP container in V1 (master plan 16).
+zeneon-cms @ git+ssh://git@github.com/daryabsb/zeneon-cms.git@74b95b952556ee8372efcec138355b49adf0614b
+
+# Series pins. The core declares compatible ranges; these keep the site on the LTS
+# series it was tested with (same as the Zeneonix site).
+Django>=5.2,<5.3
+wagtail>=7.4,<7.5
+wagtail-localize>=1.14.5,<1.15
+psycopg[binary]>=3.2,<3.3
+whitenoise>=6,<7
+django-anymail[resend]
+django-split-settings>=1.3,<1.4
+python-decouple==3.8
+django-ratelimit>=4.1,<4.2
+django-axes
+Willow[heif]
+requests
+python-dateutil
+# Seed files (seed/*.yaml), read by manage.py seed_site.
+PyYAML>=6,<7

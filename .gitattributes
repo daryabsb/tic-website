@@ -1,0 +1,5 @@
+# Shell scripts and server config run on Linux: keep LF on every checkout.
+*.sh text eol=lf
+*.caddy text eol=lf
+deploy/Dockerfile text eol=lf
+*.woff2 binary
