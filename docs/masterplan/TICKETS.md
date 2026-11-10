@@ -1,6 +1,6 @@
 # Tickets — the first Wayfinder map
 
-Paste into GitHub as issues; #1 is the map. One ticket per session. Each ticket names its gate, what it blocks, and how it is demonstrated. Decisions taken on a ticket go to `DECISIONS.md` the same day.
+Created on GitHub Nov 10, 2026: the map is issue #2, each row is an issue titled "T<n> <name>" (D23). One ticket per session. Each ticket names its gate, what it blocks, and how it is demonstrated. Decisions taken on a ticket go to `DECISIONS.md` the same day.
 
 ## Map (#1)
 
@@ -10,7 +10,7 @@ Destination: ticqc.com live on the new stack, five gates passed. Open, unblocked
 
 | # | Ticket | Blocks | Done when |
 | --- | --- | --- | --- |
-| 2 | **Grilling session on the plan** — Wayfinder on `docs/masterplan/`; every correction written as a D-row | all | DECISIONS.md updated; plan parts carry "Corrections" notes |
+| 2 | ✅ (Nov 10, closed as done: D19–D22) **Grilling session on the plan** — Wayfinder on `docs/masterplan/`; every correction written as a D-row | all | DECISIONS.md updated; plan parts carry "Corrections" notes |
 | 3 | ✅ (Nov 10) **Client project from the Zeneonix layout** — `tic/settings`, `apps/pages`, `templates/base.html`, `requirements/` with the core pinned by SHA, `deploy/`, `scripts/lock.sh`, `conftest.py`, pytest green locally | 4–8 | `manage.py runserver` shows an empty home; `pytest` green |
 | 4 | ✅ (Nov 10) **Fonts and CSS** — build Saira, Open Sans, Cairo self-hosted (split by script) with `scripts/build_fonts.py`; `static/css/site.css` from the drop's shared styles; brand tokens from `tic-colours.css` | 5 | No external font request; tokens test green |
 | 5 | ✅ (Nov 10) **Shared parts as includes** — header (with language `<select>`), footer, page head (two variants), CTA band from the four drop files; logo files in `static/img/logo/` | 9+ | Rendered on the empty home in EN and AR shells |
