@@ -21,7 +21,9 @@ round closed with no objections (10 Nov 2026); the build runs on its working ass
 # copy the checked-out branch and build (GH_TOKEN reads zeneon-cms; build secret only)
 git archive HEAD | ssh stms-data 'rm -rf ~/tic/dev && mkdir -p ~/tic/dev && tar -x -C ~/tic/dev'
 gh auth token | ssh stms-data 'cd ~/tic/dev && GH_TOKEN=$(cat) docker compose -p tic-dev -f deploy/compose.dev.yaml -f ~/tic/override.yaml up -d --build'
-# tests, ruff (source mounted: the image has no tests/)
+# the full CI gate (D25), from any PC with the ssh alias; prints == GREEN or == RED
+bash scripts/ci.sh
+# only the tests, ruff (source mounted: the image has no tests/)
 ssh stms-data 'cd ~/tic/dev && GH_TOKEN=x docker compose -p tic-dev -f deploy/compose.dev.yaml -f ~/tic/override.yaml run --rm -T -u root -v $HOME/tic/dev:/src -w /src -e DJANGO_ENV=test web sh -c "grep -v ^zeneon-cms requirements/dev.txt > /tmp/d.txt && pip install -q --no-deps -r /tmp/d.txt && pytest -q -p no:cacheprovider && ruff check . && ruff format --check ."'
 # look at it in the browser: http://localhost:8000/en/
 ssh -N -L 8000:127.0.0.1:8000 stms-data

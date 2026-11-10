@@ -33,10 +33,10 @@
 # with a read:packages token (`docker login ghcr.io`, #11).
 name: deploy
 
+# D25: no GitHub-hosted runs (cost). The gate is `bash scripts/ci.sh` on stms-data.
+# Manual trigger only; restore the triggers when a self-hosted runner exists.
 on:
-  push:
-    branches: [main]
-    tags: ["v*"]
+  workflow_dispatch:
 
 permissions: {}
 

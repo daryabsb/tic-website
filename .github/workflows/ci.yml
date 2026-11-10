@@ -3,10 +3,10 @@
 # No Lighthouse/axe/lychee step in V1 (D10).
 name: ci
 
+# D25: no GitHub-hosted runs (cost). The gate is `bash scripts/ci.sh` on stms-data.
+# Manual trigger only; restore the triggers when a self-hosted runner exists.
 on:
-  pull_request:
-  push:
-    branches: [main]
+  workflow_dispatch:
 
 permissions:
   contents: read
