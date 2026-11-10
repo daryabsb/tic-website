@@ -4,7 +4,9 @@
 site_settings:
   organisation_name: "TIC Quality Control L.L.C."
   short_name: "TIC Quality Control"
-  founding_year: 2020          # P-16: "to be confirmed" in the proposal
+  # founding_year: left blank. Proposal 01 §5.6 says "founded in 2020 ... please confirm";
+  # the core writes it into the JSON-LD foundingDate of every page, so it stays empty
+  # until a director confirms it (CLAUDE.md "nothing invented").
   main_phone: ""               # P-17: head office number
   main_email: "info@ticqc.com"
   whatsapp_number: ""          # P-7: head office WhatsApp line

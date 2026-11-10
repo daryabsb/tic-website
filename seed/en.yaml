@@ -32,7 +32,7 @@ home:
         text: "Impartiality is the product. We are a Type A inspection body — fully independent of the parties we inspect for — and every certificate we issue carries a number you can check in a public register."
         link_label: "Our accreditations and approvals"
         figures:
-          - {value: "2020", label: "Founded in Dubai", owner: "Proposal 01 §5.6 (to be confirmed)"}
+          - {value: "[2020]", label: "Founded in Dubai", owner: "Proposal 01 §5.6 (to be confirmed)"}
           - {value: "12", label: "Countries with a staffed office", owner: "Proposal 01 §5.2, Q-26"}
           - {value: "5", label: "Government & trade programs", owner: "Proposal 01 §5.5"}
           - {value: "17020", label: "ISO/IEC accredited since [year]", owner: "ANAB register, AI-3314", highlight: true}
