@@ -3,7 +3,8 @@
 Oct 25, 2026 · Darya Ibrahim. Sixteen numbered parts, in the STMS / Zeneonix style. These files are the repo copy for the engineer and for the Wayfinder grilling session; the content proposal in `../proposal/` is the master for what every page contains, and this plan says how it is built.
 
 - [Decisions](DECISIONS.md), read first; wins over the parts
-- [Tickets for the Wayfinder map](TICKETS.md), the first map; becomes issue #1
+- [Tickets for the Wayfinder map](TICKETS.md), the first map; becomes issue #2 (PR #1 took the first number)
+- [Engineer kickoff](KICKOFF.md), the first message of the engineer's session
 - [00 Overview and principles](00-overview.md)
 - [01 Architecture at a glance](01-architecture.md)
 - [02 Stack and repository layout](02-stack-and-repo.md)

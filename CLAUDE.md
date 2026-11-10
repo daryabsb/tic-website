@@ -6,7 +6,7 @@ TIC Quality Control company site on the zeneon-cms core. Plan: `docs/masterplan/
 
 When Darya says **"start tic"** (or just "start" in this folder):
 
-1. Invoke the skill `mattpocock-skills:wayfinder` with the map issue #1 in this repo in "work through the map" mode. Until #1 exists, use `docs/masterplan/TICKETS.md` as the map and create #1 from it first.
+1. Invoke the skill `mattpocock-skills:wayfinder` with the map issue in this repo in "work through the map" mode. The map issue is **#2** (PR #1 took the first number). Until #2 exists, create it from `docs/masterplan/TICKETS.md` first (one issue per ticket row, the map issue lists them with their numbers).
 2. Load the map, list the open unblocked tickets in one short table, take the first one unless Darya names one, claim it, work it.
 3. "status" = show the map's open tickets and decisions, do nothing else. "end" = write the resolution on the ticket, close it, update the map and DECISIONS.md, commit, push.
 
