@@ -64,6 +64,8 @@ fi
 seed_out="$(dc run --rm --no-deps web python manage.py seed_site 2>&1)" ||
   { echo "$seed_out" | tail -20; exit 1; }
 echo "$seed_out" | grep -E "^(seed_site|redirect|industry card|[a-z]{2}:)" || true
+# D31: rebuild the search index (a page type may have new search fields).
+dc run --rm --no-deps web python manage.py update_index >/dev/null
 
 step "4. start web and caddy"
 dc up -d --wait --remove-orphans web caddy || { dc logs --tail 40 web caddy; exit 1; }

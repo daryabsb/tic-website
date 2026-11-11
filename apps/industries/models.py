@@ -19,6 +19,7 @@ from wagtail import blocks
 from wagtail.admin.panels import FieldPanel, MultiFieldPanel
 from wagtail.fields import StreamField
 from wagtail.models import Page
+from wagtail.search import index
 from zeneon_cms.core.text import ScriptNormalisationMixin
 
 from apps.pages.blocks import FigureBlock
@@ -64,6 +65,8 @@ class IndustryIndexPage(ScriptNormalisationMixin, _HeaderFields, Page):  # noqa:
         _header_panel(),
         FieldPanel("heading"),
     ]
+
+    search_fields = [*Page.search_fields, index.SearchField("intro")]
 
     class Meta:
         verbose_name = _("industry index")
@@ -149,6 +152,14 @@ class IndustryPage(ScriptNormalisationMixin, _HeaderFields, Page):  # noqa: DJ00
         MultiFieldPanel(
             [FieldPanel("where_heading"), FieldPanel("where_points")], heading=_("Where")
         ),
+    ]
+
+    search_fields = [
+        *Page.search_fields,
+        index.SearchField("intro"),
+        index.SearchField("summary"),
+        index.SearchField("why_text"),
+        index.SearchField("where_points"),
     ]
 
     class Meta:

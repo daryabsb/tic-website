@@ -6,6 +6,8 @@ from wagtail import urls as wagtail_urls
 from wagtail.admin import urls as wagtailadmin_urls
 from wagtail.documents import urls as wagtaildocs_urls
 
+from apps.pages.search import search
+
 urlpatterns = [
     # / (301 -> /en/) and /healthz/ from the CMS core (zeneon_cms.core)
     path("", include("zeneon_cms.core.urls")),
@@ -29,6 +31,8 @@ if settings.DEBUG:
 urlpatterns += i18n_patterns(
     # /<lang>/request/: the quote form (master plan 07, #17)
     path("request/", include("zeneon_cms.requests.form_urls")),
+    # /<lang>/search/: pages, documents, questions (T12, D31)
+    path("search/", search, name="search"),
     # /<lang>/verify/: the certificate check arrives with #19 (apps.verify)
     path("", include(wagtail_urls)),
     prefix_default_language=True,
