@@ -32,7 +32,7 @@ Destination: ticqc.com live on the new stack, five gates passed. Open, unblocked
 
 | # | Ticket | Blocks | Done when |
 | --- | --- | --- | --- |
-| 14 | **Core: hCaptcha provider** (`zeneon-cms` branch) — spam provider setting with Turnstile and hCaptcha; pinned here | 17, 19 | Core tests green; pin moved |
+| 14 | ✅ (Nov 11, D33: core PR #23, pin `e13a20a`) **Core: hCaptcha provider** (`zeneon-cms` branch) — spam provider setting with Turnstile and hCaptcha; pinned here | 17, 19 | Core tests green; pin moved |
 | 15 | **Core: routing hook** — `RoutingRule` and `requests.routing` resolve a recipient from answer values; pinned here | 17 | Core tests green; pin moved |
 | 16 | **Core: review-by mixin** — `ReviewByMixin`, `send_review_reminders`, "past review" report; pinned here | 18, 24 | Core tests green; pin moved |
 | 17 | **Quote form, routing, emails** — schemas `quote`, `program_request`; routing seed; office alert and client auto-reply (branded HTML + text); sent screen with office, hours, code, WhatsApp link | 1 | A quote from the Iraq page reaches the Baghdad address; auto-reply received; JS-off path works |

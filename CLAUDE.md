@@ -20,6 +20,6 @@ When Darya says **"start tic"** (or just "start" in this folder):
 - Plumbing that is not TIC-specific (captcha provider, routing hook, review-by mixin) is built in `E:/api/zeneon-cms` on a branch and pinned here by SHA (rule 6). Same deploy layout as `E:/api/zeneonix-website` and `E:/api/mlp-website`; layout only.
 - The logo is never redrawn or recoloured: only the files in `docs/design/guideline/assets/logo/`. One red (#EB232B) as accent, under 10 % of any page. Square corners, no shadows, no gradients but the supplied tagline band.
 - Company name: "TIC Quality Control", then "TIC". Never "TICQC". "Program", not "programme". "Kurdistan Region of Iraq".
-- Nothing invented: a fact the proposal marks "to be confirmed" stays a bracketed placeholder in seed and templates until a director supplies it. No stock photos; a grey plate with a caption until a real photo arrives.
+- Nothing invented: a fact the proposal marks "to be confirmed" stays a bracketed placeholder in seed and templates until a director supplies it. Photos: the old site's images may be reused as they are (D32, files in `~/tic/old-site/` on stms-data); a grey plate with a caption only where no image fits.
 - Exporter-facing pages must load from mainland China: no Google Fonts, Tag Manager, Analytics, Maps or reCAPTCHA; fonts and scripts self-hosted; hCaptcha, not Turnstile.
 - Report in ASD-STE100 Simplified Technical English, short.

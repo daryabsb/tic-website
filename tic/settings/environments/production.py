@@ -21,9 +21,9 @@ WAGTAILADMIN_BASE_URL = config("WAGTAILADMIN_BASE_URL")
 CSRF_TRUSTED_ORIGINS = csrf_trusted_origins(ALLOWED_HOSTS)
 
 # The real spam-check widget keys; never the test keys outside development and tests.
-# Turnstile until the core's hCaptcha provider lands (#14, D8); the names stay.
-ZENEON_CMS["contact"]["turnstile_site_key"] = config("TURNSTILE_SITE_KEY")  # noqa: F405
-ZENEON_CMS["contact"]["turnstile_secret_key"] = config("TURNSTILE_SECRET_KEY")  # noqa: F405
+# hCaptcha (D8, D33).
+ZENEON_CMS["contact"]["hcaptcha_site_key"] = config("HCAPTCHA_SITE_KEY")  # noqa: F405
+ZENEON_CMS["contact"]["hcaptcha_secret_key"] = config("HCAPTCHA_SECRET_KEY")  # noqa: F405
 
 STORAGES = site_storages(manifest=True)
 

@@ -8,17 +8,18 @@ from django.utils.translation import gettext_lazy as _
 
 from tic.settings.components import config
 
-# The core's spam check is Cloudflare Turnstile. TIC needs hCaptcha (D8: Turnstile is not
-# available in mainland China); that is core ticket #14. Until it lands, development and
-# tests use Turnstile's always-pass test keys and staging reads real keys from .env.
-TURNSTILE_TEST_SITE_KEY = "1x00000000000000000000AA"
-TURNSTILE_TEST_SECRET_KEY = "1x0000000000000000000000000000000AA"  # noqa: S105 - public test key
+# The spam check is hCaptcha, not Cloudflare Turnstile: exporter pages must load from
+# mainland China (D8, D33). Development and tests use hCaptcha's always-pass test keys;
+# production and staging read keys from .env.
+HCAPTCHA_TEST_SITE_KEY = "10000000-ffff-ffff-ffff-000000000001"
+HCAPTCHA_TEST_SECRET_KEY = "0x0000000000000000000000000000000000000000"  # noqa: S105 - public test key
 
 ZENEON_CMS = {
     "contact": {
         "recipient_fallback": "info@ticqc.com",
-        "turnstile_site_key": config("TURNSTILE_SITE_KEY", default=TURNSTILE_TEST_SITE_KEY),
-        "turnstile_secret_key": config("TURNSTILE_SECRET_KEY", default=TURNSTILE_TEST_SECRET_KEY),
+        "spam_provider": "hcaptcha",
+        "hcaptcha_site_key": config("HCAPTCHA_SITE_KEY", default=HCAPTCHA_TEST_SITE_KEY),
+        "hcaptcha_secret_key": config("HCAPTCHA_SECRET_KEY", default=HCAPTCHA_TEST_SECRET_KEY),
     },
     # Request intake (master plan 07). Codes "TIC-2026-0001". Country and service group
     # are the structured answers routing acts on (#15, #17).
