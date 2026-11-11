@@ -5,8 +5,8 @@
 #   deploy-staging-remote.sh <sha>
 #
 # First run only: writes ~/tic/staging/.env with generated secrets, a basic-auth
-# password in ~/tic/staging/basic-auth.txt, the Arabic locale and the seed.
-# Every run: build tic-website:<sha>, migrate, start, wait for health, install the
+# password in ~/tic/staging/basic-auth.txt, the Arabic locale.
+# Every run: build tic-website:<sha>, migrate, seed (fills blanks only, D30), start, wait for health, install the
 # weekly backup timer, keep the two newest images.
 set -euo pipefail
 SHA="${1:?usage: deploy-staging-remote.sh <sha>}"
@@ -55,11 +55,13 @@ step "3. database and migrations"
 dc up -d --wait db
 dc run --rm --no-deps web python manage.py migrate --noinput
 if [ ! -f "$S/.seeded" ]; then
-  step "   first deploy: Arabic locale and seed (seed_site fills blanks only)"
+  step "   first deploy: Arabic locale"
   dc run --rm --no-deps web python manage.py zeneon_setup_locales --title "ar=تي آي سي لمراقبة الجودة"
-  dc run --rm --no-deps web python manage.py seed_site
   touch "$S/.seeded"
 fi
+# D30: the seed runs on every deploy. It fills blanks only, so an editor's text is
+# kept and new page types reach staging with their ticket. Summary lines only.
+dc run --rm --no-deps web python manage.py seed_site 2>&1 | grep -E "^(seed_site|redirect|industry card|[a-z]{2}:)" || true
 
 step "4. start web and caddy"
 dc up -d --wait --remove-orphans web caddy || { dc logs --tail 40 web caddy; exit 1; }
