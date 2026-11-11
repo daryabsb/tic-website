@@ -61,7 +61,8 @@ if [ ! -f "$S/.seeded" ]; then
 fi
 # D30: the seed runs on every deploy. It fills blanks only, so an editor's text is
 # kept and new page types reach staging with their ticket. Summary lines only.
-seed_out="$(dc run --rm --no-deps web python manage.py seed_site 2>&1)" \n  || { echo "$seed_out" | tail -20; exit 1; }
+seed_out="$(dc run --rm --no-deps web python manage.py seed_site 2>&1)" ||
+  { echo "$seed_out" | tail -20; exit 1; }
 echo "$seed_out" | grep -E "^(seed_site|redirect|industry card|[a-z]{2}:)" || true
 # D31: rebuild the search index (a page type may have new search fields).
 dc run --rm --no-deps web python manage.py update_index >/dev/null
