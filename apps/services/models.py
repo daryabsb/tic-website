@@ -19,6 +19,7 @@ from wagtail.admin.forms import WagtailAdminPageForm
 from wagtail.admin.panels import FieldPanel, MultiFieldPanel, PageChooserPanel
 from wagtail.fields import StreamField
 from wagtail.models import Page
+from wagtail.search import index
 from wagtail.snippets.models import register_snippet
 from zeneon_cms.core.text import ScriptNormalisationMixin
 
@@ -108,6 +109,7 @@ class ServiceIndexPage(ScriptNormalisationMixin, _HeaderFields, Page):  # noqa: 
     )
 
     content_panels = [*Page.content_panels, FieldPanel("intro"), _header_panel()]
+    search_fields = [*Page.search_fields, index.SearchField("intro")]
 
     class Meta:
         verbose_name = _("service index")
@@ -187,6 +189,13 @@ class ServiceGroupPage(ScriptNormalisationMixin, _HeaderFields, Page):  # noqa: 
             [FieldPanel("how_heading"), FieldPanel("how_points")],
             heading=_("How it is done"),
         ),
+    ]
+
+    search_fields = [
+        *Page.search_fields,
+        index.SearchField("intro"),
+        index.SearchField("summary"),
+        index.SearchField("how_points"),
     ]
 
     class Meta:
@@ -285,6 +294,13 @@ class ServicePage(ScriptNormalisationMixin, _HeaderFields, Page):  # noqa: DJ008
         ),
         FieldPanel("partner_lab"),
         FieldPanel("parts"),
+    ]
+
+    search_fields = [
+        *Page.search_fields,
+        index.SearchField("intro"),
+        index.SearchField("summary"),
+        index.SearchField("parts"),
     ]
 
     class Meta:
