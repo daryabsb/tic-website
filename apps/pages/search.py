@@ -104,11 +104,7 @@ def page_results(query: str, locale) -> list[Result]:
     for page in found[:LIMIT]:
         page = page.specific
         kind = KIND_BY_APP.get(page._meta.app_label, "pages")
-        text = (
-            page.search_description
-            or getattr(page, "intro", "")
-            or getattr(page, "summary", "")
-        )
+        text = page.search_description or getattr(page, "intro", "") or getattr(page, "summary", "")
         results.append(Result(kind, page.title, page.url, _snippet(text), _trail(page)))
     return results
 

@@ -34,7 +34,7 @@ def test_a_service_page_is_found_with_its_section(seeded_home, client):
 
 
 def test_text_in_the_page_body_is_found(seeded_home, client):
-    """"Superintend" is only in the Agriculture & Food intro, not in a title."""
+    """The word "superintend" is only in the Agriculture & Food intro, not in a title."""
     html = _html(client, q="superintend")
 
     assert 'href="/en/industries/agriculture-and-food/"' in html
