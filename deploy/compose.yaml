@@ -1,6 +1,6 @@
 # TIC stack, production (master plan 13; ticket #7).
 # Copied to /srv/stacks/tic/prod/compose.yaml. bin/deploy runs it as project
-# "tic-prod" and exports IMAGE_TAG (a git sha). Staging: compose.staging.yaml.
+# "tic-prod" and exports IMAGE_TAG (a git sha). Staging: deploy/staging/ (D27).
 #
 # Platform contract (server-platform README):
 # - "web" joins the shared "edge" network (alias tic-prod-web, used by Caddy); "db" is

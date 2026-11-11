@@ -2,6 +2,8 @@
 
 # 13 Deployment and hosting
 
+> **Corrections (D24, D25, D27):** staging is not on zeneon-1. It runs on the Dubai VM stms-data at `https://staging.ticqc.ae` behind a Cloudflare tunnel, deployed by `bash scripts/deploy-staging.sh` (image built on the VM, no GHCR, no GitHub-hosted runs); weekly backup to the NAS. See `deploy/staging/` and D27. The production rows below stand until P-11.
+
 Same contract as the Zeneonix and MLP sites: platform tooling in `/srv/platform`, one shared edge Caddy, stacks under `/srv/stacks/<name>/<env>/`, images from GHCR, forced-command SSH deploys, restic backups to B2 with Healthchecks.io pings. The TIC stack adds one Caddy site file and one systemd timer set per environment.
 
 | Environment | Host | Branch | Data |
