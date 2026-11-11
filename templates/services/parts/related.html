@@ -1,0 +1,4 @@
+{% load i18n wagtailcore_tags wagtailimages_tags %}<section id="related" class="sec{% if first %} sec--first{% endif %}">
+  <span class="num">{{ num }} · {% translate "Related services" %}</span>
+  <div class="row" style="gap:16px">{% for item in value.pages %}{% if item.live %}{% with rel=item.specific %}<a class="rel" href="{% pageurl rel %}"><div class="photo">{% if rel.header_image %}{% image rel.header_image fill-440x220 as img %}<img src="{{ img.url }}" alt="" width="{{ img.width }}" height="{{ img.height }}" loading="lazy">{% endif %}</div><b>{{ rel.title }}</b></a>{% endwith %}{% endif %}{% endfor %}</div>
+</section>

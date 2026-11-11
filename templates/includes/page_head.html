@@ -1,21 +1,12 @@
-{% load i18n wagtailcore_tags wagtailimages_tags zeneon %}{# Page header (design PageHead.dc.html). With an image: the photo variant (420 px photo, white plate with a red top rule). Without: the light band. Breadcrumb from the core. Context: page, image, image_alt, caption, intro. #}
+{% load i18n wagtailcore_tags wagtailimages_tags zeneon %}{# Page header (design PageHead.dc.html). With a photo or a caption: the photo variant (420 px photo, white plate with a red top rule); with a caption and no photo yet, the grey plate keeps its caption (no stock photos). Without either: the light band. Breadcrumb from the core. Context: page, image, image_alt, caption, intro; optional buttons: primary_label + primary_href, secondary_label + secondary_href. #}
 {% breadcrumb_trail page as crumbs %}
-{% if image %}
-<div class="photo photo--dark page-head">
-  {% image image width-2000 as photo %}<img src="{{ photo.url }}" alt="{{ image_alt }}" width="{{ photo.width }}" height="{{ photo.height }}">
+<div class="{% if image or caption %}photo photo--dark page-head{% else %}page-head page-head--band{% endif %}">
+  {% if image %}{% image image width-2000 as photo %}<img src="{{ photo.url }}" alt="{{ image_alt }}" width="{{ photo.width }}" height="{{ photo.height }}">{% endif %}
   <div class="wrap page-head__wrap"><div class="page-head__plate">
     {% if crumbs %}<nav class="crumb" aria-label="{% translate 'You are here' %}">{% for crumb in crumbs %}{% if not forloop.first %}<span aria-hidden="true">›</span>{% endif %}{% if crumb.url %}<a href="{{ crumb.url }}">{{ crumb.title }}</a>{% else %}<span>{{ crumb.title }}</span>{% endif %}{% endfor %}</nav>{% endif %}
     <h1 class="h1 h1--page">{{ page.title }}</h1>
     {% if intro %}<p class="lead">{{ intro }}</p>{% endif %}
+    {% if primary_label or secondary_label %}<div class="hero__actions">{% if primary_label %}<a class="btn" href="{{ primary_href }}">{{ primary_label }}</a>{% endif %}{% if secondary_label %}<a class="btn btn--dark" href="{{ secondary_href }}">{{ secondary_label }}</a>{% endif %}</div>{% endif %}
   </div></div>
   {% if caption %}<div class="cap cap--end">{{ caption }}</div>{% endif %}
 </div>
-{% else %}
-<div class="page-head page-head--band">
-  <div class="wrap page-head__wrap"><div class="page-head__plate">
-    {% if crumbs %}<nav class="crumb" aria-label="{% translate 'You are here' %}">{% for crumb in crumbs %}{% if not forloop.first %}<span aria-hidden="true">›</span>{% endif %}{% if crumb.url %}<a href="{{ crumb.url }}">{{ crumb.title }}</a>{% else %}<span>{{ crumb.title }}</span>{% endif %}{% endfor %}</nav>{% endif %}
-    <h1 class="h1 h1--page">{{ page.title }}</h1>
-    {% if intro %}<p class="lead">{{ intro }}</p>{% endif %}
-  </div></div>
-</div>
-{% endif %}

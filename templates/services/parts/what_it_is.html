@@ -1,0 +1,5 @@
+{% load i18n wagtailcore_tags %}<section id="what_it_is" class="sec{% if first %} sec--first{% endif %}">
+  <span class="num">{{ num }} · {% translate "What it is" %}</span>
+  {% if value.heading %}<h2 class="h2">{{ value.heading }}</h2>{% endif %}
+  <div class="rich">{{ value.text|richtext }}</div>
+</section>

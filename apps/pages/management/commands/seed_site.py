@@ -22,6 +22,7 @@ from zeneon_cms.core.locales import ensure_locales
 from zeneon_cms.core.models import SiteSettings
 
 from apps.pages.models import HomePage
+from apps.services.models import ServiceGroupPage, ServiceIndexPage, ServicePage
 
 SEED_DIR = Path(settings.BASE_DIR) / "seed"
 
@@ -92,6 +93,8 @@ class Command(BaseCommand):
         locale = Locale.objects.get(language_code=code)
         if "home" in data:
             self.seed_home(locale, data["home"])
+        if "services" in data:
+            self.seed_services(locale, data["services"], data.get("psi") or {})
 
     def seed_home(self, locale: Locale, data: dict) -> None:
         home = HomePage.objects.filter(locale=locale).first()
@@ -109,3 +112,91 @@ class Command(BaseCommand):
             revision = home.save_revision()
             revision.publish()
             self.stdout.write(f"{locale.language_code}: home page updated")
+
+    # -- services (T10) -------------------------------------------------------------
+
+    def child(self, parent, model, slug: str, title: str, *, live: bool, **fields):
+        """The child page ``slug`` of ``parent``, created when missing. Returns
+        ``(page, touchable)``: False when an editor has unpublished changes on it, so the
+        seed leaves it alone. A draft the seed created is never touched again."""
+        page = parent.get_children().filter(slug=slug).specific().first()
+        if page is not None:
+            return page, not page.has_unpublished_changes
+        page = model(title=title, slug=slug, live=live, **fields)
+        parent.add_child(instance=page)
+        revision = page.save_revision()
+        if live:
+            revision.publish()
+        self.changes += 1
+        return model.objects.get(pk=page.pk), live
+
+    def fill_page(self, page, data: dict, names, streams=()) -> None:
+        changed = [self.fill(page, name, data.get(name)) for name in names]
+        for name, value in streams:
+            if value and (self.reset or not getattr(page, name).raw_data):
+                setattr(page, name, value)
+                self.changes += 1
+                changed.append(True)
+        if any(changed):
+            page.save_revision().publish()
+
+    def seed_services(self, locale: Locale, data: dict, psi: dict) -> None:
+        home = HomePage.objects.filter(locale=locale).first()
+        if home is None:
+            return
+        index, touch = self.child(
+            home,
+            ServiceIndexPage,
+            data["slug"],
+            data["title"],
+            live=True,
+            show_in_menus=True,
+            intro=data.get("intro", ""),
+            header_caption=data.get("header_caption", ""),
+        )
+        if touch:
+            self.fill_page(index, data, ("intro", "header_caption"))
+        psi_page = None
+        for g in data.get("groups", []):
+            group, touch = self.child(
+                index,
+                ServiceGroupPage,
+                g["slug"],
+                g["title"],
+                live=True,
+                group=g["group"],
+            )
+            if touch:
+                points = [{"type": "point", "value": text} for text in g.get("how_points", [])]
+                self.fill_page(
+                    group,
+                    g,
+                    ("summary", "intro", "header_caption", "link_label", "how_heading"),
+                    streams=[("how_points", points)],
+                )
+            for s in g.get("services", []):
+                is_psi = s.get("page") == "psi"
+                fields = {k: s[k] for k in ("summary", "card_caption") if k in s}
+                page, _touch = self.child(
+                    group, ServicePage, s["slug"], s["title"], live=is_psi, **fields
+                )
+                if is_psi:
+                    psi_page = page
+        if psi_page is not None and psi:
+            self.seed_psi(home, psi_page.specific, psi)
+        self.stdout.write(f"{locale.language_code}: services checked")
+
+    def seed_psi(self, home, page, data: dict) -> None:
+        if page.has_unpublished_changes:
+            return
+        parts = []
+        for part in data.get("parts", []):
+            value = dict(part["value"])
+            if part["type"] == "related":
+                pages = home.get_descendants().filter(slug__in=value["pages"])
+                by_slug = {p.slug: p.pk for p in pages}
+                value["pages"] = [by_slug[s] for s in value["pages"] if s in by_slug]
+            parts.append({"type": part["type"], "value": value})
+        self.fill_page(
+            page, data, ("intro", "header_caption", "talk_label"), streams=[("parts", parts)]
+        )
