@@ -2,7 +2,7 @@
 {% comment %}An industry (design B-Industry-Food.dc.html): service cards, the dark "why" band with the figures that have an owner, "where we do it". The insights column joins with the news app (T25); the office links with the office pages (T20) (D29).{% endcomment %}
 {% block body_class %}page-industry{% endblock %}
 {% block content %}
-{% include "includes/page_head.html" with image=page.header_image image_alt=page.header_image_alt caption=page.header_caption intro=page.intro %}
+{% include "includes/page_head.html" with image=page.header_image image_alt=page.header_image_alt caption=page.header_caption intro=page.intro|default:page.summary %}
 {% if cards %}
 <div class="wrap stack ind-services">
   {% if page.services_heading %}<div><h2 class="h2">{{ page.services_heading }}</h2><div class="rule"></div></div>{% endif %}

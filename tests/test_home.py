@@ -59,8 +59,9 @@ def test_hero_renders_the_one_sentence_and_two_buttons(client, home):
     assert home.hero_heading in html
     assert "Request a quote" in html
     assert "Verify a certificate" in html
-    # No photo yet: the grey plate with the note, never a stock image.
-    assert "to be supplied by the office" in html
+    # No photo yet: the plain grey plate, never a stock image, and no note text on it (#48).
+    assert "hero__wrap" in html
+    assert "to be supplied by the office" not in html
 
 
 def test_seed_fills_the_home_page_and_is_idempotent(client, seeded_home):

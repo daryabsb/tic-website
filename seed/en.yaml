@@ -39,7 +39,7 @@ home:
     - type: link_list
       value:
         heading: "Who do you serve?"
-        text: "A second door for the visitor who thinks “I am a food importer — what do you do for people like me?” Both menus lead to the same service pages."
+        text: "Start from your sector: each industry page lists the services and programs that matter to it. Both menus lead to the same service pages."
         links:
           - {label: "Agriculture & Food"}
           - {label: "Oil & Gas and Petrochemicals"}
@@ -81,7 +81,7 @@ home:
 services:
   title: "Services"
   slug: "services"
-  intro: "Seven groups of services, named the way the international companies name theirs so you recognise them. Every service page follows the same recipe: what it is, who needs it, how it works, what you give us, what you get, standards, where we do it, questions and a named contact."
+  intro: "Seven groups of services. Every service page answers the same questions: what it is, who needs it, how it works, what you give us, what you get, standards, where we do it, questions and a named contact."
   header_caption: "Sharjah · Container loading"
   groups:
     - slug: "inspection"
@@ -231,7 +231,7 @@ psi:
 industries:
   title: "Industries"
   slug: "industries"
-  intro: "A second door into the same services: if you know your sector better than our service names, start here. Each industry page lists the services and programs that matter to it, and the offices that deliver them."
+  intro: "If you know your sector better than our service names, start here. Each industry page lists the services and programs that matter to it, and the offices that deliver them."
   heading: "Eight industries"
   pages:
     - slug: "agriculture-and-food"
