@@ -185,7 +185,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
 
 /* ---------- cards ---------- */
 /* A grid, so a lone card or a short last row keeps the column width (no stretching). */
-.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(260px, 100%), 1fr)); gap: 24px; }
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr)); gap: 24px; }
 .svc { flex: 1 1 300px; min-width: 0; text-decoration: none; display: flex; flex-direction: column; background: var(--tic-white); border: 1px solid var(--tic-hairline); }
 .svc:hover .svc__title { color: var(--tic-red); }
 .svc .photo { height: 200px; }
