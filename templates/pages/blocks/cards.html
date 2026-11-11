@@ -1,4 +1,4 @@
-{% load wagtailcore_tags wagtailimages_tags %}<section class="section section--light"><div class="wrap stack" style="gap:40px">
+{% load wagtailcore_tags wagtailimages_tags %}<section class="section section--light"><div class="wrap stack home-sec">
   <div class="section__head"><div><h2 class="h2">{{ value.heading }}</h2><div class="rule"></div></div>{% if value.link_page and value.link_label %}<a class="tri" href="{% pageurl value.link_page %}">{{ value.link_label }}</a>{% endif %}</div>
   <div class="cards">
   {% for card in value.cards %}<a class="svc" href="{% if card.page %}{% pageurl card.page %}{% else %}#{% endif %}">

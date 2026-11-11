@@ -1,7 +1,7 @@
 {% load i18n %}<section id="how_it_works" class="sec{% if first %} sec--first{% endif %}">
   <span class="num">{{ num }} · {% translate "How it works" %}</span>
   {% if value.heading %}<h2 class="h2">{{ value.heading }}</h2>{% endif %}
-  <ol class="stack" style="gap:24px;padding:0;margin:0;list-style:none">{% for step in value.steps %}
+  <ol class="stack steps">{% for step in value.steps %}
     <li class="step"><div class="step__n" aria-hidden="true">{{ forloop.counter }}</div><div><b>{{ step.title }}</b><span>{{ step.text }}</span>{% if step.typical %}<em>{{ step.typical }}</em>{% endif %}</div></li>{% endfor %}
   </ol>
 </section>

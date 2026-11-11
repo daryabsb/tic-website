@@ -4,7 +4,7 @@
 {% block content %}
 {% include "includes/page_head.html" with image=page.header_image image_alt=page.header_image_alt caption=page.header_caption intro=page.intro %}
 {% if cards %}
-<div class="wrap stack" style="padding-block:64px;gap:32px">
+<div class="wrap stack ind-services">
   {% if page.services_heading %}<div><h2 class="h2">{{ page.services_heading }}</h2><div class="rule"></div></div>{% endif %}
   <div class="cards">
   {% for target, eyebrow, title, text in cards %}<a class="svc svc--text" href="{% pageurl target %}"><div class="svc__body">{% if eyebrow %}<span class="eyebrow">{{ eyebrow }}</span>{% endif %}<b class="svc__title">{{ title }}</b><span class="svc__text">{{ text }}</span></div></a>{% endfor %}
@@ -12,15 +12,15 @@
 </div>
 {% endif %}
 {% if page.why_text or shown_figures %}
-<section class="band"><div class="wrap row" style="gap:48px;padding-block:64px;align-items:center">
-  <div class="stack" style="flex:1 1 320px;gap:16px">{% if page.why_heading %}<div><h2 class="h2 h2--w">{{ page.why_heading }}</h2><div class="rule"></div></div>{% endif %}{% if page.why_text %}<p>{{ page.why_text }}</p>{% endif %}</div>
-  {% if shown_figures %}<div class="figs" style="flex:2 1 520px">{% for fig in shown_figures %}<div class="fig"><b{% if fig.highlight %} class="fig--red"{% endif %}>{{ fig.value }}</b><span>{{ fig.label }}</span></div>{% endfor %}</div>{% endif %}
+<section class="band"><div class="wrap row band__row">
+  <div class="stack band__text">{% if page.why_heading %}<div><h2 class="h2 h2--w">{{ page.why_heading }}</h2><div class="rule"></div></div>{% endif %}{% if page.why_text %}<p>{{ page.why_text }}</p>{% endif %}</div>
+  {% if shown_figures %}<div class="figs band__figs">{% for fig in shown_figures %}<div class="fig"><b{% if fig.highlight %} class="fig--red"{% endif %}>{{ fig.value }}</b><span>{{ fig.label }}</span></div>{% endfor %}</div>{% endif %}
 </div></section>
 {% endif %}
 {% if page.where_points %}
-<div class="wrap stack" style="padding-block:64px;gap:20px">
+<div class="wrap stack ind-where">
   <div><h2 class="h2">{{ page.where_heading }}</h2><div class="rule"></div></div>
-  <ul class="dia stack" style="gap:10px;color:var(--tic-charcoal)">{% for point in page.where_points %}<li>{{ point.value }}</li>{% endfor %}</ul>
+  <ul class="dia stack ind-where__list">{% for point in page.where_points %}<li>{{ point.value }}</li>{% endfor %}</ul>
 </div>
 {% endif %}
 {% include "includes/cta_band.html" %}

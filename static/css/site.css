@@ -352,3 +352,57 @@ textarea.inp { padding: 12px 14px; min-height: 120px; }
 .res span:not(.eyebrow) { font-size: 15px; color: var(--tic-charcoal); }
 .res em { font-style: normal; font-size: 13px; color: var(--tic-body-grey); }
 :lang(ar) .tab, :lang(ar) .res b { text-transform: none; letter-spacing: 0; }
+
+/* ---------- page sections (D34: named classes, no inline styles) ---------- */
+/* Hubs and lists: a heading, then cards. */
+.sec-cards { padding-block: 64px 72px; gap: 32px; }
+.svc-hub { padding-block: 24px 72px; }
+.svc-body { padding-block: 56px 72px; }
+.toc__label { padding-bottom: 10px; }
+.about__body { padding-block: 40px; }
+.home-sec { gap: 40px; }
+.section--rule { border-top: 1px solid var(--tic-hairline); }
+
+/* The dark band: text on one side, figures or points on the other. */
+.band__row { gap: 48px; padding-block: 64px; align-items: center; }
+.band__row--home { padding-block: 80px; }
+.band__row--top { align-items: flex-start; }
+.band__head { flex: 1 1 320px; min-width: 0; }
+.band__text { flex: 1 1 320px; gap: 16px; }
+.band__text--home { flex-basis: 360px; gap: 20px; }
+.band__figs { flex: 2 1 520px; }
+.band__points { flex: 2 1 520px; gap: 12px; color: var(--tic-hairline); }
+
+/* Home: the link list, the featured program, the offices, section links, timeline. */
+.links { gap: 64px; }
+.links__intro { flex: 1 1 320px; gap: 20px; }
+.links__list { flex: 2 1 560px; }
+.plate--feature { margin: 32px; padding: 24px 28px; max-width: 420px; }
+.plate--feature b { font-size: 24px; line-height: 1.1; }
+.office-link { text-decoration: none; }
+.sec-links { gap: 28px; }
+.sec-links__row { gap: 16px; }
+.timeline__rows { gap: 18px; }
+
+/* Industry page. */
+.ind-services { padding-block: 64px; gap: 32px; }
+.ind-where { padding-block: 64px; gap: 20px; }
+.ind-where__list { gap: 10px; color: var(--tic-charcoal); }
+
+/* Service page parts. */
+.part-row { gap: 16px; }
+.part-actions { gap: 16px; align-items: center; }
+.part-list { gap: 10px; }
+.wyg { gap: 24px; align-items: center; }
+.wyg__list { flex: 1 1 300px; gap: 10px; }
+.steps { gap: 24px; padding: 0; margin: 0; list-style: none; }
+.doc-list { padding: 0; margin: 0; list-style: none; }
+.doc:last-child, .qa:last-child { border-bottom: 1px solid var(--tic-hairline); }
+.reviewed { padding-block: 16px; border-top: 1px solid var(--tic-hairline); }
+
+/* Search and 404. */
+.srch-head__wrap { gap: 16px; padding-block: 40px; }
+.srch-results { padding-block: 32px 72px; gap: 24px; }
+.srch-tabs { gap: 8px; align-items: center; }
+.nf__body { flex: 1 1 420px; gap: 18px; }
+.nf__links { gap: 4px 28px; }

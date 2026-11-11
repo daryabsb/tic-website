@@ -68,3 +68,14 @@ def test_the_spam_check_is_hcaptcha_and_the_csp_allows_only_hcaptcha():
     caddy = (REPO_ROOT / "deploy" / "staging" / "Caddyfile").read_text(encoding="utf-8")
     assert "challenges.cloudflare.com" not in caddy
     assert "https://*.hcaptcha.com" in caddy
+
+
+def test_templates_have_no_inline_styles():
+    """D34: the CSP is `style-src 'self'`, so the browser ignores style="..."; layout
+    lives in static/css/site.css."""
+    found = [
+        str(path.relative_to(REPO_ROOT))
+        for path in (REPO_ROOT / "templates").rglob("*.html")
+        if 'style="' in path.read_text(encoding="utf-8")
+    ]
+    assert found == []

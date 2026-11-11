@@ -4,7 +4,7 @@
 {% block content %}
 {% include "includes/page_head.html" with image=page.header_image image_alt=page.header_image_alt caption=page.header_caption intro=page.intro %}
 {% if industries %}
-<div class="wrap stack" style="padding-block:64px 72px;gap:32px">
+<div class="wrap stack sec-cards">
   {% if page.heading %}<div><h2 class="h2">{{ page.heading }}</h2><div class="rule"></div></div>{% endif %}
   <div class="cards">
   {% for industry in industries %}<a class="svc svc--sm" href="{% pageurl industry %}">

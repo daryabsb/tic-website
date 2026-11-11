@@ -1,5 +1,5 @@
 {% load i18n %}<section id="who_needs_it" class="sec{% if first %} sec--first{% endif %}">
   <span class="num">{{ num }} · {% translate "Who needs it" %}</span>
   {% if value.heading %}<h2 class="h2">{{ value.heading }}</h2>{% endif %}
-  <ul class="dia stack" style="gap:10px">{% for item in value.items %}<li>{{ item }}</li>{% endfor %}</ul>
+  <ul class="dia stack part-list">{% for item in value.items %}<li>{{ item }}</li>{% endfor %}</ul>
 </section>

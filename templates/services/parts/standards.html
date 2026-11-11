@@ -1,5 +1,5 @@
 {% load i18n %}<section id="standards" class="sec{% if first %} sec--first{% endif %}">
   <span class="num">{{ num }} · {% translate "Standards we work to" %}</span>
   {% if value.heading %}<h2 class="h2">{{ value.heading }}</h2>{% endif %}
-  <div class="row" style="gap:16px">{% for std in value.standards %}<div class="std"><b>{{ std.number }}</b>{% if std.name %}<span>{{ std.name }}</span>{% endif %}</div>{% endfor %}</div>
+  <div class="row part-row">{% for std in value.standards %}<div class="std"><b>{{ std.number }}</b>{% if std.name %}<span>{{ std.name }}</span>{% endif %}</div>{% endfor %}</div>
 </section>
