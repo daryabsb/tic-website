@@ -22,7 +22,7 @@ x-db-env: &db-env
 services:
   db:
     # postgres:16-bookworm, same digest as deploy/compose.yaml and MLP
-    image: postgres:16-bookworm@sha256:0ea6700a3b4f0ae6ce746519073558aed4d88a79d8d07622a9a644946c7319c4
+    image: postgres:18-bookworm@sha256:f1ea2a1a4fb7b68d4836be1fdcb8a6466a89b072158bf9d97663600538c294c5
     environment: *db-env
     ports:
       - "127.0.0.1:5435:5432"
