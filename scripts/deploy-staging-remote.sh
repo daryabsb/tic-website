@@ -28,6 +28,7 @@ for d in media private; do
   mkdir -p "$S/$d"
   [ "$(stat -c %u "$S/$d")" = "$APP_UID" ] || sudo chown "$APP_UID:$APP_UID" "$S/$d"
 done
+cmp -s "$SRC/deploy/staging/Caddyfile" "$S/Caddyfile" || CADDY_CHANGED=1
 install -m 0644 "$SRC/deploy/staging/compose.yaml" "$SRC/deploy/staging/Caddyfile" "$S/"
 install -m 0755 "$SRC/deploy/staging/backup.sh" "$SRC/deploy/staging/rollback.sh" "$S/"
 
@@ -62,6 +63,8 @@ fi
 
 step "4. start web and caddy"
 dc up -d --wait --remove-orphans web caddy || { dc logs --tail 40 web caddy; exit 1; }
+# A bind-mounted Caddyfile is read at start only.
+[ "${CADDY_CHANGED:-0}" = 1 ] && dc restart caddy >/dev/null && echo "   caddy restarted (new Caddyfile)"
 if grep -q '^TUNNEL_TOKEN=.\+' "$S/.env"; then
   dc up -d cloudflared
   echo "   tunnel up: https://staging.ticqc.ae"
