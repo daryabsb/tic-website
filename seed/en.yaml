@@ -73,3 +73,155 @@ home:
       value:
         heading: "Talk to the office nearest you"
         text: "WhatsApp, phone or the quote form. Answered by a named person within one working day; hours published on every office page."
+
+# Services (proposal 01 §5.3, §6; design B-Services, B-Services-Inspection, B-Service-PSI).
+# Groups and the PSI page are published. The other services named in the designs are
+# seeded as drafts (title, card line, caption): an editor fills the eleven parts, and
+# the admin refuses to publish them before that (D26).
+services:
+  title: "Services"
+  slug: "services"
+  intro: "Seven groups of services, named the way the international companies name theirs so you recognise them. Every service page follows the same recipe: what it is, who needs it, how it works, what you give us, what you get, standards, where we do it, questions and a named contact."
+  header_caption: "Sharjah · Container loading"
+  groups:
+    - slug: "inspection"
+      title: "Inspection"
+      group: "inspection"
+      summary: "Independent eyes on your goods before, during and after they move."
+      intro: "Independent eyes on your goods before, during and after they move: at the factory, in the container yard, on the quay and on board. Delivered by our own inspectors under our ISO/IEC 17020 accreditation."
+      header_caption: "Umm Qasr · Discharge survey"
+      link_label: "All inspection services"
+      how_heading: "How inspection is done at TIC"
+      how_points:
+        - "Type A inspection body under ISO/IEC 17020 — independent of the parties we inspect for (ANAB certificate AI-3314)"
+        - "Sampling to ISO 2859-1 unless the contract asks for 100 % inspection"
+        - "A signed report with photographs, usually the same or the next working day, with a certificate number you can verify online"
+        - "Own inspectors from ten offices; named partners elsewhere, told to you in advance"
+      services:
+        - {slug: "pre-shipment-inspection", title: "Pre-shipment Inspection (PSI)", card_caption: "Factory", summary: "Quantity, quality, packing and marking checked against the order before the goods leave.", page: psi}
+        - {slug: "loading-and-discharge-supervision", title: "Loading and discharge supervision", card_caption: "Quay", summary: "Our inspector present while cargo is loaded or discharged; quantities and condition recorded."}
+        - {slug: "quantity-and-quality-inspection", title: "Quantity and quality inspection", card_caption: "Warehouse", summary: "Weight, measurement, sampling and condition for commodities and bulk cargo."}
+        - {slug: "container-loading-inspection", title: "Container loading inspection", card_caption: "Container yard", summary: "Container condition, stuffing, count and sealing, with photographs of every stage."}
+        - {slug: "vendor-and-third-party-inspection", title: "Vendor and third-party inspection", card_caption: "Plant", summary: "Inspection at your supplier’s works on your behalf, including custody transfer and tank calibration."}
+        - {slug: "marine-and-cargo-surveys", title: "Marine and cargo surveys", card_caption: "On board", summary: "Draft, ullage, bunker, on/off hire, hose test, sealing and cleanliness surveys."}
+        - {slug: "vehicle-inspection", title: "Vehicle inspection", card_caption: "Vehicles", summary: "Pre-purchase, damage survey and pre-export inspection, including the Kurdistan Region vehicle CoC."}
+        - {slug: "gafta-superintendence", title: "GAFTA superintendence", card_caption: "Grain", summary: "Superintendence of grain and feed contracts as a GAFTA-approved superintendent (India)."}
+        - {slug: "non-destructive-testing", title: "Non-destructive testing and technical inspection", card_caption: "Seacorr", summary: "Through our group company Seacorr; TIC tells you in advance and remains responsible for the result."}
+    - slug: "testing"
+      title: "Testing"
+      group: "testing"
+      summary: "Laboratory analysis through named partner laboratories — every testing page says which laboratory, where, and under which accreditation number."
+      link_label: "All testing services"
+      services:
+        - {slug: "food-and-agricultural-testing", title: "Food and agricultural testing"}
+        - {slug: "consumer-product-testing", title: "Consumer product testing"}
+        - {slug: "oil-gas-and-petroleum-testing", title: "Oil, gas and petroleum testing"}
+        - {slug: "minerals-and-metals-testing", title: "Minerals and metals testing"}
+    - slug: "certification"
+      title: "Certification"
+      group: "certification"
+      summary: "Certificates that say a product or a process meets a named standard or scheme."
+      link_label: "All certification services"
+      services:
+        - {slug: "product-conformity-certification", title: "Product conformity certification"}
+        - {slug: "management-system-certification", title: "Management system certification [to be confirmed]"}
+        - {slug: "halal-certification", title: "Halal certification"}
+        - {slug: "csuas-drone-certification", title: "CSUAS drone certification, India [approval pending]"}
+    - slug: "programs"
+      title: "Government & Trade Programs"
+      group: "programs"
+      summary: "Certificates of Conformity and Inspection required by importing countries — our largest line, with its own section."
+      link_label: "All programs"
+    - slug: "audits"
+      title: "Audits"
+      group: "audits"
+      summary: "A structured look at a factory or supplier before you commit."
+      services:
+        - {slug: "factory-and-supplier-audits", title: "Factory and supplier audits"}
+        - {slug: "social-and-ethical-audits", title: "Social and ethical audits [to be confirmed]"}
+    - slug: "training"
+      title: "Training"
+      group: "training"
+      summary: "Awareness and internal-auditor courses, classroom and online, with dates, prices and the certificate you receive. Training is general knowledge and has no bearing on any TIC inspection or certification decision."
+      link_label: "Course catalogue"
+    - slug: "sustainability"
+      title: "Sustainability advisory · ESG assurance"
+      group: "sustainability"
+      summary: "Two separate pages and two separate teams: advisory helps you prepare; assurance verifies — never on data our advisory team prepared."
+      services:
+        - {slug: "sustainability-advisory", title: "Sustainability advisory (ESG, GHG accounting, life cycle assessment, EcoVadis readiness, ISO 26000)"}
+        - {slug: "esg-assurance-and-verification", title: "ESG assurance and verification"}
+
+# The Pre-shipment Inspection page (design B-Service-PSI.dc.html). Bracketed values are
+# placeholders the inspection services head owes. The contact person, the review date
+# and the owning office stay blank until named: the page shows them bracketed.
+# "related" names pages by slug; the seed resolves them under this language's home.
+psi:
+  intro: "An independent check of your goods before they leave the factory or port — quantity, quality, packing and marking against the order and the standard — so that what arrives is what was agreed."
+  header_caption: "Guangzhou · Pre-shipment inspection"
+  talk_label: "Talk to an inspector"
+  parts:
+    - type: what_it_is
+      value:
+        heading: "An independent look before the goods leave"
+        text: "<p>Our inspector visits the factory, warehouse or port when the order is ready, draws a sample by an agreed sampling plan and checks it against your purchase order, the applicable standard and the approved sample. You receive a report with photographs the same or the next working day.</p>"
+    - type: who_needs_it
+      value:
+        heading: "When it is required or wise"
+        items:
+          - "Required by a Certificate of Conformity program before shipment to Iraq, Egypt, Botswana or Libya"
+          - "Required by a letter of credit, a GAFTA contract or a buyer’s purchase terms"
+          - "Wise for a first order from a new supplier, or a product with a history of claims"
+    - type: how_it_works
+      value:
+        heading: "Four steps"
+        steps:
+          - {title: "Book", text: "Send the order, the specification and the date the goods will be ready. We confirm the inspector and the office.", typical: "Typical: booking confirmed within [n] working day"}
+          - {title: "Inspect", text: "Sampling to ISO 2859-1, visual and functional checks, measurements, packing and marking, photographs.", typical: "Typical: [n] day on site"}
+          - {title: "Report", text: "A signed report with findings, photographs and a clear result: accepted, accepted with remarks, or rejected.", typical: "Typical: within [n] working day"}
+          - {title: "Follow up", text: "Re-inspection after corrections, or the next step of your CoC program where one applies.", typical: "As needed"}
+    - type: documents
+      value:
+        heading: "Documents"
+        items:
+          - "Purchase order or proforma invoice"
+          - "Product specification and approved sample or photographs"
+          - "Packing list and marking instructions"
+          - "Supplier contact and the date the goods are ready"
+    - type: what_you_get
+      value:
+        heading: "The inspection report"
+        sample_caption: "Sample report"
+        items:
+          - "Result on the first page: accepted, accepted with remarks, or rejected"
+          - "Sampling plan and the quantities checked"
+          - "Findings by check, with photographs"
+          - "Certificate number, QR code and the issuing office in the security panel — verifiable online"
+    - type: standards
+      value:
+        heading: "By name and number"
+        standards:
+          - {number: "ISO 2859-1", name: "Sampling by attributes (AQL)"}
+          - {number: "ISO/IEC 17020", name: "Our accreditation as a Type A inspection body"}
+          - {number: "[Product standard]", name: "The IQS, ES, BOS or international standard for your product"}
+    - type: where
+      value:
+        heading: "Offices and ports"
+        text: "<p>Delivered by our own inspectors from Guangzhou, Noida, Gandhidham, Dubai, Sharjah, Lahore, Cairo, Amman, Riyadh and Baghdad, and at the ports and industrial areas they cover. Elsewhere, through named partners, which we tell you in advance.</p>"
+    - type: related
+      value:
+        pages: [container-loading-inspection, factory-and-supplier-audits, programs]
+    - type: qa
+      value:
+        questions:
+          - {question: "How much notice do you need?", answer: "<p>[Answer by the inspection services head]</p>"}
+          - {question: "Do you inspect 100 % or a sample?", answer: "<p>[Answer: sampling plan to ISO 2859-1 unless the buyer asks for 100 %]</p>"}
+          - {question: "What if the goods fail?", answer: "<p>[Answer: report, corrections, re-inspection]</p>"}
+    - type: contact
+      value:
+        action_label: "Request an inspection"
+        heading: "Tell us about the shipment"
+        schema: "quote"
+    - type: reviewed
+      value:
+        owner: "[Inspection services head]"

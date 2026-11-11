@@ -22,7 +22,17 @@ FORBIDDEN_HOSTS = (
 pytestmark = pytest.mark.django_db
 
 
-@pytest.mark.parametrize("path", ["/en/", "/ar/", "/en/nothing-here/"])
+@pytest.mark.parametrize(
+    "path",
+    [
+        "/en/",
+        "/ar/",
+        "/en/nothing-here/",
+        "/en/services/",
+        "/en/services/inspection/",
+        "/en/services/inspection/pre-shipment-inspection/",
+    ],
+)
 def test_public_pages_load_nothing_from_blocked_hosts(client, seeded_home, path):
     html = client.get(path).content.decode()
 

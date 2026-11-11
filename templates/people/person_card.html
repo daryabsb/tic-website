@@ -1,0 +1,9 @@
+{% load i18n wagtailimages_tags %}{# A named contact (Person snippet). Name and photo only when the person agreed to be named (D26); without a person, the bracketed placeholder stays. Context: person. #}
+<div class="person">
+  <div class="photo">{% if person.public_photo %}{% image person.public_photo fill-128x128 as img %}<img src="{{ img.url }}" alt="{{ person.name }}" width="64" height="64" loading="lazy">{% endif %}</div>
+  <div class="person__tx">
+    {% if person %}<b>{{ person.public_name|default:person.title }}</b>{% if person.public_name %}<span>{{ person.title }}</span>{% endif %}
+    {% if person.whatsapp %}<a href="https://wa.me/{{ person.whatsapp|cut:'+'|cut:' ' }}" rel="noopener">WhatsApp</a>{% endif %}{% if person.phone %}<a href="tel:{{ person.phone|cut:' ' }}">{{ person.phone }}</a>{% endif %}{% if person.email %}<a href="mailto:{{ person.email }}">{{ person.email }}</a>{% endif %}
+    {% else %}<b>[{% translate "Named contact" %}]</b><span>[{% translate "role" %}] · [{% translate "office" %}]</span><span>{% translate "WhatsApp · phone" %}</span>{% endif %}
+  </div>
+</div>

@@ -1,0 +1,7 @@
+{% load i18n wagtailcore_tags %}<section id="where" class="sec{% if first %} sec--first{% endif %}">
+  <span class="num">{{ num }} · {% translate "Where we do it" %}</span>
+  {% if value.heading %}<h2 class="h2">{{ value.heading }}</h2>{% endif %}
+  {% if value.text %}<div class="rich">{{ value.text|richtext }}</div>{% endif %}
+  {% if value.offices %}<ul class="lst">{% for office in value.offices %}{% if office.live %}<li><a href="{% pageurl office %}">{{ office.title }}</a></li>{% endif %}{% endfor %}</ul>{% endif %}
+  {% if page.partner_lab %}{% with lab=page.partner_lab %}<div class="partner"><span class="lbl">{% translate "Partner laboratory" %}</span><b>{{ lab.name }}, {{ lab.location }}</b><span>{{ lab.scope }} · {% blocktranslate with body=lab.accreditation_body number=lab.accreditation_number %}Accredited by {{ body }}, number {{ number }}{% endblocktranslate %}</span><span>{% translate "We tell you in advance and remain responsible for the result." %}</span></div>{% endwith %}{% endif %}
+</section>
