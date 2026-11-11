@@ -1,8 +1,8 @@
-{% load wagtailcore_tags %}<section class="band"><div class="wrap row" style="gap:48px;padding-block:80px;align-items:center">
-  <div class="stack" style="flex:1 1 360px;gap:20px">
+{% load wagtailcore_tags %}<section class="band"><div class="wrap row g-48 pb-80 ai-c">
+  <div class="stack f-11-360 g-20">
     <div><h2 class="h2 h2--w">{{ value.heading }}</h2><div class="rule"></div></div>
     <p>{{ value.text }}</p>
     {% if value.link_page and value.link_label %}<a class="tri tri--w" href="{% pageurl value.link_page %}">{{ value.link_label }}</a>{% endif %}
   </div>
-  {% if value.figures %}<div class="figs" style="flex:2 1 520px">{% for fig in value.figures %}{% if fig.owner %}<div class="fig"><b{% if fig.highlight %} class="fig--red"{% endif %}>{{ fig.value }}</b><span>{{ fig.label }}</span></div>{% endif %}{% endfor %}</div>{% endif %}
+  {% if value.figures %}<div class="figs f-21-520">{% for fig in value.figures %}{% if fig.owner %}<div class="fig"><b{% if fig.highlight %} class="fig--red"{% endif %}>{{ fig.value }}</b><span>{{ fig.label }}</span></div>{% endif %}{% endfor %}</div>{% endif %}
 </div></section>

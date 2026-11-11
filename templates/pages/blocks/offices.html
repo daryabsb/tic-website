@@ -3,7 +3,7 @@
   <div class="offices__text">
     <div><h2 class="h2">{{ value.heading }}</h2><div class="rule"></div></div>
     {% if value.text %}<p class="muted">{{ value.text }}</p>{% endif %}
-    {% if offices %}<div class="offices__cols"><ul class="dia">{% for office in offices %}{% if forloop.counter0|divisibleby:2 %}<li><a href="{% pageurl office %}" style="text-decoration:none">{{ office.title }}</a></li>{% endif %}{% endfor %}</ul><ul class="dia">{% for office in offices %}{% if not forloop.counter0|divisibleby:2 %}<li><a href="{% pageurl office %}" style="text-decoration:none">{{ office.title }}</a></li>{% endif %}{% endfor %}</ul></div>{% endif %}
+    {% if offices %}<div class="offices__cols"><ul class="dia">{% for office in offices %}{% if forloop.counter0|divisibleby:2 %}<li><a class="td-none" href="{% pageurl office %}">{{ office.title }}</a></li>{% endif %}{% endfor %}</ul><ul class="dia">{% for office in offices %}{% if not forloop.counter0|divisibleby:2 %}<li><a class="td-none" href="{% pageurl office %}">{{ office.title }}</a></li>{% endif %}{% endfor %}</ul></div>{% endif %}
     {% if value.link_page and value.link_label %}<a class="tri" href="{% pageurl value.link_page %}">{{ value.link_label }}</a>{% endif %}
   </div>
 </div></section>

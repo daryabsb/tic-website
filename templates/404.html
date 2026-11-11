@@ -5,11 +5,11 @@
 {% block content %}
 <div class="wrap nf">
   <div class="nf__code" aria-hidden="true">404</div>
-  <div class="stack" style="flex:1 1 420px;gap:18px">
+  <div class="stack f-11-420 g-18">
     <h1 class="h1 h1--page">{{ site_text.not_found_heading|default:_("We could not find that page") }}</h1>
     <p class="muted">{{ site_text.not_found_body|default:_("The address may be from the old site. Every old page was mapped to a new one when we moved, so try the search, or start from one of these.") }}</p>
     <form class="srch" method="get" action="{% locale_home_url %}search/" role="search"><input class="inp" type="search" name="q" aria-label="{% translate 'Search the site' %}" placeholder="{% translate 'Search the site' %}"><button class="btn" type="submit">{% translate "Search" %}</button></form>
-    <div class="row" style="gap:4px 28px"><a class="tri" href="{% locale_home_url %}programs/">{% translate "Government & Trade Programs" %}</a><a class="tri" href="{% locale_home_url %}services/">{% translate "Services" %}</a><a class="tri" href="{% locale_home_url %}verify/">{% translate "Verify a certificate" %}</a><a class="tri" href="{% locale_home_url %}contact/">{% translate "Contact an office" %}</a></div>
+    <div class="row g-4-28"><a class="tri" href="{% locale_home_url %}programs/">{% translate "Government & Trade Programs" %}</a><a class="tri" href="{% locale_home_url %}services/">{% translate "Services" %}</a><a class="tri" href="{% locale_home_url %}verify/">{% translate "Verify a certificate" %}</a><a class="tri" href="{% locale_home_url %}contact/">{% translate "Contact an office" %}</a></div>
   </div>
 </div>
 {% endblock %}

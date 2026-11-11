@@ -1,5 +1,5 @@
 {% load i18n %}<section id="documents" class="sec{% if first %} sec--first{% endif %}">
   <span class="num">{{ num }} · {% translate "What you give us" %}</span>
   {% if value.heading %}<h2 class="h2">{{ value.heading }}</h2>{% endif %}
-  <ul class="stack" style="padding:0;margin:0;list-style:none">{% for item in value.items %}<li class="doc"{% if forloop.last %} style="border-bottom:1px solid var(--tic-hairline)"{% endif %}><span class="doc__box" aria-hidden="true"></span>{{ item }}</li>{% endfor %}</ul>
+  <ul class="stack p-0 m-0 ls-none">{% for item in value.items %}<li class="doc bb-1"{% if forloop.last %}{% endif %}><span class="doc__box" aria-hidden="true"></span>{{ item }}</li>{% endfor %}</ul>
 </section>

@@ -2,5 +2,5 @@
   <span class="num">{{ num }} · {{ value.action_label|default:_("Request a quote") }}</span>
   {% if value.heading %}<h2 class="h2">{{ value.heading }}</h2>{% endif %}
   {# The core request form named by value.schema renders here from T17; until then the part links to the request form. #}
-  <div class="row" style="gap:16px;align-items:center"><a class="btn" href="{{ req_url }}">{{ value.action_label|default:_("Request a quote") }}</a><span class="meta">{% translate "Answered by a named person within one working day." %}</span></div>
+  <div class="row g-16 ai-c"><a class="btn" href="{{ req_url }}">{{ value.action_label|default:_("Request a quote") }}</a><span class="meta">{% translate "Answered by a named person within one working day." %}</span></div>
 </section>

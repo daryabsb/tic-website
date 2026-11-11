@@ -2,5 +2,5 @@
 {% block body_class %}page-about{% endblock %}
 {% block content %}
 {% include "includes/page_head.html" with image=page.header_image image_alt=page.header_image_alt caption=page.header_caption intro=page.intro %}
-{% for block in page.sections %}{% if block.block_type == "dark_band" or block.block_type == "contact_band" %}{% include_block block %}{% else %}<div class="wrap" style="padding-block:40px">{% include_block block %}</div>{% endif %}{% endfor %}
+{% for block in page.sections %}{% if block.block_type == "dark_band" or block.block_type == "contact_band" %}{% include_block block %}{% else %}<div class="wrap pb-40">{% include_block block %}</div>{% endif %}{% endfor %}
 {% endblock %}

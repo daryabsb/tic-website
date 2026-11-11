@@ -1,4 +1,4 @@
 {% load i18n wagtailcore_tags %}<section id="qa" class="sec{% if first %} sec--first{% endif %}">
   <span class="num">{{ num }} · {% translate "Questions and answers" %}</span>
-  <div class="stack">{% for item in value.questions %}<details class="qa"{% if forloop.first %} open{% endif %}{% if forloop.last %} style="border-bottom:1px solid var(--tic-hairline)"{% endif %}><summary>{{ item.question }}</summary><div class="rich">{{ item.answer|richtext }}</div></details>{% endfor %}</div>
+  <div class="stack">{% for item in value.questions %}<details class="qa bb-1"{% if forloop.first %} open{% endif %}{% if forloop.last %}{% endif %}><summary>{{ item.question }}</summary><div class="rich">{{ item.answer|richtext }}</div></details>{% endfor %}</div>
 </section>
