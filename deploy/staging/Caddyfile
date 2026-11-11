@@ -1,0 +1,86 @@
+# TIC staging edge behind the Cloudflare Tunnel (D27; ticket T7). Plain :80: TLS ends at
+# Cloudflare, and the tunnel's ingress rule sends only staging.ticqc.ae here. Nothing
+# listens on the VM's network.
+#
+# The two header snippets are copies of server-platform's caddy/snippets
+# (headers_public, headers_admin); keep them the same when either changes.
+# Basic auth on the public pages and noindex everywhere, always. /admin/ has Wagtail's
+# own login; /healthz/ stays open for the uptime monitor.
+{
+	admin off
+	auto_https off
+	servers {
+		# Every request comes from cloudflared on the stack network.
+		trusted_proxies static private_ranges
+		client_ip_headers Cf-Connecting-Ip X-Forwarded-For
+	}
+}
+
+(headers_public) {
+	header {
+		Strict-Transport-Security "max-age=63072000; includeSubDomains"
+		Content-Security-Policy "default-src 'none'; script-src 'self' https://challenges.cloudflare.com; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; frame-src https://challenges.cloudflare.com https://www.google.com; manifest-src 'self'; form-action 'self'; frame-ancestors 'none'; base-uri 'none'; object-src 'none'; upgrade-insecure-requests"
+		X-Content-Type-Options "nosniff"
+		X-Frame-Options "DENY"
+		Referrer-Policy "strict-origin-when-cross-origin"
+		Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()"
+		Cross-Origin-Opener-Policy "same-origin"
+		Cross-Origin-Resource-Policy "same-origin"
+		-Server
+	}
+}
+
+(headers_admin) {
+	header {
+		Strict-Transport-Security "max-age=63072000; includeSubDomains"
+		Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self'; frame-src 'self'; frame-ancestors 'self'; form-action 'self'; base-uri 'self'; object-src 'none'"
+		X-Content-Type-Options "nosniff"
+		X-Frame-Options "SAMEORIGIN"
+		Referrer-Policy "strict-origin-when-cross-origin"
+		Cross-Origin-Opener-Policy "same-origin"
+		-Server
+	}
+}
+
+(app) {
+	reverse_proxy web:8000 {
+		# The browser spoke https to Cloudflare; Django's is_secure() and CSRF check
+		# must agree (SECURE_PROXY_SSL_HEADER in the core's production settings).
+		header_up X-Forwarded-Proto https
+		lb_try_duration 15s
+	}
+}
+
+:80 {
+	header X-Robots-Tag "noindex, nofollow"
+	encode zstd gzip
+
+	handle /healthz/ {
+		import app
+	}
+
+	@admin path /admin/* /django-admin/*
+	handle @admin {
+		import headers_admin
+		import app
+	}
+
+	handle /static/* {
+		import headers_public
+		import app
+	}
+
+	handle {
+		basic_auth {
+			review {$TIC_STAGING_BASIC_AUTH_HASH}
+		}
+		import headers_public
+		handle_path /media/* {
+			root * /srv/media
+			file_server
+		}
+		handle {
+			import app
+		}
+	}
+}

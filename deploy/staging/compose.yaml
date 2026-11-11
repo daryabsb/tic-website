@@ -1,0 +1,114 @@
+# TIC staging on the Dubai VM stms-data (D27; ticket T7). Project "tic-staging" in
+# ~/tic/staging. scripts/deploy-staging.sh copies this file there and sets IMAGE_TAG
+# (a git sha; the image is built on the VM, no registry: D25).
+#
+# Same shape as the STMS staging edge (E:/api/stms/deploy/SERVERS.md "Public edge"):
+# cloudflared (outbound only) -> caddy :80 (basic auth, headers, /media/) -> web.
+# Nothing publishes a port on the VM. The tunnel "tic-staging" maps
+# https://staging.ticqc.ae to http://caddy:80 (Cloudflare Zero Trust, remotely managed).
+#
+# Memory caps keep STMS and zeneon on this VM safe (D24): 768 + 256 + 64 + 64 MB.
+name: tic-staging
+
+services:
+  web:
+    image: tic-website:${IMAGE_TAG:?IMAGE_TAG is set by deploy-staging-remote.sh}
+    restart: unless-stopped
+    env_file: .env
+    volumes:
+      - ./media:/app/media
+      # Request attachments (D25 of the core): outside media/, never served by Caddy.
+      - ./private:/app/private
+    depends_on:
+      db:
+        condition: service_healthy
+    read_only: true
+    tmpfs:
+      - /tmp
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    networks:
+      - internal
+    healthcheck:
+      test: ["CMD", "python", "/app/deploy/healthcheck.py"]
+      interval: 15s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
+    mem_limit: 768m
+    cpus: 1.0
+
+  db:
+    # postgres:16-bookworm, same digest as deploy/compose.yaml
+    image: postgres:16-bookworm@sha256:0ea6700a3b4f0ae6ce746519073558aed4d88a79d8d07622a9a644946c7319c4
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:?set POSTGRES_DB in .env}
+      POSTGRES_USER: ${POSTGRES_USER:?set POSTGRES_USER in .env}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD in .env}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - internal
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -h 127.0.0.1 -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 90s
+      start_interval: 2s
+    mem_limit: 256m
+    cpus: 0.5
+
+  caddy:
+    image: caddy:2.10-alpine
+    restart: unless-stopped
+    environment:
+      TIC_STAGING_BASIC_AUTH_HASH: ${TIC_STAGING_BASIC_AUTH_HASH:?set TIC_STAGING_BASIC_AUTH_HASH in .env}
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - ./media:/srv/media:ro
+    depends_on:
+      web:
+        condition: service_healthy
+    read_only: true
+    tmpfs:
+      - /data
+      - /config
+    cap_drop:
+      - ALL
+    networks:
+      - internal
+    healthcheck:
+      # Django refuses a Host that is not in ALLOWED_HOSTS, so send the staging name.
+      test: ["CMD", "wget", "-q", "-O", "/dev/null", "--header", "Host: staging.ticqc.ae", "http://127.0.0.1:80/healthz/"]
+      interval: 15s
+      timeout: 5s
+      retries: 3
+    mem_limit: 64m
+    cpus: 0.25
+
+  cloudflared:
+    image: cloudflare/cloudflared:2026.9.3
+    restart: unless-stopped
+    command: tunnel --no-autoupdate run
+    environment:
+      # Blank until the tunnel exists; deploy-staging-remote.sh then skips this service.
+      TUNNEL_TOKEN: ${TUNNEL_TOKEN:-}
+    depends_on:
+      caddy:
+        condition: service_healthy
+    networks:
+      - internal
+    mem_limit: 64m
+    cpus: 0.25
+
+volumes:
+  pgdata:
+    name: tic-staging-pgdata
+
+networks:
+  internal:
+    name: tic-staging-internal

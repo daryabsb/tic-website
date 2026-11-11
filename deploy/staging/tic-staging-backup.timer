@@ -1,0 +1,11 @@
+# Sundays 02:50 Dubai = 22:50 UTC Saturday (the VM runs UTC). Master plan 13.
+[Unit]
+Description=Weekly TIC staging backup
+
+[Timer]
+OnCalendar=Sat *-*-* 22:50:00 UTC
+Persistent=true
+RandomizedDelaySec=5min
+
+[Install]
+WantedBy=timers.target
