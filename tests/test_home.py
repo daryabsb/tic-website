@@ -122,8 +122,10 @@ def test_header_uses_the_official_logo_file_and_footer_ends_with_the_tagline_ban
     assert 'class="hdr__logo" src="/static/img/logo/tic-logo-primary.png"' in html
     assert html.rstrip().endswith("</html>")
     body = html[html.index("<footer") :]
-    assert "tic-tagline-bar.png" in body
-    assert body.index("tic-tagline-bar.png") > body.index("foot__bottom")
+    assert 'class="tagline" role="img"' in body
+    assert "Testing | Inspection | Certification</span>" in body
+    assert body.index('class="tagline"') > body.index("foot__bottom")
+    assert "tic-tagline-bar.png" not in body  # D35: HTML and CSS, not a picture
 
 
 def test_not_found_page_is_branded_and_in_the_language_of_the_path(client):
