@@ -15,4 +15,4 @@ Five gates in order, no calendar dates (D17). Each gate is a demonstration, not 
 
 **After launch (V1.5, within the first month):** the rest of the Arabic pages as the reviewer has capacity; the unmatched-404 report worked weekly; the restore drill; the "pages past review" report in use; the first real certificate feed (sync) if P-8 allows.
 
-**Working rhythm:** one ticket per session (CLAUDE.md), the Wayfinder map as the list, decisions written on the ticket and in DECISIONS.md. Darya and the engineer work the Task tickets together (admin clicks, DNS, Cloudflare, server sudo). The grilling session on day 1 corrects this plan before any code.
+**Working rhythm:** one ticket at a time, many per session (D28, CLAUDE.md), the Wayfinder map as the list, decisions written on the ticket and in DECISIONS.md. Darya and the engineer work the Task tickets together (admin clicks, DNS, Cloudflare, server sudo). The grilling session on day 1 corrects this plan before any code.

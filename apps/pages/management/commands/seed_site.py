@@ -1,8 +1,10 @@
 """``python manage.py seed_site``: the content seed (master plan 02, D15).
 
 Reads ``seed/site.yaml`` (language-neutral site settings) and ``seed/<lang>.yaml`` (page
-copy, one file per language). Gate 0 seeds the site settings and the home page; the
-other page types join their tickets (#8 onwards).
+copy, one file per language) and ``seed/redirects.csv`` (old path, new path; master plan
+10). Gate 0 seeds the site settings, the home page and the redirects; the other page
+types join their tickets. ``seed/offices.yaml`` holds the fourteen office rows; T20
+loads them when ``OfficePage`` exists.
 
 Idempotent and safe over editors' work (as the Zeneonix seed, D30 there): rows are
 matched by slug; blank fields are filled, nothing else is changed; a second run changes
@@ -11,13 +13,15 @@ nothing and says so. ``--reset`` overwrites the seeded fields (staging only).
 
 from __future__ import annotations
 
+import csv
 from pathlib import Path
 
 import yaml
 from django.conf import settings
 from django.core.management.base import BaseCommand
 from django.db import transaction
-from wagtail.models import Locale
+from wagtail.contrib.redirects.models import Redirect
+from wagtail.models import Locale, Page
 from zeneon_cms.core.locales import ensure_locales
 from zeneon_cms.core.models import SiteSettings
 
@@ -52,6 +56,7 @@ class Command(BaseCommand):
             codes = [options["language"]] if options["language"] else self.languages()
             for code in codes:
                 self.seed_language(code)
+            self.seed_redirects()
         self.stdout.write(f"seed_site: {self.changes} change(s)")
 
     # -- helpers --------------------------------------------------------------------
@@ -200,3 +205,39 @@ class Command(BaseCommand):
         self.fill_page(
             page, data, ("intro", "header_caption", "talk_label"), streams=[("parts", parts)]
         )
+
+    # -- redirects (T8; the rows come in T30) ----------------------------------------
+
+    def seed_redirects(self) -> None:
+        """One Redirect per ``seed/redirects.csv`` row, for all sites, permanent. A row
+        whose old path already has a redirect is left alone (an editor may have changed
+        it). The new path is a site path (``/en/services/``, resolved to its page, so
+        the redirect follows a later move) or a full ``https://`` URL."""
+        path = SEED_DIR / "redirects.csv"
+        if not path.exists():
+            return
+        with path.open(encoding="utf-8", newline="") as handle:
+            rows = list(csv.DictReader(handle))
+        for row in rows:
+            old_path = Redirect.normalise_path(row["old_path"].strip())
+            if Redirect.objects.filter(old_path=old_path, site=None).exists():
+                continue
+            target = self.redirect_target(row["new_path"].strip())
+            if target is None:
+                self.stderr.write(f"redirect {old_path}: no page at {row['new_path']}")
+                continue
+            Redirect.add_redirect(old_path, redirect_to=target, is_permanent=True)
+            self.changes += 1
+        if rows:
+            self.stdout.write(f"redirects: {len(rows)} row(s) checked")
+
+    def redirect_target(self, new_path: str):
+        """The page at a site path such as ``/en/services/``, or a full URL as given."""
+        if new_path.startswith(("https://", "http://")):
+            return new_path
+        code, _, rest = new_path.strip("/").partition("/")
+        home = HomePage.objects.filter(locale__language_code=code).first()
+        if home is None:
+            return None
+        url_path = home.url_path + (rest + "/" if rest else "")
+        return Page.objects.filter(url_path=url_path).first()
