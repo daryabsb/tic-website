@@ -1,0 +1,38 @@
+# Weekly dependency updates (same as MLP). The core (zeneon-cms) is pinned by SHA in
+# requirements/base.in and moves by hand (D2, scripts/lock.sh).
+version: 2
+updates:
+  - package-ecosystem: pip
+    directory: /requirements
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 10
+    ignore:
+      # Stay on the LTS series (as MLP); LTS upgrades are planned by hand.
+      - dependency-name: django
+        versions: [">=5.3"]
+      - dependency-name: wagtail
+        versions: [">=7.5"]
+    groups:
+      python-minor-and-patch:
+        update-types: [minor, patch]
+
+  # deploy/Dockerfile base image (python:3.12-slim-bookworm, pinned by digest)
+  - package-ecosystem: docker
+    directory: /deploy
+    schedule:
+      interval: weekly
+    ignore:
+      # Stay on Python 3.12 / bookworm; digest updates still arrive.
+      - dependency-name: python
+        update-types: [version-update:semver-major, version-update:semver-minor]
+
+  - package-ecosystem: docker-compose
+    directory: /deploy
+    schedule:
+      interval: weekly
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly

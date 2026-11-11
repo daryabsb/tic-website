@@ -1,0 +1,12 @@
+{% load i18n tic %}{% request_url as req_url %}{% whatsapp_url as wa_url %}{# The one red block per page (design CTABand.dc.html). Context: heading, text (optional). Office-aware numbers come with #20. #}
+<div class="band band--red"><div class="wrap cta">
+  <div class="cta__text">
+    <h2 class="h2 h2--sm h2--w">{{ heading|default:_("Talk to the office nearest you") }}</h2>
+    <p>{{ text|default:_("WhatsApp, phone or the quote form. Answered by a named person within one working day.") }}</p>
+  </div>
+  <div class="cta__actions">
+    {% if wa_url %}<a class="btn btn--white" href="{{ wa_url }}" rel="noopener" target="_blank">{% translate "WhatsApp" %}</a>{% endif %}
+    {% if settings.zeneon_core.SiteSettings.main_phone %}<a class="btn btn--white" href="tel:{{ settings.zeneon_core.SiteSettings.main_phone|cut:' ' }}">{% translate "Call us" %}</a>{% endif %}
+    <a class="btn btn--dark" href="{{ req_url }}">{% translate "Request a quote" %}</a>
+  </div>
+</div></div>

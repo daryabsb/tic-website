@@ -39,3 +39,7 @@ Thumbs.db
 .output/
 .nitro/
 dist/
+
+# Build caches
+.fontcache/
+locale/*/LC_MESSAGES/*.mo

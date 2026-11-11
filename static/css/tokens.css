@@ -1,0 +1,30 @@
+/* TIC brand tokens (TIC Brand Guidelines 2026, sections 10, 11, 12, 19). One red as accent,
+   under 10 % of any page; charcoal, black, steel and white do the work. Red and black are
+   never tinted. The only gradient is the supplied tagline band artwork. */
+:root {
+  --tic-red: #EB232B;          /* TIC Red, Pantone 185 C: rules, bullets, i-dot, one figure, the CTA */
+  --tic-red-edge: #BD2130;     /* Band Red edge: button hover only */
+  --tic-black: #111111;        /* dark bands and the footer (the band behind the reversed artwork) */
+  --tic-ink: #1E1E1E;          /* body text; TIC Black in the book */
+  --tic-charcoal: #3D3D3D;     /* headings, secondary text */
+  --tic-steel: #B9B9BB;        /* photo plates (steel is reserved for the logo and icons; never text) */
+  --tic-steel-line: #A9A9AB;
+  --tic-body-grey: #6B6B6B;    /* captions and meta, AA on white */
+  --tic-hairline: #D9D9D9;
+  --tic-light: #F3F3F3;        /* alternate sections */
+  --tic-white: #FFFFFF;
+
+  --font-display: "Saira", Arial, sans-serif;
+  --font-body: "Open Sans", Arial, sans-serif;
+  --font-arabic: "Cairo", Arial, sans-serif;
+
+  --wrap: 1280px;
+  --gutter: clamp(16px, 5.5vw, 80px);
+  --tile: 48px;                /* the icon and pattern grid (brand book 16) */
+}
+
+/* Arabic (and any RTL language) sets everything in Cairo (brand book 12). */
+:lang(ar) {
+  --font-display: "Cairo", Arial, sans-serif;
+  --font-body: "Cairo", Arial, sans-serif;
+}

@@ -1,0 +1,4 @@
+# Production image: runtime dependencies plus the WSGI server.
+-c base.txt
+-r base.in
+gunicorn>=23,<24

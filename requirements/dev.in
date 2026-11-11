@@ -1,0 +1,10 @@
+# Local development and CI: runtime dependencies plus test and lint tooling.
+-c base.txt
+-r base.in
+pytest>=8,<9
+pytest-django>=4,<5
+factory-boy
+wagtail-factories
+ruff
+pip-tools
+coverage

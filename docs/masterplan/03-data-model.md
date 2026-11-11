@@ -23,8 +23,8 @@ Pages are Wagtail pages (translatable through wagtail-localize); shared facts ar
 | `ContentPage` | About | document code, version, effective date, owner (Person), pdf, sections — used for Impartiality, Subcontracting, Certificate and logo use, Privacy, Terms | code, version, effective date, owner |
 | `ComplaintsPage` | About | the two definitions, four steps with days, schema key for the form | schema |
 | `CareersPage` | About | openings (JobOpening rows: title, office, type, closing), "what we look for", schema key (CV upload) | — |
-| `NewsIndexPage` | Home (Resources) | core `news` index; filters by kind, program, office | — |
-| `NewsPage` (core) | NewsIndex | + `kind` (news / insight / regulatory_update), `program` FK, `office` FK, author (Person), updated date, standfirst, contents | author, date |
+| `NewsIndexPage` | Home (Resources) | TIC `news` app (D22: not the core's, whose article has a foreign key to the core's people); filters by kind, program, office | — |
+| `NewsPage` | NewsIndex | + `kind` (news / insight / regulatory_update), `program` FK, `office` FK, author (Person), updated date, standfirst, contents | author, date |
 | `DownloadsPage` | Resources | renders Document snippets with filters | — |
 | `TrainingIndexPage` / `CoursePage` | Resources | standard, level, duration, format, city, dates (rows), price + currency + tax note, certificate text + issuer, trainer, prerequisites, impartiality note (fixed text), register schema key | price, dates, certificate, issuer |
 | `QAPage` | Resources | aggregates qa blocks from every page by owner | — |

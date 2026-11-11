@@ -1,0 +1,257 @@
+# Deploy (master plan 13, #23). Copied from MLP's deploy.yml.
+#
+# - push to main  -> build + push ghcr.io/daryabsb/tic-website:<sha> -> deploy staging
+# - tag v*        -> deploy that commit's image to production (D17: no required
+#                    reviewer; only Darya pushes v* tags), purge the Cloudflare cache
+#
+# The server runs the platform's bin/deploy through a forced-command SSH key per
+# stack env (restrict,command="/srv/platform/bin/deploy tic <env>"), so CI only
+# sends the image tag: `ssh deploy@<host> <sha>`. Nothing else can run with it.
+# bin/deploy pulls, migrates and starts "web" (no MCP container for TIC, master plan 16).
+#
+# Until a secret exists, its deploy step skips with a notice instead of failing.
+# Set in #6 and #7 (Settings -> Secrets and variables -> Actions, and Settings -> Environments):
+#
+#   Repository secrets
+#     DEPLOY_HOST            server IP (SSH, port 22)
+#     DEPLOY_KNOWN_HOSTS     output of `ssh-keyscan -t ed25519 <host>`, checked by hand
+#     STAGING_SSH_KEY        private key; its public half (deploy/ssh/tic-staging.pub)
+#                            is the "tic staging" forced command
+#     ZENEON_REPOS_TOKEN     fine-grained token, Contents: read on daryabsb/zeneon-cms
+#                            (also a Dependabot secret)
+#     STAGING_BASIC_AUTH     review:<password> of the staging basic auth (#7), for the
+#                            /healthz/ check; without it the check is skipped
+#   Environment "production" (deployment tags: v*)
+#     PRODUCTION_SSH_KEY     private key for the "tic prod" forced command
+#     CLOUDFLARE_API_TOKEN   cache-purge-only token for zone ticqc.com
+#     CLOUDFLARE_ZONE_ID     zone id of ticqc.com
+#   Repository variables (optional; defaults below)
+#     STAGING_URL            https://tic-staging.zeneon.co.uk
+#     PRODUCTION_URL         https://ticqc.com
+#
+# The server pulls from GHCR: the package is private, so the deploy user logs in once
+# with a read:packages token (`docker login ghcr.io`, #11).
+name: deploy
+
+# D25: no GitHub-hosted runs (cost). The gate is `bash scripts/ci.sh` on stms-data.
+# Manual trigger only; restore the triggers when a self-hosted runner exists.
+on:
+  workflow_dispatch:
+
+permissions: {}
+
+env:
+  IMAGE: ghcr.io/daryabsb/tic-website
+  STAGING_URL: ${{ vars.STAGING_URL || 'https://tic-staging.zeneon.co.uk' }}
+  PRODUCTION_URL: ${{ vars.PRODUCTION_URL || 'https://ticqc.com' }}
+
+jobs:
+  build:
+    if: github.ref_type == 'branch'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - uses: docker/setup-buildx-action@f87e5991a6d7451dcb8d9637bfbc97413f497069 # v4.4.1
+
+      - uses: docker/login-action@dbcb813823bdd20940b903addbd779551569679f # v4.6.0
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      # The private zeneon-cms repo comes in through the
+      # Dockerfile's build secret gh_token: ZENEON_REPOS_TOKEN, read access to both (#30).
+      - name: Build and push ${{ env.IMAGE }}:${{ github.sha }}
+        uses: docker/build-push-action@c3c9e263c25d99ce0380d002d59b67737d91b0dc # v7.4.0
+        with:
+          context: .
+          file: deploy/Dockerfile
+          secrets: |
+            gh_token=${{ secrets.ZENEON_REPOS_TOKEN }}
+          push: true
+          tags: ${{ env.IMAGE }}:${{ github.sha }}
+          labels: |
+            org.opencontainers.image.source=https://github.com/${{ github.repository }}
+            org.opencontainers.image.revision=${{ github.sha }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+  staging:
+    needs: build
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    environment:
+      name: staging
+      url: ${{ vars.STAGING_URL || 'https://tic-staging.zeneon.co.uk' }}
+    concurrency:
+      group: deploy-staging
+      cancel-in-progress: false
+    permissions:
+      contents: read
+    steps:
+      - name: Check deploy secrets
+        id: gate
+        env:
+          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+          DEPLOY_KNOWN_HOSTS: ${{ secrets.DEPLOY_KNOWN_HOSTS }}
+          SSH_KEY: ${{ secrets.STAGING_SSH_KEY }}
+        run: |
+          if [ -n "$DEPLOY_HOST" ] && [ -n "$DEPLOY_KNOWN_HOSTS" ] && [ -n "$SSH_KEY" ]; then
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "::notice title=Staging deploy skipped::DEPLOY_HOST, DEPLOY_KNOWN_HOSTS or STAGING_SSH_KEY is not set yet. The image was pushed."
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Deploy ${{ github.sha }} to staging (forced-command SSH)
+        if: steps.gate.outputs.ready == 'true'
+        env:
+          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+          DEPLOY_KNOWN_HOSTS: ${{ secrets.DEPLOY_KNOWN_HOSTS }}
+          SSH_KEY: ${{ secrets.STAGING_SSH_KEY }}
+        run: |
+          install -d -m 700 ~/.ssh
+          printf '%s\n' "$SSH_KEY" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          printf '%s\n' "$DEPLOY_KNOWN_HOSTS" > ~/.ssh/known_hosts
+          ssh -i ~/.ssh/deploy_key -o IdentitiesOnly=yes -o BatchMode=yes \
+            -o StrictHostKeyChecking=yes -o ConnectTimeout=20 \
+            "deploy@$DEPLOY_HOST" "$GITHUB_SHA"
+
+      # Staging is behind basic auth (Caddy), /healthz/ included.
+      - name: Wait for /healthz/
+        if: steps.gate.outputs.ready == 'true'
+        env:
+          BASIC_AUTH: ${{ secrets.STAGING_BASIC_AUTH }}
+        run: |
+          if [ -z "$BASIC_AUTH" ]; then
+            echo "::warning::STAGING_BASIC_AUTH is not set; /healthz/ not checked. bin/deploy already waited for the web healthcheck."
+            exit 0
+          fi
+          url="${STAGING_URL%/}/healthz/"
+          for _ in $(seq 1 24); do
+            if body="$(curl -fsS --max-time 10 --user "$BASIC_AUTH" "$url")" && echo "$body" | grep -q '"ok"'; then
+              echo "$url -> $body"; exit 0
+            fi
+            sleep 5
+          done
+          echo "::error::$url did not answer 200 within 2 minutes"
+          exit 1
+
+      - name: Remove the SSH key
+        if: always()
+        run: rm -f ~/.ssh/deploy_key
+
+  production:
+    if: startsWith(github.ref, 'refs/tags/v')
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    environment:
+      name: production
+      url: ${{ vars.PRODUCTION_URL || 'https://ticqc.com' }}
+    concurrency:
+      group: deploy-production
+      cancel-in-progress: false
+    permissions:
+      contents: read
+      packages: read
+    steps:
+      - name: Check deploy secrets
+        id: gate
+        env:
+          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+          DEPLOY_KNOWN_HOSTS: ${{ secrets.DEPLOY_KNOWN_HOSTS }}
+          SSH_KEY: ${{ secrets.PRODUCTION_SSH_KEY }}
+        run: |
+          if [ -n "$DEPLOY_HOST" ] && [ -n "$DEPLOY_KNOWN_HOSTS" ] && [ -n "$SSH_KEY" ]; then
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "::notice title=Production deploy skipped::DEPLOY_HOST, DEPLOY_KNOWN_HOSTS or PRODUCTION_SSH_KEY is not set yet."
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      # Production runs the image staging already ran: the one built from this
+      # commit on main. A tag on a commit that never reached main has no image.
+      - uses: docker/login-action@dbcb813823bdd20940b903addbd779551569679f # v4.6.0
+        if: steps.gate.outputs.ready == 'true'
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Check ${{ env.IMAGE }}:${{ github.sha }} exists
+        if: steps.gate.outputs.ready == 'true'
+        run: |
+          docker buildx imagetools inspect "$IMAGE:$GITHUB_SHA" > /dev/null || {
+            echo "::error::$IMAGE:$GITHUB_SHA not found. Tag a commit that was built on main."
+            exit 1
+          }
+
+      - name: Deploy ${{ github.ref_name }} (${{ github.sha }}) to production (forced-command SSH)
+        if: steps.gate.outputs.ready == 'true'
+        env:
+          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+          DEPLOY_KNOWN_HOSTS: ${{ secrets.DEPLOY_KNOWN_HOSTS }}
+          SSH_KEY: ${{ secrets.PRODUCTION_SSH_KEY }}
+        run: |
+          install -d -m 700 ~/.ssh
+          printf '%s\n' "$SSH_KEY" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          printf '%s\n' "$DEPLOY_KNOWN_HOSTS" > ~/.ssh/known_hosts
+          ssh -i ~/.ssh/deploy_key -o IdentitiesOnly=yes -o BatchMode=yes \
+            -o StrictHostKeyChecking=yes -o ConnectTimeout=20 \
+            "deploy@$DEPLOY_HOST" "$GITHUB_SHA"
+
+      # Until launch, ticqc.com serves the coming-soon page (deploy/caddy/), so this
+      # check passes only after deploy/caddy/tic.caddy replaces it (gate 4).
+      - name: Wait for /healthz/
+        if: steps.gate.outputs.ready == 'true'
+        run: |
+          url="${PRODUCTION_URL%/}/healthz/"
+          for _ in $(seq 1 24); do
+            if body="$(curl -fsS --max-time 10 "$url")" && echo "$body" | grep -q '"ok"'; then
+              echo "$url -> $body"; exit 0
+            fi
+            sleep 5
+          done
+          echo "::error::$url did not answer 200 within 2 minutes"
+          exit 1
+
+      - name: Purge the Cloudflare cache for the host
+        if: steps.gate.outputs.ready == 'true'
+        env:
+          CF_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CF_ZONE: ${{ secrets.CLOUDFLARE_ZONE_ID }}
+        run: |
+          if [ -z "$CF_TOKEN" ] || [ -z "$CF_ZONE" ]; then
+            echo "::warning::CLOUDFLARE_API_TOKEN or CLOUDFLARE_ZONE_ID not set; cache not purged."
+            exit 0
+          fi
+          host="${PRODUCTION_URL#https://}"; host="${host%%/*}"
+          curl -fsS -X POST "https://api.cloudflare.com/client/v4/zones/$CF_ZONE/purge_cache" \
+            -H "Authorization: Bearer $CF_TOKEN" -H "Content-Type: application/json" \
+            --data "{\"hosts\":[\"$host\",\"www.$host\"]}" | jq -e '.success' > /dev/null
+          echo "Purged $host and www.$host"
+
+      - name: MDN Observatory (must be A+)
+        if: steps.gate.outputs.ready == 'true'
+        run: |
+          host="${PRODUCTION_URL#https://}"; host="${host%%/*}"
+          result="$(curl -fsS -X POST --max-time 120 \
+            "https://observatory-api.mdn.mozilla.net/api/v2/scan?host=$host")"
+          echo "$result" | jq '{grade, score, tests_passed, tests_failed, details_url}'
+          grade="$(echo "$result" | jq -r '.grade')"
+          if [ "$grade" = "A+" ]; then exit 0; fi
+          echo "::error::Observatory grade $grade for $host; A+ required"
+          exit 1
+
+      - name: Remove the SSH key
+        if: always()
+        run: rm -f ~/.ssh/deploy_key

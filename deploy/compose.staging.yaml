@@ -1,0 +1,39 @@
+# Staging overrides for deploy/compose.yaml: project, names, network aliases and
+# smaller limits. Render the merged file for the server from the repo root:
+#
+#   docker compose -f deploy/compose.yaml -f deploy/compose.staging.yaml \
+#     config --no-interpolate --no-env-resolution --no-path-resolution \
+#     > /tmp/tic-staging-compose.yaml
+#
+# then copy it to /srv/stacks/tic/staging/compose.yaml (deploy/server-setup.sh does this).
+name: tic-staging
+
+services:
+  web:
+    networks:
+      edge:
+        aliases: !override
+          - tic-staging-web
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 768M
+    cpu_shares: 256
+
+
+  db:
+    deploy:
+      resources:
+        limits:
+          cpus: "0.25"
+          memory: 256M
+    cpu_shares: 256
+
+volumes:
+  pgdata:
+    name: tic-staging-pgdata
+
+networks:
+  internal:
+    name: tic-staging-internal

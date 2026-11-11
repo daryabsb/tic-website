@@ -1,6 +1,6 @@
 # Tickets — the first Wayfinder map
 
-Paste into GitHub as issues; #1 is the map. One ticket per session. Each ticket names its gate, what it blocks, and how it is demonstrated. Decisions taken on a ticket go to `DECISIONS.md` the same day.
+Created on GitHub Nov 10, 2026: the map is issue #2, each row is an issue titled "T<n> <name>" (D23). One ticket per session. Each ticket names its gate, what it blocks, and how it is demonstrated. Decisions taken on a ticket go to `DECISIONS.md` the same day.
 
 ## Map (#1)
 
@@ -10,19 +10,19 @@ Destination: ticqc.com live on the new stack, five gates passed. Open, unblocked
 
 | # | Ticket | Blocks | Done when |
 | --- | --- | --- | --- |
-| 2 | **Grilling session on the plan** — Wayfinder on `docs/masterplan/`; every correction written as a D-row | all | DECISIONS.md updated; plan parts carry "Corrections" notes |
-| 3 | **Client project from the Zeneonix layout** — `tic/settings`, `apps/pages`, `templates/base.html`, `requirements/` with the core pinned by SHA, `deploy/`, `scripts/lock.sh`, `conftest.py`, pytest green locally | 4–8 | `manage.py runserver` shows an empty home; `pytest` green |
-| 4 | **Fonts and CSS** — build Saira, Open Sans, Cairo self-hosted (split by script) with `scripts/build_fonts.py`; `static/css/site.css` from the drop's shared styles; brand tokens from `tic-colours.css` | 5 | No external font request; tokens test green |
-| 5 | **Shared parts as includes** — header (with language `<select>`), footer, page head (two variants), CTA band from the four drop files; logo files in `static/img/logo/` | 9+ | Rendered on the empty home in EN and AR shells |
-| 6 | **CI and deploy workflows** — `ci.yml`, `deploy.yml`, Dependabot, GHCR image, forced-command SSH deploy to staging | 7 | CI green on `main` |
+| 2 | ✅ (Nov 10, closed as done: D19–D22) **Grilling session on the plan** — Wayfinder on `docs/masterplan/`; every correction written as a D-row | all | DECISIONS.md updated; plan parts carry "Corrections" notes |
+| 3 | ✅ (Nov 10) **Client project from the Zeneonix layout** — `tic/settings`, `apps/pages`, `templates/base.html`, `requirements/` with the core pinned by SHA, `deploy/`, `scripts/lock.sh`, `conftest.py`, pytest green locally | 4–8 | `manage.py runserver` shows an empty home; `pytest` green |
+| 4 | ✅ (Nov 10) **Fonts and CSS** — build Saira, Open Sans, Cairo self-hosted (split by script) with `scripts/build_fonts.py`; `static/css/site.css` from the drop's shared styles; brand tokens from `tic-colours.css` | 5 | No external font request; tokens test green |
+| 5 | ✅ (Nov 10) **Shared parts as includes** — header (with language `<select>`), footer, page head (two variants), CTA band from the four drop files; logo files in `static/img/logo/` | 9+ | Rendered on the empty home in EN and AR shells |
+| 6 | ◐ files in; secrets and first green run pending **CI and deploy workflows** — `ci.yml`, `deploy.yml`, Dependabot, GHCR image, forced-command SSH deploy to staging | 7 | CI green on `main` |
 | 7 | **Staging stack on zeneon-1** — `/srv/stacks/tic/staging/`, Caddy file with basic auth, `.env`, backup timer, Healthchecks, Better Stack (Task: Darya for sudo and DNS) | 1 | `https://tic-staging.…/en/` answers behind basic auth; backup check pings |
-| 8 | **Seed skeleton** — `seed_site` command (fill blanks only), `site.yaml` with settings, the fourteen offices as placeholder rows, `redirects.csv` empty | 10+ | Idempotent run on staging |
+| 8 | ◐ site.yaml + en.yaml home in; offices and redirects pending **Seed skeleton** — `seed_site` command (fill blanks only), `site.yaml` with settings, the fourteen offices as placeholder rows, `redirects.csv` empty | 10+ | Idempotent run on staging |
 
 ## Gate 1 · Sell
 
 | # | Ticket | Blocks | Done when |
 | --- | --- | --- | --- |
-| 9 | **HomePage** — the nine sections from `DirectionB.dc.html`; `Figure` and `Accreditation` snippets; proof strip from `is_public` rows | 1 | Home from seed on a phone; placeholders bracketed |
+| 9 | ◐ blocks and templates in; needs the hub pages to link to **HomePage** — the nine sections from `DirectionB.dc.html`; `Figure` and `Accreditation` snippets; proof strip from `is_public` rows | 1 | Home from seed on a phone; placeholders bracketed |
 | 10 | **Services** — `ServiceIndexPage`, `ServiceGroupPage`, `ServicePage` with the eleven blocks and validation; seed for the seven groups and the PSI page; `Partner` snippet required on testing | 1 | The three service templates render from seed; publish refused without a required part |
 | 11 | **Industries** — index and page; seed for eight industries with Agriculture & Food filled | 1 | Renders from seed |
 | 12 | **Search and 404** — Wagtail search over pages, documents, questions; the 404 page from the drop | 1 | A search for "Iraq certificate" returns program, insight, download, question, office |

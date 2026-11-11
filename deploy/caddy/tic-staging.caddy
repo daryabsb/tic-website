@@ -1,0 +1,29 @@
+# TIC staging site (master plan 13; ticket #7). Copied to
+# /srv/platform/caddy/sites/tic-staging.caddy; the snippets come from server-platform.
+# Basic auth on the public pages + noindex, always.
+#
+# TIC_STAGING_BASIC_AUTH_HASH comes from the platform's caddy/caddy.env.
+tic-staging.zeneon.co.uk {
+	import cloudflare_tls zeneon.co.uk
+	header X-Robots-Tag "noindex, nofollow"
+	import umami_proxy
+	@admin path /admin/* /django-admin/*
+	handle @admin {
+		import headers_admin
+		reverse_proxy tic-staging-web:8000 {
+			lb_try_duration 15s
+		}
+	}
+	handle /static/* {
+		import headers_public
+		encode zstd gzip
+		reverse_proxy tic-staging-web:8000 {
+			lb_try_duration 15s
+		}
+	}
+	handle {
+		import staging_auth review {$TIC_STAGING_BASIC_AUTH_HASH}
+		import headers_public
+		import django_app tic-staging-web:8000 /srv/stacks/tic/staging/media
+	}
+}

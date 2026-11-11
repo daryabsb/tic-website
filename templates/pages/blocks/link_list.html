@@ -1,0 +1,4 @@
+{% load wagtailcore_tags %}<section class="section"><div class="wrap row" style="gap:64px">
+  <div class="stack" style="flex:1 1 320px;gap:20px"><div><h2 class="h2">{{ value.heading }}</h2><div class="rule"></div></div>{% if value.text %}<p class="muted">{{ value.text }}</p>{% endif %}</div>
+  <div class="stack" style="flex:2 1 560px">{% for link in value.links %}<a class="ind" href="{% if link.page %}{% pageurl link.page %}{% else %}#{% endif %}">{{ link.label }}<span class="ind__arrow" aria-hidden="true">→</span></a>{% endfor %}</div>
+</div></section>

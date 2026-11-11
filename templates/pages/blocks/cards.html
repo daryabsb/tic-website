@@ -1,0 +1,9 @@
+{% load wagtailcore_tags wagtailimages_tags %}<section class="section section--light"><div class="wrap stack" style="gap:40px">
+  <div class="section__head"><div><h2 class="h2">{{ value.heading }}</h2><div class="rule"></div></div>{% if value.link_page and value.link_label %}<a class="tri" href="{% pageurl value.link_page %}">{{ value.link_label }}</a>{% endif %}</div>
+  <div class="cards">
+  {% for card in value.cards %}<a class="svc" href="{% if card.page %}{% pageurl card.page %}{% else %}#{% endif %}">
+    <div class="photo">{% if card.image %}{% image card.image fill-800x400 as img %}<img src="{{ img.url }}" alt="" width="{{ img.width }}" height="{{ img.height }}" loading="lazy">{% endif %}{% if card.caption %}<div class="cap">{{ card.caption }}</div>{% endif %}</div>
+    <div class="svc__body"><b class="svc__title">{{ card.title }}</b>{% if card.text %}<span class="svc__text">{{ card.text }}</span>{% endif %}</div>
+  </a>{% endfor %}
+  </div>
+</div></section>

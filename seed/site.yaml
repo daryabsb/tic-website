@@ -1,0 +1,13 @@
+# Language-neutral site values (master plan 02, D15). Loaded by `manage.py seed_site`.
+# Square brackets are placeholders a director owes (DECISIONS P-rows); the seed fills
+# blanks only and never overwrites an editor's text.
+site_settings:
+  organisation_name: "TIC Quality Control L.L.C."
+  short_name: "TIC Quality Control"
+  # founding_year: left blank. Proposal 01 §5.6 says "founded in 2020 ... please confirm";
+  # the core writes it into the JSON-LD foundingDate of every page, so it stays empty
+  # until a director confirms it (CLAUDE.md "nothing invented").
+  main_phone: ""               # P-17: head office number
+  main_email: "info@ticqc.com"
+  whatsapp_number: ""          # P-7: head office WhatsApp line
+  contact_recipient_email: "info@ticqc.com"
