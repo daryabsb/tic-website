@@ -256,7 +256,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
    a picture, so it stays sharp at every width. Black block with "T I C", then the red
    block with the band's radial gradient (the one gradient the brand allows). Sizes
    follow the width of the band (container units); always English, left to right. */
-.tagline { container-type: inline-size; display: grid; grid-template-columns: 19.4% 1fr; background: var(--tic-black); }
+.tagline { container-type: inline-size; display: grid; grid-template-columns: 19.4% 1fr; background: var(--tic-black); border-top: 6px solid var(--tic-white); }
 .tagline > span { display: flex; align-items: center; justify-content: center; height: max(40px, 7.5cqw); color: var(--tic-white); font-family: "Saira", Arial, sans-serif; line-height: 1; white-space: nowrap; }
 .tagline__tic { font-weight: 700; font-size: max(18px, 5.2cqw); letter-spacing: .5em; padding-inline-start: .5em; }
 .tagline__words { font-weight: 600; font-size: max(13px, 4.8cqw); letter-spacing: .01em; background: radial-gradient(ellipse at center, var(--tic-red) 0%, var(--tic-red) 35%, var(--tic-red-edge) 100%); }
