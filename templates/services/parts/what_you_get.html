@@ -1,8 +1,8 @@
 {% load i18n wagtailimages_tags %}<section id="what_you_get" class="sec{% if first %} sec--first{% endif %}">
   <span class="num">{{ num }} · {% translate "What you get" %}</span>
   {% if value.heading %}<h2 class="h2">{{ value.heading }}</h2>{% endif %}
-  <div class="row g-24 ai-c">
+  <div class="row wyg">
     <div class="photo sample">{% if value.sample_image %}{% image value.sample_image width-440 as img %}<img src="{{ img.url }}" alt="{{ value.sample_caption }}" width="{{ img.width }}" height="{{ img.height }}" loading="lazy">{% endif %}{% if value.sample_caption %}<div class="cap">{{ value.sample_caption }}</div>{% endif %}</div>
-    <ul class="dia stack f-11-300 g-10">{% for item in value.items %}<li>{{ item }}</li>{% endfor %}</ul>
+    <ul class="dia stack wyg__list">{% for item in value.items %}<li>{{ item }}</li>{% endfor %}</ul>
   </div>
 </section>

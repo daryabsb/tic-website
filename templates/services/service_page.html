@@ -3,9 +3,9 @@
 {% block body_class %}page-service{% endblock %}
 {% block content %}
 {% include "includes/page_head.html" with image=page.header_image image_alt=page.header_image_alt caption=page.header_caption intro=page.intro primary_label=contact.action_label primary_href="#form" secondary_label=page.talk_label secondary_href=contact_href %}
-<div class="wrap two-col pb-56-72">
+<div class="wrap two-col svc-body">
   <aside class="two-col__side">
-    {% if toc %}<nav aria-labelledby="toc-title"><p class="eyebrow pbe-10" id="toc-title">{% translate "On this page" %}</p>
+    {% if toc %}<nav aria-labelledby="toc-title"><p class="eyebrow toc__label" id="toc-title">{% translate "On this page" %}</p>
       <div class="toc">{% for name, title in toc %}<a href="#{% if name == 'contact' %}form{% else %}{{ name }}{% endif %}"><span>{{ forloop.counter|stringformat:"02d" }}</span>{{ title }}</a>{% endfor %}</div>
     </nav>{% endif %}
     {% if contact %}{% include "people/person_card.html" with person=contact.person %}{% endif %}

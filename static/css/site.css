@@ -353,48 +353,56 @@ textarea.inp { padding: 12px 14px; min-height: 120px; }
 .res em { font-style: normal; font-size: 13px; color: var(--tic-body-grey); }
 :lang(ar) .tab, :lang(ar) .res b { text-transform: none; letter-spacing: 0; }
 
-/* ---------- utilities (D34: the CSP forbids inline styles) ---------- */
-.ai-c { align-items: center; }
-.ai-s { align-items: flex-start; }
-.bb-1 { border-bottom: 1px solid var(--tic-hairline); }
-.bt-1 { border-top: 1px solid var(--tic-hairline); }
-.c-charcoal { color: var(--tic-charcoal); }
-.c-hairline { color: var(--tic-hairline); }
-.f-11-300 { flex: 1 1 300px; }
-.f-11-320 { flex: 1 1 320px; }
-.f-11-360 { flex: 1 1 360px; }
-.f-11-420 { flex: 1 1 420px; }
-.f-21-520 { flex: 2 1 520px; }
-.f-21-560 { flex: 2 1 560px; }
-.fs-24 { font-size: 24px; }
-.g-10 { gap: 10px; }
-.g-12 { gap: 12px; }
-.g-16 { gap: 16px; }
-.g-18 { gap: 18px; }
-.g-20 { gap: 20px; }
-.g-24 { gap: 24px; }
-.g-28 { gap: 28px; }
-.g-32 { gap: 32px; }
-.g-4-28 { gap: 4px 28px; }
-.g-40 { gap: 40px; }
-.g-48 { gap: 48px; }
-.g-64 { gap: 64px; }
-.g-8 { gap: 8px; }
-.lh-11 { line-height: 1.1; }
-.ls-none { list-style: none; }
-.m-0 { margin: 0; }
-.m-32 { margin: 32px; }
-.maxw-420 { max-width: 420px; }
-.minw-0 { min-width: 0; }
-.p-0 { padding: 0; }
-.p-24-28 { padding: 24px 28px; }
-.pb-16 { padding-block: 16px; }
-.pb-24-72 { padding-block: 24px 72px; }
-.pb-32-72 { padding-block: 32px 72px; }
-.pb-40 { padding-block: 40px; }
-.pb-56-72 { padding-block: 56px 72px; }
-.pb-64 { padding-block: 64px; }
-.pb-64-72 { padding-block: 64px 72px; }
-.pb-80 { padding-block: 80px; }
-.pbe-10 { padding-bottom: 10px; }
-.td-none { text-decoration: none; }
+/* ---------- page sections (D34: named classes, no inline styles) ---------- */
+/* Hubs and lists: a heading, then cards. */
+.sec-cards { padding-block: 64px 72px; gap: 32px; }
+.svc-hub { padding-block: 24px 72px; }
+.svc-body { padding-block: 56px 72px; }
+.toc__label { padding-bottom: 10px; }
+.about__body { padding-block: 40px; }
+.home-sec { gap: 40px; }
+.section--rule { border-top: 1px solid var(--tic-hairline); }
+
+/* The dark band: text on one side, figures or points on the other. */
+.band__row { gap: 48px; padding-block: 64px; align-items: center; }
+.band__row--home { padding-block: 80px; }
+.band__row--top { align-items: flex-start; }
+.band__head { flex: 1 1 320px; min-width: 0; }
+.band__text { flex: 1 1 320px; gap: 16px; }
+.band__text--home { flex-basis: 360px; gap: 20px; }
+.band__figs { flex: 2 1 520px; }
+.band__points { flex: 2 1 520px; gap: 12px; color: var(--tic-hairline); }
+
+/* Home: the link list, the featured program, the offices, section links, timeline. */
+.links { gap: 64px; }
+.links__intro { flex: 1 1 320px; gap: 20px; }
+.links__list { flex: 2 1 560px; }
+.plate--feature { margin: 32px; padding: 24px 28px; max-width: 420px; }
+.plate--feature b { font-size: 24px; line-height: 1.1; }
+.office-link { text-decoration: none; }
+.sec-links { gap: 28px; }
+.sec-links__row { gap: 16px; }
+.timeline__rows { gap: 18px; }
+
+/* Industry page. */
+.ind-services { padding-block: 64px; gap: 32px; }
+.ind-where { padding-block: 64px; gap: 20px; }
+.ind-where__list { gap: 10px; color: var(--tic-charcoal); }
+
+/* Service page parts. */
+.part-row { gap: 16px; }
+.part-actions { gap: 16px; align-items: center; }
+.part-list { gap: 10px; }
+.wyg { gap: 24px; align-items: center; }
+.wyg__list { flex: 1 1 300px; gap: 10px; }
+.steps { gap: 24px; padding: 0; margin: 0; list-style: none; }
+.doc-list { padding: 0; margin: 0; list-style: none; }
+.doc:last-child, .qa:last-child { border-bottom: 1px solid var(--tic-hairline); }
+.reviewed { padding-block: 16px; border-top: 1px solid var(--tic-hairline); }
+
+/* Search and 404. */
+.srch-head__wrap { gap: 16px; padding-block: 40px; }
+.srch-results { padding-block: 32px 72px; gap: 24px; }
+.srch-tabs { gap: 8px; align-items: center; }
+.nf__body { flex: 1 1 420px; gap: 18px; }
+.nf__links { gap: 4px 28px; }

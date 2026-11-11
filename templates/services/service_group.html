@@ -4,7 +4,7 @@
 {% block content %}
 {% include "includes/page_head.html" with image=page.header_image image_alt=page.header_image_alt caption=page.header_caption intro=page.intro %}
 {% if services %}
-<div class="wrap stack pb-64-72 g-32">
+<div class="wrap stack sec-cards">
   <div><h2 class="h2">{% blocktranslate with group=page.title|lower count counter=services|length %}{{ counter }} {{ group }} service{% plural %}{{ counter }} {{ group }} services{% endblocktranslate %}</h2><div class="rule"></div></div>
   <div class="cards">
   {% for service in services %}<a class="svc svc--sm" href="{% pageurl service %}">
@@ -15,9 +15,9 @@
 </div>
 {% endif %}
 {% if page.how_points %}
-<section class="band"><div class="wrap row g-48 pb-64 ai-s">
-  <div class="f-11-320 minw-0"><h2 class="h2 h2--w">{{ page.how_heading }}</h2><div class="rule"></div></div>
-  <ul class="dia stack f-21-520 g-12 c-hairline">{% for point in page.how_points %}<li>{{ point.value }}</li>{% endfor %}</ul>
+<section class="band"><div class="wrap row band__row band__row--top">
+  <div class="band__head"><h2 class="h2 h2--w">{{ page.how_heading }}</h2><div class="rule"></div></div>
+  <ul class="dia stack band__points">{% for point in page.how_points %}<li>{{ point.value }}</li>{% endfor %}</ul>
 </div></section>
 {% endif %}
 {% include "includes/cta_band.html" %}

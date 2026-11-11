@@ -5,14 +5,14 @@
 {% block structured_data %}{% endblock %}
 {% block body_class %}page-search{% endblock %}
 {% block content %}
-<div class="srch-head"><div class="wrap stack g-16 pb-40">
+<div class="srch-head"><div class="wrap stack srch-head__wrap">
   <h1 class="h1 h1--page">{% translate "Search" %}</h1>
   <form class="srch" method="get" action="" role="search"><input class="inp" type="search" name="q" value="{{ query }}" aria-label="{% translate 'Search the site' %}" placeholder="{% translate 'Search the site' %}"><button class="btn" type="submit">{% translate "Search" %}</button></form>
   <p class="srch-note">{% blocktranslate with href=request.LANGUAGE_CODE %}Looking for a certificate number? Use <a href="/{{ href }}/verify/">Verify a certificate</a> instead — certificates are not searchable here.{% endblocktranslate %}</p>
 </div></div>
 {% if query %}
-<div class="wrap stack pb-32-72 g-24">
-  <nav class="row g-8 ai-c" aria-label="{% translate 'Filter results' %}">
+<div class="wrap stack srch-results">
+  <nav class="row srch-tabs" aria-label="{% translate 'Filter results' %}">
     <span class="srch-count">{% blocktranslate count counter=count %}{{ counter }} result{% plural %}{{ counter }} results{% endblocktranslate %}</span>
     {% for key, label in tabs %}<a class="tab{% if key == tab %} on{% endif %}" href="?q={{ query|urlencode }}{% if key != 'all' %}&amp;type={{ key }}{% endif %}"{% if key == tab %} aria-current="page"{% endif %}>{{ label }}</a>{% endfor %}
   </nav>

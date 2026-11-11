@@ -3,7 +3,7 @@
 {% block body_class %}page-services{% endblock %}
 {% block content %}
 {% include "includes/page_head.html" with image=page.header_image image_alt=page.header_image_alt caption=page.header_caption intro=page.intro %}
-<div class="wrap pb-24-72">
+<div class="wrap svc-hub">
   {% for group, services in groups %}
   <section class="grp" aria-labelledby="grp-{{ group.slug }}">
     <div class="photo grp__ph">{% if group.header_image %}{% image group.header_image fill-640x400 as img %}<img src="{{ img.url }}" alt="{{ group.header_image_alt }}" width="{{ img.width }}" height="{{ img.height }}" loading="lazy">{% endif %}<div class="cap">{{ group.get_group_display }}</div></div>
