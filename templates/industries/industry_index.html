@@ -1,0 +1,18 @@
+{% extends "base.html" %}{% load i18n wagtailcore_tags wagtailimages_tags %}
+{% comment %}Industries hub (design B-Industries.dc.html; proposal 01 §5.4): the live industries as photo cards. A card without a photo keeps the grey plate and its caption (no stock photos).{% endcomment %}
+{% block body_class %}page-industries{% endblock %}
+{% block content %}
+{% include "includes/page_head.html" with image=page.header_image image_alt=page.header_image_alt caption=page.header_caption intro=page.intro %}
+{% if industries %}
+<div class="wrap stack" style="padding-block:64px 72px;gap:32px">
+  {% if page.heading %}<div><h2 class="h2">{{ page.heading }}</h2><div class="rule"></div></div>{% endif %}
+  <div class="cards">
+  {% for industry in industries %}<a class="svc svc--sm" href="{% pageurl industry %}">
+    <div class="photo">{% if industry.header_image %}{% image industry.header_image fill-720x340 as img %}<img src="{{ img.url }}" alt="" width="{{ img.width }}" height="{{ img.height }}" loading="lazy">{% endif %}{% if industry.card_caption %}<div class="cap">{{ industry.card_caption }}</div>{% endif %}</div>
+    <div class="svc__body"><b class="svc__title">{{ industry.title }}</b>{% if industry.summary %}<span class="svc__text">{{ industry.summary }}</span>{% endif %}</div>
+  </a>{% endfor %}
+  </div>
+</div>
+{% endif %}
+{% include "includes/cta_band.html" %}
+{% endblock %}

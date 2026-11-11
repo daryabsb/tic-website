@@ -85,7 +85,7 @@ class HomePage(ScriptNormalisationMixin, Page):
 
     parent_page_types = ["wagtailcore.Page"]
     # The index pages of the TIC apps are added here as each app lands (gate 1 to 3).
-    subpage_types = ["pages.AboutPage", "services.ServiceIndexPage"]
+    subpage_types = ["pages.AboutPage", "services.ServiceIndexPage", "industries.IndustryIndexPage"]
 
     override_translatable_fields = _translatable(
         "hero_image_alt",
