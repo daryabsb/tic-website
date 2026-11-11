@@ -1,6 +1,6 @@
 # Engineer kickoff — TIC website
 
-Paste this as the first message of the engineer's Claude Code session in `E:\api\tic-website`. The designer (Claude Design, in the "TIC-SEACORR-LOX" project) wrote the plan, the design drop and the gate-0 scaffold; the engineer works the map from here, one ticket per session.
+Paste this as the first message of the engineer's Claude Code session in `E:\api\tic-website`. The designer (Claude Design, in the "TIC-SEACORR-LOX" project) wrote the plan, the design drop and the gate-0 scaffold; the engineer works the map from here, one ticket at a time, many per session (D28).
 
 ---
 
@@ -27,7 +27,7 @@ You are the engineer of the TIC Quality Control website. Read, in this order, be
 
 ## How a ticket is worked
 
-- One ticket per session. Claim it on the issue, work it on a branch named `<gate>/<ticket>-<slug>`, open a PR, report. "end" writes the resolution on the issue, closes it, updates the map and DECISIONS.md, commits, pushes.
+- One ticket at a time, many per session (D28). Claim it on the issue, work it on a branch named `<gate>/<ticket>-<slug>`, open a PR, report. "end" writes the resolution on the issue, closes it, updates the map and DECISIONS.md, commits, pushes.
 - Pages: the `.dc.html` of the drop is the markup and the CSS. Take it, drop the `<x-dc>` wrapper and the `data-dc-script` block, turn the content into model fields and StreamField blocks exactly as `03-data-model.md` lists them, with the validation column enforced in `clean()`. The classes already in `static/css/site.css` are reused; new classes are added there with logical properties (`margin-inline-start`, not `margin-left`) so Arabic mirrors for free.
 - Seed: every page type gets its rows in `seed/en.yaml`, filled from the proposal. A fact the proposal marks "to be confirmed" stays `[in brackets]`. No stock photos: the grey plate with a caption. No figure without an owner (D21).
 - Tests: one `tests/test_<app>.py` per app; both languages render; validation rejects what the plan says it must; `seed_site` is idempotent ("0 change(s)" on the second run). `pytest`, `ruff check`, `ruff format --check`, `makemigrations --check` are the gate.

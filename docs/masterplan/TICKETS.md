@@ -1,6 +1,6 @@
 # Tickets — the first Wayfinder map
 
-Created on GitHub Nov 10, 2026: the map is issue #2, each row is an issue titled "T<n> <name>" (D23). One ticket per session. Each ticket names its gate, what it blocks, and how it is demonstrated. Decisions taken on a ticket go to `DECISIONS.md` the same day.
+Created on GitHub Nov 10, 2026: the map is issue #2, each row is an issue titled "T<n> <name>" (D23). One ticket at a time, many per session (D28). Each ticket names its gate, what it blocks, and how it is demonstrated. Decisions taken on a ticket go to `DECISIONS.md` the same day.
 
 ## Map (#1)
 
@@ -16,7 +16,7 @@ Destination: ticqc.com live on the new stack, five gates passed. Open, unblocked
 | 5 | ✅ (Nov 10) **Shared parts as includes** — header (with language `<select>`), footer, page head (two variants), CTA band from the four drop files; logo files in `static/img/logo/` | 9+ | Rendered on the empty home in EN and AR shells |
 | 6 | ✅ (Nov 11, D25: the gate is `scripts/ci.sh` on stms-data; staging deploy moves to T7) **CI and deploy workflows** — `ci.yml`, `deploy.yml`, Dependabot, GHCR image, forced-command SSH deploy to staging | 7 | CI green on `main` |
 | 7 | ✅ (Nov 11, D27: on stms-data at `https://staging.ticqc.ae` behind a Cloudflare tunnel; weekly backup to the NAS pings Healthchecks) **Staging stack on zeneon-1** — `/srv/stacks/tic/staging/`, Caddy file with basic auth, `.env`, backup timer, Healthchecks, Better Stack (Task: Darya for sudo and DNS) | 1 | `https://tic-staging.…/en/` answers behind basic auth; backup check pings |
-| 8 | ◐ site.yaml + en.yaml home in; offices and redirects pending **Seed skeleton** — `seed_site` command (fill blanks only), `site.yaml` with settings, the fourteen offices as placeholder rows, `redirects.csv` empty | 10+ | Idempotent run on staging |
+| 8 | ✅ (Nov 11: `offices.yaml` with the fourteen rows, empty `redirects.csv`, redirect loader; 0 changes on two staging runs) **Seed skeleton** — `seed_site` command (fill blanks only), `site.yaml` with settings, the fourteen offices as placeholder rows, `redirects.csv` empty | 10+ | Idempotent run on staging |
 
 ## Gate 1 · Sell
 
