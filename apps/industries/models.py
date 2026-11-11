@@ -58,7 +58,12 @@ class IndustryIndexPage(ScriptNormalisationMixin, _HeaderFields, Page):  # noqa:
         "intro", "header_image_alt", "header_caption", "heading", synchronised=("header_image",)
     )
 
-    content_panels = [*Page.content_panels, FieldPanel("intro"), _header_panel(), FieldPanel("heading")]
+    content_panels = [
+        *Page.content_panels,
+        FieldPanel("intro"),
+        _header_panel(),
+        FieldPanel("heading"),
+    ]
 
     class Meta:
         verbose_name = _("industry index")
@@ -172,4 +177,3 @@ def service_card(block):
     eyebrow = group.get_group_display() if isinstance(group, ServiceGroupPage) else ""
     title = block.value["title"] or page.title
     return target, eyebrow, title, block.value["text"]
-
