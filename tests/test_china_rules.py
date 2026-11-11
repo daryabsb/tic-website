@@ -68,4 +68,3 @@ def test_the_spam_check_is_hcaptcha_and_the_csp_allows_only_hcaptcha():
     caddy = (REPO_ROOT / "deploy" / "staging" / "Caddyfile").read_text(encoding="utf-8")
     assert "challenges.cloudflare.com" not in caddy
     assert "https://*.hcaptcha.com" in caddy
-
