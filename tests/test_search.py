@@ -1,13 +1,24 @@
 """T12 Search and 404: pages, documents and questions in one list with tabs; drafts and
 other languages left out; the 404 page carries the search box (D31)."""
 
+from io import StringIO
+
 import pytest
 from django.core.files.base import ContentFile
+from django.core.management import call_command
 from wagtail.documents import get_document_model
 
 pytestmark = pytest.mark.django_db
 
 SEARCH = "/en/search/"
+
+
+@pytest.fixture
+def seeded_home(seeded_home):
+    """The seed, then the search index. Wagtail updates the index in a task that runs
+    on commit; a test's transaction never commits, so the index is built here."""
+    call_command("update_index", verbosity=0, stdout=StringIO())
+    return seeded_home
 
 
 def _html(client, **params):
@@ -58,6 +69,7 @@ def test_a_document_is_found_under_downloads(seeded_home, client):
     get_document_model().objects.create(
         title="Iraq CoC regulated product list", file=ContentFile(b"%PDF-1.4", name="list.pdf")
     )
+    call_command("update_index", verbosity=0, stdout=StringIO())
     html = _html(client, q="regulated product list")
 
     assert '<span class="eyebrow">Download</span><b>Iraq CoC regulated product list</b>' in html
