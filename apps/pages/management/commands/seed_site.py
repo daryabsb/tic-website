@@ -206,8 +206,7 @@ class Command(BaseCommand):
             page, data, ("intro", "header_caption", "talk_label"), streams=[("parts", parts)]
         )
 
-
-    # -- redirects (T8; the rows come in T30) --------------------------------------------
+    # -- redirects (T8; the rows come in T30) ----------------------------------------
 
     def seed_redirects(self) -> None:
         """One Redirect per ``seed/redirects.csv`` row, for all sites, permanent. A row
