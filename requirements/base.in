@@ -11,7 +11,7 @@
 # The CMS core, pinned by commit SHA (D2): the tip of main on 2026-11-10. Core work for
 # TIC (#14 hCaptcha, #15 routing, #16 review-by) lands on a branch and moves this pin.
 # No "mcp" extra: TIC runs no MCP container in V1 (master plan 16).
-zeneon-cms @ git+ssh://git@github.com/daryabsb/zeneon-cms.git@74b95b952556ee8372efcec138355b49adf0614b
+zeneon-cms @ git+ssh://git@github.com/daryabsb/zeneon-cms.git@e13a20a946e49fd36bcc6a49fae473345bbdcc37
 
 # Series pins. The core declares compatible ranges; these keep the site on the LTS
 # series it was tested with (same as the Zeneonix site).

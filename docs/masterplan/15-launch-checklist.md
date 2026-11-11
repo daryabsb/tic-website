@@ -11,7 +11,7 @@ Worked at gate 4; every line ticked on the launch ticket with who did it and whe
 - [ ] Program pages: appointment document uploaded, product-list date shown, review-by set, owning office set; SFDA shown as "designation in progress" with a date (**P-13**)
 - [ ] One office count everywhere (**P-12**); head-office suite number confirmed (2101 vs 2206)
 - [ ] Company name rule, "program" spelling, "Kurdistan Region of Iraq" — grep test green
-- [ ] No stock photo anywhere; every image has alt text; hero renditions under 100 KB
+- [ ] Every image has alt text (D32: old-site images allowed); hero renditions under 100 KB
 - [ ] Legal pages: document code, version, effective date, owner; privacy policy reviewed by Legal
 - [ ] Arabic frame complete (test green); Arabic-first pages reviewed by the named reviewer (**P-5**)
 

@@ -59,8 +59,8 @@ RUN export DJANGO_ENV=production \
         ALLOWED_HOSTS=build.invalid \
         WAGTAILADMIN_BASE_URL=https://build.invalid \
         DATABASE_URL=postgres://build@build.invalid:5432/build \
-        TURNSTILE_SITE_KEY=build-only \
-        TURNSTILE_SECRET_KEY=build-only \
+        HCAPTCHA_SITE_KEY=build-only \
+        HCAPTCHA_SECRET_KEY=build-only \
     && python manage.py compilemessages \
     && python manage.py collectstatic --noinput \
     && python -m compileall -q /app/apps /app/tic

@@ -32,7 +32,7 @@ Rule: every old URL that had traffic in the last 12 months (Search Console expor
 - **News:** the 34 posts imported by `import_old_news` from an export of the old site (HTML scrape of the public pages if no export exists), as `NewsPage` kind = news, with their original dates, a named author where one exists, and the one image per post resized. Addresses with emoji get clean slugs and a redirect row.
 - **Downloads:** the Halal (~19 files) and CSUAS (16) files become `Document` snippets with version, date and owner (the owner supplies them; files without an owner are not published).
 - **Program content:** the Iraq page's 23 questions, the Gujarat page's 10, the Botswana product table (fixed), the Libya fee, the COSQC letter (as PDF, not image) go into `seed/en.yaml` as the program pages' content.
-- **Images:** nothing from the old site is reused on hero positions (brand rule: real photographs of inspectors; the old images are stock). Program and office photos arrive through the inventory form.
+- **Images:** ~~nothing from the old site is reused on hero positions~~ (corrected by D32: the old site's images may be reused anywhere; `scripts/fetch_old_media.py` keeps them in `~/tic/old-site/` with `media.csv`). Program and office photos from the inventory form replace them when they arrive.
 - **Accounts:** none migrated; the five old accounts and the shared "TIC" user end with the old site.
 
 ## Cut-over (launch day, 15)

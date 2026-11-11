@@ -17,6 +17,7 @@ FORBIDDEN_HOSTS = (
     "google.com/recaptcha",
     "youtube.com/embed",
     "platform.linkedin.com",
+    "challenges.cloudflare.com",
 )
 
 pytestmark = pytest.mark.django_db
@@ -56,3 +57,14 @@ def test_arabic_pages_preload_cairo_not_saira(client):
 
     assert "cairo-arabic.woff2" in html
     assert "saira-latin.woff2" not in html.split("<body")[0]
+
+
+def test_the_spam_check_is_hcaptcha_and_the_csp_allows_only_hcaptcha():
+    """D33: Turnstile is not reachable from mainland China; hCaptcha is."""
+    from django.conf import settings
+
+    contact = settings.ZENEON_CMS["contact"]
+    assert contact["spam_provider"] == "hcaptcha"
+    caddy = (REPO_ROOT / "deploy" / "staging" / "Caddyfile").read_text(encoding="utf-8")
+    assert "challenges.cloudflare.com" not in caddy
+    assert "https://*.hcaptcha.com" in caddy
