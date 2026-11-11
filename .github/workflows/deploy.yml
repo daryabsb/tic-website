@@ -26,7 +26,7 @@
 #     CLOUDFLARE_API_TOKEN   cache-purge-only token for zone ticqc.com
 #     CLOUDFLARE_ZONE_ID     zone id of ticqc.com
 #   Repository variables (optional; defaults below)
-#     STAGING_URL            https://tic-staging.zeneon.co.uk
+#     STAGING_URL            https://staging.ticqc.ae
 #     PRODUCTION_URL         https://ticqc.com
 #
 # The server pulls from GHCR: the package is private, so the deploy user logs in once
@@ -42,7 +42,7 @@ permissions: {}
 
 env:
   IMAGE: ghcr.io/daryabsb/tic-website
-  STAGING_URL: ${{ vars.STAGING_URL || 'https://tic-staging.zeneon.co.uk' }}
+  STAGING_URL: ${{ vars.STAGING_URL || 'https://staging.ticqc.ae' }}
   PRODUCTION_URL: ${{ vars.PRODUCTION_URL || 'https://ticqc.com' }}
 
 jobs:
@@ -89,7 +89,7 @@ jobs:
     timeout-minutes: 30
     environment:
       name: staging
-      url: ${{ vars.STAGING_URL || 'https://tic-staging.zeneon.co.uk' }}
+      url: ${{ vars.STAGING_URL || 'https://staging.ticqc.ae' }}
     concurrency:
       group: deploy-staging
       cancel-in-progress: false

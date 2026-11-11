@@ -3,3 +3,4 @@
 *.caddy text eol=lf
 deploy/Dockerfile text eol=lf
 *.woff2 binary
+deploy/staging/* text eol=lf
