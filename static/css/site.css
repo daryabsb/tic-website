@@ -192,6 +192,9 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .svc__title { font-family: var(--font-display); font-weight: 700; font-size: 20px; text-transform: uppercase; color: var(--tic-ink); line-height: 1.15; }
 .svc__text { font-size: 15px; color: var(--tic-charcoal); }
 :lang(ar) .svc__title { text-transform: none; }
+.svc--text { flex-basis: 280px; }
+.svc--text .svc__body { padding: 22px; gap: 8px; }
+.svc--text .svc__title { font-size: 18px; }
 
 /* ---------- figures in the dark band ---------- */
 .figs { display: flex; flex-wrap: wrap; gap: 32px; }

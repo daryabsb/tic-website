@@ -25,6 +25,7 @@ from wagtail.models import Locale, Page
 from zeneon_cms.core.locales import ensure_locales
 from zeneon_cms.core.models import SiteSettings
 
+from apps.industries.models import IndustryIndexPage, IndustryPage
 from apps.pages.models import HomePage
 from apps.services.models import ServiceGroupPage, ServiceIndexPage, ServicePage
 
@@ -100,6 +101,8 @@ class Command(BaseCommand):
             self.seed_home(locale, data["home"])
         if "services" in data:
             self.seed_services(locale, data["services"], data.get("psi") or {})
+        if "industries" in data:
+            self.seed_industries(locale, data["industries"])
 
     def seed_home(self, locale: Locale, data: dict) -> None:
         home = HomePage.objects.filter(locale=locale).first()
@@ -205,6 +208,67 @@ class Command(BaseCommand):
         self.fill_page(
             page, data, ("intro", "header_caption", "talk_label"), streams=[("parts", parts)]
         )
+
+    # -- industries (T11) -----------------------------------------------------------
+
+    INDUSTRY_FIELDS = (
+        "summary",
+        "card_caption",
+        "intro",
+        "header_caption",
+        "services_heading",
+        "why_heading",
+        "why_text",
+    )
+
+    def seed_industries(self, locale: Locale, data: dict) -> None:
+        home = HomePage.objects.filter(locale=locale).first()
+        if home is None:
+            return
+        index, touch = self.child(
+            home,
+            IndustryIndexPage,
+            data["slug"],
+            data["title"],
+            live=True,
+            show_in_menus=True,
+        )
+        if touch:
+            self.fill_page(index, data, ("intro", "header_caption", "heading"))
+        service_root = ServiceIndexPage.objects.filter(locale=locale).first()
+        for item in data.get("pages", []):
+            page, touch = self.child(index, IndustryPage, item["slug"], item["title"], live=True)
+            if not touch:
+                continue
+            cards = [
+                {"type": "card", "value": value}
+                for value in (self.service_card(service_root, c) for c in item.get("services", []))
+                if value
+            ]
+            figures = [{"type": "figure", "value": f} for f in item.get("figures", [])]
+            points = [{"type": "point", "value": text} for text in item.get("where_points", [])]
+            self.fill_page(
+                page,
+                item,
+                self.INDUSTRY_FIELDS,
+                streams=[("services", cards), ("figures", figures), ("where_points", points)],
+            )
+        self.stdout.write(f"{locale.language_code}: industries checked")
+
+    def service_card(self, service_root, card: dict):
+        """A service card value, its page found by slug under the services hub."""
+        if service_root is None:
+            return None
+        page = (
+            service_root.get_descendants(inclusive=True)
+            .type(ServicePage, ServiceGroupPage)
+            .filter(slug=card["page"])
+            .first()
+        )
+        if page is None:
+            self.stderr.write(f"industry card: no service page {card['page']}")
+            return None
+        return {"page": page.pk, "title": card.get("title", ""), "text": card["text"]}
 
     # -- redirects (T8; the rows come in T30) ----------------------------------------
 

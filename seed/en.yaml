@@ -225,3 +225,43 @@ psi:
     - type: reviewed
       value:
         owner: "[Inspection services head]"
+
+# T11 Industries (proposal 01 §5.4; design B-Industries, B-Industry-Food). Eight
+# industries; Agriculture & Food filled, the other seven carry their card only (D3 open).
+industries:
+  title: "Industries"
+  slug: "industries"
+  intro: "A second door into the same services: if you know your sector better than our service names, start here. Each industry page lists the services and programs that matter to it, and the offices that deliver them."
+  heading: "Eight industries"
+  pages:
+    - slug: "agriculture-and-food"
+      title: "Agriculture & Food"
+      card_caption: "Agriculture & Food"
+      summary: "Grain, rice, sugar, oilseeds, fresh and processed food, halal, GAFTA superintendence."
+      intro: "Grain, rice, sugar, oilseeds, fresh and processed food. We inspect at origin and at discharge, supervise loading, test through named partner laboratories, certify halal and superintend GAFTA contracts — and issue the Certificates of Conformity your importing market requires."
+      header_caption: "Kandla · Rice loading"
+      services_heading: "Services for food and agricultural trade"
+      services:
+        - {page: "pre-shipment-inspection", title: "Pre-shipment inspection", text: "Quality, quantity, packing and marking before loading."}
+        - {page: "loading-and-discharge-supervision", text: "Our inspector present at the silo, the quay and the hold."}
+        - {page: "gafta-superintendence", text: "Grain and feed contracts, as a GAFTA-approved superintendent (India)."}
+        - {page: "food-and-agricultural-testing", text: "Physical, chemical and microbiological, through [named partner laboratory, accreditation no.]."}
+        - {page: "halal-certification", text: "[Scheme and accreditation to be confirmed by the Quality/Accreditation Manager.]"}
+        - {page: "programs", title: "Certificates of Conformity", text: "Iraq, Egypt, Botswana and Libya requirements for food shipments."}
+      why_heading: "Why food traders use TIC"
+      why_text: "Independent, accredited and present at the ports the trade actually uses — with offices at origin in India, Pakistan, Thailand and Brazil and at destination in Iraq, Egypt, Jordan and Saudi Arabia."
+      figures:
+        - {value: "GAFTA", label: "Approved superintendent, India", owner: "GAFTA approved register (TIC Quality Control Private Limited)"}
+        - {value: "17020", label: "ISO/IEC accredited inspection", owner: "ANAB register, AI-3314"}
+        - {value: "[n]", label: "Food shipments inspected in 2025 (owner to confirm)", owner: ""}
+      where_points:
+        - "Origin: Noida and Gandhidham (India), Lahore, Bangkok, Kuala Lumpur, São Paulo"
+        - "Destination: Baghdad, Cairo, Amman, Riyadh, Dubai and Sharjah"
+        - "Transit and testing: Guangzhou, Maharagama"
+    - {slug: "oil-gas-and-petrochemicals", title: "Oil & Gas and Petrochemicals", card_caption: "Oil & Gas", summary: "Custody transfer, tank calibration, cargo measurement, petroleum testing."}
+    - {slug: "marine-and-shipping", title: "Marine & Shipping", card_caption: "Marine", summary: "Draft, ullage, bunker, on/off hire and cleanliness surveys."}
+    - {slug: "consumer-products-and-retail", title: "Consumer Products & Retail", card_caption: "Consumer", summary: "Textiles, electrical, toys, cosmetics, ceramics, appliances; pre-shipment inspection."}
+    - {slug: "vehicles-and-automotive", title: "Vehicles & Automotive", card_caption: "Vehicles", summary: "Pre-purchase, damage and pre-export inspection; Kurdistan Region vehicle CoC."}
+    - {slug: "industrial-equipment-and-manufacturing", title: "Industrial Equipment & Manufacturing", card_caption: "Industrial", summary: "Vendor inspection, NDT, metals and minerals."}
+    - {slug: "construction-and-infrastructure", title: "Construction & Infrastructure", card_caption: "Construction", summary: "Construction materials conformity — a regulated group in the Iraq program."}
+    - {slug: "government-and-public-sector", title: "Government & Public Sector", card_caption: "Government", summary: "Regulators and ministries as clients: inspection programs, e-waste control, advisory."}
