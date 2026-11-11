@@ -1,9 +1,9 @@
 {% extends "base.html" %}{% load i18n static wagtailcore_tags wagtailimages_tags zeneon tic %}
-{% comment %}Home (proposal 01 §5.2; design DirectionB.dc.html). The hero is the page's fields: one real photo (or the grey plate with the caption until one arrives), one sentence, two buttons. Everything below is the sections StreamField in the editor's order.{% endcomment %}
+{% comment %}Home (proposal 01 §5.2; design DirectionB.dc.html). The hero is the page's fields: one real photo (or the grey plate until one arrives; no note text on the plate, #48), one sentence, two buttons. Everything below is the sections StreamField in the editor's order.{% endcomment %}
 {% block body_class %}page-home{% endblock %}
 {% block content %}{% request_url as req_url %}
 <section class="photo photo--dark hero" aria-labelledby="hero-heading">
-  {% if page.hero_image %}{% image page.hero_image width-2400 as hero %}<img src="{{ hero.url }}" alt="{{ page.hero_image_alt }}" width="{{ hero.width }}" height="{{ hero.height }}" fetchpriority="high">{% else %}<div class="photo__note">{% translate "Real photograph of our inspectors at work (to be supplied by the office)" %}</div>{% endif %}
+  {% if page.hero_image %}{% image page.hero_image width-2400 as hero %}<img src="{{ hero.url }}" alt="{{ page.hero_image_alt }}" width="{{ hero.width }}" height="{{ hero.height }}" fetchpriority="high">{% endif %}
   <div class="wrap hero__wrap"><div class="hero__plate">
     {% if page.hero_eyebrow %}<p class="eyebrow">{{ page.hero_eyebrow }}</p>{% endif %}
     <h1 class="h1" id="hero-heading">{{ page.hero_heading }}</h1>

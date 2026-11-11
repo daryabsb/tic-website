@@ -7,7 +7,6 @@
 </div></div>
 <header class="hdr"><div class="wrap hdr__in">
   <a href="{% locale_home_url %}" class="hdr__home"><img class="hdr__logo" src="{% static 'img/logo/tic-logo-primary.png' %}" alt="{% translate 'TIC — Testing, Inspection, Certification' %}" width="1200" height="812"><span class="hdr__sep" aria-hidden="true"></span><span class="hdr__name">{% translate "TIC Quality Control" %}</span></a>
-  {% if nav %}
   <nav class="hdr__nav" aria-label="{% translate 'Main' %}">
     {% for item in nav %}<a href="{% pageurl item %}"{% if page|is_within:item %} aria-current="page"{% endif %}>{{ item.title }}</a>{% endfor %}
     <a class="btn btn--sm hdr__cta" href="{{ req_url }}">{% translate "Request a quote" %}</a>
@@ -19,6 +18,5 @@
       <a class="btn" href="{{ req_url }}">{% translate "Request a quote" %}</a>
     </nav>
   </details>
-  {% endif %}
 </div></header>
 <script>document.querySelectorAll("[data-lang-switch] select").forEach(function(s){s.addEventListener("change",function(){if(s.value){window.location.href=s.value}})});</script>
