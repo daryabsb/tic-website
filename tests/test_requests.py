@@ -129,3 +129,32 @@ def test_a_post_without_the_country_stays_on_the_form(client, psi, passed_captch
     assert response.status_code == 200
     assert not Submission.objects.exists()
     assert "field--error" in response.content.decode()
+
+
+def test_with_javascript_off_the_quote_goes_through_flagged(
+    client, psi, monkeypatch, django_capture_on_commit_callbacks
+):
+    """D42: no script, no fill time, no captcha token: accepted on the signed start time
+    (older than min_fill_seconds), flagged in the office email."""
+    import time
+
+    from django.core import signing
+    from zeneon_cms.requests.flow import STARTED_SALT
+
+    monkeypatch.setattr("zeneon_cms.notify.delivery.in_background", lambda: False)
+    RoutingRule.objects.filter(name="Baghdad office").update(email="baghdad@example.com")
+    started = signing.dumps(int(time.time()) - 60, salt=STARTED_SALT)
+    with django_capture_on_commit_callbacks(execute=True):
+        response = quote(client, psi, ts="", started=started)
+    assert response.status_code == 303
+    submission = Submission.objects.get()
+    assert submission.sent_without_js and submission.routed_email == "baghdad@example.com"
+    staff = next(m for m in mail.outbox if m.to == ["baghdad@example.com"])
+    assert staff.subject.startswith("[unverified]")
+    assert "sent without JavaScript" in staff.alternatives[0][0]
+
+
+def test_with_javascript_off_a_fast_post_is_discarded(client, psi):
+    response = quote(client, psi, ts="")
+    assert response.status_code == 303
+    assert not Submission.objects.exists()

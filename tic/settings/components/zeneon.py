@@ -33,6 +33,9 @@ ZENEON_CMS = {
         # Per-office codes come with the routing work (#17).
         "default_country_code": "971",
         "required_fields": ["name", "email"],
+        # JavaScript off: the request still goes through, flagged "sent without
+        # JavaScript" (no human check ran; the server measured the fill time). D42.
+        "accept_without_js": True,
         "contact_prefs": [
             ("whatsapp", _("WhatsApp")),
             ("phone", _("Phone call")),
