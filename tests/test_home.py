@@ -153,7 +153,10 @@ def test_language_select_offers_english_first_and_selected(client):
 def test_header_uses_the_official_logo_file_and_footer_ends_with_the_tagline_band(client):
     html = client.get("/en/").content.decode()
 
-    assert 'class="hdr__logo" src="/static/img/logo/tic-logo-primary.png"' in html
+    # T13: a 480 px copy of the official file (same artwork, scaled), WebP with a PNG fallback.
+    assert 'class="hdr__logo" src="/static/img/logo/tic-logo-480.png"' in html
+    assert 'srcset="/static/img/logo/tic-logo-480.webp" type="image/webp"' in html
+    assert "tic-logo-primary.png" not in html
     assert html.rstrip().endswith("</html>")
     body = html[html.index("<footer") :]
     assert 'class="tagline" role="img"' in body

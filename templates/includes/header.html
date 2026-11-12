@@ -6,7 +6,7 @@
   <a class="util__hide-sm" href="{% locale_home_url %}search/"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4-4"></path></svg>{% translate "Search" %}</a>
 </div></div>
 <header class="hdr"><div class="wrap hdr__in">
-  <a href="{% locale_home_url %}" class="hdr__home"><img class="hdr__logo" src="{% static 'img/logo/tic-logo-primary.png' %}" alt="{% translate 'TIC — Testing, Inspection, Certification' %}" width="1200" height="812"><span class="hdr__sep" aria-hidden="true"></span><span class="hdr__name">{% translate "TIC Quality Control" %}</span></a>
+  <a href="{% locale_home_url %}" class="hdr__home"><picture><source srcset="{% static 'img/logo/tic-logo-480.webp' %}" type="image/webp"><img class="hdr__logo" src="{% static 'img/logo/tic-logo-480.png' %}" alt="{% translate 'TIC — Testing, Inspection, Certification' %}" width="480" height="325"></picture><span class="hdr__sep" aria-hidden="true"></span><span class="hdr__name">{% translate "TIC Quality Control" %}</span></a>
   <nav class="hdr__nav" aria-label="{% translate 'Main' %}">
     {% for item in nav %}<a href="{% pageurl item %}"{% if page|is_within:item %} aria-current="page"{% endif %}>{{ item.title }}</a>{% endfor %}
     <a class="btn btn--sm hdr__cta" href="{{ req_url }}">{% translate "Request a quote" %}</a>
