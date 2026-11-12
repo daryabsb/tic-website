@@ -284,13 +284,18 @@ def test_review_date_renders(client, psi, home):
 
 @pytest.mark.parametrize(
     "path",
-    ["/en/services/", "/en/services/inspection/pre-shipment-inspection/", "/en/industries/agriculture-and-food/"],
+    [
+        "/en/services/",
+        "/en/services/inspection/pre-shipment-inspection/",
+        "/en/industries/agriculture-and-food/",
+    ],
 )
 def test_hub_pages_have_a_meta_description_from_their_summary(client, seeded_home, path):
     """T13 (Lighthouse SEO): no blank meta description; the summary or intro stands in."""
     html = client.get(path).content.decode()
 
-    start = html.index('<meta name="description" content="') + len('<meta name="description" content="')
+    marker = '<meta name="description" content="'
+    start = html.index(marker) + len(marker)
     assert len(html[start : html.index('"', start)]) > 40
 
 
