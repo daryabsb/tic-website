@@ -85,4 +85,3 @@ def office_for(submission) -> Office:
         text = _("Hello, I just sent request %(code)s.") % {"code": submission.code}
         office.whatsapp_link = whatsapp_url(office.whatsapp, text)
     return office
-
