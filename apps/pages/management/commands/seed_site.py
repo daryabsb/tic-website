@@ -2,7 +2,8 @@
 
 Reads ``seed/site.yaml`` (language-neutral site settings) and ``seed/<lang>.yaml`` (page
 copy, one file per language) and ``seed/redirects.csv`` (old path, new path; master plan
-10) and ``seed/requests.yaml`` (the request questions and the routing rules, T17). Gate 0 seeds the site settings, the home page and the redirects; the other page
+10) and ``seed/requests.yaml`` (the request questions and the routing rules, T17).
+Gate 0 seeds the site settings, the home page and the redirects; the other page
 types join their tickets. ``seed/offices.yaml`` holds the fourteen office rows; T20
 loads them when ``OfficePage`` exists.
 
