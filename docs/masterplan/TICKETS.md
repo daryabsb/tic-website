@@ -26,7 +26,7 @@ Destination: ticqc.com live on the new stack, five gates passed. Open, unblocked
 | 10 | ✅ (Nov 11, D26: `Person` built here; office links any page until T20) **Services** — `ServiceIndexPage`, `ServiceGroupPage`, `ServicePage` with the eleven blocks and validation; seed for the seven groups and the PSI page; `Partner` snippet required on testing | 1 | The three service templates render from seed; publish refused without a required part |
 | 11 | ✅ (Nov 11, D29: cards to live pages; where as text until T20; insights wait for T25) **Industries** — index and page; seed for eight industries with Agriculture & Food filled | 1 | Renders from seed |
 | 12 | ✅ (Nov 11, D31: pages, documents, questions; the "Iraq certificate" demo repeats at gate 2) **Search and 404** — Wagtail search over pages, documents, questions; the 404 page from the drop | 1 | A search for "Iraq certificate" returns program, insight, download, question, office |
-| 13 | **Lighthouse on staging** — Home and a service page on mobile; numbers in DECISIONS | gate 1 | Written down |
+| 13 | ✅ (Nov 12, D38: perf 98–99, LCP 2.1 s, ~107 KB) **Lighthouse on staging** — Home and a service page on mobile; numbers in DECISIONS | gate 1 | Written down |
 
 ## Gate 2 · Prove
 
