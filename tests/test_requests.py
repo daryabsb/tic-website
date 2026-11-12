@@ -92,7 +92,8 @@ def test_a_quote_from_iraq_reaches_the_baghdad_address(
         "Baghdad office",
         "baghdad@example.com",
     )
-    staff, client_mail = sorted(mail.outbox, key=lambda m: m.to[0])[::-1]
+    by_to = {message.to[0]: message for message in mail.outbox}
+    staff, client_mail = by_to["baghdad@example.com"], by_to["sara@example.com"]
     assert staff.to == ["baghdad@example.com"] and submission.code in staff.subject
     assert client_mail.to == ["sara@example.com"]
     html = client_mail.alternatives[0][0]

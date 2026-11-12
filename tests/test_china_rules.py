@@ -72,10 +72,12 @@ def test_the_spam_check_is_hcaptcha_and_the_csp_allows_only_hcaptcha():
 
 def test_templates_have_no_inline_styles():
     """D34: the CSP is `style-src 'self'`, so the browser ignores style="..."; layout
-    lives in static/css/site.css."""
+    lives in static/css/site.css. The one exception is the email HTML (D41): mail apps
+    drop <style> and classes, and no CSP applies there."""
+    emails = REPO_ROOT / "templates" / "zeneon" / "requests" / "alerts"
     found = [
         str(path.relative_to(REPO_ROOT))
         for path in (REPO_ROOT / "templates").rglob("*.html")
-        if 'style="' in path.read_text(encoding="utf-8")
+        if emails not in path.parents and 'style="' in path.read_text(encoding="utf-8")
     ]
     assert found == []
