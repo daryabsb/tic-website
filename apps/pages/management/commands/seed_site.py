@@ -332,7 +332,7 @@ class Command(BaseCommand):
     @staticmethod
     def schema_key(topic) -> str:
         if isinstance(topic, ServicePage):
-            for block in topic.body:
+            for block in topic.parts:
                 if block.block_type == "contact" and block.value.get("schema"):
                     return block.value["schema"]
         return "quote"
