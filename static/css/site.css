@@ -133,7 +133,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
   .hdr__menu > summary::-webkit-details-marker { display: none; }
   .hdr__menu[open] .menu { display: flex; }
   .menu { display: none; position: absolute; inset-inline: 0; z-index: 20; background: var(--tic-white); border-bottom: 3px solid var(--tic-red); flex-direction: column; padding: 8px var(--gutter) 16px; }
-  .menu a { font-family: var(--font-display); font-weight: 600; font-size: 16px; text-transform: uppercase; text-decoration: none; color: var(--tic-ink); min-height: 48px; display: flex; align-items: center; border-top: 1px solid var(--tic-hairline); }
+  .menu a:not(.btn) { font-family: var(--font-display); font-weight: 600; font-size: 16px; text-transform: uppercase; text-decoration: none; color: var(--tic-ink); min-height: 48px; display: flex; align-items: center; border-top: 1px solid var(--tic-hairline); }
   .menu .btn { margin-top: 12px; }
   .util__in { justify-content: flex-start; gap: 4px 16px; }
   .util__hide-sm { display: none; }
@@ -168,6 +168,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .hero__actions { display: flex; flex-wrap: wrap; gap: 14px; padding-top: 4px; }
 @media (max-width: 640px) {
   .hero { min-height: 440px; }
+  .hero__wrap, .photo .page-head__wrap { padding-bottom: 44px; } /* room for the red caption under the plate (#48) */
   .hero__wrap { padding-top: 48px; }
   .hero__plate { padding: 22px 20px; gap: 14px; margin: 0 -4px; width: calc(100% + 8px); }
   .hero__actions .btn { flex: 1 1 100%; }
