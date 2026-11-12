@@ -4,13 +4,17 @@
 - `{% home_page as home %}`: the live home page of the active language.
 - `{% whatsapp_url "text" as url %}`: wa.me link to SiteSettings.whatsapp_number ("" when
   blank). Per-office numbers come with the offices work (#20).
-- `{% request_url as url %}`: the quote form of the active language.
+- `{% request_url as url %}`: the quote form of the active language;
+  `{% request_url page as url %}` opens it on that page as the topic (step 1 skipped).
+- `{% absolute_static 'img/x.png' %}`: a static file's full URL (emails).
+- `{% request_office submission as office %}`: the office that received a request (T17).
 - `{% latest_articles 3 as articles %}`: newest live articles of the active language.
 - `{{ page|is_within:item }}`: True when ``page`` is ``item`` or one of its descendants.
 """
 
 from django import template
 from django.conf import settings
+from django.templatetags.static import static
 from django.urls import reverse
 from django.utils.translation import get_language
 from zeneon_cms.core.models import SiteSettings
@@ -49,8 +53,23 @@ def whatsapp_url(text=""):
 
 
 @register.simple_tag
-def request_url():
-    return reverse("zeneon_requests_form:request")
+def request_url(page=None):
+    url = reverse("zeneon_requests_form:request")
+    return f"{url}?topic={page.pk}" if page is not None and page.pk else url
+
+
+@register.simple_tag
+def absolute_static(path):
+    """A static file's full URL, for emails (the public base URL + the static URL)."""
+    base = getattr(settings, "WAGTAILADMIN_BASE_URL", "").rstrip("/")
+    return base + static(path)
+
+
+@register.simple_tag
+def request_office(submission):
+    from apps.services.intake import office_for
+
+    return office_for(submission)
 
 
 @register.simple_tag

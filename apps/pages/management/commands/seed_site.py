@@ -2,7 +2,7 @@
 
 Reads ``seed/site.yaml`` (language-neutral site settings) and ``seed/<lang>.yaml`` (page
 copy, one file per language) and ``seed/redirects.csv`` (old path, new path; master plan
-10). Gate 0 seeds the site settings, the home page and the redirects; the other page
+10) and ``seed/requests.yaml`` (the request questions and the routing rules, T17). Gate 0 seeds the site settings, the home page and the redirects; the other page
 types join their tickets. ``seed/offices.yaml`` holds the fourteen office rows; T20
 loads them when ``OfficePage`` exists.
 
@@ -14,16 +14,20 @@ nothing and says so. ``--reset`` overwrites the seeded fields (staging only).
 from __future__ import annotations
 
 import csv
+import json
 from pathlib import Path
 
 import yaml
 from django.conf import settings
+from django.core.exceptions import ValidationError
 from django.core.management.base import BaseCommand
+from django.core.validators import validate_email
 from django.db import transaction
 from wagtail.contrib.redirects.models import Redirect
 from wagtail.models import Locale, Page
 from zeneon_cms.core.locales import ensure_locales
 from zeneon_cms.core.models import SiteSettings
+from zeneon_cms.requests.models import RequestSchema, RoutingCondition, RoutingRule
 
 from apps.industries.models import IndustryIndexPage, IndustryPage
 from apps.pages.models import HomePage
@@ -57,6 +61,7 @@ class Command(BaseCommand):
             codes = [options["language"]] if options["language"] else self.languages()
             for code in codes:
                 self.seed_language(code)
+            self.seed_requests()
             self.seed_redirects()
         self.stdout.write(f"seed_site: {self.changes} change(s)")
 
@@ -291,6 +296,97 @@ class Command(BaseCommand):
             self.stderr.write(f"industry card: no service page {card['page']}")
             return None
         return {"page": page.pk, "title": card.get("title", ""), "text": card["text"]}
+
+    # -- request questions and routing (T17, D41) -------------------------------------
+
+    def seed_requests(self) -> None:
+        data = self.load("requests.yaml")
+        if not data:
+            return
+        self.seed_schemas(data.get("schemas") or {})
+        self.seed_routing(data.get("routing") or [])
+
+    def seed_schemas(self, schemas: dict) -> None:
+        """A RequestSchema in the default language for every live service group and
+        service (key from its "contact" part, default "quote") and for "something
+        else". An existing schema keeps its questions unless ``--reset``."""
+        locale = Locale.get_default()
+        topics = [None]
+        topics += ServiceGroupPage.objects.filter(locale=locale).order_by("path")
+        topics += ServicePage.objects.filter(locale=locale).order_by("path")
+        for topic in topics:
+            key = self.schema_key(topic)
+            if key not in schemas:
+                self.stderr.write(f"request schema: no questions '{key}' in requests.yaml")
+                continue
+            questions = json.dumps([self.question(row) for row in schemas[key]])
+            schema = RequestSchema.objects.filter(topic=topic, locale=locale).first()
+            if schema is None:
+                RequestSchema.objects.create(topic=topic, locale=locale, questions=questions)
+                self.changes += 1
+            elif self.reset:
+                schema.questions = questions
+                schema.save()
+                self.changes += 1
+
+    @staticmethod
+    def schema_key(topic) -> str:
+        if isinstance(topic, ServicePage):
+            for block in topic.body:
+                if block.block_type == "contact" and block.value.get("schema"):
+                    return block.value["schema"]
+        return "quote"
+
+    @staticmethod
+    def question(row: dict) -> dict:
+        value = {
+            "key": row["key"],
+            "label": row["label"],
+            "help": row.get("help", ""),
+            "required": bool(row.get("required")),
+        }
+        if row["type"] in ("single", "multi"):
+            value["options"] = [
+                {
+                    "key": option["key"],
+                    "label": option["label"],
+                    "reveals": option.get("reveals") or {"key": "", "label": ""},
+                }
+                for option in row["options"]
+            ]
+        return {"type": row["type"], "value": value}
+
+    def seed_routing(self, rows: list) -> None:
+        """One RoutingRule per row, matched by name and priority. A blank email is
+        filled from the row (or its office's real address); ``--reset`` rewrites the
+        address and the conditions."""
+        offices = {row["slug"]: row for row in self.load("offices.yaml").get("offices", [])}
+        for row in rows:
+            email = row.get("email") or offices.get(row.get("office"), {}).get("email", "")
+            email = email if self.is_email(email) else ""
+            rule = RoutingRule.objects.filter(name=row["name"], priority=row["priority"]).first()
+            if rule is None:
+                rule = RoutingRule(name=row["name"], priority=row["priority"])
+            elif not self.reset:
+                if email and not rule.email:
+                    rule.email = email
+                    rule.save()
+                    self.changes += 1
+                continue
+            rule.email = email
+            rule.save()
+            rule.conditions.all().delete()
+            for field, value in (row.get("when") or {}).items():
+                RoutingCondition.objects.create(rule=rule, field=field, value=str(value))
+            self.changes += 1
+
+    @staticmethod
+    def is_email(value: str) -> bool:
+        try:
+            validate_email(value)
+        except ValidationError:
+            return False
+        return True
 
     # -- redirects (T8; the rows come in T30) ----------------------------------------
 
