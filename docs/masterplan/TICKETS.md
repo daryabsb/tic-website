@@ -22,7 +22,7 @@ Destination: ticqc.com live on the new stack, five gates passed. Open, unblocked
 
 | # | Ticket | Blocks | Done when |
 | --- | --- | --- | --- |
-| 9 | ◐ blocks and templates in; needs the hub pages to link to **HomePage** — the nine sections from `DirectionB.dc.html`; `Figure` and `Accreditation` snippets; proof strip from `is_public` rows | 1 | Home from seed on a phone; placeholders bracketed |
+| 9 | ✅ (Nov 12, D37: links to the hubs by path; no `#` links) **HomePage** — the nine sections from `DirectionB.dc.html`; `Figure` and `Accreditation` snippets; proof strip from `is_public` rows | 1 | Home from seed on a phone; placeholders bracketed |
 | 10 | ✅ (Nov 11, D26: `Person` built here; office links any page until T20) **Services** — `ServiceIndexPage`, `ServiceGroupPage`, `ServicePage` with the eleven blocks and validation; seed for the seven groups and the PSI page; `Partner` snippet required on testing | 1 | The three service templates render from seed; publish refused without a required part |
 | 11 | ✅ (Nov 11, D29: cards to live pages; where as text until T20; insights wait for T25) **Industries** — index and page; seed for eight industries with Agriculture & Food filled | 1 | Renders from seed |
 | 12 | ✅ (Nov 11, D31: pages, documents, questions; the "Iraq certificate" demo repeats at gate 2) **Search and 404** — Wagtail search over pages, documents, questions; the 404 page from the drop | 1 | A search for "Iraq certificate" returns program, insight, download, question, office |
