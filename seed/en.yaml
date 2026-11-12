@@ -19,13 +19,14 @@ home:
       value:
         heading: "What do you need?"
         link_label: "All services"
+        link_page: "services"
         cards:
-          - {caption: "Inspection", title: "Inspection", text: "Pre-shipment, loading and discharge, container loading, marine and cargo surveys, vehicles, GAFTA."}
-          - {caption: "Testing", title: "Testing", text: "Food and agricultural, consumer products, oil and gas, minerals and metals — through named partner laboratories."}
-          - {caption: "Certification", title: "Certification", text: "Product conformity, halal and scheme certification for the markets you sell into."}
-          - {caption: "Programs", title: "Government & Trade Programs", text: "Certificates of Conformity and Inspection for Iraq, the Kurdistan Region, Egypt, Botswana and Libya."}
-          - {caption: "Training", title: "Training", text: "Courses for exporters, inspectors and quality teams, by our offices and online."}
-          - {caption: "Audits", title: "Audits", text: "Factory and supplier audits before you commit to a shipment or a contract."}
+          - {caption: "Inspection", title: "Inspection", page: "services/inspection", text: "Pre-shipment, loading and discharge, container loading, marine and cargo surveys, vehicles, GAFTA."}
+          - {caption: "Testing", title: "Testing", page: "services/testing", text: "Food and agricultural, consumer products, oil and gas, minerals and metals — through named partner laboratories."}
+          - {caption: "Certification", title: "Certification", page: "services/certification", text: "Product conformity, halal and scheme certification for the markets you sell into."}
+          - {caption: "Programs", title: "Government & Trade Programs", page: "services/programs", text: "Certificates of Conformity and Inspection for Iraq, the Kurdistan Region, Egypt, Botswana and Libya."}
+          - {caption: "Training", title: "Training", page: "services/training", text: "Courses for exporters, inspectors and quality teams, by our offices and online."}
+          - {caption: "Audits", title: "Audits", page: "services/audits", text: "Factory and supplier audits before you commit to a shipment or a contract."}
     - type: dark_band
       value:
         heading: "Why TIC"
@@ -41,14 +42,14 @@ home:
         heading: "Who do you serve?"
         text: "Start from your sector: each industry page lists the services and programs that matter to it. Both menus lead to the same service pages."
         links:
-          - {label: "Agriculture & Food"}
-          - {label: "Oil & Gas and Petrochemicals"}
-          - {label: "Marine & Shipping"}
-          - {label: "Consumer Products & Retail"}
-          - {label: "Vehicles & Automotive"}
-          - {label: "Industrial Equipment & Manufacturing"}
-          - {label: "Construction & Infrastructure"}
-          - {label: "Government & Public Sector"}
+          - {label: "Agriculture & Food", page: "industries/agriculture-and-food"}
+          - {label: "Oil & Gas and Petrochemicals", page: "industries/oil-gas-and-petrochemicals"}
+          - {label: "Marine & Shipping", page: "industries/marine-and-shipping"}
+          - {label: "Consumer Products & Retail", page: "industries/consumer-products-and-retail"}
+          - {label: "Vehicles & Automotive", page: "industries/vehicles-and-automotive"}
+          - {label: "Industrial Equipment & Manufacturing", page: "industries/industrial-equipment-and-manufacturing"}
+          - {label: "Construction & Infrastructure", page: "industries/construction-and-infrastructure"}
+          - {label: "Government & Public Sector", page: "industries/government-and-public-sector"}
     - type: programs
       value:
         heading: "Export programs"

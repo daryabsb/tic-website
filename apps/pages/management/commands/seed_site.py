@@ -97,12 +97,12 @@ class Command(BaseCommand):
     def seed_language(self, code: str) -> None:
         data = self.load(f"{code}.yaml")
         locale = Locale.objects.get(language_code=code)
-        if "home" in data:
-            self.seed_home(locale, data["home"])
         if "services" in data:
             self.seed_services(locale, data["services"], data.get("psi") or {})
         if "industries" in data:
             self.seed_industries(locale, data["industries"])
+        if "home" in data:  # last: its cards and rows link to the hub pages above (T9)
+            self.seed_home(locale, data["home"])
 
     def seed_home(self, locale: Locale, data: dict) -> None:
         home = HomePage.objects.filter(locale=locale).first()
@@ -112,7 +112,7 @@ class Command(BaseCommand):
         changed = [self.fill(home, name, data.get(name)) for name in ("title", *HOME_FIELDS)]
         sections = data.get("sections")
         if sections and (self.reset or not home.sections.raw_data):
-            home.sections = sections
+            home.sections = self.link_pages(home, sections)
             self.changes += 1
             changed.append(True)
         if any(changed):
@@ -120,6 +120,28 @@ class Command(BaseCommand):
             revision = home.save_revision()
             revision.publish()
             self.stdout.write(f"{locale.language_code}: home page updated")
+
+    PAGE_KEYS = ("page", "link_page")
+
+    def link_pages(self, home, value):
+        """Swap each ``page``/``link_page`` path (``services/inspection``) for the live
+        page's id under this home; a path with no live page yet is dropped (D29)."""
+        if isinstance(value, list):
+            return [self.link_pages(home, item) for item in value]
+        if not isinstance(value, dict):
+            return value
+        out = {}
+        for key, item in value.items():
+            if key in self.PAGE_KEYS and isinstance(item, str):
+                url_path = f"{home.url_path}{item.strip('/')}/"
+                page = Page.objects.live().filter(url_path=url_path).first()
+                if page is None:
+                    self.stderr.write(f"home link: no live page {item}")
+                    continue
+                out[key] = page.pk
+            else:
+                out[key] = self.link_pages(home, item)
+        return out
 
     # -- services (T10) -------------------------------------------------------------
 

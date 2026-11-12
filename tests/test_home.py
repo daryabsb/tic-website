@@ -85,6 +85,39 @@ def test_seed_fills_the_home_page_and_is_idempotent(client, seeded_home):
     assert "0 change(s)" in out.getvalue()
 
 
+def test_seeded_home_links_to_the_live_hub_pages(client, seeded_home):
+    """T9: the service cards and the sector rows open the live pages; no dead '#' links."""
+    html = client.get("/en/").content.decode()
+
+    for path in (
+        "/en/services/",
+        "/en/services/inspection/",
+        "/en/services/testing/",
+        "/en/services/certification/",
+        "/en/services/programs/",
+        "/en/services/training/",
+        "/en/services/audits/",
+        "/en/industries/agriculture-and-food/",
+        "/en/industries/government-and-public-sector/",
+    ):
+        assert f'href="{path}"' in html, path
+    assert 'href="#"' not in html
+
+
+def test_a_card_without_a_page_is_not_a_link(client, home):
+    home.sections = [
+        {"type": "cards", "value": {"heading": "What do you need?", "cards": [{"title": "Loose"}]}},
+        {"type": "link_list", "value": {"heading": "Who", "links": [{"label": "Loose row"}]}},
+    ]
+    home.save_revision().publish()
+
+    html = client.get("/en/").content.decode()
+
+    assert "Loose" in html
+    assert "Loose row" in html
+    assert 'href="#"' not in html
+
+
 def test_a_figure_without_an_owner_is_not_rendered(client, home):
     """Nothing invented: a number nobody sourced does not appear."""
     home.sections = [
