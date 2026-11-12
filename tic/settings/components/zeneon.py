@@ -25,6 +25,10 @@ ZENEON_CMS = {
     # are the structured answers routing acts on (#15, #17).
     "requests": {
         "code_prefix": "TIC",
+        # Step 1 offers TIC's service groups and services; rules can match the group
+        # (apps/services/intake.py, D41).
+        "topic_pages": "apps.services.intake.topic_pages",
+        "routing_facts": "apps.services.intake.routing_facts",
         # Head office: a number typed without + or 00 gets +971 in wa.me and tel: links.
         # Per-office codes come with the routing work (#17).
         "default_country_code": "971",

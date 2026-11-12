@@ -418,3 +418,39 @@ textarea.inp { padding: 12px 14px; min-height: 120px; }
 .srch-tabs { gap: 8px; align-items: center; }
 .nf__body { flex: 1 1 420px; gap: 18px; }
 .nf__links { gap: 4px 28px; }
+/* Request form (T17, D41): the core flow (zeneon/requests/flow.html) in TIC's form look
+   (design B-Contact.dc.html "Request a quote"). The core's class names are kept. */
+.request-page { display: flex; flex-direction: column; gap: 20px; padding-block: 48px 72px; max-width: 880px; }
+.request-flow { display: flex; flex-direction: column; gap: 24px; }
+.request-steps { display: flex; flex-wrap: wrap; gap: 8px 24px; margin: 0; padding: 0; list-style: none; counter-reset: step; }
+.request-steps li { counter-increment: step; font-family: var(--font-display); font-weight: 600; font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: var(--tic-body-grey); padding-bottom: 6px; border-bottom: 3px solid var(--tic-hairline); }
+.request-steps li::before { content: counter(step) " · "; }
+.request-steps li[aria-current="step"] { color: var(--tic-ink); border-bottom-color: var(--tic-red); }
+.request-flow .form { display: flex; flex-direction: column; gap: 20px; margin: 0; }
+.request-flow fieldset { border: 0; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.field__label { font-family: var(--font-display); font-weight: 600; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--tic-charcoal); padding: 0; }
+.field__opt { text-transform: none; letter-spacing: 0; font-weight: 400; color: var(--tic-body-grey); }
+.field__help { font-size: 14px; color: var(--tic-body-grey); }
+.field__error { font-size: 14px; font-weight: 600; color: var(--tic-red-edge); }
+.field--error input, .field--error textarea, .field--error select { border-color: var(--tic-red-edge); }
+.field__choice { display: flex; align-items: center; gap: 10px; min-height: 40px; font-size: 16px; color: var(--tic-ink); cursor: pointer; }
+.field__choice input { width: 20px; height: 20px; margin: 0; accent-color: var(--tic-ink); }
+.request-flow fieldset:has(> .field__choice:nth-of-type(8)) { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); column-gap: 24px; row-gap: 0; }
+.request-flow fieldset:has(> .field__choice:nth-of-type(8)) > legend { margin-bottom: 8px; }
+.request-flow input[type="text"], .request-flow input[type="email"], .request-flow input[type="tel"], .request-flow input[type="url"], .request-flow input[type="date"], .request-flow select, .request-flow textarea { min-height: 48px; border: 2px solid var(--tic-ink); background: var(--tic-white); padding: 0 14px; font-family: var(--font-body); font-size: 16px; color: var(--tic-ink); width: 100%; }
+.request-flow textarea { padding: 12px 14px; min-height: 140px; }
+.request-topic { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; font-family: var(--font-display); font-weight: 600; font-size: 18px; color: var(--tic-ink); }
+.request-actions { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; }
+.request-flow .btn--primary { background: var(--tic-red); }
+.request-flow .btn--secondary { background: transparent; color: var(--tic-ink); border: 2px solid var(--tic-ink); }
+.request-flow .btn--secondary:hover { background: var(--tic-light); }
+.request-flow .btn--link { min-height: 0; padding: 0; background: transparent; color: var(--tic-ink); font-size: 13px; text-decoration: underline; }
+.request-flow .alert { padding: 14px 18px; border-inline-start: 4px solid var(--tic-red-edge); background: var(--tic-light); color: var(--tic-ink); }
+.form__trap { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+.form__notice, .form__wait { font-size: 14px; color: var(--tic-body-grey); }
+.request-page__promise { margin: 0; }
+.sent { display: flex; flex-direction: column; gap: 20px; padding-block: 48px 72px; max-width: 760px; }
+.sent__facts { display: flex; flex-wrap: wrap; gap: 16px 48px; margin: 0; }
+.sent__fact { display: flex; flex-direction: column; gap: 4px; }
+.sent__fact dd { margin: 0; font-size: 18px; color: var(--tic-ink); }
+.sent__code { font-family: var(--font-display); font-weight: 700; font-size: 28px; letter-spacing: .04em; }

@@ -1,0 +1,82 @@
+# The request form: question sets and routing rules (master plan 03, 07; D39, D41).
+# Loaded by `manage.py seed_site` (fills blanks only; `--reset` on staging only).
+#
+# schemas: one question set per key. A service page's "contact" part names its key
+# (default "quote"); seed_site gives every such page a RequestSchema with these
+# questions, and the "something else" choice gets "quote" too. Keys are the same in
+# every language; labels are translated like any snippet.
+# `program_request` is the quote plus the destination; T18 adds each program's route
+# questions on top.
+schemas:
+  quote:
+    - type: single
+      key: country
+      label: "Your country"
+      help: "We send your request to the office for that country."
+      required: true
+      options:
+        - {key: uae, label: "United Arab Emirates"}
+        - {key: iraq, label: "Iraq"}
+        - {key: egypt, label: "Egypt"}
+        - {key: saudi_arabia, label: "Saudi Arabia"}
+        - {key: jordan, label: "Jordan"}
+        - {key: china, label: "China"}
+        - {key: india, label: "India"}
+        - {key: pakistan, label: "Pakistan"}
+        - {key: sri_lanka, label: "Sri Lanka"}
+        - {key: thailand, label: "Thailand"}
+        - {key: malaysia, label: "Malaysia"}
+        - {key: brazil, label: "Brazil"}
+        - {key: other, label: "Another country", reveals: {key: country_other, label: "Which country?"}}
+    - type: short
+      key: destination
+      label: "Destination country"
+      help: "Where the goods go, if they are shipped."
+      required: false
+  program_request:
+    - type: single
+      key: country
+      label: "Your country"
+      help: "We send your request to the office for that country."
+      required: true
+      options:
+        - {key: uae, label: "United Arab Emirates"}
+        - {key: iraq, label: "Iraq"}
+        - {key: egypt, label: "Egypt"}
+        - {key: saudi_arabia, label: "Saudi Arabia"}
+        - {key: jordan, label: "Jordan"}
+        - {key: china, label: "China"}
+        - {key: india, label: "India"}
+        - {key: pakistan, label: "Pakistan"}
+        - {key: sri_lanka, label: "Sri Lanka"}
+        - {key: thailand, label: "Thailand"}
+        - {key: malaysia, label: "Malaysia"}
+        - {key: brazil, label: "Brazil"}
+        - {key: other, label: "Another country", reveals: {key: country_other, label: "Which country?"}}
+    - type: short
+      key: destination
+      label: "Destination country"
+      required: true
+
+# routing: master plan 07. Lower priority first; every condition must match; a rule
+# with no conditions matches every request. `office` names a row of offices.yaml: its
+# email is used when it is a real address; a placeholder ("[office email]") leaves the
+# rule without an address, and the core skips it, so the request goes on to the next
+# rule (in the end the head office). Office managers edit the rules in the admin
+# (Routing); P-7 collects the real table.
+routing:
+  - {name: "Head office, Dubai (training)", office: dubai, priority: 10, when: {service_group: training}}
+  - {name: "Baghdad office", office: baghdad, priority: 20, when: {country: iraq}}
+  - {name: "Cairo office", office: cairo, priority: 20, when: {country: egypt}}
+  - {name: "Guangzhou office", office: guangzhou, priority: 20, when: {country: china}}
+  - {name: "Amman office", office: amman, priority: 20, when: {country: jordan}}
+  - {name: "Riyadh office", office: riyadh, priority: 20, when: {country: saudi_arabia}}
+  - {name: "Noida office", office: noida, priority: 20, when: {country: india}}
+  - {name: "Lahore office", office: lahore, priority: 20, when: {country: pakistan}}
+  - {name: "Maharagama office", office: maharagama, priority: 20, when: {country: sri_lanka}}
+  - {name: "Bangkok office", office: bangkok, priority: 20, when: {country: thailand}}
+  - {name: "Kuala Lumpur office", office: kuala-lumpur, priority: 20, when: {country: malaysia}}
+  - {name: "São Paulo office", office: sao-paulo, priority: 20, when: {country: brazil}}
+  - {name: "Head office, Dubai (UAE)", office: dubai, priority: 20, when: {country: uae}}
+  # The fallback: every other request. Its address is the site's main email.
+  - {name: "Head office, Dubai", email: "info@ticqc.com", priority: 1000, when: {}}

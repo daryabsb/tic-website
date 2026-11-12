@@ -1,0 +1,20 @@
+{% load i18n tic %}<!doctype html>{% comment %}
+TIC's branded email frame (T17, master plan 07; as Zeneonix D36). Mail apps drop <style>
+blocks and classes, so this file and the emails that extend it use inline styles: the
+one place in the site where they are allowed (D41). Brand: TIC Black header with the
+logo, one red rule, square corners, no images but the logo.
+{% endcomment %}
+<html lang="{{ language_code|default:'en' }}" dir="{{ direction|default:'ltr' }}">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>{% block title %}{% endblock %}</title></head>
+<body style="margin:0;padding:0;background:#F3F3F3;">
+<div style="display:none;max-height:0;overflow:hidden;">{% block preheader %}{% endblock %}</div>
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#F3F3F3"><tr><td align="center" style="padding:24px 12px;">
+<table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" bgcolor="#FFFFFF" style="width:100%;max-width:600px;background:#FFFFFF;">
+<tr><td bgcolor="#1E1E1E" style="background:#1E1E1E;padding:20px 32px;"><img src="{% absolute_static 'img/logo/tic-logo-480.png' %}" width="120" height="81" alt="TIC Quality Control" style="display:block;border:0;"></td></tr>
+<tr><td bgcolor="#EB232B" style="background:#EB232B;height:4px;line-height:4px;font-size:0;">&nbsp;</td></tr>
+{% block content %}{% endblock %}
+<tr><td style="padding:24px 32px 28px;border-top:1px solid #D9D9D9;font-family:Arial,Helvetica,sans-serif;font-size:13px;line-height:1.5;color:#6B6B6B;">TIC Quality Control · {% translate "Testing, inspection and certification" %}</td></tr>
+</table>
+</td></tr></table>
+</body>
+</html>

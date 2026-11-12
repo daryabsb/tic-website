@@ -1,0 +1,18 @@
+{% extends "base.html" %}{% load i18n zeneon_seo %}
+{% comment %}/<lang>/request/ (design B-Contact.dc.html "Request a quote"; T17, D41). The core
+flow (zeneon/requests/flow.html and includes/) renders inside; its classes are styled in
+site.css. Never cached, never indexed.{% endcomment %}
+{% block title %}{% translate "Request a quote" as title %}{% seo_title title=title suffix="TIC Quality Control" %}{% endblock %}
+{% block meta %}{% seo_head robots="noindex" %}{% endblock %}
+{% block content %}
+<div class="page-head page-head--band">
+  <div class="wrap page-head__wrap"><div class="page-head__plate">
+    <h1 class="h1 h1--page">{% translate "Request a quote" %}</h1>
+    <p class="lead">{% translate "One form for quotes and questions. We send it to the office that handles your country and service." %}</p>
+  </div></div>
+</div>
+<section class="wrap request-page">
+  {% include "zeneon/requests/flow.html" %}
+  <p class="meta request-page__promise">{% translate "Answered by a named person within one working day." %}</p>
+</section>
+{% endblock %}

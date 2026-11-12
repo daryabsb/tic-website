@@ -1,0 +1,30 @@
+{% extends "base.html" %}{% load i18n static tic zeneon zeneon_seo %}
+{% comment %}/<lang>/request/sent/ (T17, master plan 07 "What the visitor experiences"): the
+office that received the request, its hours, the code and a WhatsApp link with the code.
+The office comes from the routing rule (apps/services/intake.py). Never cached, never
+indexed.{% endcomment %}
+{% block title %}{% translate "Request received" as title %}{% seo_title title=title suffix="TIC Quality Control" %}{% endblock %}
+{% block meta %}{% seo_head robots="noindex" %}{% endblock %}
+{% block content %}
+<div class="page-head page-head--band">
+  <div class="wrap page-head__wrap"><div class="page-head__plate">
+    <h1 class="h1 h1--page">{% translate "Request received" %}</h1>
+  </div></div>
+</div>
+<section class="wrap sent" data-request-event="request_submit">
+  {% if submission %}{% request_office submission as office %}
+  <p class="lead">{% blocktranslate with name=submission.name %}Thank you, {{ name }}.{% endblocktranslate %}</p>
+  <dl class="sent__facts">
+    <div class="sent__fact"><dt class="lbl">{% translate "Your request code" %}</dt><dd class="sent__code"><bdi>{{ submission.code }}</bdi></dd></div>
+    <div class="sent__fact"><dt class="lbl">{% translate "Sent to" %}</dt><dd>{{ office.name }}</dd></div>
+    {% if office.hours %}<div class="sent__fact"><dt class="lbl">{% translate "Staffed" %}</dt><dd>{{ office.hours }}</dd></div>{% endif %}
+  </dl>
+  <p>{% translate "A named person answers within one working day. Keep the code: it is in the email we sent you, and it helps us find your request." %}</p>
+  {% if office.whatsapp_link %}<p class="row part-actions"><a class="btn btn--dark" href="{{ office.whatsapp_link }}" rel="noopener" target="_blank">{% translate "Message the office on WhatsApp" %}</a>{% if office.phone %}<span class="meta">{% translate "Phone" %} <bdi>{{ office.phone }}</bdi></span>{% endif %}</p>{% endif %}
+  {% else %}
+  <p class="lead">{% translate "Thank you. We will reply within one working day." %}</p>
+  {% endif %}
+  <p><a class="tri" href="{% locale_home_url %}">{% translate "Back to the home page" %}</a></p>
+</section>
+<script type="module" src="{% static 'zeneon/requests/request.js' %}"></script>
+{% endblock %}

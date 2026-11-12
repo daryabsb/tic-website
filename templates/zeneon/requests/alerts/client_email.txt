@@ -1,0 +1,13 @@
+{% load i18n tic %}{% autoescape off %}{% request_office submission as office %}{% blocktranslate with name=submission.name %}Hello {{ name }},{% endblocktranslate %}
+
+{% blocktranslate with office=office.name %}We received your request. It is with {{ office }}. A named person answers within one working day.{% endblocktranslate %}
+
+{% translate "Your request code" %}: {{ submission.code }}
+
+{% translate "To add something, reply to this email or message the office with your request code." %}
+{% if office.hours %}{% translate "Staffed" %}: {{ office.hours }}
+{% endif %}{% if office.phone %}{% translate "Phone" %}: {{ office.phone }}
+{% endif %}{% if office.whatsapp_link %}WhatsApp: {{ office.whatsapp_link }}
+{% endif %}
+TIC Quality Control
+{% endautoescape %}
