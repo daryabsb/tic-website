@@ -2,11 +2,11 @@
 <footer class="foot band">
   <div class="wrap foot__in">
     <div class="foot__brand">
-      <div class="foot__plate"><img src="{% static 'img/logo/tic-logo-primary.png' %}" alt="{% translate 'TIC — Testing, Inspection, Certification' %}" width="1200" height="812"></div>
+      <div class="foot__plate"><picture><source srcset="{% static 'img/logo/tic-logo-480.webp' %}" type="image/webp"><img src="{% static 'img/logo/tic-logo-480.png' %}" alt="{% translate 'TIC — Testing, Inspection, Certification' %}" width="480" height="325" loading="lazy"></picture></div>
       <p class="foot__small">{{ settings.zeneon_core.SiteSettings.organisation_name|default:"TIC Quality Control L.L.C." }}<br>{% translate "Office 2101, Clover Bay Tower" %}<br>{% translate "Business Bay, Dubai, United Arab Emirates" %}{% if settings.zeneon_core.SiteSettings.main_phone %}<br><bdi>{{ settings.zeneon_core.SiteSettings.main_phone }}</bdi>{% endif %}</p>
     </div>
-    {% if nav %}<div class="foot__col"><h4>{% translate "Site" %}</h4>{% for item in nav %}<a href="{% pageurl item %}">{{ item.title }}</a>{% endfor %}</div>{% endif %}
-    <div class="foot__col"><h4>{% translate "Trust" %}</h4>
+    {% if nav %}<div class="foot__col"><h2 class="foot__h">{% translate "Site" %}</h2>{% for item in nav %}<a href="{% pageurl item %}">{{ item.title }}</a>{% endfor %}</div>{% endif %}
+    <div class="foot__col"><h2 class="foot__h">{% translate "Trust" %}</h2>
       <a href="{% locale_home_url %}verify/">{% translate "Verify a certificate" %}</a>
       {% for item in nav %}{% if item.slug == "about" %}{% for child in item.get_children.live.public.in_menu %}<a href="{% pageurl child %}">{{ child.title }}</a>{% endfor %}{% endif %}{% endfor %}
     </div>

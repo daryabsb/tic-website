@@ -97,6 +97,12 @@ class _HeaderFields(models.Model):
     class Meta:
         abstract = True
 
+    @property
+    def meta_description(self) -> str:
+        """The core's seo head reads this: the editor's search description, else the
+        summary (or the intro), so no page ships a blank description (T13)."""
+        return self.search_description or getattr(self, "summary", "") or self.intro
+
 
 class ServiceIndexPage(ScriptNormalisationMixin, _HeaderFields, Page):  # noqa: DJ008 (Page gives __str__)
     parent_page_types = ["pages.HomePage"]

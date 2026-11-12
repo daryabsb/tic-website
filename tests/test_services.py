@@ -280,3 +280,27 @@ def test_review_date_renders(client, psi, home):
     html = client.get(PSI_URL).content.decode()
 
     assert "Last reviewed 11 Nov 2026" in html
+
+
+@pytest.mark.parametrize(
+    "path",
+    [
+        "/en/services/",
+        "/en/services/inspection/pre-shipment-inspection/",
+        "/en/industries/agriculture-and-food/",
+    ],
+)
+def test_hub_pages_have_a_meta_description_from_their_summary(client, seeded_home, path):
+    """T13 (Lighthouse SEO): no blank meta description; the summary or intro stands in."""
+    html = client.get(path).content.decode()
+
+    marker = '<meta name="description" content="'
+    start = html.index(marker) + len(marker)
+    assert len(html[start : html.index('"', start)]) > 40
+
+
+def test_search_description_wins_over_the_summary(seeded_home):
+    psi = ServicePage.objects.get(slug="pre-shipment-inspection")
+    psi.search_description = "Own description."
+
+    assert psi.meta_description == "Own description."
