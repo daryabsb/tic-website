@@ -1,0 +1,4 @@
+{% load i18n wagtailcore_tags %}<section id="appeals" class="sec{% if first %} sec--first{% endif %}">
+  <span class="num">{{ num }} · {% translate "Complaints and appeals" %}</span>
+  <p>{% translate "If you disagree with an inspection result or a certificate decision, you can appeal." %} {% if complaints_page %}{% blocktranslate with complaints_url=complaints_page.url %}The process, the people who decide and the time it takes are set out on our <a href="{{ complaints_url }}">complaints and appeals page</a>.{% endblocktranslate %}{% else %}{% translate "The process, the people who decide and the time it takes are set out on our complaints and appeals page." %}{% endif %}</p>
+</section>

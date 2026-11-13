@@ -185,5 +185,5 @@ willow==1.12.0
     #   zeneon-cms
 wrapt==2.5.2
     # via deprecated
-zeneon-cms @ git+ssh://git@github.com/daryabsb/zeneon-cms.git@db8d8f535939cd1b6f770a206bb83e5c845fce30
+zeneon-cms @ git+ssh://git@github.com/daryabsb/zeneon-cms.git@feb7d2ec1a9c85d4e30f78cbdfa9c9cdcc004184
     # via -r base.in

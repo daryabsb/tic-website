@@ -15,6 +15,7 @@ nothing and says so. ``--reset`` overwrites the seeded fields (staging only).
 from __future__ import annotations
 
 import csv
+import datetime
 import json
 from pathlib import Path
 
@@ -31,7 +32,9 @@ from zeneon_cms.core.models import SiteSettings
 from zeneon_cms.requests.models import RequestSchema, RoutingCondition, RoutingRule
 
 from apps.industries.models import IndustryIndexPage, IndustryPage
+from apps.news.models import NewsIndexPage, NewsPage
 from apps.pages.models import HomePage
+from apps.programs.models import ProgramIndexPage, ProgramPage, RegulatoryUpdatesPage
 from apps.services.models import ServiceGroupPage, ServiceIndexPage, ServicePage
 
 SEED_DIR = Path(settings.BASE_DIR) / "seed"
@@ -107,6 +110,10 @@ class Command(BaseCommand):
             self.seed_services(locale, data["services"], data.get("psi") or {})
         if "industries" in data:
             self.seed_industries(locale, data["industries"])
+        if "programs" in data:
+            self.seed_programs(locale, data["programs"])
+        if "news" in data:  # after the programs: an update names its program
+            self.seed_news(locale, data["news"])
         if "home" in data:  # last: its cards and rows link to the hub pages above (T9)
             self.seed_home(locale, data["home"])
 
@@ -298,29 +305,129 @@ class Command(BaseCommand):
             return None
         return {"page": page.pk, "title": card.get("title", ""), "text": card["text"]}
 
+    # -- programs and news (T18, D44) -------------------------------------------------
+
+    PROGRAM_INDEX_FIELDS = (
+        "intro",
+        "header_caption",
+        "heading",
+        "rule_line",
+        "updates_heading",
+        "updates_text",
+        "ask_heading",
+        "ask_text",
+    )
+    PROGRAM_FIELDS = (
+        "intro",
+        "header_caption",
+        "country",
+        "summary",
+        "regulator_name",
+        "regulator_abbreviation",
+        "regulator_url",
+        "appointment_status",
+        "appointment_date",
+        "appointment_reference",
+        "owning_office_name",
+        "request_label",
+        "talk_label",
+    )
+
+    @staticmethod
+    def dates(data: dict, *names) -> dict:
+        """``data`` with each of ``names`` as a date (YAML may give a string)."""
+        out = dict(data)
+        for name in names:
+            if isinstance(out.get(name), str):
+                out[name] = datetime.date.fromisoformat(out[name])
+        return out
+
+    def seed_programs(self, locale: Locale, data: dict) -> None:
+        home = HomePage.objects.filter(locale=locale).first()
+        if home is None:
+            return
+        index, touch = self.child(
+            home, ProgramIndexPage, data["slug"], data["title"], live=True, show_in_menus=True
+        )
+        if touch:
+            pending = [{"type": "pending", "value": card} for card in data.get("pending", [])]
+            self.fill_page(index, data, self.PROGRAM_INDEX_FIELDS, streams=[("pending", pending)])
+        feed = data.get("updates_page")
+        if feed:
+            page, touch = self.child(
+                index, RegulatoryUpdatesPage, feed["slug"], feed["title"], live=True
+            )
+            if touch:
+                self.fill_page(page, feed, ("intro",))
+        for item in data.get("pages", []):
+            page, touch = self.child(index, ProgramPage, item["slug"], item["title"], live=True)
+            if touch:
+                self.fill_page(
+                    page,
+                    self.dates(item, "appointment_date"),
+                    self.PROGRAM_FIELDS,
+                    streams=[("parts", item.get("parts", []))],
+                )
+        # The services hub's Programs card goes to this section (ServiceGroupPage.see_also).
+        group = ServiceGroupPage.objects.filter(locale=locale, group="programs").first()
+        if group is not None and group.see_also_id is None and not group.has_unpublished_changes:
+            group.see_also = index
+            group.save_revision().publish()
+            self.changes += 1
+        self.stdout.write(f"{locale.language_code}: programs checked")
+
+    def seed_news(self, locale: Locale, data: dict) -> None:
+        home = HomePage.objects.filter(locale=locale).first()
+        if home is None:
+            return
+        index, touch = self.child(home, NewsIndexPage, data["slug"], data["title"], live=True)
+        if touch:
+            self.fill_page(index, data, ("intro",))
+        programs = {p.slug: p for p in ProgramPage.objects.filter(locale=locale)}
+        for item in data.get("pages", []):
+            item = self.dates(item, "date")
+            page, touch = self.child(
+                index,
+                NewsPage,
+                item["slug"],
+                item["title"],
+                live=True,
+                kind=item.get("kind", "news"),
+                date=item["date"],
+                program=programs.get(item.get("program")),
+            )
+            if touch:
+                self.fill_page(page, item, ("standfirst", "body", "office_name"))
+        self.stdout.write(f"{locale.language_code}: news checked")
+
     # -- request questions and routing (T17, D41) -------------------------------------
 
     def seed_requests(self) -> None:
         data = self.load("requests.yaml")
         if not data:
             return
-        self.seed_schemas(data.get("schemas") or {})
+        self.seed_schemas(data.get("schemas") or {}, data.get("programs") or {})
         self.seed_routing(data.get("routing") or [])
 
-    def seed_schemas(self, schemas: dict) -> None:
-        """A RequestSchema in the default language for every live service group and
-        service (key from its "contact" part, default "quote") and for "something
-        else". An existing schema keeps its questions unless ``--reset``."""
+    def seed_schemas(self, schemas: dict, programs: dict) -> None:
+        """A RequestSchema in the default language for every service group, service
+        and program page (key from its "contact" or "checklist" part, default "quote"; a
+        program adds its own questions from ``programs``) and for "something else". An
+        existing schema keeps its questions unless ``--reset``."""
         locale = Locale.get_default()
         topics = [None]
         topics += ServiceGroupPage.objects.filter(locale=locale).order_by("path")
         topics += ServicePage.objects.filter(locale=locale).order_by("path")
+        topics += ProgramPage.objects.filter(locale=locale).order_by("path")
         for topic in topics:
             key = self.schema_key(topic)
             if key not in schemas:
                 self.stderr.write(f"request schema: no questions '{key}' in requests.yaml")
                 continue
-            questions = json.dumps([self.question(row) for row in schemas[key]])
+            rows = list(schemas[key])
+            if isinstance(topic, ProgramPage):
+                rows += programs.get(topic.slug, [])
+            questions = json.dumps([self.question(row) for row in rows])
             schema = RequestSchema.objects.filter(topic=topic, locale=locale).first()
             if schema is None:
                 RequestSchema.objects.create(topic=topic, locale=locale, questions=questions)
@@ -332,11 +439,12 @@ class Command(BaseCommand):
 
     @staticmethod
     def schema_key(topic) -> str:
-        if isinstance(topic, ServicePage):
+        part = {ServicePage: "contact", ProgramPage: "checklist"}.get(type(topic))
+        if part:
             for block in topic.parts:
-                if block.block_type == "contact" and block.value.get("schema"):
+                if block.block_type == part and block.value.get("schema"):
                     return block.value["schema"]
-        return "quote"
+        return "program_request" if isinstance(topic, ProgramPage) else "quote"
 
     @staticmethod
     def question(row: dict) -> dict:

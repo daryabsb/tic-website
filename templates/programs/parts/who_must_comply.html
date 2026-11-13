@@ -1,0 +1,10 @@
+{% load i18n %}<section id="who_must_comply" class="sec{% if first %} sec--first{% endif %}">
+  <span class="num">{{ num }} · {% translate "Who must comply" %}</span>
+  {% if value.heading %}<h2 class="h2">{{ value.heading }}</h2>{% endif %}
+  {% if value.text %}<p>{{ value.text }}</p>{% endif %}
+  {% if value.products %}<div class="tbl-scroll"><table class="tbl"><thead><tr><th scope="col">{% translate "Product group" %}</th><th scope="col">{% translate "Examples" %}</th><th scope="col">{% translate "Standard" %}</th></tr></thead><tbody>
+    {% for row in value.products %}<tr><td>{{ row.group }}</td><td>{{ row.examples|default:"—" }}</td><td>{{ row.standard|default:"—" }}</td></tr>{% endfor %}
+  </tbody></table></div>{% endif %}
+  <p class="meta">{% translate "List version" %}: {% if value.product_list_date %}{{ value.product_list_date|date:"j M Y" }}{% else %}[{% translate "date" %}]{% endif %}</p>
+  {% if value.product_list_file %}<a class="tri" href="{{ value.product_list_file.url }}">{% translate "Full regulated list" %} ({{ value.product_list_file.file_extension|upper }})</a>{% endif %}
+</section>

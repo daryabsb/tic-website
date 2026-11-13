@@ -58,6 +58,22 @@ schemas:
       label: "Destination country"
       required: true
 
+# programs: questions added to a program page's schema, by the page's slug (T18). The
+# "route" answers match the route keys of the page's part 03, so "Find my route" opens
+# the form with the route chosen.
+programs:
+  iraq-certificate-of-conformity:
+    - type: single
+      key: route
+      label: "Your route"
+      help: "Not sure? Choose 'Not sure yet': the office tells you."
+      required: true
+      options:
+        - {key: registered, label: "Registered goods (I hold a Statement of Registration)"}
+        - {key: unregistered, label: "Unregistered goods, one shipment"}
+        - {key: registration, label: "Registration: I ship regularly"}
+        - {key: unsure, label: "Not sure yet"}
+
 # routing: master plan 07. Lower priority first; every condition must match; a rule
 # with no conditions matches every request. `office` names a row of offices.yaml: its
 # email is used when it is a real address; a placeholder ("[office email]") leaves the

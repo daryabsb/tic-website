@@ -61,18 +61,18 @@ def redirect_seed(tmp_path, monkeypatch):
 @pytest.mark.django_db
 def test_redirects_to_a_page_and_to_a_url(seeded_home, redirect_seed, client):
     redirect_seed(
-        ("/iraq-coc/", "/en/services/"),
+        ("/old-services/", "/en/services/"),
         ("/old-brochure.pdf", "https://example.org/brochure.pdf"),
     )
     _seed()
 
-    page_redirect = Redirect.objects.get(old_path="/iraq-coc")
+    page_redirect = Redirect.objects.get(old_path="/old-services")
     assert page_redirect.redirect_page.slug == "services"
     assert page_redirect.is_permanent and page_redirect.site is None
     assert Redirect.objects.get(old_path="/old-brochure.pdf").link == (
         "https://example.org/brochure.pdf"
     )
-    response = client.get("/iraq-coc/")
+    response = client.get("/old-services/")
     assert response.status_code == 301
     assert response["Location"].endswith("/en/services/")
 
@@ -98,11 +98,15 @@ def test_a_redirect_to_a_missing_page_is_reported_and_skipped(seeded_home, redir
     assert not Redirect.objects.filter(old_path="/gone").exists()
 
 
-def test_the_redirect_map_is_empty_until_t30():
+def test_the_redirect_map_holds_only_the_iraq_rows_until_t30():
+    """T18 (D44) moves the three Iraq pages, the GSP page and three Iraq posts; T30
+    brings the rest of the map."""
     with (SEED / "redirects.csv").open(encoding="utf-8", newline="") as handle:
         reader = csv.DictReader(handle)
         assert reader.fieldnames == ["old_path", "new_path"]
-        assert list(reader) == []
+        rows = list(reader)
+    assert len(rows) == 7
+    assert all(row["new_path"].startswith(("/en/programs/", "/en/news/")) for row in rows)
 
 
 # -- the fourteen offices ------------------------------------------------------------

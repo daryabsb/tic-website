@@ -1,0 +1,18 @@
+{% extends "base.html" %}{% load i18n wagtailcore_tags %}
+{% comment %}The regulatory-updates feed (design B-Regulatory-Updates.dc.html; master plan 05): news pages of kind "regulatory update", filtered by program and year with a plain GET form (no script). The email subscription waits for T25 (D44).{% endcomment %}
+{% block body_class %}page-updates{% endblock %}
+{% block content %}
+{% include "includes/page_head.html" with image=page.header_image image_alt=page.header_image_alt caption=page.header_caption intro=page.intro %}
+<div class="wrap two-col svc-body">
+  <aside class="two-col__side">
+    <form class="stack feed-filter" method="get" action="{% pageurl page %}">
+      <label class="feed-filter__field"><span class="lbl">{% translate "Program" %}</span><select class="sel" name="program"><option value="">{% translate "All programs" %}</option>{% for program in programs %}<option value="{{ program.pk }}"{% if selected_program.pk == program.pk %} selected{% endif %}>{{ program.country|default:program.title }}</option>{% endfor %}</select></label>
+      <label class="feed-filter__field"><span class="lbl">{% translate "Year" %}</span><select class="sel" name="year"><option value="">{% translate "All years" %}</option>{% for year in years %}<option value="{{ year }}"{% if selected_year == year %} selected{% endif %}>{{ year }}</option>{% endfor %}</select></label>
+      <button class="btn btn--dark" type="submit">{% translate "Show" %}</button>
+    </form>
+  </aside>
+  <div class="two-col__main">
+    {% for item in updates %}<a class="upd" href="{% pageurl item %}"><span class="upd__d">{{ item.date|date:"M Y" }}</span>{% if item.program_label %}<span class="eyebrow">{{ item.program_label }}</span>{% endif %}<span class="upd__t"><b>{{ item.title }}</b>{% if item.standfirst %}<span>{{ item.standfirst }}</span>{% endif %}{% if item.signed_by %}<em>{{ item.signed_by }}</em>{% endif %}</span></a>{% empty %}<p>{% translate "No updates match." %}</p>{% endfor %}
+  </div>
+</div>
+{% endblock %}

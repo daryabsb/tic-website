@@ -1,0 +1,7 @@
+{% load i18n %}<section id="checklist" class="sec{% if first %} sec--first{% endif %}">
+  <span class="num">{{ num }} · {% translate "Document checklist" %}</span>
+  {% if value.heading %}<h2 class="h2">{{ value.heading }}</h2>{% endif %}
+  {% if value.text %}<p>{{ value.text }}</p>{% endif %}
+  <ul class="stack doc-list">{% for item in value.items %}<li class="doc"><span class="doc__box" aria-hidden="true"></span>{{ item }}</li>{% endfor %}</ul>
+  <div class="row part-actions"><a class="btn" href="{{ req_url }}">{{ value.form_label|default:_("Start the request form") }}</a></div>
+</section>

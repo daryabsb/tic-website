@@ -1,0 +1,8 @@
+{% load i18n %}<section id="fees" class="sec{% if first %} sec--first{% endif %}">
+  <span class="num">{{ num }} · {% translate "Fees" %}</span>
+  {% if value.heading %}<h2 class="h2">{{ value.heading }}</h2>{% endif %}
+  {% if value.mode == "table" and value.rows %}<div class="tbl-scroll"><table class="tbl"><thead><tr><th scope="col">{% translate "Item" %}</th><th scope="col">{% translate "Fee" %}</th></tr></thead><tbody>{% for row in value.rows %}<tr><td>{{ row.item }}</td><td>{{ row.fee }}</td></tr>{% endfor %}</tbody></table></div>
+  {% elif value.mode == "download" and value.document %}<a class="tri" href="{{ value.document.url }}">{% translate "Fee structure" %} ({{ value.document.file_extension|upper }})</a>
+  {% else %}<div class="side-box"><b class="side-box__title">{% translate "Fees on request" %}</b><span>{% translate "The office quotes after it has seen your documents." %}</span></div>{% endif %}
+  {% if value.note %}<p class="meta">{{ value.note }}</p>{% endif %}
+</section>

@@ -1,0 +1,7 @@
+{% load i18n wagtailcore_tags %}<section id="updates" class="sec{% if first %} sec--first{% endif %}">
+  <span class="num">{{ num }} · {% translate "Regulatory updates" %}</span>
+  <h2 class="h2">{% translate "Changes to this program" %}</h2>
+  {% if updates %}<div class="stack">{% for item in updates %}<a class="upd" href="{% pageurl item %}"><span class="upd__d">{{ item.date|date:"M Y" }}</span><b>{{ item.title }}</b></a>{% endfor %}</div>
+  {% else %}<p>{% translate "No changes published yet." %}</p>{% endif %}
+  {% if feed %}<a class="tri" href="{% pageurl feed %}?program={{ page.pk }}">{% translate "All updates for this program" %}</a>{% endif %}
+</section>

@@ -1,0 +1,1 @@
+{% load i18n %}<p class="meta reviewed">{{ num }} · {% translate "Last reviewed" %} {% if page.reviewed %}{{ page.reviewed|date:"j M Y" }}{% else %}[{% translate "date" %}]{% endif %} · {% translate "Owned by" %} {% if page.office_label %}{{ page.office_label }}{% else %}[{% translate "office" %}]{% endif %}{% if value.disclaimer %} · {{ value.disclaimer }}{% endif %}</p>

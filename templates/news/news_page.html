@@ -1,0 +1,10 @@
+{% extends "base.html" %}{% load i18n wagtailcore_tags %}
+{% comment %}A news page (T18 minimum; T25 takes the full design B-Article.dc.html).{% endcomment %}
+{% block body_class %}page-article{% endblock %}
+{% block content %}
+{% include "includes/page_head.html" with intro=page.standfirst %}
+<div class="wrap svc-body article">
+  <p class="meta">{{ page.get_kind_display }}{% if page.program_label %} · {% if page.program.live %}<a href="{% pageurl page.program %}">{{ page.program_label }}</a>{% else %}{{ page.program_label }}{% endif %}{% endif %} · {{ page.date|date:"j F Y" }}{% if page.signed_by %} · {{ page.signed_by }}{% endif %}</p>
+  {% if page.body %}<div class="rich">{{ page.body|richtext }}</div>{% endif %}
+</div>
+{% endblock %}
