@@ -378,6 +378,7 @@ textarea.inp { padding: 12px 14px; min-height: 120px; }
 .about-story__col { flex: 1 1 420px; min-width: 0; gap: 18px; }
 .about-story__links { gap: 12px 28px; }
 .figs-band { padding-block: 56px; }
+.figs-band .fig { flex-basis: 140px; } /* all five figures in one row (B-About) */
 .leadership__quote { padding-block: 56px 40px; }
 .leadership__group { padding-bottom: 40px; }
 .leadership__note { padding-bottom: 72px; }
@@ -392,6 +393,7 @@ textarea.inp { padding: 12px 14px; min-height: 120px; }
 .people-group__row { gap: 20px; }
 .leader { flex: 1 1 280px; min-width: 0; max-width: 400px; display: flex; flex-direction: column; border: 1px solid var(--tic-hairline); }
 .leader__photo { height: 220px; }
+.leader--office { flex-basis: 200px; } /* four office managers in one row (B-Leadership) */
 .leader--office .leader__photo { height: 180px; }
 .leader__body { padding: 20px; display: flex; flex-direction: column; gap: 6px; }
 .leader__body b { font-family: var(--font-display); font-weight: 700; font-size: 18px; text-transform: uppercase; color: var(--tic-ink); line-height: 1.15; }
@@ -411,6 +413,39 @@ textarea.inp { padding: 12px 14px; min-height: 120px; }
 .group__sentence { flex: 2 1 520px; margin: 0; font-size: 18px; }
 .group__link { color: var(--tic-white); }
 :lang(ar) .quote__who b, :lang(ar) .leader__body b, :lang(ar) .company__body > b, :lang(ar) .company__lp { text-transform: none; letter-spacing: 0; }
+
+/* Accreditations and policy pages (T22; B-Accreditations, B-Impartiality). */
+.accr { gap: 24px; padding-block: 56px 24px; }
+.accr__scroll { overflow-x: auto; }
+.accr .tbl { min-width: 1100px; }
+.accr .tbl th { white-space: nowrap; }
+.tbl td a { text-decoration: none; }
+.tbl b { font-family: var(--font-display); font-weight: 700; font-size: 16px; text-transform: uppercase; }
+.tbl__sub { display: block; font-size: 13px; color: var(--tic-body-grey); }
+.tbl .tri { min-height: 0; }
+.st { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-display); font-weight: 600; font-size: 12px; letter-spacing: .1em; text-transform: uppercase; white-space: nowrap; }
+.st::before { content: ""; width: 10px; height: 10px; background: var(--tic-black); }
+.st--pending::before { background: var(--tic-red); }
+.note { margin: 0; font-size: 14px; color: var(--tic-body-grey); }
+.accr__foot { gap: 48px; align-items: flex-start; padding-block: 40px 64px; }
+.accr__col { flex: 1 1 420px; gap: 20px; }
+.accr__col .dia { padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; color: var(--tic-charcoal); }
+.accr__marks { gap: 12px; }
+.accr-mark { border: 1px solid var(--tic-hairline); padding: 16px 18px; display: flex; flex-direction: column; align-items: center; gap: 4px; flex: 1 1 180px; min-width: 0; }
+.accr-mark__lg { height: 64px; width: 100%; display: flex; align-items: center; justify-content: center; background: var(--tic-light); font-family: var(--font-display); font-weight: 700; font-size: 18px; color: var(--tic-charcoal); text-transform: uppercase; }
+.accr-mark span { font-size: 12px; color: var(--tic-charcoal); text-align: center; }
+a.mark { text-decoration: none; color: inherit; }
+.policy { gap: 64px; align-items: flex-start; padding-block: 48px 64px; }
+.policy__side { flex: 0 1 300px; gap: 24px; }
+.policy__label { padding-bottom: 10px; }
+.policy__related { background: var(--tic-light); padding: 20px; gap: 8px; }
+.policy__body { flex: 1 1 560px; }
+.policy__sec { gap: 14px; padding-block: 32px; border-top: 1px solid var(--tic-hairline); }
+.policy__sec:first-child { border-top: 0; padding-top: 0; }
+.policy__sec .rich p, .policy__sec .rich li { color: var(--tic-charcoal); }
+.policy__doc { border-top: 1px solid var(--tic-hairline); padding-top: 20px; font-size: 14px; color: var(--tic-body-grey); }
+.policy__doc p { margin: 0 0 8px; }
+.policy__pdfs { gap: 12px 28px; }
 .home-sec { gap: 40px; }
 .section--rule { border-top: 1px solid var(--tic-hairline); }
 

@@ -22,10 +22,12 @@ from pathlib import Path
 import yaml
 from django.conf import settings
 from django.core.exceptions import ValidationError
+from django.core.files import File
 from django.core.management.base import BaseCommand
 from django.core.validators import validate_email
 from django.db import transaction
 from wagtail.contrib.redirects.models import Redirect
+from wagtail.documents import get_document_model
 from wagtail.models import Locale, Page
 from zeneon_cms.core.locales import ensure_locales
 from zeneon_cms.core.models import SiteSettings
@@ -40,6 +42,12 @@ from apps.pages.models import AboutPage, GroupPage, HomePage, LeadershipPage
 from apps.people.models import Person
 from apps.programs.models import ProgramIndexPage, ProgramPage, RegulatoryUpdatesPage
 from apps.services.models import ServiceGroupPage, ServiceIndexPage, ServicePage
+from apps.trust.models import (
+    CONTENT_PAGE_REQUIRED,
+    Accreditation,
+    AccreditationsPage,
+    ContentPage,
+)
 from apps.verify.models import VerifyPage
 
 SEED_DIR = Path(settings.BASE_DIR) / "seed"
@@ -124,7 +132,7 @@ class Command(BaseCommand):
         if "verify" in data:
             self.seed_verify(locale, data["verify"])
         if "about" in data:  # after the offices: people work from an office page
-            self.seed_about(locale, data["about"])
+            self.seed_about(locale, data["about"], data.get("trust") or {})
         if "home" in data:  # last: its cards and rows link to the hub pages above (T9)
             self.seed_home(locale, data["home"])
 
@@ -470,7 +478,7 @@ class Command(BaseCommand):
     LEADERSHIP_FIELDS = ("intro", "ceo_quote", "note")
     GROUP_FIELDS = ("intro", "independence_heading", "independence", "independence_link_label")
 
-    def seed_about(self, locale: Locale, data: dict) -> None:
+    def seed_about(self, locale: Locale, data: dict, trust: dict) -> None:
         """About and its two children; the people of the Leadership page as ``Person``
         snippets with "[Name]" and not agreed to be named (P-16). The section links are
         set after the children exist (a path with no page keeps the card unlinked)."""
@@ -525,12 +533,135 @@ class Command(BaseCommand):
                 companies = [{"type": "company", "value": row} for row in grp.get("companies", [])]
                 self.fill_page(page, grp, self.GROUP_FIELDS, streams=[("companies", companies)])
 
+        if trust:  # before the sections: their cards link to the trust pages (T22)
+            self.seed_trust(locale, home, about, trust)
+
         if touch_about:
             sections = data.get("sections")
             if sections and (self.reset or not about.sections.raw_data):
                 sections = self.link_pages(home, sections)
             self.fill_page(about, data, self.ABOUT_FIELDS, streams=[("sections", sections)])
         self.stdout.write(f"{locale.language_code}: about checked")
+
+    # -- Accreditations and policy pages (T22) ----------------------------------------
+
+    ACCREDITATIONS_FIELDS = (
+        "intro",
+        "table_heading",
+        "table_note",
+        "rules_heading",
+        "rules",
+        "marks_heading",
+        "marks_note",
+    )
+    POLICY_FIELDS = ("intro", "document_code", "version", "issuing_entity", "other_pdf_label")
+
+    def seed_trust(self, locale: Locale, home, about, data: dict) -> None:
+        """The Accreditation rows (default language: the snippet is not translated), the
+        Accreditations page and the policy pages. A policy page is live only with its
+        four document facts (code, issue, date, owner); else it stays a draft."""
+        owner = Person.objects.filter(locale=locale, title=data.get("owner", "")).first()
+        if locale == Locale.get_default():
+            for order, row in enumerate(data.get("accreditations", [])):
+                self.accreditation(order, row)
+
+        page_data = data.get("accreditations_page")
+        if page_data:
+            page, touch = self.child(
+                about,
+                AccreditationsPage,
+                page_data["slug"],
+                page_data["title"],
+                live=True,
+                show_in_menus=True,
+            )
+            if touch:
+                self.fill_page(page, page_data, self.ACCREDITATIONS_FIELDS)
+
+        for item in data.get("policies", []):
+            self.policy(home, about, item, owner)
+        self.stdout.write(f"{locale.language_code}: trust pages checked")
+
+    def policy(self, home, about, item: dict, owner) -> None:
+        date = item.get("effective_date")
+        facts = {
+            **{name: item.get(name, "") for name in self.POLICY_FIELDS},
+            "effective_date": datetime.date.fromisoformat(date) if date else None,
+            "document_owner": owner if date else None,
+            "pdf": self.document(item["pdf"]) if item.get("pdf") else None,
+            "other_pdf": self.document(item["other_pdf"]) if item.get("other_pdf") else None,
+            "sections": [{"type": "section", "value": row} for row in item.get("sections", [])],
+            "related": [
+                {"type": "page", "value": row["page"]}
+                for row in self.link_pages(home, [{"page": p} for p in item.get("related", [])])
+                if "page" in row
+            ],
+        }
+        live = all(facts.get(name) for name in CONTENT_PAGE_REQUIRED)
+        page = about.get_children().filter(slug=item["slug"]).specific().first()
+        if page is None:  # made once, live or as a draft with all its text
+            page = ContentPage(
+                title=item["title"], slug=item["slug"], live=live, show_in_menus=True, **facts
+            )
+            about.add_child(instance=page)
+            revision = page.save_revision()
+            if live:
+                revision.publish()
+            self.changes += 1
+            return
+        if page.has_unpublished_changes or not page.live:
+            return  # an editor's draft, or a seed draft waiting for its facts
+        changed = [
+            self.fill(page, name, facts[name])
+            for name in (
+                *self.POLICY_FIELDS,
+                "effective_date",
+                "document_owner",
+                "pdf",
+                "other_pdf",
+            )
+        ]
+        for name in ("sections", "related"):
+            if facts[name] and (self.reset or not getattr(page, name).raw_data):
+                setattr(page, name, facts[name])
+                self.changes += 1
+                changed.append(True)
+        if any(changed):
+            page.save_revision().publish()
+
+    def accreditation(self, order: int, row: dict) -> None:
+        """One public row, matched by body and scheme; blank fields are filled."""
+        row = {
+            **row,
+            "valid_until": datetime.date.fromisoformat(row["valid_until"])
+            if row.get("valid_until")
+            else None,
+        }
+        item = Accreditation.objects.filter(
+            body=row["body"], standard_or_scheme=row["standard_or_scheme"]
+        ).first()
+        if item is None:
+            item = Accreditation(sort_order=order, is_public=True, **row)
+            item.full_clean()
+            item.save()
+            self.changes += 1
+            return
+        changed = [self.fill(item, name, value) for name, value in row.items()]
+        if any(changed):
+            item.full_clean()
+            item.save()
+
+    def document(self, row: dict):
+        """The seed PDF ``seed/documents/<file>`` as a Wagtail document, made once."""
+        Document = get_document_model()
+        doc = Document.objects.filter(title=row["title"]).first()
+        if doc is None:
+            with (SEED_DIR / "documents" / row["file"]).open("rb") as handle:
+                doc = Document(title=row["title"])
+                doc.file.save(row["file"], File(handle), save=False)
+                doc.save()
+            self.changes += 1
+        return doc
 
     def person(self, locale: Locale, row: dict) -> Person:
         """The person with this title (and office) in this language, created as "[Name]"

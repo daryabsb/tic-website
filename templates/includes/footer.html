@@ -12,11 +12,7 @@
     </div>
   </div>
   <div class="wrap foot__bottom">
-    <div class="marks">
-      <div class="mark"><b>ANAB</b><span>ISO/IEC 17020 · AI-3314</span></div>
-      <div class="mark"><b>GOEIC</b><span>{% translate "Register record 73" %}</span></div>
-      <div class="mark"><b>TIC Council</b><span>{% translate "Full member" %}</span></div>
-    </div>
+    {% public_marks as marks %}{% if marks %}<div class="marks">{% for mark in marks %}<a class="mark" href="{{ mark.register_url }}" rel="noopener"><b>{{ mark.body }}</b><span>{{ mark.mark_line }}</span></a>{% endfor %}</div>{% endif %}
     <p class="foot__line">{% translate "Offices in UAE, Iraq, Jordan, Saudi Arabia, Egypt, India, Pakistan, China, Sri Lanka, Thailand, Malaysia and Brazil" %} · © {% now "Y" %} {{ settings.zeneon_core.SiteSettings.organisation_name|default:"TIC Quality Control L.L.C." }}</p>
   </div>
   <div class="tagline" role="img" aria-label="{% translate 'TIC — Testing | Inspection | Certification' %}" lang="en" dir="ltr"><span class="tagline__tic" aria-hidden="true">TIC</span><span class="tagline__words" aria-hidden="true">Testing | Inspection | Certification</span></div>
