@@ -1,4 +1,5 @@
-"""Client page types (master plan 03): HomePage and AboutPage.
+"""Client page types (master plan 03): HomePage, AboutPage and its Leadership and Our
+group children (T21).
 
 HomePage is the root of each language tree. Its hero is four fields (one photo, one
 sentence, two buttons — proposal 01 §5.2 item 1); the rest of the home page is one
@@ -9,14 +10,14 @@ follows in gate 1 to 3 (D22); the core supplies the admin and the plumbing only.
 
 from django.db import models
 from django.utils.translation import gettext_lazy as _
-from wagtail.admin.panels import FieldPanel, MultiFieldPanel
+from wagtail.admin.panels import FieldPanel, MultiFieldPanel, PageChooserPanel
 from wagtail.fields import StreamField
 from wagtail.models import Page
 from wagtail.search import index
 from wagtail_localize.fields import SynchronizedField, TranslatableField
 from zeneon_cms.core.text import ScriptNormalisationMixin
 
-from apps.pages.blocks import ABOUT_SECTIONS, HOME_SECTIONS
+from apps.pages.blocks import ABOUT_SECTIONS, HOME_SECTIONS, CompanyBlock, PeopleGroupBlock
 
 
 def _image(verbose_name, help_text=""):
@@ -139,7 +140,8 @@ class AboutPage(ScriptNormalisationMixin, Page):
     og_image = _image(_("share image"))
 
     parent_page_types = ["pages.HomePage"]
-    subpage_types = []  # LeadershipPage, GroupPage, AccreditationsPage, ContentPage... (#21, #22)
+    # AccreditationsPage, ContentPage, ComplaintsPage, CareersPage join in T22, T23.
+    subpage_types = ["pages.LeadershipPage", "pages.GroupPage"]
 
     override_translatable_fields = _translatable(
         "intro",
@@ -167,3 +169,110 @@ class AboutPage(ScriptNormalisationMixin, Page):
 
     class Meta:
         verbose_name = _("about page")
+
+
+class LeadershipPage(ScriptNormalisationMixin, Page):
+    """Leadership (B-Leadership): the CEO quote, then groups of ``Person`` rows. A person
+    who has not agreed to be named shows "[Name]" and the title (P-16 default:
+    placeholders) until the CEO answers; then editors remove the rows of those who say
+    no (their office page represents them)."""
+
+    intro = models.TextField(_("intro"), max_length=600, blank=True)
+    ceo = models.ForeignKey(
+        "people.Person",
+        verbose_name=_("CEO"),
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="+",
+    )
+    ceo_quote = models.TextField(
+        _("CEO quote"),
+        max_length=500,
+        blank=True,
+        help_text=_("Two or three sentences in the CEO's own words."),
+    )
+    groups = StreamField(
+        [("group", PeopleGroupBlock())], blank=True, verbose_name=_("groups of people")
+    )
+    note = models.CharField(_("note under the cards"), max_length=240, blank=True)
+
+    parent_page_types = ["pages.AboutPage"]
+    subpage_types = []
+    max_count_per_parent = 1
+
+    override_translatable_fields = _translatable(
+        "intro", "ceo_quote", "groups", "note", synchronised=("ceo",)
+    )
+
+    content_panels = [
+        *Page.content_panels,
+        FieldPanel("intro"),
+        MultiFieldPanel([FieldPanel("ceo"), FieldPanel("ceo_quote")], heading=_("CEO")),
+        FieldPanel("groups"),
+        FieldPanel("note"),
+    ]
+    search_fields = [*Page.search_fields, index.SearchField("intro")]
+
+    class Meta:
+        verbose_name = _("leadership page")
+
+
+class GroupPage(ScriptNormalisationMixin, Page):
+    """Our group (B-Group): one card per company, then the independence sentence on the
+    dark band (required, proposal 01 §5.6)."""
+
+    intro = models.TextField(_("intro"), max_length=600, blank=True)
+    companies = StreamField([("company", CompanyBlock())], blank=True, verbose_name=_("companies"))
+    independence_heading = models.CharField(
+        _("independence heading"), max_length=80, default="Independence, in one sentence"
+    )
+    independence = models.TextField(_("independence sentence"), max_length=400)
+    independence_link_label = models.CharField(
+        _("link label"), max_length=80, blank=True, default="How we keep decisions impartial"
+    )
+    independence_link_page = models.ForeignKey(
+        "wagtailcore.Page",
+        verbose_name=_("link page"),
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="+",
+        help_text=_("The Impartiality page (T22)."),
+    )
+
+    parent_page_types = ["pages.AboutPage"]
+    subpage_types = []
+    max_count_per_parent = 1
+
+    override_translatable_fields = _translatable(
+        "intro",
+        "companies",
+        "independence_heading",
+        "independence",
+        "independence_link_label",
+        synchronised=("independence_link_page",),
+    )
+
+    content_panels = [
+        *Page.content_panels,
+        FieldPanel("intro"),
+        FieldPanel("companies"),
+        MultiFieldPanel(
+            [
+                FieldPanel("independence_heading"),
+                FieldPanel("independence"),
+                FieldPanel("independence_link_label"),
+                PageChooserPanel("independence_link_page"),
+            ],
+            heading=_("Independence"),
+        ),
+    ]
+    search_fields = [
+        *Page.search_fields,
+        index.SearchField("intro"),
+        index.SearchField("independence"),
+    ]
+
+    class Meta:
+        verbose_name = _("group page")

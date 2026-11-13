@@ -44,7 +44,7 @@ Destination: ticqc.com live on the new stack, five gates passed. Open, unblocked
 
 | # | Ticket | Blocks | Done when |
 | --- | --- | --- | --- |
-| 21 | **About, Leadership, Group** — pages and seed with placeholders; `Person` snippet | 1 | Render from seed |
+| 21 | ✅ (Nov 13, D50: people are "[Name]" until they agree, P-16) **About, Leadership, Group** — pages and seed with placeholders; `Person` snippet | 1 | Render from seed |
 | 22 | **Accreditations table and policy pages** — `AccreditationsPage`, `ContentPage` with document code/version/date/owner for Impartiality, Subcontracting, Certificate and logo use, Privacy, Terms | 1 | Table shows the five verified rows only; footer marks match |
 | 23 | **Complaints, Careers, course registration** — schemas with files in `private/`; `CareersPage` with openings; `CoursePage` + index with the full field set | 1 | A complaint with a file and an application with a CV reach the Quality Manager / HR addresses |
 | 24 | **Roles, groups, workflows** — six groups, per-office groups, Review and Light workflows, re-approval rule, review-by reminders live on staging | 1 | An office editor submits, a reviewer publishes; reminder email for a test page |

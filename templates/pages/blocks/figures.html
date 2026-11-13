@@ -1,0 +1,1 @@
+{# A dark band with figures only (B-About). A figure without an owner is not shown. #}<section class="band"><div class="wrap figs figs-band">{% for fig in value.figures %}{% if fig.owner %}<div class="fig"><b{% if fig.highlight %} class="fig--red"{% endif %}>{{ fig.value }}</b><span>{{ fig.label }}</span></div>{% endif %}{% endfor %}</div></section>

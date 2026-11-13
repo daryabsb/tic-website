@@ -135,7 +135,7 @@ def test_unconfirmed_facts_stay_bracketed(client, psi):
 def test_person_name_shown_only_when_agreed(client, psi, home):
     psi = _complete(psi, office=home)
     psi.save_revision().publish()
-    person = Person.objects.get()
+    person = Person.objects.get(name="A. Inspector")
 
     assert "A. Inspector" not in client.get(PSI_URL).content.decode()
 
