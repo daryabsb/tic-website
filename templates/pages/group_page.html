@@ -1,0 +1,20 @@
+{% extends "base.html" %}{% load i18n static wagtailcore_tags wagtailimages_tags zeneon %}
+{% comment %}Our group (master plan 03; design B-Group): one card per company, then the independence sentence on the dark band. The TIC card shows the supplied logo file, never a redrawn one.{% endcomment %}
+{% block body_class %}page-group{% endblock %}
+{% block content %}
+{% include "includes/page_head.html" with intro=page.intro %}
+<div class="wrap row companies">{% for block in page.companies %}{% with co=block.value %}<div class="company">
+  <div class="company__logo">{% if co.is_tic %}<picture><source srcset="{% static 'img/logo/tic-logo-480.webp' %}" type="image/webp"><img src="{% static 'img/logo/tic-logo-480.png' %}" alt="{% translate 'TIC — Testing, Inspection, Certification' %}" width="480" height="325" loading="lazy"></picture>{% elif co.logo %}{% image co.logo max-320x96 as logo %}<img src="{{ logo.url }}" alt="{{ co.name }}" width="{{ logo.width }}" height="{{ logo.height }}" loading="lazy">{% else %}<span class="company__lp">[{{ co.name }} {% translate "logo" %}]</span>{% endif %}</div>
+  <div class="stack company__body"><b>{{ co.name }}</b>
+    <div class="company__row"><span>{% translate "Legal name" %}</span><span>{{ co.legal_name }}</span></div>
+    <div class="company__row"><span>{% translate "Founded" %}</span><span>{{ co.founded }}</span></div>
+    <div class="company__row"><span>{% translate "Does" %}</span><span>{{ co.does }}</span></div>
+    <div class="company__row"><span>{% translate "Accreditation" %}</span><span>{{ co.accreditation }}</span></div>
+    {% if co.is_tic %}<a class="tri" href="{% locale_home_url %}">{{ co.link_label|default:_("This site") }}</a>{% elif co.link_url %}<a class="tri" href="{{ co.link_url }}" rel="noopener">{{ co.link_label|default:co.link_url }}</a>{% elif co.link_label %}<span class="tri">{{ co.link_label }}</span>{% endif %}
+  </div>
+</div>{% endwith %}{% endfor %}</div>
+<section class="band"><div class="wrap row band__row">
+  <div class="stack group__head"><h2 class="h2 h2--w">{{ page.independence_heading }}</h2><div class="rule"></div></div>
+  <p class="group__sentence">{{ page.independence }}{% if page.independence_link_page and page.independence_link_label %} <a class="group__link" href="{% pageurl page.independence_link_page %}">{{ page.independence_link_label }} →</a>{% endif %}</p>
+</div></section>
+{% endblock %}

@@ -36,7 +36,8 @@ from apps.news.models import NewsIndexPage, NewsPage
 from apps.offices.access import setup_office
 from apps.offices.models import OfficeIndexPage, OfficePage
 from apps.offices.seed import create_office, fill_office, office_rows
-from apps.pages.models import HomePage
+from apps.pages.models import AboutPage, GroupPage, HomePage, LeadershipPage
+from apps.people.models import Person
 from apps.programs.models import ProgramIndexPage, ProgramPage, RegulatoryUpdatesPage
 from apps.services.models import ServiceGroupPage, ServiceIndexPage, ServicePage
 from apps.verify.models import VerifyPage
@@ -122,6 +123,8 @@ class Command(BaseCommand):
             self.seed_news(locale, data["news"])
         if "verify" in data:
             self.seed_verify(locale, data["verify"])
+        if "about" in data:  # after the offices: people work from an office page
+            self.seed_about(locale, data["about"])
         if "home" in data:  # last: its cards and rows link to the hub pages above (T9)
             self.seed_home(locale, data["home"])
 
@@ -181,7 +184,7 @@ class Command(BaseCommand):
         self.changes += 1
         return model.objects.get(pk=page.pk), live
 
-    def fill_page(self, page, data: dict, names, streams=()) -> None:
+    def fill_page(self, page, data: dict, names, streams=()) -> bool:
         changed = [self.fill(page, name, data.get(name)) for name in names]
         for name, value in streams:
             if value and (self.reset or not getattr(page, name).raw_data):
@@ -190,6 +193,7 @@ class Command(BaseCommand):
                 changed.append(True)
         if any(changed):
             page.save_revision().publish()
+        return any(changed)
 
     def seed_services(self, locale: Locale, data: dict, psi: dict) -> None:
         home = HomePage.objects.filter(locale=locale).first()
@@ -459,6 +463,90 @@ class Command(BaseCommand):
                 self.changes += 1
             self.changes += min(setup_office(page)[2], 1)
         self.stdout.write(f"{locale.language_code}: offices checked")
+
+    # -- About, Leadership, Our group (T21) ------------------------------------------
+
+    ABOUT_FIELDS = ("seo_title", "intro", "header_caption")
+    LEADERSHIP_FIELDS = ("intro", "ceo_quote", "note")
+    GROUP_FIELDS = ("intro", "independence_heading", "independence", "independence_link_label")
+
+    def seed_about(self, locale: Locale, data: dict) -> None:
+        """About and its two children; the people of the Leadership page as ``Person``
+        snippets with "[Name]" and not agreed to be named (P-16). The section links are
+        set after the children exist (a path with no page keeps the card unlinked)."""
+        home = HomePage.objects.filter(locale=locale).first()
+        if home is None:
+            return
+        about, touch_about = self.child(
+            home, AboutPage, data["slug"], data["title"], live=True, show_in_menus=True
+        )
+        people = {key: self.person(locale, row) for key, row in (data.get("people") or {}).items()}
+
+        lead = data.get("leadership")
+        if lead:
+            page, touch = self.child(
+                about, LeadershipPage, lead["slug"], lead["title"], live=True, show_in_menus=True
+            )
+            if touch:
+                ceo = people.get(lead.get("ceo"))
+                new_ceo = page.ceo_id is None and ceo is not None
+                if new_ceo:
+                    page.ceo = ceo
+                    self.changes += 1
+                groups = [
+                    {
+                        "type": "group",
+                        "value": {
+                            "heading": group["heading"],
+                            "style": group.get("style", "large"),
+                            "people": [people[key].pk for key in group["people"] if key in people],
+                        },
+                    }
+                    for group in lead.get("groups", [])
+                ]
+                published = self.fill_page(
+                    page, lead, self.LEADERSHIP_FIELDS, streams=[("groups", groups)]
+                )
+                if new_ceo and not published:
+                    page.save_revision().publish()
+
+        grp = data.get("group")
+        if grp:
+            page, touch = self.child(
+                about,
+                GroupPage,
+                grp["slug"],
+                grp["title"],
+                live=True,
+                show_in_menus=True,
+                independence=grp["independence"],
+            )
+            if touch:
+                companies = [{"type": "company", "value": row} for row in grp.get("companies", [])]
+                self.fill_page(page, grp, self.GROUP_FIELDS, streams=[("companies", companies)])
+
+        if touch_about:
+            sections = data.get("sections")
+            if sections and (self.reset or not about.sections.raw_data):
+                sections = self.link_pages(home, sections)
+            self.fill_page(about, data, self.ABOUT_FIELDS, streams=[("sections", sections)])
+        self.stdout.write(f"{locale.language_code}: about checked")
+
+    def person(self, locale: Locale, row: dict) -> Person:
+        """The person with this title (and office) in this language, created as "[Name]"
+        when missing. A row an editor named is never changed."""
+        office = OfficePage.objects.filter(locale=locale, slug=row.get("office") or "-").first()
+        person = Person.objects.filter(locale=locale, title=row["title"], office=office).first()
+        if person is None:
+            person = Person.objects.create(
+                locale=locale,
+                name="[Name]",
+                title=row["title"],
+                office=office,
+                bio=row.get("bio", ""),
+            )
+            self.changes += 1
+        return person
 
     # -- request questions and routing (T17, D41) -------------------------------------
 

@@ -485,4 +485,81 @@ verify:
 offices:
   slug: "offices"
   title: "Our offices"
-  intro: "Fourteen offices in eleven countries. Each one answers in its own time zone; the head office is in Dubai."
+  intro: "Fourteen offices in twelve countries. Each one answers in its own time zone; the head office is in Dubai."
+
+# About, Leadership, Our group (T21; proposal 01 §5.6; designs B-About, B-Leadership,
+# B-Group). Names and photos wait for the CEO (P-16): every person is "[Name]" with the
+# title until they agree to be named. Facts the proposal marks "to be confirmed" stay
+# bracketed (D15). Section links to the T22/T23 pages get their link when those exist.
+about:
+  slug: "about"
+  title: "About"
+  seo_title: "Our story"
+  intro: "Founded in Dubai in [2020], TIC Quality Control is an independent testing, inspection and certification company with fourteen addresses in twelve countries. We measure; we do not guess — and every certificate we issue can be checked."
+  header_caption: "Dubai · Head office"
+  sections:
+    - type: story
+      value:
+        heading: "What we do, in one paragraph"
+        body: "<p>We inspect goods before they ship and when they arrive, test them through named laboratories, certify them against the standards of the markets they are sold into, and issue the Certificates of Conformity that governments in Iraq, Egypt, Botswana and Libya require. Our clients are exporters, importers, traders, banks and the regulators themselves.</p><p>We are a Type A inspection body under ISO/IEC 17020 — fully independent of the parties we inspect for. Impartiality is the product.</p>"
+        links:
+          - {label: "Our group", page: "about/group"}
+          - {label: "Leadership", page: "about/leadership"}
+        timeline:
+          heading: "A short, dated timeline"
+          rows:
+            - {year: "[2020]", title: "Founded in Dubai", text: "TIC Quality Control L.L.C., Business Bay [to be confirmed]"}
+            - {year: "[year]", title: "First accreditation", text: "ISO/IEC 17020 by ANAB — certificate AI-3314"}
+            - {year: "2024", title: "Appointed for the Iraq program", text: "COSQC contract of 22 May 2024, with LOX"}
+            - {year: "2025", title: "Registered with GOEIC, Egypt", text: "Pre-shipment inspection register, record 73"}
+            - {year: "[year]", title: "[Each new office, in order]", text: "[office and year]"}
+    - type: figures
+      value:
+        figures:
+          - {value: "[2020]", label: "Founded", owner: "Proposal 01 §5.6 (to be confirmed)"}
+          - {value: "14", label: "Addresses", owner: "Proposal 01 §5.6, P-12"}
+          - {value: "12", label: "Countries", owner: "Proposal 01 §5.6, P-12"}
+          - {value: "5", label: "Government & trade programs", owner: "Proposal 01 §5.5"}
+          - {value: "[n]", label: "Certificates issued in 2025", owner: "Quality Manager (to be confirmed)", highlight: true}
+    - type: section_links
+      value:
+        heading: "In this section"
+        links:
+          - {title: "Leadership", page: "about/leadership", text: "The CEO, the directors and the office managers who agree to be named."}
+          - {title: "Our group", page: "about/group", text: "TIC Quality Control, Seacorr and LOX — and how independence is kept."}
+          - {title: "Accreditations and approvals", text: "A table, not a row of logos: number, scope, status, register link."}
+          - {title: "Subcontracting and partner laboratories", text: "When we subcontract, we tell you, and we stay responsible."}
+          - {title: "Impartiality", text: "How we protect decisions from commercial pressure."}
+          - {title: "Complaints and appeals", text: "How to disagree with us, and what happens next."}
+          - {title: "Certificate and logo use", text: "What a client may and may not do with a TIC certificate."}
+          - {title: "Careers", text: "Open roles and how we hire inspectors."}
+  people:
+    # key: title, office slug (optional), bio
+    ceo: {title: "Chief Executive Officer", office: "dubai"}
+    programs_director: {title: "Director, Government & Trade Programs", bio: "[Two sentences: what they are responsible for and how long they have done it.]"}
+    inspection_director: {title: "Director, Inspection Services", bio: "[Two sentences.]"}
+    quality_manager: {title: "Quality / Accreditation Manager", bio: "[Two sentences. Owns the accreditations page and the impartiality committee.]"}
+    manager_baghdad: {title: "Office manager", office: "baghdad"}
+    manager_cairo: {title: "Office manager", office: "cairo"}
+    manager_noida: {title: "Office manager", office: "noida"}
+    manager_guangzhou: {title: "Office manager", office: "guangzhou"}
+  leadership:
+    slug: "leadership"
+    title: "Leadership"
+    intro: "The people who sign for TIC Quality Control: the CEO, the directors and the office managers who agree to be named. Names, titles, photographs and two sentences each."
+    ceo: "ceo"
+    ceo_quote: "[Two or three sentences from the CEO on why TIC exists and what it promises — in the CEO’s own words.]"
+    groups:
+      - {heading: "Directors and service heads", style: "large", people: ["programs_director", "inspection_director", "quality_manager"]}
+      - {heading: "Office managers", style: "office", people: ["manager_baghdad", "manager_cairo", "manager_noida", "manager_guangzhou"]}
+    note: "Only colleagues who agree to be named appear here; others are represented by their office page."
+  group:
+    slug: "group"
+    title: "Our group"
+    intro: "Three companies, one owner, one rule: shared ownership never influences an inspection or certification decision. When TIC engages a group company for part of an inspection, we tell the client in advance and TIC remains responsible for the result."
+    companies:
+      - {name: "TIC Quality Control", is_tic: true, legal_name: "TIC Quality Control L.L.C., Dubai", founded: "[2020]", does: "Testing, inspection, certification; Government & Trade Programs", accreditation: "ISO/IEC 17020 Type A, ANAB AI-3314", link_label: "This site"}
+      - {name: "Seacorr", legal_name: "[to be supplied]", founded: "[year]", does: "Non-destructive testing and technical inspection", accreditation: "[own accreditation, if any]", link_label: "[Seacorr website]"}
+      - {name: "LOX", legal_name: "[to be supplied]", founded: "[year]", does: "Partner in the Iraq Certificate of Conformity appointment with COSQC", accreditation: "[own accreditation, if any]", link_label: "[LOX website]"}
+    independence_heading: "Independence, in one sentence"
+    independence: "Shared ownership does not influence any inspection or certification decision. When TIC engages a group company for part of an inspection, we tell the client in advance, and TIC remains responsible for the result."

@@ -1,0 +1,13 @@
+{% extends "base.html" %}{% load i18n wagtailcore_tags wagtailimages_tags %}
+{% comment %}Leadership (master plan 03; design B-Leadership): the CEO quote, then the groups of people, then the note.{% endcomment %}
+{% block body_class %}page-leadership{% endblock %}
+{% block content %}
+{% include "includes/page_head.html" with intro=page.intro %}
+{% if page.ceo_quote %}{% with ceo=page.ceo %}<div class="wrap leadership__quote"><div class="row quote">
+  <div class="photo quote__photo">{% if ceo.public_photo %}{% image ceo.public_photo fill-400x480 as img %}<img src="{{ img.url }}" alt="{{ ceo.name }}" width="{{ img.width }}" height="{{ img.height }}">{% endif %}<div class="cap">{% translate "CEO" %}</div></div>
+  <blockquote>“{{ page.ceo_quote }}”</blockquote>
+  <div class="stack quote__who"><b>{{ ceo.public_name|default:"[Name]" }}</b><span>{{ ceo.title|default:_("Chief Executive Officer") }}{% if ceo.office %} · {{ ceo.office.specific.city }}{% endif %}</span></div>
+</div></div>{% endwith %}{% endif %}
+{% for block in page.groups %}<div class="wrap leadership__group">{% include_block block %}</div>{% endfor %}
+{% if page.note %}<div class="wrap leadership__note"><p>{{ page.note }}</p></div>{% endif %}
+{% endblock %}

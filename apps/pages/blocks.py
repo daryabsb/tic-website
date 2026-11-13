@@ -8,6 +8,7 @@ cannot change colour, type or spacing (the locked block library, master plan 04)
 from django.utils.translation import gettext_lazy as _
 from wagtail import blocks
 from wagtail.images.blocks import ImageChooserBlock
+from wagtail.snippets.blocks import SnippetChooserBlock
 
 
 class ProofItemBlock(blocks.StructBlock):
@@ -256,10 +257,87 @@ HOME_SECTIONS = [
     ("contact_band", ContactBandBlock()),
 ]
 
+
+class StoryBlock(blocks.StructBlock):
+    """About: "What we do, in one paragraph" beside the dated timeline (B-About)."""
+
+    heading = blocks.CharBlock(
+        label=_("heading"), max_length=80, default="What we do, in one paragraph"
+    )
+    body = blocks.RichTextBlock(label=_("text"), features=["bold", "italic", "link"])
+    links = blocks.ListBlock(LinkRowBlock(), min_num=0, max_num=4, label=_("links"))
+    timeline = TimelineBlock(label=_("timeline"))
+
+    class Meta:
+        icon = "doc-full"
+        label = _("Story and timeline")
+        template = "pages/blocks/story.html"
+
+
+class FiguresBlock(blocks.StructBlock):
+    """A dark band with figures only (B-About). Same rule as the home band: a figure
+    without an owner is not shown."""
+
+    figures = blocks.ListBlock(FigureBlock(), min_num=1, max_num=6, label=_("figures"))
+
+    class Meta:
+        icon = "order"
+        label = _("Figures band")
+        template = "pages/blocks/figures.html"
+
+
 ABOUT_SECTIONS = [
+    ("story", StoryBlock()),
     ("paragraph", ParagraphBlock(features=["bold", "italic", "link", "ul", "ol"])),
     ("timeline", TimelineBlock()),
+    ("figures", FiguresBlock()),
     ("dark_band", DarkBandBlock()),
     ("section_links", SectionLinksBlock()),
     ("contact_band", ContactBandBlock()),
 ]
+
+
+# -- Leadership and Our group (T21, master plan 03) ---------------------------------
+
+
+class PeopleGroupBlock(blocks.StructBlock):
+    """One group of people on the Leadership page: the directors (large cards with two
+    sentences) or the office managers (small cards with the office as caption)."""
+
+    heading = blocks.CharBlock(label=_("heading"), max_length=80)
+    style = blocks.ChoiceBlock(
+        label=_("cards"),
+        choices=[("large", _("Large, with the bio")), ("office", _("Small, office caption"))],
+        default="large",
+    )
+    people = blocks.ListBlock(
+        SnippetChooserBlock("people.Person"), min_num=1, max_num=24, label=_("people")
+    )
+
+    class Meta:
+        icon = "group"
+        label = _("Group of people")
+        template = "pages/blocks/people_group.html"
+
+
+class CompanyBlock(blocks.StructBlock):
+    """One company card on Our group: logo, legal name, founded, what it does, its own
+    accreditation, a link to its own site. Blank facts stay bracketed (D15)."""
+
+    name = blocks.CharBlock(label=_("name"), max_length=80)
+    is_tic = blocks.BooleanBlock(
+        label=_("this is TIC"),
+        required=False,
+        help_text=_("Shows the TIC logo file and links to this site's home page."),
+    )
+    logo = ImageChooserBlock(label=_("logo"), required=False)
+    legal_name = blocks.CharBlock(label=_("legal name"), max_length=120)
+    founded = blocks.CharBlock(label=_("founded"), max_length=40)
+    does = blocks.CharBlock(label=_("does"), max_length=200)
+    accreditation = blocks.CharBlock(label=_("accreditation"), max_length=160)
+    link_label = blocks.CharBlock(label=_("link label"), max_length=60, required=False)
+    link_url = blocks.URLBlock(label=_("own website"), required=False)
+
+    class Meta:
+        icon = "site"
+        label = _("Company")

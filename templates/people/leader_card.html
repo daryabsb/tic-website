@@ -1,0 +1,9 @@
+{% load i18n wagtailimages_tags %}{# A person on the Leadership page (B-Leadership). Name and photo only when the person agreed to be named (D26); else "[Name]" and the title (P-16 default). Context: person, style ("large" or "office"). #}{% with city=person.office.specific.city %}
+<div class="leader{% if style == 'office' %} leader--office{% endif %}">
+  <div class="photo leader__photo">{% if person.public_photo %}{% image person.public_photo fill-560x440 as img %}<img src="{{ img.url }}" alt="{{ person.name }}" width="{{ img.width }}" height="{{ img.height }}" loading="lazy">{% endif %}{% if style == "office" and city %}<div class="cap">{{ city }}</div>{% endif %}</div>
+  <div class="leader__body">
+    <b>{{ person.public_name|default:"[Name]" }}</b>
+    <span class="leader__role">{{ person.title }}{% if city %} · {{ city }}{% endif %}</span>
+    {% if style != "office" and person.bio %}<p>{{ person.bio }}</p>{% endif %}
+  </div>
+</div>{% endwith %}
