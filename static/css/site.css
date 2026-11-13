@@ -378,6 +378,7 @@ textarea.inp { padding: 12px 14px; min-height: 120px; }
 .about-story__col { flex: 1 1 420px; min-width: 0; gap: 18px; }
 .about-story__links { gap: 12px 28px; }
 .figs-band { padding-block: 56px; }
+.figs-band .fig { flex-basis: 140px; } /* all five figures in one row (B-About) */
 .leadership__quote { padding-block: 56px 40px; }
 .leadership__group { padding-bottom: 40px; }
 .leadership__note { padding-bottom: 72px; }
@@ -392,6 +393,7 @@ textarea.inp { padding: 12px 14px; min-height: 120px; }
 .people-group__row { gap: 20px; }
 .leader { flex: 1 1 280px; min-width: 0; max-width: 400px; display: flex; flex-direction: column; border: 1px solid var(--tic-hairline); }
 .leader__photo { height: 220px; }
+.leader--office { flex-basis: 200px; } /* four office managers in one row (B-Leadership) */
 .leader--office .leader__photo { height: 180px; }
 .leader__body { padding: 20px; display: flex; flex-direction: column; gap: 6px; }
 .leader__body b { font-family: var(--font-display); font-weight: 700; font-size: 18px; text-transform: uppercase; color: var(--tic-ink); line-height: 1.15; }
