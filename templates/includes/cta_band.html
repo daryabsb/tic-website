@@ -3,7 +3,6 @@
   <div class="cta__text">
     <h2 class="h2 h2--sm h2--w">{{ heading|default:_("Talk to the office nearest you") }}</h2>
     <p>{{ text|default:_("WhatsApp, phone or the quote form. Answered by a named person within one working day.") }}</p>
-    {% if ch.hours %}<p class="cta__hours">{{ ch.office.title }}: {{ ch.hours }}</p>{% endif %}
   </div>
   <div class="cta__actions">
     {% if ch.whatsapp_link %}<a class="btn btn--white" href="{{ ch.whatsapp_link }}" rel="noopener" target="_blank">{% translate "WhatsApp" %}</a>{% endif %}

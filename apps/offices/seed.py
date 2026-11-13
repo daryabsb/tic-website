@@ -19,10 +19,8 @@ FIELDS = (
     "legal_entity",
     "address",
     "phone",
-    "whatsapp",
     "wechat_id",
     "email",
-    "hours",
     "timezone",
     "languages",
 )
@@ -52,12 +50,15 @@ def create_office(index, row: dict) -> OfficePage:
 
 
 def fill_office(page: OfficePage, row: dict) -> bool:
-    """Blank fields from the row. True when something changed (then publish)."""
+    """Blank fields, and fields that still hold a bracketed placeholder, from the row
+    (an editor's own text has no brackets and is never overwritten). True when
+    something changed (then publish)."""
     changed = False
     for name, value in values(row).items():
         if name == "is_head_office":
             continue
-        if value and not getattr(page, name):
+        current = getattr(page, name)
+        if value and value != current and (not current or "[" in str(current)):
             setattr(page, name, value)
             changed = True
     if changed:

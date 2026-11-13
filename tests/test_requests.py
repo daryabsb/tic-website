@@ -51,7 +51,7 @@ def test_the_routing_table_is_seeded_without_invented_addresses(seeded_home):
     rules = {rule.name: rule for rule in RoutingRule.objects.all()}
     baghdad = rules["Baghdad office"]
     assert [(c.field, c.value) for c in baghdad.conditions.all()] == [("country", "iraq")]
-    assert baghdad.email == ""  # offices.yaml still has "[office email]"
+    assert baghdad.email == "info@ticqc.com"  # one email for every office (D49)
     fallback = RoutingRule.objects.order_by("-priority").first()
     assert (fallback.email, fallback.conditions.count()) == ("info@ticqc.com", 0)
     assert rules["Head office, Dubai (training)"].conditions.get().value == "training"
@@ -106,6 +106,11 @@ def test_a_quote_from_iraq_reaches_the_baghdad_address(
 def test_without_an_office_address_the_head_office_gets_it(
     client, psi, passed_captcha, django_capture_on_commit_callbacks
 ):
+    from apps.offices.models import OfficePage
+
+    # Neither the rule nor its office page has an address: the next rule takes it.
+    RoutingRule.objects.filter(name="Baghdad office").update(email="")
+    OfficePage.objects.filter(slug="baghdad").update(email="[office email]")
     with django_capture_on_commit_callbacks(execute=True):
         quote(client, psi)
     submission = Submission.objects.get()

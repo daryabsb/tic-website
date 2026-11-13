@@ -61,25 +61,34 @@ def test_guangzhou_shows_no_wa_me(client, offices, site_numbers):
     assert channels_for(offices["guangzhou"]).whatsapp_link == ""
 
 
-def test_an_office_in_china_cannot_have_a_whatsapp_number(offices):
-    page = offices["guangzhou"]
-    page.whatsapp = "+86 20 0000 0000"
+def test_one_number_is_the_phone_and_the_whatsapp_but_never_in_china(client, offices):
+    baghdad = client.get(offices["baghdad"].url).content.decode()
+    assert baghdad.count("+964 770 250 2017") == 1  # shown once (D49)
+    assert 'href="tel:+9647702502017"' in baghdad and "wa.me/9647702502017" in baghdad
+    guangzhou = offices["guangzhou"]
+    assert guangzhou.phone_number and guangzhou.whatsapp_number == ""
+    assert 'href="tel:+8618149707740"' in client.get(guangzhou.url).content.decode()
+
+
+def test_an_office_needs_an_address_and_a_phone_or_email(offices):
+    page = offices["bangkok"]
+    page.phone, page.email = "", ""
     with pytest.raises(ValidationError) as caught:
         page.full_clean()
-    assert "whatsapp" in caught.value.message_dict
+    assert "phone" in caught.value.message_dict
 
 
 def test_a_placeholder_is_never_a_link(client, offices):
-    html = client.get(offices["baghdad"].url).content.decode()
+    html = client.get(offices["bangkok"].url).content.decode()
     assert "[phone]" in html and 'href="tel:[' not in html
-    assert "[office email]" in html and "mailto:[" not in html
+    assert 'href="mailto:info@ticqc.com"' in html  # one email for every office (D49)
     assert "wa.me" not in html  # no office number and no head-office number set
 
 
 def test_the_cta_band_carries_the_office_numbers(client, offices, site_numbers):
     noida = client.get(offices["noida"].url).content.decode()
-    assert 'href="tel:+919266606587"' in noida  # Noida's own phone
-    assert "wa.me/971500000000" in noida  # its WhatsApp is still a placeholder
+    assert 'href="tel:+919211711993"' in noida  # Noida's own phone
+    assert "wa.me/919211711993" in noida  # the same number is its WhatsApp (D49)
     iraq = ProgramPage.objects.get(slug="iraq-certificate-of-conformity")
     assert iraq.owning_office.specific == offices["baghdad"]
     assert channels_for(iraq).office == offices["baghdad"]

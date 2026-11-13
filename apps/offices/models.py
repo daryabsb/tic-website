@@ -2,7 +2,8 @@
 B-Office-Baghdad).
 
 - ``OfficeIndexPage``: /<lang>/offices/, every live office, head office first.
-- ``OfficePage``: one office. Channels, address, hours with the time zone, legal entity,
+- ``OfficePage``: one office. Channels, address, the time zone (no opening hours:
+  TIC answers around the clock across its offices, D49), legal entity,
   languages, the reply promise, what is sold and delivered from it, the people who agreed
   to be named. Its numbers drive the red CTA band on its own page and on the pages it
   owns (``apps.offices.channels``).
@@ -10,8 +11,9 @@ B-Office-Baghdad).
 A value in square brackets is a placeholder an office still owes (P-17): it is shown as
 text, never turned into a ``tel:``, ``mailto:`` or ``wa.me`` link.
 
-The WeChat rule (D11): an office in China never has a WhatsApp number, so its page and
-its CTA band never show wa.me; it shows the WeChat ID (and QR) and a China phone.
+One number per office (D49): the phone is also the office's WhatsApp. The WeChat rule
+(D11): an office in China never offers WhatsApp, so its page and its CTA band never show
+wa.me; it shows the WeChat ID (and QR) and the China phone.
 """
 
 from datetime import datetime
@@ -81,12 +83,9 @@ class OfficeForm(WagtailAdminPageForm):
     def clean(self):
         cleaned = super().clean()
         problems = office_problems(
-            country=cleaned.get("country", ""),
-            whatsapp=cleaned.get("whatsapp", ""),
             address=cleaned.get("address", ""),
             phone=cleaned.get("phone", ""),
             email=cleaned.get("email", ""),
-            hours=cleaned.get("hours", ""),
             timezone=cleaned.get("timezone", ""),
         )
         for field, message in problems:
@@ -94,19 +93,13 @@ class OfficeForm(WagtailAdminPageForm):
         return cleaned
 
 
-def office_problems(*, country, whatsapp, address, phone, email, hours, timezone):
-    """The publish rules of 03 (address, phone or email, hours, time zone) and D11."""
+def office_problems(*, address, phone, email, timezone):
+    """The publish rules of 03: an address, a phone or an email, a time zone."""
     problems = []
-    if country in NO_WHATSAPP_COUNTRIES and (whatsapp or "").strip():
-        problems.append(
-            ("whatsapp", _("An office in China has no WhatsApp number; use the WeChat ID."))
-        )
     if not (address or "").strip():
         problems.append(("address", _("The address is required.")))
     if not ((phone or "").strip() or (email or "").strip()):
         problems.append(("phone", _("A phone number or an email address is required.")))
-    if not (hours or "").strip():
-        problems.append(("hours", _("The opening days and hours are required.")))
     if timezone not in available_timezones():
         problems.append(("timezone", _("Use a time zone name such as 'Asia/Baghdad'.")))
     return problems
@@ -125,18 +118,16 @@ class OfficePage(ScriptNormalisationMixin, _HeaderFields, Page):  # noqa: DJ008 
         _("longitude"), max_digits=9, decimal_places=6, null=True, blank=True
     )
     map_image = _image(_("map image"), help_text=_("A static map; no map scripts (China rule)."))
-    phone = models.CharField(_("phone"), max_length=60, blank=True)
-    whatsapp = models.CharField(
-        _("WhatsApp"),
+    phone = models.CharField(
+        _("phone"),
         max_length=60,
         blank=True,
-        help_text=_("Never for an office in China (D11)."),
+        help_text=_("Also the office's WhatsApp, except in China (D11, D49)."),
     )
     wechat_id = models.CharField(_("WeChat ID"), max_length=60, blank=True)
     wechat_qr = _image(_("WeChat QR code"))
     email = models.CharField(_("email"), max_length=120, blank=True)
     mailbox_owner = models.CharField(_("mailbox owner"), max_length=120, blank=True)
-    hours = models.CharField(_("opening days and hours"), max_length=160)
     timezone = models.CharField(_("time zone"), max_length=40, default="Asia/Dubai")
     languages = models.CharField(_("languages"), max_length=160, blank=True)
     reply_promise = models.CharField(
@@ -163,7 +154,6 @@ class OfficePage(ScriptNormalisationMixin, _HeaderFields, Page):  # noqa: DJ008 
         "city",
         "country",
         "address",
-        "hours",
         "languages",
         "reply_promise",
         "team_caption",
@@ -176,7 +166,6 @@ class OfficePage(ScriptNormalisationMixin, _HeaderFields, Page):  # noqa: DJ008 
             "longitude",
             "map_image",
             "phone",
-            "whatsapp",
             "wechat_id",
             "wechat_qr",
             "email",
@@ -204,10 +193,10 @@ class OfficePage(ScriptNormalisationMixin, _HeaderFields, Page):  # noqa: DJ008 
         ),
         MultiFieldPanel(
             [
-                FieldRowPanel([FieldPanel("phone"), FieldPanel("whatsapp")]),
+                FieldPanel("phone"),
                 FieldRowPanel([FieldPanel("wechat_id"), FieldPanel("wechat_qr")]),
                 FieldRowPanel([FieldPanel("email"), FieldPanel("mailbox_owner")]),
-                FieldRowPanel([FieldPanel("hours"), FieldPanel("timezone")]),
+                FieldPanel("timezone"),
                 FieldPanel("languages"),
                 FieldPanel("reply_promise"),
             ],
@@ -233,12 +222,9 @@ class OfficePage(ScriptNormalisationMixin, _HeaderFields, Page):  # noqa: DJ008 
     def clean(self):
         super().clean()
         problems = office_problems(
-            country=self.country,
-            whatsapp=self.whatsapp,
             address=self.address,
             phone=self.phone,
             email=self.email,
-            hours=self.hours,
             timezone=self.timezone,
         )
         if problems:
@@ -252,10 +238,11 @@ class OfficePage(ScriptNormalisationMixin, _HeaderFields, Page):  # noqa: DJ008 
 
     @property
     def whatsapp_number(self) -> str:
-        """The number a wa.me link may use: "" for China and for a placeholder."""
-        if not self.whatsapp_allowed or is_placeholder(self.whatsapp):
+        """The phone, which is also the office's WhatsApp (D49): "" for China and for a
+        placeholder."""
+        if not self.whatsapp_allowed or is_placeholder(self.phone):
             return ""
-        return self.whatsapp
+        return self.phone
 
     @property
     def whatsapp_link(self) -> str:
