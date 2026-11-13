@@ -19,10 +19,8 @@ FIELDS = (
     "legal_entity",
     "address",
     "phone",
-    "whatsapp",
     "wechat_id",
     "email",
-    "hours",
     "timezone",
     "languages",
 )

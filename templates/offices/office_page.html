@@ -7,23 +7,19 @@
   <div class="office__main">
     <div><h2 class="h2">{% translate "Reach the office" %}</h2><div class="rule"></div></div>
     <div class="office__chans">
-      {% if page.whatsapp_allowed %}
-      {% if page.whatsapp_link %}<a class="chan" href="{{ page.whatsapp_link }}" rel="noopener" target="_blank">{% else %}<div class="chan">{% endif %}
-        <span class="lbl">WhatsApp</span><b>{{ page.whatsapp|default:"[number]" }}</b><span>{{ page.hours }}</span>
-      {% if page.whatsapp_link %}</a>{% else %}</div>{% endif %}
-      {% else %}
-      <div class="chan"><span class="lbl">WeChat</span><b>{{ page.wechat_id|default:"[WeChat ID]" }}</b>{% if page.wechat_qr %}{% image page.wechat_qr width-160 class="chan__qr" alt="" %}{% endif %}<span>{{ page.hours }}</span></div>
-      {% endif %}
-      {% if office.phone_number %}<a class="chan" href="tel:{{ office.phone_number|cut:' ' }}">{% else %}<div class="chan">{% endif %}
-        <span class="lbl">{% translate "Phone" %}</span><b>{{ page.phone|default:"[number]" }}</b><span>{{ page.hours }}</span>
-      {% if office.phone_number %}</a>{% else %}</div>{% endif %}
+      <div class="chan">
+        <span class="lbl">{% if page.whatsapp_allowed %}{% translate "Phone and WhatsApp" %}{% else %}{% translate "Phone" %}{% endif %}</span>
+        <b>{{ page.phone|default:"[number]" }}</b>
+        {% if office.phone_number %}<span class="chan__links"><a href="tel:{{ office.phone_number|cut:' ' }}">{% translate "Call" %}</a>{% if page.whatsapp_link %} · <a href="{{ page.whatsapp_link }}" rel="noopener" target="_blank">WhatsApp</a>{% endif %}</span>{% endif %}
+      </div>
+      {% if not page.whatsapp_allowed %}<div class="chan"><span class="lbl">WeChat</span><b>{{ page.wechat_id|default:"[WeChat ID]" }}</b>{% if page.wechat_qr %}{% image page.wechat_qr width-160 class="chan__qr" alt="" %}{% endif %}</div>{% endif %}
       {% if office.email_address %}<a class="chan" href="mailto:{{ office.email_address }}">{% else %}<div class="chan">{% endif %}
         <span class="lbl">{% translate "Email" %}</span><b>{{ page.email|default:"[email]" }}</b>{% if page.mailbox_owner %}<span>{% blocktranslate with owner=page.mailbox_owner %}Mailbox owner: {{ owner }}{% endblocktranslate %}</span>{% endif %}
       {% if office.email_address %}</a>{% else %}</div>{% endif %}
     </div>
     <dl class="kv">
       <div class="kv__row"><dt>{% translate "Address" %}</dt><dd>{{ page.address }}, {{ page.country }}{% if page.map_url %} — <a href="{{ page.map_url }}" rel="noopener" target="_blank">{% translate "open in maps" %}</a>{% endif %}</dd></div>
-      <div class="kv__row"><dt>{% translate "Opening days" %}</dt><dd>{{ page.hours }} · {% translate "time zone" %} {{ page.timezone }}{% if page.utc_offset %} ({{ page.utc_offset }}){% endif %}</dd></div>
+      <div class="kv__row"><dt>{% translate "Time zone" %}</dt><dd>{{ page.timezone }}{% if page.utc_offset %} ({{ page.utc_offset }}){% endif %}</dd></div>
       {% if page.legal_entity %}<div class="kv__row"><dt>{% translate "Legal entity" %}</dt><dd>{{ page.legal_entity }}</dd></div>{% endif %}
       {% if page.languages %}<div class="kv__row"><dt>{% translate "Languages" %}</dt><dd>{{ page.languages }}</dd></div>{% endif %}
       {% if page.reply_promise %}<div class="kv__row"><dt>{% translate "Reply promise" %}</dt><dd>{{ page.reply_promise }}</dd></div>{% endif %}

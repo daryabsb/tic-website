@@ -22,7 +22,7 @@ from wagtail.models import Locale, Page
 from zeneon_cms.core.models import SiteSettings
 from zeneon_cms.requests.links import whatsapp_url
 
-from apps.offices.models import OfficePage, is_placeholder
+from apps.offices.models import OfficePage
 from apps.programs.models import ProgramPage
 from apps.services.models import ServiceGroupPage, ServicePage
 
@@ -96,7 +96,7 @@ def office_for(submission) -> Office:
     if isinstance(page, OfficePage):
         # The office's own values; a placeholder is not a number, and an office in
         # China has no WhatsApp, never the head office's instead (D11).
-        office.hours = "" if is_placeholder(page.hours) else page.hours
+        office.hours = ""  # no opening hours: TIC answers around the clock (D49)
         office.phone = page.phone_number or office.phone
         office.whatsapp = (
             (page.whatsapp_number or site.whatsapp_number) if page.whatsapp_allowed else ""

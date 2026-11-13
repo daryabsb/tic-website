@@ -533,10 +533,12 @@ a.chan:hover { border-color: var(--tic-ink); }
 .chan b { font-family: var(--font-display); font-weight: 700; font-size: 18px; overflow-wrap: anywhere; }
 .chan span:not(.lbl) { font-size: 14px; color: var(--tic-charcoal); }
 .chan__qr { width: 120px; height: auto; }
+.chan__links { display: flex; gap: 6px; font-size: 15px; }
+.chan__links a { color: var(--tic-ink); }
+.chan__links a:hover { color: var(--tic-red); }
 .office__sold { display: flex; flex-direction: column; gap: 24px; padding-block: 56px; }
 .office__card { border-top: 0; background: var(--tic-white); padding: 20px; }
 .office__people { display: flex; flex-direction: column; gap: 24px; padding-block: 56px 72px; }
 .office__people-list { gap: 16px; }
 .office-list { display: flex; flex-wrap: wrap; gap: 16px; padding-block: 56px 72px; }
-.cta__hours { font-size: 15px; }
 .cta__wechat { cursor: default; }

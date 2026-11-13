@@ -19,7 +19,6 @@ class Channels:
     whatsapp_link: str = ""
     phone: str = ""
     wechat_id: str = ""
-    hours: str = ""
 
 
 def office_of(page):
@@ -56,5 +55,4 @@ def channels_for(page, text: str = "") -> Channels:
         whatsapp_link=whatsapp_url(number, text) if number else "",
         phone=office.phone_number or site.main_phone,
         wechat_id="" if is_placeholder(office.wechat_id) else office.wechat_id,
-        hours="" if is_placeholder(office.hours) else office.hours,
     )
