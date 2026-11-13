@@ -32,6 +32,7 @@ home:
         heading: "Why TIC"
         text: "Impartiality is the product. We are a Type A inspection body — fully independent of the parties we inspect for — and every certificate we issue carries a number you can check in a public register."
         link_label: "Our accreditations and approvals"
+        link_page: "about/accreditations"
         figures:
           - {value: "[2020]", label: "Founded in Dubai", owner: "Proposal 01 §5.6 (to be confirmed)"}
           - {value: "12", label: "Countries with a staffed office", owner: "Proposal 01 §5.2, Q-26"}
@@ -503,8 +504,9 @@ about:
         heading: "What we do, in one paragraph"
         body: "<p>We inspect goods before they ship and when they arrive, test them through named laboratories, certify them against the standards of the markets they are sold into, and issue the Certificates of Conformity that governments in Iraq, Egypt, Botswana and Libya require. Our clients are exporters, importers, traders, banks and the regulators themselves.</p><p>We are a Type A inspection body under ISO/IEC 17020 — fully independent of the parties we inspect for. Impartiality is the product.</p>"
         links:
+          - {label: "Accreditations and approvals", page: "about/accreditations"}
+          - {label: "Impartiality", page: "about/impartiality"}
           - {label: "Our group", page: "about/group"}
-          - {label: "Leadership", page: "about/leadership"}
         timeline:
           heading: "A short, dated timeline"
           rows:
@@ -527,11 +529,11 @@ about:
         links:
           - {title: "Leadership", page: "about/leadership", text: "The CEO, the directors and the office managers who agree to be named."}
           - {title: "Our group", page: "about/group", text: "TIC Quality Control, Seacorr and LOX — and how independence is kept."}
-          - {title: "Accreditations and approvals", text: "A table, not a row of logos: number, scope, status, register link."}
-          - {title: "Subcontracting and partner laboratories", text: "When we subcontract, we tell you, and we stay responsible."}
-          - {title: "Impartiality", text: "How we protect decisions from commercial pressure."}
+          - {title: "Accreditations and approvals", page: "about/accreditations", text: "A table, not a row of logos: number, scope, status, register link."}
+          - {title: "Subcontracting and partner laboratories", page: "about/subcontracting", text: "When we subcontract, we tell you, and we stay responsible."}
+          - {title: "Impartiality", page: "about/impartiality", text: "How we protect decisions from commercial pressure."}
           - {title: "Complaints and appeals", text: "How to disagree with us, and what happens next."}
-          - {title: "Certificate and logo use", text: "What a client may and may not do with a TIC certificate."}
+          - {title: "Certificate and logo use", page: "about/certificate-and-logo-use", text: "What a client may and may not do with a TIC certificate."}
           - {title: "Careers", text: "Open roles and how we hire inspectors."}
   people:
     # key: title, office slug (optional), bio
@@ -563,3 +565,136 @@ about:
       - {name: "LOX", legal_name: "[to be supplied]", founded: "[year]", does: "Partner in the Iraq Certificate of Conformity appointment with COSQC", accreditation: "[own accreditation, if any]", link_label: "[LOX website]"}
     independence_heading: "Independence, in one sentence"
     independence: "Shared ownership does not influence any inspection or certification decision. When TIC engages a group company for part of an inspection, we tell the client in advance, and TIC remains responsible for the result."
+
+# Accreditations and policy pages (T22; proposal 01 §5.6; designs B-Accreditations,
+# B-Impartiality). The five rows the public registers support (P-15 default); a mark
+# shows only with a register link. Policy text from TIC's own signed PDFs on the old
+# site (Darya, Nov 13, 2026: D51); a page without its four document facts stays a draft.
+trust:
+  owner: "Quality / Accreditation Manager"  # the Person title from about.people
+  accreditations:
+    - body: "ANAB"
+      body_name: "ANSI National Accreditation Board, USA"
+      standard_or_scheme: "ISO/IEC 17020 · Type A inspection body"
+      entity_and_sites: "TIC Quality Control L.L.C., Dubai; New Delhi, Amman, Guangzhou, Riyadh"
+      number: "AI-3314"
+      status: "active"
+      valid_until: "2028-10-17"
+      register_url: "https://search.anab.org/"
+      certificate_url: "https://search.anab.org/public/organization_files/TIC-Quality-Control-LLC-Cert-and-Scope-File-10-16-2026_1792169068.pdf"
+      certificate_label: "Scope PDF"
+      show_mark: true
+      mark_line: "ISO/IEC 17020 · AI-3314"
+    - body: "GOEIC"
+      body_name: "Egypt General Organization for Export and Import Control"
+      standard_or_scheme: "Pre-shipment inspection register"
+      entity_and_sites: "TIC Quality Control"
+      number: "Record 73"
+      status: "registered"
+      register_url: "https://www.goeic.gov.eg/ar/company-guide/registered-inspection-and-audit-companies/73"
+      show_mark: true
+      mark_line: "Register record 73"
+    - body: "COSQC"
+      body_name: "Iraq Central Organization for Standardization and Quality Control"
+      standard_or_scheme: "Iraq Certificate of Conformity program"
+      entity_and_sites: "LOX and TIC partnership"
+      number: "Contract of 22 May 2024, three-year term"
+      status: "appointed"
+      register_note: "No public list"
+    - body: "TIC Council"
+      standard_or_scheme: "Full member"
+      entity_and_sites: "TIC Quality Control UAE"
+      status: "member"
+      register_url: "https://www.tic-council.org/membership/members-directory"
+      register_label: "Directory"
+      show_mark: true
+      mark_line: "Full member"
+    - body: "GAFTA"
+      standard_or_scheme: "Approved superintendent"
+      entity_and_sites: "TIC Quality Control Private Limited, India"
+      number: "[number]"
+      status: "approved"
+      register_url: "https://www.gafta.com/membership/approved-registers/?category=SUPR"
+  accreditations_page:
+    slug: "accreditations"
+    title: "Accreditations and approvals"
+    intro: "For every mark we show, you can see the certificate number, the entity and sites it covers, its status and validity, a link to the register that issued it, the certificate itself, and the date we last checked. A table, not a row of logos."
+    table_note: "A mark that has no number and no register link is not shown anywhere on this site."
+    rules: |-
+      A mark appears only with its number and a link to the register that issued it.
+      “Registered” and “appointed” are not “accredited”; we use the regulator’s own word.
+      Each row names an owner and shows the date it was last checked.
+      If something here does not match a register, tell the Quality/Accreditation Manager: [email].
+    marks_note: "Symbols are shown as supplied by each body, with the number beneath, following that body’s own rules of use."
+  policies:
+    - slug: "impartiality"
+      title: "Impartiality"
+      intro: "Impartiality is the product. This page says how we protect every inspection and certification decision from commercial, financial or other pressure — including pressure from within our own group."
+      document_code: "TIC-IMS-IMP-A-25-10"
+      version: "Issue 0, revision 0"
+      effective_date: "2025-10-25"
+      issuing_entity: "TIC Quality Control"
+      pdf: {file: "TIC-IMS-IMP-A-25-10-Impartiality-Policy.pdf", title: "TIC-IMS-IMP-A-25-10 Impartiality Policy"}
+      other_pdf: {file: "TIC-PY-02-Impariality-Policy.pdf", title: "TIC-PY-02 Impartiality, Confidentiality and Conflict of Interest Policy"}
+      other_pdf_label: "TIC Quality Control Pvt. Ltd., India: TIC-PY-02 (PDF)"
+      related: ["about/accreditations", "about/group"]
+      sections:
+        - heading: "Our commitment"
+          body: "<p>TIC Quality Control is the legal entity responsible for its inspection and product certification activities. Management and staff fully understand the importance of impartiality and ensure it in every inspection and certification activity.</p><p>TIC Quality Control is structured and managed to safeguard its impartiality: an independent impartiality committee for product certification, separation of all interested parties from inspection and certification operations and decisions, and the mitigation of all risks to impartiality.</p>"
+        - heading: "What we do not do"
+          body: "<p>TIC Quality Control is an inspection and conformity assessment body. It is not involved in any part of the following:</p><ul><li>Design, manufacture, installation, distribution or maintenance of products, processes or services.</li><li>Offering or provision of consultancy to its clients.</li><li>Offering or provision of management system consultancy or internal auditing to its clients where the inspection or certification scheme requires the evaluation of the client’s management system.</li></ul><p>Our activities are not marketed or offered as linked with the activities of an organization that provides consultancy. We do not state or imply that certification would be simpler, easier, faster or less expensive if a specified consultancy organization were used.</p>"
+        - heading: "Related legal entities"
+          body: "<p>TIC Quality Control ensures that the activities of separate legal entities with which it has relationships do not compromise the impartiality of its inspection and certification activities. When a separate legal entity offers or produces the inspected or certified product, or offers consultancy, TIC Quality Control personnel in the review and certification decision are not involved in the activities of that entity.</p><p>Shared ownership of TIC Quality Control, Seacorr and LOX does not influence any inspection or certification decision. When TIC engages a group company or another subcontractor for part of an inspection or for laboratory testing, we tell the client in advance, and TIC remains responsible for the result.</p>"
+        - heading: "Rules our staff follow"
+          body: "<ul><li>For two years, TIC Quality Control personnel are not used to review, report or decide on the inspection or certification of a product for which they have provided consultancy.</li><li>Risks to impartiality from the actions of other persons, bodies or organizations are acted on immediately, as the risk to impartiality analysis requires.</li><li>All personnel, internal or external, and all committees that could influence inspection or certification are committed to act impartially.</li><li>All personnel, including top management, staff and subcontractors, sign a declaration of no conflict of interest, a non-disclosure agreement and the code of ethics.</li></ul>"
+        - heading: "Raising a concern"
+          body: "<p>If you believe a decision was influenced by anything other than the evidence, tell the Quality/Accreditation Manager at [email]. Concerns may be raised anonymously.</p>"
+    - slug: "certificate-and-logo-use"
+      title: "Certificate and logo use"
+      intro: "What a certified client may and may not do with a TIC certificate and the TIC certification mark, and what follows when a mark is misused."
+      document_code: "TIC-UCM-01"
+      version: "Issue 0, revision 0"
+      effective_date: "2025-12-01"
+      issuing_entity: "TIC Quality Control Pvt. Ltd., India"
+      pdf: {file: "TIC-UCM-01-Control-the-use-of-certification-mark.pdf", title: "TIC-UCM-01 Control the Use of Certification Mark"}
+      related: ["about/accreditations", "about/impartiality"]
+      sections:
+        - heading: "Who may use the mark"
+          body: "<p>TIC Quality Control owns its certification mark of conformity, its certificates and its certification scheme. The right to use the mark is given only to certified clients who signed the certification agreement and are approved for certification, and only on the products covered by their licence.</p><p>The client’s use of the mark must comply with the requirements for third-party marks in ISO/IEC 17030, ISO Guide 23, ISO Guide 27 and the scheme owner’s rules.</p>"
+        - heading: "Where the mark may appear"
+          body: "<p>On certified products, their display panels and packaging; on brochures, company profiles, reports, exhibition material, flyers, banners and roll-ups; on websites; on the walls and doors of the factory or offices; on company vehicles; and on letterheads and stationery. At exhibitions and in promotion, the mark is not shown with the certificate itself.</p><p>Instructions or other information that goes with the product and refers to the certification scheme must be approved by TIC. In any doubt, ask TIC for written approval first.</p>"
+        - heading: "How the mark is reproduced"
+          body: "<ul><li>The mark is supplied as a soft copy after the certification decision and before the certificate is issued.</li><li>It is reproduced in the same colours and proportions, with materials that give an accurate and sharp print.</li><li>The mark is used only on certified products, so that certified and uncertified products cannot be confused.</li></ul>"
+        - heading: "How we check"
+          body: "<p>We check the use of the mark through certification audits, first- and second-year surveillance, re-certification audits and market monitoring.</p>"
+        - heading: "Misuse and what follows"
+          body: "<p>Misuse includes claiming ownership of the mark, using it on products that are not certified or by a client that is not certified, printing it in another form, and using it in a misleading way. Depending on how serious it is, TIC may:</p><ul><li>send a written warning with a period to correct it;</li><li>require corrective action, including public notice, recall, rework or destruction of products under supervision;</li><li>require the mark to be removed from the product and inform the accreditation body;</li><li>suspend, then withdraw, the certificate, and publish the withdrawal;</li><li>claim damages or start legal proceedings.</li></ul>"
+    - slug: "subcontracting"
+      title: "Subcontracting and partner laboratories"
+      intro: "When part of a job is done by a partner laboratory or a group company, we tell you in advance, and we stay responsible for the result."
+      issuing_entity: "TIC Quality Control Pvt. Ltd., India"
+      pdf: {file: "Approved-Subcontractors.pdf", title: "Approved Subcontractors (inspection and testing)"}
+      related: ["about/impartiality", "about/group"]
+      sections:
+        - heading: "Our rule"
+          body: "<ul><li>TIC remains responsible for all certification decisions.</li><li>Subcontracted activities are performed only by competent and approved organizations.</li><li>All subcontractors are evaluated periodically for competence and performance.</li><li>The use of subcontractors does not affect the impartiality, confidentiality or integrity of certification activities.</li><li>Clients are informed whenever subcontracted activities are used.</li></ul>"
+        - heading: "Approved subcontractors, India"
+          body: "<p>For the i-CAS Halal scheme, TIC Quality Control Pvt. Ltd. uses three NABL-accredited laboratories for testing: animal DNA and vegan testing, DNA species identification, solvent content, water permeability, leather identification, pesticide residues and heavy metals, food contaminants, food additives and microbiological testing.</p><ul><li>Testtex India Laboratories Private Limited</li><li>Delhi Analytical Research Laboratory</li><li>Livestock Products Testing and Certification Laboratory (LP-TCL), ICAR-National Meat Research Institute (ICAR-NMRI)</li></ul>"
+        - heading: "Other countries"
+          body: "<p>[Partner laboratories by country, with their accreditation numbers, to be confirmed by the Quality/Accreditation Manager.]</p>"
+    - slug: "privacy"
+      title: "Privacy"
+      intro: "[How TIC Quality Control collects and uses personal data, under UAE and Saudi data-protection law and the European GDPR — to be supplied by Legal.]"
+      sections:
+        - heading: "[What we collect]"
+          body: "<p>[To be supplied by Legal.]</p>"
+        - heading: "[Cookies]"
+          body: "<p>[To be supplied by Legal.]</p>"
+        - heading: "[Your rights]"
+          body: "<p>[To be supplied by Legal.]</p>"
+    - slug: "terms"
+      title: "Terms of use"
+      intro: "[The terms of use of this website — to be supplied by Legal.]"
+      sections:
+        - heading: "[Terms]"
+          body: "<p>[To be supplied by Legal.]</p>"

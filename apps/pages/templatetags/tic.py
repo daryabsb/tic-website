@@ -9,6 +9,7 @@
 - `{% absolute_static 'img/x.png' %}`: a static file's full URL (emails).
 - `{% request_office submission as office %}`: the office that received a request (T17).
 - `{% latest_articles 3 as articles %}`: newest live articles of the active language.
+- `{% public_marks as marks %}`: the accreditation marks we may show (T22; footer).
 - `{{ page|is_within:item }}`: True when ``page`` is ``item`` or one of its descendants.
 """
 
@@ -114,3 +115,11 @@ def cta_channels(page=None):
     from apps.offices.channels import channels_for
 
     return channels_for(page)
+
+
+@register.simple_tag
+def public_marks():
+    """The marks we may show (T22): public Accreditation rows with ``show_mark``."""
+    from apps.trust.models import Accreditation
+
+    return list(Accreditation.objects.marks())

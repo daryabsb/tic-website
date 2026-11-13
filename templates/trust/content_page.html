@@ -1,0 +1,19 @@
+{% extends "base.html" %}{% load i18n wagtailcore_tags %}
+{% comment %}A policy page (master plan 03; design B-Impartiality): table of contents and related pages on the side, numbered sections, then the document facts and the PDF.{% endcomment %}
+{% block body_class %}page-policy{% endblock %}
+{% block content %}
+{% include "includes/page_head.html" with intro=page.intro %}
+<div class="wrap row policy">
+  <aside class="stack policy__side">
+    {% if page.sections %}<nav class="stack" aria-label="{% translate 'On this page' %}"><span class="eyebrow policy__label">{% translate "On this page" %}</span><div class="stack toc">{% for block in page.sections %}<a href="#s{{ forloop.counter }}"><span>{{ forloop.counter|stringformat:"02d" }}</span>{{ block.value.heading }}</a>{% endfor %}</div></nav>{% endif %}
+    {% if page.related %}<div class="stack policy__related"><span class="eyebrow">{% translate "Related pages" %}</span>{% for block in page.related %}{% if block.value.live %}<a class="tri" href="{% pageurl block.value %}">{{ block.value.title }}</a>{% endif %}{% endfor %}</div>{% endif %}
+  </aside>
+  <div class="stack policy__body">
+    {% for block in page.sections %}<section id="s{{ forloop.counter }}" class="stack policy__sec">{% include_block block %}</section>{% endfor %}
+    <div class="policy__doc">
+      <p>{% if page.document_code %}{% translate "Document" %} {{ page.document_code }}{% endif %}{% if page.version %} · {{ page.version }}{% endif %}{% if page.effective_date %} · {% translate "Effective" %} {{ page.effective_date|date:"j M Y" }}{% endif %}{% if page.issuing_entity %} · {% translate "Issued by" %} {{ page.issuing_entity }}{% endif %}{% if page.document_owner %} · {% translate "Owned by the" %} {{ page.document_owner.title }}{% endif %}</p>
+      {% if page.pdf or page.other_pdf %}<p class="row policy__pdfs">{% if page.pdf %}<a class="tri" href="{{ page.pdf.url }}">{% translate "The signed document (PDF)" %}</a>{% endif %}{% if page.other_pdf %}<a class="tri" href="{{ page.other_pdf.url }}">{{ page.other_pdf_label|default:page.other_pdf.title }}</a>{% endif %}</p>{% endif %}
+    </div>
+  </div>
+</div>
+{% endblock %}

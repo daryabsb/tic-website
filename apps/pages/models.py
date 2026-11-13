@@ -140,8 +140,13 @@ class AboutPage(ScriptNormalisationMixin, Page):
     og_image = _image(_("share image"))
 
     parent_page_types = ["pages.HomePage"]
-    # AccreditationsPage, ContentPage, ComplaintsPage, CareersPage join in T22, T23.
-    subpage_types = ["pages.LeadershipPage", "pages.GroupPage"]
+    # ComplaintsPage and CareersPage join in T23.
+    subpage_types = [
+        "pages.LeadershipPage",
+        "pages.GroupPage",
+        "trust.AccreditationsPage",
+        "trust.ContentPage",
+    ]
 
     override_translatable_fields = _translatable(
         "intro",
