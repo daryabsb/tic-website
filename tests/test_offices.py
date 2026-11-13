@@ -78,7 +78,7 @@ def test_a_placeholder_is_never_a_link(client, offices):
 
 def test_the_cta_band_carries_the_office_numbers(client, offices, site_numbers):
     noida = client.get(offices["noida"].url).content.decode()
-    assert 'href="tel:+919266606587"' in noida  # Noida's own phone
+    assert 'href="tel:+919211711993"' in noida  # Noida's own phone
     assert "wa.me/971500000000" in noida  # its WhatsApp is still a placeholder
     iraq = ProgramPage.objects.get(slug="iraq-certificate-of-conformity")
     assert iraq.owning_office.specific == offices["baghdad"]

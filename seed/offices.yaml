@@ -8,13 +8,16 @@
 # bracketed, not corrected.
 #
 # D11: no WhatsApp on the Guangzhou row, ever; WeChat ID and a China phone instead.
+#
+# Phones of Riyadh, Amman, Cairo, Baghdad, Noida and Guangzhou: Darya, Nov 13, 2026 (D49).
+# The other offices keep their address and a placeholder until they send theirs.
 offices:
   - slug: dubai
     city: "Dubai"
     country: "United Arab Emirates"
     is_head_office: true
     legal_entity: "TIC Quality Control L.L.C."
-    address: "[Office 2101 or Office 2206], Clover Bay Tower, Business Bay, P.O. Box 28129, Dubai"
+    address: "Office 2101, Clover Bay Tower, Business Bay, P.O. Box 28129, Dubai"
     phone: "+971 4 225 5555"
     whatsapp: "[WhatsApp number]"
     email: "[office email]"
@@ -35,7 +38,7 @@ offices:
     country: "Iraq"
     legal_entity: "[legal entity; LOX partnership]"
     address: "4th Floor, Al-Rabiah Building, 13th Street, Al-Mansour, Baghdad"
-    phone: "[phone]"
+    phone: "+964 770 250 2017"
     whatsapp: "[WhatsApp number]"
     email: "[office email]"
     hours: "[opening days and hours]"
@@ -45,7 +48,7 @@ offices:
     country: "China"
     legal_entity: "[legal entity]"
     address: "Rm 6026, Yuehui Plaza, 1213 Yayun Rd, Guangzhou"
-    phone: "[China phone]"
+    phone: "+86 181 4970 7740"
     whatsapp: ""
     wechat_id: "[WeChat ID]"
     email: "[office email]"
@@ -56,7 +59,7 @@ offices:
     country: "India"
     legal_entity: "[legal entity]"
     address: "Office 1020, ABC Tower 4, Sector 135, Noida, Delhi"
-    phone: "+91 92666 06587"
+    phone: "+91 92117 11993"
     whatsapp: "[WhatsApp number]"
     email: "[office email]"
     hours: "[opening days and hours]"
@@ -76,7 +79,7 @@ offices:
     country: "Pakistan"
     legal_entity: "[legal entity]"
     address: "P/130 M. A Johar Town, Lahore, Punjab"
-    phone: "+92 335 488 2213"
+    phone: "[phone]"
     whatsapp: "[WhatsApp number]"
     email: "[office email]"
     hours: "[opening days and hours]"
@@ -86,7 +89,7 @@ offices:
     country: "Jordan"
     legal_entity: "[legal entity]"
     address: "Office 303, Al-Hajar Al-Aswad Bldg., Amman"
-    phone: "[phone]"
+    phone: "+962 7 7999 6000"
     whatsapp: "[WhatsApp number]"
     email: "[office email]"
     hours: "[opening days and hours]"
@@ -95,8 +98,8 @@ offices:
     city: "Riyadh"
     country: "Saudi Arabia"
     legal_entity: "[legal entity]"
-    address: "7069 Khalid bin Al Walid St., [King Faisal District], Riyadh 13215"
-    phone: "+966 56900 9151"
+    address: "7069 Khalid bin Al Walid St., King Faisal District, Riyadh 13215"
+    phone: "+966 56 169 0992"
     whatsapp: "[WhatsApp number]"
     email: "[office email]"
     hours: "[opening days and hours]"
@@ -106,7 +109,7 @@ offices:
     country: "Egypt"
     legal_entity: "[legal entity]"
     address: "Apt. 11, First Floor, 33 Ahmed Heshmat St., Zamalek, Cairo"
-    phone: "[phone]"
+    phone: "+20 10 4431 4141"
     whatsapp: "[WhatsApp number]"
     email: "[office email]"
     hours: "[opening days and hours]"
@@ -125,7 +128,7 @@ offices:
     city: "Maharagama"
     country: "Sri Lanka"
     legal_entity: "[legal entity]"
-    address: "272B/2/1 High Level Road, [Maharagama], [postal code]"
+    address: "272B/2/1 High Level Road, Maharagama, [postal code]"
     phone: "[phone]"
     whatsapp: "[WhatsApp number]"
     email: "[office email]"
