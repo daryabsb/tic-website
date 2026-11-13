@@ -1,0 +1,7 @@
+{% extends "base.html" %}{% load i18n static %}
+{% comment %}/<lang>/verify/ (design B-Verify.dc.html; master plan 06). The dark band with the one input, then the result card and the two side boxes. verify_block.html is the part verify.js swaps in place; without JavaScript the form is a plain post. verify.js also draws the hCaptcha when the next check needs it. Never cached.{% endcomment %}
+{% block body_class %}page-verify{% endblock %}
+{% block content %}
+{% include "verify/verify_block.html" %}
+{% endblock %}
+{% block body_end %}<script type="module" src="{% static 'js/verify.js' %}"></script>{% endblock %}

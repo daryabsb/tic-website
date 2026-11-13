@@ -7,6 +7,7 @@ from wagtail.admin import urls as wagtailadmin_urls
 from wagtail.documents import urls as wagtaildocs_urls
 
 from apps.pages.search import search
+from apps.verify.views import qr_link
 
 urlpatterns = [
     # / (301 -> /en/) and /healthz/ from the CMS core (zeneon_cms.core)
@@ -20,6 +21,8 @@ urlpatterns = [
     path("django-admin/", admin.site.urls),
     path("admin/", include(wagtailadmin_urls)),
     path("documents/", include(wagtaildocs_urls)),
+    # /verify/?n=&t=: the QR link printed on a certificate (#19, master plan 06)
+    path("verify/", qr_link, name="verify_qr"),
 ]
 
 if settings.DEBUG:
@@ -33,7 +36,7 @@ urlpatterns += i18n_patterns(
     path("request/", include("zeneon_cms.requests.form_urls")),
     # /<lang>/search/: pages, documents, questions (T12, D31)
     path("search/", search, name="search"),
-    # /<lang>/verify/: the certificate check arrives with #19 (apps.verify)
+    # /<lang>/verify/: the certificate check is a VerifyPage (#19, apps.verify)
     path("", include(wagtail_urls)),
     prefix_default_language=True,
 )

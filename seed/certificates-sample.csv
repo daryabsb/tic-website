@@ -1,0 +1,5 @@
+number,type,status,issue_date,expiry_date,issuing_office,qr_token
+SAMPLE-IQ-2026-000001,Iraq Certificate of Conformity (COSQC / ICIGI) [sample],valid,2026-10-01,2027-03-31,baghdad,SampleQrToken001
+SAMPLE-IQ-2026-000002,Iraq Certificate of Conformity (COSQC / ICIGI) [sample],superseded,2026-09-15,2027-03-14,baghdad,SampleQrToken002
+SAMPLE-IQ-2025-000003,Iraq Certificate of Conformity (COSQC / ICIGI) [sample],valid,2025-01-10,2025-07-09,baghdad,SampleQrToken003
+SAMPLE-AE-2026-000004,Inspection certificate [sample],withdrawn,2026-08-20,,dubai,SampleQrToken004

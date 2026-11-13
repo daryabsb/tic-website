@@ -1,0 +1,19 @@
+{% extends "wagtailadmin/base.html" %}{% load i18n %}
+{% block titletag %}{% translate "Verify lookups" %}{% endblock %}
+{% block content %}
+{% translate "Verify lookups" as title %}{% include "wagtailadmin/shared/header.html" with title=title icon="tick-inverse" %}
+<div class="nice-padding">
+  <h2>{% blocktranslate %}Checks per day, last {{ days }} days{% endblocktranslate %}</h2>
+  <table class="listing">
+    <thead><tr><th>{% translate "Day" %}</th><th>{% translate "Found" %}</th><th>{% translate "Not found" %}</th></tr></thead>
+    <tbody>{% for row in rows %}<tr><td>{{ row.day|date:"Y-m-d" }}</td><td>{{ row.n_found }}</td><td>{{ row.n_missed }}</td></tr>
+    {% empty %}<tr><td colspan="3">{% translate "No checks yet." %}</td></tr>{% endfor %}</tbody>
+  </table>
+  <h2>{% translate "Latest imports" %}</h2>
+  <table class="listing">
+    <thead><tr><th>{% translate "Imported at" %}</th><th>{% translate "File" %}</th><th>{% translate "Operator" %}</th><th>{% translate "Created" %}</th><th>{% translate "Updated" %}</th><th>{% translate "Withdrawn" %}</th><th>{% translate "Rejected" %}</th></tr></thead>
+    <tbody>{% for log in imports %}<tr><td>{{ log.created_at|date:"Y-m-d H:i" }}</td><td>{{ log.file_name }}</td><td>{{ log.operator }}</td><td>{{ log.created }}</td><td>{{ log.updated }}</td><td>{{ log.withdrawn }}</td><td>{{ log.rejected }}</td></tr>
+    {% empty %}<tr><td colspan="7">{% translate "No imports yet." %}</td></tr>{% endfor %}</tbody>
+  </table>
+</div>
+{% endblock %}

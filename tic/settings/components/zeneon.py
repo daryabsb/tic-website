@@ -107,3 +107,13 @@ ZENEON_CMS = {
         "colors": {"primary": "#1E1E1E", "secondary": "#BD2130"},
     },
 }
+
+# Certificate verification (master plan 06; T19, apps.verify). Rates per client IP; after
+# this many not-found results in a session a check needs the hCaptcha (D8). The import
+# report goes to the Quality Manager's address (blank: printed only).
+TIC_VERIFY = {
+    "rates": ["10/m", "60/h"],
+    "misses_before_captcha": 3,
+    "report_email": config("VERIFY_REPORT_EMAIL", default=""),
+    "lookup_retention_days": 90,
+}

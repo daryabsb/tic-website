@@ -1,0 +1,65 @@
+{% load i18n wagtailcore_tags zeneon tic %}{% request_url as req_url %}{% breadcrumb_trail page as crumbs %}
+{% comment %}The swapped block of the Verify page: the band with the form and the result. Context: page, result (apps.verify.lookup.Result or None), captcha_site_key and captcha_field when the next check needs the hCaptcha.{% endcomment %}
+<div class="verify" id="verify" data-verify>
+  <div class="band">
+    <div class="wrap verify__band">
+      {% if crumbs %}<nav class="crumb crumb--w" aria-label="{% translate 'You are here' %}">{% for crumb in crumbs %}{% if not forloop.first %}<span aria-hidden="true">›</span>{% endif %}{% if crumb.url %}<a href="{{ crumb.url }}">{{ crumb.title }}</a>{% else %}<span>{{ crumb.title }}</span>{% endif %}{% endfor %}</nav>{% endif %}
+      <h1 class="h1 h1--page h1--w">{{ page.title }}</h1>
+      {% if page.intro %}<p class="lead lead--w">{{ page.intro }}</p>{% endif %}
+      <form class="verify__form" method="post" action="{% pageurl page %}" data-verify-form>
+        {% csrf_token %}
+        <label class="lbl lbl--w verify__label" for="verify-number">{{ page.input_label|default:_("Certificate number") }}</label>
+        <input class="inp verify__input" id="verify-number" name="n" value="{{ result.number|default:'' }}" maxlength="40" autocomplete="off" autocapitalize="characters" spellcheck="false" required>
+        <button class="btn verify__button" type="submit">{{ page.button_label|default:_("Check") }}</button>
+        {% if captcha_site_key %}<div class="verify__captcha">
+          <p>{% if result.captcha_failed %}{% translate "The check did not pass. Please try again." %}{% else %}{% translate "Several numbers were not found. Please confirm you are a person, then check again." %}{% endif %}</p>
+          <div class="h-captcha" data-sitekey="{{ captcha_site_key }}" data-captcha></div>
+          <noscript><p>{% translate "This check needs JavaScript. Or call the issuing office." %}</p></noscript>
+        </div>{% endif %}
+      </form>
+    </div>
+  </div>
+  <div class="wrap verify__body" aria-live="polite">
+    <div class="verify__main">
+      {% if result.state == "found" %}{% with cert=result.certificate %}
+      <div class="verify__head">
+        <span class="verify__label-found{% if cert.is_warning %} verify__label-found--warn{% endif %}">{% if not cert.is_warning %}<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12l5 5 11-11"></path></svg>{% endif %}{% blocktranslate with status=cert.shown_status_label %}Certificate found · {{ status }}{% endblocktranslate %}</span>
+        <span class="meta">{% blocktranslate with time=result.checked_at|date:"j M Y, H:i e" %}Checked {{ time }} against TIC’s certificate records{% endblocktranslate %}</span>
+      </div>
+      <dl class="kv">
+        <div class="kv__row"><dt>{% translate "Certificate number" %}</dt><dd>{{ cert.number }}</dd></div>
+        <div class="kv__row"><dt>{% translate "Type" %}</dt><dd>{{ cert.type }}</dd></div>
+        <div class="kv__row"><dt>{% translate "Status" %}</dt><dd>{{ cert.shown_status_label }}</dd></div>
+        <div class="kv__row"><dt>{% translate "Date of issue" %}</dt><dd>{{ cert.issue_date|date:"j F Y" }}</dd></div>
+        <div class="kv__row"><dt>{% translate "Valid until" %}</dt><dd>{% if cert.expiry_date %}{{ cert.expiry_date|date:"j F Y" }}{% else %}{% translate "No end date in this scheme" %}{% endif %}</dd></div>
+        <div class="kv__row"><dt>{% translate "Issuing office" %}</dt><dd>TIC Quality Control · {{ cert.office_label }}</dd></div>
+      </dl>
+      {% if page.shown_note %}<p class="meta">{{ page.shown_note }}</p>{% endif %}
+      {% endwith %}{% elif result.state == "not_found" %}
+      <div class="verify__head"><span class="verify__label-found verify__label-found--warn">{% translate "Not found" %}</span></div>
+      <p class="verify__none">{% blocktranslate with number=result.number %}No certificate with the number {{ number }} was found.{% endblocktranslate %}</p>
+      {% if page.fraud_warning %}<p>{{ page.fraud_warning }}</p>{% endif %}
+      {% if page.head_office_contact %}<p class="verify__contact">{{ page.head_office_contact }}</p>{% endif %}
+      {% elif result.state == "limited" %}
+      <div class="verify__head"><span class="verify__label-found verify__label-found--warn">{% translate "Too many checks" %}</span></div>
+      <p>{% translate "Too many checks from this connection. Please wait a minute, then try again." %}</p>
+      {% if page.head_office_contact %}<p class="verify__contact">{{ page.head_office_contact }}</p>{% endif %}
+      {% else %}
+      {% if page.shown_note %}<p class="meta">{{ page.shown_note }}</p>{% endif %}
+      {% endif %}
+    </div>
+    <aside class="verify__side">
+      {% if page.mismatch_heading %}<div class="side-box">
+        <span class="eyebrow">{{ page.mismatch_heading }}</span>
+        {% if page.mismatch_text %}<p>{{ page.mismatch_text }}</p>{% endif %}
+        {% if result.state == "found" %}<b class="side-box__title">{{ result.certificate.office_label }}</b>{% endif %}
+        <a class="tri" href="{{ req_url }}">{% translate "Write to TIC" %}</a>{# T20: "All offices" once the office pages exist #}
+      </div>{% endif %}
+      {% if page.answer_lines %}<div class="verify__answers">
+        {% if page.answers_heading %}<span class="eyebrow">{{ page.answers_heading }}</span>{% endif %}
+        <ul class="dia verify__list">{% for line in page.answer_lines %}<li>{{ line }}</li>{% endfor %}</ul>
+        {% if page.answers_note %}<span class="meta">{{ page.answers_note }}</span>{% endif %}
+      </div>{% endif %}
+    </aside>
+  </div>
+</div>
