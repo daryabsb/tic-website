@@ -126,11 +126,12 @@ def test_fourteen_offices_with_unique_slugs(offices):
 
 
 def test_every_office_has_the_required_parts(offices):
-    """03 OfficePage: address, phone or email, hours, timezone (placeholders count)."""
+    """03 OfficePage: address, phone or email, timezone (placeholders count). No opening
+    hours (D49): TIC answers around the clock."""
     for office in offices:
         assert office["city"] and office["country"] and office["address"], office["slug"]
         assert office.get("phone") or office.get("email"), office["slug"]
-        assert office["hours"], office["slug"]
+        assert "hours" not in office and "whatsapp" not in office, office["slug"]
         ZoneInfo(office["timezone"])
 
 

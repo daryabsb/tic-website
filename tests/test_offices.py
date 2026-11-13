@@ -81,7 +81,7 @@ def test_an_office_needs_an_address_and_a_phone_or_email(offices):
 def test_a_placeholder_is_never_a_link(client, offices):
     html = client.get(offices["bangkok"].url).content.decode()
     assert "[phone]" in html and 'href="tel:[' not in html
-    assert "[office email]" in html and "mailto:[" not in html
+    assert 'href="mailto:info@ticqc.com"' in html  # one email for every office (D49)
     assert "wa.me" not in html  # no office number and no head-office number set
 
 

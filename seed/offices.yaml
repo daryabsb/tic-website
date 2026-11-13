@@ -13,6 +13,7 @@
 # The other offices keep their address and a placeholder until they send theirs.
 # No opening hours: TIC answers around the clock across its time zones (D49).
 # One number per office: the phone is also its WhatsApp (D49), never in China (D11).
+# One email for every office: info@ticqc.com (Darya, Nov 13, 2026; D49).
 offices:
   - slug: dubai
     city: "Dubai"
@@ -21,7 +22,7 @@ offices:
     legal_entity: "TIC Quality Control L.L.C."
     address: "Office 2101, Clover Bay Tower, Business Bay, P.O. Box 28129, Dubai"
     phone: "+971 4 225 5555"
-    email: "[office email]"
+    email: "info@ticqc.com"
     timezone: "Asia/Dubai"
   - slug: sharjah
     city: "Sharjah"
@@ -29,7 +30,7 @@ offices:
     legal_entity: "[legal entity]"
     address: "Office 6G-3 A, Hamriyah Free Zone, Sharjah"
     phone: "[phone]"
-    email: "[office email]"
+    email: "info@ticqc.com"
     timezone: "Asia/Dubai"
   - slug: baghdad
     city: "Baghdad"
@@ -37,7 +38,7 @@ offices:
     legal_entity: "[legal entity; LOX partnership]"
     address: "4th Floor, Al-Rabiah Building, 13th Street, Al-Mansour, Baghdad"
     phone: "+964 770 250 2017"
-    email: "[office email]"
+    email: "info@ticqc.com"
     timezone: "Asia/Baghdad"
   - slug: guangzhou
     city: "Guangzhou"
@@ -46,7 +47,7 @@ offices:
     address: "Rm 6026, Yuehui Plaza, 1213 Yayun Rd, Guangzhou"
     phone: "+86 181 4970 7740"
     wechat_id: "[WeChat ID]"
-    email: "[office email]"
+    email: "info@ticqc.com"
     timezone: "Asia/Shanghai"
   - slug: noida
     city: "Noida"
@@ -54,15 +55,15 @@ offices:
     legal_entity: "[legal entity]"
     address: "Office 1020, ABC Tower 4, Sector 135, Noida, Delhi"
     phone: "+91 92117 11993"
-    email: "[office email]"
+    email: "info@ticqc.com"
     timezone: "Asia/Kolkata"
   - slug: gandhidham
     city: "Gandhidham"
     country: "India"
     legal_entity: "[legal entity]"
     address: "2nd Floor, Saraswati Avenue 1, Vandana Garbi Chowk, Gandhidham, Gujarat"
-    phone: "[phone; today the same number as Noida]"
-    email: "[office email]"
+    phone: "[phone]"
+    email: "info@ticqc.com"
     timezone: "Asia/Kolkata"
   - slug: lahore
     city: "Lahore"
@@ -70,7 +71,7 @@ offices:
     legal_entity: "[legal entity]"
     address: "P/130 M. A Johar Town, Lahore, Punjab"
     phone: "[phone]"
-    email: "[office email]"
+    email: "info@ticqc.com"
     timezone: "Asia/Karachi"
   - slug: amman
     city: "Amman"
@@ -78,7 +79,7 @@ offices:
     legal_entity: "[legal entity]"
     address: "Office 303, Al-Hajar Al-Aswad Bldg., Amman"
     phone: "+962 7 7999 6000"
-    email: "[office email]"
+    email: "info@ticqc.com"
     timezone: "Asia/Amman"
   - slug: riyadh
     city: "Riyadh"
@@ -86,7 +87,7 @@ offices:
     legal_entity: "[legal entity]"
     address: "7069 Khalid bin Al Walid St., King Faisal District, Riyadh 13215"
     phone: "+966 56 169 0992"
-    email: "[office email]"
+    email: "info@ticqc.com"
     timezone: "Asia/Riyadh"
   - slug: cairo
     city: "Cairo"
@@ -94,7 +95,7 @@ offices:
     legal_entity: "[legal entity]"
     address: "Apt. 11, First Floor, 33 Ahmed Heshmat St., Zamalek, Cairo"
     phone: "+20 10 4431 4141"
-    email: "[office email]"
+    email: "info@ticqc.com"
     timezone: "Africa/Cairo"
   - slug: sao-paulo
     city: "São Paulo"
@@ -102,7 +103,7 @@ offices:
     legal_entity: "[legal entity]"
     address: "Alameda Santos, 1470, Salas 201 e 202, Edifício Victória Park, São Paulo"
     phone: "[phone]"
-    email: "[office email]"
+    email: "info@ticqc.com"
     timezone: "America/Sao_Paulo"
   - slug: maharagama
     city: "Maharagama"
@@ -110,7 +111,7 @@ offices:
     legal_entity: "[legal entity]"
     address: "272B/2/1 High Level Road, Maharagama, [postal code]"
     phone: "[phone]"
-    email: "[office email]"
+    email: "info@ticqc.com"
     timezone: "Asia/Colombo"
   - slug: bangkok
     city: "Bangkok"
@@ -118,7 +119,7 @@ offices:
     legal_entity: "[legal entity]"
     address: "No 4/1 Soi Sathron, Yan-nawa, Sathorn Dist., Bangkok 10120"
     phone: "[phone]"
-    email: "[office email]"
+    email: "info@ticqc.com"
     timezone: "Asia/Bangkok"
   - slug: kuala-lumpur
     city: "Kuala Lumpur"
@@ -126,5 +127,5 @@ offices:
     legal_entity: "[legal entity]"
     address: "LVL 7, MERCU 3, No. 3, Jalan Bangsar, KL ECO, 59200 Kuala Lumpur"
     phone: "[phone]"
-    email: "[office email]"
+    email: "info@ticqc.com"
     timezone: "Asia/Kuala_Lumpur"
