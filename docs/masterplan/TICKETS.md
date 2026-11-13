@@ -37,7 +37,7 @@ Destination: ticqc.com live on the new stack, five gates passed. Open, unblocked
 | 16 | ✅ (Nov 12, D40) **Core: review-by mixin** — `ReviewByMixin`, `send_review_reminders`, "past review" report; pinned here | 18, 24 | Core tests green; pin moved |
 | 17 | ✅ (Nov 13, D41, D42, D45: email check moved to gate 2) **Quote form, routing, emails** — schemas `quote`, `program_request`; routing seed; office alert and client auto-reply (branded HTML + text); sent screen with office, hours, code, WhatsApp link | 1 | A quote from the Iraq page reaches the Baghdad address; auto-reply received; JS-off path works |
 | 18 | ✅ (Nov 13, D44: core PR #30, pin `feb7d2e`) **Programs** — index, `ProgramPage` with the twelve parts and validation, feed page, route helper, Iraq seed with its questions; redirects for the three Iraq pages | 1 | Iraq page complete from seed; feed filters |
-| 19 | **Verify** — `verify` app: models, `import_certificates`, view, HTMX result, QR URL, rate limit, captcha after three, lookup log; `VerifyPage`; sample CSV | 1 | Demonstrated by number, by QR URL, not found, 429 |
+| 19 | ✅ (Nov 13, D46) **Verify** — `verify` app: models, `import_certificates`, view, HTMX result, QR URL, rate limit, captcha after three, lookup log; `VerifyPage`; sample CSV | 1 | Demonstrated by number, by QR URL, not found, 429 |
 | 20 | **Offices** — index and page from `B-Office-Baghdad.dc.html`; `add_office` command (group, collection); WeChat rule on Guangzhou; CTA band office-aware | 17 | Fourteen office pages from seed; Guangzhou shows no wa.me (test) |
 
 ## Gate 3 · Trust and the rest
