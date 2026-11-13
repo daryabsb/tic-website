@@ -65,8 +65,8 @@ def test_seed_builds_the_index_the_feed_and_the_iraq_page(iraq):
 
 
 def test_the_seeded_page_lacks_only_what_baghdad_owes(iraq):
+    # The seed links the Baghdad office page as the owner (T20).
     assert problems(iraq) == [
-        "Owning office: choose the office that owns this page.",
         "Last reviewed: set the date.",
         "Review by: set the date this page is checked again.",
         "02 Who must comply: set the date of the product list shown.",

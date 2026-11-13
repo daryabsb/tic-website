@@ -92,6 +92,7 @@ class HomePage(ScriptNormalisationMixin, Page):
         "industries.IndustryIndexPage",
         "programs.ProgramIndexPage",
         "news.NewsIndexPage",
+        "offices.OfficeIndexPage",
         "verify.VerifyPage",
     ]
 

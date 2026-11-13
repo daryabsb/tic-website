@@ -520,3 +520,23 @@ textarea.inp { padding: 12px 14px; min-height: 120px; }
 .kv__row dt { flex: 0 0 200px; font-family: var(--font-display); font-weight: 600; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--tic-body-grey); padding-top: 3px; }
 .kv__row dd { flex: 1 1 300px; margin: 0; font-size: 17px; color: var(--tic-ink); }
 :lang(ar) .kv__row dt { letter-spacing: 0; text-transform: none; }
+
+/* Offices (T20, design B-Office-Baghdad; master plan 03) */
+.office { display: flex; flex-wrap: wrap; gap: 64px; align-items: flex-start; padding-block: 56px 64px; }
+.office__main { flex: 1 1 480px; min-width: 0; display: flex; flex-direction: column; gap: 24px; }
+.office__side { flex: 1 1 380px; min-width: 0; display: flex; flex-direction: column; gap: 16px; }
+.office__map { min-height: 260px; }
+.office__team { min-height: 200px; }
+.office__chans { display: flex; flex-wrap: wrap; gap: 12px; }
+.chan { flex: 1 1 200px; min-width: 0; border: 1px solid var(--tic-hairline); padding: 18px 20px; display: flex; flex-direction: column; gap: 4px; text-decoration: none; color: var(--tic-ink); }
+a.chan:hover { border-color: var(--tic-ink); }
+.chan b { font-family: var(--font-display); font-weight: 700; font-size: 18px; overflow-wrap: anywhere; }
+.chan span:not(.lbl) { font-size: 14px; color: var(--tic-charcoal); }
+.chan__qr { width: 120px; height: auto; }
+.office__sold { display: flex; flex-direction: column; gap: 24px; padding-block: 56px; }
+.office__card { border-top: 0; background: var(--tic-white); padding: 20px; }
+.office__people { display: flex; flex-direction: column; gap: 24px; padding-block: 56px 72px; }
+.office__people-list { gap: 16px; }
+.office-list { display: flex; flex-wrap: wrap; gap: 16px; padding-block: 56px 72px; }
+.cta__hours { font-size: 15px; }
+.cta__wechat { cursor: default; }

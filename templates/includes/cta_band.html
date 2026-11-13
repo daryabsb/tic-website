@@ -1,12 +1,14 @@
-{% load i18n tic %}{% request_url as req_url %}{% whatsapp_url as wa_url %}{# The one red block per page (design CTABand.dc.html). Context: heading, text (optional). Office-aware numbers come with #20. #}
+{% load i18n tic %}{% request_url as req_url %}{% cta_channels page as ch %}{# The one red block per page (design CTABand.dc.html). Context: heading, text (optional), page. Office-aware (T20): an office page, or a page an office owns, shows that office's WhatsApp and phone; an office in China shows its WeChat ID and never wa.me (D11); other pages show the head office's. #}
 <div class="band band--red"><div class="wrap cta">
   <div class="cta__text">
     <h2 class="h2 h2--sm h2--w">{{ heading|default:_("Talk to the office nearest you") }}</h2>
     <p>{{ text|default:_("WhatsApp, phone or the quote form. Answered by a named person within one working day.") }}</p>
+    {% if ch.hours %}<p class="cta__hours">{{ ch.office.title }}: {{ ch.hours }}</p>{% endif %}
   </div>
   <div class="cta__actions">
-    {% if wa_url %}<a class="btn btn--white" href="{{ wa_url }}" rel="noopener" target="_blank">{% translate "WhatsApp" %}</a>{% endif %}
-    {% if settings.zeneon_core.SiteSettings.main_phone %}<a class="btn btn--white" href="tel:{{ settings.zeneon_core.SiteSettings.main_phone|cut:' ' }}">{% translate "Call us" %}</a>{% endif %}
+    {% if ch.whatsapp_link %}<a class="btn btn--white" href="{{ ch.whatsapp_link }}" rel="noopener" target="_blank">{% translate "WhatsApp" %}</a>{% endif %}
+    {% if ch.wechat_id %}<span class="btn btn--white cta__wechat">{% translate "WeChat" %}: {{ ch.wechat_id }}</span>{% endif %}
+    {% if ch.phone %}<a class="btn btn--white" href="tel:{{ ch.phone|cut:' ' }}">{% translate "Call us" %}</a>{% endif %}
     <a class="btn btn--dark" href="{{ req_url }}">{% translate "Request a quote" %}</a>
   </div>
 </div></div>

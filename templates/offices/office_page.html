@@ -1,0 +1,53 @@
+{% extends "base.html" %}{% load i18n wagtailcore_tags wagtailimages_tags %}
+{% comment %}One office (design B-Office-Baghdad.dc.html; master plan 03). Reach the office (channel tiles), the facts rows, the map and team plates, what is sold and delivered from here, the people who agreed to be named. A bracketed placeholder is shown as text, never as a link. An office in China shows WeChat, never wa.me (D11). The CTA band carries this office's numbers.{% endcomment %}
+{% block body_class %}page-office{% endblock %}
+{% block content %}
+{% include "includes/page_head.html" with image=page.header_image image_alt=page.header_image_alt caption=page.header_caption intro=page.intro %}
+<div class="wrap office">
+  <div class="office__main">
+    <div><h2 class="h2">{% translate "Reach the office" %}</h2><div class="rule"></div></div>
+    <div class="office__chans">
+      {% if page.whatsapp_allowed %}
+      {% if page.whatsapp_link %}<a class="chan" href="{{ page.whatsapp_link }}" rel="noopener" target="_blank">{% else %}<div class="chan">{% endif %}
+        <span class="lbl">WhatsApp</span><b>{{ page.whatsapp|default:"[number]" }}</b><span>{{ page.hours }}</span>
+      {% if page.whatsapp_link %}</a>{% else %}</div>{% endif %}
+      {% else %}
+      <div class="chan"><span class="lbl">WeChat</span><b>{{ page.wechat_id|default:"[WeChat ID]" }}</b>{% if page.wechat_qr %}{% image page.wechat_qr width-160 class="chan__qr" alt="" %}{% endif %}<span>{{ page.hours }}</span></div>
+      {% endif %}
+      {% if office.phone_number %}<a class="chan" href="tel:{{ office.phone_number|cut:' ' }}">{% else %}<div class="chan">{% endif %}
+        <span class="lbl">{% translate "Phone" %}</span><b>{{ page.phone|default:"[number]" }}</b><span>{{ page.hours }}</span>
+      {% if office.phone_number %}</a>{% else %}</div>{% endif %}
+      {% if office.email_address %}<a class="chan" href="mailto:{{ office.email_address }}">{% else %}<div class="chan">{% endif %}
+        <span class="lbl">{% translate "Email" %}</span><b>{{ page.email|default:"[email]" }}</b>{% if page.mailbox_owner %}<span>{% blocktranslate with owner=page.mailbox_owner %}Mailbox owner: {{ owner }}{% endblocktranslate %}</span>{% endif %}
+      {% if office.email_address %}</a>{% else %}</div>{% endif %}
+    </div>
+    <dl class="kv">
+      <div class="kv__row"><dt>{% translate "Address" %}</dt><dd>{{ page.address }}, {{ page.country }}{% if page.map_url %} — <a href="{{ page.map_url }}" rel="noopener" target="_blank">{% translate "open in maps" %}</a>{% endif %}</dd></div>
+      <div class="kv__row"><dt>{% translate "Opening days" %}</dt><dd>{{ page.hours }} · {% translate "time zone" %} {{ page.timezone }}{% if page.utc_offset %} ({{ page.utc_offset }}){% endif %}</dd></div>
+      {% if page.legal_entity %}<div class="kv__row"><dt>{% translate "Legal entity" %}</dt><dd>{{ page.legal_entity }}</dd></div>{% endif %}
+      {% if page.languages %}<div class="kv__row"><dt>{% translate "Languages" %}</dt><dd>{{ page.languages }}</dd></div>{% endif %}
+      {% if page.reply_promise %}<div class="kv__row"><dt>{% translate "Reply promise" %}</dt><dd>{{ page.reply_promise }}</dd></div>{% endif %}
+    </dl>
+  </div>
+  <div class="office__side">
+    <div class="photo office__map">{% if page.map_image %}{% image page.map_image width-800 as img %}<img src="{{ img.url }}" alt="{% blocktranslate with city=page.city %}Map of the {{ city }} office{% endblocktranslate %}" width="{{ img.width }}" height="{{ img.height }}" loading="lazy">{% else %}<div class="cap">{{ page.city }}</div>{% endif %}</div>
+    <div class="photo office__team">{% if page.team_photo %}{% image page.team_photo width-800 as img %}<img src="{{ img.url }}" alt="{{ page.team_caption }}" width="{{ img.width }}" height="{{ img.height }}" loading="lazy">{% endif %}{% if page.team_caption %}<div class="cap">{{ page.team_caption }}</div>{% endif %}</div>
+  </div>
+</div>
+{% if programs or page.sold_here %}<div class="tint"><div class="wrap office__sold">
+  <div><h2 class="h2">{% blocktranslate with city=page.city %}Sold and delivered from {{ city }}{% endblocktranslate %}</h2><div class="rule"></div></div>
+  <div class="cards">
+    {% for program in programs %}<a class="res office__card" href="{% pageurl program %}"><span class="eyebrow">{% translate "Program" %}</span><b>{{ program.title }}</b>{% if program.status_line %}<span>{{ program.status_line }}</span>{% endif %}</a>{% endfor %}
+    {% for block in page.sold_here %}{% if block.value.page and block.value.page.live %}<a class="res office__card" href="{% pageurl block.value.page %}">{% if block.value.eyebrow %}<span class="eyebrow">{{ block.value.eyebrow }}</span>{% endif %}<b>{{ block.value.page.title }}</b>{% if block.value.text %}<span>{{ block.value.text }}</span>{% endif %}</a>{% endif %}{% endfor %}
+  </div>
+</div></div>{% endif %}
+<div class="wrap office__people">
+  {% if people %}<div><h2 class="h2">{% translate "People you can name" %}</h2><div class="rule"></div></div>
+  <div class="row office__people-list">{% for person in people %}<div class="person">
+    <div class="photo">{% if person.public_photo %}{% image person.public_photo fill-128x128 as img %}<img src="{{ img.url }}" alt="" width="64" height="64" loading="lazy">{% endif %}</div>
+    <div class="person__tx"><b>{{ person.public_name }}</b><span>{{ person.title }}</span></div>
+  </div>{% endfor %}</div>{% endif %}
+  <p class="meta">{% blocktranslate with city=page.city %}Everything on this page is owned by the {{ city }} office manager.{% endblocktranslate %} {% translate "Last reviewed" %}: {% if page.reviewed %}{{ page.reviewed|date:"j M Y" }}{% else %}[{% translate "date" %}]{% endif %}</p>
+</div>
+{% include "includes/cta_band.html" %}
+{% endblock %}

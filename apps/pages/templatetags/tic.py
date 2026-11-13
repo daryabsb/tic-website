@@ -87,6 +87,30 @@ def is_within(page, item):
 
 @register.simple_tag
 def office_list():
-    """Live office pages of the active language, head office first. Empty until
-    OfficePage (#20)."""
-    return []
+    """Live office pages of the active language, head office first (T20)."""
+    from apps.offices.models import OfficePage
+
+    home = _home()
+    if home is None:
+        return []
+    return list(
+        OfficePage.objects.descendant_of(home).live().public().order_by("-is_head_office", "title")
+    )
+
+
+@register.simple_tag
+def office_index_url():
+    """The active language's office index URL, or "" (T20)."""
+    from apps.offices.models import OfficeIndexPage
+
+    home = _home()
+    index = OfficeIndexPage.objects.child_of(home).live().first() if home else None
+    return index.url if index else ""
+
+
+@register.simple_tag
+def cta_channels(page=None):
+    """The numbers of the CTA band: the page's office, else the head office (T20)."""
+    from apps.offices.channels import channels_for
+
+    return channels_for(page)

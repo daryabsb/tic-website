@@ -100,8 +100,21 @@ class Certificate(models.Model):
         return self.shown_status in WARNING_STATUSES
 
     @property
+    def office_page(self):
+        """The live office page with this slug, in the active language if it has one."""
+        from django.utils.translation import get_language
+
+        from apps.offices.models import OfficePage
+
+        pages = OfficePage.objects.live().filter(slug=self.issuing_office)
+        return pages.filter(locale__language_code=get_language()).first() or pages.first()
+
+    @property
     def office_label(self) -> str:
-        """'Baghdad office', from the slug (T20 swaps in the office page's title)."""
+        """The office page's title ('Baghdad office'), else one made from the slug."""
+        page = self.office_page
+        if page is not None:
+            return page.title
         return _("%(city)s office") % {"city": self.issuing_office.replace("-", " ").title()}
 
     @property
@@ -246,6 +259,11 @@ class VerifyPage(ScriptNormalisationMixin, Page):  # noqa: DJ008 (Page gives __s
             result = check(request, request.GET.get("n", ""), token=request.GET.get("t", ""))
         context = self.get_context(request, *args, **kwargs)
         context["result"] = result
+        if result is not None and result.certificate is not None:
+            from apps.offices.channels import channels_for
+
+            office = result.certificate.office_page
+            context["office_channels"] = channels_for(office) if office else None
         # The next check needs the hCaptcha (after three not-found results, D8).
         if captcha_needed(request):
             context["captcha_site_key"] = spam.site_key()

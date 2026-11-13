@@ -108,7 +108,7 @@ class NewsPage(ScriptNormalisationMixin, Page):  # noqa: DJ008 (Page gives __str
             [
                 FieldRowPanel([FieldPanel("kind"), FieldPanel("date")]),
                 PageChooserPanel("program", "programs.ProgramPage"),
-                PageChooserPanel("office"),
+                PageChooserPanel("office", "offices.OfficePage"),
                 FieldPanel("office_name"),
                 FieldPanel("author"),
             ],
