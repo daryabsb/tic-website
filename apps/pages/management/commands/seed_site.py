@@ -36,6 +36,7 @@ from apps.news.models import NewsIndexPage, NewsPage
 from apps.pages.models import HomePage
 from apps.programs.models import ProgramIndexPage, ProgramPage, RegulatoryUpdatesPage
 from apps.services.models import ServiceGroupPage, ServiceIndexPage, ServicePage
+from apps.verify.models import VerifyPage
 
 SEED_DIR = Path(settings.BASE_DIR) / "seed"
 
@@ -114,6 +115,8 @@ class Command(BaseCommand):
             self.seed_programs(locale, data["programs"])
         if "news" in data:  # after the programs: an update names its program
             self.seed_news(locale, data["news"])
+        if "verify" in data:
+            self.seed_verify(locale, data["verify"])
         if "home" in data:  # last: its cards and rows link to the hub pages above (T9)
             self.seed_home(locale, data["home"])
 
@@ -399,6 +402,31 @@ class Command(BaseCommand):
             if touch:
                 self.fill_page(page, item, ("standfirst", "body", "office_name"))
         self.stdout.write(f"{locale.language_code}: news checked")
+
+    VERIFY_FIELDS = (
+        "intro",
+        "input_label",
+        "button_label",
+        "shown_note",
+        "fraud_warning",
+        "head_office_contact",
+        "mismatch_heading",
+        "mismatch_text",
+        "answers_heading",
+        "answers",
+        "answers_note",
+    )
+
+    def seed_verify(self, locale: Locale, data: dict) -> None:
+        """The Verify page's text (T19). Certificates are never seeded: they come from
+        ``import_certificates`` (seed/certificates-sample.csv is for staging only)."""
+        home = HomePage.objects.filter(locale=locale).first()
+        if home is None:
+            return
+        page, touch = self.child(home, VerifyPage, data["slug"], data["title"], live=True)
+        if touch:
+            self.fill_page(page, data, self.VERIFY_FIELDS)
+        self.stdout.write(f"{locale.language_code}: verify checked")
 
     # -- request questions and routing (T17, D41) -------------------------------------
 

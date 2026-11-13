@@ -24,7 +24,15 @@ SITE_INDEXABLE = config("SITE_INDEXABLE", default=False, cast=bool)
 # master plan 03 lists them (D22): the core's generic page-type apps are excluded. The
 # MCP server is not mounted for TIC in V1 (master plan 16).
 INSTALLED_APPS = installed_apps(
-    ["apps.pages", "apps.people", "apps.services", "apps.industries", "apps.programs", "apps.news"],
+    [
+        "apps.pages",
+        "apps.people",
+        "apps.services",
+        "apps.industries",
+        "apps.programs",
+        "apps.news",
+        "apps.verify",
+    ],
     exclude=[
         "zeneon_cms.services",
         "zeneon_cms.locations",

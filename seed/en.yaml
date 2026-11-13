@@ -462,3 +462,21 @@ news:
       office_name: "Baghdad office"
       standfirst: "Manufacturers of six household product groups need the Iraqi Quality Mark, by a decision of the Ministerial Council for Economy of 6 December 2023."
       body: "<p>Under the Iraqi Quality Mark Instructions No. (2) of 2011 and a decision of the Ministerial Council for Economy communicated on 6 December 2023, the mark is required for manufacturers of household storage electric water heaters, household electric room heaters, household electric refrigeration appliances (refrigerators, refrigerator-freezers and freezers), household air conditioners, electric ovens, and cigarettes.</p>"
+
+verify:
+  slug: "verify"
+  title: "Verify a TIC certificate"
+  intro: "Type the certificate number printed in the security panel, or scan the QR code on the certificate. It opens this page with the number filled in."
+  input_label: "Certificate number"
+  button_label: "Check"
+  shown_note: "Shown: number, type, status, dates and issuing office only. No client names and no product details."
+  fraud_warning: "A certificate that cannot be found here may not be genuine. Do not clear the goods on it before you speak to TIC."
+  head_office_contact: "Head office, Dubai · +971 4 225 5555"
+  mismatch_heading: "Something does not match?"
+  mismatch_text: "Call or message the issuing office before you clear the goods."
+  answers_heading: "What this page answers"
+  answers: |-
+    Customs officers: is this certificate real and still valid?
+    Banks and importers: which office issued it?
+    Regulators: has it been superseded or withdrawn?
+  answers_note: "One number at a time; there is no way to browse through certificates."
