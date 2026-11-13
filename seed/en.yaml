@@ -561,7 +561,8 @@ about:
     intro: "Three companies, one owner, one rule: shared ownership never influences an inspection or certification decision. When TIC engages a group company for part of an inspection, we tell the client in advance and TIC remains responsible for the result."
     companies:
       - {name: "TIC Quality Control", is_tic: true, legal_name: "TIC Quality Control L.L.C., Dubai", founded: "[2020]", does: "Testing, inspection, certification; Government & Trade Programs", accreditation: "ISO/IEC 17020 Type A, ANAB AI-3314", link_label: "This site"}
-      - {name: "Seacorr", legal_name: "[to be supplied]", founded: "[year]", does: "Non-destructive testing and technical inspection", accreditation: "[own accreditation, if any]", link_label: "[Seacorr website]"}
+      # Seacorr facts from seacorr.com (about-us; ANAB news post of 1 Nov 2024), Nov 13, 2026.
+      - {name: "Seacorr", legal_name: "[to be supplied]", founded: "2007", does: "Inspection and testing services, Dubai: non-destructive testing and technical inspection", accreditation: "ISO/IEC 17020, ANAB [certificate number]", link_label: "seacorr.com", link_url: "https://seacorr.com/"}
       - {name: "LOX", legal_name: "[to be supplied]", founded: "[year]", does: "Partner in the Iraq Certificate of Conformity appointment with COSQC", accreditation: "[own accreditation, if any]", link_label: "[LOX website]"}
     independence_heading: "Independence, in one sentence"
     independence: "Shared ownership does not influence any inspection or certification decision. When TIC engages a group company for part of an inspection, we tell the client in advance, and TIC remains responsible for the result."
