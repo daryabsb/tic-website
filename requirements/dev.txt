@@ -327,7 +327,7 @@ wrapt==2.5.2
     # via
     #   -c base.txt
     #   deprecated
-zeneon-cms @ git+ssh://git@github.com/daryabsb/zeneon-cms.git@6de12703a08344ce9fda9f509d3257eae8bec3a2
+zeneon-cms @ git+ssh://git@github.com/daryabsb/zeneon-cms.git@db8d8f535939cd1b6f770a206bb83e5c845fce30
     # via
     #   -c base.txt
     #   -r base.in
