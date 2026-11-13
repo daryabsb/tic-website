@@ -1,0 +1,20 @@
+{% extends "base.html" %}{% load i18n wagtailcore_tags tic %}
+{% comment %}A program page (design B-Program-Iraq.dc.html; master plan 05): the photo head with two buttons, then "On this page" and the verify box on the side, the twelve parts in the main column, the other programs in a dark band. The side list is built from the parts present.{% endcomment %}
+{% block body_class %}page-program{% endblock %}
+{% block content %}{% request_url page as req_url %}
+{% include "includes/page_head.html" with image=page.header_image image_alt=page.header_image_alt caption=page.header_caption intro=page.intro primary_label=page.request_label primary_href=req_url secondary_label=talk_label secondary_href=office_href %}
+<div class="wrap two-col svc-body">
+  <aside class="two-col__side">
+    {% if toc %}<nav aria-labelledby="toc-title"><p class="eyebrow toc__label" id="toc-title">{% translate "On this page" %}</p>
+      <div class="toc">{% for name, title in toc %}<a href="#{{ name }}"><span>{{ forloop.counter|stringformat:"02d" }}</span>{{ title }}</a>{% endfor %}</div>
+    </nav>{% endif %}
+    <div class="side-box"><span class="eyebrow">{% translate "Check a certificate" %}</span><p>{% translate "Customs officer or importer? Verify any TIC certificate by its number or QR code." %}</p></div>
+  </aside>
+  <div class="two-col__main">
+    {% for block in page.parts %}{% with num=forloop.counter|stringformat:"02d" %}{% include_block block with num=num first=forloop.first req_url=req_url %}{% endwith %}{% endfor %}
+  </div>
+</div>
+{% if others %}<div class="band"><div class="wrap other-progs"><span class="eyebrow eyebrow--w">{% translate "Other programs" %}</span>
+  <div class="row other-progs__list">{% for other in others %}<a class="tri tri--w" href="{% pageurl other %}">{{ other.title }}</a>{% endfor %}</div>
+</div></div>{% endif %}
+{% endblock %}

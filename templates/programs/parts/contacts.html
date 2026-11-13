@@ -1,0 +1,9 @@
+{% load i18n wagtailcore_tags %}<section id="contacts" class="sec{% if first %} sec--first{% endif %}">
+  <span class="num">{{ num }} · {% translate "Contacts for this program" %}</span>
+  {% if value.heading %}<h2 class="h2">{{ value.heading }}</h2>{% endif %}
+  <div class="row part-row">{% for row in value.offices %}<div class="office-card">
+    <b>{% if row.office and row.office.live %}<a href="{% pageurl row.office %}">{{ row.office.title }}</a>{% else %}{{ row.office_name }}{% endif %}</b>
+    <span>{{ row.role }}: {% if row.person and row.person.public_name %}{{ row.person.public_name }}{% else %}[{% translate "name" %}]{% endif %}</span>
+    {% if row.person.whatsapp or row.person.phone %}<span>{% if row.person.whatsapp %}<a href="https://wa.me/{{ row.person.whatsapp|cut:'+'|cut:' ' }}" rel="noopener">WhatsApp</a>{% endif %}{% if row.person.phone %} · <a href="tel:{{ row.person.phone|cut:' ' }}">{{ row.person.phone }}</a>{% endif %}</span>{% else %}<span>{% translate "WhatsApp · phone" %} · [{% translate "hours" %}]</span>{% endif %}
+  </div>{% endfor %}</div>
+</section>

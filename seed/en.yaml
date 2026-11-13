@@ -54,6 +54,7 @@ home:
       value:
         heading: "Export programs"
         link_label: "All programs and regulatory updates"
+        link_page: "programs"
         featured: {caption: "Iraq", eyebrow: "Iraq · COSQC / ICIGI", title: "Certificate of Conformity", meta: "Last updated: [date] · Baghdad office"}
         cards:
           - {title: "Kurdistan Region vehicle CoC", meta: "Last updated: [date]"}
@@ -266,3 +267,198 @@ industries:
     - {slug: "industrial-equipment-and-manufacturing", title: "Industrial Equipment & Manufacturing", card_caption: "Industrial", summary: "Vendor inspection, NDT, metals and minerals."}
     - {slug: "construction-and-infrastructure", title: "Construction & Infrastructure", card_caption: "Construction", summary: "Construction materials conformity — a regulated group in the Iraq program."}
     - {slug: "government-and-public-sector", title: "Government & Public Sector", card_caption: "Government", summary: "Regulators and ministries as clients: inspection programs, e-waste control, advisory."}
+
+# Government & Trade Programs (T18, master plan 05, D44). Facts from TIC's own material
+# only: the COSQC approval letter (contract no. 5 of 22 May 2024), the old Iraq pages
+# /iraq-coc/, /iraq-verification-of-conformity-program/ and /iraq-coc-gujarat/, and
+# TIC's posts. What Baghdad has not confirmed stays [bracketed]. The questions and
+# answers are the old pages' own, carried over (house words: "TIC", "Program"); the
+# Baghdad office reviews each before launch.
+programs:
+  slug: "programs"
+  title: "Government & Trade Programs"
+  intro: "The Certificates of Conformity and Inspection that importing countries require before customs clearance. Each program page sets out the regulator and our appointment, who must comply, the route, the steps, the documents, the fees, the questions exporters ask and the office that answers."
+  header_caption: "Baghdad · Customs"
+  heading: "Programs we run"
+  rule_line: "We add a page only where we hold an appointment, or label it clearly as “document review and advisory support” where we do not."
+  updates_heading: "Regulatory updates"
+  updates_text: "Dated notices of every change in our programs, signed by the office that owns the page."
+  ask_heading: "Not sure which program applies?"
+  ask_text: "Tell us the destination and the product. The office that handles that country answers within one working day."
+  pending:
+    - country: "Saudi Arabia"
+      title: "Saudi Arabia SFDA"
+      status: "Designation in progress"
+      status_date: "[date]"
+      text: "Document review and advisory support until TIC appears on the SFDA list of designated bodies."
+  updates_page:
+    slug: "updates"
+    title: "Regulatory updates"
+    intro: "Dated notices of every change in the programs we run: new regulated product lists, changed routes, fees and documents, signed by the office that owns the program."
+  pages:
+    - slug: "iraq-certificate-of-conformity"
+      title: "Iraq Certificate of Conformity"
+      intro: "Many products imported into Iraq need a Certificate of Conformity (CoC) before customs clearance. COSQC, Iraq’s Central Organization for Standardization and Quality Control, appointed TIC Quality Control and LOX to inspect, test and certify them."
+      header_caption: "Baghdad · Iraq CoC"
+      country: "Iraq"
+      summary: "COSQC / ICIGI. Document review, testing, inspection and the certificate, from the office nearest your goods."
+      regulator_name: "Central Organization for Standardization and Quality Control"
+      regulator_abbreviation: "COSQC"
+      regulator_url: "https://cosqc.gov.iq"
+      appointment_status: "appointed"
+      appointment_date: "2024-05-22"
+      owning_office_name: "Baghdad office"
+      request_label: "Request a certificate"
+      talk_label: "Talk to the Baghdad office"
+      parts:
+        - type: appointment
+          value:
+            heading: "Appointed by COSQC"
+            text: "<p>The Iraq CoC program is run by COSQC, Iraq’s national standards body; in the trade it is also called ICIGI. COSQC appointed TIC Quality Control and LOX by contract no. 5 of 22 May 2024, for three years and subject to an annual review. Certificates have been issued since 5 September 2024.</p>"
+        - type: who_must_comply
+          value:
+            heading: "Regulated products"
+            text: "Exporters, manufacturers, traders and their authorized representatives shipping regulated products to Iraq. Requirements depend on the product category, not on the port the goods leave from."
+            products:
+              - {group: "Electrical and electronic products", examples: "[examples]", standard: "[IQS / standard numbers]"}
+              - {group: "Household appliances", examples: "[examples]", standard: "[IQS / standard numbers]"}
+              - {group: "Construction and building materials", examples: "[examples]", standard: "[IQS / standard numbers]"}
+              - {group: "Food products", examples: "[examples]", standard: "[IQS / standard numbers]"}
+              - {group: "Cosmetics and personal care products", examples: "[examples]", standard: "[IQS / standard numbers]"}
+              - {group: "Chemicals", examples: "[examples]", standard: "[IQS / standard numbers]"}
+              - {group: "Toys and children’s products", examples: "[examples]", standard: "[IQS / standard numbers]"}
+              - {group: "Automotive products", examples: "Automotive components, tires and related products", standard: "[IQS / standard numbers]"}
+              - {group: "Consumer goods", examples: "[examples]", standard: "[IQS / standard numbers]"}
+        - type: routes
+          value:
+            heading: "Registered or unregistered goods"
+            text: "The program has two routes. Answer the question and the request form opens on your route."
+            button_label: "Find my route"
+            questions:
+              - question: "Are your goods registered with COSQC (you hold a Statement of Registration)?"
+                answers:
+                  - {answer: "Yes", outcome: "registered goods: we verify the Statement of Registration, then the certificate is issued", route: "registered"}
+                  - {answer: "No, one shipment", outcome: "unregistered goods: request for certification, review and testing, inspection, certificate", route: "unregistered"}
+                  - {answer: "No, I ship regularly", outcome: "application for registration: request for registration, verification, Statement of Registration", route: "registration"}
+              - question: "Where are the goods now?"
+                answers:
+                  - {answer: "Tell us in the form", outcome: "the TIC office for that country inspects"}
+        - type: steps
+          value:
+            heading: "How it works"
+            steps:
+              - {title: "Application and documents", text: "You send the request for certification with the commercial invoice, packing list and product specifications. We confirm the route and the inspecting office."}
+              - {title: "Documentary review", text: "We review the technical documents, test reports and labels against the Iraqi standards for the product category."}
+              - {title: "Testing, where required", text: "Products that need laboratory testing are tested in accredited laboratories; the results are part of the assessment."}
+              - {title: "Pre-shipment inspection", text: "The inspector checks quantity, packaging, labelling and shipment consistency before the goods leave the factory or warehouse."}
+              - {title: "Certificate of Conformity issued", text: "When everything conforms, the CoC is issued. At the Iraqi border, customs may make their own checks."}
+        - type: checklist
+          value:
+            heading: "What you give us"
+            text: "Uploaded in the online request form, with no Word file to download and send back."
+            form_label: "Start the request form"
+            schema: "program_request"
+            items:
+              - "Commercial invoice (a proforma invoice for a first review)"
+              - "Packing list"
+              - "Product technical specifications and data sheets"
+              - "Test reports from an ISO/IEC 17025 accredited laboratory"
+              - "Quality certificates"
+              - "Product labels, markings and photographs"
+              - "Manufacturer’s declaration"
+              - "Transport documents (bill of lading or other)"
+              - "[Any further item the Baghdad office confirms]"
+        - type: labelling
+          value:
+            heading: "What the inspector checks"
+            items:
+              - "Product identification against the documents"
+              - "Quantity, packing and marking against the invoice and packing list"
+              - "Labels and product marking"
+              - "Visual quality and shipment consistency"
+              - "Sampling and testing where the standard requires it, in ISO/IEC 17025 accredited laboratories"
+              - "[Arabic labelling and origin-mark rules, to be confirmed by the Baghdad office]"
+        - type: fees
+          value:
+            heading: "What it costs"
+            mode: "on_request"
+            note: "[Fee table or fee-structure download, where the regulator permits: the Government & Trade Programs director decides (P-13)]"
+        - type: qa
+          value:
+            heading: "Questions exporters ask"
+            questions:
+              - {question: "What is the Iraq CoC Program?", answer: "<p>The Iraq CoC Program is a conformity assessment scheme designed to verify that regulated products comply with applicable Iraqi standards and technical requirements before export. The program may include document review, testing, and pre-shipment inspection activities prior to the issuance of a Certificate of Conformity.</p>"}
+              - {question: "What is a Certificate of Conformity Iraq?", answer: "<p>A Certificate of Conformity Iraq is an official document issued after successful completion of the conformity assessment process. It demonstrates that products meet the relevant requirements applicable to their importation into Iraq.</p>"}
+              - {question: "Is a Certificate of Conformity required for exports to Iraq?", answer: "<p>Certain products may require a Certificate of Conformity before they can be imported into Iraq. Requirements vary according to product category and applicable regulations.</p>"}
+              - {question: "Who can apply for Iraq CoC certification?", answer: "<p>Manufacturers, exporters, trading companies, and authorized representatives involved in exporting goods to Iraq may apply for certification, subject to applicable requirements.</p>"}
+              - {question: "What documents are required for Iraq CoC certification?", answer: "<p>Commonly requested documents include commercial invoices, packing lists, product specifications, test reports, quality certificates, product labels, and manufacturer declarations.</p>"}
+              - {question: "What is pre-shipment inspection?", answer: "<p>Pre-shipment inspection is a verification process conducted before goods are exported. It may include checks on product quantity, packaging, labeling, markings, and shipment consistency.</p>"}
+              - {question: "Is product testing required?", answer: "<p>Testing requirements depend on the product category, applicable standards, and conformity assessment route. Some products may require laboratory testing to demonstrate compliance.</p>"}
+              - {question: "How long does the certification process take?", answer: "<p>Processing times vary depending on document completeness, testing requirements, inspection scheduling, and product complexity.</p>"}
+              - {question: "What happens if non-conformities are identified?", answer: "<p>Where non-conformities are identified, corrective actions may be required before certification can proceed.</p>"}
+              - {question: "Can shipments be inspected after corrective actions?", answer: "<p>Yes. In many cases, products may be re-evaluated after corrective actions have been implemented and verified.</p>"}
+              - {question: "What are Iraq import requirements?", answer: "<p>Iraq import requirements may include compliance with technical regulations, product standards, documentation requirements, testing obligations, and conformity assessment procedures.</p>"}
+              - {question: "Which products are commonly covered under the Iraq CoC Program?", answer: "<p>Common categories include electrical products, electronics, household appliances, construction materials, chemicals, cosmetics, food products, toys, and consumer goods.</p>"}
+              - {question: "Can one certificate cover multiple products?", answer: "<p>This depends on product classification, shipment details, and applicable certification requirements.</p>"}
+              - {question: "What is the purpose of the Iraq CoC Program?", answer: "<p>The program helps promote product quality, consumer safety, regulatory compliance, and efficient customs procedures.</p>"}
+              - {question: "Does certification guarantee customs clearance?", answer: "<p>Certification supports compliance verification but customs authorities may conduct additional checks in accordance with applicable regulations.</p>"}
+              - {question: "Can manufacturers apply directly?", answer: "<p>Yes. Manufacturers may apply directly or work through exporters, traders, or authorized representatives depending on the circumstances.</p>"}
+              - {question: "Why is documentation review important?", answer: "<p>Documentation review helps verify product information, technical specifications, and compliance evidence before inspection and certification activities proceed.</p>"}
+              - {question: "How can exporters prepare for certification?", answer: "<p>Exporters should gather all required documentation, verify product compliance, and coordinate testing and inspection activities in advance.</p>"}
+              - {question: "Why choose TIC Quality Control?", answer: "<p>TIC Quality Control offers inspection, testing, certification support, documentation review, and compliance assistance for exporters seeking Iraq CoC certification.</p>"}
+              - {question: "How do I start the Iraq CoC application process?", answer: "<p>Exporters can contact TIC Quality Control to discuss product requirements, documentation needs, inspection scheduling, and certification procedures.</p>"}
+              - {question: "What is the COSQC ICIGI CoC Program?", answer: "<p>The COSQC ICIGI CoC Program is a conformity assessment program for products exported to Iraq. It helps verify compliance with applicable Iraqi standards and import requirements before shipment.</p>"}
+              - {question: "Is the Iraq CoC Program the same as the COSQC ICIGI CoC Program?", answer: "<p>The Iraq CoC Program is implemented under the framework of the COSQC ICIGI CoC Program and focuses on conformity assessment activities such as documentation review, testing, inspection, and certification.</p>"}
+              - {question: "Who manages the COSQC ICIGI CoC Program?", answer: "<p>The program operates under the authority of the Central Organization for Standardization and Quality Control (COSQC), Iraq's national standards body.</p>"}
+              - {question: "Is a Certificate of Origin also required alongside the CoC?", answer: "<p>This depends on the product and destination requirements. Some shipments require both a Certificate of Origin and a Certificate of Conformity, so it is worth confirming both requirements before export.</p>"}
+        - type: updates
+          value: null
+        - type: contacts
+          value:
+            heading: "Who handles it"
+            offices:
+              - {office_name: "Baghdad", role: "Program coordinator"}
+              - {office_name: "Dubai", role: "Head office coordinator"}
+              - {office_name: "Gandhidham (Gujarat)", role: "Inspections in Gujarat"}
+        - type: appeals
+          value: null
+        - type: reviewed
+          value:
+            disclaimer: "This page summarises the program as we understand it on the date shown; the regulator’s own publications take precedence."
+
+# TIC's news pages (T18 minimum, T25 the rest). Regulatory updates from TIC's own
+# posts and the COSQC letter; `program` is a program slug above.
+news:
+  slug: "news"
+  title: "News and insights"
+  intro: "News, explainers by named colleagues and the regulatory updates of our programs."
+  pages:
+    - slug: "iraq-voc-appointment-announced"
+      title: "LOX and TIC appointed by COSQC for goods shipped to Iraq"
+      kind: "regulatory_update"
+      date: "2024-05-10"
+      program: "iraq-certificate-of-conformity"
+      office_name: "Baghdad office"
+      standfirst: "COSQC appointed LOX and TIC to run the Verification of Conformity program for goods shipped to Iraq."
+    - slug: "iraq-coc-contract-announced"
+      title: "LOX and TIC announce the COSQC certification contract"
+      kind: "regulatory_update"
+      date: "2024-07-22"
+      program: "iraq-certificate-of-conformity"
+      office_name: "Baghdad office"
+      standfirst: "The contract for the certification of goods imported into Iraq was presented in Dubai on 27 June 2024."
+    - slug: "iraq-coc-certificates-begin"
+      title: "TIC and LOX begin issuing certificates"
+      kind: "regulatory_update"
+      date: "2024-09-05"
+      program: "iraq-certificate-of-conformity"
+      office_name: "Baghdad office"
+      standfirst: "Certificates of Conformity are issued under the COSQC appointment of 22 May 2024 from 5 September 2024."
+    - slug: "iraqi-quality-mark"
+      title: "Iraqi Quality Mark: COSQC regulation update"
+      kind: "regulatory_update"
+      date: "2024-09-26"
+      program: "iraq-certificate-of-conformity"
+      office_name: "Baghdad office"
+      standfirst: "Manufacturers of six household product groups need the Iraqi Quality Mark, by a decision of the Ministerial Council for Economy of 6 December 2023."
+      body: "<p>Under the Iraqi Quality Mark Instructions No. (2) of 2011 and a decision of the Ministerial Council for Economy communicated on 6 December 2023, the mark is required for manufacturers of household storage electric water heaters, household electric room heaters, household electric refrigeration appliances (refrigerators, refrigerator-freezers and freezers), household air conditioners, electric ovens, and cigarettes.</p>"

@@ -1,0 +1,28 @@
+{% extends "base.html" %}{% load i18n wagtailcore_tags wagtailimages_tags tic %}
+{% comment %}Programs hub (design B-Programs.dc.html; master plan 05): every live program as a card with its status word, regulator and "last updated · office"; programs still in progress as dated cards, never as programs (D4); the rule line; the newest regulatory updates.{% endcomment %}
+{% block body_class %}page-programs{% endblock %}
+{% block content %}
+{% include "includes/page_head.html" with image=page.header_image image_alt=page.header_image_alt caption=page.header_caption intro=page.intro %}
+<div class="wrap stack sec-cards">
+  {% if page.heading %}<div><h2 class="h2">{{ page.heading }}</h2><div class="rule"></div></div>{% endif %}
+  <div class="cards">
+  {% for program in programs %}<a class="svc svc--sm" href="{% pageurl program %}">
+    <div class="photo">{% if program.header_image %}{% image program.header_image fill-720x340 as img %}<img src="{{ img.url }}" alt="" width="{{ img.width }}" height="{{ img.height }}" loading="lazy">{% endif %}{% if program.country %}<div class="cap">{{ program.country }}</div>{% endif %}</div>
+    <div class="svc__body">{% if program.status_line %}<span class="status{% if program.appointment_status == 'in_progress' %} status--pending{% endif %}">{{ program.status_line }}</span>{% endif %}<b class="svc__title">{{ program.title }}</b>{% if program.summary %}<span class="svc__text">{{ program.summary }}</span>{% endif %}<em class="meta">{% translate "Last updated" %}: {% if program.reviewed %}{{ program.reviewed|date:"j M Y" }}{% else %}[{% translate "date" %}]{% endif %}{% if program.office_label %} · {{ program.office_label }}{% endif %}</em></div>
+  </a>{% endfor %}
+  {% for card in page.pending %}<div class="svc svc--sm">
+    <div class="photo"><div class="cap">{{ card.value.country }}</div></div>
+    <div class="svc__body"><span class="status status--pending">{{ card.value.status }}{% if card.value.status_date %} · {{ card.value.status_date }}{% endif %}</span><b class="svc__title">{{ card.value.title }}</b><span class="svc__text">{{ card.value.text }}</span>{% if card.value.note %}<em class="meta">{{ card.value.note }}</em>{% endif %}</div>
+  </div>{% endfor %}
+  </div>
+  {% if page.rule_line %}<p class="meta">{{ page.rule_line }}</p>{% endif %}
+</div>
+<div class="tint"><div class="wrap two-col sec-cards">
+  <div class="two-col__side stack"><div><h2 class="h2">{{ page.updates_heading }}</h2><div class="rule"></div></div>{% if page.updates_text %}<p>{{ page.updates_text }}</p>{% endif %}{% if feed %}<a class="tri" href="{% pageurl feed %}">{% translate "All regulatory updates" %}</a>{% endif %}</div>
+  <div class="two-col__main">{% for item in updates %}<a class="upd" href="{% pageurl item %}"><span class="upd__d">{{ item.date|date:"M Y" }}</span>{% if item.program_label %}<span class="eyebrow">{{ item.program_label }}</span>{% endif %}<b>{{ item.title }}</b></a>{% empty %}<p>{% translate "No changes published yet." %}</p>{% endfor %}</div>
+</div></div>
+{% if page.ask_heading %}<div class="wrap row links sec-cards"><div class="links__intro stack"><div><h2 class="h2">{{ page.ask_heading }}</h2><div class="rule"></div></div>{% if page.ask_text %}<p>{{ page.ask_text }}</p>{% endif %}</div>
+  <div class="row part-actions">{% request_url as req_url %}<a class="tri" href="{{ req_url }}">{% translate "Ask the program team" %}</a></div>
+</div>{% endif %}
+{% include "includes/cta_band.html" %}
+{% endblock %}

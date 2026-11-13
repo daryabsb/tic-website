@@ -1,0 +1,7 @@
+{% load i18n wagtailcore_tags %}<section id="appointment" class="sec{% if first %} sec--first{% endif %}">
+  <span class="num">{{ num }} · {% translate "The regulator and our appointment" %}</span>
+  {% if value.heading %}<h2 class="h2">{{ value.heading }}</h2>{% endif %}
+  <p class="appt">{% if page.appointment_status %}<span class="status{% if page.appointment_status == 'in_progress' %} status--pending{% endif %}">{{ page.get_appointment_status_display }}</span>{% endif %}<b>{{ page.regulator_name }}{% if page.regulator_abbreviation %} ({{ page.regulator_abbreviation }}){% endif %}</b>{% if page.appointment_date %}<span>{{ page.appointment_date|date:"j F Y" }}</span>{% endif %}</p>
+  <div class="rich">{{ value.text|richtext }}</div>
+  <div class="row part-actions">{% if page.appointment_document %}<a class="tri" href="{{ page.appointment_document.url }}">{% translate "Appointment letter" %} ({{ page.appointment_document.file_extension|upper }})</a>{% endif %}{% if page.regulator_url %}<a class="tri" href="{{ page.regulator_url }}" rel="noopener">{% blocktranslate with name=page.regulator_abbreviation|default:page.regulator_name %}{{ name }} website{% endblocktranslate %}</a>{% endif %}</div>
+</section>

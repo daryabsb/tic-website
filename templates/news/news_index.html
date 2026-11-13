@@ -1,0 +1,9 @@
+{% extends "base.html" %}{% load i18n wagtailcore_tags %}
+{% comment %}News index (T18 minimum; T25 adds the kind and office filters, design B-News.dc.html).{% endcomment %}
+{% block body_class %}page-news{% endblock %}
+{% block content %}
+{% include "includes/page_head.html" with intro=page.intro %}
+<div class="wrap svc-body">
+  {% for item in articles %}<a class="upd" href="{% pageurl item %}"><span class="upd__d">{{ item.date|date:"j M Y" }}</span><span class="eyebrow">{{ item.get_kind_display }}{% if item.program_label %} · {{ item.program_label }}{% endif %}</span><span class="upd__t"><b>{{ item.title }}</b>{% if item.standfirst %}<span>{{ item.standfirst }}</span>{% endif %}</span></a>{% empty %}<p>{% translate "Nothing published yet." %}</p>{% endfor %}
+</div>
+{% endblock %}

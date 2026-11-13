@@ -1,0 +1,5 @@
+{% load i18n %}<section id="labelling" class="sec{% if first %} sec--first{% endif %}">
+  <span class="num">{{ num }} · {% translate "Testing, inspection and labelling" %}</span>
+  {% if value.heading %}<h2 class="h2">{{ value.heading }}</h2>{% endif %}
+  <ul class="dia stack part-list">{% for item in value.items %}<li>{{ item }}</li>{% endfor %}</ul>
+</section>

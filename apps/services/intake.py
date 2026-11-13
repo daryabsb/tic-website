@@ -2,10 +2,12 @@
 
 - ``topic_pages(request)``: the step-1 choices, ``ZENEON_CMS["requests"]["topic_pages"]``.
   The live service groups of the active language, each followed by its services, in
-  menu order. A service page links to the form with ``?topic=<its id>``.
+  menu order; the Programs group is followed by the live program pages (T18). A service
+  or program page links to the form with ``?topic=<its id>``.
 - ``routing_facts(submission)``: ``ZENEON_CMS["requests"]["routing_facts"]``. Adds
   ``service_group`` (the slug of the topic's group, in the default language) so a rule
-  can match "service_group = training". The country comes from the ``country`` answer.
+  can match "service_group = training", and for a program page ``program`` (its slug in
+  the default language). The country comes from the ``country`` answer.
 - ``office_for(submission)``: what the sent screen and the emails say about the office
   that received the request: name, hours, phone, WhatsApp. The routed rule's page (an
   ``OfficePage`` from T20) gives its own values; until then the site settings do.
@@ -20,6 +22,7 @@ from wagtail.models import Locale, Page
 from zeneon_cms.core.models import SiteSettings
 from zeneon_cms.requests.links import whatsapp_url
 
+from apps.programs.models import ProgramPage
 from apps.services.models import ServiceGroupPage, ServicePage
 
 
@@ -34,10 +37,13 @@ def topic_pages(request=None) -> list[Page]:
     locale = _locale()
     groups = ServiceGroupPage.objects.live().filter(locale=locale).order_by("path")
     services = ServicePage.objects.live().filter(locale=locale)
+    programs = ProgramPage.objects.live().filter(locale=locale).order_by("path")
     pages: list[Page] = []
     for group in groups:
         pages.append(group)
         pages.extend(services.child_of(group).order_by("path"))
+        if group.group == "programs":
+            pages.extend(programs)
     return pages
 
 
@@ -47,15 +53,24 @@ def group_of(page) -> ServiceGroupPage | None:
     page = page.specific
     if isinstance(page, ServiceGroupPage):
         return page
+    if isinstance(page, ProgramPage):
+        return ServiceGroupPage.objects.filter(locale=page.locale, group="programs").first()
     return ServiceGroupPage.objects.ancestor_of(page).first()
+
+
+def _default_slug(page) -> str:
+    return (page.get_translation_or_none(Locale.get_default()) or page).slug
 
 
 def routing_facts(submission) -> dict:
     group = group_of(submission.topic)
     if group is None:
         return {}
-    default = group.get_translation_or_none(Locale.get_default()) or group
-    return {"service_group": default.slug}
+    facts = {"service_group": _default_slug(group)}
+    topic = submission.topic.specific
+    if isinstance(topic, ProgramPage):
+        facts["program"] = _default_slug(topic)
+    return facts
 
 
 @dataclass

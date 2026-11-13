@@ -1,0 +1,9 @@
+{% load i18n %}<section id="routes" class="sec{% if first %} sec--first{% endif %}">
+  <span class="num">{{ num }} · {% translate "Which route applies to you" %}</span>
+  {% if value.heading %}<h2 class="h2">{{ value.heading }}</h2>{% endif %}
+  {% if value.text %}<p>{{ value.text }}</p>{% endif %}
+  <div class="row part-row">{% for q in value.questions %}<div class="route"><span class="eyebrow">{% blocktranslate with n=forloop.counter %}Question {{ n }}{% endblocktranslate %}</span><b>{{ q.question }}</b>
+    <ul class="route__answers">{% for a in q.answers %}<li>{% if a.route %}<a href="{{ req_url }}&amp;q_route={{ a.route|urlencode }}">{{ a.answer }} → {{ a.outcome }}</a>{% else %}{{ a.answer }} → {{ a.outcome }}{% endif %}</li>{% endfor %}</ul>
+  </div>{% endfor %}</div>
+  <div class="row part-actions"><a class="btn" href="{{ req_url }}">{{ value.button_label|default:_("Find my route") }}</a></div>
+</section>
