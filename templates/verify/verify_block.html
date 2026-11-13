@@ -52,8 +52,9 @@
       {% if page.mismatch_heading %}<div class="side-box">
         <span class="eyebrow">{{ page.mismatch_heading }}</span>
         {% if page.mismatch_text %}<p>{{ page.mismatch_text }}</p>{% endif %}
-        {% if result.state == "found" %}<b class="side-box__title">{{ result.certificate.office_label }}</b>{% endif %}
-        <a class="tri" href="{{ req_url }}">{% translate "Write to TIC" %}</a>{# T20: "All offices" once the office pages exist #}
+        {% if result.state == "found" %}<b class="side-box__title">{% if office_channels.office %}<a href="{{ office_channels.office.url }}">{{ result.certificate.office_label }}</a>{% else %}{{ result.certificate.office_label }}{% endif %}</b>
+        {% if office_channels %}<span>{% if office_channels.whatsapp_link %}<a href="{{ office_channels.whatsapp_link }}" rel="noopener" target="_blank">WhatsApp</a>{% endif %}{% if office_channels.wechat_id %}{% translate "WeChat" %}: {{ office_channels.wechat_id }}{% endif %}{% if office_channels.phone %}{% if office_channels.whatsapp_link or office_channels.wechat_id %} · {% endif %}<a href="tel:{{ office_channels.phone|cut:' ' }}">{{ office_channels.phone }}</a>{% endif %}{% if office_channels.hours %}<br>{{ office_channels.hours }}{% endif %}</span>{% endif %}{% endif %}
+        {% office_index_url as offices_url %}<a class="tri" href="{{ offices_url|default:req_url }}">{% if offices_url %}{% translate "All offices" %}{% else %}{% translate "Write to TIC" %}{% endif %}</a>
       </div>{% endif %}
       {% if page.answer_lines %}<div class="verify__answers">
         {% if page.answers_heading %}<span class="eyebrow">{{ page.answers_heading }}</span>{% endif %}

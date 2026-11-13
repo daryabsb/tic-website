@@ -274,7 +274,7 @@ class ProgramPage(ScriptNormalisationMixin, ReviewByMixin, _HeaderFields, Page):
         FieldPanel("parts"),
         MultiFieldPanel(
             [
-                PageChooserPanel("owning_office"),
+                PageChooserPanel("owning_office", "offices.OfficePage"),
                 FieldPanel("owning_office_name"),
                 FieldRowPanel([FieldPanel("reviewed"), ReviewByMixin.review_panel()]),
             ],

@@ -31,6 +31,7 @@ INSTALLED_APPS = installed_apps(
         "apps.industries",
         "apps.programs",
         "apps.news",
+        "apps.offices",
         "apps.verify",
     ],
     exclude=[

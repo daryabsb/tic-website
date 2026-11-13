@@ -308,6 +308,7 @@ programs:
       appointment_status: "appointed"
       appointment_date: "2024-05-22"
       owning_office_name: "Baghdad office"
+      owning_office: "baghdad"
       request_label: "Request a certificate"
       talk_label: "Talk to the Baghdad office"
       parts:
@@ -480,3 +481,8 @@ verify:
     Banks and importers: which office issued it?
     Regulators: has it been superseded or withdrawn?
   answers_note: "One number at a time; there is no way to browse through certificates."
+
+offices:
+  slug: "offices"
+  title: "Our offices"
+  intro: "Fourteen offices in eleven countries. Each one answers in its own time zone; the head office is in Dubai."

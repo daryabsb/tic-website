@@ -33,6 +33,9 @@ from zeneon_cms.requests.models import RequestSchema, RoutingCondition, RoutingR
 
 from apps.industries.models import IndustryIndexPage, IndustryPage
 from apps.news.models import NewsIndexPage, NewsPage
+from apps.offices.access import setup_office
+from apps.offices.models import OfficeIndexPage, OfficePage
+from apps.offices.seed import create_office, fill_office, office_rows
 from apps.pages.models import HomePage
 from apps.programs.models import ProgramIndexPage, ProgramPage, RegulatoryUpdatesPage
 from apps.services.models import ServiceGroupPage, ServiceIndexPage, ServicePage
@@ -107,6 +110,8 @@ class Command(BaseCommand):
     def seed_language(self, code: str) -> None:
         data = self.load(f"{code}.yaml")
         locale = Locale.objects.get(language_code=code)
+        if "offices" in data:  # first: programs and routing rules point to office pages
+            self.seed_offices(locale, data["offices"])
         if "services" in data:
             self.seed_services(locale, data["services"], data.get("psi") or {})
         if "industries" in data:
@@ -364,6 +369,13 @@ class Command(BaseCommand):
                 self.fill_page(page, feed, ("intro",))
         for item in data.get("pages", []):
             page, touch = self.child(index, ProgramPage, item["slug"], item["title"], live=True)
+            office = OfficePage.objects.filter(
+                locale=locale, slug=item.get("owning_office") or "-"
+            ).first()
+            if touch and office is not None and page.owning_office_id is None:
+                page.owning_office = office
+                page.save_revision().publish()
+                self.changes += 1
             if touch:
                 self.fill_page(
                     page,
@@ -427,6 +439,26 @@ class Command(BaseCommand):
         if touch:
             self.fill_page(page, data, self.VERIFY_FIELDS)
         self.stdout.write(f"{locale.language_code}: verify checked")
+
+    def seed_offices(self, locale: Locale, data: dict) -> None:
+        """The office index and one page per row of seed/offices.yaml (T20), each with
+        its editor group and collection (``add_office``). Default language only: other
+        languages are translations an office makes (T29)."""
+        home = HomePage.objects.filter(locale=locale).first()
+        if home is None or locale != Locale.get_default():
+            return
+        index, touch = self.child(home, OfficeIndexPage, data["slug"], data["title"], live=True)
+        if touch:
+            self.fill_page(index, data, ("intro",))
+        for slug, row in office_rows().items():
+            page = OfficePage.objects.child_of(index).filter(slug=slug).specific().first()
+            if page is None:
+                page = create_office(index, row)
+                self.changes += 1
+            elif not page.has_unpublished_changes and fill_office(page, row):
+                self.changes += 1
+            self.changes += min(setup_office(page)[2], 1)
+        self.stdout.write(f"{locale.language_code}: offices checked")
 
     # -- request questions and routing (T17, D41) -------------------------------------
 
@@ -502,15 +534,25 @@ class Command(BaseCommand):
             email = row.get("email") or offices.get(row.get("office"), {}).get("email", "")
             email = email if self.is_email(email) else ""
             rule = RoutingRule.objects.filter(name=row["name"], priority=row["priority"]).first()
+            office = OfficePage.objects.filter(
+                locale=Locale.get_default(), slug=row.get("office") or "-"
+            ).first()
             if rule is None:
                 rule = RoutingRule(name=row["name"], priority=row["priority"])
             elif not self.reset:
+                changed = False
                 if email and not rule.email:
                     rule.email = email
+                    changed = True
+                if office is not None and rule.page_id is None:
+                    rule.page = office
+                    changed = True
+                if changed:
                     rule.save()
                     self.changes += 1
                 continue
             rule.email = email
+            rule.page = office
             rule.save()
             rule.conditions.all().delete()
             for field, value in (row.get("when") or {}).items():

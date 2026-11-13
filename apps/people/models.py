@@ -55,7 +55,7 @@ class Person(TranslatableMixin, index.Indexed, models.Model):
     panels = [
         FieldPanel("name"),
         FieldPanel("title"),
-        PageChooserPanel("office"),
+        PageChooserPanel("office", "offices.OfficePage"),
         FieldPanel("agreed_to_be_named"),
         FieldPanel("photo"),
         FieldPanel("bio"),

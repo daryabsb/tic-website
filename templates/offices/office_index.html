@@ -1,0 +1,16 @@
+{% extends "base.html" %}{% load i18n wagtailcore_tags %}
+{% comment %}/<lang>/offices/ (master plan 03; design B-Contact "Our offices"): every live office, head office first, with city, country, address and the channels it has. Placeholders stay text.{% endcomment %}
+{% block body_class %}page-offices{% endblock %}
+{% block content %}
+{% include "includes/page_head.html" with image=page.header_image image_alt=page.header_image_alt caption=page.header_caption intro=page.intro %}
+<div class="wrap office-list">
+  {% for office in offices %}<div class="office-card">
+    <b><a href="{% pageurl office %}">{{ office.title }}</a></b>
+    <span>{{ office.country }}{% if office.is_head_office %} · {% translate "Head office" %}{% endif %}</span>
+    <span>{{ office.address }}</span>
+    {% if office.phone_number %}<span><a href="tel:{{ office.phone_number|cut:' ' }}">{{ office.phone_number }}</a></span>{% endif %}
+    {% if not office.whatsapp_allowed %}<span>WeChat: {{ office.wechat_id|default:"[WeChat ID]" }}</span>{% endif %}
+  </div>{% endfor %}
+</div>
+{% include "includes/cta_band.html" %}
+{% endblock %}
