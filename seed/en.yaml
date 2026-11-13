@@ -563,7 +563,9 @@ about:
       - {name: "TIC Quality Control", is_tic: true, legal_name: "TIC Quality Control L.L.C., Dubai", founded: "[2020]", does: "Testing, inspection, certification; Government & Trade Programs", accreditation: "ISO/IEC 17020 Type A, ANAB AI-3314", link_label: "This site"}
       # Seacorr facts from seacorr.com (about-us; ANAB news post of 1 Nov 2024), Nov 13, 2026.
       - {name: "Seacorr", legal_name: "[to be supplied]", founded: "2007", does: "Inspection and testing services, Dubai: non-destructive testing and technical inspection", accreditation: "ISO/IEC 17020, ANAB [certificate number]", link_label: "seacorr.com", link_url: "https://seacorr.com/"}
-      - {name: "LOX", legal_name: "[to be supplied]", founded: "[year]", does: "Partner in the Iraq Certificate of Conformity appointment with COSQC", accreditation: "[own accreditation, if any]", link_label: "[LOX website]"}
+      # LOX facts from the LOX catalogue V008 (4 Nov 2025), pages 2-3 (Darya, Nov 13, 2026).
+      # loxqc.com is offline for repair: add link_url "https://loxqc.com/" when it is back.
+      - {name: "LOX", legal_name: "Lox for Quality Control & Certification, Ltd, Slemani", founded: "2017", does: "Third-party testing, inspection and certification in Iraq; partner in the Iraq Certificate of Conformity appointment with COSQC", accreditation: "[ISO/IEC 17020, 17025, 17065 and 17021-1: accreditation bodies and numbers to be supplied]", link_label: "loxqc.com"}
     independence_heading: "Independence, in one sentence"
     independence: "Shared ownership does not influence any inspection or certification decision. When TIC engages a group company for part of an inspection, we tell the client in advance, and TIC remains responsible for the result."
 
