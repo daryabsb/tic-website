@@ -159,3 +159,17 @@ def test_the_review_by_reminder_mails_the_owning_office(
         for address in message.to
     }
     assert sent == {"baghdad-editor@example.com", "baghdad-reviewer@example.com"}
+
+
+def test_the_seed_gives_the_site_the_public_host(home, settings):
+    from wagtail.models import Site
+
+    settings.WAGTAILADMIN_BASE_URL = "https://staging.ticqc.ae"
+    call_command("seed_site", verbosity=0)
+    site = Site.objects.get(is_default_site=True)
+    assert (site.hostname, site.port) == ("staging.ticqc.ae", 443)
+    assert home.full_url == "https://staging.ticqc.ae/en/"
+    site.hostname = "www.ticqc.com"
+    site.save()
+    call_command("seed_site", verbosity=0)  # a host an editor set is kept
+    assert Site.objects.get(is_default_site=True).hostname == "www.ticqc.com"
