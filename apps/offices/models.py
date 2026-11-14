@@ -298,3 +298,52 @@ class OfficePage(ScriptNormalisationMixin, _HeaderFields, Page):  # noqa: DJ008 
             ProgramPage.objects.live().public().filter(owning_office=self).order_by("title")
         )
         return context
+
+
+class ContactPage(ScriptNormalisationMixin, Page):  # noqa: DJ008 (Page gives __str__)
+    """/<lang>/contact/ (design B-Contact; T26, D57): the request button (the core form,
+    as D53: a cached page cannot carry the form's signed start time), the head office's
+    channels and every live office, head office first."""
+
+    intro = models.TextField(_("intro"), max_length=600, blank=True)
+    form_heading = models.CharField(_("form heading"), max_length=80, blank=True)
+    form_text = models.TextField(_("form text"), max_length=400, blank=True)
+    button_label = models.CharField(_("button label"), max_length=40, blank=True)
+    offices_heading = models.CharField(_("offices heading"), max_length=80, blank=True)
+    offices_text = models.TextField(_("offices text"), max_length=400, blank=True)
+
+    parent_page_types = ["pages.HomePage"]
+    subpage_types = []
+    max_count_per_parent = 1
+
+    override_translatable_fields = _translatable(
+        "intro", "form_heading", "form_text", "button_label", "offices_heading", "offices_text"
+    )
+    content_panels = [
+        *Page.content_panels,
+        FieldPanel("intro"),
+        MultiFieldPanel(
+            [FieldPanel("form_heading"), FieldPanel("form_text"), FieldPanel("button_label")],
+            heading=_("Request"),
+        ),
+        MultiFieldPanel(
+            [FieldPanel("offices_heading"), FieldPanel("offices_text")],
+            heading=_("Offices"),
+        ),
+    ]
+    search_fields = [*Page.search_fields, index.SearchField("intro")]
+
+    class Meta:
+        verbose_name = _("contact page")
+
+    def get_context(self, request, *args, **kwargs):
+        context = super().get_context(request, *args, **kwargs)
+        offices = list(
+            OfficePage.objects.live()
+            .public()
+            .filter(locale=self.locale)
+            .order_by("-is_head_office", "title")
+        )
+        context["offices"] = offices
+        context["head_office"] = next((o for o in offices if o.is_head_office), None)
+        return context

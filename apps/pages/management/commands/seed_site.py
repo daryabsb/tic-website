@@ -38,7 +38,7 @@ from apps.careers.models import CareersPage
 from apps.industries.models import IndustryIndexPage, IndustryPage
 from apps.news.models import NewsIndexPage, NewsPage
 from apps.offices.access import setup_office
-from apps.offices.models import OfficeIndexPage, OfficePage
+from apps.offices.models import ContactPage, OfficeIndexPage, OfficePage
 from apps.offices.seed import create_office, fill_office, office_rows
 from apps.pages.models import AboutPage, GroupPage, HomePage, LeadershipPage
 from apps.people.models import Person
@@ -164,6 +164,8 @@ class Command(BaseCommand):
             self.seed_training(locale, data["training"])
         if "resources" in data:  # after the policies (T22): downloads point to their PDFs
             self.seed_resources(locale, data["resources"])
+        if "contact" in data:  # last in the menu (design header)
+            self.seed_contact(locale, data["contact"])
         if "home" in data:  # last: its cards and rows link to the hub pages above (T9)
             self.seed_home(locale, data["home"])
 
@@ -823,6 +825,26 @@ class Command(BaseCommand):
                     item.full_clean()
                     item.save()
         self.stdout.write(f"{locale.language_code}: resources checked")
+
+    CONTACT_FIELDS = (
+        "intro",
+        "form_heading",
+        "form_text",
+        "button_label",
+        "offices_heading",
+        "offices_text",
+    )
+
+    def seed_contact(self, locale: Locale, data: dict) -> None:
+        home = HomePage.objects.filter(locale=locale).first()
+        if home is None:
+            return
+        page, touch = self.child(
+            home, ContactPage, data["slug"], data["title"], live=True, show_in_menus=True
+        )
+        if touch:
+            self.fill_page(page, data, self.CONTACT_FIELDS)
+        self.stdout.write(f"{locale.language_code}: contact checked")
 
     # -- request questions and routing (T17, D41) -------------------------------------
 

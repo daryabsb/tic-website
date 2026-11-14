@@ -1,0 +1,33 @@
+{% extends "base.html" %}{% load i18n wagtailcore_tags tic zeneon %}
+{% comment %}/<lang>/contact/ (design B-Contact; T26, D57): the request button (core form, D53), the head office's channels from its office page, every live office head office first. No map service (China rule): "open in maps" is the office's own map link.{% endcomment %}
+{% block body_class %}page-contact{% endblock %}
+{% block content %}
+{% request_url as req_url %}
+{% include "includes/page_head.html" with intro=page.intro %}
+<div class="wrap row form-split contact">
+  <div class="stack form-split__main">
+    <div><h2 class="h2">{{ page.form_heading|default:_("Request a quote") }}</h2><div class="rule"></div></div>
+    {% if page.form_text %}<p>{{ page.form_text }}</p>{% endif %}
+    <p class="row part-actions"><a class="btn" href="{{ req_url }}">{{ page.button_label|default:_("Request a quote") }}</a></p>
+    <p class="meta">{% translate "Answered by a named person within one working day. Your details are used only to answer you." %}</p>
+  </div>
+  {% with office=head_office %}{% if office %}<div class="stack form-split__side contact__chans">
+    <span class="eyebrow">{% translate "Head office" %} · {{ office.city }}</span>
+    {% if office.phone_number %}<a class="chan" href="tel:{{ office.phone_number|cut:' ' }}"><span class="lbl">{% translate "Phone" %}</span><b><bdi>{{ office.phone_number }}</bdi></b></a>{% else %}<div class="chan"><span class="lbl">{% translate "Phone" %}</span><b>[number]</b></div>{% endif %}
+    {% if office.whatsapp_link %}<a class="chan" href="{{ office.whatsapp_link }}" rel="noopener" target="_blank" data-umami-event="whatsapp-click" data-umami-event-office="{{ office.city }}"><span class="lbl">WhatsApp</span><b><bdi>{{ office.whatsapp_number }}</bdi></b></a>{% endif %}
+    {% if office.email_address %}<a class="chan" href="mailto:{{ office.email_address }}"><span class="lbl">{% translate "Email" %}</span><b>{{ office.email_address }}</b>{% if office.reply_promise %}<span>{{ office.reply_promise }}</span>{% endif %}</a>{% endif %}
+    <div class="chan"><span class="lbl">{% translate "Address" %}</span><b>{{ office.address }}, {{ office.country }}</b>{% if office.map_url %}<a class="tri" href="{{ office.map_url }}" rel="noopener" target="_blank">{% translate "Open in maps" %}</a>{% endif %}</div>
+    <a class="tri" href="{% locale_home_url %}verify/">{% translate "Verify a certificate instead" %}</a>
+  </div>{% endif %}{% endwith %}
+</div>
+<div id="offices" class="section--light contact__offices"><div class="wrap stack">
+  <div><h2 class="h2">{{ page.offices_heading|default:_("Our offices") }}</h2><div class="rule"></div>{% if page.offices_text %}<p>{{ page.offices_text }}</p>{% endif %}</div>
+  <div class="office-list">{% for office in offices %}<div class="office-card">
+    <b><a href="{% pageurl office %}">{{ office.title }}</a></b>
+    <span>{{ office.country }}{% if office.is_head_office %} · {% translate "Head office" %}{% endif %}</span>
+    <span>{{ office.address }}</span>
+    {% if office.phone_number %}<span><a href="tel:{{ office.phone_number|cut:' ' }}"><bdi>{{ office.phone_number }}</bdi></a></span>{% endif %}
+    {% if not office.whatsapp_allowed %}<span>WeChat: {{ office.wechat_id|default:"[WeChat ID]" }}</span>{% endif %}
+  </div>{% endfor %}</div>
+</div></div>
+{% endblock %}

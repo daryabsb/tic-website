@@ -99,6 +99,7 @@ class HomePage(ScriptNormalisationMixin, Page):
         "resources.ResourcesPage",
         "resources.DownloadsPage",
         "resources.QAPage",
+        "offices.ContactPage",
     ]
 
     override_translatable_fields = _translatable(
