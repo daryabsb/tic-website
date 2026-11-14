@@ -49,7 +49,7 @@ Destination: ticqc.com live on the new stack, five gates passed. Open, unblocked
 | 23 | ✅ (Nov 14, D53: the core request form with the page as the topic; addresses wait in Routing) **Complaints, Careers, course registration** — schemas with files in `private/`; `CareersPage` with openings; `CoursePage` + index with the full field set | 1 | A complaint with a file and an application with a CV reach the Quality Manager / HR addresses |
 | 24 | ✅ (Nov 14, D54) **Roles, groups, workflows** — six groups, per-office groups, Review and Light workflows, re-approval rule, review-by reminders live on staging | 1 | An office editor submits, a reviewer publishes; reminder email for a test page |
 | 25 | ✅ (Nov 14, D56: a hub in the menu, four resource pages beside it) **Resources** — `NewsPage.kind`, filters, article template, Downloads with `Document` snippets, Training catalogue, Q&A aggregation | 1 | All five resource pages from seed |
-| 26 | **Contact page and consent** — contact page with head-office channels; consent banner and Umami after consent | 1 | No cookie before consent; Umami event on a quote |
+| 26 | ✅ (Nov 14, D57: Umami only after Accept, choice in localStorage) **Contact page and consent** — contact page with head-office channels; consent banner and Umami after consent | 1 | No cookie before consent; Umami event on a quote |
 | 27 | **Editor guide** — `docs/editor-guide.md` with staging screenshots | launch | Sent to one office manager for a read |
 | 35 | **Admin docs for beginners** (Darya, Nov 14) — every admin process step by step in plain words, a staging screenshot per step, every publish error explained; T27 becomes its first page | launch | Every process has its page in `docs/admin-guide/`; Darya does one task from it alone |
 

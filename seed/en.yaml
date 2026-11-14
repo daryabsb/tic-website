@@ -786,3 +786,14 @@ resources:
     slug: "questions"
     title: "Questions and answers"
     intro: "Every question from every program and service page, in one searchable place. Each answer names the page it belongs to and the office that owns it."
+
+# Contact (T26, D57; design B-Contact). Channels come from the head office's page.
+contact:
+  slug: "contact"
+  title: "Contact"
+  intro: "One form for quotes and questions, routed to the office that handles your country and service. Or go straight to the office nearest you: every one lists its phone, WhatsApp or WeChat and its address."
+  form_heading: "Request a quote"
+  form_text: "Tell us the product, the quantity, where the goods are and when they will be ready. The form sends it to the office that handles your country and service."
+  button_label: "Request a quote"
+  offices_heading: "Our offices"
+  offices_text: "Each office opens its own page with the services and programs sold there and its channels."

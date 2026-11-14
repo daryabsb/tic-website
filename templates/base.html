@@ -1,4 +1,4 @@
-{% load i18n static wagtailcore_tags zeneon zeneon_seo %}<!doctype html>
+{% load i18n static wagtailcore_tags tic zeneon zeneon_seo %}<!doctype html>
 {% get_current_language as LANGUAGE_CODE %}{% get_current_language_bidi as LANGUAGE_BIDI %}
 <html lang="{{ LANGUAGE_CODE }}" dir="{{ LANGUAGE_BIDI|yesno:'rtl,ltr' }}">
 <head>
@@ -25,6 +25,7 @@
     {% block content %}{% endblock %}
   </main>
   {% block footer %}{% include "includes/footer.html" %}{% endblock %}
+  {% block consent %}{% privacy_url as privacy %}{% consent_banner privacy_url=privacy %}{% endblock %}
   {% block body_end %}{% endblock %}
 </body>
 </html>

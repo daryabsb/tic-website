@@ -165,3 +165,37 @@ def resources_tabs(page):
     from apps.resources.tabs import resource_pages
 
     return [(item, item.pk == page.pk) for item in resource_pages(page.locale)]
+
+
+EVENT_NAMES = {
+    "": "quote-sent",
+    "complaint": "complaint-sent",
+    "application": "application-sent",
+    "course": "course-registration-sent",
+}
+
+
+@register.simple_tag
+def request_event(submission):
+    """The Umami event of the sent page (master plan 11; T26, D57): its name by form and
+    the office and service group it went to. consent.js sends it after consent."""
+    from apps.services.intake import form_kind, routing_facts
+
+    facts = routing_facts(submission)
+    data = {"office": submission.routed_to or ""}
+    for key in ("service_group", "program"):
+        if facts.get(key):
+            data[key.replace("_", "-")] = facts[key]
+    return {"name": EVENT_NAMES[form_kind(submission.topic)], "data": data}
+
+
+@register.simple_tag
+def privacy_url():
+    """The live privacy policy page of the active language, for the consent banner."""
+    from apps.trust.models import ContentPage
+
+    home = _home()
+    if home is None:
+        return ""
+    page = ContentPage.objects.live().filter(locale=home.locale, slug="privacy").first()
+    return page.url if page else ""

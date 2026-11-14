@@ -2,7 +2,8 @@
 {% comment %}/<lang>/request/sent/ (T17, master plan 07 "What the visitor experiences"): the
 office that received the request, its hours, the code and a WhatsApp link with the code.
 The office comes from the routing rule (apps/services/intake.py). Never cached, never
-indexed.{% endcomment %}
+indexed. The hidden span is the Umami event (D57): consent.js sends it once Umami is
+loaded, so only after consent.{% endcomment %}
 {% block title %}{% translate "Request received" as title %}{% seo_title title=title suffix="TIC Quality Control" %}{% endblock %}
 {% block meta %}{% seo_head robots="noindex" %}{% endblock %}
 {% block content %}
@@ -11,8 +12,9 @@ indexed.{% endcomment %}
     <h1 class="h1 h1--page">{% translate "Request received" %}</h1>
   </div></div>
 </div>
-<section class="wrap sent" data-request-event="request_submit">
-  {% if submission %}{% request_office submission as office %}
+<section class="wrap sent">
+  {% if submission %}{% request_office submission as office %}{% request_event submission as event %}
+  <span hidden data-umami-track="{{ event.name }}"{% for key, value in event.data.items %} data-umami-data-{{ key }}="{{ value }}"{% endfor %}></span>
   <p class="lead">{% blocktranslate with name=submission.name %}Thank you, {{ name }}.{% endblocktranslate %}</p>
   <dl class="sent__facts">
     <div class="sent__fact"><dt class="lbl">{% translate "Your request code" %}</dt><dd class="sent__code"><bdi>{{ submission.code }}</bdi></dd></div>

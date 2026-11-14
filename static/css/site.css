@@ -684,3 +684,17 @@ a.chan:hover { border-color: var(--tic-ink); }
 .qa-grp { display: flex; flex-direction: column; gap: 12px; padding-bottom: 32px; }
 .qa-grp + .qa-grp { padding-top: 32px; border-top: 1px solid var(--tic-hairline); }
 .qa .rich { margin-bottom: 10px; color: var(--tic-charcoal); }
+
+/* ---------- contact and consent (T26; B-Contact; D57) ---------- */
+.contact__chans { gap: 12px; }
+.contact__chans .chan { flex: 0 0 auto; }
+.contact__offices { padding-block: 56px 72px; }
+.contact__offices .office-list { padding-block: 0; }
+.consent { position: fixed; inset-inline: 16px; bottom: 16px; z-index: 50; max-width: 720px; margin-inline: auto; background: var(--tic-white); border: 2px solid var(--tic-ink); border-top: 3px solid var(--tic-red); padding: 18px 20px; display: flex; flex-wrap: wrap; gap: 12px 24px; align-items: center; }
+.consent[hidden] { display: none; }
+.consent__text { flex: 1 1 360px; margin: 0; font-size: 15px; color: var(--tic-charcoal); }
+.consent__actions { display: flex; gap: 8px; }
+.consent__btn { min-height: 44px; padding: 0 20px; border: 2px solid var(--tic-ink); font-family: var(--font-display); font-weight: 600; font-size: 14px; letter-spacing: .08em; text-transform: uppercase; cursor: pointer; border-radius: 0; }
+.consent__btn--yes { background: var(--tic-ink); color: var(--tic-white); }
+.consent__btn--no { background: var(--tic-white); color: var(--tic-ink); }
+.foot__consent { color: inherit; }
