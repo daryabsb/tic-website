@@ -1,0 +1,12 @@
+# Mail retry and orphan upload purge every 10 minutes (master plan 13; D55). Also
+# sends what a one-off command queued but could not send before it ended (the
+# review-by reminders). Installed by scripts/deploy-staging-remote.sh on stms-data.
+[Unit]
+Description=TIC staging mail retry
+After=docker.service
+Requires=docker.service
+
+[Service]
+Type=oneshot
+User=darya
+ExecStart=/usr/bin/docker exec tic-staging-web-1 python manage.py retry_deliveries
