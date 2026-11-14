@@ -294,6 +294,29 @@ class ProgramPage(ScriptNormalisationMixin, ReviewByMixin, _HeaderFields, Page):
     class Meta:
         verbose_name = _("program page")
 
+    def review_recipients(self) -> list[str]:
+        """The review-by reminder goes to the owning office's editors and reviewers
+        (master plan 09; T24, D54); without them, the core default (owner, else the
+        contact address)."""
+        from django.contrib.auth import get_user_model
+
+        from apps.offices.access import group_name, office_of, reviewer_group_name
+
+        office = office_of(self)
+        if office is not None:
+            names = (group_name(office), reviewer_group_name(office))
+            emails = (
+                get_user_model()
+                .objects.filter(is_active=True, groups__name__in=names)
+                .exclude(email="")
+                .order_by("email")
+                .values_list("email", flat=True)
+                .distinct()
+            )
+            if emails:
+                return list(emails)
+        return super().review_recipients()
+
     @property
     def office_label(self) -> str:
         if self.owning_office_id and self.owning_office.live:

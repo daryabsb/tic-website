@@ -33,6 +33,7 @@ from zeneon_cms.core.locales import ensure_locales
 from zeneon_cms.core.models import SiteSettings
 from zeneon_cms.requests.models import RequestSchema, RoutingCondition, RoutingRule
 
+from apps.backoffice.roles import ensure_roles
 from apps.careers.models import CareersPage
 from apps.industries.models import IndustryIndexPage, IndustryPage
 from apps.news.models import NewsIndexPage, NewsPage
@@ -83,6 +84,7 @@ class Command(BaseCommand):
                 self.seed_language(code)
             self.seed_requests()
             self.seed_redirects()
+            self.changes += ensure_roles()  # groups and workflows (T24, D54)
         self.stdout.write(f"seed_site: {self.changes} change(s)")
 
     # -- helpers --------------------------------------------------------------------

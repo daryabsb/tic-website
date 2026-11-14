@@ -1,0 +1,11 @@
+# Daily 08:00 Dubai = 04:00 UTC (the VM runs UTC). Master plan 13.
+[Unit]
+Description=Daily TIC staging review-by reminders
+
+[Timer]
+OnCalendar=*-*-* 04:00:00 UTC
+Persistent=true
+RandomizedDelaySec=5min
+
+[Install]
+WantedBy=timers.target
