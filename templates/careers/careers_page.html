@@ -1,0 +1,24 @@
+{% extends "base.html" %}{% load i18n tic wagtailimages_tags %}
+{% comment %}Careers (design B-Careers; proposal 01 §5.11; T23): the open roles (closed ones are not shown), what we look for, and the apply button to the request form with this page as the topic; a role's "Apply" link puts the role in the form (?q_role=; D53).{% endcomment %}
+{% block body_class %}page-careers{% endblock %}
+{% block content %}
+{% include "includes/page_head.html" with intro=page.intro image=page.header_image image_alt=page.header_image_alt caption=page.header_caption %}
+{% request_url page as req_url %}
+<div class="wrap row form-split">
+  <div class="stack form-split__main">
+    <div><h2 class="h2">{{ page.openings_heading }}</h2><div class="rule"></div></div>
+    {% if roles %}<div class="stack jobs">{% for role in roles %}
+      <a class="job" href="{{ req_url }}&amp;q_role={{ role.answer|urlencode }}"><b>{{ role.title }}</b><span>{% if role.office %}{{ role.office.title }}{% else %}{% translate "Any office" %}{% endif %}</span><span>{{ role.job_type }}{% if role.closing %} · {% blocktranslate with date=role.closing|date:"j M Y" %}until {{ date }}{% endblocktranslate %}{% endif %}</span><span class="tri">{% translate "Apply" %}</span></a>{% endfor %}
+    </div>{% elif page.no_openings_text %}<p>{{ page.no_openings_text }}</p>{% endif %}
+    {% if page.openings_note %}<p class="note">{{ page.openings_note }}</p>{% endif %}
+    {% if look_for_lines %}<div><h2 class="h2">{{ page.look_for_heading }}</h2><div class="rule"></div></div>
+    <ul class="stack dia look-for">{% for line in look_for_lines %}<li>{{ line }}</li>{% endfor %}</ul>{% endif %}
+    {% if page.photo or page.photo_caption %}<div class="photo careers__photo">{% if page.photo %}{% image page.photo width-1200 as photo %}<img src="{{ photo.url }}" alt="{{ page.photo_alt }}" width="{{ photo.width }}" height="{{ photo.height }}" loading="lazy">{% endif %}{% if page.photo_caption %}<div class="cap">{{ page.photo_caption }}</div>{% endif %}</div>{% endif %}
+  </div>
+  <div id="form" class="stack form-split__side">
+    <div><h2 class="h2">{{ page.apply_heading }}</h2><div class="rule"></div></div>
+    {% if page.apply_text %}<p>{{ page.apply_text }}</p>{% endif %}
+    <div class="row part-actions"><a class="btn" href="{{ req_url }}">{{ page.button_label }}</a>{% if page.privacy_note %}<span class="meta">{{ page.privacy_note }}</span>{% endif %}</div>
+  </div>
+</div>
+{% endblock %}

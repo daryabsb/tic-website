@@ -1,14 +1,15 @@
-{% extends "base.html" %}{% load i18n zeneon_seo %}
+{% extends "base.html" %}{% load i18n tic zeneon_seo %}
 {% comment %}/<lang>/request/ (design B-Contact.dc.html "Request a quote"; T17, D41). The core
 flow (zeneon/requests/flow.html and includes/) renders inside; its classes are styled in
-site.css. Never cached, never indexed.{% endcomment %}
-{% block title %}{% translate "Request a quote" as title %}{% seo_title title=title suffix="TIC Quality Control" %}{% endblock %}
+site.css. Never cached, never indexed. The heading names the form: a quote, or a complaint, an
+application, a course registration when the form was opened from that page (T23).{% endcomment %}
+{% block title %}{% request_head flow as head %}{% seo_title title=head.title suffix="TIC Quality Control" %}{% endblock %}
 {% block meta %}{% seo_head robots="noindex" %}{% endblock %}
-{% block content %}
+{% block content %}{% request_head flow as head %}
 <div class="page-head page-head--band">
   <div class="wrap page-head__wrap"><div class="page-head__plate">
-    <h1 class="h1 h1--page">{% translate "Request a quote" %}</h1>
-    <p class="lead">{% translate "One form for quotes and questions. We send it to the office that handles your country and service." %}</p>
+    <h1 class="h1 h1--page">{{ head.title }}</h1>
+    <p class="lead">{{ head.lead }}</p>
   </div></div>
 </div>
 <section class="wrap request-page">

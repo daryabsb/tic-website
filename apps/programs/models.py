@@ -326,13 +326,11 @@ class ProgramPage(ScriptNormalisationMixin, ReviewByMixin, _HeaderFields, Page):
         context["others"] = (
             ProgramPage.objects.sibling_of(self, inclusive=False).live().public().order_by("path")
         )
-        home = self.get_ancestors().filter(depth=2).first()
-        complaints = (
-            Page.objects.child_of(home).live().public().filter(slug="complaints").first()
-            if home
-            else None
+        from apps.trust.models import ComplaintsPage
+
+        context["complaints_page"] = (
+            ComplaintsPage.objects.live().public().filter(locale=self.locale).first()
         )
-        context["complaints_page"] = complaints
         office = self.owning_office if self.owning_office_id and self.owning_office.live else None
         context["office_href"] = office.url if office else ""
         context["talk_label"] = self.talk_label if office else ""

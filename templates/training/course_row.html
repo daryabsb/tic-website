@@ -1,0 +1,15 @@
+{% load i18n tic wagtailcore_tags %}{% request_url course as req_url %}{% with dates=course.next_dates %}
+<div class="course">
+  <div class="stack course__t"><span class="eyebrow">{{ course.get_kind_display }}</span><b><a href="{% pageurl course %}">{{ course.title }}</a></b>{% if course.summary %}<span class="course__sum">{{ course.summary }}</span>{% endif %}</div>
+  <dl class="course__f">
+    {% if course.level %}<div><dt>{% translate "Level" %}</dt><dd>{{ course.level }}</dd></div>{% endif %}
+    {% if course.duration %}<div><dt>{% translate "Duration" %}</dt><dd>{{ course.duration }}</dd></div>{% endif %}
+    {% if course.format_text %}<div><dt>{% translate "Format" %}</dt><dd>{{ course.format_text }}</dd></div>{% endif %}
+    <div><dt>{% translate "Next dates" %}</dt><dd>{% for row in dates|slice:":2" %}{% if not forloop.first %} · {% endif %}{{ row.start|date:"j M Y" }}{% empty %}{% translate "On request" %}{% endfor %}</dd></div>
+    <div><dt>{% translate "Price" %}</dt><dd>{{ course.currency }} {{ course.price|floatformat:"-2g" }}{% if course.tax_note %}, {{ course.tax_note }}{% endif %}</dd></div>
+    <div><dt>{% translate "Certificate" %}</dt><dd>{{ course.certificate_text }}, {{ course.certificate_issuer }}</dd></div>
+    {% if course.trainer %}<div><dt>{% translate "Trainer" %}</dt><dd>{{ course.trainer }}</dd></div>{% endif %}
+    {% if course.prerequisites %}<div><dt>{% translate "Prerequisites" %}</dt><dd>{{ course.prerequisites }}</dd></div>{% endif %}
+    <div class="course__act"><a class="btn btn--sm" href="{{ req_url }}">{% translate "Register" %}</a></div>
+  </dl>
+</div>{% endwith %}

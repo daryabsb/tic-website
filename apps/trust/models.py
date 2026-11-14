@@ -1,6 +1,6 @@
-"""Trust pages (master plan 03; T22): the ``Accreditation`` snippet, the Accreditations
-page and ``ContentPage`` for the policy pages (Impartiality, Subcontracting, Certificate
-and logo use, Privacy, Terms).
+"""Trust pages (master plan 03; T22, T23): the ``Accreditation`` snippet, the
+Accreditations page, ``ContentPage`` for the policy pages (Impartiality, Subcontracting,
+Certificate and logo use, Privacy, Terms) and ``ComplaintsPage``.
 
 The rule of proposal 01 §5.6: a mark appears only with its number and a link to the
 register that issued it. The table shows every ``is_public`` row; the footer and the
@@ -346,3 +346,102 @@ class ContentPage(ScriptNormalisationMixin, Page):
 
     class Meta:
         verbose_name = _("policy page")
+
+
+class StepBlock(blocks.StructBlock):
+    title = blocks.CharBlock(label=_("title"), max_length=80)
+    text = blocks.TextBlock(label=_("text"), max_length=400)
+    timing = blocks.CharBlock(
+        label=_("time"),
+        max_length=120,
+        required=False,
+        help_text=_("For example: Within [n] working days. Blank shows nothing."),
+    )
+
+    class Meta:
+        icon = "list-ol"
+        label = _("Step")
+
+
+class ComplaintsPage(ScriptNormalisationMixin, Page):
+    """Complaints and appeals (B-Complaints; proposal 01 §5.6): the two definitions, the
+    steps with their times, and the button to the request form with this page as the
+    topic (its RequestSchema is "complaint", seeded; D53). Routed by ``form=complaint``
+    to the Quality Manager rule."""
+
+    intro = models.TextField(_("intro"), max_length=600, blank=True)
+    complaint_title = models.CharField(_("complaint: heading"), max_length=80, blank=True)
+    complaint_text = models.TextField(_("complaint: text"), max_length=600, blank=True)
+    appeal_title = models.CharField(_("appeal: heading"), max_length=80, blank=True)
+    appeal_text = models.TextField(_("appeal: text"), max_length=600, blank=True)
+    steps_heading = models.CharField(_("steps heading"), max_length=80, default="What happens next")
+    steps = StreamField([("step", StepBlock())], blank=True, verbose_name=_("steps"))
+    steps_note = models.TextField(_("note under the steps"), max_length=400, blank=True)
+    form_heading = models.CharField(
+        _("form heading"), max_length=80, default="Submit a complaint or appeal"
+    )
+    form_text = models.TextField(_("form text"), max_length=600, blank=True)
+    button_label = models.CharField(
+        _("button label"), max_length=40, default="Submit a complaint or appeal"
+    )
+    other_ways = models.TextField(
+        _("other ways to reach us"),
+        max_length=400,
+        blank=True,
+        help_text=_("For example: Or write to [complaints email], or post to the head office."),
+    )
+
+    parent_page_types = ["pages.AboutPage"]
+    subpage_types = []
+    max_count_per_parent = 1
+
+    override_translatable_fields = _translatable(
+        "intro",
+        "complaint_title",
+        "complaint_text",
+        "appeal_title",
+        "appeal_text",
+        "steps_heading",
+        "steps",
+        "steps_note",
+        "form_heading",
+        "form_text",
+        "button_label",
+        "other_ways",
+    )
+
+    content_panels = [
+        *Page.content_panels,
+        FieldPanel("intro"),
+        MultiFieldPanel(
+            [
+                FieldPanel("complaint_title"),
+                FieldPanel("complaint_text"),
+                FieldPanel("appeal_title"),
+                FieldPanel("appeal_text"),
+            ],
+            heading=_("The two definitions"),
+        ),
+        MultiFieldPanel(
+            [FieldPanel("steps_heading"), FieldPanel("steps"), FieldPanel("steps_note")],
+            heading=_("Steps"),
+        ),
+        MultiFieldPanel(
+            [
+                FieldPanel("form_heading"),
+                FieldPanel("form_text"),
+                FieldPanel("button_label"),
+                FieldPanel("other_ways"),
+            ],
+            heading=_("Form"),
+        ),
+    ]
+    search_fields = [
+        *Page.search_fields,
+        index.SearchField("intro"),
+        index.SearchField("complaint_text"),
+        index.SearchField("appeal_text"),
+    ]
+
+    class Meta:
+        verbose_name = _("complaints and appeals page")

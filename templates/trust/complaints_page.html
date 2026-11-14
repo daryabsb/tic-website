@@ -1,0 +1,24 @@
+{% extends "base.html" %}{% load i18n tic %}
+{% comment %}Complaints and appeals (design B-Complaints; proposal 01 §5.6; T23): the two definitions, the steps with their times, and the button to the request form with this page as the topic (D53: the core form, not a second one on the page).{% endcomment %}
+{% block body_class %}page-complaints{% endblock %}
+{% block content %}
+{% include "includes/page_head.html" with intro=page.intro %}
+{% if page.complaint_title or page.appeal_title %}<div class="wrap row defs">
+  {% if page.complaint_title %}<div class="box"><span class="eyebrow">{% translate "Complaint" %}</span><b>{{ page.complaint_title }}</b><p>{{ page.complaint_text }}</p></div>{% endif %}
+  {% if page.appeal_title %}<div class="box"><span class="eyebrow">{% translate "Appeal" %}</span><b>{{ page.appeal_title }}</b><p>{{ page.appeal_text }}</p></div>{% endif %}
+</div>{% endif %}
+<div class="wrap row form-split">
+  <div class="stack form-split__main">
+    <div><h2 class="h2">{{ page.steps_heading }}</h2><div class="rule"></div></div>
+    <ol class="stack steps">{% for block in page.steps %}
+      <li class="step"><div class="step__n" aria-hidden="true">{{ forloop.counter }}</div><div><b>{{ block.value.title }}</b><span>{{ block.value.text }}</span>{% if block.value.timing %}<em>{{ block.value.timing }}</em>{% endif %}</div></li>{% endfor %}
+    </ol>
+    {% if page.steps_note %}<p class="note">{{ page.steps_note }}</p>{% endif %}
+  </div>
+  <div id="form" class="stack form-split__side">
+    <div><h2 class="h2">{{ page.form_heading }}</h2><div class="rule"></div></div>
+    {% if page.form_text %}<p>{{ page.form_text }}</p>{% endif %}
+    {% request_url page as req_url %}<div class="row part-actions"><a class="btn" href="{{ req_url }}">{{ page.button_label }}</a>{% if page.other_ways %}<span class="meta">{{ page.other_ways }}</span>{% endif %}</div>
+  </div>
+</div>
+{% endblock %}
