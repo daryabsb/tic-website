@@ -1,0 +1,10 @@
+{% extends "base.html" %}{% load i18n wagtailcore_tags %}
+{% comment %}Resources hub (T25, D56): the header's "Resources" item; one card per resource page.{% endcomment %}
+{% block body_class %}page-resources{% endblock %}
+{% block content %}
+{% include "includes/page_head.html" with intro=page.intro %}
+<div class="wrap stack res-wrap">
+  {% include "resources/tabs.html" %}
+  <div class="cards">{% for card in cards %}<a class="res-card" href="{% pageurl card %}"><b>{{ card.title }}</b>{% if card.intro %}<span>{{ card.intro }}</span>{% endif %}<span class="tri">{% translate "Open" %}</span></a>{% endfor %}</div>
+</div>
+{% endblock %}

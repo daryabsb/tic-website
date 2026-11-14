@@ -118,31 +118,19 @@ def document_results(query: str) -> list[Result]:
 
 
 def question_results(query: str, locale) -> list[Result]:
-    """Questions of the live pages' ``qa`` parts that hold every word searched for."""
-    words = query.lower().split()
+    """Questions of the live program and service pages that hold every word searched
+    for (``apps.resources.qa``, shared with the Q&A page)."""
+    from apps.resources.qa import question_groups
+
     results = []
-    for model in question_sources():
-        pages = model.objects.live().public().filter(locale=locale)
-        for page in pages:
-            for block in page.parts:
-                if block.block_type != "qa":
-                    continue
-                for item in block.value["questions"]:
-                    question = item["question"] or ""
-                    answer = strip_tags(str(item["answer"] or ""))
-                    haystack = f"{question} {answer}".lower()
-                    if question and all(word in haystack for word in words):
-                        meta = f"{_('Questions and answers')} · {page.title}"
-                        results.append(
-                            Result("questions", question, f"{page.url}#qa", _snippet(answer), meta)
-                        )
-                        if len(results) >= LIMIT:
-                            return results
+    for group in question_groups(locale, query):
+        for item in group.questions:
+            meta = f"{_('Questions and answers')} · {group.page.title}"
+            results.append(
+                Result(
+                    "questions", item.question, f"{group.page.url}#qa", _snippet(item.text), meta
+                )
+            )
+            if len(results) >= LIMIT:
+                return results
     return results
-
-
-def question_sources():
-    """Page types with a ``qa`` part in ``parts``. ProgramPage joins with T18."""
-    from apps.services.models import ServicePage
-
-    return [ServicePage]

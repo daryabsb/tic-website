@@ -96,6 +96,9 @@ class HomePage(ScriptNormalisationMixin, Page):
         "offices.OfficeIndexPage",
         "verify.VerifyPage",
         "training.TrainingIndexPage",
+        "resources.ResourcesPage",
+        "resources.DownloadsPage",
+        "resources.QAPage",
     ]
 
     override_translatable_fields = _translatable(

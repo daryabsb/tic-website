@@ -1,10 +1,26 @@
-{% extends "base.html" %}{% load i18n wagtailcore_tags %}
-{% comment %}A news page (T18 minimum; T25 takes the full design B-Article.dc.html).{% endcomment %}
+{% extends "base.html" %}{% load i18n wagtailcore_tags wagtailimages_tags zeneon %}
+{% comment %}An article (design B-Article; T25, D56): kind and program eyebrow, title, standfirst, byline with dates and read time; contents from the H2 headings, the author, the related program; the text; the fixed general-information note; three related articles.{% endcomment %}
 {% block body_class %}page-article{% endblock %}
 {% block content %}
-{% include "includes/page_head.html" with intro=page.standfirst %}
-<div class="wrap svc-body article">
-  <p class="meta">{{ page.get_kind_display }}{% if page.program_label %} · {% if page.program.live %}<a href="{% pageurl page.program %}">{{ page.program_label }}</a>{% else %}{{ page.program_label }}{% endif %}{% endif %} · {{ page.date|date:"j F Y" }}{% if page.signed_by %} · {{ page.signed_by }}{% endif %}</p>
-  {% if page.body %}<div class="rich">{{ page.body|richtext }}</div>{% endif %}
+{% breadcrumb_trail page as crumbs %}
+<div class="art-head"><div class="wrap stack art-head__in">
+  {% if crumbs %}<nav class="crumb" aria-label="{% translate 'You are here' %}">{% for crumb in crumbs %}{% if not forloop.first %}<span aria-hidden="true">›</span>{% endif %}{% if crumb.url %}<a href="{{ crumb.url }}">{{ crumb.title }}</a>{% else %}<span>{{ crumb.title }}</span>{% endif %}{% endfor %}</nav>{% endif %}
+  <span class="eyebrow">{{ page.get_kind_display }}{% if page.program_label %} · {{ page.program_label }}{% endif %}</span>
+  <h1 class="h1 h1--page">{{ page.title }}</h1>
+  {% if page.standfirst %}<p class="lead">{{ page.standfirst }}</p>{% endif %}
+  <div class="row meta art-head__meta">{% if page.signed_by %}<span>{% translate "By" %} <b>{{ page.signed_by }}</b></span>{% endif %}<span>{% translate "Published" %} {{ page.date|date:"j M Y" }}</span>{% if page.updated %}<span>{% translate "Updated" %} {{ page.updated|date:"j M Y" }}</span>{% endif %}<span>{% blocktranslate count minutes=page.read_minutes %}{{ minutes }} min read{% plural %}{{ minutes }} min read{% endblocktranslate %}</span></div>
+</div></div>
+<div class="wrap two-col art">
+  <aside class="two-col__side">
+    {% with toc=page.contents %}{% if toc %}<nav aria-label="{% translate 'Contents' %}"><span class="eyebrow toc__label">{% translate "Contents" %}</span><div class="toc">{% for anchor, title in toc %}<a href="#{{ anchor }}"><span>{{ forloop.counter|stringformat:"02d" }}</span>{{ title }}</a>{% endfor %}</div></nav>{% endif %}{% endwith %}
+    {% if page.author and page.author.agreed_to_be_named %}<div class="row art-author">{% if page.author.public_photo %}{% image page.author.public_photo fill-160x160 class="art-author__photo" %}{% endif %}<div class="stack art-author__tx"><b>{{ page.author.public_name }}</b>{% if page.author.title %}<span>{{ page.author.title }}</span>{% endif %}{% if page.office and page.office.live %}<a class="tri" href="{% pageurl page.office %}">{% translate "Contact the office" %}</a>{% endif %}</div></div>
+    {% elif page.office and page.office.live %}<a class="tri" href="{% pageurl page.office %}">{% translate "Contact the office" %}</a>{% endif %}
+    {% if page.program and page.program.live %}<div class="stack art-links"><span class="eyebrow">{% translate "Related program" %}</span><a class="tri" href="{% pageurl page.program %}">{{ page.program.title }}</a></div>{% endif %}
+  </aside>
+  <div class="two-col__main stack">
+    {% if page.body %}<div class="rich art__body">{{ page.body_html }}</div>{% endif %}
+    <p class="note">{% translate "This article is general information on the date shown; the regulator’s own publications take precedence." %}</p>
+  </div>
 </div>
+{% with related=page.related %}{% if related %}<div class="section--light art-rel"><div class="wrap stack"><span class="eyebrow">{% translate "Related articles" %}</span><div class="row art-rel__row">{% for item in related %}<a class="rel" href="{% pageurl item %}"><div class="photo"></div><b>{{ item.title }}</b><span>{{ item.date|date:"j M Y" }}{% if item.signed_by %} · {{ item.signed_by }}{% endif %}</span></a>{% endfor %}</div></div></div>{% endif %}{% endwith %}
 {% endblock %}

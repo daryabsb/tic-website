@@ -1,0 +1,2 @@
+{% load i18n wagtailcore_tags tic %}{% resources_tabs page as rtabs %}{% comment %}The tab strip of the resource pages (T25, D56): one tab per live page, the current one on.{% endcomment %}
+{% if rtabs|length > 1 %}<nav class="row tabs res-tabs" aria-label="{% translate 'Resources' %}">{% for item, on in rtabs %}<a class="tab{% if on %} on{% endif %}" href="{% pageurl item %}"{% if on %} aria-current="page"{% endif %}>{{ item.title }}</a>{% endfor %}</nav>{% endif %}
