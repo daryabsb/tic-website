@@ -1,9 +1,21 @@
 {% extends "base.html" %}{% load i18n wagtailcore_tags %}
-{% comment %}News index (T18 minimum; T25 adds the kind and office filters, design B-News.dc.html).{% endcomment %}
+{% comment %}News and insights (design B-News; T25, D56): kind tabs as links, the program and office filters as a plain GET form, the featured article (only without a filter), cards, 12 per page.{% endcomment %}
 {% block body_class %}page-news{% endblock %}
 {% block content %}
 {% include "includes/page_head.html" with intro=page.intro %}
-<div class="wrap svc-body">
-  {% for item in articles %}<a class="upd" href="{% pageurl item %}"><span class="upd__d">{{ item.date|date:"j M Y" }}</span><span class="eyebrow">{{ item.get_kind_display }}{% if item.program_label %} · {{ item.program_label }}{% endif %}</span><span class="upd__t"><b>{{ item.title }}</b>{% if item.standfirst %}<span>{{ item.standfirst }}</span>{% endif %}</span></a>{% empty %}<p>{% translate "Nothing published yet." %}</p>{% endfor %}
+<div class="wrap stack res-wrap">
+  {% include "resources/tabs.html" %}
+  <div class="row news-bar">
+    <nav class="row tabs" aria-label="{% translate 'Kind' %}">{% for key, label in tabs %}<a class="tab{% if key == chosen.kind %} on{% endif %}" href="{% pageurl page %}{% if key %}?kind={{ key }}{% endif %}"{% if key == chosen.kind %} aria-current="page"{% endif %}>{{ label }}</a>{% endfor %}{% if updates_page %}<a class="tab" href="{% pageurl updates_page %}">{{ updates_page.title }}</a>{% endif %}</nav>
+    <form class="row news-filter" method="get" action="{% pageurl page %}">{% if chosen.kind %}<input type="hidden" name="kind" value="{{ chosen.kind }}">{% endif %}
+      <label class="sr-only" for="nf-program">{% translate "Program" %}</label><select id="nf-program" class="sel" name="program"><option value="">{% translate "All programs" %}</option>{% for item in programs %}<option value="{{ item.pk }}"{% if item.pk|stringformat:"d" == chosen.program %} selected{% endif %}>{{ item.title }}</option>{% endfor %}</select>
+      <label class="sr-only" for="nf-office">{% translate "Office" %}</label><select id="nf-office" class="sel" name="office"><option value="">{% translate "All offices" %}</option>{% for item in offices %}<option value="{{ item.pk }}"{% if item.pk|stringformat:"d" == chosen.office %} selected{% endif %}>{{ item.title }}</option>{% endfor %}</select>
+      <button class="btn btn--dark btn--sm" type="submit">{% translate "Show" %}</button>
+    </form>
+  </div>
+  {% if featured %}<a class="photo news-feature" href="{% pageurl featured %}"><div class="news-feature__plate"><span class="eyebrow">{{ featured.get_kind_display }}{% if featured.program_label %} · {{ featured.program_label }}{% endif %}</span><b class="news-feature__title">{{ featured.title }}</b><span class="meta">{{ featured.date|date:"j M Y" }}{% if featured.signed_by %} · {{ featured.signed_by }}{% endif %} · {% blocktranslate count minutes=featured.read_minutes %}{{ minutes }} min read{% plural %}{{ minutes }} min read{% endblocktranslate %}</span></div><div class="cap">{% translate "Featured" %}</div></a>{% endif %}
+  {% if articles %}<div class="row news-cards">{% for item in articles %}<a class="news-card" href="{% pageurl item %}"><div class="photo"><div class="cap">{{ item.get_kind_display }}</div></div><div class="news-card__body"><span class="eyebrow">{{ item.get_kind_display }}{% if item.program_label %} · {{ item.program_label }}{% endif %}</span><b class="news-card__title">{{ item.title }}</b>{% if item.standfirst %}<p>{{ item.standfirst }}</p>{% endif %}<span class="meta">{{ item.date|date:"j M Y" }}{% if item.signed_by %} · {{ item.signed_by }}{% endif %}</span></div></a>{% endfor %}</div>
+  {% if articles.paginator.num_pages > 1 %}<nav class="row pg" aria-label="{% translate 'Pages' %}">{% for number in articles.paginator.page_range %}<a{% if number == articles.number %} class="on" aria-current="page"{% endif %} href="?page={{ number }}{% if filter_query %}&amp;{{ filter_query }}{% endif %}">{{ number }}</a>{% endfor %}{% if articles.has_next %}<a class="pg__next" href="?page={{ articles.next_page_number }}{% if filter_query %}&amp;{{ filter_query }}{% endif %}">{% translate "Next" %}</a>{% endif %}</nav>{% endif %}
+  {% elif not featured %}<p>{% translate "Nothing published yet." %}</p>{% endif %}
 </div>
 {% endblock %}

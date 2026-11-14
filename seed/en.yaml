@@ -760,3 +760,29 @@ training:
     - {slug: "iso-22000-internal-auditor", title: "ISO 22000 internal auditor", kind: "internal_auditor", standard: "ISO 22000"}
     - {slug: "iso-45001-internal-auditor", title: "ISO 45001 internal auditor", kind: "internal_auditor", standard: "ISO 45001"}
     - {slug: "haccp-internal-auditor", title: "HACCP internal auditor", kind: "internal_auditor", standard: "HACCP"}
+
+# Resources (T25, D56; designs B-News, B-Downloads, B-QA). The hub is the header's
+# "Resources" item; the downloads are the files and links already in the seed (T22)
+# and the accreditation rows. A version, date or owner nobody has given stays empty
+# (shown as a dash).
+resources:
+  hub:
+    slug: "resources"
+    title: "Resources"
+    intro: "News and insights, the downloads library, training courses and every question our pages answer."
+  downloads:
+    slug: "downloads"
+    title: "Downloads library"
+    intro: "Every form, product list, fee structure, policy and brochure in one place, each with a version, a date and an owner, so there is only ever one current copy of anything."
+    note: "Request forms are completed online on the program and service pages, not downloaded. Superseded versions are removed; the version number and date on each file are the only ones in circulation."
+    rows:
+      - {title: "ANAB accreditation certificate and scope", kind: "certificate", link: "https://search.anab.org/public/organization_files/TIC-Quality-Control-LLC-Cert-and-Scope-File-10-16-2026_1792169068.pdf", topic_name: "Inspection", version: "AI-3314", date: "2026-10-16", owner: "Quality Manager", languages: "en"}
+      - {title: "GOEIC register entry", kind: "register", link: "https://www.goeic.gov.eg/ar/company-guide/registered-inspection-and-audit-companies/73", topic_name: "Egypt CoI", version: "Record 73", owner: "Cairo", languages: "ar"}
+      - {title: "Impartiality policy", kind: "policy", document: "TIC-IMS-IMP-A-25-10 Impartiality Policy", version: "TIC-IMS-IMP-A-25-10", owner: "Quality Manager", languages: "en"}
+      - {title: "Impartiality, confidentiality and conflict of interest policy (India)", kind: "policy", document: "TIC-PY-02 Impartiality, Confidentiality and Conflict of Interest Policy", version: "TIC-PY-02", owner: "Quality Manager", languages: "en"}
+      - {title: "Control of the use of the certification mark", kind: "policy", document: "TIC-UCM-01 Control the Use of Certification Mark", version: "TIC-UCM-01", owner: "Quality Manager", languages: "en"}
+      - {title: "Approved subcontractors (inspection and testing)", kind: "policy", document: "Approved Subcontractors (inspection and testing)", owner: "Quality Manager", languages: "en"}
+  qa:
+    slug: "questions"
+    title: "Questions and answers"
+    intro: "Every question from every program and service page, in one searchable place. Each answer names the page it belongs to and the office that owns it."

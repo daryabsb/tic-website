@@ -4,6 +4,7 @@
 {% block content %}
 {% include "includes/page_head.html" with intro=page.intro %}
 <div class="wrap stack courses-wrap">
+  {% include "resources/tabs.html" %}
   <nav class="row tabs" aria-label="{% translate 'Show' %}">{% for key, label in filters %}<a class="tab{% if key == show %} on{% endif %}" href="{% pageurl page %}{% if key %}?show={{ key }}{% endif %}"{% if key == show %} aria-current="page"{% endif %}>{{ label }}</a>{% endfor %}</nav>
   {% if courses %}<div class="stack courses">{% for course in courses %}{% include "training/course_row.html" with course=course %}{% endfor %}</div>
   {% else %}<p>{{ page.empty_text|default:_("No course matches this choice.") }}</p>{% endif %}

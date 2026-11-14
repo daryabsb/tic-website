@@ -157,3 +157,11 @@ def public_marks():
     from apps.trust.models import Accreditation
 
     return list(Accreditation.objects.marks())
+
+
+@register.simple_tag
+def resources_tabs(page):
+    """The resource pages of the page's language for the tab strip (T25, D56)."""
+    from apps.resources.tabs import resource_pages
+
+    return [(item, item.pk == page.pk) for item in resource_pages(page.locale)]

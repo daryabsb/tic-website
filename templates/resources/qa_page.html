@@ -1,0 +1,18 @@
+{% extends "base.html" %}{% load i18n wagtailcore_tags %}
+{% comment %}Questions and answers (design B-QA; T25, D56): every question of the live program and service pages, one group per page with its owner; a plain GET search; the first answer open.{% endcomment %}
+{% block body_class %}page-qa{% endblock %}
+{% block content %}
+{% include "includes/page_head.html" with intro=page.intro %}
+<div class="wrap stack res-wrap">
+  {% include "resources/tabs.html" %}
+  <form class="row qa-search" method="get" action="{% pageurl page %}" role="search"><label class="sr-only" for="qa-q">{% translate "Search questions" %}</label><input id="qa-q" class="inp" type="search" name="q" value="{{ q }}" maxlength="80" placeholder="{% translate 'Search questions, e.g. “Arabic label”' %}"><button class="btn btn--dark" type="submit">{% translate "Search" %}</button></form>
+  {% if groups %}<div class="two-col">
+    <nav class="two-col__side" aria-label="{% translate 'By topic' %}"><span class="eyebrow toc__label">{% translate "By topic" %}</span><div class="toc">{% for group in groups %}<a href="#{{ group.anchor }}"><span>{{ group.questions|length }}</span>{{ group.page.title }}</a>{% endfor %}</div></nav>
+    <div class="two-col__main">{% for group in groups %}<section id="{{ group.anchor }}" class="qa-grp"><h2 class="h2 h2--sm">{{ group.page.title }}{% if group.owner %} <span class="muted">· {{ group.owner }}</span>{% endif %}</h2>
+      <div>{% for item in group.questions %}<details class="qa"{% if forloop.first and forloop.parentloop.first %} open{% endif %}><summary>{{ item.question }}</summary><div class="rich">{{ item.answer }}</div><p><a class="tri" href="{% pageurl group.page %}#qa">{% translate "Open the page" %}</a></p></details>{% endfor %}</div>
+    </section>{% endfor %}</div>
+  </div>
+  {% elif q %}<p>{% blocktranslate %}No question holds “{{ q }}”.{% endblocktranslate %}</p>
+  {% else %}<p>{% translate "No question is published yet." %}</p>{% endif %}
+</div>
+{% endblock %}

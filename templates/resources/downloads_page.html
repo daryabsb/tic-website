@@ -1,0 +1,26 @@
+{% extends "base.html" %}{% load i18n wagtailcore_tags %}
+{% comment %}Downloads library (design B-Downloads; T25, D56): filters as a plain GET form, one row per Download snippet with its type, program or service, version, date, owner and languages.{% endcomment %}
+{% block body_class %}page-downloads{% endblock %}
+{% block content %}
+{% include "includes/page_head.html" with intro=page.intro %}
+<div class="wrap stack res-wrap">
+  {% include "resources/tabs.html" %}
+  <div class="two-col">
+    <form class="two-col__side dl-filter" method="get" action="{% pageurl page %}" role="search">
+      <label class="field"><span class="lbl">{% translate "Search" %}</span><input class="inp" type="search" name="q" value="{{ chosen.q }}" maxlength="80" placeholder="{% translate 'Form, list, policy…' %}"></label>
+      <label class="field"><span class="lbl">{% translate "Type" %}</span><select class="sel" name="type"><option value="">{% translate "All types" %}</option>{% for key, label in kinds %}<option value="{{ key }}"{% if key == chosen.type %} selected{% endif %}>{{ label }}</option>{% endfor %}</select></label>
+      {% if topics %}<label class="field"><span class="lbl">{% translate "Program or service" %}</span><select class="sel" name="topic"><option value="">{% translate "All" %}</option>{% for topic in topics %}<option{% if topic == chosen.topic %} selected{% endif %}>{{ topic }}</option>{% endfor %}</select></label>{% endif %}
+      <label class="field"><span class="lbl">{% translate "Language" %}</span><select class="sel" name="lang"><option value="">{% translate "All" %}</option>{% for key, label in languages %}<option value="{{ key }}"{% if key == chosen.lang %} selected{% endif %}>{{ label }}</option>{% endfor %}</select></label>
+      <button class="btn btn--dark" type="submit">{% translate "Show" %}</button>
+    </form>
+    <div class="two-col__main stack">
+      {% if rows %}<div class="tbl-scroll"><table class="tbl">
+        <thead><tr><th>{% translate "Document" %}</th><th>{% translate "Type" %}</th><th>{% translate "Program / service" %}</th><th>{% translate "Version" %}</th><th>{% translate "Date" %}</th><th>{% translate "Owner" %}</th><th>{% translate "Lang." %}</th><th><span class="sr-only">{% translate "File" %}</span></th></tr></thead>
+        <tbody>{% for row in rows %}<tr><td><a href="{{ row.url }}"><b>{{ row.title }}</b></a></td><td>{{ row.get_kind_display }}</td><td>{{ row.topic_text|default:"—" }}</td><td>{{ row.version|default:"—" }}</td><td>{% if row.date %}{{ row.date|date:"j M Y" }}{% else %}—{% endif %}</td><td>{{ row.owner|default:"—" }}</td><td>{{ row.language_text }}</td><td><a class="ft" href="{{ row.url }}">{{ row.file_type }}</a></td></tr>{% endfor %}</tbody>
+      </table></div>
+      {% else %}<p>{% translate "No document matches this choice." %}</p>{% endif %}
+      {% if page.note %}<p class="note">{{ page.note }}</p>{% endif %}
+    </div>
+  </div>
+</div>
+{% endblock %}

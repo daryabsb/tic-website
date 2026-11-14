@@ -43,6 +43,7 @@ from apps.offices.seed import create_office, fill_office, office_rows
 from apps.pages.models import AboutPage, GroupPage, HomePage, LeadershipPage
 from apps.people.models import Person
 from apps.programs.models import ProgramIndexPage, ProgramPage, RegulatoryUpdatesPage
+from apps.resources.models import Download, DownloadsPage, QAPage, ResourcesPage
 from apps.services.models import ServiceGroupPage, ServiceIndexPage, ServicePage
 from apps.training.models import CoursePage, TrainingIndexPage
 from apps.trust.models import (
@@ -161,6 +162,8 @@ class Command(BaseCommand):
             self.seed_form_pages(locale, data)
         if "training" in data:
             self.seed_training(locale, data["training"])
+        if "resources" in data:  # after the policies (T22): downloads point to their PDFs
+            self.seed_resources(locale, data["resources"])
         if "home" in data:  # last: its cards and rows link to the hub pages above (T9)
             self.seed_home(locale, data["home"])
 
@@ -774,6 +777,52 @@ class Command(BaseCommand):
             group.save_revision().publish()
             self.changes += 1
         self.stdout.write(f"{locale.language_code}: training checked")
+
+    # -- Resources (T25, D56) ------------------------------------------------------
+
+    def seed_resources(self, locale: Locale, data: dict) -> None:
+        """The hub (in the menu: the header's "Resources"), the downloads library with
+        its rows and the questions page, under Home. Download rows are made once (by
+        title) and filled where blank; a document is found by its title."""
+        home = HomePage.objects.filter(locale=locale).first()
+        if home is None:
+            return
+        for key, model, fields in (
+            ("hub", ResourcesPage, ("intro",)),
+            ("downloads", DownloadsPage, ("intro", "note")),
+            ("qa", QAPage, ("intro",)),
+        ):
+            item = data.get(key)
+            if not item:
+                continue
+            page, touch = self.child(
+                home, model, item["slug"], item["title"], live=True, show_in_menus=key == "hub"
+            )
+            if touch:
+                self.fill_page(page, item, fields)
+        if locale == Locale.get_default():
+            Document = get_document_model()
+            for order, row in enumerate((data.get("downloads") or {}).get("rows", [])):
+                row = dict(row)
+                title = row.pop("document", "")
+                document = Document.objects.filter(title=title).first() if title else None
+                if title and document is None:
+                    continue  # the PDF is seeded by its own page first
+                values = {**row, "document": document, "sort_order": (order + 1) * 10}
+                if values.get("date"):
+                    values["date"] = datetime.date.fromisoformat(values["date"])
+                item = Download.objects.filter(title=row["title"]).first()
+                if item is None:
+                    item = Download(**values)
+                    item.full_clean()
+                    item.save()
+                    self.changes += 1
+                    continue
+                changed = [self.fill(item, name, value) for name, value in values.items()]
+                if any(changed):
+                    item.full_clean()
+                    item.save()
+        self.stdout.write(f"{locale.language_code}: resources checked")
 
     # -- request questions and routing (T17, D41) -------------------------------------
 
