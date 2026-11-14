@@ -701,3 +701,62 @@ trust:
       sections:
         - heading: "[Terms]"
           body: "<p>[To be supplied by Legal.]</p>"
+
+# Complaints and appeals, Careers (children of About) and the Training catalogue (T23;
+# designs B-Complaints, B-Careers, B-Training; D53). Each page opens the request form with
+# itself as the topic; the questions are in requests.yaml. A fact the proposal marks "to
+# be confirmed" stays a bracketed placeholder. The ten courses of the old site are drafts
+# until the training owner gives the price, dates and certificate (publish rule).
+complaints:
+  slug: "complaints"
+  title: "Complaints and appeals"
+  intro: "How to disagree with us, and what happens next. A complaint is about how we worked; an appeal is against a decision — an inspection result or a certificate refused, suspended or withdrawn. Both are handled by people who were not involved in the original work."
+  complaint_title: "About how we worked"
+  complaint_text: "An inspector’s conduct, a delay, a report with an error, a reply that never came. Any client, authority or member of the public may complain."
+  appeal_title: "Against a decision"
+  appeal_text: "An inspection result you believe is wrong, or a certificate refused, suspended or withdrawn. Only the party the decision concerns may appeal, within [n] days of the decision."
+  steps:
+    - {title: "Acknowledged", text: "You receive a written acknowledgement with a reference number.", timing: "Within [n] working days"}
+    - {title: "Reviewed by someone not involved", text: "The Quality/Accreditation Manager, or for an appeal the [appeals panel], gathers the file and may ask you for more.", timing: "Within [n] working days"}
+    - {title: "Decided and explained", text: "You receive the decision and the reasons in writing. If we were wrong, we say so and put it right.", timing: "Within [n] working days of acknowledgement"}
+    - {title: "Still not satisfied?", text: "You may take the matter to our accreditation body, ANAB, or to the regulator of the program concerned. We tell you how.", timing: "Contact details in the decision letter"}
+  steps_note: "Timescales to be confirmed from the quality manual. Owned by the Quality/Accreditation Manager."
+  form_text: "Tell us whether it is a complaint or an appeal, the certificate or report number if there is one, and what happened. You can add photos or documents."
+  other_ways: "Or write to [complaints email], or post to the head office address."
+
+careers:
+  slug: "careers"
+  title: "Careers"
+  intro: "Real openings, the qualifications we look for, and an application form with CV upload. Inspectors are the company: most of our people are in ports, yards and factories, not in offices."
+  header_caption: "Noida · Inspector training"
+  openings_note: "Openings are posted here and on LinkedIn by HR; an opening with no closing date is removed after [n] days."
+  no_openings_text: "No role is open at the moment. You can still send a general application: HR keeps it and contacts you when a role fits."
+  look_for_heading: "What we look for in an inspector"
+  look_for: |-
+    [Qualification or trade background, by service line]
+    [Years of relevant experience]
+    Able to write a clear report and photograph evidence properly
+    Willing to be independent — and to say no when the evidence says no
+    [Languages, driving licence, travel]
+  photo_caption: "Our inspectors at work"
+  apply_text: "Choose a role above, or send a general application. Add your CV as a PDF or Word file."
+  button_label: "Send an application"
+  privacy_note: "Read by HR and the hiring office; kept for [n] months (privacy policy)."
+
+training:
+  slug: "training"
+  title: "Training catalogue"
+  intro: "One page per course: standard, level, duration, format, next dates, price with currency and tax, what the certificate says and who issues it, trainer and prerequisites. Training is general knowledge; it endorses no method and has no bearing on any TIC inspection or certification decision."
+  empty_text: "Dates and prices for the next courses are being confirmed. Send a request and the training team tells you when the next course runs."
+  note: "Dates that have passed are not shown."
+  courses:
+    - {slug: "iso-9001-awareness", title: "ISO 9001 awareness", kind: "awareness", standard: "ISO 9001"}
+    - {slug: "iso-14001-awareness", title: "ISO 14001 awareness", kind: "awareness", standard: "ISO 14001"}
+    - {slug: "iso-22000-awareness", title: "ISO 22000 awareness", kind: "awareness", standard: "ISO 22000"}
+    - {slug: "iso-45001-awareness", title: "ISO 45001 awareness", kind: "awareness", standard: "ISO 45001"}
+    - {slug: "haccp-awareness", title: "HACCP awareness", kind: "awareness", standard: "HACCP"}
+    - {slug: "iso-9001-internal-auditor", title: "ISO 9001 internal auditor", kind: "internal_auditor", standard: "ISO 9001"}
+    - {slug: "iso-14001-internal-auditor", title: "ISO 14001 internal auditor", kind: "internal_auditor", standard: "ISO 14001"}
+    - {slug: "iso-22000-internal-auditor", title: "ISO 22000 internal auditor", kind: "internal_auditor", standard: "ISO 22000"}
+    - {slug: "iso-45001-internal-auditor", title: "ISO 45001 internal auditor", kind: "internal_auditor", standard: "ISO 45001"}
+    - {slug: "haccp-internal-auditor", title: "HACCP internal auditor", kind: "internal_auditor", standard: "HACCP"}

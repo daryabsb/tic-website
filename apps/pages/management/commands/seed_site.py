@@ -33,6 +33,7 @@ from zeneon_cms.core.locales import ensure_locales
 from zeneon_cms.core.models import SiteSettings
 from zeneon_cms.requests.models import RequestSchema, RoutingCondition, RoutingRule
 
+from apps.careers.models import CareersPage
 from apps.industries.models import IndustryIndexPage, IndustryPage
 from apps.news.models import NewsIndexPage, NewsPage
 from apps.offices.access import setup_office
@@ -42,10 +43,12 @@ from apps.pages.models import AboutPage, GroupPage, HomePage, LeadershipPage
 from apps.people.models import Person
 from apps.programs.models import ProgramIndexPage, ProgramPage, RegulatoryUpdatesPage
 from apps.services.models import ServiceGroupPage, ServiceIndexPage, ServicePage
+from apps.training.models import CoursePage, TrainingIndexPage
 from apps.trust.models import (
     CONTENT_PAGE_REQUIRED,
     Accreditation,
     AccreditationsPage,
+    ComplaintsPage,
     ContentPage,
 )
 from apps.verify.models import VerifyPage
@@ -133,6 +136,10 @@ class Command(BaseCommand):
             self.seed_verify(locale, data["verify"])
         if "about" in data:  # after the offices: people work from an office page
             self.seed_about(locale, data["about"], data.get("trust") or {})
+        if "complaints" in data or "careers" in data:  # under About (T23)
+            self.seed_form_pages(locale, data)
+        if "training" in data:
+            self.seed_training(locale, data["training"])
         if "home" in data:  # last: its cards and rows link to the hub pages above (T9)
             self.seed_home(locale, data["home"])
 
@@ -679,6 +686,74 @@ class Command(BaseCommand):
             self.changes += 1
         return person
 
+    # -- Complaints, Careers, Training (T23, D53) ---------------------------------------
+
+    COMPLAINTS_FIELDS = (
+        "intro",
+        "complaint_title",
+        "complaint_text",
+        "appeal_title",
+        "appeal_text",
+        "steps_note",
+        "form_text",
+        "other_ways",
+    )
+    CAREERS_FIELDS = (
+        "intro",
+        "header_caption",
+        "openings_note",
+        "no_openings_text",
+        "look_for_heading",
+        "look_for",
+        "photo_caption",
+        "apply_text",
+        "button_label",
+        "privacy_note",
+    )
+    TRAINING_FIELDS = ("intro", "empty_text", "note")
+
+    def seed_form_pages(self, locale: Locale, data: dict) -> None:
+        """Complaints and Careers under About. Careers has no open role: HR adds them."""
+        about = AboutPage.objects.filter(locale=locale).first()
+        if about is None:
+            return
+        item = data.get("complaints")
+        if item:
+            page, touch = self.child(
+                about, ComplaintsPage, item["slug"], item["title"], live=True, show_in_menus=True
+            )
+            if touch:
+                steps = [{"type": "step", "value": row} for row in item.get("steps", [])]
+                self.fill_page(page, item, self.COMPLAINTS_FIELDS, streams=[("steps", steps)])
+        item = data.get("careers")
+        if item:
+            page, touch = self.child(
+                about, CareersPage, item["slug"], item["title"], live=True, show_in_menus=True
+            )
+            if touch:
+                self.fill_page(page, item, self.CAREERS_FIELDS)
+        self.stdout.write(f"{locale.language_code}: complaints and careers checked")
+
+    def seed_training(self, locale: Locale, data: dict) -> None:
+        """The catalogue under Home and the old site's ten courses as drafts (no price,
+        dates or certificate yet: the publish rule). The services hub's Training card
+        goes to the catalogue (ServiceGroupPage.see_also)."""
+        home = HomePage.objects.filter(locale=locale).first()
+        if home is None:
+            return
+        index, touch = self.child(home, TrainingIndexPage, data["slug"], data["title"], live=True)
+        if touch:
+            self.fill_page(index, data, self.TRAINING_FIELDS)
+        for item in data.get("courses", []):
+            fields = {name: item[name] for name in ("kind", "standard") if name in item}
+            self.child(index, CoursePage, item["slug"], item["title"], live=False, **fields)
+        group = ServiceGroupPage.objects.filter(locale=locale, group="training").first()
+        if group is not None and group.see_also_id is None and not group.has_unpublished_changes:
+            group.see_also = index
+            group.save_revision().publish()
+            self.changes += 1
+        self.stdout.write(f"{locale.language_code}: training checked")
+
     # -- request questions and routing (T17, D41) -------------------------------------
 
     def seed_requests(self) -> None:
@@ -698,6 +773,9 @@ class Command(BaseCommand):
         topics += ServiceGroupPage.objects.filter(locale=locale).order_by("path")
         topics += ServicePage.objects.filter(locale=locale).order_by("path")
         topics += ProgramPage.objects.filter(locale=locale).order_by("path")
+        topics += ComplaintsPage.objects.filter(locale=locale)
+        topics += CareersPage.objects.filter(locale=locale)
+        topics += CoursePage.objects.filter(locale=locale).order_by("path")
         for topic in topics:
             key = self.schema_key(topic)
             if key not in schemas:
@@ -718,6 +796,13 @@ class Command(BaseCommand):
 
     @staticmethod
     def schema_key(topic) -> str:
+        form = {
+            ComplaintsPage: "complaint",
+            CareersPage: "application",
+            CoursePage: "course_register",
+        }.get(type(topic))
+        if form:
+            return form
         part = {ServicePage: "contact", ProgramPage: "checklist"}.get(type(topic))
         if part:
             for block in topic.parts:

@@ -6,6 +6,8 @@
   blank). Per-office numbers come with the offices work (#20).
 - `{% request_url as url %}`: the quote form of the active language;
   `{% request_url page as url %}` opens it on that page as the topic (step 1 skipped).
+- `{% request_head flow as head %}`: the request page's heading and lead for the
+  form's topic: a quote, or a complaint, an application, a course registration (T23).
 - `{% absolute_static 'img/x.png' %}`: a static file's full URL (emails).
 - `{% request_office submission as office %}`: the office that received a request (T17).
 - `{% latest_articles 3 as articles %}`: newest live articles of the active language.
@@ -17,7 +19,7 @@ from django import template
 from django.conf import settings
 from django.templatetags.static import static
 from django.urls import reverse
-from django.utils.translation import get_language
+from django.utils.translation import get_language, gettext
 from zeneon_cms.core.models import SiteSettings
 from zeneon_cms.requests.links import whatsapp_url as build_whatsapp_url
 
@@ -57,6 +59,38 @@ def whatsapp_url(text=""):
 def request_url(page=None):
     url = reverse("zeneon_requests_form:request")
     return f"{url}?topic={page.pk}" if page is not None and page.pk else url
+
+
+@register.simple_tag
+def request_head(flow):
+    from apps.services.intake import form_kind
+
+    page = flow.topic_page if flow is not None else None
+    kind = form_kind(page)
+    if kind == "complaint":
+        return {
+            "title": gettext("Complaints and appeals"),
+            "lead": gettext(
+                "Tell us what happened. A person who was not involved in the work reads it "
+                "and answers you in writing."
+            ),
+        }
+    if kind == "application":
+        return {
+            "title": gettext("Apply"),
+            "lead": gettext(
+                "Tell us about you and add your CV (PDF or Word). HR and the hiring office read it."
+            ),
+        }
+    if kind == "course":
+        return {"title": gettext("Register for a course"), "lead": page.title}
+    return {
+        "title": gettext("Request a quote"),
+        "lead": gettext(
+            "One form for quotes and questions. We send it to the office that handles your "
+            "country and service."
+        ),
+    }
 
 
 @register.simple_tag

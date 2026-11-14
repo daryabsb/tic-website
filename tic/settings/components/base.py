@@ -34,6 +34,8 @@ INSTALLED_APPS = installed_apps(
         "apps.offices",
         "apps.verify",
         "apps.trust",
+        "apps.careers",
+        "apps.training",
     ],
     exclude=[
         "zeneon_cms.services",

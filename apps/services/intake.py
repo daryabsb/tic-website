@@ -3,11 +3,15 @@
 - ``topic_pages(request)``: the step-1 choices, ``ZENEON_CMS["requests"]["topic_pages"]``.
   The live service groups of the active language, each followed by its services, in
   menu order; the Programs group is followed by the live program pages (T18). A service
-  or program page links to the form with ``?topic=<its id>``.
+  or program page links to the form with ``?topic=<its id>``. The complaints, careers
+  and course pages (T23, D53) are topics only when the form was opened from them
+  (``topic`` in the query or the post): step 1 of a quote does not offer them.
 - ``routing_facts(submission)``: ``ZENEON_CMS["requests"]["routing_facts"]``. Adds
   ``service_group`` (the slug of the topic's group, in the default language) so a rule
   can match "service_group = training", and for a program page ``program`` (its slug in
-  the default language). The country comes from the ``country`` answer.
+  the default language). The country comes from the ``country`` answer. A form page
+  adds ``form`` (complaint, application, course); a course is also ``service_group =
+  training``.
 - ``office_for(submission)``: what the sent screen and the emails say about the office
   that received the request: name, hours, phone, WhatsApp. The routed rule's page (an
   ``OfficePage`` from T20) gives its own values; until then the site settings do.
@@ -34,6 +38,34 @@ def _locale():
         return Locale.get_default()
 
 
+def form_kind(page) -> str:
+    """``complaint``, ``application`` or ``course`` for a form page (T23); else ""."""
+    from apps.careers.models import CareersPage
+    from apps.training.models import CoursePage
+    from apps.trust.models import ComplaintsPage
+
+    page = page.specific if page is not None else None
+    for model, kind in (
+        (ComplaintsPage, "complaint"),
+        (CareersPage, "application"),
+        (CoursePage, "course"),
+    ):
+        if isinstance(page, model):
+            return kind
+    return ""
+
+
+def _form_page(request, locale):
+    """The live form page named by ``topic`` in the request (query or post), or None."""
+    if request is None:
+        return None
+    value = request.POST.get("topic") or request.GET.get("topic") or ""
+    if not value.isdigit():
+        return None
+    page = Page.objects.live().public().filter(pk=int(value), locale=locale).first()
+    return page.specific if page is not None and form_kind(page) else None
+
+
 def topic_pages(request=None) -> list[Page]:
     locale = _locale()
     groups = ServiceGroupPage.objects.live().filter(locale=locale).order_by("path")
@@ -45,6 +77,9 @@ def topic_pages(request=None) -> list[Page]:
         pages.extend(services.child_of(group).order_by("path"))
         if group.group == "programs":
             pages.extend(programs)
+    form_page = _form_page(request, locale)
+    if form_page is not None:
+        pages.append(form_page)
     return pages
 
 
@@ -64,6 +99,11 @@ def _default_slug(page) -> str:
 
 
 def routing_facts(submission) -> dict:
+    kind = form_kind(submission.topic)
+    if kind == "course":
+        return {"form": kind, "service_group": "training"}
+    if kind:
+        return {"form": kind}
     group = group_of(submission.topic)
     if group is None:
         return {}

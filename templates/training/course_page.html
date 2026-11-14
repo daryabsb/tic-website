@@ -1,0 +1,27 @@
+{% extends "base.html" %}{% load i18n tic %}
+{% comment %}A course (master plan 03; proposal 01 §5.7; T23): the facts, every date from today on, the fixed impartiality sentence and the Register button (the request form with this course as the topic, D53).{% endcomment %}
+{% block body_class %}page-course{% endblock %}
+{% block content %}
+{% request_url page as req_url %}
+{% include "includes/page_head.html" with intro=page.summary primary_label=_("Register") primary_href=req_url %}
+<div class="wrap row form-split">
+  <div class="stack form-split__main">
+    <dl class="kv">
+      {% if page.standard %}<div class="kv__row"><dt>{% translate "Standard" %}</dt><dd>{{ page.standard }}</dd></div>{% endif %}
+      {% if page.level %}<div class="kv__row"><dt>{% translate "Level" %}</dt><dd>{{ page.level }}</dd></div>{% endif %}
+      {% if page.duration %}<div class="kv__row"><dt>{% translate "Duration" %}</dt><dd>{{ page.duration }}</dd></div>{% endif %}
+      {% if page.format_text %}<div class="kv__row"><dt>{% translate "Format" %}</dt><dd>{{ page.format_text }}</dd></div>{% endif %}
+      <div class="kv__row"><dt>{% translate "Next dates" %}</dt><dd>{% for row in page.next_dates %}<span class="course__date">{{ row.start|date:"j M Y" }}{% if row.end and row.end != row.start %} – {{ row.end|date:"j M Y" }}{% endif %}{% if row.place %} · {{ row.place }}{% endif %}</span>{% empty %}{% translate "On request" %}{% endfor %}</dd></div>
+      <div class="kv__row"><dt>{% translate "Price" %}</dt><dd>{{ page.currency }} {{ page.price|floatformat:"-2g" }}{% if page.tax_note %}, {{ page.tax_note }}{% endif %}</dd></div>
+      <div class="kv__row"><dt>{% translate "Certificate" %}</dt><dd>{{ page.certificate_text }}, {% translate "issued by" %} {{ page.certificate_issuer }}</dd></div>
+      {% if page.trainer %}<div class="kv__row"><dt>{% translate "Trainer" %}</dt><dd>{{ page.trainer }}</dd></div>{% endif %}
+      {% if page.prerequisites %}<div class="kv__row"><dt>{% translate "Prerequisites" %}</dt><dd>{{ page.prerequisites }}</dd></div>{% endif %}
+    </dl>
+    {% if page.body %}<div class="stack rich">{{ page.body|linebreaks }}</div>{% endif %}
+    <p class="note">{% translate "Training is general knowledge. It endorses no method and has no bearing on any TIC inspection or certification decision." %}</p>
+  </div>
+  <div id="form" class="stack form-split__side">
+    <div class="side-box"><span class="side-box__title">{% translate "Register" %}</span><p>{% translate "Tell us the date and how many seats. The training team confirms by email." %}</p><a class="btn" href="{{ req_url }}">{% translate "Register" %}</a></div>
+  </div>
+</div>
+{% endblock %}

@@ -58,6 +58,37 @@ schemas:
       label: "Destination country"
       required: true
 
+  # T23 (D53): the complaints page, the careers page and every course page get these.
+  # Files (photos, a CV) are the form's own upload, kept in the private storage.
+  complaint:
+    - type: single
+      key: kind
+      label: "This is a"
+      required: true
+      options:
+        - {key: complaint, label: "Complaint"}
+        - {key: appeal, label: "Appeal against a decision"}
+    - type: short
+      key: reference
+      label: "Certificate or report number, if any"
+      required: false
+  application:
+    - type: short
+      key: role
+      label: "Role and office"
+      help: "The role you apply for, or \"General application\"."
+      required: true
+  course_register:
+    - type: short
+      key: course_date
+      label: "Which date?"
+      help: "The date of the course you want, or \"next date\"."
+      required: false
+    - type: short
+      key: seats
+      label: "Number of seats"
+      required: true
+
 # programs: questions added to a program page's schema, by the page's slug (T18). The
 # "route" answers match the route keys of the page's part 03, so "Find my route" opens
 # the form with the route chosen.
@@ -81,6 +112,11 @@ programs:
 # rule (in the end the head office). Office managers edit the rules in the admin
 # (Routing); P-7 collects the real table.
 routing:
+  # T23 (D53): complaints and appeals to the Quality Manager, applications to HR. Their
+  # addresses are not supplied yet ("[...]" is not an address): until an editor types
+  # them in Routing, the rule is skipped and the head office address receives them.
+  - {name: "Quality Manager (complaints and appeals)", email: "[Quality Manager email]", priority: 5, when: {form: complaint}}
+  - {name: "HR (applications)", email: "[HR email]", priority: 5, when: {form: application}}
   - {name: "Head office, Dubai (training)", office: dubai, priority: 10, when: {service_group: training}}
   - {name: "Baghdad office", office: baghdad, priority: 20, when: {country: iraq}}
   - {name: "Cairo office", office: cairo, priority: 20, when: {country: egypt}}
