@@ -1,0 +1,11 @@
+# Daily review-by reminders (master plan 09, 13; D40, D54). Installed to
+# /etc/systemd/system/ by scripts/deploy-staging-remote.sh on stms-data.
+[Unit]
+Description=TIC staging review-by reminders
+After=docker.service
+Requires=docker.service
+
+[Service]
+Type=oneshot
+User=darya
+ExecStart=/usr/bin/docker exec tic-staging-web-1 python manage.py send_review_reminders
