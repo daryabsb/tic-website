@@ -118,6 +118,25 @@ class Command(BaseCommand):
         if any(changed):
             row.save()
             self.stdout.write("site settings: updated")
+        self.seed_site_host()
+
+    def seed_site_host(self) -> None:
+        """The default Wagtail site takes the host of ``WAGTAILADMIN_BASE_URL`` while it
+        still says "localhost" (D55): links in mail, the sitemap and canonical URLs are
+        built from it. A host an editor set is kept."""
+        from urllib.parse import urlsplit
+
+        from wagtail.models import Site
+
+        base = urlsplit(settings.WAGTAILADMIN_BASE_URL)
+        site = Site.objects.filter(is_default_site=True).first()
+        if site is None or site.hostname != "localhost" or base.hostname in (None, "localhost"):
+            return
+        site.hostname = base.hostname
+        site.port = base.port or (443 if base.scheme == "https" else 80)
+        site.save()
+        self.changes += 1
+        self.stdout.write(f"site: {site.hostname}:{site.port}")
 
     # -- pages ----------------------------------------------------------------------
 

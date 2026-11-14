@@ -7,7 +7,7 @@
 # First run only: writes ~/tic/staging/.env with generated secrets, a basic-auth
 # password in ~/tic/staging/basic-auth.txt, the Arabic locale.
 # Every run: build tic-website:<sha>, migrate, seed (fills blanks only, D30), start, wait for health, install the
-# weekly backup and daily review-by timers, keep the two newest images.
+# weekly backup, daily review-by and 10-minute mail retry timers, keep the two newest images.
 set -euo pipefail
 SHA="${1:?usage: deploy-staging-remote.sh <sha>}"
 read -r GH_TOKEN; export GH_TOKEN  # first line of stdin, from `gh auth token`
@@ -84,7 +84,8 @@ if [ -f "$S/.deploy-tag" ] && [ "$(cat "$S/.deploy-tag")" != "$SHA" ]; then
 fi
 echo "$SHA" > "$S/.deploy-tag"
 for unit in tic-staging-backup.service tic-staging-backup.timer \
-  tic-staging-review.service tic-staging-review.timer; do
+  tic-staging-review.service tic-staging-review.timer \
+  tic-staging-retry.service tic-staging-retry.timer; do
   if ! cmp -s "$SRC/deploy/staging/$unit" "/etc/systemd/system/$unit"; then
     sudo install -m 0644 "$SRC/deploy/staging/$unit" /etc/systemd/system/
     CHANGED=1
@@ -92,7 +93,8 @@ for unit in tic-staging-backup.service tic-staging-backup.timer \
 done
 if [ "${CHANGED:-0}" = 1 ]; then
   sudo systemctl daemon-reload
-  sudo systemctl enable --now tic-staging-backup.timer tic-staging-review.timer
+  sudo systemctl enable --now tic-staging-backup.timer tic-staging-review.timer \
+    tic-staging-retry.timer
 fi
 keep="$SHA $(cat "$S/.deploy-tag.prev" 2>/dev/null || true)"
 for tag in $(docker image ls tic-website --format '{{.Tag}}'); do
