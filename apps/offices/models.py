@@ -30,6 +30,7 @@ from wagtail.models import Page
 from wagtail.search import index
 from zeneon_cms.core.text import ScriptNormalisationMixin
 
+from apps.pages.describe import DescribedPage
 from apps.pages.models import _image, _translatable
 from apps.services.models import _header_panel, _HeaderFields
 
@@ -219,6 +220,10 @@ class OfficePage(ScriptNormalisationMixin, _HeaderFields, Page):  # noqa: DJ008 
     class Meta:
         verbose_name = _("office page")
 
+    def fallback_description(self) -> str:
+        """Without an intro: the office's name and address, as the page shows them."""
+        return " · ".join(part for part in (self.title, " ".join(self.address.split())) if part)
+
     def clean(self):
         super().clean()
         problems = office_problems(
@@ -300,7 +305,7 @@ class OfficePage(ScriptNormalisationMixin, _HeaderFields, Page):  # noqa: DJ008 
         return context
 
 
-class ContactPage(ScriptNormalisationMixin, Page):  # noqa: DJ008 (Page gives __str__)
+class ContactPage(DescribedPage, ScriptNormalisationMixin, Page):  # noqa: DJ008 (Page gives __str__)
     """/<lang>/contact/ (design B-Contact; T26, D57): the request button (the core form,
     as D53: a cached page cannot carry the form's signed start time), the head office's
     channels and every live office, head office first."""

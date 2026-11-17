@@ -23,6 +23,7 @@ from wagtail.models import Page
 from wagtail.search import index
 from zeneon_cms.core.text import ScriptNormalisationMixin
 
+from apps.pages.describe import DescribedPage
 from apps.pages.models import _translatable
 
 STATUSES = [
@@ -163,7 +164,7 @@ class ImportLog(models.Model):
         return f"{self.created_at:%Y-%m-%d %H:%M} {self.file_name}"
 
 
-class VerifyPage(ScriptNormalisationMixin, Page):  # noqa: DJ008 (Page gives __str__)
+class VerifyPage(DescribedPage, ScriptNormalisationMixin, Page):  # noqa: DJ008 (Page gives __str__)
     """/<lang>/verify/: one input, one button, the result card (design B-Verify)."""
 
     intro = models.TextField(_("intro"), max_length=400, blank=True)

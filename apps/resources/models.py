@@ -21,6 +21,7 @@ from wagtail.models import Page
 from wagtail.search import index
 from zeneon_cms.core.text import ScriptNormalisationMixin
 
+from apps.pages.describe import DescribedPage
 from apps.pages.models import _translatable
 
 DOWNLOAD_KINDS = [
@@ -133,7 +134,7 @@ class Download(index.Indexed, models.Model):
         return self.topic_name or (self.topic.title if self.topic_id else "")
 
 
-class _ResourcePage(ScriptNormalisationMixin, Page):
+class _ResourcePage(DescribedPage, ScriptNormalisationMixin, Page):
     intro = models.TextField(_("intro"), max_length=600, blank=True)
 
     parent_page_types = ["pages.HomePage"]

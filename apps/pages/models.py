@@ -18,6 +18,7 @@ from wagtail_localize.fields import SynchronizedField, TranslatableField
 from zeneon_cms.core.text import ScriptNormalisationMixin
 
 from apps.pages.blocks import ABOUT_SECTIONS, HOME_SECTIONS, CompanyBlock, PeopleGroupBlock
+from apps.pages.describe import DescribedPage
 
 
 def _image(verbose_name, help_text=""):
@@ -43,7 +44,7 @@ def _translatable(*translated, synchronised=()):
     ]
 
 
-class HomePage(ScriptNormalisationMixin, Page):
+class HomePage(DescribedPage, ScriptNormalisationMixin, Page):
     hero_image = _image(
         _("hero photo"),
         _(
@@ -133,7 +134,7 @@ class HomePage(ScriptNormalisationMixin, Page):
         verbose_name = _("home page")
 
 
-class AboutPage(ScriptNormalisationMixin, Page):
+class AboutPage(DescribedPage, ScriptNormalisationMixin, Page):
     """About — Our story (master plan 03). Leadership, Our group, Accreditations, the
     policy pages, Complaints and Careers are its children (#21, #22, TIC apps)."""
 
@@ -182,7 +183,7 @@ class AboutPage(ScriptNormalisationMixin, Page):
         verbose_name = _("about page")
 
 
-class LeadershipPage(ScriptNormalisationMixin, Page):
+class LeadershipPage(DescribedPage, ScriptNormalisationMixin, Page):
     """Leadership (B-Leadership): the CEO quote, then groups of ``Person`` rows. A person
     who has not agreed to be named shows "[Name]" and the title (P-16 default:
     placeholders) until the CEO answers; then editors remove the rows of those who say
@@ -229,7 +230,7 @@ class LeadershipPage(ScriptNormalisationMixin, Page):
         verbose_name = _("leadership page")
 
 
-class GroupPage(ScriptNormalisationMixin, Page):
+class GroupPage(DescribedPage, ScriptNormalisationMixin, Page):
     """Our group (B-Group): one card per company, then the independence sentence on the
     dark band (required, proposal 01 §5.6)."""
 

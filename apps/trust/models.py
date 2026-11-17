@@ -19,6 +19,7 @@ from wagtail.search import index
 from wagtail.snippets.models import register_snippet
 from zeneon_cms.core.text import ScriptNormalisationMixin
 
+from apps.pages.describe import DescribedPage
 from apps.pages.models import _translatable
 
 STATUSES = [
@@ -179,7 +180,7 @@ class Accreditation(models.Model):
 register_snippet(Accreditation)
 
 
-class AccreditationsPage(ScriptNormalisationMixin, Page):
+class AccreditationsPage(DescribedPage, ScriptNormalisationMixin, Page):
     """Accreditations and approvals (B-Accreditations): the table of every public row,
     the rule list, the marks we may show."""
 
@@ -269,7 +270,7 @@ class ContentPageForm(WagtailAdminPageForm):
         return cleaned
 
 
-class ContentPage(ScriptNormalisationMixin, Page):
+class ContentPage(DescribedPage, ScriptNormalisationMixin, Page):
     """A policy page (B-Impartiality): the document facts, the PDF, numbered sections
     with a table of contents, related pages."""
 
@@ -363,7 +364,7 @@ class StepBlock(blocks.StructBlock):
         label = _("Step")
 
 
-class ComplaintsPage(ScriptNormalisationMixin, Page):
+class ComplaintsPage(DescribedPage, ScriptNormalisationMixin, Page):
     """Complaints and appeals (B-Complaints; proposal 01 §5.6): the two definitions, the
     steps with their times, and the button to the request form with this page as the
     topic (its RequestSchema is "complaint", seeded; D53). Routed by ``form=complaint``

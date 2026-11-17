@@ -18,6 +18,7 @@ from wagtail.models import Page
 from wagtail.search import index
 from zeneon_cms.core.text import ScriptNormalisationMixin
 
+from apps.pages.describe import DescribedPage
 from apps.pages.models import _image, _translatable
 
 JOB_TYPES = [
@@ -43,7 +44,7 @@ class OpeningBlock(blocks.StructBlock):
         label = _("Open role")
 
 
-class CareersPage(ScriptNormalisationMixin, Page):
+class CareersPage(DescribedPage, ScriptNormalisationMixin, Page):
     intro = models.TextField(_("intro"), max_length=600, blank=True)
     header_image = _image(_("header photo"))
     header_image_alt = models.CharField(_("header photo alt text"), max_length=200, blank=True)

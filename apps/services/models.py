@@ -23,6 +23,7 @@ from wagtail.search import index
 from wagtail.snippets.models import register_snippet
 from zeneon_cms.core.text import ScriptNormalisationMixin
 
+from apps.pages.describe import DescribedPage
 from apps.pages.models import _image, _translatable
 from apps.services.blocks import PART_BLOCK_COUNTS, PART_TITLES, SERVICE_PARTS
 from apps.services.rules import service_page_problems
@@ -80,7 +81,7 @@ def _header_panel():
     )
 
 
-class _HeaderFields(models.Model):
+class _HeaderFields(DescribedPage, models.Model):
     """The page head of PageHead.dc.html: a real photo (or the grey plate) with its red
     caption bar, and the intro sentence."""
 
@@ -96,12 +97,6 @@ class _HeaderFields(models.Model):
 
     class Meta:
         abstract = True
-
-    @property
-    def meta_description(self) -> str:
-        """The core's seo head reads this: the editor's search description, else the
-        summary (or the intro), so no page ships a blank description (T13)."""
-        return self.search_description or getattr(self, "summary", "") or self.intro
 
 
 class ServiceIndexPage(ScriptNormalisationMixin, _HeaderFields, Page):  # noqa: DJ008 (Page gives __str__)

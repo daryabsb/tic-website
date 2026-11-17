@@ -61,7 +61,7 @@ Destination: ticqc.com live on the new stack, five gates passed. Open, unblocked
 | 29 | **Arabic-first pages** — `ar.yaml` for Verify, six office pages, Complaints, Impartiality, Privacy, About, Accreditations, Iraq/Kurdistan/Egypt programs; drafts marked until the reviewer signs | 1 | Rendered RTL; reviewer's sign-off recorded |
 | 30 | ✅ (Nov 17, D62: 103 redirects, lychee 104/104 OK on staging; 35 old posts imported with 38 photos) **Redirect map and news import** — `redirects.csv` from the audit's URL list; `import_old_news`; downloads with owners | 1 | lychee over the old URL list: 0 broken on staging |
 | 31 | **Production server and stack** (Task: Darya, TIC IT) — host per P-11 set up with server-platform; prod stack on a hidden hostname; backups to the TIC bucket; restore drill on staging | launch | Prod answers on the hidden hostname; restore drill RTO in the runbook |
-| 32 | **Security and performance sign-off** — Observatory A+, CSP, Lighthouse written down, mainland test by Guangzhou | launch | Numbers in DECISIONS |
+| 32 | 🟡 (Nov 17, D63: staging pre-check A+ and Lighthouse 98–99; waits for the production hostname and the Guangzhou test) **Security and performance sign-off** — Observatory A+, CSP, Lighthouse written down, mainland test by Guangzhou | launch | Numbers in DECISIONS |
 | 33 | **Launch checklist** — `15-launch-checklist.md` worked line by line on the ticket | launch | Every line ticked or blocked by a named P-row |
 
 ## Launch

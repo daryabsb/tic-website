@@ -37,6 +37,8 @@ Worked at gate 4; every line ticked on the launch ticket with who did it and whe
 - [ ] Resend domain verified: SPF, DKIM, DMARC; a test alert lands in an office inbox, not spam
 - [ ] Cloudflare: proxy on, origin cert, HTML cache rule with bypasses, Access on `/admin/`, WAF rate rule on `/verify/`, purge token in `.env`
 - [ ] Security headers A+ on Observatory; CSP allows only self, hCaptcha, Umami
+- [ ] Cloudflare Web Analytics (the injected `static.cloudflareinsights.com` beacon) off on the zone: the CSP blocks it and mainland China must not load it (D63)
+- [ ] `bash -s` of `scripts/launch_checks.sh` on the production hostname: Observatory A+ and Lighthouse numbers in DECISIONS (D63)
 - [ ] Lighthouse mobile on Home, a program page, Verify: numbers written in DECISIONS; home first view under 600 KB
 - [ ] Mainland test of the production hostname by Guangzhou on three carriers; result in DECISIONS
 - [ ] Umami live after consent; Search Console verified on both hostnames; sitemap submitted

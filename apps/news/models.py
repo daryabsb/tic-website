@@ -24,6 +24,7 @@ from wagtail.rich_text import expand_db_html
 from wagtail.search import index
 from zeneon_cms.core.text import ScriptNormalisationMixin
 
+from apps.pages.describe import DescribedPage
 from apps.pages.models import _image, _translatable
 
 KINDS = [
@@ -39,7 +40,7 @@ WORDS_PER_MINUTE = 200
 H2 = re.compile(r"<h2([^>]*)>(.*?)</h2>", re.S)
 
 
-class NewsIndexPage(ScriptNormalisationMixin, Page):  # noqa: DJ008 (Page gives __str__)
+class NewsIndexPage(DescribedPage, ScriptNormalisationMixin, Page):  # noqa: DJ008 (Page gives __str__)
     intro = models.TextField(_("intro"), max_length=600, blank=True)
 
     parent_page_types = ["pages.HomePage"]
@@ -88,7 +89,7 @@ class NewsIndexPage(ScriptNormalisationMixin, Page):  # noqa: DJ008 (Page gives 
         return context
 
 
-class NewsPage(ScriptNormalisationMixin, Page):  # noqa: DJ008 (Page gives __str__)
+class NewsPage(DescribedPage, ScriptNormalisationMixin, Page):  # noqa: DJ008 (Page gives __str__)
     kind = models.CharField(_("kind"), max_length=20, choices=KINDS, default="news")
     date = models.DateField(_("date"))
     updated = models.DateField(
@@ -198,10 +199,6 @@ class NewsPage(ScriptNormalisationMixin, Page):  # noqa: DJ008 (Page gives __str
 
     class Meta:
         verbose_name = _("news page")
-
-    @property
-    def meta_description(self) -> str:
-        return self.search_description or self.standfirst
 
     @property
     def signed_by(self) -> str:

@@ -2,6 +2,7 @@
 no Google Fonts, Tag Manager, Analytics, Maps, reCAPTCHA, YouTube embeds or LinkedIn
 widgets; fonts and scripts self-hosted."""
 
+import re
 from pathlib import Path
 
 import pytest
@@ -81,3 +82,36 @@ def test_templates_have_no_inline_styles():
         if emails not in path.parents and 'style="' in path.read_text(encoding="utf-8")
     ]
     assert found == []
+
+
+# The CSP (Caddy, master plan 12) allows scripts and styles from 'self' and hCaptcha
+# only: no 'unsafe-inline'. An inline script or style is blocked in the browser (T32:
+# the language select did nothing on staging), so no page may carry one.
+INLINE_SCRIPT = re.compile(r"<script(?![^>]*\bsrc=)(?![^>]*application/(?:ld\+)?json)[^>]*>")
+INLINE_STYLE = re.compile(r"<style[\s>]|\sstyle=\"")
+
+
+@pytest.mark.parametrize(
+    "path",
+    ["/en/", "/ar/", "/en/nothing-here/", "/en/services/", "/en/request/", "/en/search/?q=iraq"],
+)
+def test_public_pages_have_no_inline_script_or_style(client, seeded_home, path):
+    html = client.get(path).content.decode()
+
+    assert not INLINE_SCRIPT.findall(html)
+    assert not INLINE_STYLE.findall(html)
+    assert "/static/js/lang.js" in html
+
+
+def test_every_seeded_page_has_a_description(seeded_home):
+    """Lighthouse SEO on staging (T32): 28 pages had no meta description. Every page
+    type now falls back to its own lead text (``apps.pages.describe``)."""
+    from zeneon_cms.seo.meta import pages_without_description
+
+    assert [page.url_path for page in pages_without_description()] == []
+
+
+def test_the_request_page_has_a_description(client, seeded_home):
+    html = client.get("/en/request/").content.decode()
+
+    assert re.search(r'<meta name="description" content="[^"]+"', html)
