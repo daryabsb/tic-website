@@ -22,7 +22,7 @@ def test_titles_lose_math_letters_emoji_and_the_wrong_name():
 
 
 def test_the_old_abbreviation_in_brackets_goes():
-    """"TIC Quality Control (TICQC)" would read "TIC Quality Control (TIC Quality Control)"."""
+    """The house words would make "TIC Quality Control (TICQC)" say the name twice."""
     raw = (
         '<p><strong><a href="https://ticqc.ae/">TIC Quality Control</a> (TICQC)</strong>'
         " took part.</p>"
