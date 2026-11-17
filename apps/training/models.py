@@ -29,6 +29,7 @@ from wagtail.search import index
 from zeneon_cms.core.text import ScriptNormalisationMixin
 
 from apps.pages.models import _translatable
+from apps.pages.describe import DescribedPage
 
 KINDS = [
     ("awareness", _("Awareness")),
@@ -49,7 +50,7 @@ FILTERS = (
 )
 
 
-class TrainingIndexPage(ScriptNormalisationMixin, Page):
+class TrainingIndexPage(DescribedPage, ScriptNormalisationMixin, Page):
     intro = models.TextField(_("intro"), max_length=800, blank=True)
     empty_text = models.TextField(_("text when no course is published"), max_length=400, blank=True)
     note = models.TextField(_("note under the list"), max_length=400, blank=True)
@@ -130,7 +131,7 @@ class CoursePageForm(WagtailAdminPageForm):
         return cleaned
 
 
-class CoursePage(ScriptNormalisationMixin, Page):
+class CoursePage(DescribedPage, ScriptNormalisationMixin, Page):
     kind = models.CharField(_("kind"), max_length=20, choices=KINDS, default="awareness")
     summary = models.TextField(
         _("summary"), max_length=400, blank=True, help_text=_("Who it is for, what it covers.")
