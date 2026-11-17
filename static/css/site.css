@@ -311,10 +311,29 @@ textarea.inp { padding: 12px 14px; min-height: 120px; }
 .sub { flex: 1 1 260px; min-width: 0; text-decoration: none; display: flex; flex-direction: column; gap: 6px; padding: 22px; border: 1px solid var(--tic-hairline); background: var(--tic-white); }
 .sub b { font-family: var(--font-display); font-weight: 700; font-size: 17px; text-transform: uppercase; color: var(--tic-ink); }
 .sub span { font-size: 14px; color: var(--tic-charcoal); }
-.rich p { margin: 0 0 18px; color: var(--tic-charcoal); }
-.rich ul { padding-inline-start: 0; }
-.rich ul li { list-style: none; position: relative; padding-inline-start: 22px; margin-bottom: 8px; }
-.rich ul li::before { content: ""; position: absolute; inset-inline-start: 0; top: .62em; width: 8px; height: 8px; background: var(--tic-red); transform: rotate(45deg); }
+/* Rich text (editor text on every page; old news bodies). One rhythm for the whole site,
+   from the design's article body (B-Article .body): 18 px Open Sans at 1.7 in ink, h2 as
+   the page's uppercase section heading, h3 a step down, space after every block. */
+.rich { font-size: 18px; line-height: 1.7; color: var(--tic-ink); }
+.rich > :first-child { margin-top: 0; }
+.rich > :last-child { margin-bottom: 0; }
+.rich p { margin: 0 0 20px; }
+.rich h2 { margin: 44px 0 14px; font-weight: 700; font-size: 24px; line-height: 1.2; letter-spacing: .02em; text-transform: uppercase; color: var(--tic-charcoal); }
+.rich h3 { margin: 32px 0 10px; font-weight: 700; font-size: 19px; line-height: 1.3; letter-spacing: .02em; text-transform: uppercase; color: var(--tic-ink); }
+.rich h2 + h3 { margin-top: 18px; }
+.rich b, .rich strong { font-weight: 600; }
+.rich a { color: var(--tic-ink); text-decoration: underline; text-decoration-color: var(--tic-red); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+.rich a:hover { color: var(--tic-red); }
+.rich ul, .rich ol { margin: 0 0 24px; padding-inline-start: 0; }
+.rich li { margin-bottom: 10px; }
+.rich li > p { margin: 0; }
+.rich ul li { list-style: none; position: relative; padding-inline-start: 22px; }
+.rich ul li::before { content: ""; position: absolute; inset-inline-start: 0; top: .66em; width: 8px; height: 8px; background: var(--tic-red); transform: rotate(45deg); }
+.rich ol { counter-reset: rich-ol; }
+.rich ol li { list-style: none; position: relative; padding-inline-start: 34px; counter-increment: rich-ol; }
+.rich ol li::before { content: counter(rich-ol, decimal-leading-zero); position: absolute; inset-inline-start: 0; top: .2em; font-family: var(--font-display); font-weight: 600; font-size: 13px; letter-spacing: .06em; color: var(--tic-red); }
+:lang(ar) .rich h2, :lang(ar) .rich h3 { text-transform: none; letter-spacing: 0; line-height: 1.4; }
+:lang(ar) .rich { line-height: 1.9; }
 
 /* ---------- 404 ---------- */
 .nf { display: flex; flex-wrap: wrap; gap: 64px; padding-block: 80px 96px; align-items: center; }
@@ -442,7 +461,6 @@ a.mark { text-decoration: none; color: inherit; }
 .policy__body { flex: 1 1 560px; }
 .policy__sec { gap: 14px; padding-block: 32px; border-top: 1px solid var(--tic-hairline); }
 .policy__sec:first-child { border-top: 0; padding-top: 0; }
-.policy__sec .rich p, .policy__sec .rich li { color: var(--tic-charcoal); }
 .policy__doc { border-top: 1px solid var(--tic-hairline); padding-top: 20px; font-size: 14px; color: var(--tic-body-grey); }
 .policy__doc p { margin: 0 0 8px; }
 .policy__pdfs { gap: 12px 28px; }
@@ -675,7 +693,8 @@ a.chan:hover { border-color: var(--tic-ink); }
 .art-author__photo { width: 72px; height: 72px; object-fit: cover; }
 .art-author__tx { gap: 4px; font-size: 15px; }
 .art-links { gap: 8px; }
-.art__photo { min-height: 360px; } /* the article photo (B-Article; T30, D62) */
+.art__photo { margin-bottom: 32px; } /* the article photo (B-Article; T30, D62): the whole picture, never cropped */
+.art__photo > img { position: static; display: block; width: 100%; height: auto; }
 .art-rel { padding-block: 48px; }
 .art-rel__row { flex-wrap: wrap; gap: 16px; }
 .art-rel .rel span { padding: 0 16px 14px; font-size: 14px; color: var(--tic-body-grey); }
@@ -684,7 +703,7 @@ a.chan:hover { border-color: var(--tic-ink); }
 .qa-search { gap: 8px; max-width: 760px; }
 .qa-grp { display: flex; flex-direction: column; gap: 12px; padding-bottom: 32px; }
 .qa-grp + .qa-grp { padding-top: 32px; border-top: 1px solid var(--tic-hairline); }
-.qa .rich { margin-bottom: 10px; color: var(--tic-charcoal); }
+.qa .rich { margin-bottom: 10px; font-size: 17px; }
 
 /* ---------- contact and consent (T26; B-Contact; D57) ---------- */
 .contact__chans { gap: 12px; }
