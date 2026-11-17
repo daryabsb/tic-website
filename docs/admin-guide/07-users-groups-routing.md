@@ -37,7 +37,7 @@ page.
 **Routing** rules choose the address of the mail for each new request. Example: a quote
 for the Iraq program goes to the Baghdad office; a complaint goes to the Quality Manager.
 
-1. Click **Snippets → Routing rules** (or **Routing** in the menu).
+1. Click **Snippets**, then **Routing rules**.
 
 ![The routing rules](pictures/a08-routing.jpg)
 
@@ -46,9 +46,9 @@ for the Iraq program goes to the Baghdad office; a complaint goes to the Quality
 ![One routing rule](pictures/a09-routing-rule.jpg)
 
 3. Fill:
-   - **Name**: shown to staff and to the customer, for example "Baghdad office".
-   - **Email**: the address. Leave it blank to use the email of the chosen page (office).
-   - **Page**: optional, for example the office page.
+   - **Recipient name**: shown to staff and to the customer, for example "Baghdad office".
+   - **Recipient email**: the address. Leave it blank to use the email of the page.
+   - **Recipient page**: optional, for example the office page.
    - **Priority**: lower numbers are tried first.
    - **Active**: untick to stop the rule without deleting it.
    - **Conditions**: all must match the request's answers. No condition: the rule
