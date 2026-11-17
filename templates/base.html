@@ -19,12 +19,15 @@
   {% block head %}{% endblock %}
 </head>
 <body class="{% block body_class %}{% endblock %}">
+  {# Cloudflare's email obfuscation rewrites addresses to "[email protected]" and needs a script the CSP blocks (T33): it skips what sits between these comments. #}
+  <!--email_off-->
   <a class="skip-link" href="#main">{% translate "Skip to content" %}</a>
   {% block header %}{% include "includes/header.html" %}{% endblock %}
   <main class="site-main" id="main" tabindex="-1">
     {% block content %}{% endblock %}
   </main>
   {% block footer %}{% include "includes/footer.html" %}{% endblock %}
+  <!--/email_off-->
   {% block consent %}{% privacy_url as privacy %}{% consent_banner privacy_url=privacy %}{% endblock %}
   {% block body_end %}{% endblock %}
 </body>
