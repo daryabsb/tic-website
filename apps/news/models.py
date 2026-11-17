@@ -24,7 +24,7 @@ from wagtail.rich_text import expand_db_html
 from wagtail.search import index
 from zeneon_cms.core.text import ScriptNormalisationMixin
 
-from apps.pages.models import _translatable
+from apps.pages.models import _image, _translatable
 
 KINDS = [
     ("news", _("News")),
@@ -139,6 +139,17 @@ class NewsPage(ScriptNormalisationMixin, Page):  # noqa: DJ008 (Page gives __str
         related_name="+",
     )
 
+    image = _image(
+        _("photo"),
+        help_text=_("One photograph of the subject (T30, D62). Blank shows the grey plate."),
+    )
+    image_alt = models.CharField(
+        _("photo alt text"),
+        max_length=200,
+        blank=True,
+        help_text=_("What the photo shows, for a reader who cannot see it."),
+    )
+
     parent_page_types = ["news.NewsIndexPage"]
     subpage_types = []
     template = "news/news_page.html"
@@ -147,7 +158,17 @@ class NewsPage(ScriptNormalisationMixin, Page):  # noqa: DJ008 (Page gives __str
         "standfirst",
         "body",
         "office_name",
-        synchronised=("kind", "date", "updated", "featured", "program", "office", "author"),
+        "image_alt",
+        synchronised=(
+            "kind",
+            "date",
+            "updated",
+            "featured",
+            "program",
+            "office",
+            "author",
+            "image",
+        ),
     )
 
     content_panels = [
@@ -164,6 +185,7 @@ class NewsPage(ScriptNormalisationMixin, Page):  # noqa: DJ008 (Page gives __str
             heading=_("About this article"),
         ),
         FieldPanel("standfirst"),
+        MultiFieldPanel([FieldPanel("image"), FieldPanel("image_alt")], heading=_("Photo")),
         FieldPanel("body"),
     ]
 

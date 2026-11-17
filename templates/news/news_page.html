@@ -18,9 +18,10 @@
     {% if page.program and page.program.live %}<div class="stack art-links"><span class="eyebrow">{% translate "Related program" %}</span><a class="tri" href="{% pageurl page.program %}">{{ page.program.title }}</a></div>{% endif %}
   </aside>
   <div class="two-col__main stack">
+    {% if page.image %}<div class="photo art__photo">{% image page.image width-1200 as photo %}<img src="{{ photo.url }}" alt="{{ page.image_alt }}" width="{{ photo.width }}" height="{{ photo.height }}"></div>{% endif %}
     {% if page.body %}<div class="rich art__body">{{ page.body_html }}</div>{% endif %}
     <p class="note">{% translate "This article is general information on the date shown; the regulator’s own publications take precedence." %}</p>
   </div>
 </div>
-{% with related=page.related %}{% if related %}<div class="section--light art-rel"><div class="wrap stack"><span class="eyebrow">{% translate "Related articles" %}</span><div class="row art-rel__row">{% for item in related %}<a class="rel" href="{% pageurl item %}"><div class="photo"></div><b>{{ item.title }}</b><span>{{ item.date|date:"j M Y" }}{% if item.signed_by %} · {{ item.signed_by }}{% endif %}</span></a>{% endfor %}</div></div></div>{% endif %}{% endwith %}
+{% with related=page.related %}{% if related %}<div class="section--light art-rel"><div class="wrap stack"><span class="eyebrow">{% translate "Related articles" %}</span><div class="row art-rel__row">{% for item in related %}<a class="rel" href="{% pageurl item %}"><div class="photo">{% if item.image %}{% image item.image fill-480x220 as photo %}<img src="{{ photo.url }}" alt="" width="{{ photo.width }}" height="{{ photo.height }}" loading="lazy">{% endif %}</div><b>{{ item.title }}</b><span>{{ item.date|date:"j M Y" }}{% if item.signed_by %} · {{ item.signed_by }}{% endif %}</span></a>{% endfor %}</div></div></div>{% endif %}{% endwith %}
 {% endblock %}

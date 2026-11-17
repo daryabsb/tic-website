@@ -71,6 +71,8 @@ def _source(tmp_path):
                         "date": "2026-04-29",
                         "excerpt": "<p>Egypt grows. More.</p>",
                         "html": "<h2>Why</h2><p>Text.</p>",
+                        "image_file": "files/2026/04/battery.png",
+                        "image_alt": "Batteries on a pallet",
                     },
                 ]
             }
@@ -94,6 +96,24 @@ def test_old_posts_become_draft_news_pages_once(seeded_home, tmp_path):
     assert NewsPage.objects.filter(slug="iraqi-quality-mark").count() == 1
 
 
+def test_photos_come_from_the_old_media_folder_and_publish_goes_live(seeded_home, tmp_path):
+    from PIL import Image as PILImage
+
+    folder = tmp_path / "old-site" / "files" / "2026" / "04"
+    folder.mkdir(parents=True)
+    PILImage.new("RGB", (40, 20), "grey").save(folder / "battery.png")
+    source = _source(tmp_path)
+
+    call_command("import_old_news", source=source, images=tmp_path / "old-site", publish=True)
+    call_command("import_old_news", source=source, images=tmp_path / "old-site", publish=True)
+
+    page = NewsPage.objects.get(slug="batteries-export-to-egypt")
+    assert page.live and not page.has_unpublished_changes
+    assert page.image.collection.name == "News"
+    assert page.image_alt == "Batteries on a pallet"
+    assert page.image.width == 40
+
+
 def test_the_repository_source_covers_every_old_post():
     with open(seed_site.SEED_DIR / "old-news.json", encoding="utf-8") as handle:
         posts = json.load(handle)["posts"]
@@ -101,6 +121,7 @@ def test_the_repository_source_covers_every_old_post():
         rows = {row["old_path"]: row for row in csv.DictReader(handle)}
 
     assert len(posts) == 38
+    assert all(post["image_file"] for post in posts)
     for post in posts:
         assert rows[post["old_path"]]["new_path"] == f"/en/news/{post['slug']}/"
         assert "TICQC" not in oldsite.clean_title(post["title"])
