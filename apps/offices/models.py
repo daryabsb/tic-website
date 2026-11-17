@@ -30,9 +30,9 @@ from wagtail.models import Page
 from wagtail.search import index
 from zeneon_cms.core.text import ScriptNormalisationMixin
 
+from apps.pages.describe import DescribedPage
 from apps.pages.models import _image, _translatable
 from apps.services.models import _header_panel, _HeaderFields
-from apps.pages.describe import DescribedPage
 
 NO_WHATSAPP_COUNTRIES = {"China"}  # D11: WeChat and a China phone instead
 

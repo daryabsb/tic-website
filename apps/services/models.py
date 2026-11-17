@@ -23,10 +23,10 @@ from wagtail.search import index
 from wagtail.snippets.models import register_snippet
 from zeneon_cms.core.text import ScriptNormalisationMixin
 
+from apps.pages.describe import DescribedPage
 from apps.pages.models import _image, _translatable
 from apps.services.blocks import PART_BLOCK_COUNTS, PART_TITLES, SERVICE_PARTS
 from apps.services.rules import service_page_problems
-from apps.pages.describe import DescribedPage
 
 
 class Partner(models.Model):

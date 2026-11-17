@@ -24,8 +24,8 @@ from wagtail.rich_text import expand_db_html
 from wagtail.search import index
 from zeneon_cms.core.text import ScriptNormalisationMixin
 
-from apps.pages.models import _image, _translatable
 from apps.pages.describe import DescribedPage
+from apps.pages.models import _image, _translatable
 
 KINDS = [
     ("news", _("News")),

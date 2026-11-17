@@ -21,8 +21,8 @@ from wagtail.models import Page
 from wagtail.search import index
 from zeneon_cms.core.text import ScriptNormalisationMixin
 
-from apps.pages.models import _translatable
 from apps.pages.describe import DescribedPage
+from apps.pages.models import _translatable
 
 DOWNLOAD_KINDS = [
     ("form", _("Form")),

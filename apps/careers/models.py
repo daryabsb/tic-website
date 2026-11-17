@@ -18,8 +18,8 @@ from wagtail.models import Page
 from wagtail.search import index
 from zeneon_cms.core.text import ScriptNormalisationMixin
 
-from apps.pages.models import _image, _translatable
 from apps.pages.describe import DescribedPage
+from apps.pages.models import _image, _translatable
 
 JOB_TYPES = [
     ("full_time", _("Full time")),

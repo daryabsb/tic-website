@@ -19,8 +19,8 @@ from wagtail.search import index
 from wagtail.snippets.models import register_snippet
 from zeneon_cms.core.text import ScriptNormalisationMixin
 
-from apps.pages.models import _translatable
 from apps.pages.describe import DescribedPage
+from apps.pages.models import _translatable
 
 STATUSES = [
     ("active", _("Active")),
