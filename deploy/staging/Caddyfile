@@ -55,6 +55,15 @@
 	header X-Robots-Tag "noindex, nofollow"
 	encode zstd gzip
 
+	# The visitor spoke http to Cloudflare: send them to https (Observatory
+	# "redirection", T32). The tunnel always speaks http to us, so the scheme is
+	# read from Cloudflare's Cf-Visitor header. /healthz/ stays as it is.
+	@plain_http {
+		header Cf-Visitor `*"scheme":"http"*`
+		not path /healthz/
+	}
+	redir @plain_http https://{host}{uri} permanent
+
 	handle /healthz/ {
 		import app
 	}
