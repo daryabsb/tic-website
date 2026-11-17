@@ -11,8 +11,8 @@ Worked at gate 4; every line ticked on the launch ticket with who did it and whe
 - [ ] Program pages: appointment document uploaded, product-list date shown, review-by set, owning office set; SFDA shown as "designation in progress" with a date (**P-13**)
 - [ ] One office count everywhere (**P-12**); head-office suite number confirmed (2101 vs 2206)
 - [ ] Company name rule, "program" spelling, "Kurdistan Region of Iraq" — grep test green
-- [ ] Every image has alt text (D32: old-site images allowed); hero renditions under 100 KB
-- [ ] Legal pages: document code, version, effective date, owner; privacy policy reviewed by Legal
+- [ ] Every image has alt text (D32: old-site images allowed); hero renditions under 100 KB. News cards keep an empty alt (the title beside them says it); every article photo needs its own
+- [ ] Legal pages: document code, version, effective date, owner; privacy policy reviewed by Legal (**P-18**)
 - [ ] Arabic frame complete (test green); Arabic-first pages reviewed by the named reviewer (**P-5**)
 
 ## Function
@@ -37,6 +37,7 @@ Worked at gate 4; every line ticked on the launch ticket with who did it and whe
 - [ ] Resend domain verified: SPF, DKIM, DMARC; a test alert lands in an office inbox, not spam
 - [ ] Cloudflare: proxy on, origin cert, HTML cache rule with bypasses, Access on `/admin/`, WAF rate rule on `/verify/`, purge token in `.env`
 - [ ] Security headers A+ on Observatory; CSP allows only self, hCaptcha, Umami
+- [ ] Cloudflare email obfuscation cannot hide addresses: the pages carry `<!--email_off-->` (its decoder script is blocked by the CSP; T33, D65)
 - [ ] Cloudflare Web Analytics (the injected `static.cloudflareinsights.com` beacon) off on the zone: the CSP blocks it and mainland China must not load it (D63)
 - [ ] `bash -s` of `scripts/launch_checks.sh` on the production hostname: Observatory A+ and Lighthouse numbers in DECISIONS (D63)
 - [ ] Lighthouse mobile on Home, a program page, Verify: numbers written in DECISIONS; home first view under 600 KB

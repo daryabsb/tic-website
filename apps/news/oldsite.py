@@ -37,6 +37,15 @@ HOUSE_WORDS = (
 )
 
 
+# "TIC Quality Control (TICQC)": the old abbreviation in brackets after the name. The
+# house words would make it "TIC Quality Control (TIC Quality Control)", so it goes.
+BRACKETED_ABBREVIATION = re.compile(r"\s*\((?:<[^>]+>)*\s*TICQC\s*(?:<[^>]+>)*\)", re.IGNORECASE)
+
+
+def drop_bracketed_abbreviation(text: str) -> str:
+    return BRACKETED_ABBREVIATION.sub("", text)
+
+
 def house_words(text: str) -> str:
     for pattern, word in HOUSE_WORDS:
         text = pattern.sub(word, text)
@@ -44,7 +53,7 @@ def house_words(text: str) -> str:
 
 
 def clean_title(raw: str) -> str:
-    text = unicodedata.normalize("NFKC", html.unescape(raw))
+    text = unicodedata.normalize("NFKC", html.unescape(drop_bracketed_abbreviation(raw)))
     text = "".join(
         ch
         for ch in text
@@ -166,7 +175,7 @@ class _Cleaner(HTMLParser):
 
 def clean_html(raw: str) -> str:
     cleaner = _Cleaner()
-    cleaner.feed(raw)
+    cleaner.feed(drop_bracketed_abbreviation(raw))
     cleaner.close()
     return cleaner.result()
 
@@ -186,7 +195,8 @@ def standfirst(excerpt: str, limit: int, clean: str = "") -> str:
     """The first sentence of the text's first paragraph (``clean``), else of the excerpt
     (WordPress joins a heading to the next paragraph in the excerpt, without a gap)."""
     text = first_paragraph(clean) if clean else ""
-    text = text or plain(excerpt).replace("[…]", "").replace("[&hellip;]", "").strip()
+    text = text or plain(drop_bracketed_abbreviation(excerpt))
+    text = house_words(text.replace("[…]", "").replace("[&hellip;]", "").strip())
     sentence = re.split(r"(?<=[.!?])\s", text, maxsplit=1)[0]
     if len(sentence) > limit:
         sentence = sentence[: limit - 1].rsplit(" ", 1)[0] + "…"

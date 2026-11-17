@@ -115,3 +115,27 @@ def test_the_request_page_has_a_description(client, seeded_home):
     html = client.get("/en/request/").content.decode()
 
     assert re.search(r'<meta name="description" content="[^"]+"', html)
+
+
+def test_cloudflare_leaves_the_email_addresses_alone(client, seeded_home):
+    """Cloudflare's email obfuscation needs a script the CSP blocks: visitors saw
+    "[email protected]" on every office page (T33). The page opts out."""
+    html = client.get("/en/contact/").content.decode()
+
+    assert html.index("<!--email_off-->") < html.index("mailto:") < html.index("<!--/email_off-->")
+
+
+# The house words (CLAUDE.md; launch checklist): "TIC Quality Control", then "TIC";
+# never "TICQC". "Program", not "programme". "Kurdistan Region of Iraq".
+HOUSE_WORD_SLIPS = re.compile(r"TICQC|[Pp]rogramme|Kurdistan(?! Region)")
+
+
+def test_templates_and_seed_keep_the_house_words():
+    files = [*(REPO_ROOT / "templates").rglob("*.html"), *(REPO_ROOT / "seed").glob("*.yaml")]
+    slips = [
+        f"{path.relative_to(REPO_ROOT)}: {match.group(0)}"
+        for path in files
+        for match in HOUSE_WORD_SLIPS.finditer(path.read_text(encoding="utf-8"))
+    ]
+
+    assert slips == []

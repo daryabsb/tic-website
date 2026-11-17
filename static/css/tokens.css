@@ -6,6 +6,7 @@
   --tic-red-edge: #BD2130;     /* Band Red edge: button hover only */
   --tic-black: #111111;        /* dark bands and the footer (the band behind the reversed artwork) */
   --tic-ink: #1E1E1E;          /* body text; TIC Black in the book */
+  --tic-text: #2A2A2A;          /* long reading text (rich text): ink, one shade softer (D64) */
   --tic-charcoal: #3D3D3D;     /* headings, secondary text */
   --tic-steel: #B9B9BB;        /* photo plates (steel is reserved for the logo and icons; never text) */
   --tic-steel-line: #A9A9AB;

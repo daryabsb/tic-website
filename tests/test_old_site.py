@@ -21,6 +21,20 @@ def test_titles_lose_math_letters_emoji_and_the_wrong_name():
     assert oldsite.clean_title(raw) == "TIC Quality Control CEO Rand elected & the Program"
 
 
+def test_the_old_abbreviation_in_brackets_goes():
+    """The house words would make "TIC Quality Control (TICQC)" say the name twice."""
+    raw = (
+        '<p><strong><a href="https://ticqc.ae/">TIC Quality Control</a> (TICQC)</strong>'
+        " took part.</p>"
+    )
+
+    assert oldsite.clean_html(raw) == '<p><b><a href="/">TIC Quality Control</a></b> took part.</p>'
+    assert oldsite.clean_title("Why TIC Quality Control (TICQC)") == "Why TIC Quality Control"
+    assert oldsite.standfirst("TIC Quality Control (TICQC) is here. More.", 200) == (
+        "TIC Quality Control is here."
+    )
+
+
 def test_html_keeps_the_body_features_only():
     raw = (
         '<h1 class="x"><strong>Title</strong></h1><p>A <strong>bold</strong> '
