@@ -57,7 +57,7 @@ Destination: ticqc.com live on the new stack, five gates passed. Open, unblocked
 
 | # | Ticket | Blocks | Done when |
 | --- | --- | --- | --- |
-| 28 | **Arabic frame** — `locale/ar` complete; core msgids listed and translated; emails, consent, 404, search; the test that every visible msgid has `ar` | 29 | Test green; Arabic shell on a phone |
+| 28 | ✅ (Nov 17, D60: 366 visible msgids in Arabic, drafts until P-5 review) **Arabic frame** — `locale/ar` complete; core msgids listed and translated; emails, consent, 404, search; the test that every visible msgid has `ar` | 29 | Test green; Arabic shell on a phone |
 | 29 | **Arabic-first pages** — `ar.yaml` for Verify, six office pages, Complaints, Impartiality, Privacy, About, Accreditations, Iraq/Kurdistan/Egypt programs; drafts marked until the reviewer signs | 1 | Rendered RTL; reviewer's sign-off recorded |
 | 30 | **Redirect map and news import** — `redirects.csv` from the audit's URL list; `import_old_news`; downloads with owners | 1 | lychee over the old URL list: 0 broken on staging |
 | 31 | **Production server and stack** (Task: Darya, TIC IT) — host per P-11 set up with server-platform; prod stack on a hidden hostname; backups to the TIC bucket; restore drill on staging | launch | Prod answers on the hidden hostname; restore drill RTO in the runbook |
