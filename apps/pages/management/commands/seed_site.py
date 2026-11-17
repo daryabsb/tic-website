@@ -966,10 +966,14 @@ class Command(BaseCommand):
     # -- redirects (T8; the rows come in T30) ----------------------------------------
 
     def seed_redirects(self) -> None:
-        """One Redirect per ``seed/redirects.csv`` row, for all sites, permanent. A row
-        whose old path already has a redirect is left alone (an editor may have changed
-        it). The new path is a site path (``/en/services/``, resolved to its page, so
-        the redirect follows a later move) or a full ``https://`` URL."""
+        """One Redirect per ``seed/redirects.csv`` row, for all sites, permanent. The new
+        path is a site path (``/en/services/``, resolved to its page, so the redirect
+        follows a later move) or a full ``https://`` URL.
+
+        A row may name a ``fallback`` (T30, D62): while the new page is not live the
+        redirect goes there, and a later run moves it to the new page once it is live.
+        A redirect an editor changed (it points neither to the fallback nor to the new
+        page) is left alone."""
         path = SEED_DIR / "redirects.csv"
         if not path.exists():
             return
@@ -977,19 +981,34 @@ class Command(BaseCommand):
             rows = list(csv.DictReader(handle))
         for row in rows:
             old_path = Redirect.normalise_path(row["old_path"].strip())
-            if Redirect.objects.filter(old_path=old_path, site=None).exists():
-                continue
             target = self.redirect_target(row["new_path"].strip())
-            if target is None:
+            fallback = self.redirect_target((row.get("fallback") or "").strip())
+            if target is None and fallback is None:
                 self.stderr.write(f"redirect {old_path}: no page at {row['new_path']}")
                 continue
-            Redirect.add_redirect(old_path, redirect_to=target, is_permanent=True)
-            self.changes += 1
+            ready = isinstance(target, str) or (target is not None and target.live)
+            chosen = target if ready or fallback is None else fallback
+            redirect = Redirect.objects.filter(old_path=old_path, site=None).first()
+            if redirect is None:
+                Redirect.add_redirect(old_path, redirect_to=chosen, is_permanent=True)
+                self.changes += 1
+            elif (
+                ready
+                and isinstance(fallback, Page)
+                and isinstance(target, Page)
+                and redirect.redirect_page_id == fallback.pk
+            ):
+                redirect.redirect_page = target
+                redirect.save()
+                self.changes += 1
         if rows:
             self.stdout.write(f"redirects: {len(rows)} row(s) checked")
 
     def redirect_target(self, new_path: str):
-        """The page at a site path such as ``/en/services/``, or a full URL as given."""
+        """The page at a site path such as ``/en/services/``, or a full URL as given
+        (None for an empty path)."""
+        if not new_path:
+            return None
         if new_path.startswith(("https://", "http://")):
             return new_path
         code, _, rest = new_path.strip("/").partition("/")

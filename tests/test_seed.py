@@ -98,15 +98,17 @@ def test_a_redirect_to_a_missing_page_is_reported_and_skipped(seeded_home, redir
     assert not Redirect.objects.filter(old_path="/gone").exists()
 
 
-def test_the_redirect_map_holds_only_the_iraq_rows_until_t30():
-    """T18 (D44) moves the three Iraq pages, the GSP page and three Iraq posts; T30
-    brings the rest of the map."""
+def test_the_redirect_map_keeps_the_iraq_rows_of_t18():
+    """T18 (D44) moved the three Iraq pages, the GSP page and three Iraq posts; T30
+    (D62) adds every other old address with a fallback column."""
     with (SEED / "redirects.csv").open(encoding="utf-8", newline="") as handle:
         reader = csv.DictReader(handle)
-        assert reader.fieldnames == ["old_path", "new_path"]
-        rows = list(reader)
-    assert len(rows) == 7
-    assert all(row["new_path"].startswith(("/en/programs/", "/en/news/")) for row in rows)
+        assert reader.fieldnames == ["old_path", "new_path", "fallback"]
+        rows = {row["old_path"]: row["new_path"] for row in reader}
+    iraq = "/en/programs/iraq-certificate-of-conformity/"
+    assert rows["/iraq-coc/"] == rows["/iraq-coc-gujarat/"] == iraq
+    assert rows["/government-services-programs-gsp/"] == "/en/programs/"
+    assert rows["/iraqi-quality-mark/"] == "/en/news/iraqi-quality-mark/"
 
 
 # -- the fourteen offices ------------------------------------------------------------
