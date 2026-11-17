@@ -16,7 +16,9 @@ HCAPTCHA_TEST_SECRET_KEY = "0x0000000000000000000000000000000000000000"  # noqa:
 
 ZENEON_CMS = {
     "contact": {
-        "recipient_fallback": "info@ticqc.com",
+        # Where a request goes when no routing rule matches. Staging sets it to the test
+        # address, never a TIC mailbox (D61).
+        "recipient_fallback": config("CONTACT_RECIPIENT", default="info@ticqc.com"),
         "spam_provider": "hcaptcha",
         "hcaptcha_site_key": config("HCAPTCHA_SITE_KEY", default=HCAPTCHA_TEST_SITE_KEY),
         "hcaptcha_secret_key": config("HCAPTCHA_SECRET_KEY", default=HCAPTCHA_TEST_SECRET_KEY),
