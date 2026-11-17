@@ -19,6 +19,7 @@ Worked at gate 4; every line ticked on the launch ticket with who did it and whe
 - [ ] Quote form from a service page, a program page, an office page and Contact: routed office receives the alert, client gets the auto-reply with the code, sent screen names the office and hours; with JavaScript off too
 - [ ] Routing table matches the offices' answers (**P-7**); fallback to Dubai works
 - [ ] Every interim address darya.ibrahim@ticqc.ae (D55) replaced by the real one: routing rules (Quality Manager, HR, offices), staff accounts, office groups
+- [ ] The four guide logins (`guide.editor`, `guide.reviewer`, `guide.manager`, `guide.admin`, D58) exist on staging only; none on production
 - [ ] Complaint with a file; application with a CV; course registration — files only by signed link
 - [ ] Verify: by number, by QR URL, not found, captcha after three failures, rate limit returns 429, every lookup logged; Arabic result
 - [ ] Certificate import from the agreed source runs and reports (**P-8**)
