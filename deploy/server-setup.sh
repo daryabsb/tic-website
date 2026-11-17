@@ -52,7 +52,7 @@ AK=~/.ssh/authorized_keys
 install -d -m 700 ~/.ssh; touch "$AK"; chmod 600 "$AK"
 for env in prod; do
 	pub="$(cut -d' ' -f1,2 "$HERE/ssh/tic-$env.pub")"
-	line="restrict,command=\"$PLATFORM/bin/deploy tic $env\" $pub gha-tic-$env"
+	line="restrict,command=\"$PLATFORM/bin/deploy tic $env\" $pub deploy-tic-$env"
 	if grep -qF "$pub" "$AK"; then echo "  $env key already present"; else printf '%s\n' "$line" >> "$AK"; echo "  added $env key"; fi
 done
 
@@ -63,7 +63,8 @@ cat <<EOF
      then: systemctl list-timers 'backup@tic-*' 'task@tic-*'
   c. Healthchecks URL for the retry task:
      sudo tee /etc/server-platform/healthchecks/task@tic-prod-retry.env <<<'HC_PING_URL=https://hc-ping.com/...'
-  d. GHCR pull on the server (package is private): docker login ghcr.io with a read:packages token, once.
+  d. Image: built on this server from the checkout, as on staging (no registry, D61):
+     docker build -t tic-website:<sha> -f deploy/Dockerfile .   (T31 scripts it)
   e. First deploy, after an image exists:  $PLATFORM/bin/deploy tic prod <sha>
      first content, once:     $PLATFORM/bin/run-task tic prod seed_site
   f. First backup by hand:  sudo $PLATFORM/bin/backup-stack tic-prod
