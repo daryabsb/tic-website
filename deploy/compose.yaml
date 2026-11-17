@@ -8,7 +8,8 @@
 # - no "ports:" anywhere; Caddy is the only container that publishes ports
 # - every service: restart, healthcheck, resource limits
 #
-# bin/deploy (server-platform) pulls, migrates and starts "web". No MCP container for
+# The image is built on the server from a checkout (tic-website:<sha>), as on staging;
+# no registry, no GitHub-hosted build (D61). bin/deploy (server-platform) migrates and starts "web". No MCP container for
 # TIC in V1 (master plan 16).
 #
 # One-time on the server, before the first deploy (deploy/server-setup.sh does it):
@@ -16,7 +17,7 @@
 name: tic-prod
 
 x-app: &app
-  image: ${TIC_IMAGE:-ghcr.io/daryabsb/tic-website}:${IMAGE_TAG:?IMAGE_TAG is set by bin/deploy}
+  image: ${TIC_IMAGE:-tic-website}:${IMAGE_TAG:?IMAGE_TAG is set by bin/deploy}
   restart: unless-stopped
   env_file: .env
   volumes:

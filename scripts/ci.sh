@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # The CI gate, run on the Dubai VM stms-data (D24, D25): no GitHub-hosted runners.
-# Same checks as .github/workflows/ci.yml, plus the seed idempotence check.
+# Ruff, migrations check, the Arabic frame, pytest with coverage, and seed idempotence.
 #
 #   bash scripts/ci.sh           # gate the checked-out commit (uncommitted changes are NOT sent)
 #
