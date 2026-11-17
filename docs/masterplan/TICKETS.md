@@ -51,7 +51,7 @@ Destination: ticqc.com live on the new stack, five gates passed. Open, unblocked
 | 25 | ✅ (Nov 14, D56: a hub in the menu, four resource pages beside it) **Resources** — `NewsPage.kind`, filters, article template, Downloads with `Document` snippets, Training catalogue, Q&A aggregation | 1 | All five resource pages from seed |
 | 26 | ✅ (Nov 14, D57: Umami only after Accept, choice in localStorage) **Contact page and consent** — contact page with head-office channels; consent banner and Umami after consent | 1 | No cookie before consent; Umami event on a quote |
 | 27 | 🟡 (Nov 17, D58: guide and pictures merged; waits for one office manager's read) **Editor guide** — `docs/editor-guide.md` with staging screenshots | launch | Sent to one office manager for a read |
-| 35 | **Admin docs for beginners** (Darya, Nov 14) — every admin process step by step in plain words, a staging screenshot per step, every publish error explained; T27 becomes its first page | launch | Every process has its page in `docs/admin-guide/`; Darya does one task from it alone |
+| 35 | 🟡 (Nov 17, D59: guide merged; waits for Darya to do one task from it alone) **Admin docs for beginners** (Darya, Nov 14) — every admin process step by step in plain words, a staging screenshot per step, every publish error explained; T27 becomes its first page | launch | Every process has its page in `docs/admin-guide/`; Darya does one task from it alone |
 
 ## Gate 4 · Arabic and the move
 

@@ -51,9 +51,7 @@ def ensure_site_admins() -> Group:
     group, _ = Group.objects.get_or_create(name=SITE_ADMINS)
     for app_label, model in SITE_ADMIN_MODELS:
         group.permissions.add(
-            *Permission.objects.filter(
-                content_type__app_label=app_label, content_type__model=model
-            )
+            *Permission.objects.filter(content_type__app_label=app_label, content_type__model=model)
         )
     return group
 
