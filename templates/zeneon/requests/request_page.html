@@ -4,7 +4,7 @@ flow (zeneon/requests/flow.html and includes/) renders inside; its classes are s
 site.css. Never cached, never indexed. The heading names the form: a quote, or a complaint, an
 application, a course registration when the form was opened from that page (T23).{% endcomment %}
 {% block title %}{% request_head flow as head %}{% seo_title title=head.title suffix="TIC Quality Control" %}{% endblock %}
-{% block meta %}{% seo_head robots="noindex" %}{% endblock %}
+{% block meta %}{% request_head flow as head %}{% seo_head robots="noindex" description=head.lead %}{% endblock %}
 {% block content %}{% request_head flow as head %}
 <div class="page-head page-head--band">
   <div class="wrap page-head__wrap"><div class="page-head__plate">

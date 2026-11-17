@@ -109,3 +109,9 @@ def test_every_seeded_page_has_a_description(seeded_home):
     from zeneon_cms.seo.meta import pages_without_description
 
     assert [page.url_path for page in pages_without_description()] == []
+
+
+def test_the_request_page_has_a_description(client, seeded_home):
+    html = client.get("/en/request/").content.decode()
+
+    assert re.search(r'<meta name="description" content="[^"]+"', html)
