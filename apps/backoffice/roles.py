@@ -3,7 +3,7 @@ from ``seed_site`` and is safe to run again; it never removes a permission.
 
 | Role            | Group                                   | Made by                     |
 | --------------- | --------------------------------------- | --------------------------- |
-| Global Admin    | Site admins                             | core (``security.groups``)  |
+| Global Admin    | Site admins                             | core; routing rules here    |
 | Content Manager | Content managers                        | core                        |
 | Translator      | Translators: ar                         | core                        |
 | Office Editor   | ``<City> office editors``               | ``add_office``              |
@@ -24,6 +24,10 @@ from wagtail.models import Workflow, WorkflowPage, WorkflowTask
 from apps.backoffice.models import OfficeApprovalTask, approver_groups
 
 VIEWERS = "Viewers"
+SITE_ADMINS = "Site admins"
+# Plan 09: the Global Admin keeps the snippets. The core group has the requests but not
+# their routing rules (the Quality Manager, HR and office addresses; D53, D59).
+SITE_ADMIN_MODELS = (("zeneon_requests", "routingrule"),)
 # Viewers read the admin: requests, certificate lookups and logs, reports. Wagtail has no
 # read-only page permission, so they read page history in Reports → Site history.
 VIEWER_APPS = ("zeneon_requests", "verify")
@@ -40,6 +44,15 @@ def ensure_viewers() -> Group:
         content_type__app_label__in=VIEWER_APPS, codename__startswith="view_"
     ) | Permission.objects.filter(content_type__app_label="wagtailadmin", codename="access_admin")
     group.permissions.add(*permissions)
+    return group
+
+
+def ensure_site_admins() -> Group:
+    group, _ = Group.objects.get_or_create(name=SITE_ADMINS)
+    for app_label, model in SITE_ADMIN_MODELS:
+        group.permissions.add(
+            *Permission.objects.filter(content_type__app_label=app_label, content_type__model=model)
+        )
     return group
 
 
@@ -80,6 +93,7 @@ def ensure_office_rights() -> int:
 
 
 def ensure_roles() -> int:
+    ensure_site_admins()
     ensure_viewers()
     ensure_workflows()
     return ensure_office_rights()

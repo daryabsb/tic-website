@@ -173,3 +173,13 @@ def test_the_seed_gives_the_site_the_public_host(home, settings):
     site.save()
     call_command("seed_site", verbosity=0)  # a host an editor set is kept
     assert Site.objects.get(is_default_site=True).hostname == "www.ticqc.com"
+
+
+def test_site_admins_manage_the_routing_rules(seeded_home):
+    """Plan 09: the Global Admin keeps the snippets; the request routing rules (the
+    Quality Manager, HR and office addresses, D53) are theirs (T35, D59)."""
+    admin = person("site-admin", "Site admins")
+    for action in ("add", "change", "delete", "view"):
+        assert admin.has_perm(f"zeneon_requests.{action}_routingrule")
+    manager = person("content-manager", "Content managers")
+    assert not manager.has_perm("zeneon_requests.change_routingrule")

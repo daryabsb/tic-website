@@ -160,7 +160,66 @@ def requests(page: Page) -> None:
     shot(page, "18-requests")
 
 
-SCENES = {"editor": editor, "news": news, "reviewer": reviewer, "requests": requests}
+def refused(page: Page) -> None:
+    """Submit the Iraq program with its missing facts: the form refuses and saves
+    nothing, so the picture shows the publish messages (T35)."""
+    login(page, "editor")
+    go(page, f"/admin/pages/{PROGRAM}/edit/")
+    open_actions(page)
+    page.locator("button[name=action-submit]").click()
+    page.wait_for_load_state("domcontentloaded")
+    # The refused form is "dirty", and Wagtail's autosave would store it as a draft
+    # revision of the real page: no POST leaves this browser after the refusal.
+    page.route(
+        "**/*",
+        lambda route: route.abort() if route.request.method == "POST" else route.continue_(),
+    )
+    page.wait_for_load_state("networkidle")
+    shot(page, "a01-refused-top")
+
+
+def manager(page: Page) -> None:
+    login(page, "manager")
+    go(page, "/admin/images/")
+    shot(page, "a03-images")
+    go(page, "/admin/images/multiple/add/")
+    shot(page, "a04-image-add")
+    go(page, "/admin/documents/")
+    shot(page, "a05-documents")
+    go(page, f"/admin/pages/{PROGRAM}/history/")
+    shot(page, "a06-history")
+    go(page, f"/admin/pages/{PROGRAM}/edit/")
+    page.locator("header [data-w-dropdown-target='toggle']").first.click()
+    shot(page, "a07-page-menu")
+
+
+def admin(page: Page) -> None:
+    login(page, "admin")
+    go(page, "/admin/snippets/zeneon_requests/routingrule/")
+    shot(page, "a08-routing")
+    first = page.locator("a[href*='/routingrule/edit/']").first
+    if first.count():
+        first.click()
+        page.wait_for_load_state("networkidle")
+        shot(page, "a09-routing-rule")
+    go(page, "/admin/users/")
+    page.evaluate(MASK, [])
+    shot(page, "a10-users")
+    go(page, "/admin/groups/")
+    shot(page, "a11-groups")
+    go(page, "/admin/translations/")
+    shot(page, "a12-translations")
+
+
+SCENES = {
+    "editor": editor,
+    "news": news,
+    "reviewer": reviewer,
+    "requests": requests,
+    "refused": refused,
+    "manager": manager,
+    "admin": admin,
+}
 
 
 def main(*scenes: str) -> None:
