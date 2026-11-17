@@ -698,3 +698,11 @@ a.chan:hover { border-color: var(--tic-ink); }
 .consent__btn--yes { background: var(--tic-ink); color: var(--tic-white); }
 .consent__btn--no { background: var(--tic-white); color: var(--tic-ink); }
 .foot__consent { color: inherit; }
+
+/* Arabic is never letter-spaced: spacing breaks the joined letters apart (T28, D60).
+   One rule for every tracked label, eyebrow and button of the design. */
+[dir="rtl"] *,
+[dir="rtl"] *::before,
+[dir="rtl"] *::after {
+  letter-spacing: 0 !important;
+}

@@ -4,53 +4,2885 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: tic-website\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-17 14:08+0400\n"
 "Language: ar\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=(n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5);\n"
 
-msgid "Verify a certificate"
-msgstr "التحقق من شهادة"
+msgid "office approval task"
+msgstr ""
 
-msgid "Client area"
-msgstr "بوابة العملاء"
+msgid "office approval tasks"
+msgstr ""
 
-msgid "Language"
+msgid ""
+"Members of the chosen groups approve any page; an office's reviewers approve"
+" that office's pages. Nobody approves their own submission."
+msgstr ""
+
+#, fuzzy
+#| msgid "Request a quote"
+msgid "Request changes"
+msgstr "اطلب عرض سعر"
+
+msgid "Approve"
+msgstr ""
+
+msgid "Approve with comment"
+msgstr ""
+
+msgid "Full time"
+msgstr "دوام كامل"
+
+msgid "Part time"
+msgstr "دوام جزئي"
+
+msgid "Contract"
+msgstr "عقد"
+
+msgid "role title"
+msgstr ""
+
+msgid "office"
+msgstr "المكتب"
+
+msgid "type"
+msgstr ""
+
+msgid "closing date"
+msgstr ""
+
+msgid "Not shown after this date."
+msgstr ""
+
+msgid "summary"
+msgstr ""
+
+msgid "Open role"
+msgstr ""
+
+msgid "intro"
+msgstr ""
+
+msgid "header photo"
+msgstr ""
+
+msgid "header photo alt text"
+msgstr ""
+
+msgid "header caption"
+msgstr ""
+
+msgid "roles heading"
+msgstr ""
+
+msgid "open roles"
+msgstr ""
+
+msgid "note under the roles"
+msgstr ""
+
+msgid "text when no role is open"
+msgstr ""
+
+msgid "'what we look for' heading"
+msgstr ""
+
+msgid "what we look for"
+msgstr ""
+
+msgid "One per line."
+msgstr ""
+
+msgid "photo"
+msgstr ""
+
+msgid "photo alt text"
+msgstr ""
+
+msgid "photo caption"
+msgstr ""
+
+msgid "apply heading"
+msgstr ""
+
+msgid "apply text"
+msgstr ""
+
+msgid "button label"
+msgstr ""
+
+msgid "note under the button"
+msgstr ""
+
+msgid "Page header"
+msgstr ""
+
+msgid "Open roles"
+msgstr ""
+
+msgid "What we look for"
+msgstr ""
+
+msgid "Apply"
+msgstr "تطبيق"
+
+msgid "careers page"
+msgstr ""
+
+msgid "page"
+msgstr ""
+
+msgid "title"
+msgstr ""
+
+msgid "Blank: the page title."
+msgstr ""
+
+msgid "text"
+msgstr ""
+
+msgid "Service card"
+msgstr ""
+
+msgid "list heading"
+msgstr ""
+
+msgid "e.g. 'Eight industries'."
+msgstr ""
+
+msgid "industry index"
+msgstr ""
+
+msgid "One sentence on the hub card."
+msgstr ""
+
+msgid "card caption"
+msgstr ""
+
+msgid "Caption bar on the hub card photo, e.g. 'Marine'."
+msgstr ""
+
+msgid "services heading"
+msgstr ""
+
+msgid "e.g. 'Services for food and agricultural trade'."
+msgstr ""
+
+msgid "service cards"
+msgstr ""
+
+msgid "'why' heading"
+msgstr ""
+
+msgid "'why' text"
+msgstr ""
+
+msgid "figures"
+msgstr ""
+
+msgid "Up to three. A figure without an owner is not shown."
+msgstr ""
+
+msgid "'where' heading"
+msgstr ""
+
+msgid "point"
+msgstr ""
+
+msgid "'where' points"
+msgstr ""
+
+msgid ""
+"e.g. 'Origin: Lahore, Bangkok'. Office links come with the office pages."
+msgstr ""
+
+msgid "On the industries hub"
+msgstr ""
+
+msgid "Services"
+msgstr "الخدمات"
+
+msgid "Why TIC (dark band)"
+msgstr ""
+
+msgid "Where"
+msgstr ""
+
+msgid "industry page"
+msgstr ""
+
+msgid "News"
+msgstr "الأخبار"
+
+msgid "Insight"
+msgstr "رأي"
+
+msgid "Regulatory update"
+msgstr "تحديث تنظيمي"
+
+msgid "news index"
+msgstr ""
+
+msgid "All"
+msgstr "الكل"
+
+msgid "kind"
+msgstr ""
+
+msgid "date"
+msgstr "التاريخ"
+
+msgid "updated"
+msgstr ""
+
+msgid "Only when the text changed."
+msgstr ""
+
+msgid "featured"
+msgstr ""
+
+msgid "Shown large at the top of the list."
+msgstr ""
+
+msgid "standfirst"
+msgstr ""
+
+msgid "One sentence: what changed and from when."
+msgstr ""
+
+msgid "program"
+msgstr ""
+
+msgid "Regulatory updates name their program."
+msgstr ""
+
+msgid "The office that signs it (T20: office pages)."
+msgstr ""
+
+msgid "office name"
+msgstr ""
+
+msgid "Shown while no office page is chosen, e.g. 'Baghdad office'."
+msgstr ""
+
+msgid "author"
+msgstr ""
+
+msgid "About this article"
+msgstr ""
+
+msgid "news page"
+msgstr ""
+
+msgid "eyebrow"
+msgstr ""
+
+msgid "line"
+msgstr ""
+
+msgid "Sold here"
+msgstr ""
+
+msgid "office index"
+msgstr ""
+
+msgid "The address is required."
+msgstr ""
+
+msgid "A phone number or an email address is required."
+msgstr ""
+
+msgid "Use a time zone name such as 'Asia/Baghdad'."
+msgstr ""
+
+msgid "city"
+msgstr ""
+
+msgid "country"
+msgstr ""
+
+msgid "head office"
+msgstr ""
+
+msgid "legal entity"
+msgstr ""
+
+msgid "address"
+msgstr ""
+
+msgid "latitude"
+msgstr ""
+
+msgid "longitude"
+msgstr ""
+
+msgid "map image"
+msgstr ""
+
+msgid "A static map; no map scripts (China rule)."
+msgstr ""
+
+msgid "phone"
+msgstr ""
+
+msgid "Also the office's WhatsApp, except in China (D11, D49)."
+msgstr ""
+
+msgid "WeChat ID"
+msgstr ""
+
+msgid "WeChat QR code"
+msgstr ""
+
+msgid "email"
+msgstr ""
+
+msgid "mailbox owner"
+msgstr ""
+
+msgid "time zone"
+msgstr ""
+
+#, fuzzy
+#| msgid "Language"
+msgid "languages"
 msgstr "اللغة"
 
-msgid "Search"
-msgstr "بحث"
+msgid "reply promise"
+msgstr ""
 
-msgid "TIC Quality Control"
-msgstr "تي آي سي لمراقبة الجودة"
+msgid "team photo"
+msgstr ""
+
+msgid "team photo caption"
+msgstr ""
+
+msgid "sold and delivered from here"
+msgstr ""
+
+msgid "last reviewed"
+msgstr ""
+
+msgid "Reach the office"
+msgstr "الوصول إلى المكتب"
+
+msgid "Team and review"
+msgstr ""
+
+msgid "office page"
+msgstr ""
+
+msgid "form heading"
+msgstr ""
+
+msgid "form text"
+msgstr ""
+
+msgid "offices heading"
+msgstr ""
+
+msgid "offices text"
+msgstr ""
+
+#, fuzzy
+#| msgid "Request a quote"
+msgid "Request"
+msgstr "اطلب عرض سعر"
+
+msgid "Offices"
+msgstr "المكاتب"
+
+msgid "contact page"
+msgstr ""
+
+msgid "body"
+msgstr ""
+
+msgid "e.g. ANAB"
+msgstr ""
+
+msgid "line 1"
+msgstr ""
+
+msgid "Standard or scheme"
+msgstr "المعيار أو النظام"
+
+msgid "line 2"
+msgstr ""
+
+msgid "Number and validity"
+msgstr ""
+
+msgid "link label"
+msgstr ""
+
+msgid "register link"
+msgstr ""
+
+msgid "Proof item"
+msgstr ""
+
+msgid "items"
+msgstr ""
+
+msgid "Proof strip"
+msgstr ""
+
+msgid "caption bar"
+msgstr ""
+
+msgid "links to"
+msgstr ""
+
+msgid "Card"
+msgstr ""
+
+msgid "heading"
+msgstr ""
+
+msgid "link page"
+msgstr ""
+
+msgid "cards"
+msgstr ""
+
+msgid "Photo cards"
+msgstr ""
+
+msgid "value"
+msgstr ""
+
+msgid "e.g. 2020, 12, 17020"
+msgstr ""
+
+msgid "label"
+msgstr ""
+
+msgid "owner"
+msgstr "المسؤول"
+
+msgid "Who sourced this number. Blank: the figure is not shown."
+msgstr ""
+
+msgid "in red"
+msgstr ""
+
+msgid "Figure"
+msgstr ""
+
+msgid "Dark band with figures"
+msgstr ""
+
+msgid "Link"
+msgstr ""
+
+msgid "links"
+msgstr ""
+
+msgid "Ruled link list"
+msgstr ""
+
+msgid "meta line"
+msgstr ""
+
+msgid "e.g. 'Last updated: [date] · Baghdad office'"
+msgstr ""
+
+msgid "Program card"
+msgstr ""
+
+msgid "large card"
+msgstr ""
+
+msgid "small cards"
+msgstr ""
+
+msgid "Program cards"
+msgstr ""
+
+msgid "Where we are"
+msgstr ""
+
+msgid "Latest news"
+msgstr ""
+
+msgid "Contact band"
+msgstr ""
+
+msgid "Text"
+msgstr ""
+
+msgid "year"
+msgstr ""
+
+msgid "Timeline row"
+msgstr ""
+
+msgid "rows"
+msgstr ""
+
+msgid "Timeline"
+msgstr ""
+
+msgid "Section links"
+msgstr ""
+
+msgid "timeline"
+msgstr ""
+
+msgid "Story and timeline"
+msgstr ""
+
+msgid "Figures band"
+msgstr ""
+
+msgid "Large, with the bio"
+msgstr "كبير، مع السيرة"
+
+msgid "Small, office caption"
+msgstr "صغير، مع تعليق المكتب"
+
+msgid "people"
+msgstr ""
+
+msgid "Group of people"
+msgstr ""
+
+msgid "name"
+msgstr "الاسم"
+
+msgid "this is TIC"
+msgstr ""
+
+msgid "Shows the TIC logo file and links to this site's home page."
+msgstr ""
+
+msgid "logo"
+msgstr "الشعار"
+
+msgid "legal name"
+msgstr ""
+
+msgid "founded"
+msgstr ""
+
+msgid "does"
+msgstr ""
+
+msgid "accreditation"
+msgstr ""
+
+msgid "own website"
+msgstr ""
+
+msgid "Company"
+msgstr ""
+
+msgid "hero photo"
+msgstr ""
+
+msgid ""
+"One real photograph of our inspectors at work (brand book 16). Blank shows "
+"the grey plate with the caption until a photo arrives."
+msgstr ""
+
+msgid "hero photo alt text"
+msgstr ""
+
+msgid "hero caption"
+msgstr ""
+
+msgid ""
+"The red caption bar: place and subject, e.g. 'Umm Qasr · Discharge survey'."
+msgstr ""
+
+msgid "the one sentence"
+msgstr ""
+
+msgid "sections"
+msgstr ""
+
+msgid "The home page below the hero, in the order of proposal 01 §5.2."
+msgstr ""
+
+msgid "share image"
+msgstr ""
+
+msgid "1200 x 630. Blank uses the site's default share image."
+msgstr ""
+
+msgid "Hero: one photo, one sentence"
+msgstr ""
+
+msgid "home page"
+msgstr ""
+
+msgid "about page"
+msgstr ""
+
+msgid "CEO"
+msgstr "الرئيس التنفيذي"
+
+msgid "CEO quote"
+msgstr ""
+
+msgid "Two or three sentences in the CEO's own words."
+msgstr ""
+
+msgid "groups of people"
+msgstr ""
+
+msgid "note under the cards"
+msgstr ""
+
+msgid "leadership page"
+msgstr ""
+
+msgid "companies"
+msgstr ""
+
+msgid "independence heading"
+msgstr ""
+
+msgid "independence sentence"
+msgstr ""
+
+msgid "The Impartiality page (T22)."
+msgstr ""
+
+msgid "Independence"
+msgstr ""
+
+msgid "group page"
+msgstr ""
+
+msgid "Programs"
+msgstr "البرامج"
+
+msgid "Updates and news"
+msgstr "التحديثات والأخبار"
+
+msgid "Downloads"
+msgstr "التنزيلات"
+
+msgid "Questions"
+msgstr "الأسئلة"
+
+msgid "Program"
+msgstr "البرنامج"
+
+msgid "Service"
+msgstr "الخدمة"
+
+msgid "Industry"
+msgstr "القطاع"
+
+msgid "Update"
+msgstr "تحديث"
+
+msgid "Download"
+msgstr "تنزيل"
+
+msgid "Question"
+msgstr "سؤال"
+
+msgid "Office"
+msgstr "المكتب"
+
+msgid "Page"
+msgstr "الصفحة"
+
+msgid "Downloads library"
+msgstr "مكتبة التنزيلات"
+
+msgid "Complaints and appeals"
+msgstr "الشكاوى والاستئنافات"
+
+msgid ""
+"Tell us what happened. A person who was not involved in the work reads it "
+"and answers you in writing."
+msgstr "أخبرنا بما حدث. يقرؤها شخص لم يشارك في العمل ويرد عليك كتابيًا."
+
+msgid ""
+"Tell us about you and add your CV (PDF or Word). HR and the hiring office "
+"read it."
+msgstr ""
+"أخبرنا عن نفسك وأرفق سيرتك الذاتية (PDF أو Word). يقرؤها قسم الموارد البشرية"
+" والمكتب الذي يوظّف."
+
+msgid "Register for a course"
+msgstr "التسجيل في دورة"
 
 msgid "Request a quote"
 msgstr "اطلب عرض سعر"
 
-msgid "Menu"
-msgstr "القائمة"
+msgid ""
+"One form for quotes and questions. We send it to the office that handles "
+"your country and service."
+msgstr ""
+"نموذج واحد لطلبات الأسعار والأسئلة. نرسله إلى المكتب المسؤول عن بلدك وخدمتك."
 
-msgid "Main"
-msgstr "الرئيسية"
+msgid "Role as the visitor reads it, e.g. 'Head of inspection services'."
+msgstr ""
 
-msgid "Skip to content"
-msgstr "انتقل إلى المحتوى"
+msgid "The office page this person works from."
+msgstr ""
 
-msgid "Talk to the office nearest you"
-msgstr "تحدّث مع أقرب مكتب إليك"
+msgid "A real portrait. Shown only when the person agreed to be named."
+msgstr ""
 
-msgid "WhatsApp, phone or the quote form. Answered by a named person within one working day."
-msgstr "واتساب أو الهاتف أو نموذج طلب عرض السعر. يجيبك شخص بالاسم خلال يوم عمل واحد."
+msgid "bio"
+msgstr ""
+
+msgid "Two sentences."
+msgstr ""
+
+msgid "agreed to be named"
+msgstr ""
+
+msgid "Leave off until the person agrees. Off: the site shows the title only."
+msgstr ""
 
 msgid "WhatsApp"
 msgstr "واتساب"
 
-msgid "Call us"
-msgstr "اتصل بنا"
+msgid "Channels"
+msgstr ""
 
-msgid "Home"
-msgstr "الرئيسية"
+msgid "person"
+msgstr ""
+
+msgid "Who runs the program and how we were appointed. Never 'accredited'."
+msgstr ""
+
+msgid "01 The regulator and our appointment"
+msgstr ""
+
+msgid "product group"
+msgstr ""
+
+msgid "examples"
+msgstr ""
+
+msgid "standard"
+msgstr ""
+
+msgid "product table"
+msgstr ""
+
+msgid "full product list"
+msgstr ""
+
+msgid "version date"
+msgstr ""
+
+msgid "The date of the regulator's list shown; printed under the table."
+msgstr ""
+
+msgid "02 Who must comply"
+msgstr ""
+
+msgid "answer"
+msgstr ""
+
+msgid "what follows"
+msgstr ""
+
+msgid "e.g. 'Product registration'"
+msgstr ""
+
+msgid "route key"
+msgstr ""
+
+msgid ""
+"An option key of the request form's 'route' question; the answer then opens "
+"the form with that route chosen. Blank: no link."
+msgstr ""
+
+msgid "question"
+msgstr ""
+
+msgid "answers"
+msgstr ""
+
+msgid "questions"
+msgstr ""
+
+msgid "button"
+msgstr ""
+
+msgid "03 Which route applies"
+msgstr ""
+
+msgid "typical working days"
+msgstr ""
+
+msgid "Blank until agreed: the page shows '[n] working days — to be agreed'."
+msgstr ""
+
+msgid "counted from"
+msgstr ""
+
+msgid "e.g. 'from booking', 'after a satisfactory inspection'."
+msgstr ""
+
+msgid "steps"
+msgstr ""
+
+msgid "04 Step by step"
+msgstr ""
+
+msgid "documents"
+msgstr ""
+
+msgid "form"
+msgstr ""
+
+#, fuzzy
+#| msgid "Request a quote"
+msgid "Request schema key."
+msgstr "اطلب عرض سعر"
+
+msgid "05 Document checklist"
+msgstr ""
+
+msgid "points"
+msgstr ""
+
+msgid "06 Testing, inspection and labelling"
+msgstr ""
+
+msgid "Fee table"
+msgstr "جدول الرسوم"
+
+msgid "Fee structure download"
+msgstr "تنزيل هيكل الرسوم"
+
+msgid "On request"
+msgstr "عند الطلب"
+
+msgid "item"
+msgstr ""
+
+msgid "fee"
+msgstr ""
+
+msgid "how fees are shown"
+msgstr ""
+
+msgid "fee table"
+msgstr ""
+
+msgid "fee structure"
+msgstr ""
+
+msgid "note"
+msgstr ""
+
+msgid "07 Fees"
+msgstr ""
+
+msgid "08 Questions and answers"
+msgstr ""
+
+msgid "09 Regulatory updates"
+msgstr ""
+
+msgid ""
+"Lists this program's regulatory updates (news, kind 'regulatory update')."
+msgstr ""
+
+msgid "role"
+msgstr "الدور"
+
+msgid "e.g. 'Program coordinator'"
+msgstr ""
+
+msgid "coordinator"
+msgstr ""
+
+msgid "offices"
+msgstr ""
+
+msgid "10 Contacts for this program"
+msgstr ""
+
+msgid "11 Complaints and appeals"
+msgstr ""
+
+msgid "Links the complaints and appeals page. Written by the template."
+msgstr ""
+
+msgid "disclaimer"
+msgstr ""
+
+msgid "12 Last reviewed"
+msgstr ""
+
+msgid "The regulator and our appointment"
+msgstr "الجهة التنظيمية وتعييننا"
+
+msgid "Who must comply"
+msgstr "من يجب عليه الامتثال"
+
+msgid "Which route applies to you"
+msgstr "أي مسار ينطبق عليك"
+
+msgid "Step by step"
+msgstr "خطوة بخطوة"
+
+msgid "Document checklist"
+msgstr "قائمة المستندات"
+
+msgid "Testing, inspection and labelling"
+msgstr "الاختبار والفحص وبطاقات البيان"
+
+msgid "Fees"
+msgstr "الرسوم"
+
+msgid "Questions and answers"
+msgstr "الأسئلة والأجوبة"
+
+msgid "Regulatory updates"
+msgstr "التحديثات التنظيمية"
+
+msgid "Contacts for this program"
+msgstr "جهات الاتصال لهذا البرنامج"
+
+msgid "Appointed"
+msgstr "معيّن"
+
+msgid "Registered"
+msgstr "مسجّل"
+
+msgid "Designation in progress"
+msgstr "التعيين قيد الإجراء"
+
+msgid "status"
+msgstr ""
+
+msgid "status date"
+msgstr ""
+
+msgid "e.g. 'May 2026'"
+msgstr ""
+
+msgid "cards heading"
+msgstr ""
+
+msgid "programs in progress"
+msgstr ""
+
+msgid "Shown as dated cards after the programs; not program pages (D4)."
+msgstr ""
+
+msgid "rule line"
+msgstr ""
+
+msgid "Under the cards: when TIC adds a program page (D4)."
+msgstr ""
+
+msgid "updates heading"
+msgstr ""
+
+msgid "updates text"
+msgstr ""
+
+msgid "question heading"
+msgstr ""
+
+msgid "question text"
+msgstr ""
+
+msgid "Not sure which program applies"
+msgstr ""
+
+msgid "program index"
+msgstr ""
+
+msgid "Card caption and feed filter, e.g. 'Iraq', 'Kurdistan Region of Iraq'."
+msgstr ""
+
+msgid "One sentence on the card."
+msgstr ""
+
+msgid "regulator"
+msgstr ""
+
+msgid "regulator abbreviation"
+msgstr ""
+
+msgid "e.g. COSQC"
+msgstr ""
+
+msgid "regulator website"
+msgstr ""
+
+msgid "status word"
+msgstr ""
+
+msgid "The regulator's own word for TIC's standing. Never 'accredited'."
+msgstr ""
+
+msgid "appointment date"
+msgstr ""
+
+msgid "register reference"
+msgstr ""
+
+msgid "Shown after the status on the card, e.g. 'record 73'."
+msgstr ""
+
+msgid "appointment letter"
+msgstr ""
+
+msgid "owning office"
+msgstr ""
+
+msgid "The office page that owns this program (T20: office pages)."
+msgstr ""
+
+msgid "owning office name"
+msgstr ""
+
+msgid "first button"
+msgstr ""
+
+msgid "second button"
+msgstr ""
+
+msgid "To the owning office page, e.g. 'Talk to the Baghdad office'."
+msgstr ""
+
+msgid "the twelve parts"
+msgstr ""
+
+msgid "Each part once, in order 01 to 12. All twelve are needed to publish."
+msgstr ""
+
+msgid "On the program cards"
+msgstr ""
+
+msgid "Regulator and appointment"
+msgstr ""
+
+msgid "Buttons"
+msgstr ""
+
+msgid "Ownership and review"
+msgstr ""
+
+msgid "program page"
+msgstr ""
+
+msgid "regulatory updates feed"
+msgstr ""
+
+msgid "Intro: write the one sentence under the title."
+msgstr ""
+
+msgid "Regulator: give its name and its abbreviation."
+msgstr ""
+
+msgid "Appointment: choose the regulator's status word."
+msgstr ""
+
+msgid "Owning office: choose the office that owns this page."
+msgstr ""
+
+msgid "Last reviewed: set the date."
+msgstr ""
+
+msgid "Review by: set the date this page is checked again."
+msgstr ""
+
+#, python-format
+msgid "Add the missing parts: %(parts)s."
+msgstr ""
+
+msgid "Put the parts in their fixed order, 01 to 12."
+msgstr ""
+
+msgid ""
+"Appointment: a regulator appoints or registers TIC. Use the regulator's own "
+"word, not 'accredited'."
+msgstr ""
+
+msgid "Form"
+msgstr "نموذج"
+
+msgid "Product list"
+msgstr "قائمة المنتجات"
+
+msgid "Fee structure"
+msgstr "هيكل الرسوم"
+
+msgid "Policy"
+msgstr "سياسة"
+
+msgid "Brochure"
+msgstr "كتيّب"
+
+msgid "Certificate or letter"
+msgstr "شهادة أو خطاب"
+
+msgid "Register entry"
+msgstr "قيد في السجل"
+
+msgid "file"
+msgstr ""
+
+msgid "link"
+msgstr ""
+
+msgid "Instead of a file: the page where it is kept."
+msgstr ""
+
+msgid "program or service"
+msgstr ""
+
+msgid "program or service name"
+msgstr ""
+
+msgid "Shown in the list, e.g. 'Iraq CoC'."
+msgstr ""
+
+msgid "version"
+msgstr ""
+
+msgid "Office or role, e.g. 'Baghdad'."
+msgstr ""
+
+msgid "Language codes, comma separated: en, ar, zh."
+msgstr ""
+
+msgid "order"
+msgstr ""
+
+msgid "File or link (one is needed)"
+msgstr ""
+
+msgid "Program or service"
+msgstr "البرنامج أو الخدمة"
+
+msgid "download"
+msgstr ""
+
+msgid "downloads"
+msgstr ""
+
+msgid "Choose a file or give a link."
+msgstr ""
+
+msgid "Use en, ar or zh, comma separated."
+msgstr ""
+
+msgid "resources hub"
+msgstr ""
+
+msgid "note under the list"
+msgstr ""
+
+msgid "downloads library"
+msgstr ""
+
+msgid "questions and answers"
+msgstr ""
+
+msgid "Two or three sentences a non-specialist understands."
+msgstr ""
+
+msgid "01 What it is"
+msgstr ""
+
+msgid "cases"
+msgstr ""
+
+msgid "When it is required or wise, one case per line."
+msgstr ""
+
+msgid "02 Who needs it"
+msgstr ""
+
+msgid "typical time"
+msgstr ""
+
+msgid "e.g. 'Typical: 1 day on site'. Blank if we cannot say."
+msgstr ""
+
+msgid "03 How it works"
+msgstr ""
+
+msgid "04 What you give us"
+msgstr ""
+
+msgid "sample"
+msgstr ""
+
+msgid "A real sample report or certificate, numbers blacked out."
+msgstr ""
+
+msgid "sample caption"
+msgstr ""
+
+#, fuzzy
+#| msgid "Skip to content"
+msgid "contents"
+msgstr "انتقل إلى المحتوى"
+
+msgid "05 What you get"
+msgstr ""
+
+msgid "number"
+msgstr ""
+
+msgid "e.g. ISO 2859-1"
+msgstr ""
+
+msgid "what it is"
+msgstr ""
+
+msgid "standards"
+msgstr ""
+
+msgid "06 Standards we work to"
+msgstr ""
+
+msgid "07 Where we do it"
+msgstr ""
+
+msgid "related pages"
+msgstr ""
+
+msgid "08 Related services"
+msgstr ""
+
+msgid "09 Questions and answers"
+msgstr ""
+
+msgid "named contact"
+msgstr ""
+
+msgid "action"
+msgstr ""
+
+#, fuzzy
+#| msgid "Request a quote"
+msgid "Request schema key, e.g. 'quote'."
+msgstr "اطلب عرض سعر"
+
+msgid "10 Contact and request form"
+msgstr ""
+
+msgid "Role of the person who owns the page, e.g. 'Inspection services head'."
+msgstr ""
+
+msgid "11 Last reviewed"
+msgstr ""
+
+msgid "What it is"
+msgstr "ما هي"
+
+msgid "Who needs it"
+msgstr "من يحتاجها"
+
+msgid "How it works"
+msgstr "كيف تعمل"
+
+msgid "What you give us"
+msgstr "ما تقدّمه لنا"
+
+msgid "What you get"
+msgstr "ما تحصل عليه"
+
+msgid "Standards we work to"
+msgstr "المعايير التي نعمل بها"
+
+msgid "Where we do it"
+msgstr "أين نقدّمها"
+
+msgid "Related services"
+msgstr "خدمات ذات صلة"
+
+msgid "Your contact and request form"
+msgstr "جهة الاتصال ونموذج الطلب"
+
+#| msgid "TIC Quality Control"
+msgid "TIC Quality Control, head office in Dubai"
+msgstr "تي آي سي لمراقبة الجودة، المكتب الرئيسي في دبي"
+
+#, python-format
+msgid "Hello, I just sent request %(code)s."
+msgstr "مرحبًا، أرسلت للتو الطلب %(code)s."
+
+msgid "location"
+msgstr ""
+
+msgid "City, country"
+msgstr ""
+
+msgid "accreditation body"
+msgstr ""
+
+msgid "e.g. NABL, EIAC"
+msgstr ""
+
+msgid "accreditation number"
+msgstr ""
+
+msgid "scope"
+msgstr ""
+
+msgid "What they test for us, e.g. 'Food chemistry'"
+msgstr ""
+
+msgid "partner laboratory"
+msgstr ""
+
+msgid "partner laboratories"
+msgstr ""
+
+msgid "Inspection"
+msgstr "الفحص"
+
+msgid "Testing"
+msgstr "الاختبار"
+
+msgid "Certification"
+msgstr "إصدار الشهادات"
+
+msgid "Government & Trade Programs"
+msgstr "برامج الحكومة والتجارة"
+
+msgid "Audits"
+msgstr "التدقيق"
+
+msgid "Training"
+msgstr "التدريب"
+
+msgid "Sustainability"
+msgstr "الاستدامة"
+
+msgid ""
+"The red caption bar: place and subject, e.g. 'Sharjah · Container loading'."
+msgstr ""
+
+msgid "service index"
+msgstr ""
+
+msgid "group"
+msgstr ""
+
+msgid "One sentence on the services hub."
+msgstr ""
+
+msgid "On the hub, e.g. 'All inspection services'."
+msgstr ""
+
+msgid "link to"
+msgstr ""
+
+msgid ""
+"Programs and Training have their own sections: the hub link goes there. "
+"Blank: it goes to this page."
+msgstr ""
+
+msgid "'how it is done' heading"
+msgstr ""
+
+msgid "e.g. 'How inspection is done at TIC'."
+msgstr ""
+
+msgid "'how it is done' points"
+msgstr ""
+
+msgid "On the services hub"
+msgstr ""
+
+msgid "How it is done"
+msgstr ""
+
+msgid "service group"
+msgstr ""
+
+msgid "One sentence on the group's service cards."
+msgstr ""
+
+msgid "Caption bar on the card photo, e.g. 'Factory'."
+msgstr ""
+
+msgid "Dark button under the intro, to the contact page. Blank: no button."
+msgstr ""
+
+msgid "Required on testing pages: who does the analysis."
+msgstr ""
+
+msgid "the eleven parts"
+msgstr ""
+
+msgid "Each part once, in order 01 to 11. All eleven are needed to publish."
+msgstr ""
+
+msgid "Cards and buttons"
+msgstr ""
+
+msgid "service page"
+msgstr ""
+
+msgid "Put the parts in their fixed order, 01 to 11."
+msgstr ""
+
+msgid ""
+"Testing pages name the partner laboratory: choose it under 'Partner "
+"laboratory'."
+msgstr ""
+
+msgid "Awareness"
+msgstr "توعية"
+
+msgid "Internal auditor"
+msgstr "مدقق داخلي"
+
+msgid "Other"
+msgstr ""
+
+msgid "Classroom"
+msgstr "حضوري"
+
+msgid "Online"
+msgstr "عن بُعد"
+
+msgid "Classroom and online"
+msgstr "حضوري وعن بُعد"
+
+msgid "All courses"
+msgstr "كل الدورات"
+
+msgid "text when no course is published"
+msgstr ""
+
+msgid "training catalogue"
+msgstr ""
+
+msgid "first day"
+msgstr ""
+
+msgid "last day"
+msgstr ""
+
+msgid "where"
+msgstr ""
+
+msgid "City, or Online."
+msgstr ""
+
+msgid "Date"
+msgstr "التاريخ"
+
+msgid "Needed to publish a course."
+msgstr ""
+
+msgid "Who it is for, what it covers."
+msgstr ""
+
+msgid "For example: ISO 9001:2015"
+msgstr ""
+
+msgid "level"
+msgstr ""
+
+msgid "duration"
+msgstr ""
+
+msgid "format"
+msgstr ""
+
+msgid "classroom city"
+msgstr ""
+
+msgid "For a classroom course."
+msgstr ""
+
+msgid "dates"
+msgstr ""
+
+msgid "price"
+msgstr ""
+
+msgid "currency"
+msgstr ""
+
+msgid "For example: AED"
+msgstr ""
+
+msgid "tax note"
+msgstr ""
+
+msgid "For example: incl. 5% VAT"
+msgstr ""
+
+msgid "what the certificate says"
+msgstr ""
+
+msgid "For example: Certificate of attendance"
+msgstr ""
+
+msgid "certificate issued by"
+msgstr ""
+
+msgid "trainer"
+msgstr ""
+
+msgid "prerequisites"
+msgstr ""
+
+msgid "what the course covers"
+msgstr ""
+
+msgid "Course"
+msgstr ""
+
+msgid "Dates, price and certificate (needed to publish)"
+msgstr ""
+
+msgid "course"
+msgstr ""
+
+msgid "Active"
+msgstr "ساري"
+
+msgid "Member"
+msgstr "عضو"
+
+msgid "Approved"
+msgstr "معتمد"
+
+msgid "body, full name"
+msgstr ""
+
+msgid "e.g. ANSI National Accreditation Board, USA"
+msgstr ""
+
+msgid "standard or scheme"
+msgstr ""
+
+msgid "entity and sites"
+msgstr ""
+
+msgid "Blank shows a dash."
+msgstr ""
+
+msgid "valid until"
+msgstr ""
+
+msgid "register link label"
+msgstr ""
+
+msgid "note when there is no register"
+msgstr ""
+
+msgid "For example: No public list"
+msgstr ""
+
+#, fuzzy
+#| msgid "Verify a certificate"
+msgid "certificate link"
+msgstr "التحقق من شهادة"
+
+#, fuzzy
+#| msgid "Verify a certificate"
+msgid "certificate file"
+msgstr "التحقق من شهادة"
+
+msgid "certificate link label"
+msgstr ""
+
+msgid "last checked"
+msgstr ""
+
+msgid "Blank shows [date]."
+msgstr ""
+
+msgid "shown on the site"
+msgstr ""
+
+msgid "Only rows the Quality Manager has verified against the register."
+msgstr ""
+
+msgid "show the mark"
+msgstr ""
+
+msgid "In the footer and in the list of marks we are permitted to show."
+msgstr ""
+
+msgid "line under the mark"
+msgstr ""
+
+msgid "For example: ISO/IEC 17020 · AI-3314"
+msgstr ""
+
+msgid "symbol"
+msgstr ""
+
+msgid "As supplied by the body. Blank shows the body's name."
+msgstr ""
+
+msgid "Body"
+msgstr "الجهة"
+
+msgid "Links"
+msgstr ""
+
+msgid "Shown on the site"
+msgstr ""
+
+msgid "accreditations"
+msgstr ""
+
+msgid "A mark needs a register link."
+msgstr ""
+
+msgid "A mark needs a row shown on the site."
+msgstr ""
+
+msgid "table heading"
+msgstr ""
+
+msgid "note under the table"
+msgstr ""
+
+msgid "rules heading"
+msgstr ""
+
+msgid "rules"
+msgstr ""
+
+msgid "One rule per line."
+msgstr ""
+
+msgid "marks heading"
+msgstr ""
+
+msgid "note under the marks"
+msgstr ""
+
+msgid "Table"
+msgstr "جدول"
+
+msgid "Rules"
+msgstr "القواعد"
+
+msgid "Marks"
+msgstr "العلامات"
+
+msgid "accreditations page"
+msgstr ""
+
+msgid "Section"
+msgstr ""
+
+msgid "Needed to publish a policy page."
+msgstr ""
+
+msgid "document code"
+msgstr ""
+
+msgid "issue and revision"
+msgstr ""
+
+msgid "For example: Issue 0"
+msgstr ""
+
+msgid "effective date"
+msgstr ""
+
+msgid "document owner"
+msgstr ""
+
+msgid "issued by"
+msgstr "صادرة عن"
+
+msgid "The legal entity whose document this is."
+msgstr ""
+
+msgid "PDF"
+msgstr ""
+
+msgid "second PDF"
+msgstr ""
+
+msgid "For example, the same policy of another TIC entity."
+msgstr ""
+
+msgid "second PDF label"
+msgstr ""
+
+msgid "Document (code, issue, date and owner are needed to publish)"
+msgstr ""
+
+msgid "policy page"
+msgstr ""
+
+msgid "time"
+msgstr ""
+
+msgid "For example: Within [n] working days. Blank shows nothing."
+msgstr ""
+
+msgid "Step"
+msgstr ""
+
+msgid "complaint: heading"
+msgstr ""
+
+msgid "complaint: text"
+msgstr ""
+
+msgid "appeal: heading"
+msgstr ""
+
+msgid "appeal: text"
+msgstr ""
+
+msgid "steps heading"
+msgstr ""
+
+msgid "note under the steps"
+msgstr ""
+
+msgid "other ways to reach us"
+msgstr ""
+
+msgid ""
+"For example: Or write to [complaints email], or post to the head office."
+msgstr ""
+
+msgid "The two definitions"
+msgstr ""
+
+msgid "Steps"
+msgstr ""
+
+msgid "complaints and appeals page"
+msgstr ""
+
+msgid "Valid"
+msgstr "سارية"
+
+msgid "Expired"
+msgstr "منتهية"
+
+msgid "Superseded"
+msgstr "مُستبدلة"
+
+msgid "Suspended"
+msgstr "موقوفة"
+
+msgid "Withdrawn"
+msgstr "مسحوبة"
+
+msgid "CSV import"
+msgstr "استيراد CSV"
+
+msgid "Nightly sync"
+msgstr "مزامنة ليلية"
+
+msgid "Live API"
+msgstr "واجهة برمجية مباشرة"
+
+msgid "certificate number"
+msgstr ""
+
+msgid "As printed."
+msgstr ""
+
+msgid "number key"
+msgstr ""
+
+msgid "The number in capitals without spaces; a lookup matches on it."
+msgstr ""
+
+msgid "date of issue"
+msgstr ""
+
+msgid "issuing office"
+msgstr ""
+
+msgid "The office slug of seed/offices.yaml, e.g. 'baghdad'."
+msgstr ""
+
+msgid "QR token"
+msgstr ""
+
+msgid "source"
+msgstr ""
+
+msgid "imported at"
+msgstr ""
+
+#, fuzzy
+#| msgid "Verify a certificate"
+msgid "certificate"
+msgstr "التحقق من شهادة"
+
+#, fuzzy
+#| msgid "Verify a certificate"
+msgid "certificates"
+msgstr "التحقق من شهادة"
+
+#, python-format
+msgid "%(city)s office"
+msgstr "مكتب %(city)s"
+
+msgid "number hash"
+msgstr ""
+
+msgid "found"
+msgstr ""
+
+msgid "IP hash"
+msgstr ""
+
+msgid "user agent"
+msgstr ""
+
+#, fuzzy
+#| msgid "Language"
+msgid "language"
+msgstr "اللغة"
+
+msgid "by QR link"
+msgstr ""
+
+msgid "checked at"
+msgstr ""
+
+msgid "lookup"
+msgstr ""
+
+msgid "lookups"
+msgstr ""
+
+msgid "operator"
+msgstr ""
+
+msgid "full export"
+msgstr ""
+
+msgid "created"
+msgstr ""
+
+msgid "unchanged"
+msgstr ""
+
+msgid "withdrawn"
+msgstr ""
+
+msgid "rejected"
+msgstr ""
+
+msgid "certificate import"
+msgstr ""
+
+msgid "certificate imports"
+msgstr ""
+
+msgid "input label"
+msgstr ""
+
+msgid "'what this page answers' heading"
+msgstr ""
+
+msgid "what this page answers"
+msgstr ""
+
+msgid "'does not match' heading"
+msgstr ""
+
+msgid "'does not match' text"
+msgstr ""
+
+msgid "fraud warning"
+msgstr ""
+
+msgid "Shown when no certificate is found."
+msgstr ""
+
+msgid "head-office contact"
+msgstr ""
+
+msgid ""
+"Shown when no certificate is found, e.g. 'Head office, Dubai · +971 …'."
+msgstr ""
+
+msgid "note under the result"
+msgstr ""
+
+msgid "The form"
+msgstr ""
+
+msgid "The result"
+msgstr ""
+
+msgid "Something does not match"
+msgstr ""
+
+msgid "What this page answers"
+msgstr ""
+
+msgid "verify page"
+msgstr ""
+
+#, fuzzy
+#| msgid "Verify a certificate"
+msgid "Certificates"
+msgstr "التحقق من شهادة"
+
+msgid "Verify lookups"
+msgstr "عمليات التحقق"
 
 msgid "Page not found"
 msgstr "الصفحة غير موجودة"
+
+msgid "We could not find that page"
+msgstr "لم نجد هذه الصفحة"
+
+msgid ""
+"The address may be from the old site. Every old page was mapped to a new one"
+" when we moved, so try the search, or start from one of these."
+msgstr ""
+"قد يكون العنوان من الموقع القديم. رُبطت كل صفحة قديمة بصفحة جديدة عند "
+"الانتقال، فجرّب البحث، أو ابدأ من إحدى هذه الصفحات."
+
+msgid "Search the site"
+msgstr "ابحث في الموقع"
+
+msgid "Search"
+msgstr "بحث"
+
+msgid "Verify a certificate"
+msgstr "التحقق من شهادة"
+
+msgid "Contact an office"
+msgstr "تواصل مع مكتب"
+
+msgid "Skip to content"
+msgstr "انتقل إلى المحتوى"
+
+msgid "Any office"
+msgstr "أي مكتب"
+
+#, python-format
+msgid "until %(date)s"
+msgstr "حتى %(date)s"
+
+msgid "Talk to the office nearest you"
+msgstr "تحدّث مع أقرب مكتب إليك"
+
+msgid ""
+"WhatsApp, phone or the quote form. Answered by a named person within one "
+"working day."
+msgstr ""
+"واتساب أو الهاتف أو نموذج طلب عرض السعر. يجيبك شخص بالاسم خلال يوم عمل واحد."
+
+msgid "WeChat"
+msgstr "وي تشات"
+
+msgid "Call us"
+msgstr "اتصل بنا"
+
+msgid "TIC — Testing, Inspection, Certification"
+msgstr "TIC — اختبار، فحص، إصدار شهادات"
+
+msgid "Office 2101, Clover Bay Tower"
+msgstr "مكتب 2101، برج كلوفر باي"
+
+msgid "Business Bay, Dubai, United Arab Emirates"
+msgstr "الخليج التجاري، دبي، الإمارات العربية المتحدة"
+
+msgid "Site"
+msgstr "الموقع"
+
+msgid "Trust"
+msgstr "الثقة"
+
+msgid ""
+"Offices in UAE, Iraq, Jordan, Saudi Arabia, Egypt, India, Pakistan, China, "
+"Sri Lanka, Thailand, Malaysia and Brazil"
+msgstr ""
+"مكاتب في الإمارات والعراق والأردن والسعودية ومصر والهند وباكستان والصين "
+"وسريلانكا وتايلاند وماليزيا والبرازيل"
+
+msgid "Analytics choice"
+msgstr "خيار التحليلات"
+
+msgid "TIC — Testing | Inspection | Certification"
+msgstr "TIC — اختبار | فحص | إصدار شهادات"
+
+msgid "Client area"
+msgstr "بوابة العملاء"
+
+msgid "TIC Quality Control"
+msgstr "تي آي سي لمراقبة الجودة"
+
+msgid "Main"
+msgstr "الرئيسية"
+
+msgid "Menu"
+msgstr "القائمة"
+
+msgid "Language"
+msgstr "اللغة"
+
+msgid "You are here"
+msgstr "أنت هنا"
+
+msgid "Kind"
+msgstr "النوع"
+
+msgid "All programs"
+msgstr "كل البرامج"
+
+msgid "All offices"
+msgstr "كل المكاتب"
+
+msgid "Show"
+msgstr "عرض"
+
+#, python-format
+msgid "%(minutes)s min read"
+msgid_plural "%(minutes)s min read"
+msgstr[0] "قراءة %(minutes)s دقيقة"
+msgstr[1] "قراءة %(minutes)s دقيقة"
+msgstr[2] "قراءة %(minutes)s دقيقة"
+msgstr[3] "قراءة %(minutes)s دقيقة"
+msgstr[4] "قراءة %(minutes)s دقيقة"
+msgstr[5] "قراءة %(minutes)s دقيقة"
+
+msgid "Featured"
+msgstr "مميّز"
+
+msgid "Pages"
+msgstr "الصفحات"
+
+msgid "Next"
+msgstr "التالي"
+
+msgid "Nothing published yet."
+msgstr "لم يُنشر شيء بعد."
+
+msgid "By"
+msgstr "بقلم"
+
+msgid "Published"
+msgstr "تاريخ النشر"
+
+msgid "Updated"
+msgstr "تاريخ التحديث"
+
+msgid "Contents"
+msgstr "المحتويات"
+
+msgid "Contact the office"
+msgstr "تواصل مع المكتب"
+
+msgid "Related program"
+msgstr "البرنامج ذو الصلة"
+
+msgid ""
+"This article is general information on the date shown; the regulator’s own "
+"publications take precedence."
+msgstr ""
+"هذه المقالة معلومات عامة في التاريخ المذكور؛ والمرجع هو منشورات الجهة "
+"التنظيمية نفسها."
+
+msgid "Related articles"
+msgstr "مقالات ذات صلة"
+
+msgid ""
+"Answered by a named person within one working day. Your details are used "
+"only to answer you."
+msgstr "يرد عليك شخص مسمّى خلال يوم عمل واحد. نستخدم بياناتك للرد عليك فقط."
+
+msgid "Head office"
+msgstr "المكتب الرئيسي"
+
+msgid "Phone"
+msgstr ""
+
+msgid "Email"
+msgstr "البريد الإلكتروني"
+
+msgid "Address"
+msgstr "العنوان"
+
+msgid "Open in maps"
+msgstr "افتح في الخرائط"
+
+#| msgid "Verify a certificate"
+msgid "Verify a certificate instead"
+msgstr "تحقق من شهادة بدلًا من ذلك"
+
+msgid "Our offices"
+msgstr "مكاتبنا"
+
+#| msgid "WhatsApp"
+msgid "Phone and WhatsApp"
+msgstr "الهاتف وواتساب"
+
+#| msgid "Call us"
+msgid "Call"
+msgstr "اتصال"
+
+#, python-format
+msgid "Mailbox owner: %(owner)s"
+msgstr "مسؤول البريد: %(owner)s"
+
+msgid "open in maps"
+msgstr "افتح في الخرائط"
+
+msgid "Time zone"
+msgstr "المنطقة الزمنية"
+
+msgid "Legal entity"
+msgstr "الكيان القانوني"
+
+#| msgid "Language"
+msgid "Languages"
+msgstr "اللغات"
+
+msgid "Reply promise"
+msgstr "وعد الرد"
+
+#, python-format
+msgid "Map of the %(city)s office"
+msgstr "خريطة مكتب %(city)s"
+
+#, python-format
+msgid "Sold and delivered from %(city)s"
+msgstr "تُباع وتُقدَّم من %(city)s"
+
+msgid "People you can name"
+msgstr "أشخاص يمكنك ذكرهم"
+
+#, python-format
+msgid "Everything on this page is owned by the %(city)s office manager."
+msgstr "كل ما في هذه الصفحة مسؤولية مدير مكتب %(city)s."
+
+msgid "Last reviewed"
+msgstr "آخر مراجعة"
+
+msgid "No updates published yet."
+msgstr "لم تُنشر أي تحديثات بعد."
+
+msgid "Legal name"
+msgstr "الاسم القانوني"
+
+msgid "Founded"
+msgstr "تأسست"
+
+msgid "Does"
+msgstr "تقوم"
+
+msgid "Accreditation"
+msgstr "الاعتماد"
+
+msgid "This site"
+msgstr "هذا الموقع"
+
+msgid "Chief Executive Officer"
+msgstr "الرئيس التنفيذي"
+
+#, python-format
+msgid ""
+"Looking for a certificate number? Use <a href=\"/%(href)s/verify/\">Verify a"
+" certificate</a> instead — certificates are not searchable here."
+msgstr ""
+"تبحث عن رقم شهادة؟ استخدم <a href=\"/%(href)s/verify/\">التحقق من شهادة</a> "
+"بدلًا من ذلك — الشهادات لا تظهر في البحث هنا."
+
+msgid "Filter results"
+msgstr "تصفية النتائج"
+
+#, python-format
+msgid "%(counter)s result"
+msgid_plural "%(counter)s results"
+msgstr[0] "%(counter)s نتيجة"
+msgstr[1] "%(counter)s نتيجة"
+msgstr[2] "%(counter)s نتيجة"
+msgstr[3] "%(counter)s نتيجة"
+msgstr[4] "%(counter)s نتيجة"
+msgstr[5] "%(counter)s نتيجة"
+
+msgid "Nothing found. Try fewer words, or another spelling."
+msgstr "لم نجد شيئًا. جرّب كلمات أقل، أو تهجئة أخرى."
+
+msgid "Named contact"
+msgstr "جهة الاتصال المسمّاة"
+
+#| msgid "WhatsApp"
+msgid "WhatsApp · phone"
+msgstr "واتساب · هاتف"
+
+msgid ""
+"If you disagree with an inspection result or a certificate decision, you can"
+" appeal."
+msgstr "إذا لم توافق على نتيجة فحص أو على قرار شهادة، يمكنك الاستئناف."
+
+#, python-format
+msgid ""
+"The process, the people who decide and the time it takes are set out on our "
+"<a href=\"%(complaints_url)s\">complaints and appeals page</a>."
+msgstr ""
+"الإجراءات والأشخاص الذين يتخذون القرار والمدة اللازمة مبيّنة في <a "
+"href=\"%(complaints_url)s\">صفحة الشكاوى والاستئنافات</a>."
+
+msgid ""
+"The process, the people who decide and the time it takes are set out on our "
+"complaints and appeals page."
+msgstr ""
+"الإجراءات والأشخاص الذين يتخذون القرار والمدة اللازمة مبيّنة في صفحة الشكاوى"
+" والاستئنافات."
+
+msgid "Appointment letter"
+msgstr "خطاب التعيين"
+
+#, python-format
+msgid "%(name)s website"
+msgstr "موقع %(name)s"
+
+msgid "Start the request form"
+msgstr "ابدأ نموذج الطلب"
+
+msgid "hours"
+msgstr "ساعات"
+
+msgid "Item"
+msgstr "البند"
+
+msgid "Fee"
+msgstr "الرسوم"
+
+msgid "Fees on request"
+msgstr "الرسوم عند الطلب"
+
+msgid "The office quotes after it has seen your documents."
+msgstr "يقدّم المكتب عرض السعر بعد اطلاعه على مستنداتك."
+
+msgid "Owned by"
+msgstr "مسؤولية"
+
+#, python-format
+msgid "Question %(n)s"
+msgstr "السؤال %(n)s"
+
+msgid "Find my route"
+msgstr "اعرف مساري"
+
+#, python-format
+msgid "Typical: %(days)s working day"
+msgid_plural "Typical: %(days)s working days"
+msgstr[0] "المعتاد: %(days)s يوم عمل"
+msgstr[1] "المعتاد: %(days)s يوم عمل"
+msgstr[2] "المعتاد: %(days)s يوم عمل"
+msgstr[3] "المعتاد: %(days)s يوم عمل"
+msgstr[4] "المعتاد: %(days)s يوم عمل"
+msgstr[5] "المعتاد: %(days)s يوم عمل"
+
+msgid "Typical: [n] working days — to be agreed"
+msgstr "المعتاد: [n] أيام عمل — يُتفق عليه"
+
+msgid "Changes to this program"
+msgstr "التغييرات على هذا البرنامج"
+
+msgid "No changes published yet."
+msgstr "لم تُنشر أي تغييرات بعد."
+
+msgid "All updates for this program"
+msgstr "كل التحديثات لهذا البرنامج"
+
+msgid "Product group"
+msgstr "مجموعة المنتجات"
+
+msgid "Examples"
+msgstr "أمثلة"
+
+msgid "Standard"
+msgstr "المعيار"
+
+msgid "List version"
+msgstr "إصدار القائمة"
+
+msgid "Full regulated list"
+msgstr "القائمة الكاملة للمنتجات الخاضعة"
+
+msgid "Last updated"
+msgstr "آخر تحديث"
+
+msgid "All regulatory updates"
+msgstr "كل التحديثات التنظيمية"
+
+msgid "Ask the program team"
+msgstr "اسأل فريق البرنامج"
+
+msgid "On this page"
+msgstr "في هذه الصفحة"
+
+#| msgid "Verify a certificate"
+msgid "Check a certificate"
+msgstr "التحقق من شهادة"
+
+msgid ""
+"Customs officer or importer? Verify any TIC certificate by its number or QR "
+"code."
+msgstr ""
+"موظف جمارك أو مستورد؟ تحقق من أي شهادة صادرة عن TIC برقمها أو برمز QR."
+
+msgid "Other programs"
+msgstr "برامج أخرى"
+
+msgid "Year"
+msgstr "السنة"
+
+msgid "All years"
+msgstr "كل السنوات"
+
+msgid "No updates match."
+msgstr "لا توجد تحديثات مطابقة."
+
+msgid "Form, list, policy…"
+msgstr "نموذج، قائمة، سياسة…"
+
+msgid "Type"
+msgstr "النوع"
+
+msgid "All types"
+msgstr "كل الأنواع"
+
+msgid "Document"
+msgstr "المستند"
+
+msgid "Program / service"
+msgstr "البرنامج / الخدمة"
+
+msgid "Version"
+msgstr "الإصدار"
+
+msgid "Owner"
+msgstr "المسؤول"
+
+#| msgid "Language"
+msgid "Lang."
+msgstr "اللغة"
+
+msgid "File"
+msgstr "الملف"
+
+msgid "No document matches this choice."
+msgstr "لا يوجد مستند يطابق هذا الاختيار."
+
+msgid "Search questions"
+msgstr "ابحث في الأسئلة"
+
+msgid "Search questions, e.g. “Arabic label”"
+msgstr "ابحث في الأسئلة، مثلًا «بطاقة البيان العربية»"
+
+msgid "By topic"
+msgstr "حسب الموضوع"
+
+msgid "Open the page"
+msgstr "افتح الصفحة"
+
+#, python-format
+msgid "No question holds “%(q)s”."
+msgstr "لا يوجد سؤال يحتوي على «%(q)s»."
+
+msgid "No question is published yet."
+msgstr "لم يُنشر أي سؤال بعد."
+
+msgid "Open"
+msgstr "مفتوح"
+
+msgid "Resources"
+msgstr "الموارد"
+
+#| msgid ""
+#| "WhatsApp, phone or the quote form. Answered by a named person within one "
+#| "working day."
+msgid "Answered by a named person within one working day."
+msgstr "يرد عليك شخص مسمّى خلال يوم عمل واحد."
+
+msgid "Partner laboratory"
+msgstr "المختبر الشريك"
+
+#, python-format
+msgid "Accredited by %(body)s, number %(number)s"
+msgstr "معتمد من %(body)s، رقم %(number)s"
+
+msgid "We tell you in advance and remain responsible for the result."
+msgstr "نخبرك مسبقًا ونبقى مسؤولين عن النتيجة."
+
+#, python-format
+msgid "%(counter)s %(group)s service"
+msgid_plural "%(counter)s %(group)s services"
+msgstr[0] "%(counter)s خدمة %(group)s"
+msgstr[1] "%(counter)s خدمة %(group)s"
+msgstr[2] "%(counter)s خدمة %(group)s"
+msgstr[3] "%(counter)s خدمة %(group)s"
+msgstr[4] "%(counter)s خدمة %(group)s"
+msgstr[5] "%(counter)s خدمة %(group)s"
+
+msgid "Register"
+msgstr "سجّل"
+
+msgid "Level"
+msgstr "المستوى"
+
+msgid "Duration"
+msgstr "المدة"
+
+msgid "Format"
+msgstr "الصيغة"
+
+msgid "Next dates"
+msgstr "المواعيد القادمة"
+
+msgid "Price"
+msgstr "السعر"
+
+#| msgid "Verify a certificate"
+msgid "Certificate"
+msgstr "الشهادة"
+
+msgid "Trainer"
+msgstr "المدرّب"
+
+msgid "Prerequisites"
+msgstr "المتطلبات المسبقة"
+
+msgid ""
+"Training is general knowledge. It endorses no method and has no bearing on "
+"any TIC inspection or certification decision."
+msgstr ""
+"التدريب معرفة عامة. لا يزكّي أي أسلوب، ولا أثر له على أي قرار فحص أو شهادة "
+"من TIC."
+
+msgid ""
+"Tell us the date and how many seats. The training team confirms by email."
+msgstr "أخبرنا بالتاريخ وعدد المقاعد. يؤكد فريق التدريب بالبريد الإلكتروني."
+
+msgid "No course matches this choice."
+msgstr "لا توجد دورة تطابق هذا الاختيار."
+
+msgid "Entity and sites"
+msgstr "الكيان والمواقع"
+
+msgid "Number"
+msgstr "الرقم"
+
+msgid "Status"
+msgstr "الحالة"
+
+msgid "Valid until"
+msgstr "سارية حتى"
+
+msgid "Last checked"
+msgstr "آخر تحقق"
+
+msgid "Complaint"
+msgstr "شكوى"
+
+msgid "Appeal"
+msgstr "استئناف"
+
+msgid "Related pages"
+msgstr "صفحات ذات صلة"
+
+msgid "Effective"
+msgstr "ساري من"
+
+msgid "Issued by"
+msgstr "صادرة عن"
+
+msgid "Owned by the"
+msgstr "مسؤولية"
+
+msgid "The signed document (PDF)"
+msgstr "المستند الموقَّع (PDF)"
+
+#, python-format
+msgid "Checks per day, last %(days)s days"
+msgstr "عمليات التحقق يوميًا، آخر %(days)s يومًا"
+
+msgid "Day"
+msgstr "اليوم"
+
+msgid "Found"
+msgstr "تم العثور عليها"
+
+#| msgid "Page not found"
+msgid "Not found"
+msgstr "غير موجودة"
+
+msgid "No checks yet."
+msgstr "لا توجد عمليات تحقق بعد."
+
+msgid "Latest imports"
+msgstr "آخر عمليات الاستيراد"
+
+msgid "Imported at"
+msgstr "وقت الاستيراد"
+
+msgid "Operator"
+msgstr "المشغّل"
+
+msgid "Created"
+msgstr "تاريخ الإنشاء"
+
+msgid "Rejected"
+msgstr "مرفوضة"
+
+msgid "No imports yet."
+msgstr "لا توجد عمليات استيراد بعد."
+
+msgid "Certificate number"
+msgstr "رقم الشهادة"
+
+msgid "Check"
+msgstr "تحقق"
+
+msgid "The check did not pass. Please try again."
+msgstr "لم ينجح التحقق. يرجى المحاولة مرة أخرى."
+
+msgid ""
+"Several numbers were not found. Please confirm you are a person, then check "
+"again."
+msgstr "لم نجد عدة أرقام. يرجى تأكيد أنك شخص، ثم التحقق مرة أخرى."
+
+msgid "This check needs JavaScript. Or call the issuing office."
+msgstr "يحتاج هذا التحقق إلى جافاسكربت. أو اتصل بالمكتب المُصدِر."
+
+#, python-format
+msgid "Certificate found · %(status)s"
+msgstr "تم العثور على الشهادة · %(status)s"
+
+#, python-format
+msgid "Checked %(time)s against TIC’s certificate records"
+msgstr "تم التحقق %(time)s من سجلات شهادات TIC"
+
+msgid "Date of issue"
+msgstr "تاريخ الإصدار"
+
+msgid "No end date in this scheme"
+msgstr "لا يوجد تاريخ انتهاء في هذا النظام"
+
+msgid "Issuing office"
+msgstr "المكتب المُصدِر"
+
+#, python-format
+msgid "No certificate with the number %(number)s was found."
+msgstr "لم نجد شهادة بالرقم %(number)s."
+
+msgid "Too many checks"
+msgstr "عمليات تحقق كثيرة"
+
+msgid ""
+"Too many checks from this connection. Please wait a minute, then try again."
+msgstr ""
+"عمليات تحقق كثيرة من هذا الاتصال. يرجى الانتظار دقيقة، ثم المحاولة مرة أخرى."
+
+msgid "Write to TIC"
+msgstr "اكتب إلى TIC"
+
+#, python-format
+msgid "We received your request %(code)s"
+msgstr ""
+
+msgid "Your request code"
+msgstr ""
+
+#, python-format
+msgid "Thank you, <bdi>%(name)s</bdi>"
+msgstr "شكرًا، <bdi>%(name)s</bdi>"
+
+#, python-format
+#| msgid ""
+#| "WhatsApp, phone or the quote form. Answered by a named person within one "
+#| "working day."
+msgid ""
+"We received your request. It is with %(office)s. A named person answers "
+"within one working day."
+msgstr ""
+"استلمنا طلبك. إنه لدى %(office)s. يرد عليك شخص مسمّى خلال يوم عمل واحد."
+
+msgid ""
+"To add something, reply to this email or message the office with your "
+"request code."
+msgstr "لإضافة شيء، رُدّ على هذا البريد أو راسل المكتب مع رمز طلبك."
+
+msgid "Staffed"
+msgstr "بموظفين"
+
+msgid "Message the office on WhatsApp"
+msgstr "راسل المكتب عبر واتساب"
+
+#, python-format
+msgid "Hello %(name)s,"
+msgstr ""
+
+msgid "Testing, inspection and certification"
+msgstr "الاختبار والفحص وإصدار الشهادات"
+
+msgid "A new request from the website."
+msgstr "طلب جديد من الموقع."
+
+msgid "Sent to"
+msgstr "أُرسل إلى"
+
+msgid "Spam check: not verified (the check service could not be reached)."
+msgstr "فحص الرسائل المزعجة: لم يتم التحقق (تعذّر الوصول إلى خدمة الفحص)."
+
+msgid ""
+"Spam check: not verified (sent without JavaScript; no human check ran)."
+msgstr ""
+"فحص الرسائل المزعجة: لم يتم التحقق (أُرسل دون جافاسكربت؛ لم يجرِ فحص بشري)."
+
+msgid "Files"
+msgstr "الملفات"
+
+msgid "Open the request in the admin to download them."
+msgstr "افتح الطلب في لوحة الإدارة لتنزيلها."
+
+msgid "Message"
+msgstr "الرسالة"
+
+msgid "Open in the admin"
+msgstr "افتح في لوحة الإدارة"
+
+msgid "Request received"
+msgstr "تم استلام الطلب"
+
+#, python-format
+msgid "Thank you, %(name)s."
+msgstr "شكرًا، %(name)s."
+
+msgid ""
+"A named person answers within one working day. Keep the code: it is in the "
+"email we sent you, and it helps us find your request."
+msgstr ""
+"يرد عليك شخص مسمّى خلال يوم عمل واحد. احتفظ بالرمز: إنه في البريد الذي "
+"أرسلناه إليك، ويساعدنا على إيجاد طلبك."
+
+msgid "Thank you. We will reply within one working day."
+msgstr "شكرًا. سنرد خلال يوم عمل واحد."
+
+msgid "Back to the home page"
+msgstr ""
+
+msgid "Phone call"
+msgstr ""
+
+#. core (zeneon_cms): a visitor sees it
+msgid "(optional)"
+msgstr "(اختياري)"
+
+#. core (zeneon_cms): a visitor sees it
+msgid "Accept"
+msgstr "موافق"
+
+#. core (zeneon_cms): a visitor sees it
+msgid "All files together may be up to %(mb)s MB."
+msgstr "يمكن أن يصل مجموع الملفات إلى %(mb)s ميغابايت."
+
+#. core (zeneon_cms): a visitor sees it
+msgid "Analytics"
+msgstr "التحليلات"
+
+#. core (zeneon_cms): a visitor sees it
+msgid "Attach"
+msgstr "إرفاق"
+
+#. core (zeneon_cms): a visitor sees it
+msgid "Back"
+msgstr "رجوع"
+
+#. core (zeneon_cms): a visitor sees it
+msgid "Breadcrumb"
+msgstr "مسار التنقل"
+
+#. core (zeneon_cms): a visitor sees it
+msgid "Budget"
+msgstr "الميزانية"
+
+#. core (zeneon_cms): a visitor sees it
+msgid "Change"
+msgstr "تغيير"
+
+#. core (zeneon_cms): a visitor sees it
+msgid "Choose a file."
+msgstr "اختر ملفًا."
+
+#. core (zeneon_cms): a visitor sees it
+msgid "City"
+msgstr "المدينة"
+
+#. core (zeneon_cms): a visitor sees it
+msgid "Code"
+msgstr "الرمز"
+
+#. core (zeneon_cms): a visitor sees it
+msgid "Contact by"
+msgstr "طريقة التواصل"
+
+#. core (zeneon_cms): a visitor sees it
+msgid "Continue"
+msgstr "متابعة"
+
+#. core (zeneon_cms): a visitor sees it
+msgid "Deadline"
+msgstr "الموعد النهائي"
+
+#. core (zeneon_cms): a visitor sees it
+msgid "Decline"
+msgstr "رفض"
+
+#. core (zeneon_cms): a visitor sees it
+msgid "Enter a date."
+msgstr "أدخل تاريخًا."
+
+#. core (zeneon_cms): a visitor sees it
+msgid "Enter a web address, like example.com"
+msgstr "أدخل عنوانًا إلكترونيًا، مثل example.com"
+
+#. core (zeneon_cms): a visitor sees it
+msgid "Hi, I just sent request %(code)s about %(service)s."
+msgstr "مرحبًا، أرسلت للتو الطلب %(code)s بخصوص %(service)s."
+
+#. core (zeneon_cms): a visitor sees it
+msgid "Home"
+msgstr "الرئيسية"
+
+#. core (zeneon_cms): a visitor sees it
+msgid "Name"
+msgstr "الاسم"
+
+#. core (zeneon_cms): a visitor sees it
+msgid "New request %(code)s — %(topic)s — %(name)s"
+msgstr "طلب جديد %(code)s — %(topic)s — %(name)s"
+
+#. core (zeneon_cms): a visitor sees it
+msgid "Organisation"
+msgstr "الجهة"
+
+#. core (zeneon_cms): a visitor sees it
+msgid "Please check the fields marked below."
+msgstr "يرجى مراجعة الحقول المشار إليها أدناه."
+
+#. core (zeneon_cms): a visitor sees it
+msgid "Please choose at least one option."
+msgstr "يرجى اختيار خيار واحد على الأقل."
+
+#. core (zeneon_cms): a visitor sees it
+msgid "Please choose one of the options."
+msgstr "يرجى اختيار أحد الخيارات."
+
+#. core (zeneon_cms): a visitor sees it
+msgid "Please fill this in."
+msgstr "يرجى تعبئة هذا الحقل."
+
+#. core (zeneon_cms): a visitor sees it
+msgid "Please try again in a few minutes."
+msgstr "يرجى المحاولة مرة أخرى بعد بضع دقائق."
+
+#. core (zeneon_cms): a visitor sees it
+msgid "Privacy policy"
+msgstr "سياسة الخصوصية"
+
+#. core (zeneon_cms): a visitor sees it
+msgid "Referrer"
+msgstr "المُحيل"
+
+#. core (zeneon_cms): a visitor sees it
+msgid "Remove"
+msgstr "إزالة"
+
+#. core (zeneon_cms): a visitor sees it
+msgid "Send request"
+msgstr "أرسل الطلب"
+
+#. core (zeneon_cms): a visitor sees it
+msgid "Server error"
+msgstr "خطأ في الخادم"
+
+#. core (zeneon_cms): a visitor sees it
+msgid "Something else"
+msgstr "شيء آخر"
+
+#. core (zeneon_cms): a visitor sees it
+msgid "Something went wrong"
+msgstr "حدث خطأ ما"
+
+#. core (zeneon_cms): a visitor sees it
+msgid ""
+"Something went wrong on our side. Your answers are safe; please send again."
+msgstr "حدث خطأ من جهتنا. إجاباتك محفوظة؛ يرجى الإرسال مرة أخرى."
+
+#. core (zeneon_cms): a visitor sees it
+msgid "Source"
+msgstr "المصدر"
+
+#. core (zeneon_cms): a visitor sees it
+msgid "The job"
+msgstr "الوظيفة"
+
+#. core (zeneon_cms): a visitor sees it
+msgid "The upload failed. Please try again."
+msgstr "فشل الرفع. يرجى المحاولة مرة أخرى."
+
+#. core (zeneon_cms): a visitor sees it
+msgid "This file is larger than %(mb)s MB."
+msgstr "هذا الملف أكبر من %(mb)s ميغابايت."
+
+#. core (zeneon_cms): a visitor sees it
+msgid "This form has expired. Please reload the page."
+msgstr "انتهت صلاحية هذا النموذج. يرجى إعادة تحميل الصفحة."
+
+#. core (zeneon_cms): a visitor sees it
+msgid "This is not a file type we accept."
+msgstr "نوع الملف هذا غير مقبول."
+
+#. core (zeneon_cms): a visitor sees it
+msgid "Too many files from here. Please try again later."
+msgstr "ملفات كثيرة من هنا. يرجى المحاولة لاحقًا."
+
+#. core (zeneon_cms): a visitor sees it
+msgid "Too many requests from here. Please try again later."
+msgstr "طلبات كثيرة من هنا. يرجى المحاولة لاحقًا."
+
+#. core (zeneon_cms): a visitor sees it
+msgid ""
+"We count visits with our own analytics. It sets no cookie and does not "
+"follow you to other sites. May we count your visit?"
+msgstr ""
+"نحسب الزيارات بأداة تحليلات خاصة بنا. لا تضع أي ملف تعريف ارتباط ولا تتبعك "
+"إلى مواقع أخرى. هل نحسب زيارتك؟"
+
+#. core (zeneon_cms): a visitor sees it
+msgid "What do you need?"
+msgstr "ماذا تحتاج؟"
+
+#. core (zeneon_cms): a visitor sees it
+msgid "You"
+msgstr "أنت"
+
+#. core (zeneon_cms): a visitor sees it
+msgid "You can attach up to %(count)s files."
+msgstr "يمكنك إرفاق حتى %(count)s ملفات."
+
+#. core (zeneon_cms): a visitor sees it
+msgid "unverified"
+msgstr "غير موثّق"
