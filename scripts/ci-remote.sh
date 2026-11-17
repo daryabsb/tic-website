@@ -16,7 +16,7 @@ echo "== 3. seed idempotence"
 dc exec -T web python manage.py seed_site | tee /tmp/tic-seed.txt
 grep -q "0 change(s)" /tmp/tic-seed.txt || { echo "seed_site is not idempotent"; exit 1; }
 
-echo "== 4. ruff, migrations, .po, pytest + coverage"
+echo "== 4. ruff, migrations, Arabic frame, pytest + coverage"
 rc=0
 dc run --rm -T -u root -v "$HOME/tic/dev:/src" -w /src -e DJANGO_ENV=test web sh -c '
   set -e
@@ -25,15 +25,7 @@ dc run --rm -T -u root -v "$HOME/tic/dev:/src" -w /src -e DJANGO_ENV=test web sh
   ruff check .
   ruff format --check .
   DJANGO_ENV=development python manage.py makemigrations --check --dry-run
-  python - <<PY
-import pathlib, polib
-n = 0
-for p in sorted(pathlib.Path("locale").rglob("*.po")):
-    for e in polib.pofile(str(p)):
-        if not e.obsolete and ("fuzzy" in e.flags or not e.translated()):
-            n += 1; print(f"warning: {p}:{e.linenum}: {e.msgid[:60]!r}")
-print(f"{n} untranslated or fuzzy entries (warning only until T28)")
-PY
+  python manage.py arabic_frame | tail -1  # the Arabic frame (T28, D60); the test fails on a gap
   coverage run -m pytest -q -p no:cacheprovider
   coverage report
 ' || rc=$?
