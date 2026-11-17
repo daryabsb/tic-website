@@ -59,13 +59,14 @@ class Command(BaseCommand):
             if page is None and post.get("seeded"):
                 continue
             if page is None:
+                body = oldsite.clean_html(post["html"])
                 page = NewsPage(
                     title=post["title"],
                     slug=post["slug"],
                     kind="news",
                     date=post["date"],
-                    standfirst=oldsite.standfirst(post["excerpt"], STANDFIRST_LIMIT),
-                    body=oldsite.clean_html(post["html"]),
+                    standfirst=oldsite.standfirst(post["excerpt"], STANDFIRST_LIMIT, body),
+                    body=body,
                     live=False,
                 )
                 index.add_child(instance=page)

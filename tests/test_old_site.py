@@ -43,6 +43,9 @@ def test_the_standfirst_is_the_first_sentence():
 
     assert oldsite.standfirst(excerpt, 300) == "Egypt grows fast."
     assert oldsite.standfirst("<p>" + "word " * 100 + "</p>", 40).endswith("…")
+    joined = "<p>Why Egypt grows Egypt has become a market. More.</p>"
+    clean = "<h2>Why Egypt grows</h2><p>Egypt has become a market. More.</p>"
+    assert oldsite.standfirst(joined, 300, clean) == "Egypt has become a market."
 
 
 # -- news import ---------------------------------------------------------------------
@@ -90,7 +93,7 @@ def test_old_posts_become_draft_news_pages_once(seeded_home, tmp_path):
     page = NewsPage.objects.get(slug="batteries-export-to-egypt")
     assert not page.live and page.has_unpublished_changes
     assert page.kind == "news" and str(page.date) == "2026-04-29"
-    assert page.standfirst == "Egypt grows."
+    assert page.standfirst == "Text."
     assert page.body == "<h2>Why</h2><p>Text.</p>"
     assert page.author is None
     assert NewsPage.objects.filter(slug="iraqi-quality-mark").count() == 1

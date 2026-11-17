@@ -9,7 +9,8 @@ Pure functions, no Django models: ``import_old_news`` uses them, the tests call 
   one paragraph ("cell · cell"), images, figures, rules, scripts and styles are
   dropped, every other tag is unwrapped. A link to the old site becomes its path, so
   the redirect map takes the reader to the new page.
-- ``standfirst``: the excerpt's first sentence, at most ``limit`` characters.
+- ``standfirst``: the first sentence of the first paragraph (else of the excerpt),
+  at most ``limit`` characters.
 
 The house words apply to the text (never to a link): "TICQC" becomes "TIC Quality
 Control", "programme" becomes "program" (CLAUDE.md).
@@ -175,8 +176,17 @@ def plain(raw: str) -> str:
     return re.sub(r"\s+", " ", html.unescape(text)).strip()
 
 
-def standfirst(excerpt: str, limit: int) -> str:
-    text = plain(excerpt).replace("[…]", "").replace("[&hellip;]", "").strip()
+def first_paragraph(clean: str) -> str:
+    """The first paragraph of cleaned HTML (``clean_html``), as plain text."""
+    found = re.search(r"<p>(.*?)</p>", clean)
+    return plain(found.group(1)) if found else ""
+
+
+def standfirst(excerpt: str, limit: int, clean: str = "") -> str:
+    """The first sentence of the text's first paragraph (``clean``), else of the excerpt
+    (WordPress joins a heading to the next paragraph in the excerpt, without a gap)."""
+    text = first_paragraph(clean) if clean else ""
+    text = text or plain(excerpt).replace("[…]", "").replace("[&hellip;]", "").strip()
     sentence = re.split(r"(?<=[.!?])\s", text, maxsplit=1)[0]
     if len(sentence) > limit:
         sentence = sentence[: limit - 1].rsplit(" ", 1)[0] + "…"
