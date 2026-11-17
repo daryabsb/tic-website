@@ -1949,12 +1949,14 @@ msgid "Page not found"
 msgstr "الصفحة غير موجودة"
 
 msgid "We could not find that page"
-msgstr ""
+msgstr "لم نجد هذه الصفحة"
 
 msgid ""
 "The address may be from the old site. Every old page was mapped to a new one"
 " when we moved, so try the search, or start from one of these."
 msgstr ""
+"قد يكون العنوان من الموقع القديم. رُبطت كل صفحة قديمة بصفحة جديدة عند "
+"الانتقال، فجرّب البحث، أو ابدأ من إحدى هذه الصفحات."
 
 msgid "Search the site"
 msgstr "ابحث في الموقع"
@@ -2126,7 +2128,7 @@ msgid "Verify a certificate instead"
 msgstr "تحقق من شهادة بدلًا من ذلك"
 
 msgid "Our offices"
-msgstr ""
+msgstr "مكاتبنا"
 
 #| msgid "WhatsApp"
 msgid "Phone and WhatsApp"
@@ -2190,10 +2192,10 @@ msgid "Accreditation"
 msgstr "الاعتماد"
 
 msgid "This site"
-msgstr ""
+msgstr "هذا الموقع"
 
 msgid "Chief Executive Officer"
-msgstr ""
+msgstr "الرئيس التنفيذي"
 
 #, python-format
 msgid ""
@@ -2254,7 +2256,7 @@ msgid "%(name)s website"
 msgstr "موقع %(name)s"
 
 msgid "Start the request form"
-msgstr ""
+msgstr "ابدأ نموذج الطلب"
 
 msgid "hours"
 msgstr "ساعات"
@@ -2279,7 +2281,7 @@ msgid "Question %(n)s"
 msgstr "السؤال %(n)s"
 
 msgid "Find my route"
-msgstr ""
+msgstr "اعرف مساري"
 
 #, python-format
 msgid "Typical: %(days)s working day"
@@ -2474,7 +2476,7 @@ msgid ""
 msgstr "أخبرنا بالتاريخ وعدد المقاعد. يؤكد فريق التدريب بالبريد الإلكتروني."
 
 msgid "No course matches this choice."
-msgstr ""
+msgstr "لا توجد دورة تطابق هذا الاختيار."
 
 msgid "Entity and sites"
 msgstr "الكيان والمواقع"
@@ -2551,7 +2553,7 @@ msgid "Certificate number"
 msgstr "رقم الشهادة"
 
 msgid "Check"
-msgstr ""
+msgstr "تحقق"
 
 msgid "The check did not pass. Please try again."
 msgstr "لم ينجح التحقق. يرجى المحاولة مرة أخرى."

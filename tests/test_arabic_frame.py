@@ -53,6 +53,7 @@ def test_the_arabic_404_and_search_are_in_arabic(client, seeded_home):
         assert "ابحث في الموقع" in html  # "Search the site"
         assert "Search the site" not in html
     assert "Page not found" not in not_found
+    assert "لم نجد هذه الصفحة" in not_found  # a _() default inside a template filter
     assert "لم نجد شيئًا" in search  # "Nothing found. Try fewer words, …"
 
 

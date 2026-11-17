@@ -114,7 +114,7 @@ def python_msgids(path: Path) -> set[str]:
     return found
 
 
-TEMPLATE_CALL = re.compile(r"\b(?:n?p?gettext)\(")
+TEMPLATE_CALL = re.compile(r"(?<![\w.])(?:n?p?gettext|_)\(")
 
 
 def template_msgids(path: Path) -> set[str]:
