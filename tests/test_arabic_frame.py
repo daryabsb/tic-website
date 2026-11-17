@@ -54,3 +54,11 @@ def test_the_arabic_404_and_search_are_in_arabic(client, seeded_home):
         assert "Search the site" not in html
     assert "Page not found" not in not_found
     assert "لم نجد شيئًا" in search  # "Nothing found. Try fewer words, …"
+
+
+def test_arabic_is_never_letter_spaced():
+    from django.conf import settings
+
+    css = (settings.BASE_DIR / "static" / "css" / "site.css").read_text(encoding="utf-8")
+    rule = css[css.index('[dir="rtl"] *,') :]
+    assert "letter-spacing: 0 !important;" in rule.split("}")[0]
