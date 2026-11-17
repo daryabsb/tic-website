@@ -24,10 +24,12 @@ from playwright.sync_api import Page, sync_playwright
 BASE = "https://staging.ticqc.ae"
 OFFICES, BAGHDAD, PROGRAM, NEWS = 52, 55, 45, 46
 TEST_TITLE = "Guide test: Baghdad office news"
+SCROLL = "el => el.scrollIntoView({block: 'start', inline: 'nearest', behavior: 'instant'})"
 
 
 def password(role: str) -> str:
-    rows = dict(line.split() for line in open("/users.txt") if line.strip())
+    with open("/users.txt") as users:
+        rows = dict(line.split() for line in users if line.strip())
     return rows[f"guide.{role}"]
 
 
@@ -45,8 +47,8 @@ def go(page: Page, path: str) -> None:
 def show(page: Page, text: str = "", css: str = "") -> None:
     """Scroll the form's first element with this exact text (or this CSS selector) near
     the top of the window. The minimap on the right repeats the headings; never it."""
-    target = (page.locator(css) if css else page.locator("form").get_by_text(text, exact=True)).first
-    target.evaluate("el => el.scrollIntoView({block: 'start', inline: 'nearest', behavior: 'instant'})")
+    found = page.locator(css) if css else page.locator("form").get_by_text(text, exact=True)
+    found.first.evaluate(SCROLL)
     page.evaluate("""() => document.querySelectorAll('*').forEach(el => {
         if (el.scrollLeft) el.scrollLeft = 0;
     })""")
