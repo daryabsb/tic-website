@@ -11,10 +11,11 @@ body {
   background: var(--tic-white);
   color: var(--tic-ink);
   font-family: var(--font-body);
-  font-size: 17px;
-  line-height: 1.6;
+  font-size: 15.5px; /* D64: one size with the rich text; phones 16 px below */
+  line-height: 1.85;
 }
-:lang(ar) body, body:lang(ar) { line-height: 1.8; }
+:lang(ar) body, body:lang(ar) { font-size: 17px; line-height: 1.9; }
+@media (max-width: 600px) { body, .rich { font-size: 16px; } }
 img { max-width: 100%; height: auto; }
 a { color: var(--tic-ink); }
 a:hover { color: var(--tic-red); }
@@ -49,7 +50,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .lbl { font-family: var(--font-display); font-weight: 600; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--tic-charcoal); }
 .num { font-family: var(--font-display); font-weight: 500; font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--tic-body-grey); }
 .meta { font-size: 14px; color: var(--tic-body-grey); }
-.lead { font-size: 19px; color: var(--tic-charcoal); }
+.lead { font-size: 17px; line-height: 1.75; color: var(--tic-charcoal); }
 .muted { color: var(--tic-charcoal); }
 :lang(ar) .eyebrow, :lang(ar) .lbl, :lang(ar) .num { letter-spacing: 0; text-transform: none; }
 
