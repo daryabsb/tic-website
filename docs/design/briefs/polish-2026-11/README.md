@@ -50,11 +50,18 @@ The engineer then takes the markup and CSS as before (one `.dc.html` per artboar
 
 ## The screenshots
 
-Taken from staging on Nov 18, 2026, after the photo import (D68): every page that has a photo place.
+Taken from staging on Nov 18, 2026, after the photo import (D68). 175 pictures. File names are the page path with `--` for `/` (`home` is the home page). Only the English site is live on staging; for RTL use the first round's `B-Home-AR` artboard.
 
-- `desktop/` — 1440 wide, full page.
-- `phone/` — 390 × 844, first screen only.
+| Folder | What | Pages |
+| --- | --- | --- |
+| `desktop/` | 1440 wide, full page | the 39 pages with a photo place |
+| `desktop-first/` | 1440 × 900, first screen only (what the visitor sees before scrolling) | the 39 above and the 16 below |
+| `phone/` | 390 × 844, first screen only | the 39 pages with a photo place |
+| `phone-full/` | 390 wide, full page | the 8 pages to redraw, contact, downloads |
+| `other-desktop/`, `other-phone/` | full page / first screen | 16 page types without a photo place: accreditations, complaints, certificate and logo use, impartiality, group, leadership, contact, downloads, news, an article, questions, resources, training, verify, search ("inspection"), the 404 page |
 
-File names are the page path with `--` for `/` (`home` is the home page). The 39 pages: home; services, its seven groups and PSI; industries and its eight; programs, regulatory updates, Iraq CoC; the offices hub and the fourteen office pages; about; careers.
+The 39 pages with a photo place: home; services, its seven groups and PSI; industries and its eight; programs, regulatory updates, Iraq CoC; the offices hub and the fourteen office pages; about; careers.
 
-Stock photos are marked "Sample photo · to be replaced" or are city views; judge the layout, not the photo.
+Start with `desktop-first/` and `phone/`: they show the problem fastest. Stock photos are marked "Sample photo · to be replaced" or are city views; judge the layout, not the photo.
+
+Also seen on the phone: the utility bar takes two rows, so the bars and the header use about a third of the first screen before the page starts (`other-phone/search--_q-inspection.jpg`). Part of the header polish (item 7).
