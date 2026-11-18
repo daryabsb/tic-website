@@ -53,6 +53,7 @@ Destination: ticqc.com live on the new stack, five gates passed. Open, unblocked
 | 27 | 🟡 (Nov 17, D58: guide and pictures merged; waits for one office manager's read) **Editor guide** — `docs/editor-guide.md` with staging screenshots | launch | Sent to one office manager for a read |
 | 35 | 🟡 (Nov 17, D59: guide merged; waits for Darya to do one task from it alone) **Admin docs for beginners** (Darya, Nov 14) — every admin process step by step in plain words, a staging screenshot per step, every publish error explained; T27 becomes its first page | launch | Every process has its page in `docs/admin-guide/`; Darya does one task from it alone |
 | 36 | 🟡 (Nov 18, D68: 30 old-site and 22 Unsplash photos seeded) **Photos from the old site on every page** (Darya, Nov 18) — a photo in every place that has a fitting one; Unsplash placeholders for the rest on staging | launch | Staging shows a photo in every place that has one; Darya looks at the home page and two section pages |
+| 37 | 🟡 (Nov 18, D69: brief and 78 screenshots in `docs/design/briefs/polish-2026-11/`) **Design polish brief** (Darya, Nov 18) — the page head hides the photo; fix the page-head and photo logic, polish the rest | launch | The brief is in the repo; Darya hands it to the designer |
 
 ## Gate 4 · Arabic and the move
 
