@@ -77,7 +77,7 @@ def test_the_service_page_opens_the_form_on_its_topic(client, psi):
     assert f'href="/en/request/?topic={psi.pk}"' in html
     form = client.get(f"/en/request/?topic={psi.pk}").content.decode()
     assert "Your country" in form and 'name="q_country"' in form
-    assert 'class="page-head page-head--band"' in form
+    assert '<div class="ph band">' in form
 
 
 def test_a_quote_from_iraq_reaches_the_baghdad_address(
