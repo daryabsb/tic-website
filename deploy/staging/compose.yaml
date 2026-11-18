@@ -2,7 +2,7 @@
 # ~/tic/staging. scripts/deploy-staging.sh copies this file there and sets IMAGE_TAG
 # (a git sha; the image is built on the VM, no registry: D25).
 #
-# Same shape as the STMS staging edge (E:/api/stms/deploy/SERVERS.md "Public edge"):
+# Same shape as the STMS staging edge (K:/api/stms/deploy/SERVERS.md "Public edge"):
 # cloudflared (outbound only) -> caddy :80 (basic auth, headers, /media/) -> web.
 # Nothing publishes a port on the VM. The tunnel "tic-staging" maps
 # https://staging.ticqc.ae to http://caddy:80 (Cloudflare Zero Trust, remotely managed).

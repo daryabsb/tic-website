@@ -1,6 +1,6 @@
 # Engineer kickoff — TIC website
 
-Paste this as the first message of the engineer's Claude Code session in `E:\api\tic-website`. The designer (Claude Design, in the "TIC-SEACORR-LOX" project) wrote the plan, the design drop and the gate-0 scaffold; the engineer works the map from here, one ticket at a time, many per session (D28).
+Paste this as the first message of the engineer's Claude Code session in `K:\api\tic-website`. The designer (Claude Design, in the "TIC-SEACORR-LOX" project) wrote the plan, the design drop and the gate-0 scaffold; the engineer works the map from here, one ticket at a time, many per session (D28).
 
 ---
 
