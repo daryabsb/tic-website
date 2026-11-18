@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Round 3 rules — TIC Quality Control</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira:wght@500;600;700;800&family=Open+Sans:wght@400;600&family=Cairo:wght@400;600;700;800&display=swap">
+<style>
+body{margin:0}
+.r3{container-type:inline-size;background:#FFFFFF;color:#1E1E1E;font-family:"Open Sans",Arial,sans-serif;font-size:17px;line-height:1.6;display:flex;flex-direction:column;min-width:0}
+:where(.r3) a{color:#1E1E1E}:where(.r3) a:hover{color:#EB232B}
+.r3 .wrap{max-width:1280px;width:100%;margin-inline:auto;padding-inline:clamp(16px,5.5cqw,80px);box-sizing:border-box}
+.r3 .h2{font-family:Saira,Arial,sans-serif;font-weight:700;font-size:28px;line-height:1.15;letter-spacing:.02em;text-transform:uppercase;color:#3D3D3D;margin:0}
+.r3 .h2.w{color:#FFFFFF}
+.r3 .rule{height:3px;background:#EB232B;width:120px;margin-top:12px}
+.r3 .eyebrow{font-family:Saira,Arial,sans-serif;font-weight:600;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:#EB232B}
+.r3 .lbl{font-family:Saira,Arial,sans-serif;font-weight:600;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#6B6B6B}
+.r3 .tri{display:inline-flex;align-items:center;gap:10px;font-family:Saira,Arial,sans-serif;font-weight:600;font-size:14px;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;color:#1E1E1E;min-height:44px}
+.r3 .tri::before{content:"";width:0;height:0;border-top:6px solid transparent;border-bottom:6px solid transparent;border-inline-start:9px solid #EB232B}
+.r3 .tri.w{color:#FFFFFF}.r3 .tri.w:hover{color:#D9D9D9}
+.r3 .btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 24px;background:#EB232B;color:#FFFFFF;font-family:Saira,Arial,sans-serif;font-weight:600;font-size:15px;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;border:0;box-sizing:border-box}
+.r3 .btn:hover{background:#BD2130;color:#FFFFFF}
+.r3 .btn.dark{background:#111111}.r3 .btn.dark:hover{background:#3D3D3D}
+.r3 .btn.white{background:#FFFFFF;color:#1E1E1E}.r3 .btn.white:hover{background:#F3F3F3;color:#1E1E1E}
+.r3 .dia{padding:0;margin:0;display:flex;flex-direction:column;gap:10px}
+.r3 .dia li{position:relative;padding-inline-start:22px;list-style:none;margin:0}
+.r3 .dia li::before{content:"";position:absolute;inset-inline-start:0;top:.62em;width:8px;height:8px;background:#EB232B;transform:rotate(45deg)}
+.r3 .sect{padding-block:72px}
+.r3 .grey{background:#F3F3F3}
+.r3 .head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:12px 24px;margin-bottom:32px}
+.r3 .tiles{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.07) 1px,transparent 1px);background-size:48px 48px;pointer-events:none}
+
+/* page head: text beside the photo, never on it */
+.r3 .ph{display:grid;grid-template-columns:minmax(clamp(16px,5.5cqw,80px),1fr) minmax(0,493px) minmax(0,627px) minmax(clamp(16px,5.5cqw,80px),1fr);border-bottom:1px solid #D9D9D9;background:#FFFFFF}
+.r3 .ph.hero{grid-template-columns:minmax(clamp(16px,5.5cqw,80px),1fr) minmax(0,540px) minmax(0,580px) minmax(clamp(16px,5.5cqw,80px),1fr)}
+.r3 .ph-tx{grid-column:2;padding-block:48px;padding-inline-end:48px;display:flex;flex-direction:column;justify-content:center;gap:16px;min-width:0}
+.r3 .ph-im{grid-column:3 / 5;position:relative;min-height:400px;background:#F3F3F3;overflow:hidden}
+.r3 .ph.hero .ph-im{min-height:520px}
+.r3 .ph-im img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.r3 .cap{position:absolute;inset-inline-start:0;right:auto;bottom:0;background:#EB232B;color:#FFFFFF;font-family:Saira,Arial,sans-serif;font-weight:600;font-size:12px;letter-spacing:.1em;text-transform:uppercase;padding:7px 14px}
+.r3 .crumb{display:flex;flex-wrap:wrap;gap:4px 8px;font-size:14px;color:#6B6B6B}
+.r3 .crumb a{color:#3D3D3D;text-decoration:none}
+.r3 .ph h1{margin:0;font-family:Saira,Arial,sans-serif;font-weight:800;font-size:44px;line-height:1.05;letter-spacing:.01em;text-transform:uppercase;color:#1E1E1E}
+.r3 .ph.hero h1{font-size:48px;line-height:1.04}
+.r3 .ph p{margin:0;font-size:18px;color:#3D3D3D}
+.r3 .ph .act{display:flex;flex-wrap:wrap;gap:8px 24px;align-items:center;padding-top:4px}
+.r3 .ph.hero .act{gap:12px}
+.r3 .ph.band{display:block;background:#F3F3F3}
+.r3 .ph.band .ph-tx{padding-inline-end:0;max-width:760px}
+
+/* facts bar and jump row: the useful thing on the first screen */
+.r3 .fb{border-bottom:1px solid #D9D9D9;background:#FFFFFF}
+.r3 .fb .wrap{display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}
+.r3 .fb .f{padding:18px 24px;border-inline-start:1px solid #D9D9D9;display:flex;flex-direction:column;gap:2px;min-width:0;text-decoration:none}
+.r3 .fb .f:first-child{border-inline-start:0;padding-inline-start:0}
+.r3 .fb .v{font-family:Saira,Arial,sans-serif;font-weight:700;font-size:18px;line-height:1.25;color:#1E1E1E}
+.r3 .fb .s{font-size:14px;color:#3D3D3D}
+.r3 .jump{border-bottom:1px solid #D9D9D9;background:#FFFFFF}
+.r3 .jump .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:0 28px;padding-block:8px}
+.r3 .jump .tri{font-size:13px}
+
+/* cards */
+.r3 .g3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.r3 .g4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.r3 .tcard{background:#FFFFFF;border:1px solid #D9D9D9;padding:24px;display:flex;flex-direction:column;gap:10px;text-decoration:none;min-width:0}
+.r3 .tcard b{font-family:Saira,Arial,sans-serif;font-weight:700;font-size:20px;line-height:1.15;text-transform:uppercase;color:#1E1E1E}
+.r3 .tcard:hover b{color:#EB232B}
+.r3 .tcard span{font-size:15px;color:#3D3D3D}
+.r3 .tcard .more{margin-top:auto;padding-top:6px}
+.r3 .pcard{background:#FFFFFF;border:1px solid #D9D9D9;display:flex;flex-direction:column;text-decoration:none;min-width:0}
+.r3 .pcard .im{position:relative;aspect-ratio:3 / 2;overflow:hidden;background:#F3F3F3}
+.r3 .pcard .im img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.r3 .pcard .bd{padding:22px 24px 24px;display:flex;flex-direction:column;gap:10px}
+.r3 .pcard b{font-family:Saira,Arial,sans-serif;font-weight:700;font-size:20px;line-height:1.15;text-transform:uppercase;color:#1E1E1E}
+.r3 .pcard span{font-size:15px;color:#3D3D3D}
+
+/* country tile: a program card needs no photo */
+.r3 .ct{position:relative;background:#111111;color:#FFFFFF;display:flex;flex-direction:column;justify-content:flex-end;gap:6px;padding:24px;min-height:200px;text-decoration:none;min-width:0;overflow:hidden}
+.r3 .ct:hover{color:#FFFFFF}
+.r3 .ct .st{position:relative;display:inline-flex;align-items:center;gap:8px;font-family:Saira,Arial,sans-serif;font-weight:600;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#D9D9D9;margin-bottom:auto}
+.r3 .ct .st::before{content:"";width:8px;height:8px;background:#FFFFFF}
+.r3 .ct .st.pending::before{background:#EB232B}
+.r3 .ct .c{position:relative;font-family:Saira,Arial,sans-serif;font-weight:800;font-size:34px;line-height:1;letter-spacing:.01em;text-transform:uppercase;color:#FFFFFF;margin-top:28px}
+.r3 .ct .n{position:relative;font-family:Saira,Arial,sans-serif;font-weight:600;font-size:16px;text-transform:uppercase;color:#FFFFFF}
+.r3 .ct .m{position:relative;font-size:13px;color:#D9D9D9}
+.r3 .ct:hover .c{color:#EB232B}
+
+/* address plate: stands where a map would be */
+.r3 .addr{position:relative;background:#111111;color:#FFFFFF;padding:32px;display:flex;flex-direction:column;gap:14px;overflow:hidden}
+.r3 .addr > *{position:relative}
+.r3 .addr .lbl{color:#D9D9D9}
+.r3 .addr .city{font-family:Saira,Arial,sans-serif;font-weight:800;font-size:40px;line-height:1;text-transform:uppercase}
+.r3 .addr p{margin:0;font-size:16px;color:#FFFFFF}
+.r3 .addr .sm{font-size:14px;color:#D9D9D9}
+
+/* rows */
+.r3 .kv{display:flex;flex-wrap:wrap;gap:4px 24px;padding:14px 0;border-top:1px solid #D9D9D9}
+.r3 .kv .k{flex:0 0 170px;font-family:Saira,Arial,sans-serif;font-weight:600;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#6B6B6B;padding-top:4px}
+.r3 .kv .v{flex:1 1 280px;font-size:16px;min-width:0}
+.r3 .lk{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:15px 0;border-top:1px solid #D9D9D9;text-decoration:none;font-family:Saira,Arial,sans-serif;font-weight:600;font-size:18px;text-transform:uppercase;letter-spacing:.03em;color:#1E1E1E}
+.r3 .lk::after{content:"";width:0;height:0;border-top:6px solid transparent;border-bottom:6px solid transparent;border-inline-start:9px solid #EB232B;flex:none}
+.r3 .lk.last{border-bottom:1px solid #D9D9D9}
+.r3 .cols{display:flex;flex-wrap:wrap;gap:48px 64px;align-items:flex-start}
+.r3 .cols > *{flex:1 1 400px;min-width:0}
+.r3 .fig{flex:1 1 180px;min-width:0;display:flex;flex-direction:column;gap:6px;padding-inline-start:20px;border-inline-start:3px solid #EB232B}
+.r3 .fig b{font-family:Saira,Arial,sans-serif;font-weight:500;font-size:40px;line-height:1;color:#FFFFFF}
+.r3 .fig span{font-size:15px;color:#D9D9D9}
+.r3 .muted{color:#3D3D3D;margin:0}
+.r3 .small{font-size:14px;color:#6B6B6B;margin:0}
+
+/* the quiet plate: the few empty places that stay drawn */
+.r3 .photo{background-color:#F3F3F3;background-image:none;border:1px solid #D9D9D9;box-sizing:border-box}
+.r3 .photo .cap{background:#3D3D3D}
+
+@container (max-width:860px){
+.r3 .ph,.r3 .ph.hero{display:flex;flex-direction:column}
+.r3 .ph-im,.r3 .ph.hero .ph-im{order:-1;min-height:0;aspect-ratio:3 / 2}
+.r3 .ph-tx{padding:24px clamp(16px,5.5cqw,80px) 28px}
+.r3 .ph.band .ph-tx{padding-inline:0}
+.r3 .ph h1{font-size:34px}
+.r3 .ph.hero h1{font-size:36px}
+.r3 .ph p{font-size:17px}
+.r3 .ph.hero .act .btn{flex:1 1 100%}
+.r3 .fb .wrap{grid-template-columns:repeat(2,minmax(0,1fr))}
+.r3 .fb .f{padding:14px 16px}
+.r3 .fb .f:nth-child(odd){border-inline-start:0;padding-inline-start:0}
+.r3 .fb .f:nth-child(n+3){border-top:1px solid #D9D9D9}
+.r3 .jump .wrap{flex-wrap:nowrap;overflow-x:auto;white-space:nowrap}
+.r3 .g3,.r3 .g4{grid-template-columns:repeat(1,minmax(0,1fr))}
+.r3 .sect{padding-block:48px}
+.r3 .h2{font-size:24px}
+.r3 .ct{min-height:130px}
+.r3 .ct .c{font-size:30px}
+.r3 .kv .k{flex:1 1 100%}
+.r3 .tcard{padding:18px 20px}
+.r3 .tcard .more{display:none}
+}
+
+.r3 .tb{display:flex;flex-direction:column;border-bottom:1px solid #D9D9D9}
+.r3 .tr{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,5fr) minmax(0,4fr);gap:8px 32px;padding:14px 0;border-top:1px solid #D9D9D9;font-size:16px}
+.r3 .tr.h{border-top:0;padding-bottom:8px}
+.r3 .tr b{font-family:Saira,Arial,sans-serif;font-weight:700;font-size:16px;text-transform:uppercase}
+.r3 .tr span{color:#3D3D3D}
+.r3 .big{font-family:Saira,Arial,sans-serif;font-weight:800;font-size:44px;line-height:1.05;text-transform:uppercase;margin:0}
+.r3 ol.n{margin:0;padding:0;counter-reset:n;display:flex;flex-direction:column;gap:14px}
+.r3 ol.n li{list-style:none;counter-increment:n;display:flex;gap:16px;align-items:flex-start}
+.r3 ol.n li::before{content:counter(n);flex:none;width:32px;height:32px;background:#111111;color:#FFFFFF;display:flex;align-items:center;justify-content:center;font-family:Saira,Arial,sans-serif;font-weight:700;font-size:15px}
+</style>
+</helmet>
+<div class="r3"><div class="wrap sect" style="padding-bottom:24px"><span class="eyebrow">Round 3 · polish brief T37</span><p class="big" style="margin-top:10px">The photo and the first screen</p><p class="muted" style="max-width:820px;margin-top:16px;font-size:18px">One change of logic: the text sits beside the photo, never on it. The photo slot is now close to 3:2, the shape of the photos themselves, so the subject stays in the picture at every width. The rest follows from that.</p></div><div class="wrap sect" style="padding-top:24px"><div class="head"><div><h2 class="h2">1 · The job of each photo</h2><div class="rule"></div></div></div><div class="tb"><div class="tr h"><span class="lbl">Page type</span><span class="lbl">The photo must show</span><span class="lbl">Not</span></div><div class="tr"><b>Home</b><span>The trade at scale: a port, a ship, cargo that moves. One wide daylight picture.</span><span>People in a meeting. A ship with a carrier's name as the subject.</span></div><div class="tr"><b>Hub — Services</b><span>An inspector who does the work, tool in hand.</span><span>A handshake. An office.</span></div><div class="tr"><b>Hub — Industries</b><span>A site of industry: a plant, a port, a field.</span><span>A product on a white ground.</span></div><div class="tr"><b>Hub — Programs</b><span>Goods at a border, a port or a customs yard.</span><span>A meeting room seen from behind.</span></div><div class="tr"><b>Hub — About</b><span>TIC people with their faces visible, at work or at a TIC event.</span><span>A building without people.</span></div><div class="tr"><b>Service</b><span>The act of this one service: hands, tool, goods. A visitor can name the service from the photo.</span><span>A generic worker in a helmet.</span></div><div class="tr"><b>Industry</b><span>The goods and the site of this industry, with one person for scale.</span><span>The goods of another industry.</span></div><div class="tr"><b>Program</b><span>The destination country and the goods that cross into it: the port, the border post, the product.</span><span>A ship with a third-party name. A flag alone.</span></div><div class="tr"><b>Office</b><span>Head: the building or the street the visitor looks for. Body: the team in the office.</span><span>A city skyline (placeholder only). Sky.</span></div><div class="tr"><b>News article</b><span>The event itself.</span><span>A logo.</span></div><div class="tr"><b>Policy page</b><span>No photo. The band head.</span><span>Decoration.</span></div></div><p class="small" style="margin-top:16px">Caption bar: “Place · Subject”. If the place is not known, the subject only. Never a guessed place. The alt text says what is in the picture.</p></div><div class="grey"><div class="wrap sect"><div class="head"><div><h2 class="h2">2 · Slots and crops</h2><div class="rule"></div></div></div><div class="tb"><div class="tr h"><span class="lbl">Slot</span><span class="lbl">Desktop (1440)</span><span class="lbl">Phone (390)</span></div><div class="tr"><b>Home hero</b><span>740 × 520, about 3:2. Bleeds to the right edge.</span><span>3:2, full width, above the text.</span></div><div class="tr"><b>Page head</b><span>787 × 400, about 2:1. It grows taller when the text is long.</span><span>3:2, full width, above the title.</span></div><div class="tr"><b>Card (service, news)</b><span>3:2.</span><span>3:2.</span></div><div class="tr"><b>Office team photo</b><span>3:2, in the text column.</span><span>3:2.</span></div><div class="tr"><b>Article</b><span>16:9.</span><span>16:9.</span></div></div><ol class="n" style="margin-top:28px;max-width:860px"><li><span>The editor marks the subject once (the Wagtail focal point). The template sets <b style="font-family:inherit">object-position</b> from it.</span></li><li><span>Left, centre or right: the subject stays in the picture, because the slot is as wide as the photo. See the three heads with the subject at the left, the centre and the right.</span></li><li><span>Only the top and the bottom are cut on desktop (about a quarter of the height). The focal point decides which.</span></li><li><span>Upload landscape 3:2, 1600 px wide or more. A portrait photo is not accepted for a head.</span></li></ol></div></div><div class="wrap sect"><div class="head"><div><h2 class="h2">3 · What the first screen gives</h2><div class="rule"></div></div></div><div class="tb"><div class="tr h"><span class="lbl">Page type</span><span class="lbl">1440 × 900</span><span class="lbl">390 × 844</span></div><div class="tr"><b>Home</b><span>Header, the hero with two actions, the proof strip.</span><span>Photo, heading, sentence, the first action.</span></div><div class="tr"><b>Section hub</b><span>Head, the jump row to every group or country, the first group.</span><span>Photo, title, intro, the jump row.</span></div><div class="tr"><b>Service</b><span>Head with the request action, the facts bar (where, time on site, report, standard), section 01.</span><span>Photo, title, intro, the action.</span></div><div class="tr"><b>Industry</b><span>Head, the facts bar, the list of services.</span><span>Photo, title, intro, the first facts.</span></div><div class="tr"><b>Program</b><span>Head with “Request a certificate”, the facts bar (regulator, appointed, status, office).</span><span>Photo, title, intro, the action.</span></div><div class="tr"><b>Office</b><span>Head with WhatsApp and Call, the facts bar (phone, email, hours, languages).</span><span>Title, WhatsApp, Call, the phone number.</span></div></div><p class="small" style="margin-top:16px">The header is one row: 115 px on desktop (was 190), 103 px on the phone (was 142). The logo stands alone; the company name stays in the page title and the footer. On the phone the utility bar is one row: Verify at the start, language and search at the end; Client area moves into the menu.</p><p class="small">The intro in a head is 160 characters at most. Longer text is the first paragraph of the body.</p></div><div class="grey"><div class="wrap sect"><div class="head"><div><h2 class="h2">4 · An empty photo place</h2><div class="rule"></div></div></div><div class="cols"><ol class="n"><li><span><b style="font-family:inherit">Card grids: all or none.</b> If every card has a photo, the grid shows photos. If one is missing, the grid shows text cards. No grey plates.</span></li><li><span><b style="font-family:inherit">Program cards: the country tile.</b> The country name is the picture. It needs no photo, now or later.</span></li><li><span><b style="font-family:inherit">The map: the address plate.</b> City, address, “Open in maps”. No map script, so it loads in mainland China.</span></li><li><span><b style="font-family:inherit">Office photo, team photo, person photo:</b> not drawn when empty. The text takes the width. A place that stands for a document (the sample report) keeps a quiet light plate with a dark caption.</span></li><li><span><b style="font-family:inherit">A head without a photo:</b> the band head. The same text, the same action.</span></li><li><span><b style="font-family:inherit">A section with nothing to list is not drawn.</b> No “No updates published yet.”</span></li></ol><div style="display:flex;flex-direction:column;gap:16px"><div class="g3" style="grid-template-columns:repeat(2,minmax(0,1fr))"><div class="tcard"><b>Testing</b><span>Text card: the card when the grid has no full set of photos.</span><span class="tri more">View</span></div><a class="ct" id="egypt" href="R3-Programs.dc.html"><div class="tiles"></div><span class="st ">Registered · GOEIC record 73</span><span class="c">Egypt</span><span class="n">Certificate of Inspection</span><span class="m">Last updated: [date] · Cairo office</span></a></div><div class="addr"><div class="tiles"></div><span class="lbl">Find us</span><span class="city" style="font-size:32px">Baghdad</span><p>[Street], Al-Mansour, Baghdad, Iraq</p><a class="tri w" href="#">Open in maps</a></div><a class="pcard" href="#" style="max-width:320px"><div class="im"><img src="/_blob/2db2cab04ab4f61aad379446590606c9" alt="Pipes and towers of a refinery under a blue sky"><div class="cap">Refinery</div></div><div class="bd"><b>Photo card</b><span>Only when every card of the grid has one.</span></div></a></div></div></div></div><div class="wrap sect"><div class="head"><div><h2 class="h2">5 · A thin page</h2><div class="rule"></div></div></div><ol class="n" style="max-width:860px"><li><span>The head and the facts bar are always there. They are the page when nothing else is.</span></li><li><span>The template fills the body from linked data, in this order: services for this industry, offices, programs, insights. An empty one is not drawn.</span></li><li><span>With one or two sections the body uses two columns, so the page is one screen and a half, not a strip.</span></li><li><span>The red contact band never follows the head directly.</span></li></ol></div><div class="grey"><div class="wrap sect"><div class="head"><div><h2 class="h2">6 · For the engineer</h2><div class="rule"></div></div></div><ol class="n" style="max-width:860px"><li><span>The drop uses container queries (860 px and 1180 px) so the phone boards can sit on the canvas. On the site use the same rules as media queries, or keep them.</span></li><li><span>New classes: <b style="font-family:inherit">.ph</b> (.hero, .band), <b style="font-family:inherit">.fb</b>, <b style="font-family:inherit">.jump</b>, <b style="font-family:inherit">.tcard</b>, <b style="font-family:inherit">.pcard</b>, <b style="font-family:inherit">.ct</b>, <b style="font-family:inherit">.addr</b>. All use logical properties; RTL needs no extra rule.</span></li><li><span>The facts bar is data, not copy: each page type has four fixed cells. A cell without a value keeps its bracket until an owner fills it.</span></li><li><span>The body of the service page and the program page is as in round 1. Only the head, the facts bar and the empty places change.</span></li></ol></div></div></div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":4870}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

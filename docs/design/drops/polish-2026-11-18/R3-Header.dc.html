@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Shared header, round 3 — TIC Quality Control</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira:wght@500;600;700;800&family=Open+Sans:wght@400;600&family=Cairo:wght@400;600;700;800&display=swap">
+<style>
+body{margin:0}
+
+.r3h{container-type:inline-size;font-family:"Open Sans",Arial,sans-serif;color:#1E1E1E;background:#FFFFFF}
+.r3h .wrap{max-width:1280px;margin-inline:auto;padding-inline:clamp(16px,5.5cqw,80px);box-sizing:border-box}
+.r3h .util{background:#111111}
+.r3h .utilrow{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:36px}
+.r3h .util a{font-size:13px;color:#D9D9D9;text-decoration:none;display:inline-flex;align-items:center;gap:8px;min-height:36px}
+.r3h .util a:hover{color:#FFFFFF}
+.r3h .util .vf{font-weight:600;color:#FFFFFF}
+.r3h .util .sq{width:8px;height:8px;background:#EB232B;display:inline-block}
+.r3h .util .end{display:flex;align-items:center;gap:24px}
+.r3h .util select{min-height:28px;background:#111111;color:#FFFFFF;border:1px solid #6B6B6B;font-family:"Open Sans",Cairo,Arial,sans-serif;font-size:13px;padding:2px 8px}
+.r3h .main{border-bottom:3px solid #EB232B}
+.r3h .hrow{display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:76px}
+.r3h .logo{display:inline-flex}
+.r3h .logo img{height:56px;width:auto;display:block}
+.r3h nav{display:flex;align-items:center;gap:clamp(14px,2cqw,26px)}
+.r3h nav a{font-family:Saira,Arial,sans-serif;font-weight:600;font-size:13.5px;letter-spacing:.07em;text-transform:uppercase;text-decoration:none;color:#1E1E1E;padding:10px 0;white-space:nowrap}
+.r3h nav a:hover,.r3h nav a.on{color:#EB232B}
+.r3h nav a.rq{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 18px;background:#EB232B;color:#FFFFFF}
+.r3h nav a.rq:hover{background:#BD2130;color:#FFFFFF}
+.r3h .menu{display:none}
+.r3h .menu summary{list-style:none;cursor:pointer;width:44px;height:44px;display:flex;align-items:center;justify-content:center}
+@container (max-width:1180px){
+.r3h nav{display:none}
+.r3h .menu{display:block}
+.r3h .logo img{height:44px}
+.r3h .hrow{min-height:60px}
+.r3h .util .cl,.r3h .util .stx{display:none}
+.r3h .util .end{gap:16px}
+.r3h .utilrow{min-height:40px}
+}
+</style>
+</helmet>
+<div class="r3h">
+  <div class="util"><div class="wrap utilrow">
+    <a class="vf" href="B-Verify.dc.html"><span class="sq"></span>Verify a certificate</a>
+    <div class="end">
+      <a class="cl" href="B-Login.dc.html">Client area</a>
+      <select aria-label="Language"><option selected>English</option><option>العربية</option></select>
+      <a href="B-Search.dc.html" aria-label="Search"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#D9D9D9" stroke-width="2"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4-4"></path></svg><span class="stx">Search</span></a>
+    </div>
+  </div></div>
+  <div class="main"><div class="wrap hrow">
+    <a class="logo" href="R3-Home.dc.html"><img src="/_blob/44349e061e95ffc81bd21d9737f21be0" alt="TIC Quality Control — Testing, Inspection, Certification"></a>
+    <nav aria-label="Main"><a class="{{c0}}" href="R3-Services.dc.html">Services</a><a class="{{c1}}" href="R3-Industry-Marine.dc.html">Industries</a><a class="{{c2}}" href="R3-Programs.dc.html">Government &amp; Trade Programs</a><a class="{{c3}}" href="R3-About.dc.html">About</a><a class="{{c4}}" href="B-News.dc.html">Resources</a><a class="{{c5}}" href="R3-Office-Dubai.dc.html">Contact</a><a class="rq" href="B-Contact.dc.html">Request a quote</a></nav>
+    <details class="menu"><summary aria-label="Menu"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1E1E1E" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"></path></svg></summary></details>
+  </div></div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"active": {"editor": "enum", "options": ["", "services", "industries", "programs", "about", "resources", "contact"], "default": ""}, "$preview":{"width":1440,"height":120}}'>
+class Component extends DCLogic {
+  renderVals() { const a = this.props.active ?? ''; const k = ['services','industries','programs','about','resources','contact']; const o = {}; k.forEach((x, i) => { o['c' + i] = a === x ? 'on' : ''; }); return o; }
+}
+</script>
+</body>
+</html>
