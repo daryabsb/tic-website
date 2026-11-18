@@ -167,7 +167,8 @@ def test_an_editor_alt_text_is_left_alone(seeded_home, tmp_path):
 
     call_command("import_old_news", source=source, images=tmp_path / "old-site")
 
-    assert NewsPage.objects.get(slug="batteries-export-to-egypt").image_alt == "Written by an editor"
+    page = NewsPage.objects.get(slug="batteries-export-to-egypt")
+    assert page.image_alt == "Written by an editor"
 
 
 def test_the_repository_source_covers_every_old_post():
