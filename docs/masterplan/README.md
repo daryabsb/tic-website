@@ -25,4 +25,4 @@ Oct 25, 2026 · Darya Ibrahim. Sixteen numbered parts, in the STMS / Zeneonix st
 
 Companion documents: `../design/briefs/` (the design brief and settled design decisions), `../design/drops/direction-b-2026-10-25/` (the design, one file per page type), `../design/content/` (page copy), `../proposal/` (the five proposal documents), `../research/` (the evidence).
 
-Reference implementations the engineer already knows: `E:/api/zeneonix-website` (client layout, deploy, CI, seed, tests), `E:/api/mlp-website` (the first client site), `E:/api/zeneon-cms` (the core).
+Reference implementations the engineer already knows: `K:/api/zeneonix-website` (client layout, deploy, CI, seed, tests), `K:/api/mlp-website` (the first client site), `K:/api/zeneon-cms` (the core).

@@ -4,7 +4,7 @@
 #
 #   bash scripts/ci.sh           # gate the checked-out commit (uncommitted changes are NOT sent)
 #
-# Needs: `ssh stms-data` (alias, E:/api/stms/deploy/SERVERS.md) and `gh auth token`
+# Needs: `ssh stms-data` (alias, K:/api/stms/deploy/SERVERS.md) and `gh auth token`
 # (read access to zeneon-cms for the image build; build secret only, never stored).
 # Exit 0 = green. The dev stack (tic-dev) is rebuilt and left running on the VM.
 set -euo pipefail
