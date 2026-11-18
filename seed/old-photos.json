@@ -1,5 +1,5 @@
 {
- "source": "~/tic/old-site/files on stms-data (D32); each photo chosen by sight (T36)",
+ "source": "Old site photos: ~/tic/old-site/files on stms-data (D32). Unsplash photos (source unsplash): ~/tic/stock on stms-data, staging placeholders until TIC sends its own (D68). Each photo chosen by sight (T36).",
  "photos": [
   {
    "page": "",
@@ -194,6 +194,193 @@
    "file": "files/2024/07/Fertilizers.jpg",
    "alt": "Two scientists in a laboratory look at test tubes",
    "caption": ""
+  },
+  {
+   "page": "offices/dubai",
+   "field": "header_image",
+   "file": "unsplash/IuypSbIlJiE.jpg",
+   "alt": "The Dubai skyline with the Burj Khalifa under a clear sky",
+   "source": "unsplash",
+   "credit": "Vishnu Kalanad, https://unsplash.com/photos/IuypSbIlJiE"
+  },
+  {
+   "page": "offices/sharjah",
+   "field": "header_image",
+   "file": "unsplash/AV5t2rSQor8.jpg",
+   "alt": "Buildings along Khalid Lagoon in Sharjah",
+   "source": "unsplash",
+   "credit": "Saj Shafique, https://unsplash.com/photos/AV5t2rSQor8"
+  },
+  {
+   "page": "offices/guangzhou",
+   "field": "header_image",
+   "file": "unsplash/kMzMK36LCeA.jpg",
+   "alt": "The Canton Tower and the Pearl River in Guangzhou",
+   "source": "unsplash",
+   "credit": "Andy Wang, https://unsplash.com/photos/kMzMK36LCeA"
+  },
+  {
+   "page": "offices/lahore",
+   "field": "header_image",
+   "file": "unsplash/TXJEdxs5Hh4.jpg",
+   "alt": "The Badshahi Mosque in Lahore",
+   "source": "unsplash",
+   "credit": "Dr Muhammad Amer, https://unsplash.com/photos/TXJEdxs5Hh4"
+  },
+  {
+   "page": "offices/amman",
+   "field": "header_image",
+   "file": "unsplash/t4yAeUQzxXY.jpg",
+   "alt": "Houses on the hills of Amman, with the Roman theatre",
+   "source": "unsplash",
+   "credit": "Hisham Zayadneh, https://unsplash.com/photos/t4yAeUQzxXY"
+  },
+  {
+   "page": "offices/riyadh",
+   "field": "header_image",
+   "file": "unsplash/kZ5nwgLVjqQ.jpg",
+   "alt": "A street in Riyadh with the Al Faisaliah tower",
+   "source": "unsplash",
+   "credit": "Tati Odintsova, https://unsplash.com/photos/kZ5nwgLVjqQ"
+  },
+  {
+   "page": "offices/cairo",
+   "field": "header_image",
+   "file": "unsplash/xVFTaYxrYkc.jpg",
+   "alt": "The rooftops of Cairo, with the pyramids far away",
+   "source": "unsplash",
+   "credit": "Martijn Vonk, https://unsplash.com/photos/xVFTaYxrYkc"
+  },
+  {
+   "page": "offices/sao-paulo",
+   "field": "header_image",
+   "file": "unsplash/0phxYpfFHpg.jpg",
+   "alt": "The Octavio Frias de Oliveira bridge over the Pinheiros river in São Paulo",
+   "source": "unsplash",
+   "credit": "Raphael Nogueira, https://unsplash.com/photos/0phxYpfFHpg"
+  },
+  {
+   "page": "offices/maharagama",
+   "field": "header_image",
+   "file": "unsplash/3fmmUdRE2Fk.jpg",
+   "alt": "The Colombo skyline with the Lotus Tower, across the water",
+   "source": "unsplash",
+   "credit": "Ajai S, https://unsplash.com/photos/3fmmUdRE2Fk"
+  },
+  {
+   "page": "offices/bangkok",
+   "field": "header_image",
+   "file": "unsplash/PHMabtedGwQ.jpg",
+   "alt": "High-rise buildings in Bangkok in the morning light",
+   "source": "unsplash",
+   "credit": "Sua Truong, https://unsplash.com/photos/PHMabtedGwQ"
+  },
+  {
+   "page": "offices/kuala-lumpur",
+   "field": "header_image",
+   "file": "unsplash/HxJvFZGfSHM.jpg",
+   "alt": "The Kuala Lumpur skyline with the KL Tower at sunset",
+   "source": "unsplash",
+   "credit": "Meriç Dağlı, https://unsplash.com/photos/HxJvFZGfSHM"
+  },
+  {
+   "page": "offices/dubai",
+   "field": "team_photo",
+   "file": "unsplash/V89PqZteK-k.jpg",
+   "alt": "Two inspectors in hard hats and safety vests check a tablet at a container port",
+   "caption": "Sample photo · to be replaced",
+   "source": "unsplash",
+   "credit": "Haris Illahi, https://unsplash.com/photos/V89PqZteK-k"
+  },
+  {
+   "page": "offices/sharjah",
+   "field": "team_photo",
+   "file": "unsplash/ceIEGTR7G18.jpg",
+   "alt": "Three people talk over laptops at a meeting table",
+   "caption": "Sample photo · to be replaced",
+   "source": "unsplash",
+   "credit": "Bluestonex, https://unsplash.com/photos/ceIEGTR7G18"
+  },
+  {
+   "page": "offices/guangzhou",
+   "field": "team_photo",
+   "file": "unsplash/RBKY5Rvy344.jpg",
+   "alt": "A woman works at the control panel of a machine in a factory",
+   "caption": "Sample photo · to be replaced",
+   "source": "unsplash",
+   "credit": "EqualStock, https://unsplash.com/photos/RBKY5Rvy344"
+  },
+  {
+   "page": "offices/lahore",
+   "field": "team_photo",
+   "file": "unsplash/spRqSZjfHIc.jpg",
+   "alt": "A worker checks the threads on a large machine in a textile factory",
+   "caption": "Sample photo · to be replaced",
+   "source": "unsplash",
+   "credit": "EqualStock, https://unsplash.com/photos/spRqSZjfHIc"
+  },
+  {
+   "page": "offices/amman",
+   "field": "team_photo",
+   "file": "unsplash/U0zO9rI47WA.jpg",
+   "alt": "A team in lab coats works with samples and records in a laboratory",
+   "caption": "Sample photo · to be replaced",
+   "source": "unsplash",
+   "credit": "NIAID, https://unsplash.com/photos/U0zO9rI47WA"
+  },
+  {
+   "page": "offices/riyadh",
+   "field": "team_photo",
+   "file": "unsplash/RAwn1QFwfss.jpg",
+   "alt": "Two men work at a machine in a factory",
+   "caption": "Sample photo · to be replaced",
+   "source": "unsplash",
+   "credit": "Daulet Turubayev, https://unsplash.com/photos/RAwn1QFwfss"
+  },
+  {
+   "page": "offices/cairo",
+   "field": "team_photo",
+   "file": "unsplash/xKj3fyXGiTM.jpg",
+   "alt": "A person in a lab coat holds a tray of seed samples",
+   "caption": "Sample photo · to be replaced",
+   "source": "unsplash",
+   "credit": "ThisisEngineering, https://unsplash.com/photos/xKj3fyXGiTM"
+  },
+  {
+   "page": "offices/sao-paulo",
+   "field": "team_photo",
+   "file": "unsplash/RlOAwXt2fEA.jpg",
+   "alt": "A scientist fills test tubes with a pipette",
+   "caption": "Sample photo · to be replaced",
+   "source": "unsplash",
+   "credit": "Julia Koblitz, https://unsplash.com/photos/RlOAwXt2fEA"
+  },
+  {
+   "page": "offices/maharagama",
+   "field": "team_photo",
+   "file": "unsplash/EtGcf0zDaLc.jpg",
+   "alt": "Hands check a handful of rice grains",
+   "caption": "Sample photo · to be replaced",
+   "source": "unsplash",
+   "credit": "Helena Pfisterer, https://unsplash.com/photos/EtGcf0zDaLc"
+  },
+  {
+   "page": "offices/bangkok",
+   "field": "team_photo",
+   "file": "unsplash/7Zy2KV76Mts.jpg",
+   "alt": "Three women work on laptops around a table",
+   "caption": "Sample photo · to be replaced",
+   "source": "unsplash",
+   "credit": "CoWomen, https://unsplash.com/photos/7Zy2KV76Mts"
+  },
+  {
+   "page": "offices/kuala-lumpur",
+   "field": "team_photo",
+   "file": "unsplash/6dOcc3ewUwE.jpg",
+   "alt": "Crew members at work on the bridge of a ship",
+   "caption": "Sample photo · to be replaced",
+   "source": "unsplash",
+   "credit": "NOAA, https://unsplash.com/photos/6dOcc3ewUwE"
   }
  ]
 }

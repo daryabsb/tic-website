@@ -1,6 +1,6 @@
 """Put the old site's photos on the pages (T36, D32).
 
-    python manage.py import_old_photos --images DIR [--source seed/old-photos.json]
+    python manage.py import_old_photos --images DIR [--stock DIR] [--source seed/old-photos.json]
 
 Each row of ``seed/old-photos.json`` names a page (its path under the English home,
 "" for the home page), a photo field, a file in the old site's media folder
@@ -10,6 +10,11 @@ editor's choice stays and the command can run again. The alt text and the captio
 set only with the photo: a caption that names a place the photo does not show is
 cleared ("" in the row). A live page without a draft stays without a draft; a page
 with a draft gets the photo in its draft. Photos go to the "Pages" collection.
+
+A row with ``"source": "unsplash"`` is a stock photo (D68): a staging placeholder until
+TIC sends its own. Its file is under ``--stock`` (``~/tic/stock`` on stms-data, not in
+git), and the image title carries its ``credit`` (photographer and photo page), so the
+placeholders are easy to find in the Images library and swap before launch.
 """
 
 import json
@@ -55,8 +60,9 @@ class Command(BaseCommand):
             "--source", type=Path, default=Path(settings.BASE_DIR) / "seed" / "old-photos.json"
         )
         parser.add_argument("--images", type=Path, required=True)
+        parser.add_argument("--stock", type=Path, default=None)
 
-    def handle(self, *args, source: Path, images: Path, **options):
+    def handle(self, *args, source: Path, images: Path, stock: Path | None, **options):
         rows = json.loads(source.read_text(encoding="utf-8"))["photos"]
         home = HomePage.objects.filter(locale=Locale.get_default()).first()
         if home is None:
@@ -72,7 +78,12 @@ class Command(BaseCommand):
             if getattr(current, f"{row['field']}_id"):
                 kept += 1
                 continue
-            path = images / row["file"]
+            base = stock if row.get("source") == "unsplash" else images
+            if base is None:
+                self.stderr.write(f"{row['page'] or '/'}: stock photo, no --stock")
+                missing += 1
+                continue
+            path = base / row["file"]
             if not path.is_file():
                 self.stderr.write(f"{row['page'] or '/'}: no file {path}")
                 missing += 1
@@ -87,7 +98,10 @@ class Command(BaseCommand):
     def add_photo(self, page, current, row, path: Path) -> None:
         Image = get_image_model()
         with path.open("rb") as handle:
-            image = Image(title=row["alt"][:255], collection=pages_collection())
+            title = row["alt"]
+            if row.get("credit"):
+                title = f"{title} (Unsplash: {row['credit']})"
+            image = Image(title=title[:255], collection=pages_collection())
             image.file.save(path.name, File(handle), save=False)
             image.save()
         clean_live = page.live and not page.has_unpublished_changes

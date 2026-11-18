@@ -68,6 +68,28 @@ def test_a_photo_an_editor_chose_stays(seeded_home, tmp_path):
     assert HomePage.objects.get(pk=seeded_home.pk).hero_image_id == chosen.pk
 
 
+def test_a_stock_photo_comes_from_the_stock_folder_with_its_credit(seeded_home, tmp_path):
+    from PIL import Image as PILImage
+
+    stock = tmp_path / "stock" / "unsplash"
+    stock.mkdir(parents=True)
+    PILImage.new("RGB", (40, 20), "blue").save(stock / "abc.jpg")
+    row = {
+        **HERO,
+        "file": "unsplash/abc.jpg",
+        "source": "unsplash",
+        "credit": "A Person, https://unsplash.com/photos/abc",
+    }
+    source = _source(tmp_path, [row])
+
+    call_command("import_old_photos", source=source, images=tmp_path / "none")
+    assert not HomePage.objects.get(pk=seeded_home.pk).hero_image_id
+
+    call_command("import_old_photos", source=source, images=tmp_path / "none", stock=stock.parent)
+    image = HomePage.objects.get(pk=seeded_home.pk).hero_image
+    assert image.title.endswith("(Unsplash: A Person, https://unsplash.com/photos/abc)")
+
+
 def test_the_repository_rows_name_seeded_pages_and_fields(seeded_home):
     with open(seed_site.SEED_DIR / "old-photos.json", encoding="utf-8") as handle:
         rows = json.load(handle)["photos"]
@@ -77,6 +99,10 @@ def test_the_repository_rows_name_seeded_pages_and_fields(seeded_home):
         page = find_page(home, row["page"])
         assert page is not None, row["page"]
         assert hasattr(page, f"{row['field']}_id"), (row["page"], row["field"])
-        assert row["file"].startswith("files/")
+        if row.get("source") == "unsplash":  # D68: placeholders carry their credit
+            assert row["file"].startswith("unsplash/")
+            assert "https://unsplash.com/photos/" in row["credit"]
+        else:
+            assert row["file"].startswith("files/")
         assert 0 < len(row["alt"]) <= 200
         assert "TICQC" not in row["alt"] and "TIC QC" not in row["alt"]
