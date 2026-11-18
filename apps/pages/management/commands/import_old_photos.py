@@ -14,7 +14,9 @@ with a draft gets the photo in its draft. Photos go to the "Pages" collection.
 A row with ``"source": "unsplash"`` is a stock photo (D68): a staging placeholder until
 TIC sends its own. Its file is under ``--stock`` (``~/tic/stock`` on stms-data, not in
 git), and the image title carries its ``credit`` (photographer and photo page), so the
-placeholders are easy to find in the Images library and swap before launch.
+placeholders are easy to find in the Images library and swap before launch. A row with
+``"source": "tic"`` is TIC's own new photo (for example one Darya took), also under
+``--stock``.
 """
 
 import json
@@ -29,6 +31,7 @@ from wagtail.models import Collection, Locale
 from apps.pages.models import HomePage
 
 COLLECTION = "Pages"
+STOCK_SOURCES = ("unsplash", "tic")  # files under --stock, not in the old site
 CAPTION_FIELDS = {
     "hero_image": "hero_caption",
     "header_image": "header_caption",
@@ -78,7 +81,7 @@ class Command(BaseCommand):
             if getattr(current, f"{row['field']}_id"):
                 kept += 1
                 continue
-            base = stock if row.get("source") == "unsplash" else images
+            base = stock if row.get("source") in STOCK_SOURCES else images
             if base is None:
                 self.stderr.write(f"{row['page'] or '/'}: stock photo, no --stock")
                 missing += 1
@@ -99,7 +102,7 @@ class Command(BaseCommand):
         Image = get_image_model()
         with path.open("rb") as handle:
             title = row["alt"]
-            if row.get("credit"):
+            if row.get("source") == "unsplash" and row.get("credit"):
                 title = f"{title} (Unsplash: {row['credit']})"
             image = Image(title=title[:255], collection=pages_collection())
             image.file.save(path.name, File(handle), save=False)

@@ -381,6 +381,15 @@
    "caption": "Sample photo · to be replaced",
    "source": "unsplash",
    "credit": "NOAA, https://unsplash.com/photos/6dOcc3ewUwE"
+  },
+  {
+   "page": "offices/baghdad",
+   "field": "team_photo",
+   "file": "tic/baghdad-voc-event.jpg",
+   "alt": "The CEO, left, talks with guests at the Verification of Conformity event in Baghdad",
+   "caption": "Baghdad · VoC event",
+   "source": "tic",
+   "credit": "Darya Ibrahim, TIC"
   }
  ]
 }

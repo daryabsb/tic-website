@@ -102,6 +102,8 @@ def test_the_repository_rows_name_seeded_pages_and_fields(seeded_home):
         if row.get("source") == "unsplash":  # D68: placeholders carry their credit
             assert row["file"].startswith("unsplash/")
             assert "https://unsplash.com/photos/" in row["credit"]
+        elif row.get("source") == "tic":
+            assert row["file"].startswith("tic/")
         else:
             assert row["file"].startswith("files/")
         assert 0 < len(row["alt"]) <= 200
