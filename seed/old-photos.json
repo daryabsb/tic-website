@@ -1,0 +1,199 @@
+{
+ "source": "~/tic/old-site/files on stms-data (D32); each photo chosen by sight (T36)",
+ "photos": [
+  {
+   "page": "",
+   "field": "hero_image",
+   "file": "files/2024/06/MARINE-scaled-2.jpg",
+   "alt": "A loaded container ship at a port at sunset, seen from the air, with cranes along the quay",
+   "caption": ""
+  },
+  {
+   "page": "services",
+   "field": "header_image",
+   "file": "files/2024/06/services-header-scaled-1.jpg",
+   "alt": "Two inspectors in hard hats check a large steel pipe on site",
+   "caption": ""
+  },
+  {
+   "page": "services/inspection",
+   "field": "header_image",
+   "file": "files/2024/06/NDT-scaled-1.jpg",
+   "alt": "An inspector measures a steel plate with a handheld thickness gauge in a warehouse",
+   "caption": ""
+  },
+  {
+   "page": "services/inspection/pre-shipment-inspection",
+   "field": "header_image",
+   "file": "files/2024/07/Testing_CommoditiesConsumer-Products.jpg",
+   "alt": "An inspector in a safety vest fills in a checklist on a clipboard",
+   "caption": ""
+  },
+  {
+   "page": "services/testing",
+   "field": "header_image",
+   "file": "files/2024/06/10ef033ad935fe35baf1e392bfb8ad29-scaled.jpeg",
+   "alt": "Two scientists work with samples in a laboratory"
+  },
+  {
+   "page": "services/certification",
+   "field": "header_image",
+   "file": "files/2024/06/b9996ccbf278e9ce2f872f4b69c409b8-scaled.jpeg",
+   "alt": "Two people in business suits shake hands"
+  },
+  {
+   "page": "services/programs",
+   "field": "header_image",
+   "file": "files/2024/06/ae802f934cf778e23a24196fc5b22ac7-scaled.jpeg",
+   "alt": "A container truck at a port at sunset, with a cargo ship, stacked containers and a plane in the sky"
+  },
+  {
+   "page": "services/audits",
+   "field": "header_image",
+   "file": "files/2024/06/iStock-1129582253-scaled-e1714544330393.jpg",
+   "alt": "A white hard hat on a table on a work site"
+  },
+  {
+   "page": "services/training",
+   "field": "header_image",
+   "file": "files/2024/06/18ab3a0bcf2454f82e0d83726ad2b8b7-1-scaled.jpeg",
+   "alt": "A trainer speaks to a group of people in a training session"
+  },
+  {
+   "page": "services/sustainability",
+   "field": "header_image",
+   "file": "files/2024/07/ee32469a7f57ada9fa274de3eecd1d98-1-scaled.jpeg",
+   "alt": "Rows of green crops in a field under a wide sky"
+  },
+  {
+   "page": "industries",
+   "field": "header_image",
+   "file": "files/2024/06/Energy-4-scaled-1.jpg",
+   "alt": "Pipes and towers of a refinery under a blue sky"
+  },
+  {
+   "page": "industries/agriculture-and-food",
+   "field": "header_image",
+   "file": "files/2024/07/e0674486257d2affc9c8f853cb22ab79-1-scaled.jpeg",
+   "alt": "Ripe wheat in a field",
+   "caption": ""
+  },
+  {
+   "page": "industries/oil-gas-and-petrochemicals",
+   "field": "header_image",
+   "file": "files/2024/06/Energy-1.jpg",
+   "alt": "An offshore oil and gas platform at sea at sunset"
+  },
+  {
+   "page": "industries/marine-and-shipping",
+   "field": "header_image",
+   "file": "files/2024/06/20799bbe09278cc380fc329b3a82ec98-scaled.jpeg",
+   "alt": "An inspector in a hard hat and safety vest looks at a ship's bow in a dry dock"
+  },
+  {
+   "page": "industries/consumer-products-and-retail",
+   "field": "header_image",
+   "file": "files/2026/08/Household-Electrical-Appliance-Inspection-Testing-Services.webp",
+   "alt": "Household appliances: a fridge, a cooker, a washing machine, a microwave and small kitchen machines"
+  },
+  {
+   "page": "industries/vehicles-and-automotive",
+   "field": "header_image",
+   "file": "files/2024/07/1865fc4ff97287c22dd45dc96f506d66-1-scaled.jpeg",
+   "alt": "A row of new cars parked under a blue sky"
+  },
+  {
+   "page": "industries/industrial-equipment-and-manufacturing",
+   "field": "header_image",
+   "file": "files/2026/08/Electrical-Switch-Socket-Circuit-Breaker-Testing.webp",
+   "alt": "An engineer tests a circuit breaker in a switchgear room with a test instrument"
+  },
+  {
+   "page": "industries/construction-and-infrastructure",
+   "field": "header_image",
+   "file": "files/2024/06/Infrastructure-Constraction.jpg",
+   "alt": "A curved concrete bridge seen from below"
+  },
+  {
+   "page": "industries/government-and-public-sector",
+   "field": "header_image",
+   "file": "files/2024/07/1.jpg",
+   "alt": "A group of people at the LOX and TIC partnership event for the Iraq Verification of Conformity program"
+  },
+  {
+   "page": "programs",
+   "field": "header_image",
+   "file": "files/2024/07/2.jpg",
+   "alt": "A presentation on the Iraq Verification of Conformity program to an audience in a hotel meeting room",
+   "caption": ""
+  },
+  {
+   "page": "programs/updates",
+   "field": "header_image",
+   "file": "files/2024/06/Contact-scaled-1.jpeg",
+   "alt": "A person holds a phone with mail icons above it"
+  },
+  {
+   "page": "programs/iraq-certificate-of-conformity",
+   "field": "header_image",
+   "file": "files/2026/02/Iraq-CoC.png",
+   "alt": "A large container ship at sea",
+   "caption": ""
+  },
+  {
+   "page": "offices",
+   "field": "header_image",
+   "file": "files/2024/06/Global-presence-scaled-1.jpeg",
+   "alt": "A digital globe with lines of light between places"
+  },
+  {
+   "page": "offices/gandhidham",
+   "field": "header_image",
+   "file": "files/2026/03/TIC-Quality-Control-CEO-visit-India-Gandhidham-lab-opening-welcome.jpg",
+   "alt": "Welcome at the opening of the Gandhidham laboratory: a ribbon cutting between red, black and white balloons",
+   "caption": "Gandhidham · Laboratory opening"
+  },
+  {
+   "page": "offices/gandhidham",
+   "field": "team_photo",
+   "file": "files/2026/11/ticqc-team-gandhidham-group.jpg",
+   "alt": "The Gandhidham team in the office, behind a flower rangoli",
+   "caption": "Gandhidham · Team"
+  },
+  {
+   "page": "offices/noida",
+   "field": "header_image",
+   "file": "files/2026/03/TIC-Quality-Control-CEO-visit-India-Delhi-Noida.jpg",
+   "alt": "The India team in front of an office building",
+   "caption": "Noida · Team"
+  },
+  {
+   "page": "offices/noida",
+   "field": "team_photo",
+   "file": "files/2026/03/TIC-Quality-Control-CEO-visit-India-Delhi-Noida-India-Team.jpg",
+   "alt": "The India team at an indoor event",
+   "caption": "Noida · Team"
+  },
+  {
+   "page": "about",
+   "field": "header_image",
+   "file": "files/2024/07/4.jpg",
+   "alt": "A speaker stands and talks to people at tables in a meeting room",
+   "caption": ""
+  },
+  {
+   "page": "about/careers",
+   "field": "header_image",
+   "file": "files/2024/06/careers-scaled-1.jpeg",
+   "alt": "People at a meeting table in an office, seen against the window",
+   "caption": ""
+  },
+  {
+   "page": "about/careers",
+   "field": "photo",
+   "file": "files/2024/07/Fertilizers.jpg",
+   "alt": "Two scientists in a laboratory look at test tubes",
+   "caption": ""
+  }
+ ]
+}
