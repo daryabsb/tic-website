@@ -43,3 +43,6 @@ dist/
 # Build caches
 .fontcache/
 locale/*/LC_MESSAGES/*.mo
+
+# design-drop photos live with the stock files on stms-data (~/tic/stock/design, D68)
+docs/design/drops/*/photos/
