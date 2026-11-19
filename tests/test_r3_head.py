@@ -120,13 +120,13 @@ def test_the_office_head_has_whatsapp_and_call(client, seeded_home):
     html = client.get("/en/offices/dubai/").content.decode()
     act = _act(html)
     assert '<a class="btn" href="https://wa.me/97142255555' in act and "WhatsApp the office" in act
-    assert '<a class="tri" href="tel:+97142255555">Call +971 4 225 5555</a>' in act
+    assert '<a class="tri" href="tel:+97142255555">Call ⁦+971 4 225 5555⁩</a>'  # LTR isolate in act
 
 
 def test_an_office_in_china_has_no_whatsapp_in_the_head(client, seeded_home):
     act = _act(client.get("/en/offices/guangzhou/").content.decode())
     assert "wa.me" not in act and "WhatsApp" not in act
-    assert 'href="tel:+8618149707740">Call +86 181 4970 7740</a>' in act
+    assert 'href="tel:+8618149707740">Call ⁦+86 181 4970 7740⁩</a>' in act
 
 
 def test_the_contact_head_is_a_band_with_whatsapp_and_call(client, seeded_home):
@@ -153,3 +153,13 @@ def test_the_complaints_head_opens_the_complaint_form(client, seeded_home):
 def test_the_regulatory_updates_feed_has_the_band_head(client, seeded_home):
     html = client.get("/en/programs/updates/").content.decode()
     assert '<div class="ph band">' in html and 'class="ph__im"' not in html
+
+
+def test_the_band_head_keeps_dark_text_on_its_light_band():
+    from pathlib import Path
+
+    css = Path("static/css/site.css").read_text(encoding="utf-8")
+    # The dark section band (.band p, .band::before) must not reach the light head band.
+    assert ".ph.band::before { display: none; }" in css
+    assert ".ph.band .ph__intro { color: var(--tic-charcoal); }" in css
+    assert ".ph.band .eyebrow { color: var(--tic-red); }" in css

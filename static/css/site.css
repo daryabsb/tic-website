@@ -169,6 +169,11 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .ph__act { display: flex; flex-wrap: wrap; gap: 8px 24px; align-items: center; padding-top: 4px; }
 .ph.hero .ph__act { gap: 12px; }
 .ph.band { display: block; background: var(--tic-light); }
+/* The head band is light (R3): the dark section band's text colour and grid do not apply. */
+.ph.band { color: var(--tic-black); }
+.ph.band::before { display: none; }
+.ph.band .ph__intro { color: var(--tic-charcoal); }
+.ph.band .eyebrow { color: var(--tic-red); }
 .ph.band .ph__tx { padding-inline-end: 0; max-width: 760px; }
 .ph-more { padding-top: 48px; }
 .ph-more .lead { max-width: 760px; font-size: 18px; color: var(--tic-ink); }

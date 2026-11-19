@@ -9,7 +9,7 @@
     <div class="office__chans">
       <div class="chan">
         <span class="lbl">{% if page.whatsapp_allowed %}{% translate "Phone and WhatsApp" %}{% else %}{% translate "Phone" %}{% endif %}</span>
-        <b>{{ page.phone|default:"[number]" }}</b>
+        <b><bdi>{{ page.phone|default:"[number]" }}</bdi></b>
         {% if office.phone_number %}<span class="chan__links"><a href="tel:{{ office.phone_number|cut:' ' }}">{% translate "Call" %}</a>{% if page.whatsapp_link %} · <a href="{{ page.whatsapp_link }}" rel="noopener" target="_blank">WhatsApp</a>{% endif %}</span>{% endif %}
       </div>
       {% if not page.whatsapp_allowed %}<div class="chan"><span class="lbl">WeChat</span><b>{{ page.wechat_id|default:"[WeChat ID]" }}</b>{% if page.wechat_qr %}{% image page.wechat_qr width-160 class="chan__qr" alt="" %}{% endif %}</div>{% endif %}
