@@ -103,9 +103,15 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .plate span { font-size: 13px; color: var(--tic-body-grey); }
 :lang(ar) .plate b { text-transform: none; }
 
-/* ---------- header (brand book 19; design Header.dc.html) ---------- */
+/* ---------- header (Round 3, R3-Header; D70) ----------
+   One row: the logo alone (the company name is visually hidden: it stays in the page
+   title and the footer), the menu, Request a quote. 115 px with the utility bar on
+   desktop, 103 px on the phone. Under 1180 px the menu is behind a button, the utility bar
+   is one row (Verify at the start; language and search at the end) and Client area moves
+   into the menu. */
 .util { background: var(--tic-black); color: var(--tic-hairline); }
-.util__in { display: flex; flex-wrap: wrap; gap: 4px 28px; align-items: center; min-height: 36px; justify-content: flex-end; }
+.util__in { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 36px; }
+.util__end { display: flex; align-items: center; gap: 24px; }
 .util a { font-size: 13px; text-decoration: none; color: var(--tic-hairline); display: inline-flex; align-items: center; gap: 8px; min-height: 36px; }
 .util a:hover { color: var(--tic-white); }
 .util a.util__verify { font-weight: 600; color: var(--tic-white); }
@@ -113,21 +119,19 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .util label { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-display); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--tic-hairline); }
 .util select { min-height: 28px; background: var(--tic-black); color: var(--tic-white); border: 1px solid var(--tic-body-grey); font-family: var(--font-body); font-size: 13px; padding: 2px 8px; }
 .hdr { background: var(--tic-white); border-bottom: 3px solid var(--tic-red); }
-.hdr__in { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 36px; min-height: 96px; padding-block: 14px; }
-.hdr__home { display: inline-flex; align-items: center; gap: 18px; text-decoration: none; }
-.hdr__logo { height: 60px; width: auto; display: block; }
-.hdr__sep { width: 1px; height: 44px; background: var(--tic-hairline); }
-.hdr__name { font-family: var(--font-display); font-weight: 600; font-size: 18px; letter-spacing: .1em; text-transform: uppercase; color: var(--tic-ink); }
-:lang(ar) .hdr__name { font-weight: 800; letter-spacing: 0; text-transform: none; }
-.hdr__nav { flex: 1 1 auto; display: flex; flex-wrap: wrap; gap: 0 30px; justify-content: flex-end; align-items: center; }
-.hdr__nav a:not(.btn) { font-family: var(--font-display); font-weight: 600; font-size: 14px; letter-spacing: .08em; text-transform: uppercase; text-decoration: none; color: var(--tic-ink); padding: 14px 0; display: inline-block; }
+.hdr__in { display: flex; align-items: center; justify-content: space-between; gap: 24px; min-height: 76px; }
+.hdr__home { display: inline-flex; text-decoration: none; }
+.hdr__logo { height: 56px; width: auto; display: block; }
+.hdr__nav { display: flex; align-items: center; gap: clamp(14px, 2vw, 26px); }
+.hdr__nav a:not(.btn) { font-family: var(--font-display); font-weight: 600; font-size: 13.5px; letter-spacing: .07em; text-transform: uppercase; text-decoration: none; color: var(--tic-ink); padding: 10px 0; white-space: nowrap; }
 .hdr__nav a:not(.btn):hover, .hdr__nav a:not(.btn)[aria-current="page"] { color: var(--tic-red); }
 :lang(ar) .hdr__nav a:not(.btn) { font-size: 16px; font-weight: 700; letter-spacing: 0; text-transform: none; }
+.hdr__cta { display: inline-flex; min-height: 44px; padding: 0 18px; }
 .hdr__menu { display: none; }
-@media (max-width: 1099px) {
-  .hdr__in { min-height: 64px; padding-block: 8px; justify-content: space-between; }
-  .hdr__logo { height: 46px; }
-  .hdr__sep, .hdr__name { display: none; }
+.menu__util { display: none; }
+@media (max-width: 1180px) {
+  .hdr__in { min-height: 60px; }
+  .hdr__logo { height: 44px; }
   .hdr__nav { display: none; }
   .hdr__menu { display: block; }
   .hdr__menu > summary { list-style: none; width: 44px; height: 44px; display: inline-flex; align-items: center; justify-content: center; cursor: pointer; }
@@ -135,44 +139,62 @@ button, input, select, textarea { font: inherit; color: inherit; }
   .hdr__menu[open] .menu { display: flex; }
   .menu { display: none; position: absolute; inset-inline: 0; z-index: 20; background: var(--tic-white); border-bottom: 3px solid var(--tic-red); flex-direction: column; padding: 8px var(--gutter) 16px; }
   .menu a:not(.btn) { font-family: var(--font-display); font-weight: 600; font-size: 16px; text-transform: uppercase; text-decoration: none; color: var(--tic-ink); min-height: 48px; display: flex; align-items: center; border-top: 1px solid var(--tic-hairline); }
+  .menu .menu__util { display: flex; font-family: var(--font-body); font-weight: 400; text-transform: none; }
   .menu .btn { margin-top: 12px; }
-  .util__in { justify-content: flex-start; gap: 4px 16px; }
-  .util__hide-sm { display: none; }
+  .util__in { min-height: 40px; }
+  .util__end { gap: 16px; }
+  .util__hide-sm, .util__label { display: none; }
 }
-.hdr__cta { display: inline-flex; }
 .menu-icon { width: 24px; height: 24px; display: block; }
 .hdr__menu[open] .menu-icon--open { display: none; }
 .hdr__menu:not([open]) .menu-icon--close { display: none; }
 
-/* ---------- page head (design PageHead.dc.html) ---------- */
-.page-head { min-height: 420px; display: flex; align-items: flex-end; }
-.page-head__wrap { position: relative; width: 100%; padding-top: 80px; display: flex; }
-.page-head__plate { background: var(--tic-white); padding: 36px 40px 32px; max-width: 760px; display: flex; flex-direction: column; gap: 14px; border-top: 6px solid var(--tic-red); }
-.page-head--band { background: var(--tic-light); border-bottom: 1px solid var(--tic-hairline); min-height: 0; }
-.page-head--band .page-head__plate { background: transparent; border-top: 0; padding: 48px 0; max-width: none; }
-.page-head--band .page-head__wrap { padding-top: 0; }
-.crumb { display: flex; flex-wrap: wrap; gap: 8px; font-size: 14px; color: var(--tic-body-grey); }
+/* ---------- page head (Round 3, R3-Head-Desktop; T38) ----------
+   The text sits beside the photo, never on it. Four columns: side, text (493 px), photo
+   (627 px and the side, so it bleeds to the edge), side. The home variant (.hero) is
+   540/580 and 520 px high. Without a photo: the band head (.band), same text, same
+   action. Under 860 px the photo comes first at 3:2, then the text. The crop follows the
+   Wagtail focal point (the server crops the renditions; no inline style). */
+.ph { display: grid; grid-template-columns: minmax(var(--gutter), 1fr) minmax(0, 493px) minmax(0, 627px) minmax(var(--gutter), 1fr); border-bottom: 1px solid var(--tic-hairline); background: var(--tic-white); }
+.ph.hero { grid-template-columns: minmax(var(--gutter), 1fr) minmax(0, 540px) minmax(0, 580px) minmax(var(--gutter), 1fr); }
+.ph__tx { grid-column: 2; padding-block: 48px; padding-inline-end: 48px; display: flex; flex-direction: column; justify-content: center; gap: 16px; min-width: 0; }
+.ph__im { grid-column: 3 / 5; position: relative; min-height: 400px; background: var(--tic-light); overflow: hidden; }
+.ph.hero .ph__im { min-height: 520px; }
+.ph__im img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+.ph__im .cap { font-size: 12px; padding: 7px 14px; }
+.ph__title { margin: 0; font-family: var(--font-display); font-weight: 800; font-size: 44px; line-height: 1.05; letter-spacing: .01em; text-transform: uppercase; color: var(--tic-ink); }
+.ph.hero .ph__title { font-size: 48px; line-height: 1.04; }
+.ph__tx .rule { margin-top: 0; }
+.ph__intro { margin: 0; font-size: 18px; line-height: 1.6; color: var(--tic-charcoal); }
+.ph__act { display: flex; flex-wrap: wrap; gap: 8px 24px; align-items: center; padding-top: 4px; }
+.ph.hero .ph__act { gap: 12px; }
+.ph.band { display: block; background: var(--tic-light); }
+/* The head band is light (R3): the dark section band's text colour and grid do not apply. */
+.ph.band { color: var(--tic-black); }
+.ph.band::before { display: none; }
+.ph.band .ph__intro { color: var(--tic-charcoal); }
+.ph.band .eyebrow { color: var(--tic-red); }
+.ph.band .ph__tx { padding-inline-end: 0; max-width: 760px; }
+.ph-more { padding-top: 48px; }
+.ph-more .lead { max-width: 760px; font-size: 18px; color: var(--tic-ink); }
+.crumb { display: flex; flex-wrap: wrap; gap: 4px 8px; font-size: 14px; color: var(--tic-body-grey); }
 .crumb a { color: var(--tic-charcoal); text-decoration: none; }
 .crumb a:hover { color: var(--tic-red); }
+@media (max-width: 860px) {
+  .ph, .ph.hero { display: flex; flex-direction: column; }
+  .ph__im, .ph.hero .ph__im { order: -1; min-height: 0; aspect-ratio: 3 / 2; }
+  .ph__tx { padding: 24px var(--gutter) 28px; }
+  .ph.band .ph__tx { padding-inline: 0; }
+  .ph__title { font-size: 34px; }
+  .ph.hero .ph__title { font-size: 36px; }
+  .ph__intro { font-size: 17px; }
+  .ph.hero .ph__act .btn { flex: 1 1 100%; }
+  .ph-more { padding-top: 32px; }
+}
 @media (max-width: 640px) {
-  .page-head { min-height: 320px; }
-  .page-head__plate { padding: 24px 20px 20px; margin-inline: -4px; }
   .h1 { font-size: 34px; }
   .h1--page { font-size: 30px; }
   .h2 { font-size: 26px; }
-}
-
-/* ---------- hero (design DirectionB.dc.html) ---------- */
-.hero { min-height: 680px; display: flex; align-items: flex-end; }
-.hero__wrap { position: relative; width: 100%; padding-top: 120px; display: flex; }
-.hero__plate { background: var(--tic-white); padding: 48px 48px 40px; max-width: 720px; display: flex; flex-direction: column; gap: 22px; border-top: 6px solid var(--tic-red); }
-.hero__actions { display: flex; flex-wrap: wrap; gap: 14px; padding-top: 4px; }
-@media (max-width: 640px) {
-  .hero { min-height: 440px; }
-  .hero__wrap, .photo .page-head__wrap { padding-bottom: 44px; } /* room for the red caption under the plate (#48) */
-  .hero__wrap { padding-top: 48px; }
-  .hero__plate { padding: 22px 20px; gap: 14px; margin: 0 -4px; width: calc(100% + 8px); }
-  .hero__actions .btn { flex: 1 1 100%; }
 }
 
 /* ---------- proof strip ---------- */
@@ -686,17 +708,27 @@ a.chan:hover { border-color: var(--tic-ink); }
 .pg a { display: inline-flex; align-items: center; justify-content: center; min-width: 44px; min-height: 44px; border: 1px solid var(--tic-hairline); text-decoration: none; font-family: var(--font-display); font-weight: 600; color: var(--tic-ink); }
 .pg a.on { background: var(--tic-black); color: var(--tic-white); border-color: var(--tic-black); }
 .pg__next { padding: 0 16px; }
+/* The article head (Round 3, R3-Article): one column, the photo under the byline. The
+   whole photo, never cropped to the drop's 16:9 (D62: old articles carry text in their
+   pictures). */
 .art-head { border-bottom: 1px solid var(--tic-hairline); }
-.art-head__in { gap: 14px; padding-block: 40px; max-width: 960px; }
-.art-head__meta { flex-wrap: wrap; gap: 8px 24px; }
+.art-head__in { max-width: 880px; margin-inline: auto; padding: 48px var(--gutter) 40px; display: flex; flex-direction: column; gap: 16px; }
+.art-head__title { margin: 0; font-family: var(--font-display); font-weight: 800; font-size: 40px; line-height: 1.08; letter-spacing: .01em; text-transform: uppercase; color: var(--tic-ink); }
+.art-head__meta { flex-wrap: wrap; gap: 8px 24px; font-size: 15px; color: var(--tic-charcoal); }
+.art-head__im { margin-block: 12px 8px; background: var(--tic-light); }
+.art-head__im img { display: block; width: 100%; height: auto; }
+.art-head__lead { margin: 0; font-size: 19px; line-height: 1.6; color: var(--tic-ink); }
+@media (max-width: 860px) {
+  .art-head__in { padding-block: 28px 32px; }
+  .art-head__title { font-size: 30px; }
+  .art-head__im { margin-inline: calc(-1 * var(--gutter)); }
+}
 .art { padding-block: 48px 72px; }
 .art__body h2 { scroll-margin-top: 24px; }
 .art-author { gap: 14px; align-items: center; }
 .art-author__photo { width: 72px; height: 72px; object-fit: cover; }
 .art-author__tx { gap: 4px; font-size: 15px; }
 .art-links { gap: 8px; }
-.art__photo { margin-bottom: 32px; } /* the article photo (B-Article; T30, D62): the whole picture, never cropped */
-.art__photo > img { position: static; display: block; width: 100%; height: auto; }
 .art-rel { padding-block: 48px; }
 .art-rel__row { flex-wrap: wrap; gap: 16px; }
 .art-rel .rel span { padding: 0 16px 14px; font-size: 14px; color: var(--tic-body-grey); }

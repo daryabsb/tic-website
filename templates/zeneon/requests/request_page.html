@@ -6,10 +6,10 @@ application, a course registration when the form was opened from that page (T23)
 {% block title %}{% request_head flow as head %}{% seo_title title=head.title suffix="TIC Quality Control" %}{% endblock %}
 {% block meta %}{% request_head flow as head %}{% seo_head robots="noindex" description=head.lead %}{% endblock %}
 {% block content %}{% request_head flow as head %}
-<div class="page-head page-head--band">
-  <div class="wrap page-head__wrap"><div class="page-head__plate">
-    <h1 class="h1 h1--page">{{ head.title }}</h1>
-    <p class="lead">{{ head.lead }}</p>
+<div class="ph band">
+  <div class="wrap"><div class="ph__tx">
+    <h1 class="ph__title">{{ head.title }}</h1>
+    <p class="ph__intro">{{ head.lead }}</p>
   </div></div>
 </div>
 <section class="wrap request-page">

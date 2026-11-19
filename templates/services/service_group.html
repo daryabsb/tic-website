@@ -2,9 +2,10 @@
 {% comment %}A service group (design B-Services-Inspection.dc.html): the live services as cards, then the dark "how it is done" band.{% endcomment %}
 {% block body_class %}page-service-group{% endblock %}
 {% block content %}
-{% include "includes/page_head.html" with image=page.header_image image_alt=page.header_image_alt caption=page.header_caption intro=page.intro %}
+{% blocktranslate asvar list_label with group=page.title|lower %}All {{ group }} services{% endblocktranslate %}
+{% if services %}{% include "includes/page_head.html" with image=page.header_image image_alt=page.header_image_alt caption=page.header_caption intro=page.intro secondary_label=list_label secondary_href="#services" %}{% else %}{% include "includes/page_head.html" with image=page.header_image image_alt=page.header_image_alt caption=page.header_caption intro=page.intro %}{% endif %}
 {% if services %}
-<div class="wrap stack sec-cards">
+<div id="services" class="wrap stack sec-cards">
   <div><h2 class="h2">{% blocktranslate with group=page.title|lower count counter=services|length %}{{ counter }} {{ group }} service{% plural %}{{ counter }} {{ group }} services{% endblocktranslate %}</h2><div class="rule"></div></div>
   <div class="cards">
   {% for service in services %}<a class="svc svc--sm" href="{% pageurl service %}">

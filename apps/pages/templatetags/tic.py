@@ -12,6 +12,7 @@
 - `{% request_office submission as office %}`: the office that received a request (T17).
 - `{% latest_articles 3 as articles %}`: newest live articles of the active language.
 - `{% public_marks as marks %}`: the accreditation marks we may show (T22; footer).
+- `{{ number|isolate }}`: the number in a left-to-right isolate, for a sentence in Arabic.
 - `{{ page|is_within:item }}`: True when ``page`` is ``item`` or one of its descendants.
 """
 
@@ -111,6 +112,13 @@ def request_office(submission):
 def latest_articles(count=3):
     """The newest articles of the active language. Empty until the TIC news app (#23)."""
     return []
+
+
+@register.filter
+def isolate(value):
+    """A left-to-right isolate (U+2066 … U+2069) around a phone number in a sentence:
+    in Arabic the number keeps its order. For a whole element, use <bdi>."""
+    return f"⁦{value}⁩" if value else value
 
 
 @register.filter

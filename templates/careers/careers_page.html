@@ -2,10 +2,10 @@
 {% comment %}Careers (design B-Careers; proposal 01 §5.11; T23): the open roles (closed ones are not shown), what we look for, and the apply button to the request form with this page as the topic; a role's "Apply" link puts the role in the form (?q_role=; D53).{% endcomment %}
 {% block body_class %}page-careers{% endblock %}
 {% block content %}
-{% include "includes/page_head.html" with intro=page.intro image=page.header_image image_alt=page.header_image_alt caption=page.header_caption %}
+{% translate "See open roles" as roles_label %}{% include "includes/page_head.html" with intro=page.intro image=page.header_image image_alt=page.header_image_alt caption=page.header_caption primary_label=roles_label primary_href="#roles" %}
 {% request_url page as req_url %}
 <div class="wrap row form-split">
-  <div class="stack form-split__main">
+  <div id="roles" class="stack form-split__main">
     <div><h2 class="h2">{{ page.openings_heading }}</h2><div class="rule"></div></div>
     {% if roles %}<div class="stack jobs">{% for role in roles %}
       <a class="job" href="{{ req_url }}&amp;q_role={{ role.answer|urlencode }}"><b>{{ role.title }}</b><span>{% if role.office %}{{ role.office.title }}{% else %}{% translate "Any office" %}{% endif %}</span><span>{{ role.job_type }}{% if role.closing %} · {% blocktranslate with date=role.closing|date:"j M Y" %}until {{ date }}{% endblocktranslate %}{% endif %}</span><span class="tri">{% translate "Apply" %}</span></a>{% endfor %}

@@ -42,7 +42,7 @@ def test_the_food_page_renders_its_parts(seeded_home, client):
     assert html.count('class="svc svc--text"') == 6
     assert "Why food traders use TIC" in html
     assert "Transit and testing: Guangzhou, Maharagama" in html
-    assert "Kandla · Rice loading" in html
+    assert "Kandla · Rice loading" not in html  # R3: caption on a photo only
 
 
 def test_cards_link_a_live_service_or_its_group(seeded_home, client):

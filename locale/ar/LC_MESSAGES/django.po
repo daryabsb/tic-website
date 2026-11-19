@@ -2886,3 +2886,19 @@ msgstr "يمكنك إرفاق حتى %(count)s ملفات."
 #. core (zeneon_cms): a visitor sees it
 msgid "unverified"
 msgstr "غير موثّق"
+
+#. T38: Round 3 page head actions
+msgid "All %(group)s services"
+msgstr "جميع خدمات %(group)s"
+
+msgid "Call %(number)s"
+msgstr "اتصل على %(number)s"
+
+msgid "WhatsApp the office"
+msgstr "راسل المكتب عبر واتساب"
+
+msgid "See open roles"
+msgstr "الوظائف المتاحة"
+
+msgid "Make a complaint"
+msgstr "تقديم شكوى"
