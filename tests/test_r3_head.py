@@ -44,8 +44,12 @@ def test_header_is_one_row_with_the_logo_alone(client, seeded_home):
 
 def test_a_page_with_a_photo_puts_the_text_beside_it_with_focal_point_crops(client, seeded_home):
     page = _marine()
-    _publish(page, header_image=_image(), header_image_alt="An inspector at a ship's bow",
-             header_caption="Dry dock · Hull inspection")
+    _publish(
+        page,
+        header_image=_image(),
+        header_image_alt="An inspector at a ship's bow",
+        header_caption="Dry dock · Hull inspection",
+    )
 
     html = client.get(page.url).content.decode()
     start = html.index('<div class="ph">')
