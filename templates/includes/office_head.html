@@ -1,0 +1,5 @@
+{% load i18n %}{# The page head of an office page and of the contact page (Round 3: R3-Office-Dubai; rules part 6): "WhatsApp the office" and "Call <number>". An office in China has no WhatsApp (D11); a placeholder number has no link. Context: office, intro; optional image, image_alt, caption. #}
+{% if office.phone_number %}{% blocktranslate asvar call_label with number=office.phone_number %}Call {{ number }}{% endblocktranslate %}{% with tel=office.phone_number|cut:" " %}
+{% if office.whatsapp_link %}{% translate "WhatsApp the office" as wa_label %}{% include "includes/page_head.html" with primary_label=wa_label primary_href=office.whatsapp_link secondary_label=call_label secondary_href="tel:"|add:tel %}
+{% else %}{% include "includes/page_head.html" with secondary_label=call_label secondary_href="tel:"|add:tel %}{% endif %}{% endwith %}
+{% else %}{% include "includes/page_head.html" %}{% endif %}

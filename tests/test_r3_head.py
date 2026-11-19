@@ -88,3 +88,64 @@ def test_the_home_hero_has_the_photo_beside_the_text(client, seeded_home):
     html = client.get("/en/").content.decode()
     assert '<section class="ph hero"' in html
     assert ".fill-1480x1040" in html and 'fetchpriority="high"' in html
+
+
+def _head(html):
+    start = html.index('<div class="ph')
+    return html[start : html.index('<div class="rule"', start) + 600]
+
+
+def _act(html):
+    head = _head(html)
+    start = head.index('<div class="ph__act">')
+    return head[start : head.index("</div>", start)]
+
+
+def test_the_service_group_head_links_to_its_list(client, seeded_home):
+    html = client.get("/en/services/inspection/").content.decode()
+    assert '<a class="tri" href="#services">All inspection services</a>' in _act(html)
+    assert 'id="services"' in html
+
+
+def test_the_industry_head_links_to_the_contact_page(client, seeded_home):
+    html = client.get(_marine().url).content.decode()
+    assert '<a class="tri" href="/en/contact/">Talk to the office nearest you</a>' in _act(html)
+
+
+def test_the_office_head_has_whatsapp_and_call(client, seeded_home):
+    html = client.get("/en/offices/dubai/").content.decode()
+    act = _act(html)
+    assert '<a class="btn" href="https://wa.me/97142255555' in act and "WhatsApp the office" in act
+    assert '<a class="tri" href="tel:+97142255555">Call +971 4 225 5555</a>' in act
+
+
+def test_an_office_in_china_has_no_whatsapp_in_the_head(client, seeded_home):
+    act = _act(client.get("/en/offices/guangzhou/").content.decode())
+    assert "wa.me" not in act and "WhatsApp" not in act
+    assert 'href="tel:+8618149707740">Call +86 181 4970 7740</a>' in act
+
+
+def test_the_contact_head_is_a_band_with_whatsapp_and_call(client, seeded_home):
+    html = client.get("/en/contact/").content.decode()
+    assert '<div class="ph band">' in html
+    act = _act(html)
+    assert "wa.me/97142255555" in act and 'href="tel:+97142255555"' in act
+
+
+def test_the_careers_head_points_to_the_open_roles(client, seeded_home):
+    html = client.get("/en/about/careers/").content.decode()
+    assert '<a class="btn" href="#roles">See open roles</a>' in _act(html)
+    assert 'id="roles"' in html
+
+
+def test_the_complaints_head_opens_the_complaint_form(client, seeded_home):
+    from apps.trust.models import ComplaintsPage
+
+    page = ComplaintsPage.objects.get(locale__language_code="en")
+    act = _act(client.get("/en/about/complaints/").content.decode())
+    assert f'<a class="btn" href="/en/request/?topic={page.pk}">Make a complaint</a>' in act
+
+
+def test_the_regulatory_updates_feed_has_the_band_head(client, seeded_home):
+    html = client.get("/en/programs/updates/").content.decode()
+    assert '<div class="ph band">' in html and 'class="ph__im"' not in html

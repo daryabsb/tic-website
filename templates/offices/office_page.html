@@ -2,7 +2,7 @@
 {% comment %}One office (design B-Office-Baghdad.dc.html; master plan 03). Reach the office (channel tiles), the facts rows, the map and team plates, what is sold and delivered from here, the people who agreed to be named. A bracketed placeholder is shown as text, never as a link. An office in China shows WeChat, never wa.me (D11). The CTA band carries this office's numbers.{% endcomment %}
 {% block body_class %}page-office{% endblock %}
 {% block content %}
-{% include "includes/page_head.html" with image=page.header_image image_alt=page.header_image_alt caption=page.header_caption intro=page.intro %}
+{% include "includes/office_head.html" with office=page image=page.header_image image_alt=page.header_image_alt caption=page.header_caption intro=page.intro %}
 <div class="wrap office">
   <div class="office__main">
     <div><h2 class="h2">{% translate "Reach the office" %}</h2><div class="rule"></div></div>

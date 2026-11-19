@@ -2,7 +2,7 @@
 {% comment %}The regulatory-updates feed (design B-Regulatory-Updates.dc.html; master plan 05): news pages of kind "regulatory update", filtered by program and year with a plain GET form (no script). The email subscription waits for T25 (D44).{% endcomment %}
 {% block body_class %}page-updates{% endblock %}
 {% block content %}
-{% include "includes/page_head.html" with image=page.header_image image_alt=page.header_image_alt caption=page.header_caption intro=page.intro %}
+{% include "includes/page_head.html" with intro=page.intro %}
 <div class="wrap two-col svc-body">
   <aside class="two-col__side">
     <form class="stack feed-filter" method="get" action="{% pageurl page %}">
