@@ -123,11 +123,23 @@ def test_a_row_replaces_only_the_photo_it_names(seeded_home, tmp_path):
     (stock / "design").mkdir()
     PILImage.new("RGB", (40, 20), "grey").save(stock / "unsplash" / "OLDSTEM.jpg")
     PILImage.new("RGB", (40, 20), "blue").save(stock / "design" / "bay.jpg")
-    old = {"page": "offices/dubai", "field": "header_image", "file": "unsplash/OLDSTEM.jpg",
-           "alt": "Old", "source": "unsplash", "credit": "X, https://unsplash.com/photos/x"}
-    new = {"page": "offices/dubai", "field": "header_image", "file": "design/bay.jpg",
-           "alt": "Business Bay", "caption": "Dubai · Business Bay", "source": "design",
-           "replaces": "OLDSTEM"}
+    old = {
+        "page": "offices/dubai",
+        "field": "header_image",
+        "file": "unsplash/OLDSTEM.jpg",
+        "alt": "Old",
+        "source": "unsplash",
+        "credit": "X, https://unsplash.com/photos/x",
+    }
+    new = {
+        "page": "offices/dubai",
+        "field": "header_image",
+        "file": "design/bay.jpg",
+        "alt": "Business Bay",
+        "caption": "Dubai · Business Bay",
+        "source": "design",
+        "replaces": "OLDSTEM",
+    }
     none = tmp_path / "none"
     call_command("import_old_photos", source=_source(tmp_path, [old]), images=none, stock=stock)
     call_command("import_old_photos", source=_source(tmp_path, [new]), images=none, stock=stock)

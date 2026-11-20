@@ -20,14 +20,15 @@ def _get(client, url):
 def _image():
     import io
 
-    from django.core.files.base import ContentFile
+    from django.core.files.images import ImageFile
     from PIL import Image as PILImage
     from wagtail.images import get_image_model
 
     buffer = io.BytesIO()
     PILImage.new("RGB", (80, 40), "grey").save(buffer, "JPEG")
-    image = get_image_model()(title="Test photo", width=80, height=40)
-    image.file.save("t40.jpg", ContentFile(buffer.getvalue()), save=False)
+    buffer.seek(0)
+    image = get_image_model()(title="Test photo")
+    image.file.save("t40.jpg", ImageFile(buffer, name="t40.jpg"), save=False)
     image.save()
     return image
 
