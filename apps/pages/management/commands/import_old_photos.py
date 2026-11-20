@@ -16,7 +16,12 @@ TIC sends its own. Its file is under ``--stock`` (``~/tic/stock`` on stms-data, 
 git), and the image title carries its ``credit`` (photographer and photo page), so the
 placeholders are easy to find in the Images library and swap before launch. A row with
 ``"source": "tic"`` is TIC's own new photo (for example one Darya took), also under
-``--stock``.
+``--stock``. A row with ``"source": "design"`` is a photo from the design drop (Darya's
+Business Bay photo for Dubai, T40, D79), also under ``--stock``; its source and licence
+are not known yet, so it stays out of git like the stock photos.
+
+A row with ``"replaces": "<file stem>"`` may swap a photo the command put there before
+(the stem of that file's name), never an editor's choice.
 """
 
 import json
@@ -31,7 +36,7 @@ from wagtail.models import Collection, Locale
 from apps.pages.models import HomePage
 
 COLLECTION = "Pages"
-STOCK_SOURCES = ("unsplash", "tic")  # files under --stock, not in the old site
+STOCK_SOURCES = ("unsplash", "tic", "design")  # files under --stock, not in the old site
 CAPTION_FIELDS = {
     "hero_image": "hero_caption",
     "header_image": "header_caption",
@@ -53,6 +58,13 @@ def find_page(home, path: str):
         if page is None:
             return None
     return page.specific
+
+
+def replaceable(page, row) -> bool:
+    """True when the photo in the field is the one ``row["replaces"]`` names."""
+    stem = row.get("replaces")
+    image = getattr(page, row["field"], None)
+    return bool(stem and image and Path(image.file.name).name.startswith(stem))
 
 
 class Command(BaseCommand):
@@ -78,7 +90,7 @@ class Command(BaseCommand):
                 missing += 1
                 continue
             current = page.get_latest_revision_as_object() if page.has_unpublished_changes else page
-            if getattr(current, f"{row['field']}_id"):
+            if getattr(current, f"{row['field']}_id") and not replaceable(current, row):
                 kept += 1
                 continue
             base = stock if row.get("source") in STOCK_SOURCES else images

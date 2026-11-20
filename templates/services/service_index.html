@@ -1,12 +1,12 @@
-{% extends "base.html" %}{% load i18n wagtailcore_tags wagtailimages_tags %}
-{% comment %}Services hub (design B-Services.dc.html; proposal 01 §5.3). Each group: its photo plate, name, one sentence, its live services, the link to the group page (or to Programs or Training, which have their own sections).{% endcomment %}
+{% extends "base.html" %}{% load i18n wagtailcore_tags wagtailimages_tags tic %}
+{% comment %}Services hub (design B-Services.dc.html; proposal 01 §5.3). Each group: its photo (only when every group has one: R3 rule 4.1, D79), name, one sentence, its live services, the link to the group page (or to Programs or Training, which have their own sections).{% endcomment %}
 {% block body_class %}page-services{% endblock %}
 {% block content %}{% translate "Groups" as jump_label %}
 {% include "includes/page_head.html" with image=page.header_image image_alt=page.header_image_alt caption=page.header_caption intro=page.intro %}
 <div class="wrap svc-hub">
-  {% for group, services in groups %}
+  {% with photos=group_pages|all_photos:"header_image" %}{% for group, services in groups %}
   <section class="grp" id="{{ group.slug }}" aria-labelledby="grp-{{ group.slug }}">
-    <div class="photo grp__ph">{% if group.header_image %}{% image group.header_image fill-640x400 as img %}<img src="{{ img.url }}" alt="{{ group.header_image_alt }}" width="{{ img.width }}" height="{{ img.height }}" loading="lazy">{% endif %}<div class="cap">{{ group.get_group_display }}</div></div>
+    {% if photos %}<div class="photo grp__ph">{% image group.header_image fill-640x400 as img %}<img src="{{ img.url }}" alt="{{ group.header_image_alt }}" width="{{ img.width }}" height="{{ img.height }}" loading="lazy"><div class="cap">{{ group.get_group_display }}</div></div>{% endif %}
     <div class="grp__tx">
       <h2 class="h3" id="grp-{{ group.slug }}">{{ group.title }}</h2>
       {% if group.summary %}<p>{{ group.summary }}</p>{% endif %}
@@ -14,7 +14,7 @@
       {% if group.link_label %}<a class="tri" href="{% pageurl group.hub_link %}">{{ group.link_label }}</a>{% endif %}
     </div>
   </section>
-  {% endfor %}
+  {% endfor %}{% endwith %}
 </div>
 {% include "includes/cta_band.html" %}
 {% endblock %}

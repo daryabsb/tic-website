@@ -11,7 +11,7 @@
     <div class="side-box"><span class="eyebrow">{% translate "Check a certificate" %}</span><p>{% translate "Customs officer or importer? Verify any TIC certificate by its number or QR code." %}</p></div>
   </aside>
   <div class="two-col__main">
-    {% for block in page.parts %}{% with num=forloop.counter|stringformat:"02d" %}{% include_block block with num=num first=forloop.first req_url=req_url %}{% endwith %}{% endfor %}
+    {% for block in parts %}{% with num=forloop.counter|stringformat:"02d" %}{% include_block block with num=num first=forloop.first req_url=req_url %}{% endwith %}{% endfor %}
   </div>
 </div>
 {% if others %}<div class="band"><div class="wrap other-progs"><span class="eyebrow eyebrow--w">{% translate "Other programs" %}</span>

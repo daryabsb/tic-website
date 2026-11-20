@@ -1,5 +1,5 @@
-{% extends "base.html" %}{% load i18n wagtailcore_tags wagtailimages_tags %}
-{% comment %}Industries hub (design B-Industries.dc.html; proposal 01 §5.4): the live industries as photo cards. A card without a photo keeps the grey plate and its caption (no stock photos).{% endcomment %}
+{% extends "base.html" %}{% load i18n wagtailcore_tags wagtailimages_tags tic %}
+{% comment %}Industries hub (design B-Industries.dc.html; proposal 01 §5.4): the live industries as photo cards when every industry has a photo, else as text cards (R3 rule 4.1; T40, D79).{% endcomment %}
 {% block body_class %}page-industries{% endblock %}
 {% block content %}{% translate "Industries" as jump_label %}
 {% include "includes/page_head.html" with image=page.header_image image_alt=page.header_image_alt caption=page.header_caption intro=page.intro %}
@@ -7,10 +7,10 @@
 <div class="wrap stack sec-cards">
   {% if page.heading %}<div><h2 class="h2">{{ page.heading }}</h2><div class="rule"></div></div>{% endif %}
   <div class="cards">
-  {% for industry in industries %}<a class="svc svc--sm" id="{{ industry.slug }}" href="{% pageurl industry %}">
-    <div class="photo">{% if industry.header_image %}{% image industry.header_image fill-720x340 as img %}<img src="{{ img.url }}" alt="" width="{{ img.width }}" height="{{ img.height }}" loading="lazy">{% endif %}{% if industry.card_caption %}<div class="cap">{{ industry.card_caption }}</div>{% endif %}</div>
+  {% with photos=industries|all_photos:"header_image" %}{% for industry in industries %}{% if photos %}<a class="svc svc--sm" id="{{ industry.slug }}" href="{% pageurl industry %}">
+    <div class="photo">{% image industry.header_image fill-720x340 as img %}<img src="{{ img.url }}" alt="" width="{{ img.width }}" height="{{ img.height }}" loading="lazy">{% if industry.card_caption %}<div class="cap">{{ industry.card_caption }}</div>{% endif %}</div>
     <div class="svc__body"><b class="svc__title">{{ industry.title }}</b>{% if industry.summary %}<span class="svc__text">{{ industry.summary }}</span>{% endif %}</div>
-  </a>{% endfor %}
+  </a>{% else %}<a class="tcard" id="{{ industry.slug }}" href="{% pageurl industry %}"><b>{{ industry.title }}</b>{% if industry.summary %}<span>{{ industry.summary }}</span>{% endif %}<span class="tri more">{% translate "View" %}</span></a>{% endif %}{% endfor %}{% endwith %}
   </div>
 </div>
 {% endif %}

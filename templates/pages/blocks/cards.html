@@ -1,9 +1,9 @@
-{% load wagtailcore_tags wagtailimages_tags %}<section class="section section--light"><div class="wrap stack home-sec">
+{% load i18n wagtailcore_tags wagtailimages_tags tic %}<section class="section section--light"><div class="wrap stack home-sec">
   <div class="section__head"><div><h2 class="h2">{{ value.heading }}</h2><div class="rule"></div></div>{% if value.link_page and value.link_label %}<a class="tri" href="{% pageurl value.link_page %}">{{ value.link_label }}</a>{% endif %}</div>
   <div class="cards">
-  {% for card in value.cards %}{% if card.page %}<a class="svc" href="{% pageurl card.page %}">{% else %}<div class="svc">{% endif %}
-    <div class="photo">{% if card.image %}{% image card.image fill-800x400 as img %}<img src="{{ img.url }}" alt="" width="{{ img.width }}" height="{{ img.height }}" loading="lazy">{% endif %}{% if card.caption %}<div class="cap">{{ card.caption }}</div>{% endif %}</div>
+  {% with photos=value.cards|all_photos:"image" %}{% for card in value.cards %}{% if photos %}{% if card.page %}<a class="svc" href="{% pageurl card.page %}">{% else %}<div class="svc">{% endif %}
+    <div class="photo">{% image card.image fill-800x400 as img %}<img src="{{ img.url }}" alt="" width="{{ img.width }}" height="{{ img.height }}" loading="lazy">{% if card.caption %}<div class="cap">{{ card.caption }}</div>{% endif %}</div>
     <div class="svc__body"><b class="svc__title">{{ card.title }}</b>{% if card.text %}<span class="svc__text">{{ card.text }}</span>{% endif %}</div>
-  {% if card.page %}</a>{% else %}</div>{% endif %}{% endfor %}
+  {% if card.page %}</a>{% else %}</div>{% endif %}{% else %}{% if card.page %}<a class="tcard" href="{% pageurl card.page %}">{% else %}<div class="tcard">{% endif %}<b>{{ card.title }}</b>{% if card.text %}<span>{{ card.text }}</span>{% endif %}{% if card.page %}<span class="tri more">{% translate "View" %}</span></a>{% else %}</div>{% endif %}{% endif %}{% endfor %}{% endwith %}
   </div>
 </div></section>

@@ -181,11 +181,41 @@ class Command(BaseCommand):
             home.sections = self.link_pages(home, sections)
             self.changes += 1
             changed.append(True)
+        elif sections:
+            changed.append(self.fill_tile_countries(home, sections))
         if any(changed):
             home.draft_title = home.title
             revision = home.save_revision()
             revision.publish()
             self.stdout.write(f"{locale.language_code}: home page updated")
+
+    def fill_tile_countries(self, home, sections) -> bool:
+        """Fill a blank caption (the country of a tile, T40) on the home program cards
+        whose title is still the seeded title. An editor's caption or title is kept."""
+        seeded = {}
+        for section in sections:
+            if section.get("type") == "programs":
+                value = section.get("value", {})
+                for card in [value.get("featured", {}), *value.get("cards", [])]:
+                    if card.get("caption"):
+                        seeded[card.get("title")] = card["caption"]
+        raw = [dict(block) for block in home.sections.raw_data]
+        filled = False
+        for block in raw:
+            if block.get("type") != "programs":
+                continue
+            value = block["value"] = dict(block["value"])
+            cards = [value.get("featured") or {}]
+            cards += [item.get("value", item) for item in value.get("cards") or []]
+            for card in cards:
+                caption = seeded.get(card.get("title"))
+                if caption and not card.get("caption"):
+                    card["caption"] = caption
+                    filled = True
+        if filled:
+            home.sections = raw
+            self.changes += 1
+        return filled
 
     PAGE_KEYS = ("page", "link_page")
 

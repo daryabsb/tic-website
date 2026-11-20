@@ -104,7 +104,36 @@ def test_the_repository_rows_name_seeded_pages_and_fields(seeded_home):
             assert "https://unsplash.com/photos/" in row["credit"]
         elif row.get("source") == "tic":
             assert row["file"].startswith("tic/")
+        elif row.get("source") == "design":  # T40, D79: the design drop's photo, not in git
+            assert row["file"].startswith("design/")
         else:
             assert row["file"].startswith("files/")
         assert 0 < len(row["alt"]) <= 200
         assert "TICQC" not in row["alt"] and "TIC QC" not in row["alt"]
+
+
+def test_a_row_replaces_only_the_photo_it_names(seeded_home, tmp_path):
+    """T40, D79: Business Bay swaps the Dubai stock photo, never an editor's photo."""
+    from PIL import Image as PILImage
+
+    from apps.offices.models import OfficePage
+
+    stock = tmp_path / "stock"
+    (stock / "unsplash").mkdir(parents=True)
+    (stock / "design").mkdir()
+    PILImage.new("RGB", (40, 20), "grey").save(stock / "unsplash" / "OLDSTEM.jpg")
+    PILImage.new("RGB", (40, 20), "blue").save(stock / "design" / "bay.jpg")
+    old = {"page": "offices/dubai", "field": "header_image", "file": "unsplash/OLDSTEM.jpg",
+           "alt": "Old", "source": "unsplash", "credit": "X, https://unsplash.com/photos/x"}
+    new = {"page": "offices/dubai", "field": "header_image", "file": "design/bay.jpg",
+           "alt": "Business Bay", "caption": "Dubai · Business Bay", "source": "design",
+           "replaces": "OLDSTEM"}
+    none = tmp_path / "none"
+    call_command("import_old_photos", source=_source(tmp_path, [old]), images=none, stock=stock)
+    call_command("import_old_photos", source=_source(tmp_path, [new]), images=none, stock=stock)
+    dubai = OfficePage.objects.get(locale__language_code="en", slug="dubai")
+    assert dubai.header_image.title == "Business Bay"
+    assert dubai.header_caption == "Dubai · Business Bay"
+
+    call_command("import_old_photos", source=_source(tmp_path, [new]), images=none, stock=stock)
+    assert OfficePage.objects.get(pk=dubai.pk).header_image_id == dubai.header_image_id
