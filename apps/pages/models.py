@@ -10,6 +10,7 @@ follows in gate 1 to 3 (D22); the core supplies the admin and the plumbing only.
 
 from django.db import models
 from django.utils.translation import gettext_lazy as _
+from django.utils.translation import ngettext
 from wagtail.admin.panels import FieldPanel, MultiFieldPanel, PageChooserPanel
 from wagtail.fields import StreamField
 from wagtail.models import Page
@@ -19,6 +20,7 @@ from zeneon_cms.core.text import ScriptNormalisationMixin
 
 from apps.pages.blocks import ABOUT_SECTIONS, HOME_SECTIONS, CompanyBlock, PeopleGroupBlock
 from apps.pages.describe import DescribedPage
+from apps.pages.facts import Fact, fact_cell, facts_panel, note_field, value_field
 
 
 def _image(verbose_name, help_text=""):
@@ -144,6 +146,10 @@ class AboutPage(DescribedPage, ScriptNormalisationMixin, Page):
     header_caption = models.CharField(_("header caption"), max_length=80, blank=True)
     sections = StreamField(ABOUT_SECTIONS, blank=True, verbose_name=_("sections"))
     og_image = _image(_("share image"))
+    # Facts bar (T39, D77): Founded is a field; Addresses, Accredited and Programs are
+    # read from the office pages, the accreditation rows and the program pages.
+    fact_founded = value_field(_("founded"))
+    fact_founded_note = note_field(_("founded: small line"))
 
     parent_page_types = ["pages.HomePage"]
     subpage_types = [
@@ -160,6 +166,8 @@ class AboutPage(DescribedPage, ScriptNormalisationMixin, Page):
         "header_image_alt",
         "header_caption",
         "sections",
+        "fact_founded",
+        "fact_founded_note",
         synchronised=("header_image", "og_image"),
     )
 
@@ -174,6 +182,7 @@ class AboutPage(DescribedPage, ScriptNormalisationMixin, Page):
             ],
             heading=_("Page header"),
         ),
+        facts_panel("fact_founded", "fact_founded_note"),
         FieldPanel("sections"),
     ]
     promote_panels = [*Page.promote_panels, FieldPanel("og_image")]
@@ -181,6 +190,42 @@ class AboutPage(DescribedPage, ScriptNormalisationMixin, Page):
 
     class Meta:
         verbose_name = _("about page")
+
+    def get_context(self, request, *args, **kwargs):
+        context = super().get_context(request, *args, **kwargs)
+        context["facts"] = self.facts
+        return context
+
+    @property
+    def facts(self):
+        """Founded · Addresses · Accredited · Programs. A counted cell with nothing to
+        count is left out."""
+        from apps.offices.models import OfficePage
+        from apps.programs.models import ProgramPage
+        from apps.trust.models import Accreditation
+
+        cells = [fact_cell(_("Founded"), self.fact_founded, _("year"), self.fact_founded_note)]
+        offices = OfficePage.objects.live().public().filter(locale=self.locale)
+        if offices:
+            countries = len({o.country for o in offices})
+            cells.append(
+                Fact(
+                    str(_("Addresses")),
+                    str(len(offices)),
+                    ngettext("In %(n)d country", "In %(n)d countries", countries)
+                    % {"n": countries},
+                )
+            )
+        row = Accreditation.objects.public().order_by("sort_order", "pk").first()
+        if row is not None:
+            note = " · ".join(v for v in (row.body, row.number) if v)
+            cells.append(Fact(str(_("Accredited")), row.standard_or_scheme, note))
+        programs = ProgramPage.objects.live().public().filter(locale=self.locale).count()
+        if programs:
+            cells.append(
+                Fact(str(_("Programs")), str(programs), str(_("Government and trade programs")))
+            )
+        return cells
 
 
 class LeadershipPage(DescribedPage, ScriptNormalisationMixin, Page):

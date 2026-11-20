@@ -197,15 +197,32 @@ button, input, select, textarea { font: inherit; color: inherit; }
   .h2 { font-size: 26px; }
 }
 
-/* ---------- proof strip ---------- */
-.proof-strip { border-bottom: 1px solid var(--tic-hairline); }
-.proof-strip__in { display: flex; flex-wrap: wrap; padding-block: 14px; }
-.proof { flex: 1 1 260px; min-width: 0; padding: 22px 24px; border-inline-start: 1px solid var(--tic-hairline); display: flex; flex-direction: column; gap: 4px; text-decoration: none; }
-.proof:first-child { border-inline-start: 0; padding-inline-start: 0; }
-.proof b { font-family: var(--font-display); font-weight: 700; font-size: 20px; text-transform: uppercase; color: var(--tic-ink); letter-spacing: .02em; }
-.proof span { font-size: 14px; color: var(--tic-charcoal); }
-.proof .tri { margin-top: 8px; min-height: 0; }
-@media (max-width: 640px) { .proof { border-inline-start: 0; padding-inline: 0; border-top: 1px solid var(--tic-hairline); } .proof:first-child { border-top: 0; } }
+/* ---------- facts bar and jump row (Round 3, rules parts 3 and 7; T39, D77) ----------
+   The facts bar sits under the head of a service, industry, program, office, About and
+   contact page; the home proof strip is the same part with links. The jump row sits under
+   a hub head. Logical properties: Arabic needs no extra rule. */
+.fb { border-bottom: 1px solid var(--tic-hairline); background: var(--tic-white); }
+.fb__in { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.fb--c3 .fb__in { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.fb--c2 .fb__in { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.fb__f { padding: 18px 24px; border-inline-start: 1px solid var(--tic-hairline); display: flex; flex-direction: column; gap: 2px; min-width: 0; text-decoration: none; overflow-wrap: anywhere; }
+.fb__f:first-child { border-inline-start: 0; padding-inline-start: 0; }
+.fb__v { font-family: var(--font-display); font-weight: 700; font-size: 18px; line-height: 1.25; color: var(--tic-ink); }
+.fb__s { font-size: 14px; color: var(--tic-charcoal); }
+.fb--proof .fb__v { font-size: 20px; text-transform: uppercase; letter-spacing: .02em; }
+.fb--proof .tri { font-size: 13px; min-height: 32px; }
+:lang(ar) .fb--proof .fb__v { letter-spacing: 0; text-transform: none; }
+.jump { border-bottom: 1px solid var(--tic-hairline); background: var(--tic-white); }
+.jump__in { display: flex; flex-wrap: wrap; align-items: center; gap: 0 28px; padding-block: 8px; }
+.jump .lbl { padding-inline-end: 4px; }
+.jump .tri { font-size: 13px; }
+@media (max-width: 860px) {
+  .fb__in, .fb--c3 .fb__in { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .fb__f { padding: 14px 16px; }
+  .fb__f:nth-child(odd) { border-inline-start: 0; padding-inline-start: 0; }
+  .fb__f:nth-child(n+3) { border-top: 1px solid var(--tic-hairline); }
+  .jump__in { flex-wrap: nowrap; overflow-x: auto; white-space: nowrap; }
+}
 
 /* ---------- cards ---------- */
 /* A grid, so a lone card or a short last row keeps the column width (no stretching). */

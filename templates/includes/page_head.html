@@ -1,4 +1,4 @@
-{% load i18n wagtailcore_tags wagtailimages_tags zeneon %}{# Page head (Round 3, R3-Head-Desktop; T38, D71). With a photo: the text beside the photo, never on it; the caption bar on the photo. Without a photo: the band head, same text, same action. The intro stays in the head at 160 characters or fewer; a longer intro becomes the first paragraph under the head. The crops follow the Wagtail focal point: 2:1 on desktop, 3:2 under 860 px (no inline style). Context: page, image, image_alt, caption, intro; optional actions: primary_label + primary_href (a button), secondary_label + secondary_href (a triangle link). #}
+{% load i18n wagtailcore_tags wagtailimages_tags zeneon %}{# Page head (Round 3, R3-Head-Desktop; T38, D71). With a photo: the text beside the photo, never on it; the caption bar on the photo. Without a photo: the band head, same text, same action. The intro stays in the head at 160 characters or fewer; a longer intro becomes the first paragraph under the head. The crops follow the Wagtail focal point: 2:1 on desktop, 3:2 under 860 px (no inline style). Context: page, image, image_alt, caption, intro; optional facts (the facts bar) and jump + jump_label (the jump row), drawn under the head and before a long intro (T39); optional actions: primary_label + primary_href (a button), secondary_label + secondary_href (a triangle link). #}
 {% breadcrumb_trail page as crumbs %}
 <div class="ph{% if not image %} band{% endif %}">{% if not image %}<div class="wrap">{% endif %}
   <div class="ph__tx">
@@ -13,4 +13,5 @@
     {% if caption %}<div class="cap">{{ caption }}</div>{% endif %}
   </div>{% endif %}
 {% if not image %}</div>{% endif %}</div>
+{% include "includes/facts_bar.html" %}{% if jump %}{% include "includes/jump_row.html" with label=jump_label links=jump %}{% endif %}
 {% if intro and intro|length > 160 %}<div class="wrap ph-more"><p class="lead">{{ intro }}</p></div>{% endif %}

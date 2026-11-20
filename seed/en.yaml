@@ -163,6 +163,14 @@ psi:
   intro: "An independent check of your goods before they leave the factory or port — quantity, quality, packing and marking against the order and the standard — so that what arrives is what was agreed."
   header_caption: "Guangzhou · Pre-shipment inspection"
   talk_label: "Talk to an inspector"
+  # Facts bar (T39, D77): from the Inspection group's "how" points; time on site waits.
+  fact_where: "10 offices"
+  fact_where_note: "Own inspectors; named partners elsewhere"
+  fact_on_site_note: "Typical, by order size"
+  fact_report: "Same or next working day"
+  fact_report_note: "Signed, with photographs"
+  fact_standards: "ISO 2859-1"
+  fact_standards_note: "ISO/IEC 17020 · ANAB AI-3314"
   parts:
     - type: what_it_is
       value:
@@ -308,6 +316,8 @@ programs:
       regulator_url: "https://cosqc.gov.iq"
       appointment_status: "appointed"
       appointment_date: "2024-05-22"
+      fact_appointed_note: "With LOX · contract no. 5"
+      fact_status_note: "Certificates issued since 5 September 2024"
       owning_office_name: "Baghdad office"
       owning_office: "baghdad"
       request_label: "Request a certificate"
@@ -496,6 +506,8 @@ about:
   slug: "about"
   title: "About"
   seo_title: "Our story"
+  fact_founded: "[2020]"
+  fact_founded_note: "Dubai, United Arab Emirates"
   intro: "Founded in Dubai in [2020], TIC Quality Control is an independent testing, inspection and certification company with fourteen addresses in twelve countries. We measure; we do not guess — and every certificate we issue can be checked."
   header_caption: "Dubai · Head office"
   sections:

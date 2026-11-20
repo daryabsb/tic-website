@@ -1,0 +1,2 @@
+{# Jump row (R3 rules parts 3 and 6; T39, D77) under a hub head: a link to every group, industry or country on the page. Context: label, links (each with .title and .anchor). #}{% if links %}
+<nav class="jump" aria-label="{{ label }}"><div class="wrap jump__in"><span class="lbl">{{ label }}</span>{% for link in links %}<a class="tri" href="#{{ link.anchor }}">{{ link.title }}</a>{% endfor %}</div></nav>{% endif %}
