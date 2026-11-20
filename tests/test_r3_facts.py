@@ -170,4 +170,4 @@ def test_home_proof_strip_is_the_facts_bar_with_links(client, seeded_home):
 )
 def test_every_page_draws_the_facts_bar_once(client, seeded_home, url):
     """The office head draws the general head, which draws the bar: never a second one."""
-    assert _get(client, url).count('<div class="fb') == 1
+    assert len(re.findall(r'<div class="fb[" ]', _get(client, url))) == 1  # not fb__f
