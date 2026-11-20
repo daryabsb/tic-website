@@ -41,6 +41,8 @@ def test_service_page_has_where_on_site_report_standards(client, seeded_home):
     assert cells["Standards"] == ("ISO 2859-1", "ISO/IEC 17020 · ANAB AI-3314")
     # The bar follows the head, before the body.
     assert html.index("</h1>") < html.index('<div class="fb">') < html.index("<footer")
+    # A long intro becomes the first paragraph under the bar, not above it (the drop).
+    assert html.index('<div class="fb">') < html.index('class="wrap ph-more"')
     assert "style=" not in _bar(html)
 
 
@@ -142,6 +144,8 @@ def test_hub_jump_row_links_to_every_section_on_the_page(client, seeded_home, ur
     assert len(anchors) >= 2  # programs: Iraq and one in progress
     for anchor in anchors:
         assert f'id="{anchor}"' in html, anchor
+    if 'class="wrap ph-more"' in html:
+        assert start < html.index('class="wrap ph-more"')  # the row sits right under the head
 
 
 def test_home_proof_strip_is_the_facts_bar_with_links(client, seeded_home):

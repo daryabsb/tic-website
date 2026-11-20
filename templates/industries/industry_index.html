@@ -1,9 +1,8 @@
 {% extends "base.html" %}{% load i18n wagtailcore_tags wagtailimages_tags %}
 {% comment %}Industries hub (design B-Industries.dc.html; proposal 01 §5.4): the live industries as photo cards. A card without a photo keeps the grey plate and its caption (no stock photos).{% endcomment %}
 {% block body_class %}page-industries{% endblock %}
-{% block content %}
+{% block content %}{% translate "Industries" as jump_label %}
 {% include "includes/page_head.html" with image=page.header_image image_alt=page.header_image_alt caption=page.header_caption intro=page.intro %}
-{% translate "Industries" as jump_label %}{% include "includes/jump_row.html" with label=jump_label links=jump %}
 {% if industries %}
 <div class="wrap stack sec-cards">
   {% if page.heading %}<div><h2 class="h2">{{ page.heading }}</h2><div class="rule"></div></div>{% endif %}

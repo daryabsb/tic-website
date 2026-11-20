@@ -3,7 +3,6 @@
 {% block body_class %}page-service{% endblock %}
 {% block content %}
 {% include "includes/page_head.html" with image=page.header_image image_alt=page.header_image_alt caption=page.header_caption intro=page.intro primary_label=contact.action_label primary_href="#form" secondary_label=page.talk_label secondary_href=contact_href %}
-{% include "includes/facts_bar.html" %}
 <div class="wrap two-col svc-body">
   <aside class="two-col__side">
     {% if toc %}<nav aria-labelledby="toc-title"><p class="eyebrow toc__label" id="toc-title">{% translate "On this page" %}</p>

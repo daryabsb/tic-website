@@ -1,9 +1,8 @@
 {% extends "base.html" %}{% load i18n wagtailcore_tags wagtailimages_tags %}
 {% comment %}Services hub (design B-Services.dc.html; proposal 01 §5.3). Each group: its photo plate, name, one sentence, its live services, the link to the group page (or to Programs or Training, which have their own sections).{% endcomment %}
 {% block body_class %}page-services{% endblock %}
-{% block content %}
+{% block content %}{% translate "Groups" as jump_label %}
 {% include "includes/page_head.html" with image=page.header_image image_alt=page.header_image_alt caption=page.header_caption intro=page.intro %}
-{% translate "Groups" as jump_label %}{% include "includes/jump_row.html" with label=jump_label links=jump %}
 <div class="wrap svc-hub">
   {% for group, services in groups %}
   <section class="grp" id="{{ group.slug }}" aria-labelledby="grp-{{ group.slug }}">

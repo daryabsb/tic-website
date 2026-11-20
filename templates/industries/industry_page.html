@@ -4,7 +4,6 @@
 {% block content %}
 {% locale_home_url as home_url %}{% translate "Talk to the office nearest you" as talk_label %}
 {% include "includes/page_head.html" with image=page.header_image image_alt=page.header_image_alt caption=page.header_caption intro=page.intro|default:page.summary secondary_label=talk_label secondary_href=home_url|add:"contact/" %}
-{% include "includes/facts_bar.html" %}
 {% if cards %}
 <div class="wrap stack ind-services">
   {% if page.services_heading %}<div><h2 class="h2">{{ page.services_heading }}</h2><div class="rule"></div></div>{% endif %}

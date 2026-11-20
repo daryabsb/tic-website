@@ -1,9 +1,8 @@
 {% extends "base.html" %}{% load i18n wagtailcore_tags wagtailimages_tags tic %}
 {% comment %}Programs hub (design B-Programs.dc.html; master plan 05): every live program as a card with its status word, regulator and "last updated · office"; programs still in progress as dated cards, never as programs (D4); the rule line; the newest regulatory updates.{% endcomment %}
 {% block body_class %}page-programs{% endblock %}
-{% block content %}
+{% block content %}{% translate "Countries" as jump_label %}
 {% include "includes/page_head.html" with image=page.header_image image_alt=page.header_image_alt caption=page.header_caption intro=page.intro %}
-{% translate "Countries" as jump_label %}{% include "includes/jump_row.html" with label=jump_label links=jump %}
 <div class="wrap stack sec-cards">
   {% if page.heading %}<div><h2 class="h2">{{ page.heading }}</h2><div class="rule"></div></div>{% endif %}
   <div class="cards">
