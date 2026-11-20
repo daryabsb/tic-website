@@ -3,6 +3,7 @@
 {% block body_class %}page-office{% endblock %}
 {% block content %}
 {% include "includes/office_head.html" with office=page image=page.header_image image_alt=page.header_image_alt caption=page.header_caption intro=page.intro %}
+{% include "includes/facts_bar.html" %}
 <div class="wrap office">
   <div class="office__main">
     <div><h2 class="h2">{% translate "Reach the office" %}</h2><div class="rule"></div></div>

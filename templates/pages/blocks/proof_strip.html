@@ -1,3 +1,3 @@
-{% load wagtailcore_tags %}<section class="proof-strip" aria-label="Accreditations and registrations"><div class="wrap proof-strip__in">
-{% for item in value.items %}<a class="proof" href="{{ item.link_url }}" rel="noopener"><b>{{ item.body }}</b><span>{{ item.line_1 }}</span><span>{{ item.line_2 }}</span><span class="tri">{{ item.link_label }}</span></a>{% endfor %}
+{% load wagtailcore_tags %}{# Home proof strip: the facts bar part with links (Round 3, R3-Home; T39, D77). #}<section class="fb fb--proof" aria-label="Accreditations and registrations"><div class="wrap fb__in">
+{% for item in value.items %}<a class="fb__f" href="{{ item.link_url }}" rel="noopener"><span class="fb__v">{{ item.body }}</span><span class="fb__s">{{ item.line_1 }}</span><span class="fb__s">{{ item.line_2 }}</span><span class="tri">{{ item.link_label }}</span></a>{% endfor %}
 </div></section>

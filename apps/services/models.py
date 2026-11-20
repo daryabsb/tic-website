@@ -24,6 +24,7 @@ from wagtail.snippets.models import register_snippet
 from zeneon_cms.core.text import ScriptNormalisationMixin
 
 from apps.pages.describe import DescribedPage
+from apps.pages.facts import fact_cell, facts_panel, note_field, value_field
 from apps.pages.models import _image, _translatable
 from apps.services.blocks import PART_BLOCK_COUNTS, PART_TITLES, SERVICE_PARTS
 from apps.services.rules import service_page_problems
@@ -121,6 +122,8 @@ class ServiceIndexPage(ScriptNormalisationMixin, _HeaderFields, Page):  # noqa: 
             (group, group.get_children().live().public().specific())
             for group in self.get_children().live().public().specific()
         ]
+        # Jump row (T39, D77): a link to every group on the page.
+        context["jump"] = [{"title": g.title, "anchor": g.slug} for g, _s in context["groups"]]
         return context
 
 
@@ -232,6 +235,13 @@ class ServicePageForm(WagtailAdminPageForm):
         return cleaned
 
 
+FACT_FIELDS = tuple(
+    f"fact_{name}{end}"
+    for name in ("where", "on_site", "report", "standards")
+    for end in ("", "_note")
+)
+
+
 class ServicePage(ScriptNormalisationMixin, _HeaderFields, Page):  # noqa: DJ008 (Page gives __str__)
     summary = models.CharField(
         _("summary"),
@@ -268,6 +278,15 @@ class ServicePage(ScriptNormalisationMixin, _HeaderFields, Page):  # noqa: DJ008
         verbose_name=_("the eleven parts"),
         help_text=_("Each part once, in order 01 to 11. All eleven are needed to publish."),
     )
+    # Facts bar (T39, D77): Where · On site · Report · Standards.
+    fact_where = value_field(_("where"))
+    fact_where_note = note_field(_("where: small line"))
+    fact_on_site = value_field(_("time on site"))
+    fact_on_site_note = note_field(_("time on site: small line"))
+    fact_report = value_field(_("report"))
+    fact_report_note = note_field(_("report: small line"))
+    fact_standards = value_field(_("standards"))
+    fact_standards_note = note_field(_("standards: small line"))
 
     parent_page_types = ["services.ServiceGroupPage"]
     subpage_types = []
@@ -282,6 +301,7 @@ class ServicePage(ScriptNormalisationMixin, _HeaderFields, Page):  # noqa: DJ008
         "card_caption",
         "talk_label",
         "parts",
+        *FACT_FIELDS,
         synchronised=("header_image", "partner_lab"),
     )
 
@@ -289,6 +309,7 @@ class ServicePage(ScriptNormalisationMixin, _HeaderFields, Page):  # noqa: DJ008
         *Page.content_panels,
         FieldPanel("intro"),
         _header_panel(),
+        facts_panel(*FACT_FIELDS),
         MultiFieldPanel(
             [FieldPanel("summary"), FieldPanel("card_caption"), FieldPanel("talk_label")],
             heading=_("Cards and buttons"),
@@ -320,4 +341,16 @@ class ServicePage(ScriptNormalisationMixin, _HeaderFields, Page):  # noqa: DJ008
         # The contact page of this language (T26). The home page is the locale root.
         home = self.get_ancestors().filter(depth=2).first()
         context["contact_href"] = f"{home.url}contact/" if home else ""
+        context["facts"] = self.facts
         return context
+
+    @property
+    def facts(self):
+        return [
+            fact_cell(_("Where"), self.fact_where, _("offices"), self.fact_where_note),
+            fact_cell(_("On site"), self.fact_on_site, _("days on site"), self.fact_on_site_note),
+            fact_cell(_("Report"), self.fact_report, _("report time"), self.fact_report_note),
+            fact_cell(
+                _("Standards"), self.fact_standards, _("standards"), self.fact_standards_note
+            ),
+        ]

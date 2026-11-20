@@ -44,6 +44,7 @@ from apps.pages.models import AboutPage, GroupPage, HomePage, LeadershipPage
 from apps.people.models import Person
 from apps.programs.models import ProgramIndexPage, ProgramPage, RegulatoryUpdatesPage
 from apps.resources.models import Download, DownloadsPage, QAPage, ResourcesPage
+from apps.services.models import FACT_FIELDS as SERVICE_FACT_FIELDS
 from apps.services.models import ServiceGroupPage, ServiceIndexPage, ServicePage
 from apps.training.models import CoursePage, TrainingIndexPage
 from apps.trust.models import (
@@ -294,7 +295,10 @@ class Command(BaseCommand):
                 value["pages"] = [by_slug[s] for s in value["pages"] if s in by_slug]
             parts.append({"type": part["type"], "value": value})
         self.fill_page(
-            page, data, ("intro", "header_caption", "talk_label"), streams=[("parts", parts)]
+            page,
+            data,
+            ("intro", "header_caption", "talk_label", *SERVICE_FACT_FIELDS),
+            streams=[("parts", parts)],
         )
 
     # -- industries (T11) -----------------------------------------------------------
@@ -384,6 +388,8 @@ class Command(BaseCommand):
         "owning_office_name",
         "request_label",
         "talk_label",
+        "fact_appointed_note",
+        "fact_status_note",
     )
 
     @staticmethod
@@ -507,7 +513,7 @@ class Command(BaseCommand):
 
     # -- About, Leadership, Our group (T21) ------------------------------------------
 
-    ABOUT_FIELDS = ("seo_title", "intro", "header_caption")
+    ABOUT_FIELDS = ("seo_title", "intro", "header_caption", "fact_founded", "fact_founded_note")
     LEADERSHIP_FIELDS = ("intro", "ceo_quote", "note")
     GROUP_FIELDS = ("intro", "independence_heading", "independence", "independence_link_label")
 

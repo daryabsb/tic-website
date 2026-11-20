@@ -15,6 +15,7 @@ until T18), not a separate list.
 
 from django.db import models
 from django.utils.translation import gettext_lazy as _
+from django.utils.translation import ngettext
 from wagtail import blocks
 from wagtail.admin.panels import FieldPanel, MultiFieldPanel
 from wagtail.fields import StreamField
@@ -23,6 +24,7 @@ from wagtail.search import index
 from zeneon_cms.core.text import ScriptNormalisationMixin
 
 from apps.pages.blocks import FigureBlock
+from apps.pages.facts import Fact, fact_cell, facts_panel, note_field, value_field
 from apps.pages.models import _translatable
 from apps.services.models import ServiceGroupPage, _header_panel, _HeaderFields
 
@@ -74,7 +76,12 @@ class IndustryIndexPage(ScriptNormalisationMixin, _HeaderFields, Page):  # noqa:
     def get_context(self, request, *args, **kwargs):
         context = super().get_context(request, *args, **kwargs)
         context["industries"] = self.get_children().live().public().specific()
+        # Jump row (T39, D77): a link to every industry on the page.
+        context["jump"] = [{"title": p.title, "anchor": p.slug} for p in context["industries"]]
         return context
+
+
+FACT_FIELDS = tuple(f"fact_{name}{end}" for name in ("where", "contact") for end in ("", "_note"))
 
 
 class IndustryPage(ScriptNormalisationMixin, _HeaderFields, Page):  # noqa: DJ008 (Page gives __str__)
@@ -114,6 +121,12 @@ class IndustryPage(ScriptNormalisationMixin, _HeaderFields, Page):  # noqa: DJ00
         verbose_name=_("'where' points"),
         help_text=_("e.g. 'Origin: Lahore, Bangkok'. Office links come with the office pages."),
     )
+    # Facts bar (T39, D77): Services and Programs are counted from the service cards;
+    # Where and Contact are fields.
+    fact_where = value_field(_("where"))
+    fact_where_note = note_field(_("where: small line"))
+    fact_contact = value_field(_("contact"))
+    fact_contact_note = note_field(_("contact: small line"))
 
     parent_page_types = ["industries.IndustryIndexPage"]
     subpage_types = []
@@ -132,6 +145,7 @@ class IndustryPage(ScriptNormalisationMixin, _HeaderFields, Page):  # noqa: DJ00
         "figures",
         "where_heading",
         "where_points",
+        *FACT_FIELDS,
         synchronised=("header_image",),
     )
 
@@ -139,6 +153,7 @@ class IndustryPage(ScriptNormalisationMixin, _HeaderFields, Page):  # noqa: DJ00
         *Page.content_panels,
         FieldPanel("intro"),
         _header_panel(),
+        facts_panel(*FACT_FIELDS),
         MultiFieldPanel(
             [FieldPanel("summary"), FieldPanel("card_caption")], heading=_("On the industries hub")
         ),
@@ -169,7 +184,74 @@ class IndustryPage(ScriptNormalisationMixin, _HeaderFields, Page):  # noqa: DJ00
         context = super().get_context(request, *args, **kwargs)
         context["cards"] = [card for card in map(service_card, self.services) if card]
         context["shown_figures"] = [f.value for f in self.figures if f.value.get("owner")]
+        context["facts"] = self.facts
         return context
+
+    @property
+    def facts(self):
+        """Services · Programs · Where · Contact. A counted cell with nothing to count is
+        left out (Marine & Shipping has no program: three cells)."""
+        services, countries = linked_services_and_programs(self)
+        cells = []
+        if services:
+            cells.append(
+                Fact(
+                    str(_("Services")),
+                    ngettext("%(n)d service", "%(n)d services", len(services))
+                    % {"n": len(services)},
+                    ", ".join(services),
+                )
+            )
+        if countries:
+            cells.append(
+                Fact(
+                    str(_("Programs")),
+                    ", ".join(countries),
+                    ngettext("%(n)d program", "%(n)d programs", len(countries))
+                    % {"n": len(countries)},
+                )
+            )
+        cells.append(
+            fact_cell(_("Where"), self.fact_where, _("ports and offices"), self.fact_where_note)
+        )
+        cells.append(
+            fact_cell(_("Contact"), self.fact_contact, _("named contact"), self.fact_contact_note)
+        )
+        return cells
+
+
+def _is_program_target(page) -> bool:
+    from apps.programs.models import ProgramIndexPage, ProgramPage
+
+    if isinstance(page, (ProgramPage, ProgramIndexPage)):
+        return True
+    return isinstance(page, ServiceGroupPage) and page.group == "programs"
+
+
+def linked_services_and_programs(industry):
+    """The service titles and the program countries an industry's cards link to. A card
+    to one program counts its country; a card to the Programs hub or group counts every
+    live program of the language."""
+    from apps.programs.models import ProgramPage
+
+    services, countries = [], []
+    every_program = False
+    for block in industry.services:
+        page = block.value["page"]
+        if page is None:
+            continue
+        page = page.specific
+        if _is_program_target(page):
+            if isinstance(page, ProgramPage):
+                countries.append(page.country or page.title)
+            else:
+                every_program = True
+            continue
+        services.append(block.value["title"] or page.title)
+    if every_program:
+        live = ProgramPage.objects.live().public().filter(locale=industry.locale).order_by("path")
+        countries.extend(p.country or p.title for p in live)
+    return services, list(dict.fromkeys(countries))
 
 
 def service_card(block):

@@ -3,14 +3,15 @@
 {% block body_class %}page-programs{% endblock %}
 {% block content %}
 {% include "includes/page_head.html" with image=page.header_image image_alt=page.header_image_alt caption=page.header_caption intro=page.intro %}
+{% translate "Countries" as jump_label %}{% include "includes/jump_row.html" with label=jump_label links=jump %}
 <div class="wrap stack sec-cards">
   {% if page.heading %}<div><h2 class="h2">{{ page.heading }}</h2><div class="rule"></div></div>{% endif %}
   <div class="cards">
-  {% for program in programs %}<a class="svc svc--sm" href="{% pageurl program %}">
+  {% for program in programs %}<a class="svc svc--sm" id="{{ program.slug }}" href="{% pageurl program %}">
     <div class="photo">{% if program.header_image %}{% image program.header_image fill-720x340 as img %}<img src="{{ img.url }}" alt="" width="{{ img.width }}" height="{{ img.height }}" loading="lazy">{% endif %}{% if program.country %}<div class="cap">{{ program.country }}</div>{% endif %}</div>
     <div class="svc__body">{% if program.status_line %}<span class="status{% if program.appointment_status == 'in_progress' %} status--pending{% endif %}">{{ program.status_line }}</span>{% endif %}<b class="svc__title">{{ program.title }}</b>{% if program.summary %}<span class="svc__text">{{ program.summary }}</span>{% endif %}<em class="meta">{% translate "Last updated" %}: {% if program.reviewed %}{{ program.reviewed|date:"j M Y" }}{% else %}[{% translate "date" %}]{% endif %}{% if program.office_label %} · {{ program.office_label }}{% endif %}</em></div>
   </a>{% endfor %}
-  {% for card in page.pending %}<div class="svc svc--sm">
+  {% for card in page.pending %}<div class="svc svc--sm" id="soon-{{ forloop.counter }}">
     <div class="photo"><div class="cap">{{ card.value.country }}</div></div>
     <div class="svc__body"><span class="status status--pending">{{ card.value.status }}{% if card.value.status_date %} · {{ card.value.status_date }}{% endif %}</span><b class="svc__title">{{ card.value.title }}</b><span class="svc__text">{{ card.value.text }}</span>{% if card.value.note %}<em class="meta">{{ card.value.note }}</em>{% endif %}</div>
   </div>{% endfor %}
