@@ -18,14 +18,15 @@ def _get(client, url):
 
 
 def _image():
+    import io
+
     from django.core.files.base import ContentFile
     from PIL import Image as PILImage
     from wagtail.images import get_image_model
-    import io
 
     buffer = io.BytesIO()
     PILImage.new("RGB", (80, 40), "grey").save(buffer, "JPEG")
-    image = get_image_model()(title="Test photo")
+    image = get_image_model()(title="Test photo", width=80, height=40)
     image.file.save("t40.jpg", ContentFile(buffer.getvalue()), save=False)
     image.save()
     return image
@@ -86,16 +87,16 @@ def test_the_seed_fills_a_blank_tile_country_and_keeps_an_editors(seeded_home):
     home = HomePage.objects.get(pk=seeded_home.pk)
     raw = [dict(block) for block in home.sections.raw_data]
     block = next(b for b in raw if b["type"] == "programs")
-    cards = block["value"]["cards"]
-    cards[1]["value"]["caption"] = ""  # Egypt, blank
-    cards[2]["value"]["caption"] = "Botswana (BOBS)"  # an editor's caption
+    cards = [card.get("value", card) for card in block["value"]["cards"]]
+    cards[1]["caption"] = ""  # Egypt, blank
+    cards[2]["caption"] = "Botswana (BOBS)"  # an editor's caption
     home.sections = raw
     home.save_revision().publish()
 
     call_command("seed_site", verbosity=0)
     home = HomePage.objects.get(pk=seeded_home.pk)
     block = next(b for b in home.sections.raw_data if b["type"] == "programs")
-    captions = [c["value"]["caption"] for c in block["value"]["cards"]]
+    captions = [c.get("value", c)["caption"] for c in block["value"]["cards"]]
     assert captions[1] == "Egypt" and captions[2] == "Botswana (BOBS)"
 
 
