@@ -127,7 +127,13 @@ def test_every_lookup_is_logged_with_hashes_only(client, verify):
     assert found.number_hash != missed.number_hash
 
 
-def test_the_eleventh_check_in_a_minute_gets_429(client, verify):
+def test_the_eleventh_check_in_a_minute_gets_429(client, verify, monkeypatch):
+    # django-ratelimit counts in fixed windows: a frozen clock keeps all checks in one.
+    import types
+
+    import django_ratelimit.core
+
+    monkeypatch.setattr(django_ratelimit.core, "time", types.SimpleNamespace(time=lambda: 1e9))
     for _ in range(10):
         assert check(client, VALID).status_code == 200
     response = check(client, VALID)
