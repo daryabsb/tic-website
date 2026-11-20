@@ -24,11 +24,6 @@
   </section>{% endif %}
 </div>
 {% endif %}
-  <div class="cards">
-  {% for target, eyebrow, title, text in cards %}<a class="svc svc--text" href="{% pageurl target %}"><div class="svc__body">{% if eyebrow %}<span class="eyebrow">{{ eyebrow }}</span>{% endif %}<b class="svc__title">{{ title }}</b><span class="svc__text">{{ text }}</span></div></a>{% endfor %}
-  </div>
-</div>
-{% endif %}
 {% if page.why_text or shown_figures %}
 <section class="band"><div class="wrap row band__row">
   <div class="stack band__text">{% if page.why_heading %}<div><h2 class="h2 h2--w">{{ page.why_heading }}</h2><div class="rule"></div></div>{% endif %}{% if page.why_text %}<p>{{ page.why_text }}</p>{% endif %}</div>

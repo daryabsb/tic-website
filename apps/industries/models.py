@@ -220,8 +220,16 @@ class IndustryPage(ScriptNormalisationMixin, _HeaderFields, Page):  # noqa: DJ00
         for program in programs:
             updates.extend(regulatory_updates(self.locale, program)[:3])
         updates = sorted(set(updates), key=lambda item: item.date, reverse=True)[:3]
-        sections = [n for n, items in (("services", cards), ("offices", offices),
-                                       ("programs", programs), ("updates", updates)) if items]
+        sections = [
+            n
+            for n, items in (
+                ("services", cards),
+                ("offices", offices),
+                ("programs", programs),
+                ("updates", updates),
+            )
+            if items
+        ]
         all_offices = False
         if not sections and not self.why_text and not self.where_points:
             offices, all_offices, sections = office_list(), True, ["offices"]
