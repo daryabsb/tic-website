@@ -61,8 +61,10 @@ def test_industry_with_no_program_has_three_cells(client, seeded_home):
     from apps.services.models import ServicePage
 
     marine = IndustryPage.objects.get(locale__language_code="en", slug="marine-and-shipping")
+    marine.services = []
+    marine.save_revision().publish()
     html = _get(client, marine.url)
-    assert '<div class="fb fb--c2">' in html  # nothing linked yet: Where and Contact only
+    assert '<div class="fb fb--c2">' in html  # nothing linked: Where and Contact only
 
     psi = ServicePage.objects.get(locale__language_code="en", slug="pre-shipment-inspection")
     marine.services = [("card", {"page": psi, "title": "Draft survey", "text": "Draft."})]

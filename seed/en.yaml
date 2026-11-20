@@ -270,7 +270,12 @@ industries:
         - "Destination: Baghdad, Cairo, Amman, Riyadh, Dubai and Sharjah"
         - "Transit and testing: Guangzhou, Maharagama"
     - {slug: "oil-gas-and-petrochemicals", title: "Oil & Gas and Petrochemicals", card_caption: "Oil & Gas", summary: "Custody transfer, tank calibration, cargo measurement, petroleum testing."}
-    - {slug: "marine-and-shipping", title: "Marine & Shipping", card_caption: "Marine", summary: "Draft, ullage, bunker, on/off hire and cleanliness surveys."}
+    - slug: "marine-and-shipping"
+      title: "Marine & Shipping"
+      card_caption: "Marine"
+      summary: "Draft, ullage, bunker, on/off hire and cleanliness surveys."
+      services:  # T41, D80: TIC's own service line (the Inspection group), so the page is not thin
+        - {page: "marine-and-cargo-surveys", text: "Draft, ullage, bunker, on/off hire, hose test, sealing and cleanliness surveys."}
     - {slug: "consumer-products-and-retail", title: "Consumer Products & Retail", card_caption: "Consumer", summary: "Textiles, electrical, toys, cosmetics, ceramics, appliances; pre-shipment inspection."}
     - {slug: "vehicles-and-automotive", title: "Vehicles & Automotive", card_caption: "Vehicles", summary: "Pre-purchase, damage and pre-export inspection; Kurdistan Region vehicle CoC."}
     - {slug: "industrial-equipment-and-manufacturing", title: "Industrial Equipment & Manufacturing", card_caption: "Industrial", summary: "Vendor inspection, NDT, metals and minerals."}

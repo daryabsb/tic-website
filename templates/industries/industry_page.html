@@ -1,15 +1,27 @@
-{% extends "base.html" %}{% load i18n wagtailcore_tags zeneon %}
-{% comment %}An industry (design B-Industry-Food.dc.html): service cards, the dark "why" band with the figures that have an owner, "where we do it". The insights column joins with the news app (T25); the office links with the office pages (T20) (D29).{% endcomment %}
+{% extends "base.html" %}{% load i18n wagtailcore_tags zeneon tic %}
+{% comment %}An industry (design B-Industry-Food, R3-Industry-Marine): the body from linked data in the order services, offices, programs, updates; an empty one is not drawn, one or two sit in two columns, none: the office list (R3 rules part 5; T41, D80); the dark "why" band with the figures that have an owner, "where we do it". The insights column joins with the news app (T25); the office links with the office pages (T20) (D29).{% endcomment %}
 {% block body_class %}page-industry{% endblock %}
 {% block content %}
 {% locale_home_url as home_url %}{% translate "Talk to the office nearest you" as talk_label %}
 {% include "includes/page_head.html" with image=page.header_image image_alt=page.header_image_alt caption=page.header_caption intro=page.intro|default:page.summary secondary_label=talk_label secondary_href=home_url|add:"contact/" %}
-{% if cards %}
-<div class="wrap stack ind-services">
-  {% if page.services_heading %}<div><h2 class="h2">{{ page.services_heading }}</h2><div class="rule"></div></div>{% endif %}
-  <div class="cards">
-  {% for target, eyebrow, title, text in cards %}<a class="svc svc--text" href="{% pageurl target %}"><div class="svc__body">{% if eyebrow %}<span class="eyebrow">{{ eyebrow }}</span>{% endif %}<b class="svc__title">{{ title }}</b><span class="svc__text">{{ text }}</span></div></a>{% endfor %}
-  </div>
+{% if body_sections %}
+<div class="wrap thin{% if two_columns %} thin--two{% endif %}">
+  {% if cards %}<section class="thin__sec" aria-labelledby="ind-services">
+    <div><h2 class="h2" id="ind-services">{{ page.services_heading|default:_("Services for this industry") }}</h2><div class="rule"></div></div>
+    <div class="thin__list">{% for target, eyebrow, title, text in cards %}<a class="tcard tcard--sm" href="{% pageurl target %}">{% if eyebrow %}<span class="eyebrow">{{ eyebrow }}</span>{% endif %}<b>{{ title }}</b>{% if text %}<span>{{ text }}</span>{% endif %}</a>{% endfor %}</div>
+  </section>{% endif %}
+  {% if body_offices %}<section class="thin__sec" aria-labelledby="ind-offices">
+    <div><h2 class="h2" id="ind-offices">{% if all_offices %}{% translate "Our offices" %}{% else %}{% translate "Offices" %}{% endif %}</h2><div class="rule"></div></div>
+    <ul class="dia thin__offices">{% for office in body_offices %}<li><a class="office-link" href="{% pageurl office %}">{{ office.title }}</a></li>{% endfor %}</ul>
+  </section>{% endif %}
+  {% if body_programs %}<section class="thin__sec" aria-labelledby="ind-programs">
+    <div><h2 class="h2" id="ind-programs">{% translate "Programs" %}</h2><div class="rule"></div></div>
+    <div class="thin__list">{% for program in body_programs %}<a class="ct" href="{% pageurl program %}"><span class="tiles" aria-hidden="true"></span>{% if program.status_line %}<span class="ct__st">{{ program.status_line }}</span>{% endif %}<span class="ct__c">{{ program.country|default:program.title }}</span>{% if program.country %}<span class="ct__n">{{ program.title|after_country:program.country }}</span>{% endif %}</a>{% endfor %}</div>
+  </section>{% endif %}
+  {% if body_updates %}<section class="thin__sec" aria-labelledby="ind-updates">
+    <div><h2 class="h2" id="ind-updates">{% translate "Regulatory updates" %}</h2><div class="rule"></div></div>
+    <div class="stack">{% for item in body_updates %}<a class="upd" href="{% pageurl item %}"><span class="upd__d">{{ item.date|date:"M Y" }}</span>{% if item.program_label %}<span class="eyebrow">{{ item.program_label }}</span>{% endif %}<b>{{ item.title }}</b></a>{% endfor %}</div>
+  </section>{% endif %}
 </div>
 {% endif %}
 {% if page.why_text or shown_figures %}

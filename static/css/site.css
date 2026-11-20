@@ -261,6 +261,17 @@ button, input, select, textarea { font: inherit; color: inherit; }
   .addr__city { font-size: 32px; }
 }
 
+/* ---------- thin pages (R3 rules part 5; T41, D80) ---------- */
+.thin { display: grid; grid-template-columns: minmax(0, 1fr); gap: 56px; padding-block: 56px 72px; }
+.thin--two { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; }
+.thin__sec { display: flex; flex-direction: column; gap: 24px; min-width: 0; }
+.thin__list { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr)); gap: 16px; }
+.thin--two .thin__list { grid-template-columns: minmax(0, 1fr); }
+.thin__offices { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(180px, 100%), 1fr)); gap: 8px 24px; font-size: 16px; }
+@media (max-width: 860px) {
+  .thin, .thin--two { grid-template-columns: minmax(0, 1fr); gap: 40px; padding-block: 40px 56px; }
+}
+
 /* ---------- cards ---------- */
 /* A grid, so a lone card or a short last row keeps the column width (no stretching). */
 .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr)); gap: 24px; }
