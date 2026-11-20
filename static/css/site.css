@@ -224,6 +224,43 @@ button, input, select, textarea { font: inherit; color: inherit; }
   .jump__in { flex-wrap: nowrap; overflow-x: auto; white-space: nowrap; }
 }
 
+/* ---------- empty places (R3 rules part 4; T40, D79) ---------- */
+/* Text card: a grid without a full set of photos shows only text cards, never a grey plate. */
+.tcard { background: var(--tic-white); border: 1px solid var(--tic-hairline); padding: 24px; display: flex; flex-direction: column; gap: 10px; text-decoration: none; min-width: 0; }
+.tcard b { font-family: var(--font-display); font-weight: 700; font-size: 20px; line-height: 1.15; text-transform: uppercase; color: var(--tic-ink); }
+.tcard:hover b { color: var(--tic-red); }
+.tcard span:not(.eyebrow):not(.tri) { font-size: 15px; color: var(--tic-charcoal); }
+.tcard .meta { font-size: 13px; color: var(--tic-body-grey); }
+.tcard .more { margin-top: auto; padding-top: 6px; }
+.tcard--sm b { font-size: 18px; }
+/* The tile pattern of the dark plates (brand book 16). */
+.tiles { position: absolute; inset: 0; background-image: linear-gradient(rgba(255, 255, 255, .07) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, .07) 1px, transparent 1px); background-size: var(--tile) var(--tile); pointer-events: none; }
+/* Country tile: a program card needs no photo, now or later. */
+.ct { position: relative; background: var(--tic-black); color: var(--tic-white); display: flex; flex-direction: column; justify-content: flex-end; gap: 6px; padding: 24px; min-height: 220px; text-decoration: none; min-width: 0; overflow: hidden; }
+.ct:hover { color: var(--tic-white); }
+.ct > span:not(.tiles) { position: relative; }
+.ct__st { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-display); font-weight: 600; font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--tic-hairline); margin-bottom: auto; }
+.ct__st::before { content: ""; width: 8px; height: 8px; flex: none; background: var(--tic-white); }
+.ct__st--pending::before { background: var(--tic-red); }
+.ct__c { font-family: var(--font-display); font-weight: 800; font-size: 34px; line-height: 1; letter-spacing: .01em; text-transform: uppercase; color: var(--tic-white); margin-top: 28px; }
+.ct:hover .ct__c { color: var(--tic-red); }
+.ct__n { font-family: var(--font-display); font-weight: 600; font-size: 16px; text-transform: uppercase; color: var(--tic-white); }
+.ct__m { font-size: 13px; color: var(--tic-hairline); }
+/* Address plate: stands where a map would be. No map script, so it loads in mainland China. */
+.addr { position: relative; background: var(--tic-black); color: var(--tic-white); padding: 32px; display: flex; flex-direction: column; justify-content: flex-end; gap: 14px; min-height: 300px; overflow: hidden; }
+.addr > :not(.tiles) { position: relative; }
+.addr .lbl { color: var(--tic-hairline); }
+.addr__city { font-family: var(--font-display); font-weight: 800; font-size: 40px; line-height: 1; text-transform: uppercase; }
+.addr p { margin: 0; font-size: 16px; color: var(--tic-white); }
+@media (max-width: 860px) {
+  .ct { min-height: 150px; }
+  .ct__c { font-size: 30px; }
+  .tcard { padding: 18px 20px; }
+  .tcard .more { display: none; }
+  .addr { min-height: 220px; padding: 24px; }
+  .addr__city { font-size: 32px; }
+}
+
 /* ---------- cards ---------- */
 /* A grid, so a lone card or a short last row keeps the column width (no stretching). */
 .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr)); gap: 24px; }

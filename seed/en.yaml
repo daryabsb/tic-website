@@ -58,10 +58,10 @@ home:
         link_page: "programs"
         featured: {caption: "Iraq", eyebrow: "Iraq · COSQC / ICIGI", title: "Certificate of Conformity", meta: "Last updated: [date] · Baghdad office"}
         cards:
-          - {title: "Kurdistan Region vehicle CoC", meta: "Last updated: [date]"}
-          - {title: "Egypt · GOEIC", meta: "Last updated: [date]"}
-          - {title: "Botswana · BOBS", meta: "Last updated: [date]"}
-          - {title: "Libya · Certificate of Inspection", meta: "Last updated: [date]"}
+          - {caption: "Kurdistan Region of Iraq", title: "Kurdistan Region vehicle CoC", meta: "Last updated: [date]"}
+          - {caption: "Egypt", title: "Egypt · GOEIC", meta: "Last updated: [date]"}
+          - {caption: "Botswana", title: "Botswana · BOBS", meta: "Last updated: [date]"}
+          - {caption: "Libya", title: "Libya · Certificate of Inspection", meta: "Last updated: [date]"}
     - type: offices
       value:
         heading: "Where we are"

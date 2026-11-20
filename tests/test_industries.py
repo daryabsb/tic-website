@@ -28,7 +28,7 @@ def test_the_hub_lists_the_eight_industries(seeded_home, client):
 
     assert response.status_code == 200
     assert "Eight industries" in html
-    assert html.count('class="svc svc--sm"') == 8
+    assert html.count('class="tcard"') == 8  # no photos in the seed: text cards (D79)
     assert FOOD_URL in html
     assert "Government &amp; Public Sector" in html
 

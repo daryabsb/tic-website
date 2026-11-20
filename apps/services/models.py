@@ -124,6 +124,7 @@ class ServiceIndexPage(ScriptNormalisationMixin, _HeaderFields, Page):  # noqa: 
         ]
         # Jump row (T39, D77): a link to every group on the page.
         context["jump"] = [{"title": g.title, "anchor": g.slug} for g, _s in context["groups"]]
+        context["group_pages"] = [g for g, _s in context["groups"]]
         return context
 
 

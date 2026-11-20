@@ -166,7 +166,9 @@ def test_the_program_page_lists_its_updates(iraq, client):
 def test_the_index_shows_status_words_and_the_pending_card(iraq, client):
     html = client.get("/en/programs/").content.decode()
     assert "Appointed · COSQC, 2024" in html
-    assert "Saudi Arabia SFDA" in html and "Designation in progress" in html
+    # A country tile (T40, D79): the country, then the title without it.
+    assert '<span class="ct__c">Saudi Arabia</span><span class="ct__n">SFDA</span>' in html
+    assert "Designation in progress" in html
     assert ProgramPage.objects.filter(title__icontains="SFDA").count() == 0  # never a program
     assert "We add a page only where we hold an appointment" in html
 

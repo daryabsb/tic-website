@@ -1,9 +1,8 @@
 {% extends "base.html" %}{% load i18n wagtailcore_tags wagtailimages_tags %}
-{% comment %}One office (design B-Office-Baghdad.dc.html; master plan 03). Reach the office (channel tiles), the facts rows, the map and team plates, what is sold and delivered from here, the people who agreed to be named. A bracketed placeholder is shown as text, never as a link. An office in China shows WeChat, never wa.me (D11). The CTA band carries this office's numbers.{% endcomment %}
+{% comment %}One office (design B-Office-Baghdad.dc.html; master plan 03). Reach the office (channel tiles), the facts rows, the address plate in place of a map (no map script: it loads in mainland China; R3 rule 4.3, T40, D79), the team photo only when there is one, what is sold and delivered from here, the people who agreed to be named. A bracketed placeholder is shown as text, never as a link. An office in China shows WeChat, never wa.me (D11). The CTA band carries this office's numbers.{% endcomment %}
 {% block body_class %}page-office{% endblock %}
 {% block content %}
 {% include "includes/office_head.html" with office=page image=page.header_image image_alt=page.header_image_alt caption=page.header_caption intro=page.intro %}
-{% include "includes/facts_bar.html" %}
 <div class="wrap office">
   <div class="office__main">
     <div><h2 class="h2">{% translate "Reach the office" %}</h2><div class="rule"></div></div>
@@ -27,8 +26,8 @@
     </dl>
   </div>
   <div class="office__side">
-    <div class="photo office__map">{% if page.map_image %}{% image page.map_image width-800 as img %}<img src="{{ img.url }}" alt="{% blocktranslate with city=page.city %}Map of the {{ city }} office{% endblocktranslate %}" width="{{ img.width }}" height="{{ img.height }}" loading="lazy">{% else %}<div class="cap">{{ page.city }}</div>{% endif %}</div>
-    <div class="photo office__team">{% if page.team_photo %}{% image page.team_photo width-800 as img %}<img src="{{ img.url }}" alt="{{ page.team_caption }}" width="{{ img.width }}" height="{{ img.height }}" loading="lazy">{% endif %}{% if page.team_caption %}<div class="cap">{{ page.team_caption }}</div>{% endif %}</div>
+    <div class="addr"><span class="tiles" aria-hidden="true"></span><span class="lbl">{% translate "Find us" %}</span><span class="addr__city">{{ page.city }}</span><p>{{ page.address|linebreaksbr }}<br>{{ page.country }}</p>{% if page.map_url %}<a class="tri tri--w" href="{{ page.map_url }}" rel="noopener" target="_blank">{% translate "Open in maps" %}</a>{% endif %}</div>
+    {% if page.team_photo %}<div class="photo office__team">{% image page.team_photo width-800 as img %}<img src="{{ img.url }}" alt="{{ page.team_caption }}" width="{{ img.width }}" height="{{ img.height }}" loading="lazy">{% if page.team_caption %}<div class="cap">{{ page.team_caption }}</div>{% endif %}</div>{% endif %}
   </div>
 </div>
 {% if programs or page.sold_here %}<div class="tint"><div class="wrap office__sold">
@@ -41,7 +40,7 @@
 <div class="wrap office__people">
   {% if people %}<div><h2 class="h2">{% translate "People you can name" %}</h2><div class="rule"></div></div>
   <div class="row office__people-list">{% for person in people %}<div class="person">
-    <div class="photo">{% if person.public_photo %}{% image person.public_photo fill-128x128 as img %}<img src="{{ img.url }}" alt="" width="64" height="64" loading="lazy">{% endif %}</div>
+    {% if person.public_photo %}<div class="photo">{% image person.public_photo fill-128x128 as img %}<img src="{{ img.url }}" alt="" width="64" height="64" loading="lazy"></div>{% endif %}
     <div class="person__tx"><b>{{ person.public_name }}</b><span>{{ person.title }}</span></div>
   </div>{% endfor %}</div>{% endif %}
   <p class="meta">{% blocktranslate with city=page.city %}Everything on this page is owned by the {{ city }} office manager.{% endblocktranslate %} {% translate "Last reviewed" %}: {% if page.reviewed %}{{ page.reviewed|date:"j M Y" }}{% else %}[{% translate "date" %}]{% endif %}</p>

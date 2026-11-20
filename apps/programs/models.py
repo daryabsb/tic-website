@@ -356,12 +356,16 @@ class ProgramPage(ScriptNormalisationMixin, ReviewByMixin, _HeaderFields, Page):
 
     def get_context(self, request, *args, **kwargs):
         context = super().get_context(request, *args, **kwargs)
+        context["updates"] = updates = regulatory_updates(self.locale, self)[:3]
+        # A part with nothing to list is not drawn (R3 rule 4.6; T40, D79).
+        context["parts"] = parts = [
+            block for block in self.parts if block.block_type != "updates" or updates
+        ]
         context["toc"] = [
             (block.block_type, PART_TITLES[block.block_type])
-            for block in self.parts
+            for block in parts
             if block.block_type in PART_TITLES
         ]
-        context["updates"] = regulatory_updates(self.locale, self)[:3]
         index_page = self.get_parent().specific
         context["feed"] = RegulatoryUpdatesPage.objects.child_of(index_page).live().first()
         context["others"] = (

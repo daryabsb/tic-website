@@ -198,10 +198,11 @@
   {
    "page": "offices/dubai",
    "field": "header_image",
-   "file": "unsplash/IuypSbIlJiE.jpg",
-   "alt": "The Dubai skyline with the Burj Khalifa under a clear sky",
-   "source": "unsplash",
-   "credit": "Vishnu Kalanad, https://unsplash.com/photos/IuypSbIlJiE"
+   "file": "design/dubai-business-bay.jpg",
+   "alt": "Towers of Business Bay in Dubai at dusk, with the Burj Khalifa behind them, seen across the canal",
+   "caption": "Dubai · Business Bay",
+   "source": "design",
+   "replaces": "IuypSbIlJiE"
   },
   {
    "page": "offices/sharjah",

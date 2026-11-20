@@ -3009,3 +3009,10 @@ msgstr "مدة العمل في الموقع: سطر صغير"
 
 msgid "where: small line"
 msgstr "أين: سطر صغير"
+
+#. T40 (D79): empty places
+msgid "View"
+msgstr "عرض"
+
+msgid "Find us"
+msgstr "موقعنا"

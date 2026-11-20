@@ -1,9 +1,9 @@
-{% load i18n wagtailcore_tags wagtailimages_tags tic %}{% office_list as offices %}<section class="section"><div class="wrap offices">
-  <div class="photo offices__map">{% if value.map_image %}{% image value.map_image width-1200 as img %}<img src="{{ img.url }}" alt="" loading="lazy">{% endif %}{% if value.caption %}<div class="cap">{{ value.caption }}</div>{% endif %}</div>
+{% load i18n wagtailcore_tags wagtailimages_tags tic %}{% office_list as offices %}{# Home "Where we are" (R3-Home; T40, D79): the head office's photo and caption beside the office list, no map. Without that photo the text takes the width. #}{% with head=offices.0 %}<section class="section"><div class="wrap offices">
+  {% if head.is_head_office and head.header_image %}<a class="photo offices__map" href="{% pageurl head %}">{% image head.header_image fill-1200x900 as img %}<img src="{{ img.url }}" alt="{{ head.header_image_alt }}" width="{{ img.width }}" height="{{ img.height }}" loading="lazy">{% if head.header_caption %}<div class="cap">{{ head.header_caption }}</div>{% endif %}</a>{% endif %}
   <div class="offices__text">
     <div><h2 class="h2">{{ value.heading }}</h2><div class="rule"></div></div>
     {% if value.text %}<p class="muted">{{ value.text }}</p>{% endif %}
     {% if offices %}<div class="offices__cols"><ul class="dia">{% for office in offices %}{% if forloop.counter0|divisibleby:2 %}<li><a class="office-link" href="{% pageurl office %}">{{ office.title }}</a></li>{% endif %}{% endfor %}</ul><ul class="dia">{% for office in offices %}{% if not forloop.counter0|divisibleby:2 %}<li><a class="office-link" href="{% pageurl office %}">{{ office.title }}</a></li>{% endif %}{% endfor %}</ul></div>{% endif %}
     {% if value.link_page and value.link_label %}<a class="tri" href="{% pageurl value.link_page %}">{{ value.link_label }}</a>{% endif %}
   </div>
-</div></section>
+</div></section>{% endwith %}
