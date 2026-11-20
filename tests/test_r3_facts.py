@@ -154,3 +154,20 @@ def test_home_proof_strip_is_the_facts_bar_with_links(client, seeded_home):
     assert '<section class="fb fb--proof"' in html
     assert '<a class="fb__f" href="https://anab.ansi.org/"' in html
     assert "proof-strip" not in html
+
+
+@pytest.mark.parametrize(
+    "url",
+    [
+        "/en/services/inspection/pre-shipment-inspection/",
+        "/en/industries/agriculture-and-food/",
+        "/en/programs/iraq-certificate-of-conformity/",
+        "/en/offices/dubai/",
+        "/en/offices/guangzhou/",
+        "/en/contact/",
+        "/en/about/",
+    ],
+)
+def test_every_page_draws_the_facts_bar_once(client, seeded_home, url):
+    """The office head draws the general head, which draws the bar: never a second one."""
+    assert _get(client, url).count('<div class="fb') == 1
