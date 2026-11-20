@@ -347,10 +347,8 @@ msgstr ""
 msgid "time zone"
 msgstr "المنطقة الزمنية"
 
-#, fuzzy
-#| msgid "Language"
 msgid "languages"
-msgstr "اللغة"
+msgstr "اللغات"
 
 msgid "reply promise"
 msgstr "وعد الرد"
