@@ -121,6 +121,12 @@ class IndustryPage(ScriptNormalisationMixin, _HeaderFields, Page):  # noqa: DJ00
         verbose_name=_("'where' points"),
         help_text=_("e.g. 'Origin: Lahore, Bangkok'. Office links come with the office pages."),
     )
+    offices = StreamField(
+        [("office", blocks.PageChooserBlock(label=_("office"), page_type="offices.OfficePage"))],
+        blank=True,
+        verbose_name=_("offices"),
+        help_text=_("The offices that serve this industry, in order."),
+    )
     # Facts bar (T39, D77): Services and Programs are counted from the service cards;
     # Where and Contact are fields.
     fact_where = value_field(_("where"))
@@ -145,6 +151,7 @@ class IndustryPage(ScriptNormalisationMixin, _HeaderFields, Page):  # noqa: DJ00
         "figures",
         "where_heading",
         "where_points",
+        "offices",
         *FACT_FIELDS,
         synchronised=("header_image",),
     )
@@ -160,6 +167,7 @@ class IndustryPage(ScriptNormalisationMixin, _HeaderFields, Page):  # noqa: DJ00
         MultiFieldPanel(
             [FieldPanel("services_heading"), FieldPanel("services")], heading=_("Services")
         ),
+        FieldPanel("offices"),
         MultiFieldPanel(
             [FieldPanel("why_heading"), FieldPanel("why_text"), FieldPanel("figures")],
             heading=_("Why TIC (dark band)"),
@@ -182,10 +190,50 @@ class IndustryPage(ScriptNormalisationMixin, _HeaderFields, Page):  # noqa: DJ00
 
     def get_context(self, request, *args, **kwargs):
         context = super().get_context(request, *args, **kwargs)
-        context["cards"] = [card for card in map(service_card, self.services) if card]
         context["shown_figures"] = [f.value for f in self.figures if f.value.get("owner")]
         context["facts"] = self.facts
+        context.update(self.body_sections())
         return context
+
+    def body_sections(self) -> dict:
+        """The body from linked data (R3 rules part 5; T41, D80), in this order: services
+        for this industry, offices, programs, regulatory updates of those programs. An
+        empty one is not drawn. With one or two the body has two columns. With none, the
+        office list stands in, so the red contact band never follows the head."""
+        from apps.pages.templatetags.tic import office_list
+        from apps.programs.models import regulatory_updates
+
+        cards = []
+        for block in self.services:
+            page = block.value["page"]
+            if page is not None and not _is_program_target(page.specific):
+                card = service_card(block)
+                if card:
+                    cards.append(card)
+        offices = [
+            block.value.specific
+            for block in self.offices
+            if block.value is not None and block.value.live
+        ]
+        programs = linked_programs(self)
+        updates = []
+        for program in programs:
+            updates.extend(regulatory_updates(self.locale, program)[:3])
+        updates = sorted(set(updates), key=lambda item: item.date, reverse=True)[:3]
+        sections = [n for n, items in (("services", cards), ("offices", offices),
+                                       ("programs", programs), ("updates", updates)) if items]
+        all_offices = False
+        if not sections and not self.why_text and not self.where_points:
+            offices, all_offices, sections = office_list(), True, ["offices"]
+        return {
+            "cards": cards,
+            "body_offices": offices,
+            "all_offices": all_offices,
+            "body_programs": programs,
+            "body_updates": updates,
+            "body_sections": sections,
+            "two_columns": 0 < len(sections) <= 2,
+        }
 
     @property
     def facts(self):
@@ -226,6 +274,28 @@ def _is_program_target(page) -> bool:
     if isinstance(page, (ProgramPage, ProgramIndexPage)):
         return True
     return isinstance(page, ServiceGroupPage) and page.group == "programs"
+
+
+def linked_programs(industry):
+    """The live program pages an industry's cards link to: one program, or every live
+    program of the language for a card to the Programs hub or group."""
+    from apps.programs.models import ProgramPage
+
+    programs = []
+    for block in industry.services:
+        page = block.value["page"]
+        if page is None:
+            continue
+        page = page.specific
+        if not _is_program_target(page):
+            continue
+        if isinstance(page, ProgramPage):
+            if page.live:
+                programs.append(page)
+        else:
+            live = ProgramPage.objects.live().public().filter(locale=industry.locale)
+            programs.extend(live.order_by("path"))
+    return list(dict.fromkeys(programs))
 
 
 def linked_services_and_programs(industry):

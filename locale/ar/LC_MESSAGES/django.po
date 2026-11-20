@@ -3016,3 +3016,10 @@ msgstr "عرض"
 
 msgid "Find us"
 msgstr "موقعنا"
+
+#. T41 (D80): thin pages
+msgid "Services for this industry"
+msgstr "خدمات هذا القطاع"
+
+msgid "The offices that serve this industry, in order."
+msgstr "المكاتب التي تخدم هذا القطاع، بالترتيب."
