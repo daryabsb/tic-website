@@ -1,6 +1,6 @@
 # TIC Quality Control website: the information we need from you
 
-Review of the new website on staging · 22 November 2026 · Prepared by Darya Ibrahim · 589 items in 23 parts
+Review of the new website on staging · 22 November 2026 · Prepared by Darya Ibrahim · 590 items in 23 parts
 
 ## Part 1. Dubai head office (28 items)
 
@@ -494,7 +494,7 @@ Review of the new website on staging · 22 November 2026 · Prepared by Darya Ib
 | PRG-97 | Conflict | TIC Quality Control Achieves GOEIC Accreditation for Egypt’s Verification of Conformity (VOC) Program (/en/news/tic-quality-control-achieves-goeic-accreditation-for-egypts-verification-of/) | Title and first paragraph | …officially accredited by GOEIC (General Organization for Export and Import Control) to operate under the Verification of Conformity (VOC) program for Egypt | The accreditations page says "registered, pre-shipment inspection register, record 73", not "accredited" for VOC. Send the correct words and the date of registration. |
 | PRG-98 | Photo | Iraqi Quality Mark: COSQC regulation update (/en/news/iraqi-quality-mark/) | Photo | Photo: a container truck at a port at sunset, with a cargo ship, stacked containers and a plane in the sky | This stock picture is also on the article of 10 May 2024. Send a picture for the Iraqi Quality Mark (the mark, or the official letter). |
 | PRG-99 | To confirm | Iraqi Quality Mark: COSQC regulation update (/en/news/iraqi-quality-mark/) | Text | …a decision of the Ministerial Council for Economy communicated on 6 December 2023, the mark is required for manufacturers of … and cigarettes | Confirm that the six product groups are correct today (November 2026), and send the number of the decision and the date from which the mark is necessary. |
-| PRG-100 | Photo | TIC and LOX begin issuing certificates (/en/news/iraq-coc-certificates-begin/) | Photo | No photo (the photo field is empty) | Send a photo for this article (for example the first certificate, with client data hidden). |
+| PRG-100 | Photo | TIC and LOX begin issuing certificates (/en/news/iraq-coc-certificates-begin/) | Photo | Photo: guests talk at the LOX and TIC event on the Iraq program (from the old site). | Confirm that this event photo fits the article, or send a photo for it (for example the first certificate, with client data hidden). |
 | PRG-101 | Missing | TIC and LOX begin issuing certificates (/en/news/iraq-coc-certificates-begin/) | Text | Certificates of Conformity are issued under the COSQC appointment of 22 May 2024 from 5 September 2024. | The article is one sentence. Send two or three sentences: who can apply, where, and which goods the certificates cover from 5 September 2024. |
 | PRG-102 | Missing | LOX and TIC announce the COSQC certification contract (/en/news/iraq-coc-contract-announced/) | Text | The contract for the certification of goods imported into Iraq was presented in Dubai on 27 June 2024. | The article is one sentence. Send the facts of the event: who presented the contract, who was there, and what the contract covers (term, goods). |
 | PRG-103 | Photo | LOX and TIC appointed by COSQC for goods shipped to Iraq (/en/news/iraq-voc-appointment-announced/) | Photo | Photo: a container truck at a port at sunset, with a cargo ship, stacked containers and a plane in the sky | This stock picture is also on the article of 26 Sep 2024. Send a picture of the appointment (the COSQC letter or the signing). |
@@ -613,7 +613,7 @@ Review of the new website on staging · 22 November 2026 · Prepared by Darya Ib
 | LEG-10 | Missing | Footer ((all pages)) | Company block | TIC Quality Control L.L.C. · Office 2101, Clover Bay Tower · Business Bay, Dubai, United Arab Emirates · +971 4 225 5555 | The trade licence number to show (if TIC wants it) and the email address for the footer. |
 | LEG-11 | Missing | Footer ((all pages)) | Links | No link to a privacy policy or to terms of use (the two pages are drafts). | The approved privacy policy and terms (decision P-18). |
 
-## Part 22. Marketing (photos and news) (81 items)
+## Part 22. Marketing (photos and news) (82 items)
 
 | No. | Kind | Page | Place | On the site now | What we need |
 | --- | --- | --- | --- | --- | --- |
@@ -698,6 +698,7 @@ Review of the new website on staging · 22 November 2026 · Prepared by Darya Ib
 | MKT-79 | Photo | TIC Introduces Comprehensive Marine Survey Services to Ensure Cargo Integrity and Vessel Safety (/en/news/tic-introduces-comprehensive-marine-survey-services-to-ensure-cargo-integrity/) | Photo | Photo: a container ship loaded at a port, with cranes along the quay | The photo is a stock picture. Send a photo of a TIC marine survey (draft survey, hose test), or approve this one. |
 | MKT-80 | Placeholder | TIC Introduces Comprehensive Marine Survey Services to Ensure Cargo Integrity and Vessel Safety (/en/news/tic-introduces-comprehensive-marine-survey-services-to-ensure-cargo-integrity/) | First sentence | XXX XX, 2024 – TIC is pleased to announce the expansion of our marine services portfolio | The date of the press release was never filled in ("XXX XX, 2024"). Send the date, or approve the removal of the date line. |
 | MKT-81 | Text fault | TIC Introduces Comprehensive Marine Survey Services to Ensure Cargo Integrity and Vessel Safety (/en/news/tic-introduces-comprehensive-marine-survey-services-to-ensure-cargo-integrity/) | First sentence | …to ensure accuracy, security, and integrity in cargo handling and vessel | The first sentence stops after "vessel", and some sentences have no full stop. Send the full first sentence. |
+| MKT-82 | Photo | 15 pages: services, programs and articles (/en/services/ · /en/programs/ · /en/news/) | Top photo or article photo | Sample stock photos (Unsplash): Loading and discharge supervision; Container loading inspection; Marine and cargo surveys; Quantity and quality inspection; Product conformity certification; CSUAS drone certification; Factory and supplier audits; Sustainability advisory; ESG assurance and verification; Egypt, Botswana and Libya program pages; articles on rice testing, dairy and cheese testing, and Iraq CoC services in Gujarat. | Send TIC’s own photos for any of these pages, or tell us which stock photos can stay. |
 
 ## Part 23. IT (2 items)
 

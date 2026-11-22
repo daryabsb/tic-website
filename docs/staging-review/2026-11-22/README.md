@@ -3,7 +3,7 @@
 Darya hands staging to the directors and the office managers. This folder is the record
 of what they were asked.
 
-- `TIC-website-information-we-need.docx`: the file sent with the email. 589 items in 23
+- `TIC-website-information-we-need.docx`: the file sent with the email. 590 items in 23
   parts: parts 1 to 14 are the offices, parts 15 to 23 the departments. Each row has a
   number (for example `CAI-03`), the page, what the site shows now, what is needed, and an
   empty answer column.
@@ -42,3 +42,8 @@ Photos were judged from their alt texts and captions, not from the pictures.
 Left for Darya to decide: the time zone cell shows the technical name (for example
 `America/Sao_Paulo`); the sentence "This article is general information…" shows under
 every article, also under event reports.
+
+## Changed after the second list (Nov 22, evening)
+
+- The 35 empty photo places are filled (D86). PRG-100 now names the event photo.
+- New row MKT-82: the 15 pages with sample stock photos. 590 items.
