@@ -113,7 +113,7 @@ services:
     - slug: "testing"
       title: "Testing"
       group: "testing"
-      summary: "Laboratory analysis through named partner laboratories — every testing page says which laboratory, where, and under which accreditation number."
+      summary: "Laboratory analysis through a worldwide network of partner laboratories: food and agricultural products, consumer products, oil and gas, minerals and metals."
       link_label: "All testing services"
       services:
         - {slug: "food-and-agricultural-testing", title: "Food and agricultural testing"}
@@ -384,7 +384,7 @@ programs:
               - "Product labels, markings and photographs"
               - "Manufacturer’s declaration"
               - "Transport documents (bill of lading or other)"
-              - "[Any further item the Baghdad office confirms]"
+              - "Client declaration form, completed and signed by the exporter"
         - type: labelling
           value:
             heading: "What the inspector checks"
@@ -750,11 +750,12 @@ careers:
   no_openings_text: "No role is open at the moment. You can still send a general application: HR keeps it and contacts you when a role fits."
   look_for_heading: "What we look for in an inspector"
   look_for: |-
-    [Qualification or trade background, by service line]
-    [Years of relevant experience]
+    University degree with an engineering background
+    Minimum of 5 years of experience
+    Bilingual speakers
+    Written and physical technical assessments, on and off site
     Able to write a clear report and photograph evidence properly
     Willing to be independent — and to say no when the evidence says no
-    [Languages, driving licence, travel]
   photo_caption: "Our inspectors at work"
   apply_text: "Choose a role above, or send a general application. Add your CV as a PDF or Word file."
   button_label: "Send an application"
@@ -763,7 +764,7 @@ careers:
 training:
   slug: "training"
   title: "Training catalogue"
-  intro: "One page per course: standard, level, duration, format, next dates, price with currency and tax, what the certificate says and who issues it, trainer and prerequisites. Training is general knowledge; it endorses no method and has no bearing on any TIC inspection or certification decision."
+  intro: "Our training courses provide comprehensive insights and practical skills for implementing and auditing various management systems. These courses are designed for professionals and key personnel involved in managing and auditing these systems, helping them gain a deeper understanding of the standards and how to apply them effectively in their organizations. Training is general knowledge; it endorses no method and has no bearing on any TIC inspection or certification decision."
   empty_text: "Dates and prices for the next courses are being confirmed. Send a request and the training team tells you when the next course runs."
   note: "Dates that have passed are not shown."
   courses:

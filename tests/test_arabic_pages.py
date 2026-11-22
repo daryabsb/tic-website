@@ -200,7 +200,9 @@ def test_the_complaint_form_asks_in_arabic(seeded_home):
 @pytest.mark.django_db
 def test_the_iraq_route_question_keeps_its_keys(seeded_home):
     arabic = Locale.objects.get(language_code="ar")
-    page = ProgramPage.objects.get(locale=Locale.get_default())
+    page = ProgramPage.objects.get(
+        slug="iraq-certificate-of-conformity", locale=Locale.get_default()
+    )
 
     questions = {q["key"]: q for q in RequestSchema.for_page(page, arabic).snapshot()}
 

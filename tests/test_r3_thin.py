@@ -57,6 +57,8 @@ def test_chosen_offices_come_after_the_services(client, seeded_home):
 def test_with_nothing_linked_the_office_list_stands_between_head_and_band(client, seeded_home):
     marine = _marine()
     marine.services = []
+    marine.why_text = ""  # T43 gave Marine the current site's text: take it away again
+    marine.where_points = []
     marine.save_revision().publish()
     html = _get(client, marine.url)
 

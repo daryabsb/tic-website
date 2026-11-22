@@ -1,0 +1,192 @@
+# The ten courses with the text of the current site, ticqc.ae (T43, D82; Darya, Nov 22,
+# 2026: the current site's data is true and genuine). Loaded by `seed_site` on top of
+# the course list of en.yaml (training.courses). The current site gives no price, date,
+# duration, format, trainer or certificate text: the page shows "On request" for the
+# price and the dates. `body` is plain text; a line that starts with "- " is a list row.
+courses:
+  iso-9001-awareness:
+    source:
+    - "https://ticqc.ae/iso-90012015-quality-management-system/"
+    summary: "Develop awareness and gain a general overview of ISO 9001:2015 Quality Management System (QMS), and apply the concepts of ISO 9001:2015 to one’s organization. For Quality Management Representatives, Internal Auditors, Top Management, and Key Personnel involved in implementing and managing Quality Management Systems (QMS)."
+    body: |
+      What is ISO 9001:2015
+      The ISO 9001:2015 is an International Standard for a quality management system to enhance its quality performance and to enhance customer satisfaction in a systematic manner that contributes to the success of an organization.
+
+      Course objective
+      - Develop awareness and gain a general overview of ISO 9001:2015 Quality Management System (QMS).
+      - Apply the concepts of ISO 9001:2015 to one’s organization.
+
+      Who should attend
+      The target audience includes Quality Management Representatives, Internal Auditors, Top Management, and Key Personnel involved in implementing and managing Quality Management Systems (QMS).
+  iso-14001-awareness:
+    source:
+    - "https://ticqc.ae/iso-140012015-environmental-management-system/"
+    summary: "This course helps participants to understand the ISO 14001:2015 Environmental Management System (EMS) requirements. The training focuses on key terms, explanations, and requirements of ISO 14001. For Management Representatives, EMS or EHS Managers, ISO 14001 EMS Steering Committee members, Lead and Internal EMS Auditors, and personnel responsible for updating legal requirements."
+    body: |
+      Course description
+      This course helps participants to understand the ISO 14001:2015 Environmental Management System (EMS) requirements.
+      ISO 14001 is a globally recognized standard for improving environmental and operational efficiency. Our training focuses on key terms, explanations, and requirements of ISO 14001, equipping participants to implement its principles effectively in their organization.
+
+      Course objective
+      - Recognize the benefits of implementing an ISO 14001:2015 Environmental Management System (EMS).
+      - Explain the key terms, definitions, and requirements outlined in the standard.
+      - Identify and understand the significant changes introduced in ISO 14001:2015.
+
+      Who should attend
+      This course is tailored for:
+      - Management Representatives
+      - EMS or EHS Managers
+      - ISO 14001 EMS Steering Committee members
+      - Lead and Internal EMS Auditors
+      - Personnel responsible for updating legal requirements, monitoring environmental management, and ensuring ISO 14001 conformance.
+  iso-22000-awareness:
+    source:
+    - "https://ticqc.ae/iso-220002018-food-safety-management-systems/"
+    summary: "This course offers participants a thorough understanding of the principles, requirements, and practices in ISO 22000:2018. For Food Safety Team leaders and members responsible for developing and maintaining a Food Safety Management System (FSMS), Quality Assurance personnel, and Entrepreneurs, Owners, and Management teams intending to implement the Standard."
+    body: |
+      Course description
+      The most recent version of the global standard designed for the food sector, ISO 22000:2018, highlights the importance of Food Safety Management Systems (FSMS).
+      This course offers participants a thorough understanding of the principles, requirements, and practices in ISO 22000:2018.
+
+      Course objective
+      Participants will have accomplished the following by the conclusion of the course:
+      - Become familiar with the requirements for food safety and management systems outlined in ISO 22000:2018 FSMS.
+      - Comprehend the FSMS model based on hazard analysis and the ISO 22000’s approach focused on risk.
+      - Understand the importance of internal audits in upholding and improving management systems.
+
+      Who should attend
+      This course is designed for:
+      - Food Safety Team leaders and members responsible for developing and maintaining a Food Safety Management System (FSMS)
+      - Quality Assurance personnel and individuals involved in the FSMS
+      - Entrepreneurs, Owners, and Management teams intending to implement the Standard.
+  iso-45001-awareness:
+    source:
+    - "https://ticqc.ae/iso-450012018-occupational-health-safety-management-system/"
+    summary: "This course is crafted to enhance your understanding and skills in ISO 45001:2018, offering insights into the scope of Occupational Health and Safety (OH&S) Management Systems. For OH&S professionals, managers in OH&S or Environmental Health and Safety (EHS), members of the ISO 45001 OH&S Steering Committee, and lead auditors and internal auditors in OH&S."
+    body: |
+      Course description
+      Covers Occupational Health & Safety, and offers a framework for all organizations looking to improve workplace safety and prevent workplace accidents and associated ill health. The standard covers Occupational Health and Safety Management Systems, with guidance for use and clear requirements on providing a safe and healthy workplace.
+
+      Course objective
+      This course is specifically crafted to enhance your understanding and skills in ISO 45001:2018, offering insights into the scope of Occupational Health and Safety (OH&S) Management Systems. It includes detailed guidance on setting up the system, complemented by step-by-step processes. By the course’s conclusion, you will grasp the importance of organizational context, leadership, and adopting a risk-based approach to effectively manage OH&S performance.
+
+      Who should attend
+      This course is specifically tailored for:
+      - Occupational Health and Safety (OH&S) professionals
+      - Managers in OH&S or Environmental Health and Safety (EHS)
+      - Members of the ISO 45001 OH&S Steering Committee
+      - Lead auditors and internal auditors in OH&S
+      - Individuals tasked with updating legal requirements, overseeing OH&S performance, and ensuring compliance with ISO 45001.
+  haccp-awareness:
+    source:
+    - "https://ticqc.ae/hazard-analysis-critical-control-points/"
+    summary: "This class will give you an overview of HACCP and help you see how it can lower the chances of food safety issues in your company. For supervisors and executives working in food and food-related industries, recent graduates and college students, managers and key team members, and professionals involved in the implementation of HACCP within their organizations."
+    body: |
+      Course description
+      HACCP assists organizations in controlling food safety risks through a structured preventive method. This class will give you an overview of HACCP and help you see how it can lower the chances of food safety issues in your company.
+
+      Course objective
+      Participants should have acquired:
+      - A familiarity with the HACCP guidelines.
+      - The ability to evaluate the company’s current system and recognize areas for enhancement.
+      - A broad understanding of the stages involved in implementing a Food Safety Management System to fulfill requirements.
+
+      Who should attend
+      - Supervisors and executives working in food and food-related industries.
+      - Recent graduates and college students with a background in science or other fields.
+      - Managers and key team members tasked with establishing, implementing, maintaining, auditing, and enhancing Hazard Analysis and Critical Control Points (HACCP) in food safety-certified companies are encouraged to participate.
+      - This course is also suitable for professionals involved in the implementation of HACCP within their organizations.
+  iso-9001-internal-auditor:
+    source:
+    - "https://ticqc.ae/iso-90012015-quality-management-system-internal-audit/"
+    summary: "This internal auditor course combines training sessions, exercises, and group discussions. Learn how to plan, conduct, and report audits effectively and understand the interpretation of the ISO 9001:2015 standard. For top management, QMS managers, officers, and internal auditors, management system professionals and consultants, and anyone interested in Quality Management Systems."
+    body: |
+      Overview
+      The internal auditing of the Quality Management System (QMS) is a crucial process for assessing implementation levels and driving improvement. This internal auditor course combines training sessions, exercises, and group discussions to achieve its objectives efficiently.
+
+      Benefits
+      - Gain insight into the roles and responsibilities of internal auditors.
+      - Learn how to plan, conduct, and report audits effectively.
+      - Understand the interpretation of the ISO 9001:2015 standard.
+      - Acquire knowledge of auditing principles and practices through case studies and exercises.
+
+      Course content
+      - Overview of Quality Management System Requirements, including Context, Leadership, Support, Operation, Performance, and Improvement.
+      - Understanding auditing principles.
+      - Roles and responsibilities of auditors.
+      - Planning, conducting, and reporting internal audits.
+
+      Target audience
+      - Top management.
+      - QMS managers, officers, and internal auditors.
+      - Management system professionals and consultants.
+      - Personnel responsible for updating legal requirements.
+      - Anyone interested in Quality Management Systems.
+  iso-14001-internal-auditor:
+    source:
+    - "https://ticqc.ae/iso-140012015-environmental-management-system-internal-audit/"
+    summary: "This course helps participants to understand the ISO 14001:2015 Environmental Management System (EMS) requirements and learn how to audit your organization based on these requirements. For Management Representatives, EMS or EHS Managers, ISO 14001 EMS Steering Committee members, Lead and Internal EMS Auditors, and personnel responsible for updating legal requirements."
+    body: |
+      Course description
+      This course helps participants to understand the ISO 14001:2015 Environmental Management System (EMS) requirements and learn how to audit your organization based on these requirements.
+
+      Benefits
+      Upon completion of the course, participants will be able to:
+      - Prepare, execute, and follow up on ISO 14001:2015 audit procedures effectively.
+      - Acquire the skills necessary to evaluate an organization’s ability to oversee its environmental management system.
+      - Produce factual audit reports.
+
+      Who should attend
+      This course is tailored for:
+      - Management Representatives
+      - EMS or EHS Managers
+      - ISO 14001 EMS Steering Committee members
+      - Lead and Internal EMS Auditors
+      - Personnel responsible for updating legal requirements, monitoring environmental management, and ensuring ISO 14001 conformance.
+  iso-22000-internal-auditor:
+    source:
+    - "https://ticqc.ae/iso-220002018-food-safety-management-systems-internal-audit/"
+    summary: "This course is designed to equip participants with the necessary knowledge and skills to conduct internal audits in accordance with the ISO 22000:2018 Food Safety Management Systems (FSMS) requirements and ISO 19011:2018 guidelines. For individuals engaged in the planning, implementation, or supervision of an ISO 22000:2018 food safety management system, including internal auditors."
+    body: |
+      Course description
+      This course is designed to equip participants with the necessary knowledge and skills to conduct internal audits in accordance with the ISO 22000:2018 Food Safety Management Systems (FSMS) requirements and ISO 19011:2018 guidelines for auditing management systems.
+      ISO 22000:2018 FSMS is the latest iteration of an international standard tailored for the food industry. The training program is structured to provide a comprehensive understanding of the principles, requirements, and practices outlined in the ISO 22000 international standard. Participants will also learn how to contribute to the ongoing enhancement of the management system.
+
+      Benefits
+      Upon completion of this course, participants will be able to:
+      - Explain the food safety and management system requirements outlined in ISO 22000.
+      - Outline the hazard analysis-based FSMS model and the risk-based approach of ISO 22000.
+      - Discuss the significance of internal audits in maintaining and enhancing management systems.
+      - Plan, execute, and document an internal audit for a segment of a FSMS in accordance with ISO 19011:2018.
+
+      Who should attend
+      This course is designed for individuals engaged in the planning, implementation, or supervision of an ISO 22000:2018 food safety management system, including internal auditors responsible for conducting internal audits within their company’s ISO 22000:2018 system. This may include management representatives, production managers, QA executives, and similar roles.
+  iso-45001-internal-auditor:
+    source:
+    - "https://ticqc.ae/iso-450012018-occupational-health-safety-management-system-internal-audit/"
+    summary: "The course aims to equip participants with the essential skills and knowledge needed to conduct an internal Occupational Health and Safety Management System (OHSMS) Performance Audit, aligning with the audit processes outlined in ISO 19011:2018. For OHS professionals, OHSMS / EHS Managers, members of the ISO 45001 OHSMS Steering Committee, OHSMS lead auditors and internal auditors."
+    body: |
+      Course description
+      The course aims to equip participants with the essential skills, knowledge, and performance outcomes needed to conduct an internal Occupational Health and Safety Management System (OHSMS) Performance Audit, aligning with the audit processes outlined in ISO 19011:2018. Additionally, it offers an overview of the Occupational Health & Safety Management System Standard ISO 45001:2018, which serves as an external benchmark against which organizations can be audited.
+
+      Benefits
+      This course is specifically tailored to enhance your understanding and proficiency in ISO 45001:2018, offering an overview of OH&S Management Systems’ scope and step-by-step processes for system setup. You will explore the key stages of internal auditing in OH&S Management Systems, as well as reporting and follow-up procedures for audit performance.
+
+      Who should attend
+      This training is intended for Occupational Health and Safety (OHS) professionals, Occupational Health and Safety Management System (OHSMS) / Environmental Health and Safety (EHS) Managers, members of the ISO 45001 OHSMS Steering Committee, OHSMS lead auditors, internal auditors, and personnel responsible for updating legal requirements, monitoring OHS performance, and ensuring ISO 45001 compliance.
+  haccp-internal-auditor:
+    source:
+    - "https://ticqc.ae/hazard-analysis-critical-control-points-internal-audit/"
+    summary: "This training program is designed to offer a comprehensive understanding of HACCP standard requirements through tutor-led sessions, interactive discussions, and relevant examples. For supervisors and executives working in food and food-related industries, recent graduates and college students, managers and key team members, and professionals involved in the implementation of HACCP."
+    body: |
+      Course description
+      This training program is designed to offer a comprehensive understanding of HACCP standard requirements through tutor-led sessions, interactive discussions, and relevant examples.
+
+      Benefits
+      Upon completing this course, you will be proficient in conducting audits according to HACCP standards requirements, covering aspects such as management commitment, responsibilities, resource management, planning for safe product realization, validation, verification, and continual improvement. Additionally, you will gain expertise in prerequisite program (PRP) requirements, understanding the 12 steps in HACCP development, preparing flow charts, conducting hazard analysis, identifying Critical Control Points (CCP), monitoring and record-keeping, and incorporating ISO 19011:2018 auditing guidelines.
+
+      Who should attend
+      - Supervisors and executives working in food and food-related industries.
+      - Recent graduates and college students with a background in science or other fields.
+      - Managers and key team members tasked with establishing, implementing, maintaining, auditing, and enhancing Hazard Analysis and Critical Control Points (HACCP) in food safety-certified companies are encouraged to participate.
+      - This course is also suitable for professionals involved in the implementation of HACCP within their organizations.

@@ -1,0 +1,145 @@
+# Industry pages with the text of the current site, ticqc.ae (T43, D82; Darya, Nov 22,
+# 2026: the current site's data is true and genuine). Loaded by `seed_site` on top of
+# the page list of en.yaml (industries.pages); en.yaml wins where it has a text.
+# `services`: cards to service pages (by slug) with the current site's words. No
+# figures: the current site gives none with a source.
+industry_pages:
+  oil-gas-and-petrochemicals:
+    source:
+    - "https://ticqc.ae/oil-gas/"
+    - "https://ticqc.ae/testing-oil-gas/"
+    - "https://ticqc.ae/home/"
+    intro: "We help Oil and Gas customers identify, eliminate, control, and monitor the reliability of their production, transportation and storage infrastructure. High-value bulk goods like oil, chemicals, fuels, and edible oils are measured, tested, and verified for shipment and inventory."
+    services_heading: "Testing, inspection and services for oil and gas"
+    services:
+    - page: "quantity-and-quality-inspection"
+      text: "At ports, our services verify the quality and quantity of oil and gas shipments, including crude oil, petroleum products, LNG and LPG, during loading or unloading."
+    - page: "loading-and-discharge-supervision"
+      text: "Oversight of loading and offloading operations to ensure proper handling, safety protocols, and adherence to loading plans."
+    - page: "marine-and-cargo-surveys"
+      text: "OBQ/ROB determination and quantity calculations, ullage gauging of cargo tanks, bunker surveys, on/off hire inspections and cargo cleanliness certification."
+    - page: "oil-gas-and-petroleum-testing"
+      text: "Thorough crude oil analysis to ensure alignment with refinery process requirements, and specification testing for gases based on international, national, trade or company-specific standards."
+    why_heading: "Independent custody transfer inspection"
+    why_text: "Custody transfer inspection ensures accurate measurement and verification of petroleum products during transfer and storage. We ensure impartiality and accuracy in the measurement and documentation of the transferred fluids. Our tank calibration service covers both shore tanks and ship tanks. Independent third-party inspections reduce the risk of defects."
+  marine-and-shipping:
+    source:
+    - "https://ticqc.ae/marine/"
+    - "https://ticqc.ae/home/"
+    intro: "Our marine services include draft surveys, ullage surveys, bunker surveys, sealing/unsealing, on/off hire surveys, carrier cleanliness inspections, and hose tests."
+    services_heading: "Marine services"
+    services:
+    - page: "marine-and-cargo-surveys"
+      text: "Draft surveys, ullage surveys, bunker surveys, sealing/unsealing, on/off hire surveys, carrier cleanliness inspections and hose tests."
+    why_heading: "Experienced marine surveyors"
+    why_text: "All our marine services are conducted by experienced marine surveyors to ensure accuracy, security, and integrity in cargo handling and vessel operations."
+  consumer-products-and-retail:
+    source:
+    - "https://ticqc.ae/commodities-consumer-products/"
+    - "https://ticqc.ae/home/"
+    - "https://ticqc.ae/glassware-inspection-services/"
+    - "https://ticqc.ae/bed-sheet-comforter-set-inspection-services/"
+    - "https://ticqc.ae/textile-fabric-inspection-services/"
+    - "https://ticqc.ae/cosmetics-personal-care-products-inspection-services/"
+    - "https://ticqc.ae/household-electrical-appliance-inspection-testing-services/"
+    - "https://ticqc.ae/noodles-inspection-services/"
+    - "https://ticqc.ae/ceramic-porcelain-tile-inspection-services/"
+    - "https://ticqc.ae/government-services-programs-gsp/"
+    intro: "Third-party commodity inspection services by TIC ensure goods meet contractual, industry, and regulatory standards, offering impartial verification and assurance to all parties involved. This service covers a wide range of commodities and consumer products."
+    services_heading: "Services for commodities and consumer products"
+    services:
+    - page: "vendor-and-third-party-inspection"
+      text: "Third-party inspection services for electrical and electronic products, textiles, hard goods and toys, and cosmetics (skin care, makeup, hair care, fragrances)."
+    - page: "pre-shipment-inspection"
+      text: "Textiles and fabrics, bed sheets and comforter sets, glassware, cosmetics and personal care products, household electrical appliances and noodles: product quality verified before shipment."
+    - page: "quantity-and-quality-inspection"
+      text: "Quality control, quantity control, weight control, sampling, packing and marking inspection, visual inspection and damage surveys."
+    - page: "container-loading-inspection"
+      text: "Container Loading Supervision ensures that approved products are loaded correctly into shipping containers while minimizing the risk of damage during transportation."
+    - page: "factory-and-supplier-audits"
+      text: "Factory audits provide buyers with valuable insight into a supplier's production capability, quality management systems, and operational practices before placing or expanding orders."
+    - page: "consumer-product-testing"
+      text: "TIC can coordinate laboratory testing to verify critical performance characteristics of textile products. Laboratory testing helps verify that cosmetic products meet safety and quality requirements."
+    - page: "programs"
+      text: "Product types in the Iraq Verification of Conformity Program include toys, electric and electronic products, cosmetics and personal hygiene products, and household appliances."
+    why_heading: "Impartial verification and assurance"
+    why_text: "Third-party inspection offers impartial verification and assurance to all parties involved. These services are critical in verifying product compliance and reliability, thereby enhancing consumer trust and safety."
+  vehicles-and-automotive:
+    source:
+    - "https://ticqc.ae/vehicle-and-automotive-inspection/"
+    - "https://ticqc.ae/government-services-programs-gsp/"
+    - "https://ticqc.ae/home/"
+    intro: "We specialize in offering comprehensive third-party inspection services and Certificates of Conformity (COC) for vehicles. Our third-party inspections involve a thorough and unbiased examination of vehicles to ensure they meet the required standards and regulations."
+    services_heading: "Vehicle inspection and Certificates of Conformity"
+    services:
+    - page: "vehicle-inspection"
+      text: "A vehicle damage survey assesses the extent and nature of damage sustained by a vehicle: visual inspection, structural analysis, mechanical and electrical systems check, damage report."
+    - page: "programs"
+      title: "Certificates of Conformity (COC) for vehicles"
+      text: "Vehicle pre-export inspection and Certificate of Conformity (COC) are mandatory for exporting vehicles to many countries."
+    why_heading: "A thorough and unbiased examination"
+    why_text: "This service helps to identify any potential issues or defects that may affect the vehicle's performance, safety, or compliance with industry standards. A final evaluation summarizes the overall condition of the vehicle and the extent of the damage. This helps in making informed decisions regarding repairs, insurance claims, and potential resale value."
+    where_points:
+    - "Kurdistan Region of Iraq: TIC Quality Control has been appointed as the sole Certification Body authorized to issue Certificates of Conformity (COC) for vehicles entering through the Parvez Khan border crossing."
+  industrial-equipment-and-manufacturing:
+    source:
+    - "https://ticqc.ae/commodities-consumer-products/"
+    - "https://ticqc.ae/testing-non-destructive-testing-ndt/"
+    - "https://ticqc.ae/testing-minerals-metal/"
+    - "https://ticqc.ae/iraq-coc-gujarat/"
+    services_heading: "Services for industrial equipment and manufacturing"
+    services:
+    - page: "vendor-and-third-party-inspection"
+      text: "Third-party inspection services for metals (steel coils, rods and billet, copper, aluminum): impartial evaluations of metal quality and quantity against industry standards and specifications."
+    - page: "non-destructive-testing"
+      text: "TIC Quality Control performs Non-Destructive Testing (NDT) scopes through the sister company Seacorr."
+    - page: "minerals-and-metals-testing"
+      text: "Sample preparation and physical and chemical testing solutions for a wide range of raw, natural and manufactured mineral and metal commodities."
+    - page: "programs"
+      text: "Iraq CoC: engineering and industrial goods manufacturers can schedule pre-shipment inspection directly at their production facility."
+    where_points:
+    - "Rajkot and Vadodara (Gujarat, India): engineering and industrial goods manufacturers, pre-shipment inspection at the production facility for the Iraq CoC."
+  construction-and-infrastructure:
+    source:
+    - "https://ticqc.ae/ceramic-porcelain-tile-inspection-services/"
+    - "https://ticqc.ae/sanitary-ware-water-closet-inspection-services/"
+    - "https://ticqc.ae/natural-stone-marble-granite-inspection/"
+    - "https://ticqc.ae/government-services-programs-gsp/"
+    - "https://ticqc.ae/egypt-coc/"
+    - "https://ticqc.ae/botswana-coc/"
+    intro: "Sanitary ware and water closets are essential products for residential, commercial, hospitality, healthcare, and infrastructure projects. Natural stone products are widely used in residential buildings, commercial developments, architectural projects, infrastructure and interior applications."
+    services_heading: "Inspection and quality control for construction products"
+    services:
+    - page: "pre-shipment-inspection"
+      text: "Ceramic and porcelain tiles, sanitary ware and water closets, natural stone, marble and granite: product quality verified before shipment or delivery."
+    - page: "factory-and-supplier-audits"
+      text: "Factory audits provide buyers with valuable insight into a supplier's production capability, quality management systems, and operational practices before placing or expanding orders."
+    - page: "container-loading-inspection"
+      text: "Product quality can be compromised during loading if cartons are mishandled, stacked incorrectly, or exposed to moisture. TIC supervises the loading process."
+    - page: "consumer-product-testing"
+      text: "TIC coordinates laboratory testing to verify the physical, chemical, and mechanical performance of ceramic and porcelain tiles."
+    - page: "programs"
+      text: "Construction products are a product type in the Iraq program; iron, steel and construction materials in the Egypt program; cement and other building and construction products in the Botswana program."
+    why_heading: "Identify quality issues before shipment"
+    why_text: "Even minor manufacturing defects such as cracks, uneven glazing, dimensional variations, excessive water absorption or packaging damage can result in rejected shipments, costly project delays, customer complaints and financial losses. Our experienced inspectors evaluate products at every stage of production."
+  government-and-public-sector:
+    source:
+    - "https://ticqc.ae/government-services-programs-gsp/"
+    - "https://ticqc.ae/home/"
+    intro: "TIC manages various governmental conformity verification programs, all carefully designed to maintain the quality and safety standards specified by the importing country. By implementing these initiatives, we focus on safeguarding consumers and the environment while also enhancing the standing of companies."
+    services_heading: "Government services programs"
+    services:
+    - page: "programs"
+      text: "Iraq Verification of Conformity Program: COSQC's program for the pre-inspection, testing and issuance of certificates of conformity for goods imported into the Republic of Iraq."
+    - page: "pre-shipment-inspection"
+      text: "We carry out conformity evaluations before goods are shipped: reviewing and verifying the documents, gathering samples for lab testing when required, and inspecting goods physically."
+    - page: "product-conformity-certification"
+      text: "Once the conformity assessment process is complete, we issue the mandatory certificate required by the authorities of the importing country."
+    - page: "vehicle-inspection"
+      text: "Vehicle pre-export inspection and Certificate of Conformity (COC) are mandatory for exporting vehicles to many countries."
+    why_heading: "Program goals: Iraq Verification of Conformity Program"
+    why_text: "Prevent non-compliant and fake products from entering the market. Simplify customs clearance process. Minimize the risk of product rejection at the borders. Protect industries from unfair competition."
+    where_points:
+    - "Republic of Iraq: the program of the Central Organization for Standardization and Quality Control (COSQC) for pre-inspection, testing and certificates of conformity for imported goods."
+    - "Kurdistan Region of Iraq: TIC Quality Control has been appointed as the sole Certification Body authorized to issue Certificates of Conformity (COC) for vehicles entering through the Parvez Khan border crossing."
+    - "Kurdistan Region of Iraq: the Consignment-Based Conformity Assessment (CBCA) program mandates that all regulated products, including vehicles, must comply with established standards before entering."
