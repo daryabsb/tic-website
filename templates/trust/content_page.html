@@ -6,7 +6,7 @@
 <div class="wrap row policy">
   <aside class="stack policy__side">
     {% if page.sections %}<nav class="stack" aria-label="{% translate 'On this page' %}"><span class="eyebrow policy__label">{% translate "On this page" %}</span><div class="stack toc">{% for block in page.sections %}<a href="#s{{ forloop.counter }}"><span>{{ forloop.counter|stringformat:"02d" }}</span>{{ block.value.heading }}</a>{% endfor %}</div></nav>{% endif %}
-    {% if page.related %}<div class="stack policy__related"><span class="eyebrow">{% translate "Related pages" %}</span>{% for block in page.related %}{% if block.value.live %}<a class="tri" href="{% pageurl block.value %}">{{ block.value.title }}</a>{% endif %}{% endfor %}</div>{% endif %}
+    {% if page.related %}<div class="stack policy__related"><span class="eyebrow">{% translate "Related pages" %}</span>{% for block in page.related %}{% with related=block.value.localized %}{% if related.live %}<a class="tri" href="{% pageurl related %}">{{ related.title }}</a>{% endif %}{% endwith %}{% endfor %}</div>{% endif %}
   </aside>
   <div class="stack policy__body">
     {% for block in page.sections %}<section id="s{{ forloop.counter }}" class="stack policy__sec">{% include_block block %}</section>{% endfor %}

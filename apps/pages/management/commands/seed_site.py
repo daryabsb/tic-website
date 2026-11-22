@@ -1,8 +1,10 @@
 """``python manage.py seed_site``: the content seed (master plan 02, D15).
 
-Reads ``seed/site.yaml`` (language-neutral site settings) and ``seed/<lang>.yaml`` (page
-copy, one file per language) and ``seed/redirects.csv`` (old path, new path; master plan
-10) and ``seed/requests.yaml`` (the request questions and the routing rules, T17).
+Reads ``seed/site.yaml`` (language-neutral site settings), ``seed/en.yaml`` (the page
+copy, in the default language), ``seed/<lang>.yaml`` for another language (the pages that
+are translated first and their text, T29), ``seed/redirects.csv`` (old path, new path;
+master plan 10) and ``seed/requests.yaml`` (the request questions and the routing rules,
+T17).
 Gate 0 seeds the site settings, the home page and the redirects; the other page
 types join their tickets. ``seed/offices.yaml`` holds the fourteen office rows; T20
 loads them when ``OfficePage`` exists.
@@ -29,7 +31,7 @@ from django.db import transaction
 from wagtail.contrib.redirects.models import Redirect
 from wagtail.documents import get_document_model
 from wagtail.models import Locale, Page
-from zeneon_cms.core.locales import ensure_locales
+from zeneon_cms.core.locales import ensure_locales, seed_page_translation
 from zeneon_cms.core.models import SiteSettings
 from zeneon_cms.requests.models import RequestSchema, RoutingCondition, RoutingRule
 
@@ -40,7 +42,9 @@ from apps.news.models import NewsIndexPage, NewsPage
 from apps.offices.access import setup_office
 from apps.offices.models import ContactPage, OfficeIndexPage, OfficePage
 from apps.offices.seed import create_office, fill_office, office_rows
+from apps.pages import translated
 from apps.pages.models import AboutPage, GroupPage, HomePage, LeadershipPage
+from apps.pages.streams import put_in_editor_form
 from apps.people.models import Person
 from apps.programs.models import ProgramIndexPage, ProgramPage, RegulatoryUpdatesPage
 from apps.resources.models import Download, DownloadsPage, QAPage, ResourcesPage
@@ -82,8 +86,13 @@ class Command(BaseCommand):
         with transaction.atomic():
             self.seed_settings()
             codes = [options["language"]] if options["language"] else self.languages()
-            for code in codes:
-                self.seed_language(code)
+            default = settings.LANGUAGE_CODE
+            if default in codes:
+                self.seed_language(default)
+                self.seed_editor_form()
+            self.translated = [code for code in codes if code != default]
+            for code in self.translated:
+                self.seed_translation(code)
             self.seed_requests()
             self.seed_redirects()
             self.changes += ensure_roles()  # groups and workflows (T24, D54)
@@ -238,6 +247,92 @@ class Command(BaseCommand):
             else:
                 out[key] = self.link_pages(home, item)
         return out
+
+    def seed_editor_form(self) -> None:
+        """Every StreamField of every page of the default language in the form the page
+        editor stores (``apps.pages.streams``, D81): only then can the page be
+        translated. The content stays as it is. A page with an editor's draft, and a
+        page that is not live, keeps its latest revision: only its stored row changes."""
+        pages = Page.objects.filter(depth__gte=2, locale=Locale.get_default()).order_by("path")
+        for page in pages.specific():
+            names = put_in_editor_form(page)
+            if not names:
+                continue
+            if page.live and not page.has_unpublished_changes:
+                page.save_revision().publish()
+            else:
+                page.save(update_fields=names, clean=False)
+            self.changes += 1
+
+    # -- other languages (T29, D81) ---------------------------------------------------
+
+    def seed_translation(self, code: str) -> None:
+        """The pages named in ``seed/<code>.yaml`` as translations of the default-
+        language pages, with the file's text (``seed_page_translation`` of the core:
+        each text is a string translation, so a translator sees it in the admin and in
+        the review sheet). A text that has a translation already is kept, so a
+        translator's work is safe. A live page gets a live translation; a draft stays a
+        draft. The texts are drafts until the reviewer approves them (P-5)."""
+        locale = Locale.objects.get(language_code=code)
+        strings = translated.strings(code)
+        same = translated.same(code)
+        for path, page in translated.pages(code):
+            result = seed_page_translation(page, locale, strings, publish=page.live)
+            self.changes += result.added
+            left = [
+                text
+                for text in result.missing
+                if text not in same and any(letter.isalpha() for letter in text)
+            ]
+            if left:  # `manage.py arabic_pages` lists them
+                self.stderr.write(f"{code}: {path or 'home'}: {len(left)} text(s) not translated")
+        self.stdout.write(f"{code}: translated pages checked")
+
+    def seed_schema_translations(self, schemas: dict, programs: dict) -> None:
+        """The request questions of each translated page in its language: the same keys,
+        the labels from ``seed/<code>.yaml`` (a label with no translation stays as it
+        is). Made once; an editor's questions are kept unless ``--reset``."""
+        default = Locale.get_default()
+        for code in getattr(self, "translated", []):
+            locale = Locale.objects.get(language_code=code)
+            strings = translated.strings(code)
+            for _path, topic in translated.pages(code):
+                source = RequestSchema.objects.filter(topic=topic, locale=default).first()
+                if source is None:
+                    continue
+                rows = list(schemas.get(self.schema_key(topic), []))
+                if isinstance(topic, ProgramPage):
+                    rows += programs.get(topic.slug, [])
+                questions = json.dumps(
+                    [self.question(self.translated_row(row, strings)) for row in rows]
+                )
+                schema = RequestSchema.objects.filter(topic=topic, locale=locale).first()
+                if schema is None:
+                    RequestSchema.objects.create(
+                        topic=topic,
+                        locale=locale,
+                        translation_key=source.translation_key,
+                        questions=questions,
+                    )
+                    self.changes += 1
+                elif self.reset:
+                    schema.questions = questions
+                    schema.save()
+                    self.changes += 1
+
+    @classmethod
+    def translated_row(cls, row, strings: dict):
+        """A question row with its labels and help texts translated."""
+        if isinstance(row, list):
+            return [cls.translated_row(item, strings) for item in row]
+        if not isinstance(row, dict):
+            return row
+        return {
+            name: strings.get(value, value)
+            if name in ("label", "help") and isinstance(value, str)
+            else cls.translated_row(value, strings)
+            for name, value in row.items()
+        }
 
     # -- services (T10) -------------------------------------------------------------
 
@@ -889,6 +984,7 @@ class Command(BaseCommand):
         if not data:
             return
         self.seed_schemas(data.get("schemas") or {}, data.get("programs") or {})
+        self.seed_schema_translations(data.get("schemas") or {}, data.get("programs") or {})
         self.seed_routing(data.get("routing") or [])
 
     def seed_schemas(self, schemas: dict, programs: dict) -> None:

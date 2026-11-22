@@ -1354,7 +1354,7 @@ msgid "Certification"
 msgstr "إصدار الشهادات"
 
 msgid "Government & Trade Programs"
-msgstr "برامج الحكومة والتجارة"
+msgstr "البرامج الحكومية والتجارية"
 
 msgid "Audits"
 msgstr "التدقيق"

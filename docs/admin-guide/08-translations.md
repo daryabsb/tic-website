@@ -44,6 +44,22 @@ the current Arabic draft, and a column for the approved text.
 An Arabic page goes live only when all its pieces are approved. Otherwise it stays a
 draft.
 
+## The first Arabic pages
+
+Sixteen pages already have an Arabic draft: Home, Verify, Our offices and six office
+pages (Baghdad, Cairo, Amman, Riyadh, Dubai, Sharjah), About, Accreditations,
+Impartiality, Privacy, Complaints, Programs and the Iraq program. The developer wrote the
+drafts (file `seed/ar.yaml`). They are drafts until the reviewer approves them. On
+staging these drafts are live, so the reviewer can read the pages. Production shows no
+Arabic page before the sign-off.
+
+- The reviewer uses **Way 2** (the review sheet). Each row with a draft needs **OK** or
+  the corrected Arabic in **approved text**.
+- A text you change in the translation editor or in the sheet is kept. The seed does not
+  write over it.
+- An address, a legal name and a mark (TIC, COSQC, ISO/IEC 17020) stay in Latin letters
+  until the office gives the Arabic.
+
 ## When Arabic goes live
 
 Arabic pages are hidden from visitors until the reviewer's sign-off is recorded. Then the

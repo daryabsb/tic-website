@@ -61,7 +61,7 @@ def test_policy_pages_with_their_facts_are_live(client, seeded):
         ("impartiality", "TIC-IMS-IMP-A-25-10"),
         ("certificate-and-logo-use", "TIC-UCM-01"),
     ):
-        page = ContentPage.objects.get(slug=slug)
+        page = ContentPage.objects.get(slug=slug, locale__language_code="en")
         assert page.live and page.pdf and page.document_owner
         html = client.get(page.url).content.decode()
         assert code in html and page.pdf.url in html
@@ -73,7 +73,7 @@ def test_policy_pages_with_their_facts_are_live(client, seeded):
 
 def test_policy_pages_without_their_facts_stay_drafts(client, seeded):
     for slug in ("subcontracting", "privacy", "terms"):
-        page = ContentPage.objects.get(slug=slug)
+        page = ContentPage.objects.get(slug=slug, locale__language_code="en")
         assert not page.live, slug
         assert client.get(f"/en/about/{slug}/").status_code == 404
 
