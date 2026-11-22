@@ -404,10 +404,11 @@
   {
    "page": "services/inspection/loading-and-discharge-supervision",
    "field": "header_image",
-   "file": "unsplash/Dzh-udFZXrA.jpg",
-   "alt": "Cranes load containers onto a ship at a port, with a forklift on the quay",
+   "file": "unsplash/ip0yX8W1veE.jpg",
+   "alt": "Container ships at the quay of the port of Tanjung Priok in Jakarta, from the air",
    "source": "unsplash",
-   "credit": "Haris Illahi, https://unsplash.com/photos/Dzh-udFZXrA"
+   "credit": "Haris Illahi, https://unsplash.com/photos/ip0yX8W1veE",
+   "replaces": "Dzh-udFZXrA"
   },
   {
    "page": "services/inspection/quantity-and-quality-inspection",
@@ -420,8 +421,11 @@
   {
    "page": "services/inspection/container-loading-inspection",
    "field": "header_image",
-   "file": "files/2024/09/1.-Port-Borders.jpeg",
-   "alt": "Container trucks at a port, with a cargo ship and stacked containers behind them"
+   "file": "unsplash/Dzh-udFZXrA.jpg",
+   "alt": "Cranes load containers onto a ship at a port, with a forklift on the quay",
+   "source": "unsplash",
+   "credit": "Haris Illahi, https://unsplash.com/photos/Dzh-udFZXrA",
+   "replaces": "1_"
   },
   {
    "page": "services/inspection/vendor-and-third-party-inspection",
@@ -432,8 +436,11 @@
   {
    "page": "services/inspection/marine-and-cargo-surveys",
    "field": "header_image",
-   "file": "files/2026/10/Complete-TICQC-Botswana-Standards-BOS-Compliance-Guide-COC.webp",
-   "alt": "A container ship alongside the quay under the port cranes"
+   "file": "unsplash/NjcRX8Vfzk8.jpg",
+   "alt": "A container ship alongside the quay, with the port cranes over its deck",
+   "source": "unsplash",
+   "credit": "Pix Tresa, https://unsplash.com/photos/NjcRX8Vfzk8",
+   "replaces": "Complete-TICQC-Botswana"
   },
   {
    "page": "services/inspection/vehicle-inspection",
@@ -604,8 +611,9 @@
   {
    "page": "news/iraq-verification-of-conformity-voc-program",
    "field": "image",
-   "file": "files/2024/07/3.jpg",
-   "alt": "A speaker at the LOX and TIC event on the Iraq Verification of Conformity program"
+   "file": "files/2024/07/10.jpg",
+   "alt": "Three guests talk at the LOX and TIC event on the Iraq program",
+   "replaces": "3_"
   },
   {
    "page": "news/iraq-coc-certificates-begin",
@@ -616,8 +624,11 @@
   {
    "page": "news/iraq-coc-certification-services-in-gujarat",
    "field": "image",
-   "file": "files/2026/03/TIC-Quality-Control-CEO-visit-India-Gandhidham-lab-opening.jpg",
-   "alt": "The TIC team at the opening of the Gandhidham laboratory, during the CEO's visit"
+   "file": "unsplash/2vPGGOU-wLA.jpg",
+   "alt": "A container ship loaded with containers at sea, seen from the bridge",
+   "source": "unsplash",
+   "credit": "Rinson Chory, https://unsplash.com/photos/2vPGGOU-wLA",
+   "replaces": "TIC-Quality-Control-CEO-visit"
   },
   {
    "page": "news/rice-testing-and-inspection",
