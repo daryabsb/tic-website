@@ -7,7 +7,9 @@
 # - Botswana and Libya: the appointment is as the current site states it.
 # - `held`: a page that is not loaded. Saudi Arabia SFDA: the current site says
 #   "designated body", the plan and the Programs index say "Designation in progress".
-#   It is loaded when a director confirms the designation (P-13).
+#   Darya, Nov 22, 2026 (D83): the site keeps "Designation in progress". The page is
+#   loaded only when someone shows the proof of the designation (the SFDA letter, or
+#   the SFDA list that names TIC, with its date and number).
 # - No source names the office that owns a program: `owning_office` is empty.
 program_pages:
 - slug: "egypt-certificate-of-conformity"

@@ -1,8 +1,8 @@
 # Inventory: the 56 pages of the current site (ticqc.ae) and where each goes
 
 > **After this map was made (T43, D82):** Egypt, Botswana and Libya are loaded as program
-> pages (`seed/program-pages.yaml`); Saudi Arabia SFDA is held in that file until a director
-> confirms the designation. The "Paints & Coatings" page is not moved: on the current site
+> pages (`seed/program-pages.yaml`); Saudi Arabia SFDA is held in that file until someone
+> shows the proof of the designation (D83; the site keeps "Designation in progress"). The "Paints & Coatings" page is not moved: on the current site
 > its body is a second copy of the sanitary ware text. The Iraq Verification of Conformity
 > page is also an article now. Sure single facts that are applied: the Lahore phone, the
 > careers criteria, the training overview, the client declaration form in the Iraq
