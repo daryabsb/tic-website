@@ -1,6 +1,6 @@
 """T10 Services: the hub, the groups and the service page from seed; the publish rule
-(all eleven parts in order; the partner laboratory on testing pages); the Person card
-(D26)."""
+(the eleven parts in order, part 01 filled, a filled part complete; D26, softer in D84);
+the Person card."""
 
 from io import StringIO
 
@@ -172,13 +172,40 @@ def test_partner_laboratory_is_named_on_the_page(client, psi):
 # -- the publish rule -------------------------------------------------------------------
 
 
-def test_seeded_psi_lacks_only_what_a_director_owes(psi):
-    problems = service_page_problems(
-        intro=psi.intro, parts=psi.parts, group="inspection", partner_lab=None
-    )
+def test_seeded_psi_may_be_published_without_contact_and_review(psi):
+    """D84: the named contact and the review line show their placeholder until a
+    director gives them; they no longer stop a publish."""
+    assert service_page_problems(intro=psi.intro, parts=psi.parts) == []
+
+
+def test_an_empty_part_may_stay_but_part_01_may_not(psi):
+    raw = psi.parts.raw_data
+    for block in raw:
+        if block["type"] == "documents":
+            block["value"]["items"] = []
+        if block["type"] == "what_it_is":
+            block["value"]["text"] = ""
+    psi.parts = list(raw)
+
+    problems = service_page_problems(intro=psi.intro, parts=psi.parts)
+
+    assert problems == ["What it is: write a heading and the text."]
+
+
+def test_a_half_filled_part_is_refused(psi):
+    raw = psi.parts.raw_data
+    for block in raw:
+        if block["type"] == "how_it_works":
+            block["value"]["steps"] = [{"title": "Booking", "text": ""}]
+        if block["type"] == "reviewed":
+            block["value"]["date"] = "2026-11-22"
+            block["value"]["office"] = None
+    psi.parts = list(raw)
+
+    problems = service_page_problems(intro=psi.intro, parts=psi.parts)
 
     assert problems == [
-        "Contact: choose the named contact.",
+        "How it works: add at least one step with a title and a text.",
         "Last reviewed: set the date and the owning office.",
     ]
 
@@ -186,20 +213,13 @@ def test_seeded_psi_lacks_only_what_a_director_owes(psi):
 def test_complete_page_may_be_published(psi, home):
     psi = _complete(psi, office=home)
 
-    assert (
-        service_page_problems(
-            intro=psi.intro, parts=psi.parts, group="inspection", partner_lab=None
-        )
-        == []
-    )
+    assert service_page_problems(intro=psi.intro, parts=psi.parts) == []
 
 
 def test_missing_parts_are_named_by_number(psi):
     psi.parts = [b for b in psi.parts.raw_data if b["type"] not in ("documents", "qa")]
 
-    problems = service_page_problems(
-        intro=psi.intro, parts=psi.parts, group="inspection", partner_lab=None
-    )
+    problems = service_page_problems(intro=psi.intro, parts=psi.parts)
 
     assert "Add the missing parts: 04, 09." in problems
 
@@ -209,22 +229,9 @@ def test_parts_must_keep_their_order(psi, home):
     raw = psi.parts.raw_data
     psi.parts = [raw[1], raw[0], *raw[2:]]
 
-    problems = service_page_problems(
-        intro=psi.intro, parts=psi.parts, group="inspection", partner_lab=None
-    )
+    problems = service_page_problems(intro=psi.intro, parts=psi.parts)
 
     assert problems == ["Put the parts in their fixed order, 01 to 11."]
-
-
-def test_testing_pages_need_the_partner_laboratory(psi, home):
-    psi = _complete(psi, office=home)
-
-    problems = service_page_problems(
-        intro=psi.intro, parts=psi.parts, group="testing", partner_lab=None
-    )
-
-    assert len(problems) == 1
-    assert "partner laboratory" in problems[0]
 
 
 # -- the admin: save draft allowed, publish refused --------------------------------------

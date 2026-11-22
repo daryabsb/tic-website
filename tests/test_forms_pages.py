@@ -15,7 +15,7 @@ from apps.careers.models import CareersPage
 from apps.programs.models import ProgramPage
 from apps.services.intake import routing_facts
 from apps.services.models import ServiceGroupPage
-from apps.training.models import CoursePage, TrainingIndexPage, course_problems
+from apps.training.models import CoursePage, TrainingIndexPage
 from apps.trust.models import ComplaintsPage
 
 TODAY = datetime.date.today()
@@ -216,9 +216,31 @@ def test_the_ten_courses_are_live_with_the_current_sites_text(client, seeded):
     assert group.see_also_id == index.pk
 
 
-def test_a_course_needs_price_dates_and_certificate_to_publish():
-    problems = course_problems({"price": None, "dates": [], "certificate_text": "Attendance"})
-    assert set(problems) == {"price", "dates", "certificate_issuer"}
+def test_an_editor_publishes_a_course_without_price_dates_or_certificate(
+    client, seeded, django_user_model
+):
+    """D84: a course has no publish rule; it shows "On request" for what it lacks."""
+    from wagtail.test.utils.form_data import inline_formset, nested_form_data, streamfield
+
+    user = django_user_model.objects.create_superuser("trainer", "t@example.com", "x")
+    client.force_login(user)
+    course = CoursePage.objects.get(slug="iso-9001-awareness", locale__language_code="en")
+    data = nested_form_data(
+        {
+            "title": course.title,
+            "slug": course.slug,
+            "kind": course.kind,
+            "summary": "Changed by an editor.",
+            "dates": streamfield([]),
+            "comments": inline_formset([]),
+            "action-publish": "action-publish",
+        }
+    )
+    response = client.post(f"/admin/pages/{course.pk}/edit/", data)
+
+    assert response.status_code == 302, response.content.decode()[:2000]
+    course.refresh_from_db()
+    assert course.summary == "Changed by an editor." and not course.has_unpublished_changes
 
 
 def test_a_published_course_shows_its_facts_and_only_coming_dates(client, seeded):

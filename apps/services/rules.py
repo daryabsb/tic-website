@@ -1,5 +1,9 @@
-"""The publish rule of a service page (master plan 03: "all eleven; partner_lab for
-testing").
+"""The publish rule of a service page (master plan 03; made softer in T43, D84).
+
+A page needs its intro, the eleven parts in their order, and part 01 ("What it is").
+Any other part may stay empty: the page does not draw an empty part (D82), and the
+named contact and the review line show their bracketed placeholder. A part that has
+something in it must be complete, because the page draws it.
 
 ``service_page_problems`` returns the reasons a page may not be published, in the
 editor's words; an empty list means it may. The admin form calls it on publish and on
@@ -83,7 +87,6 @@ PART_CHECKS = {
         )
     ],
     "contact": [
-        (lambda v: v.get("person"), _l("Contact: choose the named contact.")),
         (lambda v: _text(v.get("schema")), _l("Contact: name the request form.")),
     ],
     "reviewed": [
@@ -115,11 +118,26 @@ def part_has_content(name: str, value) -> bool:
     return True if check is None else bool(check(value))
 
 
+# The one part no page is published without: the page must say what the service is.
+NEEDED_PARTS = ("what_it_is",)
+
+
+def _may_stay_empty(name: str, value) -> bool:
+    """True for a part with nothing in it that the page may be published without."""
+    if name in NEEDED_PARTS:
+        return False
+    if name == "reviewed":
+        return not value.get("date") and not value.get("office")
+    return name in PART_CONTENT and not part_has_content(name, value)
+
+
 def _part_problems(name: str, value) -> list[str]:
+    if _may_stay_empty(name, value):
+        return []
     return [str(message) for check, message in PART_CHECKS.get(name, []) if not check(value)]
 
 
-def service_page_problems(*, intro: str, parts, group: str | None, partner_lab) -> list[str]:
+def service_page_problems(*, intro: str, parts) -> list[str]:
     problems = []
     if not _text(intro):
         problems.append(_("Intro: write the one sentence under the title."))
@@ -136,9 +154,4 @@ def service_page_problems(*, intro: str, parts, group: str | None, partner_lab) 
 
     for block in parts or []:
         problems.extend(_part_problems(block.block_type, block.value))
-
-    if group == "testing" and partner_lab is None:
-        problems.append(
-            _("Testing pages name the partner laboratory: choose it under 'Partner laboratory'.")
-        )
     return problems

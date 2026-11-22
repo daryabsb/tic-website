@@ -301,8 +301,34 @@ class FiguresBlock(blocks.StructBlock):
         template = "pages/blocks/figures.html"
 
 
+class StatementBlock(blocks.StructBlock):
+    """About: mission, vision and values, in the current site's words (T43, D85). One
+    card per statement, a title and its text."""
+
+    heading = blocks.CharBlock(
+        label=_("heading"), max_length=80, default="Mission, vision and values"
+    )
+    statements = blocks.ListBlock(
+        blocks.StructBlock(
+            [
+                ("title", blocks.CharBlock(label=_("title"), max_length=40)),
+                ("text", blocks.TextBlock(label=_("text"), max_length=600)),
+            ]
+        ),
+        min_num=1,
+        max_num=6,
+        label=_("statements"),
+    )
+
+    class Meta:
+        icon = "pick"
+        label = _("Mission, vision and values")
+        template = "pages/blocks/statements.html"
+
+
 ABOUT_SECTIONS = [
     ("story", StoryBlock()),
+    ("statements", StatementBlock()),
     ("paragraph", ParagraphBlock(features=["bold", "italic", "link", "ul", "ol"])),
     ("timeline", TimelineBlock()),
     ("figures", FiguresBlock()),
