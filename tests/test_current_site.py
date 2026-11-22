@@ -93,6 +93,7 @@ def test_a_moved_service_page_is_live_and_draws_only_the_parts_with_text(client,
         if name not in drawn:
             assert f'id="{name}"' not in html, name
     assert "documents" not in drawn  # the current site lists no documents for this service
+    assert 'class="fb' not in html  # no fact is known: no facts bar with four brackets
     assert len(page.parts) == 11  # the eleven parts stay, for the editor
 
 

@@ -346,7 +346,10 @@ class ServicePage(ScriptNormalisationMixin, _HeaderFields, Page):  # noqa: DJ008
         # The contact page of this language (T26). The home page is the locale root.
         home = self.get_ancestors().filter(depth=2).first()
         context["contact_href"] = f"{home.url}contact/" if home else ""
-        context["facts"] = self.facts
+        # A page with none of the eight fact texts draws no facts bar (T43, D82): four
+        # bracketed cells say nothing. With one fact, the others keep their bracket (D77).
+        has_fact = any(getattr(self, name) for name in FACT_FIELDS)
+        context["facts"] = self.facts if has_fact else []
         return context
 
     @property
