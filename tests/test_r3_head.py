@@ -169,6 +169,8 @@ def test_the_phone_top_bar_hides_client_area_and_never_breaks_a_text():
     """On a phone the top bar is: Verify a certificate, the language select, the search
     icon. "Client area" moves into the menu. `.util a` sets `display`, so the rule that
     hides it must name `.util` too; and no text of the bar breaks into two lines."""
+    from pathlib import Path
+
     css = Path("static/css/site.css").read_text(encoding="utf-8")
     phone = css.split("@media (max-width: 1180px) {", 1)[1].split("\n}\n", 1)[0]
 
