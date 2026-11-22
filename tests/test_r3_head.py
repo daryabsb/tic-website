@@ -163,3 +163,16 @@ def test_the_band_head_keeps_dark_text_on_its_light_band():
     assert ".ph.band::before { display: none; }" in css
     assert ".ph.band .ph__intro { color: var(--tic-charcoal); }" in css
     assert ".ph.band .eyebrow { color: var(--tic-red); }" in css
+
+
+def test_the_phone_top_bar_hides_client_area_and_never_breaks_a_text():
+    """On a phone the top bar is: Verify a certificate, the language select, the search
+    icon. "Client area" moves into the menu. `.util a` sets `display`, so the rule that
+    hides it must name `.util` too; and no text of the bar breaks into two lines."""
+    css = Path("static/css/site.css").read_text(encoding="utf-8")
+    phone = css.split("@media (max-width: 1180px) {", 1)[1].split("\n}\n", 1)[0]
+
+    assert ".util .util__hide-sm, .util .util__label { display: none; }" in phone
+    assert ".menu .menu__util { display: flex;" in phone  # Client area is in the menu
+    bar_link = next(line for line in css.splitlines() if line.startswith(".util a {"))
+    assert "white-space: nowrap" in bar_link

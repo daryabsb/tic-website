@@ -112,7 +112,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .util { background: var(--tic-black); color: var(--tic-hairline); }
 .util__in { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 36px; }
 .util__end { display: flex; align-items: center; gap: 24px; }
-.util a { font-size: 13px; text-decoration: none; color: var(--tic-hairline); display: inline-flex; align-items: center; gap: 8px; min-height: 36px; }
+.util a { font-size: 13px; text-decoration: none; color: var(--tic-hairline); display: inline-flex; align-items: center; gap: 8px; min-height: 36px; white-space: nowrap; }
 .util a:hover { color: var(--tic-white); }
 .util a.util__verify { font-weight: 600; color: var(--tic-white); }
 .util__dot { width: 8px; height: 8px; background: var(--tic-red); display: inline-block; }
@@ -143,7 +143,9 @@ button, input, select, textarea { font: inherit; color: inherit; }
   .menu .btn { margin-top: 12px; }
   .util__in { min-height: 40px; }
   .util__end { gap: 16px; }
-  .util__hide-sm, .util__label { display: none; }
+  /* .util a sets display, so the phone rule names .util too: without it "Client area"
+     stayed in the bar and the texts broke into two lines. */
+  .util .util__hide-sm, .util .util__label { display: none; }
 }
 .menu-icon { width: 24px; height: 24px; display: block; }
 .hdr__menu[open] .menu-icon--open { display: none; }
