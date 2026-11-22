@@ -91,7 +91,9 @@ def test_the_cta_band_carries_the_office_numbers(client, offices, site_numbers):
     noida = client.get(offices["noida"].url).content.decode()
     assert 'href="tel:+919211711993"' in noida  # Noida's own phone
     assert "wa.me/919211711993" in noida  # the same number is its WhatsApp (D49)
-    iraq = ProgramPage.objects.get(slug="iraq-certificate-of-conformity")
+    iraq = ProgramPage.objects.get(
+        slug="iraq-certificate-of-conformity", locale__language_code="en"
+    )
     assert iraq.owning_office.specific == offices["baghdad"]
     assert channels_for(iraq).office == offices["baghdad"]
     home = channels_for(iraq.get_parent().get_parent())
@@ -139,7 +141,8 @@ def test_add_office_makes_the_group_and_the_collection_once(offices):
 def test_add_office_makes_a_missing_page_from_its_row(offices):
     offices["amman"].delete()
     call_command("add_office", "amman", verbosity=0)
-    assert OfficePage.objects.get(slug="amman").title == "Amman office"
+    amman = OfficePage.objects.get(slug="amman", locale__language_code="en")
+    assert amman.title == "Amman office"
     with pytest.raises(CommandError):
         call_command("add_office", "atlantis")
 

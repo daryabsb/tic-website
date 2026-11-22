@@ -30,9 +30,9 @@ def office_of(page):
     if isinstance(specific, OfficePage):
         return specific
     owner = getattr(specific, "owning_office", None)
-    if owner is not None and owner.live:
-        owner = owner.specific
-        if isinstance(owner, OfficePage):
+    if owner is not None:
+        owner = owner.localized.specific  # the office's page in the visitor's language
+        if owner.live and isinstance(owner, OfficePage):
             return owner
     return None
 

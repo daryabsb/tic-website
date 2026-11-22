@@ -220,7 +220,7 @@ def test_programs_follow_their_group_in_step_one(iraq):
 
 
 def test_the_program_schema_has_the_route_question(iraq):
-    schema = RequestSchema.objects.get(topic=iraq.page_ptr)
+    schema = RequestSchema.objects.get(topic=iraq.page_ptr, locale=iraq.locale)
     keys = [block.value["key"] for block in schema.questions]
     assert keys == ["country", "destination", "route"]
 

@@ -215,7 +215,22 @@ class TimelineRowBlock(blocks.StructBlock):
         label = _("Timeline row")
 
 
-class TimelineBlock(blocks.StructBlock):
+class ListsInsideMixin:
+    """For a StructBlock that holds a list and sits directly inside another StructBlock.
+
+    wagtail-localize translates a list only where it finds the stored rows, and for a
+    block inside a block it does not look for them: the list would stay in the source
+    language. This gives it the rows (T29, D81). A test finds every block that needs it.
+    """
+
+    def get_translatable_segments(self, value):
+        from wagtail_localize.segments.extract import StreamFieldSegmentExtractor
+
+        stored = {"value": self.get_prep_value(value)}
+        return StreamFieldSegmentExtractor(None).handle_struct_block(value, raw_value=stored)
+
+
+class TimelineBlock(ListsInsideMixin, blocks.StructBlock):
     heading = blocks.CharBlock(label=_("heading"), max_length=80, default="A short, dated timeline")
     rows = blocks.ListBlock(TimelineRowBlock(), min_num=1, max_num=12, label=_("rows"))
 

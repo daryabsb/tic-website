@@ -336,10 +336,18 @@ class ProgramPage(ScriptNormalisationMixin, ReviewByMixin, _HeaderFields, Page):
         return super().review_recipients()
 
     @property
+    def office_page(self):
+        """The owning office's live page, in the visitor's language when the office has
+        a live page in it (the field holds the same page in every language; T29)."""
+        if not self.owning_office_id:
+            return None
+        office = self.owning_office.localized.specific
+        return office if office.live else None
+
+    @property
     def office_label(self) -> str:
-        if self.owning_office_id and self.owning_office.live:
-            return self.owning_office.title
-        return self.owning_office_name
+        office = self.office_page
+        return office.title if office else self.owning_office_name
 
     @property
     def status_line(self) -> str:
@@ -376,7 +384,7 @@ class ProgramPage(ScriptNormalisationMixin, ReviewByMixin, _HeaderFields, Page):
         context["complaints_page"] = (
             ComplaintsPage.objects.live().public().filter(locale=self.locale).first()
         )
-        office = self.owning_office if self.owning_office_id and self.owning_office.live else None
+        office = self.office_page
         context["office_href"] = office.url if office else ""
         context["talk_label"] = self.talk_label if office else ""
         context["facts"] = self.facts
@@ -385,8 +393,7 @@ class ProgramPage(ScriptNormalisationMixin, ReviewByMixin, _HeaderFields, Page):
     @property
     def facts(self):
         """Regulator · Appointed · Status · Office (T39, D77)."""
-        office = self.owning_office.specific if self.owning_office_id else None
-        office = office if office is not None and office.live else None
+        office = self.office_page
         abbreviation = self.regulator_abbreviation
         date = date_format(self.appointment_date, "j F Y") if self.appointment_date else ""
         status = str(self.get_appointment_status_display()) if self.appointment_status else ""
