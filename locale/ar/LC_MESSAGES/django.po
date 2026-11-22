@@ -1987,6 +1987,16 @@ msgid ""
 msgstr ""
 "واتساب أو الهاتف أو نموذج طلب عرض السعر. يجيبك شخص بالاسم خلال يوم عمل واحد."
 
+msgid ""
+"WeChat, phone or the quote form. Answered by a named person within one "
+"working day."
+msgstr ""
+"وي تشات أو الهاتف أو نموذج طلب عرض السعر. يجيبك شخص بالاسم خلال يوم عمل واحد."
+
+msgid ""
+"Phone or the quote form. Answered by a named person within one working day."
+msgstr "الهاتف أو نموذج طلب عرض السعر. يجيبك شخص بالاسم خلال يوم عمل واحد."
+
 msgid "WeChat"
 msgstr "وي تشات"
 
