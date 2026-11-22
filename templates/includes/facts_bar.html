@@ -1,0 +1,4 @@
+{# Facts bar (R3 rules parts 3 and 7; T39, D77): four fixed cells, or three when a counted cell has nothing to count. Values in <bdi>: a phone number or an email keeps its order in Arabic (D75). Context: facts (apps.pages.facts.Fact). #}{% if facts %}
+<div class="fb{% if facts|length == 3 %} fb--c3{% elif facts|length == 2 %} fb--c2{% endif %}"><div class="wrap fb__in">
+{% for fact in facts %}<div class="fb__f"><span class="lbl">{{ fact.label }}</span><span class="fb__v"><bdi>{{ fact.value }}</bdi></span>{% if fact.note %}<span class="fb__s"><bdi>{{ fact.note }}</bdi></span>{% endif %}</div>{% endfor %}
+</div></div>{% endif %}

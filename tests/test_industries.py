@@ -28,7 +28,7 @@ def test_the_hub_lists_the_eight_industries(seeded_home, client):
 
     assert response.status_code == 200
     assert "Eight industries" in html
-    assert html.count('class="svc svc--sm"') == 8
+    assert html.count('class="tcard"') == 8  # no photos in the seed: text cards (D79)
     assert FOOD_URL in html
     assert "Government &amp; Public Sector" in html
 
@@ -39,10 +39,12 @@ def test_the_food_page_renders_its_parts(seeded_home, client):
 
     assert response.status_code == 200
     assert "Services for food and agricultural trade" in html
-    assert html.count('class="svc svc--text"') == 6
+    # Five service cards; the sixth card goes to Programs, drawn as country tiles (D80).
+    assert html.count('class="tcard tcard--sm"') == 5
+    assert '<section class="thin__sec" aria-labelledby="ind-programs">' in html
     assert "Why food traders use TIC" in html
     assert "Transit and testing: Guangzhou, Maharagama" in html
-    assert "Kandla · Rice loading" in html
+    assert "Kandla · Rice loading" not in html  # R3: caption on a photo only
 
 
 def test_cards_link_a_live_service_or_its_group(seeded_home, client):
@@ -52,10 +54,7 @@ def test_cards_link_a_live_service_or_its_group(seeded_home, client):
     assert 'href="/en/services/inspection/pre-shipment-inspection/"' in html
     assert 'href="/en/services/inspection/gafta-superintendence/"' not in html
     assert 'href="/en/services/inspection/"' in html
-    assert (
-        '<span class="eyebrow">Inspection</span><b class="svc__title">Pre-shipment inspection'
-        in html
-    )
+    assert '<span class="eyebrow">Inspection</span><b>Pre-shipment inspection' in html
 
 
 def test_a_card_to_a_live_service_uses_the_service_page(seeded_home, client):

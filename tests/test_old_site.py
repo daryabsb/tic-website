@@ -131,6 +131,46 @@ def test_photos_come_from_the_old_media_folder_and_publish_goes_live(seeded_home
     assert page.image.width == 40
 
 
+def test_a_photo_without_alt_text_gets_the_source_alt_and_stays_live(seeded_home, tmp_path):
+    from PIL import Image as PILImage
+
+    folder = tmp_path / "old-site" / "files" / "2026" / "04"
+    folder.mkdir(parents=True)
+    PILImage.new("RGB", (40, 20), "grey").save(folder / "battery.png")
+    source = _source(tmp_path)
+    posts = json.loads(source.read_text(encoding="utf-8"))
+    alt = posts["posts"][1].pop("image_alt")
+    source.write_text(json.dumps(posts), encoding="utf-8")
+    call_command("import_old_news", source=source, images=tmp_path / "old-site", publish=True)
+    assert NewsPage.objects.get(slug="batteries-export-to-egypt").image_alt == ""
+
+    posts["posts"][1]["image_alt"] = alt
+    source.write_text(json.dumps(posts), encoding="utf-8")
+    call_command("import_old_news", source=source, images=tmp_path / "old-site")
+
+    page = NewsPage.objects.get(slug="batteries-export-to-egypt")
+    assert page.image_alt == alt
+    assert page.live and not page.has_unpublished_changes
+
+
+def test_an_editor_alt_text_is_left_alone(seeded_home, tmp_path):
+    from PIL import Image as PILImage
+
+    folder = tmp_path / "old-site" / "files" / "2026" / "04"
+    folder.mkdir(parents=True)
+    PILImage.new("RGB", (40, 20), "grey").save(folder / "battery.png")
+    source = _source(tmp_path)
+    call_command("import_old_news", source=source, images=tmp_path / "old-site", publish=True)
+    page = NewsPage.objects.get(slug="batteries-export-to-egypt")
+    page.image_alt = "Written by an editor"
+    page.save_revision().publish()
+
+    call_command("import_old_news", source=source, images=tmp_path / "old-site")
+
+    page = NewsPage.objects.get(slug="batteries-export-to-egypt")
+    assert page.image_alt == "Written by an editor"
+
+
 def test_the_repository_source_covers_every_old_post():
     with open(seed_site.SEED_DIR / "old-news.json", encoding="utf-8") as handle:
         posts = json.load(handle)["posts"]
@@ -139,6 +179,9 @@ def test_the_repository_source_covers_every_old_post():
 
     assert len(posts) == 38
     assert all(post["image_file"] for post in posts)
+    for post in posts:  # T33: every photo has its alt text, in the house words
+        assert 0 < len(post["image_alt"]) <= 200, post["slug"]
+        assert "TICQC" not in post["image_alt"] and "TIC QC" not in post["image_alt"]
     for post in posts:
         assert rows[post["old_path"]]["new_path"] == f"/en/news/{post['slug']}/"
         assert "TICQC" not in oldsite.clean_title(post["title"])

@@ -88,7 +88,7 @@ def test_program_pages_link_to_the_complaints_page(client, seeded):
 def test_the_form_opened_from_the_complaints_page_is_named_for_it(client, seeded):
     page = ComplaintsPage.objects.get(locale__language_code="en")
     form = client.get(f"/en/request/?topic={page.pk}").content.decode()
-    assert '<h1 class="h1 h1--page">Complaints and appeals</h1>' in form
+    assert '<h1 class="ph__title">Complaints and appeals</h1>' in form
     assert 'name="q_kind"' in form and 'name="q_reference"' in form
     # A quote opened without a topic does not offer the complaints page in step 1.
     quote = client.get("/en/request/").content.decode()
@@ -152,7 +152,7 @@ def test_careers_shows_open_roles_only_and_links_each_to_the_form(client, seeded
     assert "Inspector" in html and "Old role" not in html
     assert f"/en/request/?topic={page.pk}&amp;q_role={quote(answer)}" in html
     form = client.get(f"/en/request/?topic={page.pk}&q_role=Inspector").content.decode()
-    assert '<h1 class="h1 h1--page">Apply</h1>' in form and 'value="Inspector"' in form
+    assert '<h1 class="ph__title">Apply</h1>' in form and 'value="Inspector"' in form
 
 
 def test_an_application_with_a_cv_reaches_hr(

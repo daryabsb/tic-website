@@ -210,7 +210,7 @@ msgid "Why TIC (dark band)"
 msgstr ""
 
 msgid "Where"
-msgstr ""
+msgstr "أين"
 
 msgid "industry page"
 msgstr ""
@@ -327,7 +327,7 @@ msgid "A static map; no map scripts (China rule)."
 msgstr ""
 
 msgid "phone"
-msgstr ""
+msgstr "الهاتف"
 
 msgid "Also the office's WhatsApp, except in China (D11, D49)."
 msgstr ""
@@ -339,21 +339,19 @@ msgid "WeChat QR code"
 msgstr ""
 
 msgid "email"
-msgstr ""
+msgstr "البريد الإلكتروني"
 
 msgid "mailbox owner"
 msgstr ""
 
 msgid "time zone"
-msgstr ""
+msgstr "المنطقة الزمنية"
 
-#, fuzzy
-#| msgid "Language"
 msgid "languages"
-msgstr "اللغة"
+msgstr "اللغات"
 
 msgid "reply promise"
-msgstr ""
+msgstr "وعد الرد"
 
 msgid "team photo"
 msgstr ""
@@ -517,7 +515,7 @@ msgid "Text"
 msgstr ""
 
 msgid "year"
-msgstr ""
+msgstr "السنة"
 
 msgid "Timeline row"
 msgstr ""
@@ -568,7 +566,7 @@ msgid "legal name"
 msgstr ""
 
 msgid "founded"
-msgstr ""
+msgstr "التأسيس"
 
 msgid "does"
 msgstr ""
@@ -906,7 +904,7 @@ msgid "coordinator"
 msgstr ""
 
 msgid "offices"
-msgstr ""
+msgstr "المكاتب"
 
 msgid "10 Contacts for this program"
 msgstr ""
@@ -963,7 +961,7 @@ msgid "Designation in progress"
 msgstr "التعيين قيد الإجراء"
 
 msgid "status"
-msgstr ""
+msgstr "الحالة"
 
 msgid "status date"
 msgstr ""
@@ -1011,7 +1009,7 @@ msgid "One sentence on the card."
 msgstr ""
 
 msgid "regulator"
-msgstr ""
+msgstr "الجهة التنظيمية"
 
 msgid "regulator abbreviation"
 msgstr ""
@@ -1247,7 +1245,7 @@ msgid "what it is"
 msgstr ""
 
 msgid "standards"
-msgstr ""
+msgstr "المعايير"
 
 msgid "06 Standards we work to"
 msgstr ""
@@ -1265,7 +1263,7 @@ msgid "09 Questions and answers"
 msgstr ""
 
 msgid "named contact"
-msgstr ""
+msgstr "اسم جهة الاتصال"
 
 msgid "action"
 msgstr ""
@@ -1475,7 +1473,7 @@ msgid "last day"
 msgstr ""
 
 msgid "where"
-msgstr ""
+msgstr "أين"
 
 msgid "City, or Online."
 msgstr ""
@@ -2112,7 +2110,7 @@ msgid "Head office"
 msgstr "المكتب الرئيسي"
 
 msgid "Phone"
-msgstr ""
+msgstr "الهاتف"
 
 msgid "Email"
 msgstr "البريد الإلكتروني"
@@ -2886,3 +2884,142 @@ msgstr "يمكنك إرفاق حتى %(count)s ملفات."
 #. core (zeneon_cms): a visitor sees it
 msgid "unverified"
 msgstr "غير موثّق"
+
+#. T38: Round 3 page head actions
+msgid "All %(group)s services"
+msgstr "جميع خدمات %(group)s"
+
+msgid "Call %(number)s"
+msgstr "اتصل على %(number)s"
+
+msgid "WhatsApp the office"
+msgstr "راسل المكتب عبر واتساب"
+
+msgid "See open roles"
+msgstr "الوظائف المتاحة"
+
+msgid "Make a complaint"
+msgstr "تقديم شكوى"
+
+#. T39: Round 3 facts bar and jump row (D77)
+msgid "On site"
+msgstr "في الموقع"
+
+msgid "Report"
+msgstr "التقرير"
+
+msgid "Standards"
+msgstr "المعايير"
+
+msgid "Contact"
+msgstr "التواصل"
+
+msgid "Regulator"
+msgstr "الجهة التنظيمية"
+
+msgid "Addresses"
+msgstr "العناوين"
+
+msgid "Accredited"
+msgstr "الاعتماد"
+
+msgid "Groups"
+msgstr "المجموعات"
+
+msgid "Industries"
+msgstr "القطاعات"
+
+msgid "Countries"
+msgstr "الدول"
+
+msgid "Call · WhatsApp"
+msgstr "اتصال · واتساب"
+
+msgid "WeChat: %(id)s"
+msgstr "WeChat: %(id)s"
+
+msgid "Government and trade programs"
+msgstr "برامج حكومية وتجارية"
+
+msgid "days on site"
+msgstr "أيام العمل في الموقع"
+
+msgid "report time"
+msgstr "موعد التقرير"
+
+msgid "ports and offices"
+msgstr "الموانئ والمكاتب"
+
+msgid "%(n)d service"
+msgid_plural "%(n)d services"
+msgstr[0] "لا خدمات"
+msgstr[1] "خدمة واحدة"
+msgstr[2] "خدمتان"
+msgstr[3] "%(n)d خدمات"
+msgstr[4] "%(n)d خدمة"
+msgstr[5] "%(n)d خدمة"
+
+msgid "%(n)d program"
+msgid_plural "%(n)d programs"
+msgstr[0] "لا برامج"
+msgstr[1] "برنامج واحد"
+msgstr[2] "برنامجان"
+msgstr[3] "%(n)d برامج"
+msgstr[4] "%(n)d برنامجًا"
+msgstr[5] "%(n)d برنامج"
+
+msgid "In %(n)d country"
+msgid_plural "In %(n)d countries"
+msgstr[0] "في أي دولة"
+msgstr[1] "في دولة واحدة"
+msgstr[2] "في دولتين"
+msgstr[3] "في %(n)d دول"
+msgstr[4] "في %(n)d دولة"
+msgstr[5] "في %(n)d دولة"
+
+msgid "appointed: small line"
+msgstr "التعيين: سطر صغير"
+
+msgid "contact"
+msgstr "التواصل"
+
+msgid "contact: small line"
+msgstr "التواصل: سطر صغير"
+
+msgid "founded: small line"
+msgstr "التأسيس: سطر صغير"
+
+msgid "report"
+msgstr "التقرير"
+
+msgid "report: small line"
+msgstr "التقرير: سطر صغير"
+
+msgid "standards: small line"
+msgstr "المعايير: سطر صغير"
+
+msgid "status: small line"
+msgstr "الحالة: سطر صغير"
+
+msgid "time on site"
+msgstr "مدة العمل في الموقع"
+
+msgid "time on site: small line"
+msgstr "مدة العمل في الموقع: سطر صغير"
+
+msgid "where: small line"
+msgstr "أين: سطر صغير"
+
+#. T40 (D79): empty places
+msgid "View"
+msgstr "عرض"
+
+msgid "Find us"
+msgstr "موقعنا"
+
+#. T41 (D80): thin pages
+msgid "Services for this industry"
+msgstr "خدمات هذا القطاع"
+
+msgid "The offices that serve this industry, in order."
+msgstr "المكاتب التي تخدم هذا القطاع، بالترتيب."

@@ -31,6 +31,7 @@ from wagtail.search import index
 from zeneon_cms.core.text import ScriptNormalisationMixin
 
 from apps.pages.describe import DescribedPage
+from apps.pages.facts import fact_cell
 from apps.pages.models import _image, _translatable
 from apps.services.models import _header_panel, _HeaderFields
 
@@ -302,7 +303,36 @@ class OfficePage(ScriptNormalisationMixin, _HeaderFields, Page):  # noqa: DJ008 
         context["programs"] = (
             ProgramPage.objects.live().public().filter(owning_office=self).order_by("title")
         )
+        context["facts"] = office_facts(self)
         return context
+
+
+def office_facts(office, *, last="languages"):
+    """Phone and WhatsApp · Email · Time zone · Languages (office page) or Reply promise
+    (contact page, the head office). No opening hours (D49): the time zone cell takes
+    their place (D77). An office in China shows "Phone" and its WeChat ID (D11)."""
+    if office is None:
+        return []
+    if office.whatsapp_allowed:
+        phone = fact_cell(_("Phone and WhatsApp"), office.phone, _("phone"), _("Call · WhatsApp"))
+    else:
+        wechat = _("WeChat: %(id)s") % {"id": office.wechat_id} if office.wechat_id else ""
+        phone = fact_cell(_("Phone"), office.phone, _("phone"), wechat)
+    owner = (
+        _("Mailbox owner: %(owner)s") % {"owner": office.mailbox_owner}
+        if office.mailbox_owner
+        else ""
+    )
+    cells = [
+        phone,
+        fact_cell(_("Email"), office.email, _("email"), owner),
+        fact_cell(_("Time zone"), office.utc_offset, _("time zone"), office.timezone),
+    ]
+    if last == "reply":
+        cells.append(fact_cell(_("Reply promise"), office.reply_promise, _("reply promise")))
+    else:
+        cells.append(fact_cell(_("Languages"), office.languages, _("languages")))
+    return cells
 
 
 class ContactPage(DescribedPage, ScriptNormalisationMixin, Page):  # noqa: DJ008 (Page gives __str__)
@@ -351,4 +381,5 @@ class ContactPage(DescribedPage, ScriptNormalisationMixin, Page):  # noqa: DJ008
         )
         context["offices"] = offices
         context["head_office"] = next((o for o in offices if o.is_head_office), None)
+        context["facts"] = office_facts(context["head_office"], last="reply")
         return context

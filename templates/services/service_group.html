@@ -1,16 +1,17 @@
-{% extends "base.html" %}{% load i18n wagtailcore_tags wagtailimages_tags %}
+{% extends "base.html" %}{% load i18n wagtailcore_tags wagtailimages_tags tic %}
 {% comment %}A service group (design B-Services-Inspection.dc.html): the live services as cards, then the dark "how it is done" band.{% endcomment %}
 {% block body_class %}page-service-group{% endblock %}
 {% block content %}
-{% include "includes/page_head.html" with image=page.header_image image_alt=page.header_image_alt caption=page.header_caption intro=page.intro %}
+{% blocktranslate asvar list_label with group=page.title|lower %}All {{ group }} services{% endblocktranslate %}
+{% if services %}{% include "includes/page_head.html" with image=page.header_image image_alt=page.header_image_alt caption=page.header_caption intro=page.intro secondary_label=list_label secondary_href="#services" %}{% else %}{% include "includes/page_head.html" with image=page.header_image image_alt=page.header_image_alt caption=page.header_caption intro=page.intro %}{% endif %}
 {% if services %}
-<div class="wrap stack sec-cards">
+<div id="services" class="wrap stack sec-cards">
   <div><h2 class="h2">{% blocktranslate with group=page.title|lower count counter=services|length %}{{ counter }} {{ group }} service{% plural %}{{ counter }} {{ group }} services{% endblocktranslate %}</h2><div class="rule"></div></div>
   <div class="cards">
-  {% for service in services %}<a class="svc svc--sm" href="{% pageurl service %}">
-    <div class="photo">{% if service.header_image %}{% image service.header_image fill-720x340 as img %}<img src="{{ img.url }}" alt="" width="{{ img.width }}" height="{{ img.height }}" loading="lazy">{% endif %}{% if service.card_caption %}<div class="cap">{{ service.card_caption }}</div>{% endif %}</div>
+  {% with photos=services|all_photos:"header_image" %}{% for service in services %}{% if photos %}<a class="svc svc--sm" href="{% pageurl service %}">
+    <div class="photo">{% image service.header_image fill-720x340 as img %}<img src="{{ img.url }}" alt="" width="{{ img.width }}" height="{{ img.height }}" loading="lazy">{% if service.card_caption %}<div class="cap">{{ service.card_caption }}</div>{% endif %}</div>
     <div class="svc__body"><b class="svc__title">{{ service.title }}</b>{% if service.summary %}<span class="svc__text">{{ service.summary }}</span>{% endif %}</div>
-  </a>{% endfor %}
+  </a>{% else %}<a class="tcard" href="{% pageurl service %}"><b>{{ service.title }}</b>{% if service.summary %}<span>{{ service.summary }}</span>{% endif %}<span class="tri more">{% translate "View" %}</span></a>{% endif %}{% endfor %}{% endwith %}
   </div>
 </div>
 {% endif %}

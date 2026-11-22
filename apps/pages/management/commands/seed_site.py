@@ -44,6 +44,7 @@ from apps.pages.models import AboutPage, GroupPage, HomePage, LeadershipPage
 from apps.people.models import Person
 from apps.programs.models import ProgramIndexPage, ProgramPage, RegulatoryUpdatesPage
 from apps.resources.models import Download, DownloadsPage, QAPage, ResourcesPage
+from apps.services.models import FACT_FIELDS as SERVICE_FACT_FIELDS
 from apps.services.models import ServiceGroupPage, ServiceIndexPage, ServicePage
 from apps.training.models import CoursePage, TrainingIndexPage
 from apps.trust.models import (
@@ -180,11 +181,41 @@ class Command(BaseCommand):
             home.sections = self.link_pages(home, sections)
             self.changes += 1
             changed.append(True)
+        elif sections:
+            changed.append(self.fill_tile_countries(home, sections))
         if any(changed):
             home.draft_title = home.title
             revision = home.save_revision()
             revision.publish()
             self.stdout.write(f"{locale.language_code}: home page updated")
+
+    def fill_tile_countries(self, home, sections) -> bool:
+        """Fill a blank caption (the country of a tile, T40) on the home program cards
+        whose title is still the seeded title. An editor's caption or title is kept."""
+        seeded = {}
+        for section in sections:
+            if section.get("type") == "programs":
+                value = section.get("value", {})
+                for card in [value.get("featured", {}), *value.get("cards", [])]:
+                    if card.get("caption"):
+                        seeded[card.get("title")] = card["caption"]
+        raw = [dict(block) for block in home.sections.raw_data]
+        filled = False
+        for block in raw:
+            if block.get("type") != "programs":
+                continue
+            value = block["value"] = dict(block["value"])
+            cards = [value.get("featured") or {}]
+            cards += [item.get("value", item) for item in value.get("cards") or []]
+            for card in cards:
+                caption = seeded.get(card.get("title"))
+                if caption and not card.get("caption"):
+                    card["caption"] = caption
+                    filled = True
+        if filled:
+            home.sections = raw
+            self.changes += 1
+        return filled
 
     PAGE_KEYS = ("page", "link_page")
 
@@ -294,7 +325,10 @@ class Command(BaseCommand):
                 value["pages"] = [by_slug[s] for s in value["pages"] if s in by_slug]
             parts.append({"type": part["type"], "value": value})
         self.fill_page(
-            page, data, ("intro", "header_caption", "talk_label"), streams=[("parts", parts)]
+            page,
+            data,
+            ("intro", "header_caption", "talk_label", *SERVICE_FACT_FIELDS),
+            streams=[("parts", parts)],
         )
 
     # -- industries (T11) -----------------------------------------------------------
@@ -384,6 +418,8 @@ class Command(BaseCommand):
         "owning_office_name",
         "request_label",
         "talk_label",
+        "fact_appointed_note",
+        "fact_status_note",
     )
 
     @staticmethod
@@ -507,7 +543,7 @@ class Command(BaseCommand):
 
     # -- About, Leadership, Our group (T21) ------------------------------------------
 
-    ABOUT_FIELDS = ("seo_title", "intro", "header_caption")
+    ABOUT_FIELDS = ("seo_title", "intro", "header_caption", "fact_founded", "fact_founded_note")
     LEADERSHIP_FIELDS = ("intro", "ceo_quote", "note")
     GROUP_FIELDS = ("intro", "independence_heading", "independence", "independence_link_label")
 

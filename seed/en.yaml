@@ -58,10 +58,10 @@ home:
         link_page: "programs"
         featured: {caption: "Iraq", eyebrow: "Iraq · COSQC / ICIGI", title: "Certificate of Conformity", meta: "Last updated: [date] · Baghdad office"}
         cards:
-          - {title: "Kurdistan Region vehicle CoC", meta: "Last updated: [date]"}
-          - {title: "Egypt · GOEIC", meta: "Last updated: [date]"}
-          - {title: "Botswana · BOBS", meta: "Last updated: [date]"}
-          - {title: "Libya · Certificate of Inspection", meta: "Last updated: [date]"}
+          - {caption: "Kurdistan Region of Iraq", title: "Kurdistan Region vehicle CoC", meta: "Last updated: [date]"}
+          - {caption: "Egypt", title: "Egypt · GOEIC", meta: "Last updated: [date]"}
+          - {caption: "Botswana", title: "Botswana · BOBS", meta: "Last updated: [date]"}
+          - {caption: "Libya", title: "Libya · Certificate of Inspection", meta: "Last updated: [date]"}
     - type: offices
       value:
         heading: "Where we are"
@@ -163,6 +163,14 @@ psi:
   intro: "An independent check of your goods before they leave the factory or port — quantity, quality, packing and marking against the order and the standard — so that what arrives is what was agreed."
   header_caption: "Guangzhou · Pre-shipment inspection"
   talk_label: "Talk to an inspector"
+  # Facts bar (T39, D77): from the Inspection group's "how" points; time on site waits.
+  fact_where: "10 offices"
+  fact_where_note: "Own inspectors; named partners elsewhere"
+  fact_on_site_note: "Typical, by order size"
+  fact_report: "Same or next working day"
+  fact_report_note: "Signed, with photographs"
+  fact_standards: "ISO 2859-1"
+  fact_standards_note: "ISO/IEC 17020 · ANAB AI-3314"
   parts:
     - type: what_it_is
       value:
@@ -262,7 +270,12 @@ industries:
         - "Destination: Baghdad, Cairo, Amman, Riyadh, Dubai and Sharjah"
         - "Transit and testing: Guangzhou, Maharagama"
     - {slug: "oil-gas-and-petrochemicals", title: "Oil & Gas and Petrochemicals", card_caption: "Oil & Gas", summary: "Custody transfer, tank calibration, cargo measurement, petroleum testing."}
-    - {slug: "marine-and-shipping", title: "Marine & Shipping", card_caption: "Marine", summary: "Draft, ullage, bunker, on/off hire and cleanliness surveys."}
+    - slug: "marine-and-shipping"
+      title: "Marine & Shipping"
+      card_caption: "Marine"
+      summary: "Draft, ullage, bunker, on/off hire and cleanliness surveys."
+      services:  # T41, D80: TIC's own service line (the Inspection group), so the page is not thin
+        - {page: "marine-and-cargo-surveys", text: "Draft, ullage, bunker, on/off hire, hose test, sealing and cleanliness surveys."}
     - {slug: "consumer-products-and-retail", title: "Consumer Products & Retail", card_caption: "Consumer", summary: "Textiles, electrical, toys, cosmetics, ceramics, appliances; pre-shipment inspection."}
     - {slug: "vehicles-and-automotive", title: "Vehicles & Automotive", card_caption: "Vehicles", summary: "Pre-purchase, damage and pre-export inspection; Kurdistan Region vehicle CoC."}
     - {slug: "industrial-equipment-and-manufacturing", title: "Industrial Equipment & Manufacturing", card_caption: "Industrial", summary: "Vendor inspection, NDT, metals and minerals."}
@@ -308,6 +321,8 @@ programs:
       regulator_url: "https://cosqc.gov.iq"
       appointment_status: "appointed"
       appointment_date: "2024-05-22"
+      fact_appointed_note: "With LOX · contract no. 5"
+      fact_status_note: "Certificates issued since 5 September 2024"
       owning_office_name: "Baghdad office"
       owning_office: "baghdad"
       request_label: "Request a certificate"
@@ -496,6 +511,8 @@ about:
   slug: "about"
   title: "About"
   seo_title: "Our story"
+  fact_founded: "[2020]"
+  fact_founded_note: "Dubai, United Arab Emirates"
   intro: "Founded in Dubai in [2020], TIC Quality Control is an independent testing, inspection and certification company with fourteen addresses in twelve countries. We measure; we do not guess — and every certificate we issue can be checked."
   header_caption: "Dubai · Head office"
   sections:

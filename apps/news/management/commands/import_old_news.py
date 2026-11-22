@@ -10,7 +10,7 @@ A page that exists is not made again, so the command can run again.
 
 ``--images DIR``: the old site's media folder (``fetch_old_media.py``, D32). A page
 without a photo gets its post's main photo, in the "News" collection; this includes the
-seeded pages.
+seeded pages. A page whose photo has no alt text gets its post's alt text (T33).
 
 ``--publish``: publish the imported pages. Without it they are drafts. On staging Darya
 publishes them all (Nov 17, 2026); for the launch a content manager decides (D62).
@@ -53,7 +53,7 @@ class Command(BaseCommand):
         posts = json.loads(source.read_text(encoding="utf-8"))["posts"]
         index = NewsIndexPage.objects.get(locale=Locale.get_default())
         pages = {page.slug: page for page in NewsPage.objects.child_of(index).specific()}
-        made = photos = published = 0
+        made = photos = alts = published = 0
         for post in posts:
             page = pages.get(post["slug"])
             if page is None and post.get("seeded"):
@@ -77,12 +77,16 @@ class Command(BaseCommand):
             if images and not current.image_id and post.get("image_file"):
                 photos += self.add_photo(page, post, images)
                 page.refresh_from_db()
+            elif current.image_id and not current.image_alt and post.get("image_alt"):
+                alts += self.add_alt(page, post)
+                page.refresh_from_db()
             pending = not page.live or page.has_unpublished_changes
             if publish and not post.get("seeded") and pending:
                 page.get_latest_revision().publish()
                 published += 1
         self.stdout.write(
-            f"old news: {made} page(s) made, {photos} photo(s) added, {published} published, "
+            f"old news: {made} page(s) made, {photos} photo(s) added, {alts} alt text(s) added, "
+            f"{published} published, "
             f"{len(posts)} post(s) in the source"
         )
 
@@ -102,5 +106,15 @@ class Command(BaseCommand):
         page.image_alt = post.get("image_alt") or ""
         revision = page.save_revision()
         if clean_live:  # a live page with no draft keeps no draft: the photo goes live
+            revision.publish()
+        return 1
+
+    def add_alt(self, page, post) -> int:
+        """Give a photo with no alt text its post's alt text (T33). An editor's text stays."""
+        clean_live = page.live and not page.has_unpublished_changes
+        page = page.get_latest_revision_as_object() if page.has_unpublished_changes else page
+        page.image_alt = post["image_alt"]
+        revision = page.save_revision()
+        if clean_live:  # same rule as the photo: a live page with no draft keeps no draft
             revision.publish()
         return 1

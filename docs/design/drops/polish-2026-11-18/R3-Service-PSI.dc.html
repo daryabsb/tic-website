@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Service — Pre-shipment Inspection — TIC Quality Control (round 3)</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira:wght@500;600;700;800&family=Open+Sans:wght@400;600&family=Cairo:wght@400;600;700;800&display=swap">
+<style>
+.saira{font-family:Saira,Arial,sans-serif;text-transform:uppercase}
+.wrap{max-width:1280px;margin:0 auto;padding-left:clamp(16px,5.5vw,80px);padding-right:clamp(16px,5.5vw,80px)}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 30px;background:#EB232B;color:#FFFFFF;font-family:Saira,Arial,sans-serif;font-weight:600;font-size:15px;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;border:0;cursor:pointer}
+.btn:hover{background:#BD2130;color:#FFFFFF}
+.btn.dark{background:#111111;color:#FFFFFF}
+.btn.dark:hover{background:#3D3D3D;color:#FFFFFF}
+.h2{font-family:Saira,Arial,sans-serif;font-weight:700;font-size:28px;line-height:1.15;letter-spacing:.02em;text-transform:uppercase;color:#3D3D3D;margin:0}
+.eyebrow{font-family:Saira,Arial,sans-serif;font-weight:600;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:#EB232B}
+.num{font-family:Saira,Arial,sans-serif;font-weight:500;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:#6B6B6B}
+.tri{display:inline-flex;align-items:center;gap:10px;font-family:Saira,Arial,sans-serif;font-weight:600;font-size:14px;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;color:#1E1E1E}
+.tri::before{content:"";width:0;height:0;border-top:6px solid transparent;border-bottom:6px solid transparent;border-left:9px solid #EB232B}
+.photo{position:relative;background-color:#3D3D3D;background-image:linear-gradient(#4A4A4A 1px,transparent 1px),linear-gradient(90deg,#4A4A4A 1px,transparent 1px);background-size:48px 48px;overflow:hidden}
+.photo.light{background-color:#B9B9BB;background-image:linear-gradient(#A9A9AB 1px,transparent 1px),linear-gradient(90deg,#A9A9AB 1px,transparent 1px)}
+.photo .note{position:absolute;inset:0;display:flex;align-items:flex-start;justify-content:flex-end;text-align:right;padding:24px 40px;font-size:14px;color:#D9D9D9;line-height:1.4}
+.cap{position:absolute;right:0;bottom:0;background:#EB232B;color:#FFFFFF;font-family:Saira,Arial,sans-serif;font-weight:600;font-size:13px;letter-spacing:.1em;text-transform:uppercase;padding:8px 14px}
+.crumb{display:flex;flex-wrap:wrap;gap:8px;font-size:14px;color:#6B6B6B}
+.crumb a{color:#3D3D3D;text-decoration:none}
+.sec{display:flex;flex-direction:column;gap:18px;padding:48px 0;border-top:1px solid #D9D9D9}
+.sec p{margin:0;color:#3D3D3D}
+.dia li{position:relative;padding-left:22px;list-style:none;margin:0}
+.dia li::before{content:"";position:absolute;left:0;top:.62em;width:8px;height:8px;background:#EB232B;transform:rotate(45deg)}
+.toc a{display:flex;gap:12px;align-items:baseline;padding:10px 0;border-top:1px solid #D9D9D9;text-decoration:none;font-size:15px;color:#1E1E1E}
+.toc a span{font-family:Saira,Arial,sans-serif;font-weight:600;font-size:12px;color:#EB232B;min-width:22px}
+.step{display:flex;gap:20px;align-items:flex-start}
+.step .n{flex:none;width:44px;height:44px;background:#111111;color:#FFFFFF;display:flex;align-items:center;justify-content:center;font-family:Saira,Arial,sans-serif;font-weight:700;font-size:18px}
+.step b{font-family:Saira,Arial,sans-serif;font-weight:700;font-size:17px;text-transform:uppercase;color:#1E1E1E}
+.step span{display:block;font-size:15px;color:#3D3D3D}
+.step em{font-style:normal;font-size:13px;color:#6B6B6B}
+.doc{display:flex;gap:14px;align-items:center;padding:12px 0;border-top:1px solid #D9D9D9;font-size:16px}
+.doc .box{width:20px;height:20px;border:2px solid #1E1E1E;flex:none}
+.qa{border-top:1px solid #D9D9D9}
+.qa summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:16px 0;font-family:Saira,Arial,sans-serif;font-weight:600;font-size:16px;text-transform:uppercase;color:#1E1E1E;min-height:44px}
+.qa summary::after{content:"+";color:#EB232B;font-size:22px}
+.qa p{margin:0 0 16px;color:#3D3D3D}
+.std{flex:1 1 240px;min-width:0;border:1px solid #D9D9D9;padding:16px 18px;display:flex;flex-direction:column;gap:2px}
+.std b{font-family:Saira,Arial,sans-serif;font-weight:700;font-size:18px}
+.std span{font-size:14px;color:#3D3D3D}
+.side{flex:0 1 300px;min-width:0;display:flex;flex-direction:column;gap:24px}
+.lbl{font-family:Saira,Arial,sans-serif;font-weight:600;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#3D3D3D}
+.inp{min-height:48px;border:2px solid #1E1E1E;background:#FFFFFF;padding:0 14px;font-family:"Open Sans",Arial,sans-serif;font-size:16px;color:#1E1E1E;width:100%;box-sizing:border-box}
+.rel{flex:1 1 220px;min-width:0;text-decoration:none;display:flex;flex-direction:column;border:1px solid #D9D9D9}
+.rel b{font-family:Saira,Arial,sans-serif;font-weight:700;font-size:16px;text-transform:uppercase;color:#1E1E1E;padding:14px 16px}
+.tiles{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.07) 1px,transparent 1px);background-size:48px 48px;pointer-events:none}
+body{margin:0}
+.r3{container-type:inline-size;background:#FFFFFF;color:#1E1E1E;font-family:"Open Sans",Arial,sans-serif;font-size:17px;line-height:1.6;display:flex;flex-direction:column;min-width:0}
+:where(.r3) a{color:#1E1E1E}:where(.r3) a:hover{color:#EB232B}
+.r3 .wrap{max-width:1280px;width:100%;margin-inline:auto;padding-inline:clamp(16px,5.5cqw,80px);box-sizing:border-box}
+.r3 .h2{font-family:Saira,Arial,sans-serif;font-weight:700;font-size:28px;line-height:1.15;letter-spacing:.02em;text-transform:uppercase;color:#3D3D3D;margin:0}
+.r3 .h2.w{color:#FFFFFF}
+.r3 .rule{height:3px;background:#EB232B;width:120px;margin-top:12px}
+.r3 .eyebrow{font-family:Saira,Arial,sans-serif;font-weight:600;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:#EB232B}
+.r3 .lbl{font-family:Saira,Arial,sans-serif;font-weight:600;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#6B6B6B}
+.r3 .tri{display:inline-flex;align-items:center;gap:10px;font-family:Saira,Arial,sans-serif;font-weight:600;font-size:14px;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;color:#1E1E1E;min-height:44px}
+.r3 .tri::before{content:"";width:0;height:0;border-top:6px solid transparent;border-bottom:6px solid transparent;border-inline-start:9px solid #EB232B}
+.r3 .tri.w{color:#FFFFFF}.r3 .tri.w:hover{color:#D9D9D9}
+.r3 .btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 24px;background:#EB232B;color:#FFFFFF;font-family:Saira,Arial,sans-serif;font-weight:600;font-size:15px;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;border:0;box-sizing:border-box}
+.r3 .btn:hover{background:#BD2130;color:#FFFFFF}
+.r3 .btn.dark{background:#111111}.r3 .btn.dark:hover{background:#3D3D3D}
+.r3 .btn.white{background:#FFFFFF;color:#1E1E1E}.r3 .btn.white:hover{background:#F3F3F3;color:#1E1E1E}
+.r3 .dia{padding:0;margin:0;display:flex;flex-direction:column;gap:10px}
+.r3 .dia li{position:relative;padding-inline-start:22px;list-style:none;margin:0}
+.r3 .dia li::before{content:"";position:absolute;inset-inline-start:0;top:.62em;width:8px;height:8px;background:#EB232B;transform:rotate(45deg)}
+.r3 .sect{padding-block:72px}
+.r3 .grey{background:#F3F3F3}
+.r3 .head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:12px 24px;margin-bottom:32px}
+.r3 .tiles{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.07) 1px,transparent 1px);background-size:48px 48px;pointer-events:none}
+
+/* page head: text beside the photo, never on it */
+.r3 .ph{display:grid;grid-template-columns:minmax(clamp(16px,5.5cqw,80px),1fr) minmax(0,493px) minmax(0,627px) minmax(clamp(16px,5.5cqw,80px),1fr);border-bottom:1px solid #D9D9D9;background:#FFFFFF}
+.r3 .ph.hero{grid-template-columns:minmax(clamp(16px,5.5cqw,80px),1fr) minmax(0,540px) minmax(0,580px) minmax(clamp(16px,5.5cqw,80px),1fr)}
+.r3 .ph-tx{grid-column:2;padding-block:48px;padding-inline-end:48px;display:flex;flex-direction:column;justify-content:center;gap:16px;min-width:0}
+.r3 .ph-im{grid-column:3 / 5;position:relative;min-height:400px;background:#F3F3F3;overflow:hidden}
+.r3 .ph.hero .ph-im{min-height:520px}
+.r3 .ph-im img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.r3 .cap{position:absolute;inset-inline-start:0;right:auto;bottom:0;background:#EB232B;color:#FFFFFF;font-family:Saira,Arial,sans-serif;font-weight:600;font-size:12px;letter-spacing:.1em;text-transform:uppercase;padding:7px 14px}
+.r3 .crumb{display:flex;flex-wrap:wrap;gap:4px 8px;font-size:14px;color:#6B6B6B}
+.r3 .crumb a{color:#3D3D3D;text-decoration:none}
+.r3 .ph h1{margin:0;font-family:Saira,Arial,sans-serif;font-weight:800;font-size:44px;line-height:1.05;letter-spacing:.01em;text-transform:uppercase;color:#1E1E1E}
+.r3 .ph.hero h1{font-size:48px;line-height:1.04}
+.r3 .ph p{margin:0;font-size:18px;color:#3D3D3D}
+.r3 .ph .act{display:flex;flex-wrap:wrap;gap:8px 24px;align-items:center;padding-top:4px}
+.r3 .ph.hero .act{gap:12px}
+.r3 .ph.band{display:block;background:#F3F3F3}
+.r3 .ph.band .ph-tx{padding-inline-end:0;max-width:760px}
+
+/* facts bar and jump row: the useful thing on the first screen */
+.r3 .fb{border-bottom:1px solid #D9D9D9;background:#FFFFFF}
+.r3 .fb .wrap{display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}
+.r3 .fb .f{padding:18px 24px;border-inline-start:1px solid #D9D9D9;display:flex;flex-direction:column;gap:2px;min-width:0;text-decoration:none}
+.r3 .fb .f:first-child{border-inline-start:0;padding-inline-start:0}
+.r3 .fb .v{font-family:Saira,Arial,sans-serif;font-weight:700;font-size:18px;line-height:1.25;color:#1E1E1E}
+.r3 .fb .s{font-size:14px;color:#3D3D3D}
+.r3 .jump{border-bottom:1px solid #D9D9D9;background:#FFFFFF}
+.r3 .jump .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:0 28px;padding-block:8px}
+.r3 .jump .tri{font-size:13px}
+
+/* cards */
+.r3 .g3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.r3 .g4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.r3 .tcard{background:#FFFFFF;border:1px solid #D9D9D9;padding:24px;display:flex;flex-direction:column;gap:10px;text-decoration:none;min-width:0}
+.r3 .tcard b{font-family:Saira,Arial,sans-serif;font-weight:700;font-size:20px;line-height:1.15;text-transform:uppercase;color:#1E1E1E}
+.r3 .tcard:hover b{color:#EB232B}
+.r3 .tcard span{font-size:15px;color:#3D3D3D}
+.r3 .tcard .more{margin-top:auto;padding-top:6px}
+.r3 .pcard{background:#FFFFFF;border:1px solid #D9D9D9;display:flex;flex-direction:column;text-decoration:none;min-width:0}
+.r3 .pcard .im{position:relative;aspect-ratio:3 / 2;overflow:hidden;background:#F3F3F3}
+.r3 .pcard .im img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.r3 .pcard .bd{padding:22px 24px 24px;display:flex;flex-direction:column;gap:10px}
+.r3 .pcard b{font-family:Saira,Arial,sans-serif;font-weight:700;font-size:20px;line-height:1.15;text-transform:uppercase;color:#1E1E1E}
+.r3 .pcard span{font-size:15px;color:#3D3D3D}
+
+/* country tile: a program card needs no photo */
+.r3 .ct{position:relative;background:#111111;color:#FFFFFF;display:flex;flex-direction:column;justify-content:flex-end;gap:6px;padding:24px;min-height:200px;text-decoration:none;min-width:0;overflow:hidden}
+.r3 .ct:hover{color:#FFFFFF}
+.r3 .ct .st{position:relative;display:inline-flex;align-items:center;gap:8px;font-family:Saira,Arial,sans-serif;font-weight:600;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#D9D9D9;margin-bottom:auto}
+.r3 .ct .st::before{content:"";width:8px;height:8px;background:#FFFFFF}
+.r3 .ct .st.pending::before{background:#EB232B}
+.r3 .ct .c{position:relative;font-family:Saira,Arial,sans-serif;font-weight:800;font-size:34px;line-height:1;letter-spacing:.01em;text-transform:uppercase;color:#FFFFFF;margin-top:28px}
+.r3 .ct .n{position:relative;font-family:Saira,Arial,sans-serif;font-weight:600;font-size:16px;text-transform:uppercase;color:#FFFFFF}
+.r3 .ct .m{position:relative;font-size:13px;color:#D9D9D9}
+.r3 .ct:hover .c{color:#EB232B}
+
+/* address plate: stands where a map would be */
+.r3 .addr{position:relative;background:#111111;color:#FFFFFF;padding:32px;display:flex;flex-direction:column;gap:14px;overflow:hidden}
+.r3 .addr > *{position:relative}
+.r3 .addr .lbl{color:#D9D9D9}
+.r3 .addr .city{font-family:Saira,Arial,sans-serif;font-weight:800;font-size:40px;line-height:1;text-transform:uppercase}
+.r3 .addr p{margin:0;font-size:16px;color:#FFFFFF}
+.r3 .addr .sm{font-size:14px;color:#D9D9D9}
+
+/* rows */
+.r3 .kv{display:flex;flex-wrap:wrap;gap:4px 24px;padding:14px 0;border-top:1px solid #D9D9D9}
+.r3 .kv .k{flex:0 0 170px;font-family:Saira,Arial,sans-serif;font-weight:600;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#6B6B6B;padding-top:4px}
+.r3 .kv .v{flex:1 1 280px;font-size:16px;min-width:0}
+.r3 .lk{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:15px 0;border-top:1px solid #D9D9D9;text-decoration:none;font-family:Saira,Arial,sans-serif;font-weight:600;font-size:18px;text-transform:uppercase;letter-spacing:.03em;color:#1E1E1E}
+.r3 .lk::after{content:"";width:0;height:0;border-top:6px solid transparent;border-bottom:6px solid transparent;border-inline-start:9px solid #EB232B;flex:none}
+.r3 .lk.last{border-bottom:1px solid #D9D9D9}
+.r3 .cols{display:flex;flex-wrap:wrap;gap:48px 64px;align-items:flex-start}
+.r3 .cols > *{flex:1 1 400px;min-width:0}
+.r3 .fig{flex:1 1 180px;min-width:0;display:flex;flex-direction:column;gap:6px;padding-inline-start:20px;border-inline-start:3px solid #EB232B}
+.r3 .fig b{font-family:Saira,Arial,sans-serif;font-weight:500;font-size:40px;line-height:1;color:#FFFFFF}
+.r3 .fig span{font-size:15px;color:#D9D9D9}
+.r3 .muted{color:#3D3D3D;margin:0}
+.r3 .small{font-size:14px;color:#6B6B6B;margin:0}
+
+/* the quiet plate: the few empty places that stay drawn */
+.r3 .photo{background-color:#F3F3F3;background-image:none;border:1px solid #D9D9D9;box-sizing:border-box}
+.r3 .photo .cap{background:#3D3D3D}
+
+@container (max-width:860px){
+.r3 .ph,.r3 .ph.hero{display:flex;flex-direction:column}
+.r3 .ph-im,.r3 .ph.hero .ph-im{order:-1;min-height:0;aspect-ratio:3 / 2}
+.r3 .ph-tx{padding:24px clamp(16px,5.5cqw,80px) 28px}
+.r3 .ph.band .ph-tx{padding-inline:0}
+.r3 .ph h1{font-size:34px}
+.r3 .ph.hero h1{font-size:36px}
+.r3 .ph p{font-size:17px}
+.r3 .ph.hero .act .btn{flex:1 1 100%}
+.r3 .fb .wrap{grid-template-columns:repeat(2,minmax(0,1fr))}
+.r3 .fb .f{padding:14px 16px}
+.r3 .fb .f:nth-child(odd){border-inline-start:0;padding-inline-start:0}
+.r3 .fb .f:nth-child(n+3){border-top:1px solid #D9D9D9}
+.r3 .jump .wrap{flex-wrap:nowrap;overflow-x:auto;white-space:nowrap}
+.r3 .g3,.r3 .g4{grid-template-columns:repeat(1,minmax(0,1fr))}
+.r3 .sect{padding-block:48px}
+.r3 .h2{font-size:24px}
+.r3 .ct{min-height:130px}
+.r3 .ct .c{font-size:30px}
+.r3 .kv .k{flex:1 1 100%}
+.r3 .tcard{padding:18px 20px}
+.r3 .tcard .more{display:none}
+}
+
+@container (max-width:860px){.r3 .side{flex:1 1 100%}.r3 .side > div:first-child{display:none !important}}
+.r3 .rel .photo,.r3 .side .photo{display:none}
+</style>
+</helmet>
+<div class="r3"><dc-import name="R3-Header" active="services" hint-size="100%,115px"></dc-import><div class="ph"><div class="ph-tx"><nav class="crumb" aria-label="Breadcrumb"><a href="R3-Home.dc.html">TIC Quality Control</a><span>›</span><a href="R3-Services.dc.html">Services</a><span>›</span><a href="B-Services-Inspection.dc.html">Inspection</a><span>›</span><span>Pre-shipment Inspection (PSI)</span></nav><h1>Pre-shipment Inspection (PSI)</h1><div class="rule" style="margin-top:0"></div><p>An independent check of your goods before they leave the factory or port, so that what arrives is what was agreed.</p><div class="act"><a class="btn" href="#form">Request an inspection</a><a class="tri" href="B-Contact.dc.html">Talk to an inspector</a></div></div><div class="ph-im"><img src="/_blob/176ba71e601f406358f943038f3a8445" alt="An inspector in a safety vest fills in a checklist on a clipboard" style="object-position:24% 60%"><div class="cap">Pre-shipment inspection</div></div></div><div class="fb"><div class="wrap"><div class="f"><span class="lbl">Where</span><span class="v">10 offices</span><span class="s">And the ports and industrial areas they cover</span></div><div class="f"><span class="lbl">On site</span><span class="v">[n] day</span><span class="s">Typical, by order size</span></div><div class="f"><span class="lbl">Report</span><span class="v">Within [n] working day</span><span class="s">Signed, with photographs</span></div><div class="f"><span class="lbl">Standards</span><span class="v">ISO 2859-1</span><span class="s">ISO/IEC 17020 · ANAB AI-3314</span></div></div></div>  <div class="wrap" style="display:flex;flex-wrap:wrap;gap:64px;padding-top:56px;padding-bottom:72px;align-items:flex-start">
+
+    <div class="side">
+      <div style="display:flex;flex-direction:column">
+        <span class="eyebrow" style="padding-bottom:10px">On this page</span>
+        <div class="toc" style="display:flex;flex-direction:column">
+          <a href="#s1"><span>01</span>What it is</a>
+          <a href="#s2"><span>02</span>Who needs it</a>
+          <a href="#s3"><span>03</span>How it works</a>
+          <a href="#s4"><span>04</span>What you give us</a>
+          <a href="#s5"><span>05</span>What you get</a>
+          <a href="#s6"><span>06</span>Standards we work to</a>
+          <a href="#s7"><span>07</span>Where we do it</a>
+          <a href="#s8"><span>08</span>Related services</a>
+          <a href="#s9"><span>09</span>Questions and answers</a>
+          <a href="#form"><span>10</span>Your contact and request form</a>
+        </div>
+      </div>
+      <div style="border:1px solid #D9D9D9;padding:22px;display:flex;gap:16px;align-items:center">
+        <div class="photo light" style="width:64px;height:64px;flex:none"></div>
+        <div style="display:flex;flex-direction:column;gap:2px"><b class="saira" style="font-size:15px;font-weight:700">[Named contact]</b><span style="font-size:13px;color:#3D3D3D">Inspection services · [office]</span><span style="font-size:13px;color:#3D3D3D">WhatsApp · phone</span></div>
+      </div>
+    </div>
+
+    <div style="flex:1 1 560px;min-width:0;display:flex;flex-direction:column">
+
+      <div id="s1" class="sec" style="border-top:0;padding-top:0">
+        <span class="num">01 · What it is</span>
+        <h2 class="h2">An independent look before the goods leave</h2>
+        <p>Our inspector visits the factory, warehouse or port when the order is ready, draws a sample by an agreed sampling plan and checks it against your purchase order, the applicable standard and the approved sample. You receive a report with photographs the same or the next working day.</p>
+      </div>
+
+      <div id="s2" class="sec">
+        <span class="num">02 · Who needs it</span>
+        <h2 class="h2">When it is required or wise</h2>
+        <ul class="dia" style="padding:0;margin:0;display:flex;flex-direction:column;gap:10px">
+          <li>Required by a Certificate of Conformity program before shipment to Iraq, Egypt, Botswana or Libya</li>
+          <li>Required by a letter of credit, a GAFTA contract or a buyer’s purchase terms</li>
+          <li>Wise for a first order from a new supplier, or a product with a history of claims</li>
+        </ul>
+      </div>
+
+      <div id="s3" class="sec">
+        <span class="num">03 · How it works</span>
+        <h2 class="h2">Four steps</h2>
+        <div style="display:flex;flex-direction:column;gap:24px">
+          <div class="step"><div class="n">1</div><div><b>Book</b><span>Send the order, the specification and the date the goods will be ready. We confirm the inspector and the office.</span><em>Typical: booking confirmed within [n] working day</em></div></div>
+          <div class="step"><div class="n">2</div><div><b>Inspect</b><span>Sampling to ISO 2859-1, visual and functional checks, measurements, packing and marking, photographs.</span><em>Typical: [n] day on site</em></div></div>
+          <div class="step"><div class="n">3</div><div><b>Report</b><span>A signed report with findings, photographs and a clear result: accepted, accepted with remarks, or rejected.</span><em>Typical: within [n] working day</em></div></div>
+          <div class="step"><div class="n">4</div><div><b>Follow up</b><span>Re-inspection after corrections, or the next step of your CoC program where one applies.</span><em>As needed</em></div></div>
+        </div>
+      </div>
+
+      <div id="s4" class="sec">
+        <span class="num">04 · What you give us</span>
+        <h2 class="h2">Documents</h2>
+        <div style="display:flex;flex-direction:column">
+          <div class="doc"><span class="box"></span>Purchase order or proforma invoice</div>
+          <div class="doc"><span class="box"></span>Product specification and approved sample or photographs</div>
+          <div class="doc"><span class="box"></span>Packing list and marking instructions</div>
+          <div class="doc" style="border-bottom:1px solid #D9D9D9"><span class="box"></span>Supplier contact and the date the goods are ready</div>
+        </div>
+      </div>
+
+      <div id="s5" class="sec">
+        <span class="num">05 · What you get</span>
+        <h2 class="h2">The inspection report</h2>
+        <div style="display:flex;flex-wrap:wrap;gap:24px;align-items:center">
+          <div class="photo light" style="flex:0 1 220px;min-height:280px"><div class="cap" style="left:0;right:auto">Sample report</div></div>
+          <ul class="dia" style="flex:1 1 300px;padding:0;margin:0;display:flex;flex-direction:column;gap:10px">
+            <li>Result on the first page: accepted, accepted with remarks, or rejected</li>
+            <li>Sampling plan and the quantities checked</li>
+            <li>Findings by check, with photographs</li>
+            <li>Certificate number, QR code and the issuing office in the security panel — verifiable online</li>
+          </ul>
+        </div>
+      </div>
+
+      <div id="s6" class="sec">
+        <span class="num">06 · Standards we work to</span>
+        <h2 class="h2">By name and number</h2>
+        <div style="display:flex;flex-wrap:wrap;gap:16px">
+          <div class="std"><b>ISO 2859-1</b><span>Sampling by attributes (AQL)</span></div>
+          <div class="std"><b>ISO/IEC 17020</b><span>Our accreditation as a Type A inspection body</span></div>
+          <div class="std"><b>[Product standard]</b><span>The IQS, ES, BOS or international standard for your product</span></div>
+        </div>
+      </div>
+
+      <div id="s7" class="sec">
+        <span class="num">07 · Where we do it</span>
+        <h2 class="h2">Offices and ports</h2>
+        <p>Delivered by our own inspectors from Guangzhou, Noida, Gandhidham, Dubai, Sharjah, Lahore, Cairo, Amman, Riyadh and Baghdad, and at the ports and industrial areas they cover. Elsewhere, through named partners, which we tell you in advance.</p>
+        <a class="tri" href="B-Contact.dc.html">All offices</a>
+      </div>
+
+      <div id="s8" class="sec">
+        <span class="num">08 · Related services</span>
+        <div style="display:flex;flex-wrap:wrap;gap:16px">
+          <a class="rel" href="B-Service-PSI.dc.html"><div class="photo light" style="height:110px"></div><b>Container loading inspection</b></a>
+          <a class="rel" href="B-Service-PSI.dc.html"><div class="photo light" style="height:110px"></div><b>Factory and supplier audits</b></a>
+          <a class="rel" href="B-Program-Iraq.dc.html"><div class="photo light" style="height:110px"></div><b>Government &amp; Trade Programs</b></a>
+        </div>
+      </div>
+
+      <div id="s9" class="sec">
+        <span class="num">09 · Questions and answers</span>
+        <div style="display:flex;flex-direction:column">
+          <details class="qa" open><summary>How much notice do you need?</summary><p>[Answer by the inspection services head]</p></details>
+          <details class="qa"><summary>Do you inspect 100 % or a sample?</summary><p>[Answer: sampling plan to ISO 2859-1 unless the buyer asks for 100 %]</p></details>
+          <details class="qa" style="border-bottom:1px solid #D9D9D9"><summary>What if the goods fail?</summary><p>[Answer: report, corrections, re-inspection]</p></details>
+        </div>
+      </div>
+
+      <div id="form" class="sec" style="border-bottom:1px solid #D9D9D9">
+        <span class="num">10 · Request an inspection</span>
+        <h2 class="h2">Tell us about the shipment</h2>
+        <form style="display:flex;flex-wrap:wrap;gap:16px 24px;margin:0" onsubmit="return false">
+          <label style="flex:1 1 260px;display:flex;flex-direction:column;gap:6px"><span class="lbl">Your name</span><input class="inp" placeholder="Full name"></label>
+          <label style="flex:1 1 260px;display:flex;flex-direction:column;gap:6px"><span class="lbl">Company</span><input class="inp" placeholder="Company"></label>
+          <label style="flex:1 1 260px;display:flex;flex-direction:column;gap:6px"><span class="lbl">Email</span><input class="inp" type="email" placeholder="name@company.com"></label>
+          <label style="flex:1 1 260px;display:flex;flex-direction:column;gap:6px"><span class="lbl">Phone or WhatsApp</span><input class="inp" placeholder="+"></label>
+          <label style="flex:1 1 260px;display:flex;flex-direction:column;gap:6px"><span class="lbl">Where are the goods?</span><input class="inp" placeholder="City, country"></label>
+          <label style="flex:1 1 260px;display:flex;flex-direction:column;gap:6px"><span class="lbl">Destination</span><input class="inp" placeholder="Country"></label>
+          <label style="flex:1 1 100%;display:flex;flex-direction:column;gap:6px"><span class="lbl">Product and quantity</span><textarea class="inp" rows="4" style="padding:12px 14px" placeholder="What is being shipped, how much, and when it will be ready"></textarea></label>
+          <div style="flex:1 1 100%;display:flex;flex-wrap:wrap;gap:16px;align-items:center"><button class="btn" type="submit">Send request</button><span style="font-size:14px;color:#6B6B6B">Answered by a named person within one working day.</span></div>
+        </form>
+        <p style="font-size:14px;color:#6B6B6B">11 · Last reviewed [date] · Owned by [inspection services head, office]</p>
+      </div>
+
+    </div>
+  </div>
+
+<dc-import name="R3-Footer" hint-size="100%,690px"></dc-import></div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":5690}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

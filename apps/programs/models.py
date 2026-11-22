@@ -13,6 +13,7 @@ B-Programs, B-Program-Iraq, B-Regulatory-Updates).
 
 from django.core.exceptions import ValidationError
 from django.db import models
+from django.utils.formats import date_format
 from django.utils.translation import gettext_lazy as _
 from wagtail import blocks
 from wagtail.admin.forms import WagtailAdminPageForm
@@ -23,6 +24,7 @@ from wagtail.search import index
 from zeneon_cms.core.mixins import ReviewByMixin
 from zeneon_cms.core.text import ScriptNormalisationMixin
 
+from apps.pages.facts import fact_cell, note_field
 from apps.pages.models import _translatable
 from apps.programs.blocks import PART_BLOCK_COUNTS, PART_TITLES, PROGRAM_PARTS
 from apps.programs.rules import program_page_problems
@@ -124,6 +126,14 @@ class ProgramIndexPage(ScriptNormalisationMixin, _HeaderFields, Page):  # noqa: 
         context["programs"] = ProgramPage.objects.child_of(self).live().public().order_by("path")
         context["updates"] = regulatory_updates(self.locale)[:3]
         context["feed"] = RegulatoryUpdatesPage.objects.child_of(self).live().public().first()
+        # Jump row (T39, D77): every country on the page, the programs in progress too.
+        # The anchors are the page slug (the same in every language) and "soon-<n>".
+        context["jump"] = [
+            {"title": p.country or p.title, "anchor": p.slug} for p in context["programs"]
+        ] + [
+            {"title": card.value["country"], "anchor": f"soon-{n}"}
+            for n, card in enumerate(self.pending, start=1)
+        ]
         return context
 
 
@@ -220,6 +230,10 @@ class ProgramPage(ScriptNormalisationMixin, ReviewByMixin, _HeaderFields, Page):
         verbose_name=_("the twelve parts"),
         help_text=_("Each part once, in order 01 to 12. All twelve are needed to publish."),
     )
+    # Facts bar (T39, D77): Regulator · Appointed · Status · Office come from the fields
+    # above; these are the two small lines that are copy.
+    fact_appointed_note = note_field(_("appointed: small line"))
+    fact_status_note = note_field(_("status: small line"))
 
     parent_page_types = ["programs.ProgramIndexPage"]
     subpage_types = []
@@ -237,6 +251,8 @@ class ProgramPage(ScriptNormalisationMixin, ReviewByMixin, _HeaderFields, Page):
         "request_label",
         "talk_label",
         "parts",
+        "fact_appointed_note",
+        "fact_status_note",
         synchronised=(
             "header_image",
             "regulator_abbreviation",
@@ -265,6 +281,8 @@ class ProgramPage(ScriptNormalisationMixin, ReviewByMixin, _HeaderFields, Page):
                 FieldRowPanel([FieldPanel("appointment_status"), FieldPanel("appointment_date")]),
                 FieldPanel("appointment_reference"),
                 FieldPanel("appointment_document"),
+                FieldPanel("fact_appointed_note"),
+                FieldPanel("fact_status_note"),
             ],
             heading=_("Regulator and appointment"),
         ),
@@ -338,12 +356,16 @@ class ProgramPage(ScriptNormalisationMixin, ReviewByMixin, _HeaderFields, Page):
 
     def get_context(self, request, *args, **kwargs):
         context = super().get_context(request, *args, **kwargs)
+        context["updates"] = updates = regulatory_updates(self.locale, self)[:3]
+        # A part with nothing to list is not drawn (R3 rule 4.6; T40, D79).
+        context["parts"] = parts = [
+            block for block in self.parts if block.block_type != "updates" or updates
+        ]
         context["toc"] = [
             (block.block_type, PART_TITLES[block.block_type])
-            for block in self.parts
+            for block in parts
             if block.block_type in PART_TITLES
         ]
-        context["updates"] = regulatory_updates(self.locale, self)[:3]
         index_page = self.get_parent().specific
         context["feed"] = RegulatoryUpdatesPage.objects.child_of(index_page).live().first()
         context["others"] = (
@@ -357,7 +379,33 @@ class ProgramPage(ScriptNormalisationMixin, ReviewByMixin, _HeaderFields, Page):
         office = self.owning_office if self.owning_office_id and self.owning_office.live else None
         context["office_href"] = office.url if office else ""
         context["talk_label"] = self.talk_label if office else ""
+        context["facts"] = self.facts
         return context
+
+    @property
+    def facts(self):
+        """Regulator · Appointed · Status · Office (T39, D77)."""
+        office = self.owning_office.specific if self.owning_office_id else None
+        office = office if office is not None and office.live else None
+        abbreviation = self.regulator_abbreviation
+        date = date_format(self.appointment_date, "j F Y") if self.appointment_date else ""
+        status = str(self.get_appointment_status_display()) if self.appointment_status else ""
+        return [
+            fact_cell(
+                _("Regulator"),
+                abbreviation or self.regulator_name,
+                _("regulator"),
+                self.regulator_name if abbreviation else "",
+            ),
+            fact_cell(_("Appointed"), date, _("date"), self.fact_appointed_note),
+            fact_cell(_("Status"), status, _("status"), self.fact_status_note),
+            fact_cell(
+                _("Office"),
+                office.city if office else self.owning_office_name,
+                _("office"),
+                office.languages if office else "",
+            ),
+        ]
 
 
 class RegulatoryUpdatesPage(ScriptNormalisationMixin, _HeaderFields, Page):  # noqa: DJ008 (Page gives __str__)

@@ -25,10 +25,38 @@ def home(db):
     return HomePage.objects.get(locale__language_code="en")
 
 
-@pytest.fixture
-def seeded_home(home):
-    from django.core.management import call_command
+def pytest_collection_modifyitems(items):
+    """Run the tests that need the seeded site last, as one group (T42, D78).
 
-    call_command("seed_site", verbosity=0)
+    The seed then runs once for the group (``_seed_once``), not once a test. The sort is
+    stable: inside each group the tests keep their file order.
+    """
+    items.sort(key=lambda item: "seeded_home" in getattr(item, "fixturenames", ()))
+
+
+@pytest.fixture(scope="session")
+def _seed_once(django_db_setup, django_db_blocker):
+    """Seed the site once, inside a transaction that stays open until the run ends.
+
+    Each test's own transaction is then a savepoint inside it: a test's changes roll back
+    to the seeded site, and the seed itself rolls back at the end. Tests without
+    ``seeded_home`` run before this group (see ``pytest_collection_modifyitems``), so they
+    still start from the empty site.
+    """
+    from django.core.management import call_command
+    from django.db import transaction
+
+    with django_db_blocker.unblock():
+        outer = transaction.atomic()
+        outer.__enter__()
+        call_command("seed_site", verbosity=0)
+    yield
+    with django_db_blocker.unblock():
+        transaction.set_rollback(True)
+        outer.__exit__(None, None, None)
+
+
+@pytest.fixture
+def seeded_home(_seed_once, home):
     home.refresh_from_db()
     return home

@@ -1,12 +1,17 @@
-{% load i18n wagtailcore_tags wagtailimages_tags zeneon %}{# Page header (design PageHead.dc.html). With a photo or a caption: the photo variant (420 px photo, white plate with a red top rule); with a caption and no photo yet, the grey plate keeps its caption (no stock photos). Without either: the light band. Breadcrumb from the core. Context: page, image, image_alt, caption, intro; optional buttons: primary_label + primary_href, secondary_label + secondary_href. #}
+{% load i18n wagtailcore_tags wagtailimages_tags zeneon %}{# Page head (Round 3, R3-Head-Desktop; T38, D71). With a photo: the text beside the photo, never on it; the caption bar on the photo. Without a photo: the band head, same text, same action. The intro stays in the head at 160 characters or fewer; a longer intro becomes the first paragraph under the head. The crops follow the Wagtail focal point: 2:1 on desktop, 3:2 under 860 px (no inline style). Context: page, image, image_alt, caption, intro; optional facts (the facts bar) and jump + jump_label (the jump row), drawn under the head and before a long intro (T39); optional actions: primary_label + primary_href (a button), secondary_label + secondary_href (a triangle link). #}
 {% breadcrumb_trail page as crumbs %}
-<div class="{% if image or caption %}photo photo--dark page-head{% else %}page-head page-head--band{% endif %}">
-  {% if image %}{% image image width-2000 as photo %}<img src="{{ photo.url }}" alt="{{ image_alt }}" width="{{ photo.width }}" height="{{ photo.height }}">{% endif %}
-  <div class="wrap page-head__wrap"><div class="page-head__plate">
+<div class="ph{% if not image %} band{% endif %}">{% if not image %}<div class="wrap">{% endif %}
+  <div class="ph__tx">
     {% if crumbs %}<nav class="crumb" aria-label="{% translate 'You are here' %}">{% for crumb in crumbs %}{% if not forloop.first %}<span aria-hidden="true">›</span>{% endif %}{% if crumb.url %}<a href="{{ crumb.url }}">{{ crumb.title }}</a>{% else %}<span>{{ crumb.title }}</span>{% endif %}{% endfor %}</nav>{% endif %}
-    <h1 class="h1 h1--page">{{ page.title }}</h1>
-    {% if intro %}<p class="lead">{{ intro }}</p>{% endif %}
-    {% if primary_label or secondary_label %}<div class="hero__actions">{% if primary_label %}<a class="btn" href="{{ primary_href }}">{{ primary_label }}</a>{% endif %}{% if secondary_label %}<a class="btn btn--dark" href="{{ secondary_href }}">{{ secondary_label }}</a>{% endif %}</div>{% endif %}
-  </div></div>
-  {% if caption %}<div class="cap cap--end">{{ caption }}</div>{% endif %}
-</div>
+    <h1 class="ph__title">{{ page.title }}</h1>
+    <div class="rule" aria-hidden="true"></div>
+    {% if intro and intro|length <= 160 %}<p class="ph__intro">{{ intro }}</p>{% endif %}
+    {% if primary_label or secondary_label %}<div class="ph__act">{% if primary_label %}<a class="btn" href="{{ primary_href }}">{{ primary_label }}</a>{% endif %}{% if secondary_label %}<a class="tri" href="{{ secondary_href }}">{{ secondary_label }}</a>{% endif %}</div>{% endif %}
+  </div>
+  {% if image %}<div class="ph__im">{% image image fill-1600x800 as wide %}{% image image fill-1200x800 as narrow %}
+    <picture><source media="(max-width: 860px)" srcset="{{ narrow.url }}" width="{{ narrow.width }}" height="{{ narrow.height }}"><img src="{{ wide.url }}" alt="{{ image_alt }}" width="{{ wide.width }}" height="{{ wide.height }}"></picture>
+    {% if caption %}<div class="cap">{{ caption }}</div>{% endif %}
+  </div>{% endif %}
+{% if not image %}</div>{% endif %}</div>
+{% include "includes/facts_bar.html" %}{% if jump %}{% include "includes/jump_row.html" with label=jump_label links=jump %}{% endif %}
+{% if intro and intro|length > 160 %}<div class="wrap ph-more"><p class="lead">{{ intro }}</p></div>{% endif %}

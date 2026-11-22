@@ -63,7 +63,9 @@ def test_guangzhou_shows_no_wa_me(client, offices, site_numbers):
 
 def test_one_number_is_the_phone_and_the_whatsapp_but_never_in_china(client, offices):
     baghdad = client.get(offices["baghdad"].url).content.decode()
-    assert baghdad.count("+964 770 250 2017") == 1  # shown once (D49)
+    body = baghdad[baghdad.index('<div class="wrap office">') :]
+    assert body.count("+964 770 250 2017") == 1  # shown once below the head (D49)
+    assert "Call ⁦+964 770 250 2017⁩" in baghdad  # the head action (R3-Office-Dubai)
     assert 'href="tel:+9647702502017"' in baghdad and "wa.me/9647702502017" in baghdad
     guangzhou = offices["guangzhou"]
     assert guangzhou.phone_number and guangzhou.whatsapp_number == ""

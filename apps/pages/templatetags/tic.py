@@ -12,7 +12,12 @@
 - `{% request_office submission as office %}`: the office that received a request (T17).
 - `{% latest_articles 3 as articles %}`: newest live articles of the active language.
 - `{% public_marks as marks %}`: the accreditation marks we may show (T22; footer).
+- `{{ number|isolate }}`: the number in a left-to-right isolate, for a sentence in Arabic.
 - `{{ page|is_within:item }}`: True when ``page`` is ``item`` or one of its descendants.
+- `{{ cards|all_photos:"image" }}`: True when every card has that photo (R3 rule 4.1:
+  a card grid is all photo cards or all text cards, never a grey plate; T40, D79).
+- `{{ pages|live_pages }}`: the live pages of a list, as their specific type.
+- `{{ title|after_country:country }}`: the title without a leading country name.
 """
 
 from django import template
@@ -111,6 +116,44 @@ def request_office(submission):
 def latest_articles(count=3):
     """The newest articles of the active language. Empty until the TIC news app (#23)."""
     return []
+
+
+@register.filter
+def isolate(value):
+    """A left-to-right isolate (U+2066 … U+2069) around a phone number in a sentence:
+    in Arabic the number keeps its order. For a whole element, use <bdi>."""
+    return f"⁦{value}⁩" if value else value
+
+
+@register.filter
+def all_photos(items, attr="header_image"):
+    items = list(items or ())
+    if not items:
+        return False
+    for item in items:
+        value = item.get(attr) if hasattr(item, "get") and not hasattr(item, "pk") else None
+        if value is None:
+            value = getattr(item, attr, None)
+        if not value:
+            return False
+    return True
+
+
+@register.filter
+def live_pages(pages):
+    """The live pages of a list, as their specific type."""
+    return [page.specific for page in (pages or ()) if page and page.live]
+
+
+@register.filter
+def after_country(title, country):
+    """The title without a leading country name: "Iraq Certificate of Conformity" with
+    "Iraq" is "Certificate of Conformity" (the country tile shows the country itself)."""
+    title, country = str(title or ""), str(country or "")
+    if country and title.startswith(country):
+        rest = title[len(country) :].lstrip(" ·-–—:")
+        return rest or title
+    return title
 
 
 @register.filter

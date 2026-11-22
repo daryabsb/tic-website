@@ -43,6 +43,13 @@ def main() -> int:
     site = json.loads((old_site / "site.json").read_text(encoding="utf-8"))
     with (old_site / "media.csv").open(encoding="utf-8", newline="") as handle:
         media = {row["source_url"]: row for row in csv.DictReader(handle)}
+    # Alt texts written into the target by hand (T33) stay when the old site has none.
+    kept = {}
+    if target.is_file():
+        kept = {
+            row["slug"]: row.get("image_alt", "")
+            for row in json.loads(target.read_text(encoding="utf-8"))["posts"]
+        }
     rows, seen = [], set()
     for post in site["posts"]:
         path = oldsite.old_path(post["link"])
@@ -63,7 +70,7 @@ def main() -> int:
                 "excerpt": post["excerpt"],
                 "html": post["html"],
                 "image_file": photo.get("file", ""),
-                "image_alt": oldsite.clean_title(photo.get("alt", "")),
+                "image_alt": oldsite.clean_title(photo.get("alt", "")) or kept.get(slug, ""),
             }
         )
     data = {"source": f"{site['site']} (WordPress REST API)", "posts": rows}

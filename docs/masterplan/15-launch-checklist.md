@@ -24,7 +24,7 @@ Worked at gate 4; every line ticked on the launch ticket with who did it and whe
 - [ ] Complaint with a file; application with a CV; course registration — files only by signed link
 - [ ] Verify: by number, by QR URL, not found, captcha after three failures, rate limit returns 429, every lookup logged; Arabic result
 - [ ] Certificate import from the agreed source runs and reports (**P-8**)
-- [ ] Review-by reminder email received for a test page
+- [x] Review-by reminder email received for a test page (Nov 18, staging, Iraq program, to darya.ibrahim@ticqc.ae; link opened; D67)
 - [ ] Search returns pages, downloads and questions; 404 page with search
 - [ ] Language switch keeps the page; `/` → `/en/`; hreflang reciprocal; sitemaps per language
 - [ ] WeChat and China phone on Guangzhou; no wa.me there (test green)

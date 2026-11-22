@@ -59,8 +59,8 @@ def test_hero_renders_the_one_sentence_and_two_buttons(client, home):
     assert home.hero_heading in html
     assert "Request a quote" in html
     assert "Verify a certificate" in html
-    # No photo yet: the plain grey plate, never a stock image, and no note text on it (#48).
-    assert "hero__wrap" in html
+    # No photo yet: the band head (Round 3, T38), never a stock image, and no note text (#48).
+    assert '<section class="ph hero band"' in html
     assert "to be supplied by the office" not in html
 
 
