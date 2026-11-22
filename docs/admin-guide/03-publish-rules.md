@@ -41,7 +41,12 @@ A program page has twelve parts, in order 01 to 12, and all twelve are needed.
 
 ## Service page
 
-A service page has eleven parts, in order 01 to 11, and all eleven are needed.
+A service page has eleven parts, in order 01 to 11. Keep all eleven parts in the page.
+
+- Part 01 **What it is** is needed.
+- Any other part may stay empty. The site does not show an empty part.
+- A part with something in it must be complete. Example: a step needs a title and a text.
+- The named contact and the review line show a placeholder in brackets until you fill them.
 
 | Message | What to do |
 | --- | --- |
@@ -56,10 +61,8 @@ A service page has eleven parts, in order 01 to 11, and all eleven are needed.
 | Where we do it: name the offices or write where. | Choose offices or write a text. |
 | Related services: choose at least one page. | Choose a page. |
 | Questions and answers: add at least one question with its answer. | Add one. |
-| Contact: choose the named contact. | Choose a person. |
 | Contact: name the request form. | Fill the request form name. |
 | Last reviewed: set the date and the owning office. | Fill both in the last part. |
-| Testing pages name the partner laboratory: choose it under 'Partner laboratory'. | For a testing service, choose the laboratory. |
 
 ## Office page
 
@@ -79,9 +82,12 @@ document. Do not invent them: ask the Quality Manager.
 
 ## Course page
 
-Message at each field: **Needed to publish a course.** Fill **Price**, **Dates**,
-**What the certificate says** and **Certificate issued by**. Until the training team gives them, the
-course stays a draft.
+A course has no publish rule. You can publish it without a price, dates or a certificate.
+
+- No price, or no date from today on: the page shows **On request**.
+- No certificate text: the page shows no certificate line.
+
+Fill these facts when the training team gives them.
 
 ## Downloads library row and accreditation row (snippets)
 

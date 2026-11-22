@@ -4,7 +4,7 @@
 > pages (`seed/program-pages.yaml`); Saudi Arabia SFDA is held in that file until someone
 > shows the proof of the designation (D83; the site keeps "Designation in progress"). The "Paints & Coatings" page is not moved: on the current site
 > its body is a second copy of the sanitary ware text. The Iraq Verification of Conformity
-> page is also an article now. Sure single facts that are applied: the Lahore phone, the
+> page is also an article now. Mission, vision and values are on /en/about/ (D85). Sure single facts that are applied: the Lahore phone, the
 > careers criteria, the training overview, the client declaration form in the Iraq
 > checklist. `facts.json` beside this file holds all 92 facts with their source quotes.
 

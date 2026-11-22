@@ -401,6 +401,7 @@ textarea.inp { padding: 12px 14px; min-height: 120px; }
 .sub { flex: 1 1 260px; min-width: 0; text-decoration: none; display: flex; flex-direction: column; gap: 6px; padding: 22px; border: 1px solid var(--tic-hairline); background: var(--tic-white); }
 .sub b { font-family: var(--font-display); font-weight: 700; font-size: 17px; text-transform: uppercase; color: var(--tic-ink); }
 .sub span { font-size: 14px; color: var(--tic-charcoal); }
+.statement span { font-size: 15px; line-height: 1.7; }
 /* Rich text (editor text on every page; old news bodies). One rhythm for the whole site
    (Darya, Nov 17, 2026, D64): 15.5 px Open Sans at 1.95, lines of at most 68 characters,
    a softer ink, space after every block; h2 as the uppercase section heading, h3 a step

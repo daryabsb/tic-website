@@ -532,6 +532,15 @@ about:
             - {year: "2024", title: "Appointed for the Iraq program", text: "COSQC contract of 22 May 2024, with LOX"}
             - {year: "2025", title: "Registered with GOEIC, Egypt", text: "Pre-shipment inspection register, record 73"}
             - {year: "[year]", title: "[Each new office, in order]", text: "[office and year]"}
+    # The current site's words (ticqc.ae/about-us/; T43, D85). Added to a live About page
+    # that has no such section yet (seed_site: seed_statements).
+    - type: statements
+      value:
+        heading: "Mission, vision and values"
+        statements:
+          - {title: "Mission", text: "To become the preferred global, regional, and local solution provider and to lead the inspection and third-party services market by introducing innovative solutions to our clients and adhering strictly to our codes of conduct."}
+          - {title: "Vision", text: "To succeed, we must evolve, maintain commitment to our strong work ethics, have a passion for staying current with the latest innovations in our industry, and continually seek new and improved ways of working. Our goal is to deliver the right services and solutions in the right context at the right time."}
+          - {title: "Values", text: "To achieve sustainable growth, we believe in the fundamental commitment of social responsibility at the core of our operations, which includes accountability and integrity. We are dedicated to ongoing self-improvement."}
     - type: figures
       value:
         figures:

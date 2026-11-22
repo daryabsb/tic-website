@@ -75,3 +75,33 @@ def test_footer_lists_the_about_children(client, about):
 def test_one_leadership_page_per_about(about):
     assert LeadershipPage.objects.child_of(about).count() == 1
     assert not LeadershipPage.can_create_at(about)
+
+
+# -- mission, vision and values (T43, D85) ---------------------------------------------
+
+
+def test_about_shows_mission_vision_and_values_in_the_current_sites_words(client, about):
+    html = client.get("/en/about/").content.decode()
+    assert "Mission, vision and values" in html
+    assert "lead the inspection and third-party services market" in html
+    assert "accountability and integrity" in html
+    assert html.index("What we do, in one paragraph") < html.index("Mission, vision and values")
+    arabic = client.get("/ar/about/").content.decode()
+    assert "الرسالة والرؤية والقيم" in arabic
+
+
+def test_the_seed_adds_the_section_once_to_an_about_page_without_it(about):
+    from io import StringIO
+
+    from django.core.management import call_command
+
+    about.sections = [b for b in about.sections.raw_data if b["type"] != "statements"]
+    about.save_revision().publish()
+
+    for _run in range(2):
+        call_command("seed_site", stdout=StringIO(), stderr=StringIO())
+
+    about.refresh_from_db()
+    types = [b.block_type for b in about.sections]
+    assert types.count("statements") == 1
+    assert types.index("statements") == types.index("story") + 1

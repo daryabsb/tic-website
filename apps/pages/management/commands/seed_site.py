@@ -516,7 +516,7 @@ class Command(BaseCommand):
     def seed_service_page(self, home, page, data: dict) -> None:
         """A service page with the current site's text (T43, D82): its parts hold what
         ticqc.ae says; a part the current site has no text for is empty and not drawn.
-        The page goes live; the eleven-part rule still meets an editor on publish."""
+        The page goes live; an editor may publish it with its empty parts (D84)."""
         parts = []
         for part in data.get("parts", []):
             value = dict(part.get("value") or {})
@@ -830,7 +830,24 @@ class Command(BaseCommand):
             if sections and (self.reset or not about.sections.raw_data):
                 sections = self.link_pages(home, sections)
             self.fill_page(about, data, self.ABOUT_FIELDS, streams=[("sections", sections)])
+            self.seed_statements(about, data.get("sections") or [])
         self.stdout.write(f"{locale.language_code}: about checked")
+
+    def seed_statements(self, about, sections) -> None:
+        """Mission, vision and values (T43, D85) on an About page the seed filled before
+        they were in the seed: the section goes in after the story, once. A page a person
+        has saved is left alone; the editor adds the section in the admin."""
+        new = next((s for s in sections if s["type"] == "statements"), None)
+        raw = list(about.sections.raw_data)
+        if new is None or not self.seed_made(about):
+            return
+        if any(block["type"] == "statements" for block in raw):
+            return
+        at = next((n + 1 for n, b in enumerate(raw) if b["type"] == "story"), 0)
+        raw.insert(at, {"type": "statements", "value": new["value"]})
+        about.sections = raw
+        about.save_revision().publish()
+        self.changes += 1
 
     # -- Accreditations and policy pages (T22) ----------------------------------------
 
@@ -1018,8 +1035,8 @@ class Command(BaseCommand):
         self.stdout.write(f"{locale.language_code}: complaints and careers checked")
 
     def seed_training(self, locale: Locale, data: dict) -> None:
-        """The catalogue under Home and the old site's ten courses as drafts (no price,
-        dates or certificate yet: the publish rule). The services hub's Training card
+        """The catalogue under Home and the current site's ten courses (T43, D82); with no
+        price or date a course shows "On request" (D84). The services hub's Training card
         goes to the catalogue (ServiceGroupPage.see_also)."""
         home = HomePage.objects.filter(locale=locale).first()
         if home is None:

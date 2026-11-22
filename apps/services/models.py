@@ -5,9 +5,9 @@
 - ``ServiceGroupPage``: one of the seven groups, its service cards and the "how it is
   done" band.
 - ``ServicePage``: the eleven parts (``apps.services.blocks``). Publishing is refused
-  until every part is filled in order, and on a testing page until the partner
-  laboratory is named (``apps.services.rules``; D26).
-- ``Partner``: a partner laboratory or subcontractor, named on every testing page
+  without the intro, the eleven parts in order and part 01; any other part may stay
+  empty and is then not drawn (``apps.services.rules``; D26, made softer in D84).
+- ``Partner``: a partner laboratory or subcontractor, named on a testing page
   (proposal 01 §5.3 note 1).
 """
 
@@ -224,13 +224,7 @@ class ServicePageForm(WagtailAdminPageForm):
         cleaned = super().clean()
         if self.is_deferred_validation:
             return cleaned
-        parent = self.parent_page.specific if self.parent_page else None
-        problems = service_page_problems(
-            intro=cleaned.get("intro"),
-            parts=cleaned.get("parts"),
-            group=getattr(parent, "group", None),
-            partner_lab=cleaned.get("partner_lab"),
-        )
+        problems = service_page_problems(intro=cleaned.get("intro"), parts=cleaned.get("parts"))
         if problems:
             raise ValidationError(problems)
         return cleaned
@@ -270,14 +264,17 @@ class ServicePage(ScriptNormalisationMixin, _HeaderFields, Page):  # noqa: DJ008
         blank=True,
         on_delete=models.PROTECT,
         related_name="service_pages",
-        help_text=_("Required on testing pages: who does the analysis."),
+        help_text=_("On a testing page: who does the analysis."),
     )
     parts = StreamField(
         SERVICE_PARTS,
         block_counts=PART_BLOCK_COUNTS,
         blank=True,
         verbose_name=_("the eleven parts"),
-        help_text=_("Each part once, in order 01 to 11. All eleven are needed to publish."),
+        help_text=_(
+            "Each part once, in order 01 to 11. Part 01 is needed to publish. "
+            "A part you leave empty is not shown on the page."
+        ),
     )
     # Facts bar (T39, D77): Where · On site · Report · Standards.
     fact_where = value_field(_("where"))

@@ -6,22 +6,20 @@ carries the fields of proposal 01 §5.7: standard, level, duration, format and c
 dates (rows), price with currency and tax note, what the certificate says and who issues
 it, trainer, prerequisites; the impartiality sentence is fixed text in the template.
 
-Publish and submit are refused without price, dates, certificate text and issuer (as
-the policy pages, D51); "save draft" always works. So the ten courses of the old site
-are seeded as drafts until the training owner gives these facts (D53). Only dates from
-today on are shown ("expired dates archive themselves").
+A course has no publish rule (T43, D84; before: price, dates, certificate text and
+issuer were needed, D53). A course with no price or no coming date shows "On request";
+the certificate line is drawn only when it has a text. Only dates from today on are
+shown ("expired dates archive themselves").
 
 "Register" opens the core request form with the course as the topic (RequestSchema
 "course_register", seeded for every course; D53). The rules see ``service_group =
 training``, so the head office (training owner) receives it.
 """
 
-from django.core.exceptions import ValidationError
 from django.db import models
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 from wagtail import blocks
-from wagtail.admin.forms import WagtailAdminPageForm
 from wagtail.admin.panels import FieldPanel, FieldRowPanel, MultiFieldPanel
 from wagtail.fields import StreamField
 from wagtail.models import Page
@@ -104,33 +102,6 @@ class DateBlock(blocks.StructBlock):
         label = _("Date")
 
 
-# A course is published only with these facts (master plan 03).
-COURSE_REQUIRED = ("price", "dates", "certificate_text", "certificate_issuer")
-
-
-def course_problems(values: dict) -> dict:
-    problems = {}
-    for name in COURSE_REQUIRED:
-        value = values.get(name)
-        if value is None or value == "" or (name == "dates" and not len(value)):
-            problems[name] = _("Needed to publish a course.")
-    return problems
-
-
-class CoursePageForm(WagtailAdminPageForm):
-    """Refuses publish and submit-for-review without price, dates, certificate text and
-    issuer; "save draft" is always allowed (as the policy pages, D51)."""
-
-    def clean(self):
-        cleaned = super().clean()
-        if self.is_deferred_validation:
-            return cleaned
-        problems = course_problems(cleaned)
-        if problems:
-            raise ValidationError(problems)
-        return cleaned
-
-
 class CoursePage(DescribedPage, ScriptNormalisationMixin, Page):
     kind = models.CharField(_("kind"), max_length=20, choices=KINDS, default="awareness")
     summary = models.TextField(
@@ -164,7 +135,6 @@ class CoursePage(DescribedPage, ScriptNormalisationMixin, Page):
     prerequisites = models.CharField(_("prerequisites"), max_length=240, blank=True)
     body = models.TextField(_("what the course covers"), blank=True)
 
-    base_form_class = CoursePageForm
     parent_page_types = ["training.TrainingIndexPage"]
     subpage_types = []
 
@@ -212,7 +182,8 @@ class CoursePage(DescribedPage, ScriptNormalisationMixin, Page):
                 FieldPanel("certificate_text"),
                 FieldPanel("certificate_issuer"),
             ],
-            heading=_("Dates, price and certificate (needed to publish)"),
+            heading=_("Dates, price and certificate"),
+            help_text=_("With no price or no coming date, the page shows 'On request'."),
         ),
         FieldPanel("body"),
     ]
