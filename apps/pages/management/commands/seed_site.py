@@ -279,6 +279,18 @@ class Command(BaseCommand):
 
     PLACEHOLDER = re.compile(r"\[[^\[\]]+\]")
 
+    @classmethod
+    def holes(cls, value) -> int:
+        """The number of bracketed placeholders in the texts of a part's value. Only
+        the texts count: the lists and row ids of the stored form have brackets too."""
+        if isinstance(value, str):
+            return len(cls.PLACEHOLDER.findall(value))
+        if isinstance(value, dict):
+            return sum(cls.holes(item) for key, item in value.items() if key != "id")
+        if isinstance(value, list):
+            return sum(cls.holes(item) for item in value)
+        return 0
+
     def refresh_parts(self, page, seeded: list) -> bool:
         """A part that still shows a bracketed placeholder takes the seed's part of the
         same type when the seed now has fewer placeholders in it (T43: the current site
@@ -291,8 +303,7 @@ class Command(BaseCommand):
             new = by_type.get(block["type"])
             if new is None:
                 continue
-            old_holes = len(self.PLACEHOLDER.findall(json.dumps(block.get("value"))))
-            new_holes = len(self.PLACEHOLDER.findall(json.dumps(new)))
+            old_holes, new_holes = self.holes(block.get("value")), self.holes(new)
             if old_holes and new_holes < old_holes:
                 block["value"] = new
                 changed = True

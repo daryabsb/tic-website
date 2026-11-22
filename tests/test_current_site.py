@@ -191,6 +191,29 @@ def test_a_part_with_a_placeholder_takes_the_seeds_better_part(seeded_home):
 
 
 @pytest.mark.django_db
+def test_a_list_with_a_placeholder_row_takes_the_seeds_list(seeded_home):
+    """The stored form of a list has brackets of its own (rows, ids): only the texts
+    count. On staging the Iraq checklist kept "[Any further item …]" for this reason."""
+    iraq = _english(ProgramPage, "iraq-certificate-of-conformity")
+    command = seed_site.Command()
+    command.changes = 0
+    stored = [dict(block) for block in iraq.parts.raw_data]
+    checklist = next(block for block in stored if block["type"] == "checklist")
+    seeded = json.loads(json.dumps(checklist["value"]))
+    rows = [row["value"] if isinstance(row, dict) else row for row in seeded["items"]]
+    assert "Client declaration form, completed and signed by the exporter" in rows
+    checklist["value"]["items"][-1]["value"] = "[Any further item the Baghdad office confirms]"
+    iraq.parts = stored
+    iraq.save_revision().publish()
+
+    assert command.holes(checklist["value"]) == 1
+    assert command.refresh_parts(iraq, [{"type": "checklist", "value": {**seeded, "items": rows}}])
+    iraq.refresh_from_db()
+    text = json.dumps(next(b for b in iraq.parts.raw_data if b["type"] == "checklist"))
+    assert "Client declaration form" in text and "Any further item" not in text
+
+
+@pytest.mark.django_db
 def test_an_earlier_seed_text_is_replaced_and_an_editors_text_is_kept(
     seeded_home, tmp_path, monkeypatch
 ):
