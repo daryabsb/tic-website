@@ -100,6 +100,28 @@ def test_the_cta_band_carries_the_office_numbers(client, offices, site_numbers):
     assert home.office is None and home.phone == "+971 4 225 5555"
 
 
+def test_the_office_page_lists_a_program_one_time_in_its_own_language(client, offices):
+    """The Arabic program page has the same owning office as the English one (T29): each
+    office page lists the program of its own language, one time."""
+    english = client.get("/en/offices/baghdad/").content.decode()
+    arabic = client.get("/ar/offices/baghdad/").content.decode()
+
+    assert english.count("/en/programs/iraq-certificate-of-conformity/") >= 1
+    assert "/ar/programs/iraq-certificate-of-conformity/" not in english
+    assert "/ar/programs/iraq-certificate-of-conformity/" in arabic
+    assert "/en/programs/iraq-certificate-of-conformity/" not in arabic
+
+
+def test_the_contact_band_names_only_the_channels_of_the_page(client, offices, site_numbers):
+    """No "WhatsApp" in the band text of the office in China (D11)."""
+    guangzhou = client.get(offices["guangzhou"].url).content.decode()
+    noida = client.get(offices["noida"].url).content.decode()
+
+    assert "WhatsApp, phone or the quote form" not in guangzhou
+    assert "hone or the quote form. Answered by a named person" in guangzhou
+    assert "WhatsApp, phone or the quote form" in noida
+
+
 def test_the_office_page_lists_what_it_sells(client, offices):
     html = client.get(offices["baghdad"].url).content.decode()
     assert "Sold and delivered from Baghdad" in html

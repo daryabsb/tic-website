@@ -9,6 +9,7 @@ article: contents from its H2 headings, read time, updated date, author box, rel
 articles.
 """
 
+import html as html_text
 import re
 
 from django.core.paginator import Paginator
@@ -212,7 +213,7 @@ class NewsPage(DescribedPage, ScriptNormalisationMixin, Page):  # noqa: DJ008 (P
         toc = []
 
         def number(match):
-            title = strip_tags(match.group(2)).strip()
+            title = html_text.unescape(strip_tags(match.group(2))).strip()
             anchor = f"s{len(toc) + 1}-{slugify(title)[:40]}"
             toc.append((anchor, title))
             return f'<h2 id="{anchor}"{match.group(1)}>{match.group(2)}</h2>'

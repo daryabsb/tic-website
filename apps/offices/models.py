@@ -300,8 +300,13 @@ class OfficePage(ScriptNormalisationMixin, _HeaderFields, Page):  # noqa: DJ008 
         context["people"] = Person.objects.filter(
             office=self, agreed_to_be_named=True, locale=self.locale
         )
+        # The program's office field holds the same page in every language, so the
+        # programs are found by the office's translation key, in this page's language.
         context["programs"] = (
-            ProgramPage.objects.live().public().filter(owning_office=self).order_by("title")
+            ProgramPage.objects.live()
+            .public()
+            .filter(owning_office__translation_key=self.translation_key, locale=self.locale)
+            .order_by("title")
         )
         context["facts"] = office_facts(self)
         return context

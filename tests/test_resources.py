@@ -96,6 +96,18 @@ def test_an_article_has_contents_read_time_and_related(client, seeded):
     assert "the regulator’s own publications take precedence" in page
 
 
+def test_the_contents_list_shows_an_ampersand_as_text(client, seeded):
+    index = NewsIndexPage.objects.get(locale__language_code="en")
+    article = add_news(
+        index, "two-parts", body="<h2>Inspection &amp; Quality Certificate</h2><p>Text.</p>"
+    )
+
+    assert article.contents[0][1] == "Inspection & Quality Certificate"
+    page = html(client, article.url)
+    assert "Inspection &amp; Quality Certificate</a>" in page  # escaped one time only
+    assert "&amp;amp;" not in page
+
+
 # -- Downloads ------------------------------------------------------------------------
 
 

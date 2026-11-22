@@ -2,7 +2,7 @@
 <div class="band band--red"><div class="wrap cta">
   <div class="cta__text">
     <h2 class="h2 h2--sm h2--w">{{ heading|default:_("Talk to the office nearest you") }}</h2>
-    <p>{{ text|default:_("WhatsApp, phone or the quote form. Answered by a named person within one working day.") }}</p>
+    <p>{% if text %}{{ text }}{% elif ch.whatsapp_link %}{% translate "WhatsApp, phone or the quote form. Answered by a named person within one working day." %}{% elif ch.wechat_id %}{% translate "WeChat, phone or the quote form. Answered by a named person within one working day." %}{% else %}{% translate "Phone or the quote form. Answered by a named person within one working day." %}{% endif %}</p>
   </div>
   <div class="cta__actions">
     {% if ch.whatsapp_link %}<a class="btn btn--white" href="{{ ch.whatsapp_link }}" rel="noopener" target="_blank">{% translate "WhatsApp" %}</a>{% endif %}
