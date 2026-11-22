@@ -106,7 +106,9 @@ def test_the_redirect_map_keeps_the_iraq_rows_of_t18():
         assert reader.fieldnames == ["old_path", "new_path", "fallback"]
         rows = {row["old_path"]: row["new_path"] for row in reader}
     iraq = "/en/programs/iraq-certificate-of-conformity/"
-    assert rows["/iraq-coc/"] == rows["/iraq-coc-gujarat/"] == iraq
+    assert rows["/iraq-coc/"] == rows["/iraq-verification-of-conformity-program/"] == iraq
+    # T43: the Gujarat page is an article of its own now.
+    assert rows["/iraq-coc-gujarat/"] == "/en/news/iraq-coc-certification-services-in-gujarat/"
     assert rows["/government-services-programs-gsp/"] == "/en/programs/"
     assert rows["/iraqi-quality-mark/"] == "/en/news/iraqi-quality-mark/"
 

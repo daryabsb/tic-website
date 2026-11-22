@@ -1,0 +1,1096 @@
+[
+ {
+  "item_id": "LHE-02",
+  "new_page": "/en/offices/lahore/",
+  "field": "phone",
+  "value": "+92 335 488 2213",
+  "source": "_footer",
+  "quote": "PAKISTAN ... P/130 M. A Johar Town Lahore Punjab, Pakistan ... T: +92 335 488 2213",
+  "sure": true,
+  "note": "Pakistan has one office (Lahore), so the number is the Lahore number. The seed dropped it before (D49); the Nov 22 decision brings it back. The source does not say if it answers WhatsApp.",
+  "also": [
+   "DXB-02",
+   "DXB-24"
+  ]
+ },
+ {
+  "item_id": "GDH-01",
+  "new_page": "/en/offices/gandhidham/",
+  "field": "phone",
+  "value": "+91 92666 06587",
+  "source": "_footer",
+  "quote": "INDIA ... 2nd Floor, Saraswati Avenue – 1, Gandhidham, Gujarat ... T: +91 92666 06587",
+  "sure": false,
+  "note": "One number for the INDIA block, which has two offices (Noida and Gandhidham). It is printed after the Gandhidham line, but the contact page uses the same digits as the group help line (+91 9266 606 587) and the Saudi SFDA page as its contact phone. The source supports 'India', not 'Gandhidham'. Ask the office.",
+  "also": [
+   "DXB-02",
+   "DXB-24",
+   "GDH-10"
+  ]
+ },
+ {
+  "item_id": "NOI-02",
+  "new_page": "/en/offices/noida/",
+  "field": "conflict",
+  "value": "Current site, India: +91 92666 06587. New site, Noida: +91 92117 11993.",
+  "source": "_footer",
+  "quote": "Office 1020 | ABC Tower 4 | Sector – 135 | Noida | Delhi ... T: +91 92666 06587",
+  "sure": false,
+  "note": "The current site prints one India number and it is not the Noida number that head office gave on Nov 13, 2026. The India number can be a help line for the country, so this is not a sure contradiction."
+ },
+ {
+  "item_id": "RUH-02",
+  "new_page": "/en/offices/riyadh/",
+  "field": "conflict",
+  "value": "Current site, Riyadh: +966 56900 9151. New site: +966 56 169 0992.",
+  "source": "_footer",
+  "quote": "SAUDI ARABIA ... 7069 Khalid bin Al Walid St. | King Fasial Dist. | Riyadh 13215 ... T: +966 56900 9151",
+  "sure": true,
+  "note": "Saudi Arabia has one office, so the two numbers are for the same office. Head office gave the new one on Nov 13, 2026 (D49). The owner must say which is correct today."
+ },
+ {
+  "item_id": "SHJ-02",
+  "new_page": "/en/offices/sharjah/",
+  "field": "phone",
+  "value": "+971 4 225 5555",
+  "source": "_footer",
+  "quote": "Office 2101 | Clover Bay Tower | P.O Box 28129 | Dubai ... Office 6G-3 A | Hamriyah Free Zone | Sharjah ... T: +971 4 225 5555",
+  "sure": false,
+  "note": "One number for the UAE block (Dubai and Sharjah). It is the Dubai head office number (area code 4). The current site gives no number of its own for Sharjah."
+ },
+ {
+  "item_id": "CMB-06",
+  "new_page": "/en/offices/maharagama/",
+  "field": "address",
+  "value": "28129 (printed as the post code of Maharagama)",
+  "source": "_footer",
+  "quote": "272B/2/1 | High Level Road | Maharagma | PO CODE 28129",
+  "sure": false,
+  "note": "The same text is on the contact page. 28129 is also the P.O. Box of the Dubai head office, so this is probably a copy fault. Do not fill the placeholder with it before the office confirms.",
+  "also": [
+   "CMB-01",
+   "CMB-13"
+  ]
+ },
+ {
+  "item_id": "CMB-06",
+  "new_page": "/en/offices/maharagama/",
+  "field": "conflict",
+  "value": "Current site: 'Maharagma'. New site: 'Maharagama'.",
+  "source": "contact",
+  "quote": "272B/2/1 | High Level Road | Maharagma | PO CODE 28129",
+  "sure": true,
+  "note": "Spelling of the town. The new site has the usual spelling."
+ },
+ {
+  "item_id": "RUH-05",
+  "new_page": "/en/offices/riyadh/",
+  "field": "conflict",
+  "value": "Current site: 'King Fasial Dist.'. New site: 'King Faisal District'.",
+  "source": "contact",
+  "quote": "7069 Khalid bin Al Walid St. | King Fasial Dist. | Riyadh 13215",
+  "sure": true,
+  "note": "Spelling only (the new site repaired a typing fault). Street, number and post code are the same."
+ },
+ {
+  "item_id": "SHJ-05",
+  "new_page": "/en/offices/sharjah/",
+  "field": "address",
+  "value": "Office 6G-3 A, Hamriyah Free Zone, Sharjah",
+  "source": "contact",
+  "quote": "UAE – Sharjah: Office 6G-3 A | Hamriyah Free Zone.",
+  "sure": true,
+  "note": "Same as the new site. The current site gives no P.O. box for Sharjah."
+ },
+ {
+  "item_id": "BGW-05",
+  "new_page": "/en/offices/baghdad/",
+  "field": "address",
+  "value": "4th Floor, Al-Rabiah Building, 13th Street, Al-Mansour, Baghdad",
+  "source": "contact",
+  "quote": "4th Floor, Al-Rabiah Building, 13th Street, Al-Mansour, Baghdad",
+  "sure": true,
+  "note": "Same as the new site (footer and contact page agree)."
+ },
+ {
+  "item_id": "CAN-08",
+  "new_page": "/en/offices/guangzhou/",
+  "field": "address",
+  "value": "Rm 6026, Yuehui Plaza, 1213 Yayun Rd, Guangzhou City",
+  "source": "contact",
+  "quote": "Rm 6026, Yuehui Plaza, 1213 Yayun Rd, Guangzhou City",
+  "sure": true,
+  "note": "Same as the new site. The current site gives no district and no post code."
+ },
+ {
+  "item_id": "NOI-05",
+  "new_page": "/en/offices/noida/",
+  "field": "address",
+  "value": "Office 1020, ABC Tower 4, Sector 135, Noida, Delhi",
+  "source": "contact",
+  "quote": "Office 1020 | ABC Tower 4 | Sector – 135 | Noida | Delhi",
+  "sure": true,
+  "note": "Same as the new site. The current site also writes 'Noida | Delhi' and gives no PIN code, so it does not answer NOI-06 and NOI-15."
+ },
+ {
+  "item_id": "GDH-04",
+  "new_page": "/en/offices/gandhidham/",
+  "field": "address",
+  "value": "2nd Floor, Saraswati Avenue 1, Vandana Garbi Chowk, Gandhidham (footer adds: Gujarat)",
+  "source": "contact",
+  "quote": "2 nd Floor | Saraswati Avenue – 1 | Vandana Garbi Chowk | Gandhidham",
+  "sure": true,
+  "note": "Same as the new site. 'Vandana Garbi Chowk' is on the contact page only; 'Gujarat' is in the footer only. No PIN code."
+ },
+ {
+  "item_id": "LHE-05",
+  "new_page": "/en/offices/lahore/",
+  "field": "address",
+  "value": "P/130 M. A Johar Town, Lahore, Punjab, Pakistan",
+  "source": "_footer",
+  "quote": "P/130 M. A Johar Town Lahore Punjab, Pakistan",
+  "sure": true,
+  "note": "Same as the new site. The current site has no more detail (no block, no post code)."
+ },
+ {
+  "item_id": "AMM-05",
+  "new_page": "/en/offices/amman/",
+  "field": "address",
+  "value": "Office 303, Al-Hajar Al-Aswad Bldg., Amman",
+  "source": "contact",
+  "quote": "Office 303 | Al-Hajar Al-Aswad Bldg. | Amman",
+  "sure": true,
+  "note": "Same as the new site. The current site gives no street and no district."
+ },
+ {
+  "item_id": "CAI-05",
+  "new_page": "/en/offices/cairo/",
+  "field": "address",
+  "value": "Apt. 11, First, 33 Ahmed Heshmat St, Zamalek, Cairo",
+  "source": "contact",
+  "quote": "Apt. 11 | First | 33 Ahmed Heshmat St | Zamalek | Cairo",
+  "sure": true,
+  "note": "Same as the new site; the source says 'First', the new site wrote 'First Floor'. No post code."
+ },
+ {
+  "item_id": "SAO-05",
+  "new_page": "/en/offices/sao-paulo/",
+  "field": "address",
+  "value": "Alameda Santos, 1470, Salas 201 e 202, Edifício Victória Park, São Paulo",
+  "source": "contact",
+  "quote": "Alameda Santos, 1470, Salas 201 e 202 | Edifício Victória Park | São Paulo",
+  "sure": true,
+  "note": "Same as the new site. The current site gives no district and no CEP."
+ },
+ {
+  "item_id": "BKK-05",
+  "new_page": "/en/offices/bangkok/",
+  "field": "address",
+  "value": "No 4/1 Soi Sathron, Yan-nawa, Sathorn Dist., Bangkok 10120",
+  "source": "contact",
+  "quote": "No 4/1 Soi Sathron | Yan-nawa | Sathorn Dist. | Bangkok 10120",
+  "sure": true,
+  "note": "Same as the new site. The current site has the same two spellings ('Sathron', 'Sathorn'), so it does not answer BKK-06 and BKK-13."
+ },
+ {
+  "item_id": "KUL-05",
+  "new_page": "/en/offices/kuala-lumpur/",
+  "field": "address",
+  "value": "LVL 7, MERCU 3, No. 3, Jalan Bangsar, KL ECO, 59200 Kuala Lumpur",
+  "source": "contact",
+  "quote": "Lvl 7 | Mercu 3 | NO. 3 | Jalan Bangsar | KL ECO | 59200 | Kuala Lumpur",
+  "sure": true,
+  "note": "Same as the new site, 'KL ECO' included. No fuller form on the current site."
+ },
+ {
+  "item_id": "",
+  "new_page": "/en/contact/",
+  "field": "help_line",
+  "value": "+971 56 410 6001; +91 9266 606 587",
+  "source": "contact",
+  "quote": "Help line: +971 56 410 6001 +91 9266 606 587",
+  "sure": true,
+  "note": "Not on the new site. The current site gives it for inquiries, complaints or feedback about the Compliance Code. Fits /en/contact/ and /en/about/complaints/ (other_ways). The India number has the same digits as the footer number +91 92666 06587."
+ },
+ {
+  "item_id": "QAM-23",
+  "new_page": "/en/about/impartiality/",
+  "field": "sections.body",
+  "value": "A phone help line: +971 56 410 6001 (UAE), +91 9266 606 587 (India)",
+  "source": "contact",
+  "quote": "An interested party can make inquiries, complaints or feedback about the Compliance Code via our listed helpline",
+  "sure": false,
+  "note": "A phone line is a route that does not show an email sender. The source gives it for the Compliance Code (TIC Council), not by name for impartiality concerns.",
+  "also": [
+   "QAM-32"
+  ]
+ },
+ {
+  "item_id": "DXB-25",
+  "new_page": "(all pages)",
+  "field": "whatsapp_number",
+  "value": "+971 56 410 6001",
+  "source": "contact",
+  "quote": "Help line: +971 56 410 6001 +91 9266 606 587",
+  "sure": false,
+  "note": "The only UAE mobile number on the current site. The source calls it a help line and does not say WhatsApp. Ask head office before use.",
+  "also": [
+   "DXB-04",
+   "DXB-06",
+   "DXB-23",
+   "CEO-15"
+  ]
+ },
+ {
+  "item_id": "NOI-14",
+  "new_page": "/en/about/accreditations/",
+  "field": "legal_entity",
+  "value": "TIC Quality Control Private Limited",
+  "source": "halal-webinar",
+  "quote": "UPI ID: [ MSTICQUALITYCONTROLPRIVATELIMITED.eazypay@icici",
+  "sure": false,
+  "note": "The bank payment name of the India company reads 'M/S TIC QUALITY CONTROL PRIVATE LIMITED'. It supports the long form 'Private Limited', not 'Pvt. Ltd.'. It is a payment handle, not a register entry, and it does not say which office (Noida or Gandhidham) is this entity.",
+  "also": [
+   "NOI-07",
+   "GDH-05",
+   "LEG-01",
+   "NOI-13"
+  ]
+ },
+ {
+  "item_id": "BGW-06",
+  "new_page": "/en/offices/baghdad/",
+  "field": "legal_entity",
+  "value": "LOX and TIC Quality Control, in partnership (no registered name is given)",
+  "source": "iraq-coc",
+  "quote": "LOX-TICQC \"Partnership\" has been appointed by the Central Organization for Standardization and Quality Control (COSQC)",
+  "sure": false,
+  "note": "The current site says the partnership holds the appointment, not one company. It gives no legal name of the entity in Baghdad and does not say which company signs the certificate.",
+  "also": [
+   "PRG-18"
+  ]
+ },
+ {
+  "item_id": "LEG-03",
+  "new_page": "/en/about/group/",
+  "field": "companies",
+  "value": "seacorr.com; Seacorr is 'the sister company' that does the NDT work",
+  "source": "testing-non-destructive-testing-ndt",
+  "quote": "TIC quality control performs Non-Destructive Testing (NDT) scopes through the sister company Seacorr. For more information please visit www.seacorr.com",
+  "sure": false,
+  "note": "Confirms one of the facts LEG-03 asks for: the Seacorr web address (and what Seacorr does for TIC). The current site gives no registered name and no founding year for Seacorr or LOX, and no LOX web address.",
+  "also": [
+   "SVC-26"
+  ]
+ },
+ {
+  "item_id": "HRD-06",
+  "new_page": "/en/about/careers/",
+  "field": "conflict",
+  "value": "The 'People' text of the current About page names Seacorr, not TIC.",
+  "source": "about-us",
+  "quote": "We prioritize ongoing training and education for our team at Seacorr. ... Internationally Certified to Deliver All The Services Offered by Seacorr",
+  "sure": true,
+  "note": "Copied text of the sister company on the current site. When the hiring criteria are moved, write 'TIC', or leave these two lines out until HR confirms them."
+ },
+ {
+  "item_id": "",
+  "new_page": "/en/about/",
+  "field": "mission",
+  "value": "To become the preferred global, regional, and local solution provider and to lead the inspection and third-party services market by introducing innovative solutions to our clients and adhering strictly to our codes of conduct.",
+  "source": "about-us",
+  "quote": "To become the preferred global, regional, and local solution provider and to lead the inspection and third-party services market by introducing innovative solutions to our clients",
+  "sure": true,
+  "note": "The new About page has no mission, vision or values part. CEO-04 (the CEO quote) asks why TIC exists: the mission can be the base, but CEO-04 wants the CEO's own words."
+ },
+ {
+  "item_id": "",
+  "new_page": "/en/about/",
+  "field": "vision",
+  "value": "To succeed, we must evolve, maintain commitment to our strong work ethics, have a passion for staying current with the latest innovations in our industry, and continually seek new and improved ways of working. Our goal is to deliver the right services and solutions in the right context at the right time.",
+  "source": "about-us",
+  "quote": "Our goal is to deliver the right services and solutions in the right context at the right time.",
+  "sure": true,
+  "note": "Not on the new site."
+ },
+ {
+  "item_id": "",
+  "new_page": "/en/about/",
+  "field": "values",
+  "value": "To achieve sustainable growth, we believe in the fundamental commitment of social responsibility at the core of our operations, which includes accountability and integrity. We are dedicated to ongoing self-improvement.",
+  "source": "about-us",
+  "quote": "To achieve sustainable growth, we believe in the fundamental commitment of social responsibility at the core of our operations, which includes accountability and integrity.",
+  "sure": true,
+  "note": "Not on the new site."
+ },
+ {
+  "item_id": "",
+  "new_page": "/en/about/",
+  "field": "compliance_principle",
+  "value": "Our commitment to compliance is a cornerstone of our operations, embodying the highest standards of ethical conduct, integrity, and adherence to all applicable laws and regulations. In alignment with the TIC Council's requirements, we have established a comprehensive framework that guides our interactions with employees, stakeholders, and the community. This commitment is reflected in our robust governance structure, comprehensive employee training, strict confidentiality protocols, and our dedication to health, safety, and financial integrity. We actively extend these principles to our business partners, ensuring a culture of compliance that permeates every facet of our operations.",
+  "source": "about-us",
+  "quote": "In alignment with the TIC Council’s requirements, we have established a comprehensive framework that guides our interactions with employees, stakeholders, and the community.",
+  "sure": true,
+  "note": "Heading on the current site: 'Our compliance principle to TIC Council'. Not on the new site. Fits the TIC Council row of /en/about/accreditations/ or a part of /en/about/. It gives no membership number (QAM-13 stays open)."
+ },
+ {
+  "item_id": "",
+  "new_page": "/en/about/careers/",
+  "field": "people",
+  "value": "Our diverse, skilled team consistently delivers innovative quality control services and customized solutions to all our clients across various industries.",
+  "source": "about-us",
+  "quote": "team consistently delivers innovative quality control services and customized solutions to all our clients across",
+  "sure": true,
+  "note": "The source has two typing faults ('silled', 'variuos'), repaired in the value. Fits the Careers intro or the About page."
+ },
+ {
+  "item_id": "HRD-02",
+  "new_page": "/en/about/careers/",
+  "field": "intro",
+  "value": "We actively seek talented individuals across all regions where we operate to join our dynamic team. Our goal is to build a diverse, internationally experienced team committed to delivering excellence with passion, corporate ethics, high integrity, and effective collaboration with all team members.",
+  "source": "about-us",
+  "quote": "We actively seek talented individuals across all regions where we operate to join our dynamic team.",
+  "sure": true,
+  "note": "The careers text of the current site ('Apply for a career'). It can replace the builder note that is the first sentence of the new Careers page. Typing fault 'commit- ted' repaired in the value."
+ },
+ {
+  "item_id": "HRD-06",
+  "new_page": "/en/about/careers/",
+  "field": "look_for",
+  "value": "University degree with engineering background",
+  "source": "about-us",
+  "quote": "University Degree with Engineering Background",
+  "sure": false,
+  "note": "One general rule for all staff; the placeholder asks for the rule by service line. Under the heading 'We choose the best'."
+ },
+ {
+  "item_id": "HRD-07",
+  "new_page": "/en/about/careers/",
+  "field": "look_for",
+  "value": "Minimum of 5 years of experience",
+  "source": "about-us",
+  "quote": "Minimum of 5 Years Of Experience",
+  "sure": true,
+  "note": "Under the heading 'We choose the best'."
+ },
+ {
+  "item_id": "HRD-08",
+  "new_page": "/en/about/careers/",
+  "field": "look_for",
+  "value": "Bilingual speakers",
+  "source": "about-us",
+  "quote": "Bilingual Speakers",
+  "sure": false,
+  "note": "The source does not name the languages and says nothing about a driving licence or travel."
+ },
+ {
+  "item_id": "",
+  "new_page": "/en/about/careers/",
+  "field": "look_for",
+  "value": "Written and physical technical assessments, both on and off-site, to evaluate technical knowledge and skills",
+  "source": "about-us",
+  "quote": "Written and Physical Technical Assessments, Both On and Off-Site, to Evaluate Their Technical Knowledge and Skills.",
+  "sure": true,
+  "note": "A hiring step of the current site that the new Careers page does not have. The list has one more line that names Seacorr (see the conflict row)."
+ },
+ {
+  "item_id": "DXB-01",
+  "new_page": "/en/offices/",
+  "field": "intro",
+  "value": "14 addresses in 12 countries (count of the footer list of the current site)",
+  "source": "_footer",
+  "quote": "UAE ... IRAQ ... CHINA ... INDIA ... PAKISTAN ... JORDAN ... SAUDI ARABIA ... EGYPT ... BRAZIL ... SRI LANKA ... THAILAND ... MALAYSIA",
+  "sure": false,
+  "note": "A count made from the footer, not a sentence of the source: 12 country headings and 14 address lines (UAE 2, India 2, ten others 1 each). It agrees with 'Fourteen offices in twelve countries' and with the country list in the new footer. Other pages of the current site say '15+ Countries' (see the conflict row).",
+  "also": [
+   "DXB-14",
+   "DXB-16",
+   "DXB-18",
+   "DXB-26"
+  ]
+ },
+ {
+  "item_id": "DXB-18",
+  "new_page": "/en/",
+  "field": "conflict",
+  "value": "Current site: '15+ Countries' (program pages) and '12+ Countries' (Halal page). New site: 12 countries.",
+  "source": "iraq-coc",
+  "quote": "15+ ... Countries ... Global Presence",
+  "sure": true,
+  "note": "The same '15+' is on the Egypt, Libya, Gujarat and agriculture pages; the Halal page says '12+ Countries Covered'. The footer lists 12 countries. The owner must give one number (decision P-12).",
+  "also": [
+   "DXB-01",
+   "DXB-14"
+  ]
+ },
+ {
+  "item_id": "QAM-06",
+  "new_page": "/en/about/",
+  "field": "sections.figures",
+  "value": "10K+ certificates (CoCs issued)",
+  "source": "iraq-coc",
+  "quote": "10K+ ... Certificates ... CoCs Issued",
+  "sure": false,
+  "note": "A total with no date and no record behind it. The placeholder asks for the number of certificates issued in 2025.",
+  "also": [
+   "DXB-16"
+  ]
+ },
+ {
+  "item_id": "",
+  "new_page": "/en/about/",
+  "field": "sections.figures",
+  "value": "500+ engineers and inspectors; 99% compliance rate",
+  "source": "iraq-coc",
+  "quote": "500+ ... Experts ... Engineers & Inspectors ... 10K+ ... Certificates ... CoCs Issued ... 99% ... Success Rate ... Compliance Rate",
+  "sure": false,
+  "note": "Figures of the current site with no source and no date (also on the Egypt, Libya, Gujarat and agriculture pages). The home page of the current site has four counters (Employees, Global Clients, Countries / Markets, Inspections & Projects Completed) but the saved text shows '0 +': the numbers are drawn by a script and must be read on the live page."
+ },
+ {
+  "item_id": "DXB-22",
+  "new_page": "/en/programs/iraq-certificate-of-conformity/",
+  "field": "contacts.hours",
+  "value": "24/7 Client Support",
+  "source": "iraq-coc",
+  "quote": "24/7 Client Support",
+  "sure": false,
+  "note": "The Iraq, Egypt and Libya pages of the current site promise support at all hours. It agrees with D49 (no opening hours are printed), so '[hours]' can go or can read '24/7'. A director must confirm the promise.",
+  "also": [
+   "DXB-19",
+   "BGW-17",
+   "DXB-21",
+   "GDH-10"
+  ]
+ },
+ {
+  "item_id": "DXB-20",
+  "new_page": "/en/",
+  "field": "reply_promise",
+  "value": "Reply within one business day with a quote and a timeline (Egypt requests)",
+  "source": "egypt-coc",
+  "quote": "We will respond within one business day with a detailed quote and timeline for your Egypt CoC application.",
+  "sure": false,
+  "note": "The current site makes the one-day promise for Egypt requests only. It supports the promise of the new site; it does not say who answers.",
+  "also": [
+   "CEO-11",
+   "CEO-15"
+  ]
+ },
+ {
+  "item_id": "PRG-17",
+  "new_page": "/en/programs/iraq-certificate-of-conformity/",
+  "field": "appointment_proof",
+  "value": "The COSQC authorization letter is a public download on the current Iraq CoC page",
+  "source": "iraq-coc",
+  "quote": "The official letter confirming TIC Quality Control's appointment by COSQC to issue Certificates of Conformity for goods imported into Iraq.",
+  "sure": true,
+  "note": "Card 'Iraq CoC Approval · COSQC authorization letter · Download Letter'. The file is not in the saved text: get the PDF from ticqc.ae/iraq-coc/. The letter can also give the contract facts PRG-04 asks for.",
+  "also": [
+   "PRG-04",
+   "PRG-70"
+  ]
+ },
+ {
+  "item_id": "MKT-16",
+  "new_page": "/en/downloads/",
+  "field": "downloads.rows",
+  "value": "TIC Company Profile (the company brochure), a download on the current site",
+  "source": "iraq-coc",
+  "quote": "Download our full company profile detailing TIC Quality Control's services, accreditations, global reach, and expertise in CoC certification.",
+  "sure": true,
+  "note": "On the Iraq and the Egypt page. The file is not in the saved text: get the PDF from the live page. No Arabic or Chinese version is named.",
+  "also": [
+   "QAM-45"
+  ]
+ },
+ {
+  "item_id": "BGW-15",
+  "new_page": "/en/programs/iraq-certificate-of-conformity/",
+  "field": "parts.items",
+  "value": "Client declaration form, completed and signed by the exporter",
+  "source": "iraq-coc",
+  "quote": "Official client declaration form required as part of the Iraq CoC program submission. Must be completed and signed by the exporter.",
+  "sure": true,
+  "note": "The one document of the current Iraq pages that the new checklist does not have. The older pages also list 'Filled Request for Certification' (the new site uses the online request form for this)."
+ },
+ {
+  "item_id": "QAM-46",
+  "new_page": "/en/downloads/",
+  "field": "conflict",
+  "value": "The current site gives forms to download: Client Declaration, Request for CoC (Iraq); RFC GOEIC Form TIC-IMS-EGY-FRM-25-01, COC Format (Egypt). The new site says forms are not downloaded.",
+  "source": "iraq-coc",
+  "quote": "Submit this form to initiate the Certificate of Conformity process for goods being exported to Iraq under the COSQC program.",
+  "sure": true,
+  "note": "Decide: keep the download forms (then the Type filter 'Form' has rows), or keep the online form only.",
+  "also": [
+   "QAM-45"
+  ]
+ },
+ {
+  "item_id": "QAM-45",
+  "new_page": "/en/downloads/",
+  "field": "downloads.rows",
+  "value": "Product list: 'Regulated Products, GOEIC product scope' (Egypt). Fee structure: 'i-CAS Halal Fee Structure'. Brochure: 'TIC Company Profile'.",
+  "source": "egypt-coc",
+  "quote": "The complete list of product categories regulated under the Egypt CoC program that require a valid Certificate of Conformity before import clearance.",
+  "sure": true,
+  "note": "The three kinds of file that the Downloads intro names exist on the current site as downloads. The files are not in the saved text. The Libya page prints its fee rule as text (see PRG-10).",
+  "also": [
+   "PRG-23",
+   "PRG-26"
+  ]
+ },
+ {
+  "item_id": "",
+  "new_page": "/en/downloads/",
+  "field": "downloads.rows",
+  "value": "Quality Policy (TIC-PY-01); Confidential & Ethical Conduct (TIC-CE-01); Access to Non-Confidential Information (and a revised issue)",
+  "source": "elementor-2430",
+  "quote": "Quality Policy ... TIC-PY-01 · PDF Document ... Impartiality Policy ... TIC-PY-02 · PDF Document ... Confidential & Ethical Conduct ... TIC-CE-01 · PDF Document",
+  "sure": true,
+  "note": "Official documents of the current site that are not in the new Downloads table. The page gives the codes but no issue and no date. Files to get from the live page."
+ },
+ {
+  "item_id": "",
+  "new_page": "/en/downloads/",
+  "field": "downloads.rows",
+  "value": "Code of Integrity & Conduct Policy; TIC-PAI-01 Publicly Available Information; TIC-API-01 Audit Procedure & Implementation; TIC-TSW-01 Termination, Suspension & Withdrawal; TIC-HAL-SOP-03 Halal Audit Procedure; TIC-HAI-SOP-06 Control the Use of TIC QC Mark & Halal; i-CAS Halal Client Support; ICAS-Halal for Meat & Meat Products (Exports) v1 rev1.1",
+  "source": "halal-certification",
+  "quote": "TIC-PAI-01 Publicly Available Information ... TIC-API-01 Audit Procedure & Implementation ... TIC-TSW-01 Termination, Suspension & Withdrawal",
+  "sure": true,
+  "note": "More public documents on the Halal page of the current site (parts 'Corporate Policies & Disclosures', 'Halal Certification & Audit Systems', 'Governance & Certification Framework'). Not in the new Downloads table."
+ },
+ {
+  "item_id": "QAM-33",
+  "new_page": "/en/about/complaints/",
+  "field": "document",
+  "value": "'Complaints and appeal procedure': a PDF on the current site (no code printed)",
+  "source": "halal-certification",
+  "quote": "Complaints and appeal procedure ... Detailed process and workflow for registering, evaluating, and resolving formal customer complaints or service appeals.",
+  "sure": false,
+  "note": "Shows that the procedure exists and is public today. The page gives no code, issue or date: these are in the PDF.",
+  "also": [
+   "QAM-26",
+   "QAM-27",
+   "QAM-29",
+   "QAM-30",
+   "QAM-31"
+  ]
+ },
+ {
+  "item_id": "QAM-50",
+  "new_page": "/en/downloads/",
+  "field": "downloads.rows",
+  "value": "'Approved Subcontractors': a public PDF on the current site",
+  "source": "elementor-2430",
+  "quote": "Access to Non-Confidential Information ... PDF Document ... Approved Subcontractors ... PDF Document",
+  "sure": false,
+  "note": "Answers one part: the list is public today. The page prints no code, version or date. The Halal page calls it 'Verified register of corporate-approved third-party partners and subcontractors'. The PDF can be the source for the draft Subcontracting page.",
+  "also": [
+   "QAM-21",
+   "QAM-20"
+  ]
+ },
+ {
+  "item_id": "QAM-49",
+  "new_page": "/en/downloads/",
+  "field": "conflict",
+  "value": "Current site: TIC-PY-02 is 'Impartiality Policy'. New site: 'Impartiality, confidentiality and conflict of interest policy (India)'.",
+  "source": "elementor-2430",
+  "quote": "Impartiality Policy ... TIC-PY-02 · PDF Document",
+  "sure": true,
+  "note": "Name of the document only. The current site does not mark TIC-PY-02 as an India document, and gives no issue or date.",
+  "also": [
+   "QAM-25"
+  ]
+ },
+ {
+  "item_id": "QAM-48",
+  "new_page": "/en/downloads/",
+  "field": "document",
+  "value": "TIC-UCM-01 'Use of Certification Mark' is listed with the Halal certification documents",
+  "source": "halal-certification",
+  "quote": "TIC-UCM-01 Use of Certification Mark ... Standard authorization frameworks defining safe placement permissions on goods.",
+  "sure": false,
+  "note": "Context for QAM-37: on the current site the mark document belongs to the certification (Halal) document set. No issue and no date on the page.",
+  "also": [
+   "QAM-37",
+   "QAM-36"
+  ]
+ },
+ {
+  "item_id": "QAM-14",
+  "new_page": "/en/about/accreditations/",
+  "field": "conflict",
+  "value": "Current site (Halal page): 'ISO/IEC 17065 Accredited'. New site: one accreditation only, ISO/IEC 17020.",
+  "source": "halal-certification",
+  "quote": "ISO/IEC ... 17065 Accredited ... 100% ... Shariah Expert Review",
+  "sure": true,
+  "note": "The claim names no accreditation body and no number. The Saudi SFDA page says 'ISO/IEC 17065 Compliant' and 'ISO/IEC 17065 Accredited'. The Quality / Accreditation Manager must confirm before the new site states it.",
+  "also": [
+   "QAM-55",
+   "QAM-57"
+  ]
+ },
+ {
+  "item_id": "QAM-57",
+  "new_page": "/en/industries/agriculture-and-food/",
+  "field": "services.text",
+  "value": "Scheme named on the current site: i-CAS Halal (ICAS-Halal for Meat & Meat Products (Exports), v1 rev1.1)",
+  "source": "halal-certification",
+  "quote": "ICAS-Halal for Meat & Meat Products (Exports) ... v1 rev1.1: Standard compliance prerequisites for international export markets.",
+  "sure": false,
+  "note": "The scheme is named; the accreditation body, its number and the TIC entity that holds it are not. The webinar page says 'new i-CAS Halal Scheme Ver 1 Rev 1.1'."
+ },
+ {
+  "item_id": "QAM-40",
+  "new_page": "/en/programs/",
+  "field": "conflict",
+  "value": "Current site: TIC 'operates as a designated certification body under SFDA regulations'. New site: 'Designation in progress'.",
+  "source": "sfda-food-cosmetics-certification-saudi-arabia",
+  "quote": "TIC Quality Control operates as a designated certification body under SFDA regulations",
+  "sure": true,
+  "note": "The current page is headed 'SFDA Designated Body — Kingdom of Saudi Arabia'. No designation number or date is given.",
+  "also": [
+   "PRG-11",
+   "PRG-12"
+  ]
+ },
+ {
+  "item_id": "PRG-12",
+  "new_page": "/en/programs/",
+  "field": "program_facts",
+  "value": "Food and cosmetic consignments for Saudi Arabia; each consignment is assessed and certified one by one; certificates are issued on the SFDA FASAH platform; steps: application, application review, evaluation, decision and issuance; contact phone +91 9266 606 587",
+  "source": "sfda-food-cosmetics-certification-saudi-arabia",
+  "quote": "Certificates are issued electronically via the official SFDA FASAH platform for efficient shipment processing and tracking.",
+  "sure": false,
+  "note": "True only if the designation is real (see the conflict row QAM-40). The page names no office and no person; the contact phone is the India help line."
+ },
+ {
+  "item_id": "PRG-61",
+  "new_page": "/en/news/tic-quality-control-achieves-goeic-accreditation-for-egypts-verification-of/",
+  "field": "conflict",
+  "value": "Current site: 'appointed by GOEIC' to inspect, test and issue Certificates of Conformity. New site: 'registered', pre-shipment inspection register, record 73.",
+  "source": "egypt-coc",
+  "quote": "TICQC has been appointed by GOEIC to implement Pre-Shipment Inspection, testing, and issuance of Certificates of Conformity (CoC) for goods exported to the Arab Republic of Egypt.",
+  "sure": true,
+  "note": "The current page never says 'registered' and never gives record 73 or a date.",
+  "also": [
+   "QAM-16",
+   "PRG-08",
+   "PRG-13"
+  ]
+ },
+ {
+  "item_id": "PRG-30",
+  "new_page": "/en/downloads/",
+  "field": "conflict",
+  "value": "Current site: 'Egypt COC – Certificate of Conformity' and 'Verification of Conformity Program'. New Downloads table: 'Egypt CoI'.",
+  "source": "egypt-coc",
+  "quote": "Egypt COC – Certificate of Conformity",
+  "sure": true,
+  "note": "The current site never calls the Egypt document a Certificate of Inspection."
+ },
+ {
+  "item_id": "PRG-57",
+  "new_page": "/en/news/what-is-a-certificate-of-conformity-coc/",
+  "field": "conflict",
+  "value": "Current Egypt page: a CoC is for one shipment. New news article: 'the inspection certificate is valid for one year'.",
+  "source": "egypt-coc",
+  "quote": "A CoC is typically issued for a specific shipment and is valid for the customs clearance of that shipment.",
+  "sure": true,
+  "note": "The current page adds: 'each new shipment requires its own CoC'."
+ },
+ {
+  "item_id": "PRG-08",
+  "new_page": "/en/",
+  "field": "steps.typical",
+  "value": "3 to 5 working days where valid test reports exist; 2 to 6 weeks where new laboratory tests are necessary",
+  "source": "egypt-coc",
+  "quote": "the CoC process can be completed in as few as 3–5 working days",
+  "sure": true,
+  "note": "Egypt program only. Do not use these days for the Iraq steps (PRG-24)."
+ },
+ {
+  "item_id": "PRG-08",
+  "new_page": "/en/",
+  "field": "documents",
+  "value": "Request for Certification form, code TIC-IMS-EGY-FRM-25-01",
+  "source": "egypt-coc",
+  "quote": "The RFC form (TIC-IMS-EGY-FRM-25-01) must be completed with full details of the shipment",
+  "sure": true,
+  "note": "The form is a download on the current Egypt page, with 'Regulated Products' and 'COC Format'."
+ },
+ {
+  "item_id": "PRG-08",
+  "new_page": "/en/",
+  "field": "products",
+  "value": "Cosmetics, personal care and hygiene; electrical and electronic household appliances; lighting devices and cables; iron, steel and construction materials; textiles, clothing and apparel; personal protective equipment; children's toys; footwear and leather goods; paper products; tiles, ceramics, marble and granite; sanitary ware and plumbing; furniture; bicycles, scooters and motor vehicles; batteries",
+  "source": "egypt-coc",
+  "quote": "Primary (dry) batteries, sealed lead-acid batteries, and traction batteries (golf cart batteries) all fall under the Egypt CoC scope.",
+  "sure": true,
+  "note": "The fourteen numbered product groups of the current Egypt page (a fifteenth part lists more). The battery sentence also answers a part of PRG-55.",
+  "also": [
+   "PRG-55"
+  ]
+ },
+ {
+  "item_id": "PRG-31",
+  "new_page": "/en/services/inspection/pre-shipment-inspection/",
+  "field": "who_needs_it",
+  "value": "Egypt: inspection before shipment is the rule of the program",
+  "source": "egypt-coc",
+  "quote": "The Egypt CoC program is fundamentally a Pre-Shipment Inspection program",
+  "sure": true,
+  "note": "One of the four programs PRG-31 asks about."
+ },
+ {
+  "item_id": "PRG-31",
+  "new_page": "/en/services/inspection/pre-shipment-inspection/",
+  "field": "who_needs_it",
+  "value": "Libya: all goods need inspection before shipment",
+  "source": "libya-coi",
+  "quote": "All goods exported to Libya require pre-shipment inspection and certification.",
+  "sure": true,
+  "note": "One of the four programs PRG-31 asks about."
+ },
+ {
+  "item_id": "PRG-09",
+  "new_page": "/en/",
+  "field": "appointment",
+  "value": "Appointed by the Botswana Bureau of Standards (BOBS) for the Certificate of Conformity / Verification of Conformity program; TIC's first contract in Africa",
+  "source": "botswana-coc",
+  "quote": "TIC Quality Control (TICQC) has been appointed by the Botswana Bureau of Standards (BOBS) for the Certificate of Conformity (CoC) / Verification of Conformity (VoC) programme in Botswana.",
+  "sure": false,
+  "note": "The claim is clear but the page gives no date, no number and no letter. It is not in the register list of the new site: a director confirms.",
+  "also": [
+   "PRG-02",
+   "PRG-13",
+   "PRG-44",
+   "PRG-45",
+   "CEO-03"
+  ]
+ },
+ {
+  "item_id": "PRG-44",
+  "new_page": "/en/news/the-ultimate-scsr-product-list-complete-tic-quality-control-botswana-standards/",
+  "field": "sections.body",
+  "value": "Standards (Compulsory Standards) Regulations (SCSR) of 2023, formerly SIIR",
+  "source": "botswana-coc",
+  "quote": "It is issued under the Standards (Compulsory Standards) Regulations (SCSR) of 2023 — formerly SIIR — administered by the Botswana Bureau of Standards (BOBS).",
+  "sure": true,
+  "note": "The news article of the new site writes 'Standards, Certification, and Regulatory (SCSR) framework': the current program page gives another full name."
+ },
+ {
+  "item_id": "PRG-09",
+  "new_page": "/en/",
+  "field": "program_facts",
+  "value": "The SCSR program is fully enforceable since 1 April 2024",
+  "source": "botswana-coc",
+  "quote": "The Botswana SCSR programme has been fully enforceable since 1st April 2024.",
+  "sure": true,
+  "note": ""
+ },
+ {
+  "item_id": "PRG-09",
+  "new_page": "/en/",
+  "field": "program_facts",
+  "value": "Product Certificates are valid three months (high-risk products) or six months (low-risk products)",
+  "source": "botswana-coc",
+  "quote": "Product Certificates (PCs) are valid for three months for high-risk products and six months for low-risk products.",
+  "sure": true,
+  "note": "Three routes on the page: Product Certificate; CoC in the country of supply; CoC at destination."
+ },
+ {
+  "item_id": "PRG-46",
+  "new_page": "/en/news/the-ultimate-scsr-product-list-complete-tic-quality-control-botswana-standards/",
+  "field": "sections.body",
+  "value": "The current Botswana page has the product tables with their reference standards: Mechanical 22 products, Food 14, Agricultural 5, Electrical 60 (and one blank row)",
+  "source": "botswana-coc",
+  "quote": "Mechanical Products ... 22 Products ... # Product Reference Standard ... 1 Fire hose reels BOS 5: Fire hose reels (with semi rigid hose)",
+  "sure": false,
+  "note": "Four of the product groups have tables (22 + 14 + 5 + 60 rows) in old/botswana-coc.txt. Chemical, Automotive and Building & Construction have one sentence each and no table; 'Cement' is in the building sentence. programs.yaml cuts the tables to group rows with examples, so the full rows are in the source file only."
+ },
+ {
+  "item_id": "PRG-10",
+  "new_page": "/en/",
+  "field": "appointment",
+  "value": "Regulator: Central Bank of Libya (CBL). Appointed with Al Shamila Services and Consultancy (ASSC, CBL Key 8-060367).",
+  "source": "libya-coi",
+  "quote": "TICQC is appointed by the Central Bank of Libya in collaboration with Al Shamila Services and Consultancy (ASSC - CBL Key: 8-060367)",
+  "sure": true,
+  "note": "A claim of the current site that is not in the register list of the new site: keep the words and let a director confirm. It answers 'is TIC approved for Libya' as the current site states it.",
+  "also": [
+   "PRG-02",
+   "PRG-13",
+   "PRG-57"
+  ]
+ },
+ {
+  "item_id": "PRG-10",
+  "new_page": "/en/",
+  "field": "appointment",
+  "value": "Resolution of the Governor of the Central Bank of Libya No. 96 of 2015; in force from 12 December 2024",
+  "source": "libya-coi",
+  "quote": "Our appointment is based on Resolution of the Governor of the Central Bank of Libya No. 96 of 2015, with implementation effective December 12th, 2024.",
+  "sure": true,
+  "note": "A dated event that the About timeline does not have.",
+  "also": [
+   "CEO-03"
+  ]
+ },
+ {
+  "item_id": "PRG-10",
+  "new_page": "/en/",
+  "field": "who_must_comply",
+  "value": "All goods exported to Libya; second-hand goods included; 24+ product groups have more rules (Libyan Accreditation Centre, ARN Notice 2020/68)",
+  "source": "libya-coi",
+  "quote": "All Products: All goods exported to Libya are subject to Pre-Shipment Inspection requirements.",
+  "sure": true,
+  "note": "Labels: ARN products at least in Arabic; Letter of Credit products Arabic or English. Tests by ISO/IEC 17025 laboratories that are ILAC members."
+ },
+ {
+  "item_id": "PRG-10",
+  "new_page": "/en/",
+  "field": "fees",
+  "value": "0.6% of the FOB value or USD 350, whichever is higher, plus local tax; paid by the exporter",
+  "source": "libya-coi",
+  "quote": "0.6% of FOB Value ... or USD 350 ... Whichever is higher, plus applicable local tax.",
+  "sure": true,
+  "note": "The only fee that the current site prints for a program.",
+  "also": [
+   "QAM-45"
+  ]
+ },
+ {
+  "item_id": "PRG-07",
+  "new_page": "/en/",
+  "field": "appointment",
+  "value": "TIC is the sole certification body for Certificates of Conformity for vehicles that enter through the Parvez Khan border crossing",
+  "source": "government-services-programs-gsp",
+  "quote": "TIC Quality Control has been appointed as the sole Certification Body authorized to issue Certificates of Conformity (COC) for Vehicles entering Kurdistan through the Parvez Khan border crossing.",
+  "sure": false,
+  "note": "The page names no regulator, no date, no number and no letter. Write 'Kurdistan Region of Iraq' on the new site.",
+  "also": [
+   "PRG-13",
+   "PRG-34"
+  ]
+ },
+ {
+  "item_id": "PRG-07",
+  "new_page": "/en/",
+  "field": "program_facts",
+  "value": "Program name: Consignment-Based Conformity Assessment (CBCA); it covers regulated products, vehicles included",
+  "source": "government-services-programs-gsp",
+  "quote": "Consignment-Based Conformity Assessment (CBCA) program mandates that all regulated products, including vehicles, must comply with established standards",
+  "sure": true,
+  "note": "",
+  "also": [
+   "PRG-34"
+  ]
+ },
+ {
+  "item_id": "PRG-07",
+  "new_page": "/en/",
+  "field": "steps",
+  "value": "Checks before export: documents and vehicle history; flood and fire damage; chassis; two working front airbags; ABS; 'seat stern vehicles or changed stern' (source words); body, exterior and interior parts. A certificate is issued only if the vehicle passes.",
+  "source": "government-services-programs-gsp",
+  "quote": "Two fully functional and working front airbags",
+  "sure": true,
+  "note": "Seven checks under 'Legal requirements of the CBCA program for vehicles entering Kurdistan'.",
+  "also": [
+   "PRG-34"
+  ]
+ },
+ {
+  "item_id": "NOI-16",
+  "new_page": "/en/services/certification/csuas-drone-certification/",
+  "field": "status",
+  "value": "Authority: QCI (approval process in progress), for DGCA compliance under the Drone Rules, 2021",
+  "source": "csuas",
+  "quote": "We are currently undergoing the QCI approval process to become a UAS Certification Body",
+  "sure": false,
+  "note": "Names the authority. The page gives no date applied and no date expected."
+ },
+ {
+  "item_id": "PRG-15",
+  "new_page": "/en/programs/updates/",
+  "field": "program_name",
+  "value": "The current site uses 'Iraq Verification of Conformity Program (VOC)', 'Iraq CoC Program' and 'COSQC ICIGI CoC Programme'. It says the Iraq CAP (Conformity Assessment Program) is the broader frame that includes the VoC system.",
+  "source": "iraq-verification-of-conformity-program",
+  "quote": "The Iraq CAP (Conformity Assessment Program) is a broader regulatory framework that includes the Verification of Conformity system.",
+  "sure": false,
+  "note": "The current site does not choose one name, and it does not say what the letters ICIGI mean (PRG-19 stays open). The CAP sentence explains the name in the news article of PRG-56; it gives no start date.",
+  "also": [
+   "PRG-69",
+   "PRG-56"
+  ]
+ },
+ {
+  "item_id": "PRG-20",
+  "new_page": "/en/programs/iraq-certificate-of-conformity/",
+  "field": "parts.products.examples",
+  "value": "Automotive: vehicles, bicycles, tires and parts (the newer page: tires for motorcycles, cars and trucks). Cosmetics: personal hygiene products.",
+  "source": "iraq-verification-of-conformity-program",
+  "quote": "Vehicles, bicycles, tires, and parts ... Cosmetics, personal hygiene products",
+  "sure": false,
+  "note": "The current Iraq pages give examples for two groups only, and the two pages differ for vehicles (iraq-coc: 'Tires (Motorcycles, Cars and trucks)'). No IQS numbers and no list date on any page (PRG-21, PRG-22)."
+ },
+ {
+  "item_id": "PRG-20",
+  "new_page": "/en/programs/iraq-certificate-of-conformity/",
+  "field": "parts.products.examples",
+  "value": "From the Gujarat page: chemicals and petrochemicals; plastics and polymers; ceramics and tiles; textiles and fabrics; engineering goods; processed food products",
+  "source": "iraq-coc-gujarat",
+  "quote": "Chemicals & Petrochemicals ... Plastics & Polymers ... Ceramics & Tiles ... Textiles & Fabrics ... Engineering Goods",
+  "sure": false,
+  "note": "Categories 'most frequently' certified from Gujarat. Which of the nine product groups each one belongs to is not stated by the source."
+ },
+ {
+  "item_id": "GDH-08",
+  "new_page": "/en/offices/gandhidham/",
+  "field": "body",
+  "value": "The Gandhidham office serves exporters in all of Gujarat for the Iraq Certificate of Conformity: document review, test coordination and pre-shipment inspection. Ports: Mundra, Kandla, Pipavav. Cities: Ahmedabad, Surat, Rajkot, Vadodara; the Kutch and Saurashtra region.",
+  "source": "iraq-coc-gujarat",
+  "quote": "Our Gandhidham office serves exporters across the state. ... exporters shipping to Iraq through Mundra, Kandla and Pipavav ports",
+  "sure": false,
+  "note": "Answers the areas and ports and one program. The page gives no opening year, no phone, no person and nothing about the Gandhidham laboratory.",
+  "also": [
+   "SVC-19",
+   "PRG-29",
+   "GDH-10"
+  ]
+ },
+ {
+  "item_id": "PRG-01",
+  "new_page": "/en/about/",
+  "field": "sections.figures",
+  "value": "Programs with a page on the current site: Iraq (COSQC), Kurdistan vehicle CoC, Egypt (GOEIC), Botswana (BOBS), Libya (Central Bank of Libya); and Saudi Arabia (SFDA)",
+  "source": "government-services-programs-gsp",
+  "quote": "Iraq Verification of Conformity Program (VOC) ... Kurdistan COC for new and used vehicles exportation",
+  "sure": false,
+  "note": "A count made from the pages: the programs page itself lists two (Iraq, Kurdistan); Egypt, Botswana, Libya and Saudi Arabia have pages of their own. Five with an appointment claim agrees with the figure '5' of the new site; 'Programs 1' at the top of the About page does not.",
+  "also": [
+   "PRG-05",
+   "PRG-13"
+  ]
+ },
+ {
+  "item_id": "PRG-38",
+  "new_page": "/en/industries/government-and-public-sector/",
+  "field": "intro",
+  "value": "TIC manages various governmental conformity verification programs, all carefully designed to maintain the quality and safety standards specified by the importing country.",
+  "source": "government-services-programs-gsp",
+  "quote": "TIC manages various governmental conformity verification programs, all carefully designed to maintain the quality and safety standards specified by the importing country.",
+  "sure": false,
+  "note": "An intro sentence only; it names no government client and gives no figure. The industries output of the other agents uses the same page.",
+  "also": [
+   "PRG-32"
+  ]
+ },
+ {
+  "item_id": "QAM-04",
+  "new_page": "/en/about/",
+  "field": "laboratory",
+  "value": "TIC has a laboratory of its own in India for agricultural tests (in-house chemical and physical testing), stated as ISO/IEC 17025, NABL; other tests go to a 'trusted partner network'",
+  "source": "tic-agri-services",
+  "quote": "Our laboratory is ISO/IEC 17025 - NABL certified",
+  "sure": false,
+  "note": "No name, no city and no NABL number on the page, and no partner laboratory is named on any page of the current site. The Egypt page says only 'an extensive network of ISO/IEC 17025-accredited laboratories'.",
+  "also": [
+   "QAM-51",
+   "QAM-56",
+   "GDH-14",
+   "PRG-25",
+   "QAM-20"
+  ]
+ },
+ {
+  "item_id": "SVC-37",
+  "new_page": "/en/industries/agriculture-and-food/",
+  "field": "where",
+  "value": "India network: Karnal, New Delhi-NCR (north); Gandhidham, Mundra, Ahmedabad, Mumbai (west); Indore, Raipur, Gondia, Kolkata (central and east); Vaizag, Kakinada, Chennai (south)",
+  "source": "tic-agri-services",
+  "quote": "Network Presence Across India ... North ... Karnal New Delhi-NCR ... West ... Gandhidham Mundra Ahmedabad Mumbai",
+  "sure": false,
+  "note": "India only, and the page does not say which places are offices. The other origin and destination countries of the new page have no such list on the current site.",
+  "also": [
+   "SVC-19",
+   "SVC-42"
+  ]
+ },
+ {
+  "item_id": "TRN-04",
+  "new_page": "/en/training/",
+  "field": "courses",
+  "value": "The current site lists the same ten courses: awareness and internal audit for ISO 9001:2015, ISO 14001:2015, ISO 22000:2018, ISO 45001:2018 and HACCP",
+  "source": "training",
+  "quote": "AWARENESS COURSES ... ISO 9001:2015 Quality Management System ... INTERNAL AUDIT ... Hazard Analysis & Critical Control Points (HACCP)",
+  "sure": true,
+  "note": "Confirms the ten courses. No course page gives a date, a price, a duration, a format or a trainer.",
+  "also": [
+   "TRN-05",
+   "TRN-08"
+  ]
+ },
+ {
+  "item_id": "TRN-07",
+  "new_page": "/en/training/",
+  "field": "contact",
+  "value": "Saood Alam Qasmi (Islamic / Halal Expert) and Syed Mudassir Rahman (Technical Evaluator); +91-8650426055 / +91-8989405849",
+  "source": "halal-webinar",
+  "quote": "Call Us ... +91-8650426055 / +91-8989405849 ... Saood Alam Qasmi (Islamic/Halal Expert) ... Syed Mudassir Rahman (Technical Evaluator)",
+  "sure": false,
+  "note": "The trainers and the registration phones of one India webinar (Internal Halal Audit). The source does not say that they answer all training requests. Ask before a name goes on the site.",
+  "also": [
+   "TRN-01"
+  ]
+ },
+ {
+  "item_id": "TRN-06",
+  "new_page": "/en/training/",
+  "field": "dates_prices",
+  "value": "Internal Halal Audit webinar: 10 August 2026, 2:00 PM to 5:30 PM, online; fee INR 2000 + 18% GST for each participant",
+  "source": "halal-webinar",
+  "quote": "Registration Fee: ₹2000/- + 18% GST per participant.",
+  "sure": false,
+  "note": "The only date and price on the current site. The date is past and the webinar is not one of the ten courses.",
+  "also": [
+   "TRN-02",
+   "TRN-01"
+  ]
+ },
+ {
+  "item_id": "SVC-04",
+  "new_page": "/en/questions/",
+  "field": "parts.questions.answer",
+  "value": "A sample: final random inspections follow ANSI/ASQ Z1.4 / ISO 2859-1 sampling (AQL). A statistically determined sample is examined, not every item. Common AQL: critical 0.0, major 2.5, minor 4.0; the level depends on the buyer, the contract and the product.",
+  "source": "textile-fabric-inspection-services",
+  "quote": "For Final Random Inspections (FRI) , TICQC follows ANSI/ASQ Z1.4 / ISO 2859-1 sampling procedures, commonly referred to as AQL (Acceptable Quality Limit) .",
+  "sure": true,
+  "note": "Confirms the draft answer in the brackets. The source is the textile inspection page; the tile page also has an AQL part. Nothing on the current site says '100 % when the buyer asks'.",
+  "also": [
+   "SVC-21"
+  ]
+ },
+ {
+  "item_id": "",
+  "new_page": "/en/services/inspection/pre-shipment-inspection/",
+  "field": "parts.steps",
+  "value": "A final random inspection is done when production is complete and at least 80 to 100% of the goods are packed",
+  "source": "textile-fabric-inspection-services",
+  "quote": "Final Random Inspection is performed when production is complete and at least 80–100% of goods are packed for shipment.",
+  "sure": true,
+  "note": "A fact for the 'How it works' part of the Pre-shipment inspection page. The current site gives no notice days, no days on site and no report time (SVC-03, SVC-11, SVC-15, SVC-16 stay open)."
+ },
+ {
+  "item_id": "QAM-28",
+  "new_page": "/en/about/complaints/",
+  "field": "steps.text",
+  "value": "An Appeals Committee, independent of the first decision (Halal certification)",
+  "source": "halal-certification",
+  "quote": "The Appeals Committee, independent of the original decision, reviews the case.",
+  "sure": false,
+  "note": "Names the panel for the Halal scheme only. The page gives no number of days ('within the stipulated timeframe'). The Saudi page says: reassessment by different technical personnel."
+ }
+]

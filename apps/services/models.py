@@ -27,7 +27,7 @@ from apps.pages.describe import DescribedPage
 from apps.pages.facts import fact_cell, facts_panel, note_field, value_field
 from apps.pages.models import _image, _translatable
 from apps.services.blocks import PART_BLOCK_COUNTS, PART_TITLES, SERVICE_PARTS
-from apps.services.rules import service_page_problems
+from apps.services.rules import part_has_content, service_page_problems
 
 
 class Partner(models.Model):
@@ -331,9 +331,13 @@ class ServicePage(ScriptNormalisationMixin, _HeaderFields, Page):  # noqa: DJ008
 
     def get_context(self, request, *args, **kwargs):
         context = super().get_context(request, *args, **kwargs)
+        # A part with nothing in it is not drawn and is not in "On this page" (T43, D82).
+        context["parts"] = parts = [
+            block for block in self.parts if part_has_content(block.block_type, block.value)
+        ]
         context["toc"] = [
             (block.block_type, PART_TITLES[block.block_type])
-            for block in self.parts
+            for block in parts
             if block.block_type in PART_TITLES
         ]
         context["contact"] = next(

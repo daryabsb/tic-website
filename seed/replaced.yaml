@@ -1,0 +1,22 @@
+# Texts an earlier seed wrote, and the text that takes their place (T43, D82): the
+# current site's own words in place of a design text or a placeholder. `seed_site` gives
+# a field the new text only while it still holds exactly the earlier one; a text an
+# editor changed stays. The new texts are in en.yaml too, for a new database.
+replaced:
+- was: "One page per course: standard, level, duration, format, next dates, price with currency and tax, what the certificate says and who issues it, trainer and prerequisites. Training is general knowledge; it endorses no method and has no bearing on any TIC inspection or certification decision."
+  now: "Our training courses provide comprehensive insights and practical skills for implementing and auditing various management systems. These courses are designed for professionals and key personnel involved in managing and auditing these systems, helping them gain a deeper understanding of the standards and how to apply them effectively in their organizations. Training is general knowledge; it endorses no method and has no bearing on any TIC inspection or certification decision."
+- was: |-
+    [Qualification or trade background, by service line]
+    [Years of relevant experience]
+    Able to write a clear report and photograph evidence properly
+    Willing to be independent — and to say no when the evidence says no
+    [Languages, driving licence, travel]
+  now: |-
+    University degree with an engineering background
+    Minimum of 5 years of experience
+    Bilingual speakers
+    Written and physical technical assessments, on and off site
+    Able to write a clear report and photograph evidence properly
+    Willing to be independent — and to say no when the evidence says no
+- was: "Laboratory analysis through named partner laboratories — every testing page says which laboratory, where, and under which accreditation number."
+  now: "Laboratory analysis through a worldwide network of partner laboratories: food and agricultural products, consumer products, oil and gas, minerals and metals."

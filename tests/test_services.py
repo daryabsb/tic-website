@@ -63,11 +63,16 @@ def test_seed_builds_the_hub_seven_groups_and_the_psi_page(seeded_home):
     assert [block.block_type for block in psi.parts] == PART_NAMES
 
 
-def test_other_services_are_seeded_as_drafts(seeded_home):
-    drafts = ServicePage.objects.filter(live=False)
+def test_a_service_with_no_text_on_the_current_site_stays_a_draft(seeded_home):
+    """T43: 16 services have the current site's text and are live; four have none."""
+    drafts = ServicePage.objects.filter(live=False, locale__language_code="en")
 
-    assert drafts.filter(slug="loading-and-discharge-supervision").exists()
-    assert drafts.count() == 20
+    assert sorted(drafts.values_list("slug", flat=True)) == [
+        "gafta-superintendence",
+        "management-system-certification",
+        "non-destructive-testing",
+        "social-and-ethical-audits",
+    ]
 
 
 def test_seed_is_idempotent_with_services(seeded_home):
@@ -82,7 +87,8 @@ def test_hub_lists_groups_and_live_services_only(client, seeded_home):
 
     assert "Inspection" in html and "Government &amp; Trade Programs" in html
     assert 'href="/en/services/inspection/pre-shipment-inspection/"' in html
-    assert "Loading and discharge supervision" not in html  # a draft
+    assert "Loading and discharge supervision" in html  # live with the current site's text
+    assert "GAFTA superintendence" not in html  # a draft: the current site has no text
     assert "All inspection services" in html
 
 

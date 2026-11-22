@@ -1,0 +1,1108 @@
+# Service pages and group texts with the text of the current site, ticqc.ae (T43, D82;
+# Darya, Nov 22, 2026: the current site's data is true and genuine). Loaded by
+# `seed_site` on top of the page list of en.yaml (services.groups).
+#
+# - `groups`: intro and "how" points of a group page; en.yaml wins where it has a text.
+# - `service_pages`: one entry per service page, in the shape of the `psi` entry of
+#   en.yaml. Only the current site's content: a part it has no text for is empty and
+#   the page does not draw it. `source` names the current pages the text is from.
+# - A service of en.yaml that is not here has no text on the current site: it stays a
+#   draft.
+groups:
+  testing:
+    intro: "TIC Quality Control offers testing for food and agricultural products, electrical and electronic items, hard goods and toys, textiles and clothes, cosmetics and hygiene products, oil and gas, and minerals and metals."
+    how_heading: "How testing is done at TIC"
+    how_points:
+    - "Food and agricultural products: by harnessing a worldwide partners network of Food & Agri testing & laboratories, we offer comprehensive analysis services covering various parameters."
+    - "Food and agricultural products: our expert partners labs employ cutting-edge analytical techniques to assess and verify the nutritional value, composition, authenticity, and integrity of both products and ingredients."
+    - "Minerals and metals: with our global network and expert partners, we meet testing needs across diverse environments."
+    - "Gases: we perform extensive specification testing based on various standards, including international, national, trade, or company-specific ones."
+    - "Electrical and electronic products: physical, mechanical, and electrical testing."
+  certification:
+    intro: "HALAL Certification is an internationally recognized assurance that products, processes, and services strictly comply with Shariah (Islamic law) requirements. Once a conformity assessment is complete, we issue the mandatory certificate required by the authorities of the importing country. In India, we are currently undergoing the QCI approval process to become a UAS Certification Body."
+    how_heading: "How certification is done at TIC"
+    how_points:
+    - "HALAL certification: an independent Certification Decision Committee conducts an impartial review of all audit reports and Shariah findings before issuing the HALAL Certificate."
+    - "HALAL certification: regular surveillance audits ensure continued compliance throughout the certification period."
+    - "Certificates of conformity: we carry out conformity evaluations before goods are shipped, reviewing and verifying the documents, gathering samples for lab testing when required, and inspecting goods physically."
+    - "UAS certification, India: a professional, structured, and time-bound approach to evaluations and certification activities with full transparency at every stage."
+    - "If you have a complaint or wish to appeal a certification decision, our dedicated process ensures every case is handled with impartiality and care."
+  audits:
+    intro: "We perform factory audits. We assess manufacturing capability, quality systems, production processes, equipment, workforce, and export readiness."
+  sustainability:
+    intro: "Sustainability and ESG services built on the same rigor and independence behind our testing, inspection and certification work: integrated advisory, accounting, assessment, assurance and sustainability solutions for organizations building a more responsible, resilient and transparent business."
+    how_heading: "From ESG ambition to measurable business value"
+    how_points:
+    - "Assess: EcoVadis and ISO 26000."
+    - "Advise: ESG strategy and governance."
+    - "Measure: GHG accounting and LCA."
+    - "Assure: ESG assurance and verification."
+    - "Improve: roadmaps and performance."
+service_pages:
+  food-and-agricultural-testing:
+    source:
+    - "https://ticqc.ae/testing/"
+    - "https://ticqc.ae/dairy-products-cheese-testing/"
+    - "https://ticqc.ae/frozen-meat-products-testing-inspection/"
+    - "https://ticqc.ae/rice-testing-inspection/"
+    summary: "Expert analysis to verify and validate quality and safety parameters at every stage of your food supply chain."
+    card_caption: "Food & Agri"
+    intro: "Expert analysis to verify and validate quality and safety parameters at every stage of your food supply chain."
+    parts:
+    - type: "what_it_is"
+      value:
+        heading: "Food safety and agri testing"
+        text: "<p>The modern food industry is driven by safety, quality, authenticity, and nutrition. Consumers desire products that are authentic, nutritious, premium, and secure. Assessments of ingredients, composition, and country of origin are required in order to establish trust with customers.</p><p>Specialized Food &amp; Agri testing services assist businesses in both domestic and global Food &amp; Agri products distribution networks to verify that their goods align with consumer demands, consequently lowering potential hazards, enhancing productivity, and fulfilling satisfaction and trust among consumers. Our solutions ensure the quality, safety and integrity of your food products.</p><p>By harnessing a worldwide partners network of Food &amp; Agri testing &amp; laboratories, we offer comprehensive analysis services covering various parameters. These include identifying contaminants, foodborne pathogens, spoilage organisms, and allergens. Moreover, our expert partners labs employ cutting-edge analytical techniques to assess and verify the nutritional value, composition, authenticity, and integrity of both products and ingredients.</p><p><b>Physical testing.</b> Refers to the testing methods employed to assess various physical properties of food and agricultural products, serving as indicators of their quality and consistency. Commonly tested properties include color, size, thickness, weight, texture, viscosity, and granulation texture, among others.</p><p><b>Chemistry and nutritional analysis.</b> Testing food products &amp; Agri goods is essential to ascertain their freedom from physical, chemical, and biological hazards, ensuring their safety for consumption. Our tests aid in identifying the nutritional composition, macro elements content, and qualitative properties of food supplements. Nutritional testing involves assessing proteins, carbohydrates, fibers, fats, sugars, vitamins, minerals, and an array of phytochemicals. Through Food &amp; Agri chemistry testing, we provide insights into the safety and edibility of goods.</p><p><b>Microbiological testing.</b> We provide systematic methods to help businesses to have better control and track their food supply chain. With a strong focus on response turnaround times, efficiency, urgencies, and specific food safety issues, we are committed to the pursuit of inspecting and handing out fair reports of any food samples coming to our partners laboratories through scientific procedures, and standardized compliance regulations.</p><p>Our Food safety &amp; Agri partners laboratories specialize in biochemical, microbiological, chemical, and sensory analysis for an extensive range of food items and agri cargos.</p><p><b>Dairy products and cheese.</b> Dairy products are an essential part of the global food supply chain, making quality, safety and regulatory compliance critical at every stage of production, processing, storage and distribution. From fresh milk and butter to cheese, yoghurt, cream and milk powder, maintaining consistent product quality is essential for consumer safety and market acceptance.</p><p>TIC Quality Control provides professional testing, inspection and quality control services for dairy products and cheese. Our services help manufacturers, processors, exporters, importers and food businesses evaluate product quality, verify compliance with applicable standards and identify potential quality or safety concerns.</p><p>Through systematic quality assessments and laboratory testing, we support businesses in maintaining product consistency, meeting regulatory requirements and strengthening confidence across domestic and international markets.</p><p>We provide quality assessment and testing support for a wide range of dairy products, including:</p><ul><li>Fresh Milk and Processed Milk</li><li>Cheese and Cheese Products</li><li>Butter and Ghee</li><li>Milk Powder and Dairy Powders</li><li>Yoghurt and Fermented Dairy Products</li><li>Cream and Dairy-Based Creamers</li><li>Condensed and Evaporated Milk</li><li>Ice Cream and Frozen Dairy Desserts</li><li>Whey Powder and Milk Protein Products</li><li>Dairy-Based Food Preparations</li></ul><p>Dairy products require careful evaluation to ensure they meet applicable food safety, quality and composition requirements. Depending on the product type and testing scope, assessments may include:</p><ul><li><i>Physical and Chemical Testing.</i> Evaluation of important product characteristics, including moisture content, fat content, protein, acidity, pH, ash content, total solids and other relevant compositional parameters.</li><li><i>Microbiological Testing.</i> Assessment of microbiological quality and potential contamination through relevant tests for microorganisms such as Salmonella, Listeria monocytogenes, Escherichia coli, Staphylococcus aureus, yeast and mould, depending on the product and applicable requirements.</li><li><i>Contaminant and Residue Testing.</i> Testing for relevant chemical contaminants and residues, which may include heavy metals, veterinary drug residues, pesticide residues and other regulated substances, subject to product requirements and laboratory scope.</li><li><i>Nutritional Composition Analysis.</i> Evaluation of nutritional characteristics such as protein, carbohydrates, fats, sugars, energy value, calcium and other relevant nutritional components for product quality and labelling requirements.</li><li><i>Shelf-Life and Stability Assessment.</i> Evaluation of product stability under specified storage conditions to help businesses understand quality changes, storage performance and appropriate shelf-life requirements.</li></ul><p><i>Cheese testing and quality evaluation.</i> Cheese production involves several stages where quality control plays an important role, from milk selection and processing to fermentation, ripening, packaging and distribution. Our cheese testing and quality assessment services may cover:</p><ul><li>Moisture and Fat Content</li><li>Protein and Salt Content</li><li>pH and Acidity Levels</li><li>Microbiological Quality</li><li>Contaminant and Residue Analysis</li><li>Nutritional Composition</li><li>Product Consistency and Quality</li><li>Shelf-Life and Stability Parameters</li></ul><p>These assessments help cheese manufacturers and suppliers maintain consistent product characteristics and evaluate compliance with relevant product specifications and food safety requirements.</p><p><i>Standards and regulatory compliance.</i> Dairy products entering domestic and international markets must comply with applicable food safety regulations, product standards and importing-country requirements. Depending on the product and destination market, relevant requirements may include Codex Alimentarius standards, applicable ISO standards, national food safety regulations and importing-country technical requirements. TIC helps businesses understand relevant quality and compliance requirements through appropriate testing, inspection and conformity assessment services, subject to the applicable service scope.</p><p><b>Frozen meat products.</b> Frozen meat products require careful quality control at every stage, from processing and packaging to storage and international transportation. Maintaining product safety, quality and compliance with applicable food standards is essential for businesses involved in the global meat trade.</p><p>TIC provides testing, inspection and quality assurance services for frozen meat products to support manufacturers, processors, importers and exporters. Our services help businesses assess product quality, verify specifications and identify potential quality concerns before products reach the market.</p><p>Whether you deal in frozen beef, mutton, lamb, poultry or other frozen meat products, reliable testing and inspection play an important role in maintaining product integrity and meeting buyer and regulatory requirements.</p><p>Different meat products require different quality parameters depending on their composition, processing methods, intended use and applicable market requirements. Our testing and inspection services can cover a range of frozen meat products, including:</p><ul><li>Frozen Beef: Frozen beef cuts, boneless beef, beef cubes and other beef products.</li><li>Frozen Mutton: Frozen mutton cuts, boneless mutton and related meat products.</li><li>Frozen Lamb: Lamb portions, frozen lamb cuts and packaged lamb products.</li><li>Frozen Poultry: Frozen chicken, chicken portions, wings, breast meat and other poultry products.</li><li>Frozen Goat Meat: Frozen goat cuts and boneless goat meat.</li><li>Processed Frozen Meat: Minced meat, meat portions, marinated products and other prepared frozen meat items.</li></ul><p>Testing requirements are determined according to the product type, customer specifications and destination-market regulations.</p><p>Quality testing is an important part of verifying the condition, composition and safety of frozen meat products. Appropriate laboratory analysis helps businesses evaluate product characteristics and assess whether goods meet specified requirements.</p><p><i>Microbiological Testing.</i> Microbiological analysis helps assess the presence of specified microorganisms that may affect food safety and product quality. Depending on the product and applicable requirements, testing may include:</p><ul><li>Total Plate Count (TPC)</li><li>Salmonella</li><li>Escherichia coli (E. coli)</li><li>Listeria monocytogenes</li><li>Staphylococcus aureus</li><li>Other relevant foodborne microorganisms</li></ul><p><i>Chemical Testing.</i> Chemical analysis helps evaluate selected chemical characteristics and potential contaminants in frozen meat products. Testing may include:</p><ul><li>Moisture content</li><li>Protein content</li><li>Fat content</li><li>Ash content</li><li>Chemical contaminants, where applicable</li><li>Relevant food safety parameters</li></ul><p><i>Physical and Quality Assessment.</i> Physical examination\
+          \ helps assess the visible and measurable characteristics of frozen meat products. Relevant assessment parameters may include:</p><ul><li>Product appearance and colour</li><li>Odour and general condition</li><li>Texture and consistency</li><li>Foreign matter examination</li><li>Ice glazing and surface condition</li><li>Packaging and labelling condition</li></ul><p><i>Nutritional Composition Analysis.</i> Nutritional analysis helps determine the composition of meat products for product specifications, nutritional declarations and buyer requirements. Depending on the requested scope, this may include protein, fat, moisture and other nutritional parameters.</p><p><i>Importance of frozen meat quality control.</i> Frozen meat products are often transported across long distances and pass through multiple stages of handling and storage. Even when products are maintained under frozen conditions, improper handling, temperature fluctuations or packaging damage can affect their quality. A structured testing and inspection program helps businesses:</p><ul><li>Assess product safety and quality.</li><li>Identify potential microbiological concerns.</li><li>Verify product specifications and composition.</li><li>Evaluate packaging and labelling compliance.</li><li>Assess cold-chain handling practices.</li><li>Reduce the risk of shipment-related quality disputes.</li><li>Support import and export documentation requirements.</li><li>Build confidence among international buyers and suppliers.</li></ul><p><i>Frozen meat export and import quality requirements.</i> International meat trade involves multiple requirements depending on the exporting country, destination market, product category and applicable regulatory framework. Importers and exporters may need to demonstrate conformity with food safety requirements, product specifications, labelling rules and shipment conditions. TIC supports businesses with relevant testing and inspection activities to help assess frozen meat consignments against applicable requirements.</p><p><b>Rice.</b> Rice is one of the world’s most widely consumed staple food commodities and plays a significant role in international agricultural trade. Maintaining consistent quality, grain integrity and food safety is essential for rice millers, processors, traders, importers and exporters.</p><p>TIC provides professional testing, inspection and quality control services for different varieties of rice. Our services help businesses assess grain quality, verify product specifications, identify potential contaminants and address applicable domestic and international trade requirements.</p><p>From paddy and raw rice to milled, polished, parboiled and specialty rice varieties, appropriate quality assessment helps maintain product consistency, reduce trade-related risks and strengthen confidence across the rice supply chain.</p><p>We support quality assessment and inspection requirements for different rice varieties and products, including:</p><ul><li>Basmati Rice</li><li>Non-Basmati Rice</li><li>Raw Rice</li><li>Parboiled Rice</li><li>Brown Rice</li><li>White Rice</li><li>Broken Rice</li><li>Paddy Rice</li><li>Organic Rice</li><li>Long Grain Rice</li><li>Medium Grain Rice</li><li>Short Grain Rice</li><li>Fortified Rice</li><li>Rice Flour and Rice-Based Products</li></ul><p>Rice quality is evaluated through different physical, chemical and safety parameters depending on the variety, product specifications and intended market.</p><p><i>Physical Quality Analysis.</i> Physical examination helps determine grain characteristics, purity and overall product quality. Parameters may include:</p><ul><li>Grain Length and Width</li><li>Average Grain Size</li><li>Broken Rice Percentage</li><li>Damaged and Discoloured Grains</li><li>Foreign Matter</li><li>Immature and Chalky Grains</li><li>Red and Yellow Grains</li><li>Grain Uniformity</li><li>Moisture Content</li></ul><p><i>Chemical Testing.</i> Chemical analysis helps evaluate important rice composition and quality characteristics, which may include:</p><ul><li>Moisture Content</li><li>Protein Content</li><li>Starch Content</li><li>Amylose Content</li><li>Ash Content</li><li>Fat Content</li><li>Acidity and Other Relevant Parameters</li></ul><p><i>Contaminant and Residue Testing.</i> Rice may require testing for relevant chemical contaminants to assess compliance with applicable food safety requirements. Depending on the product and destination market, assessments may include:</p><ul><li>Heavy Metals</li><li>Pesticide Residues</li><li>Mycotoxins</li><li>Aflatoxins</li><li>Other Relevant Chemical Contaminants</li></ul><p><i>Microbiological Testing.</i> Microbiological assessment helps evaluate the hygienic quality of rice and identify potential contamination risks. Relevant testing may include:</p><ul><li>Total Plate Count</li><li>Yeast and Mould</li><li>Salmonella</li><li>Escherichia coli</li><li>Other Relevant Microorganisms</li></ul><p>Testing requirements depend on product characteristics, intended use and applicable standards.</p><p><i>Rice Cooking and Sensory Quality.</i> Cooking and sensory characteristics are important factors in determining rice quality and consumer acceptance. Depending on the product requirements, assessments may include:</p><ul><li>Cooking Quality</li><li>Grain Elongation</li><li>Aroma and Flavour</li><li>Texture and Firmness</li><li>Stickiness</li><li>Appearance After Cooking</li><li>Water Absorption Characteristics</li></ul><p><i>Rice export quality and regulatory compliance.</i> International rice trade requires compliance with applicable food safety regulations, commodity specifications and importing-country requirements. Depending on the rice variety and destination market, relevant requirements may include:</p><ul><li>Codex Alimentarius Standards</li><li>Applicable ISO Standards</li><li>National Food Safety Regulations</li><li>Maximum Residue Limits (MRLs)</li><li>Heavy Metal and Contaminant Limits</li><li>Phytosanitary Requirements</li><li>Importing-Country Quality Specifications</li><li>Packaging and Labelling Requirements</li></ul><p>TIC supports businesses in addressing relevant testing, inspection and conformity assessment requirements for domestic and international rice trade.</p>"
+    - type: "who_needs_it"
+      value:
+        heading: "Who our services can be useful for"
+        items:
+        - "Frozen meat manufacturers and processing facilities."
+        - "Meat exporters and international suppliers."
+        - "Importers and wholesale distributors."
+        - "Supermarkets and food retail chains."
+        - "Hotels, restaurants and food service businesses."
+        - "Food procurement companies and institutional buyers."
+        - "Dairy products and cheese: manufacturers, processors, exporters, importers and food businesses."
+        - "Rice: millers, processors, commodity traders, exporters and importers."
+    - type: "how_it_works"
+      value:
+        heading: ""
+        steps: []
+    - type: "documents"
+      value:
+        heading: ""
+        items: []
+    - type: "what_you_get"
+      value:
+        heading: ""
+        items: []
+    - type: "standards"
+      value:
+        heading: "Standards and regulatory compliance"
+        standards:
+        - number: "Codex Alimentarius"
+          name: "Codex Alimentarius standards, depending on the product and destination market (dairy products, rice)"
+        - number: "ISO"
+          name: "Applicable ISO standards, depending on the product and destination market (dairy products, rice)"
+    - type: "where"
+      value:
+        heading: ""
+        text: ""
+    - type: "related"
+      value:
+        pages:
+        - "pre-shipment-inspection"
+        - "quantity-and-quality-inspection"
+        - "halal-certification"
+    - type: "qa"
+      value:
+        questions:
+        - question: "What is frozen meat products testing?"
+          answer: "<p>Frozen meat products testing involves laboratory analysis to assess the microbiological, chemical, physical and nutritional characteristics of meat stored under frozen conditions.</p>"
+        - question: "Which frozen meat products can be tested?"
+          answer: "<p>Depending on the available testing scope, products may include frozen beef, mutton, lamb, goat meat, chicken, poultry portions, minced meat and other processed frozen meat products.</p>"
+        - question: "What microbiological tests are required for frozen meat?"
+          answer: "<p>Commonly requested tests include Total Plate Count, Salmonella, E. coli, Listeria monocytogenes and Staphylococcus aureus. Actual testing requirements depend on the product and applicable standards.</p>"
+        - question: "Why is temperature monitoring important for frozen meat?"
+          answer: "<p>Maintaining appropriate frozen storage and transportation conditions helps preserve product quality and reduces the risk of deterioration. Temperature records also provide useful information when assessing cold-chain handling.</p>"
+        - question: "Is frozen meat inspection required before export?"
+          answer: "<p>Inspection requirements depend on the destination country, product category, buyer specifications and applicable regulations. Pre-shipment inspection can help verify product condition, quantity, packaging and other agreed requirements.</p>"
+        - question: "Can TIC arrange frozen meat pre-shipment inspection?"
+          answer: "<p>TIC can assist businesses with relevant inspection requirements, subject to the destination market, inspection scope, product category and service availability.</p>"
+        - question: "Does frozen meat testing help with international trade?"
+          answer: "<p>Yes. Appropriate testing and inspection reports can help businesses demonstrate conformity with specified product requirements and support buyer and regulatory assessment. Acceptance of reports depends on the relevant authority and market requirements.</p>"
+    - type: "contact"
+      value:
+        action_label: "Request a quote"
+        heading: "Tell us what you need"
+        schema: "quote"
+    - type: "reviewed"
+      value:
+        owner: ""
+  consumer-product-testing:
+    source:
+    - "https://ticqc.ae/testing-electrical-electronic/"
+    - "https://ticqc.ae/electrical-switches-sockets-breakers-testing/"
+    - "https://ticqc.ae/testing-hard-goods-toys/"
+    - "https://ticqc.ae/testing-textile-clothes/"
+    - "https://ticqc.ae/testing-cosmetics-hygiene/"
+    summary: "Testing for electrical and electronic items, hard goods and toys, textiles and clothes, and cosmetics and hygiene products."
+    card_caption: "Product testing"
+    intro: "Whether you’re a manufacturer, importer, distributor, or retailer, regardless of your location globally, it’s crucial to ensure the safety and quality of the products you introduce to the market."
+    parts:
+    - type: "what_it_is"
+      value:
+        heading: "Product testing"
+        text: "<p><b>Electrical and electronic testing.</b> Ensuring electrical safety, energy efficiency, and product durability are critical quality attributes for electrical and electronic items. However, each year sees numerous recalls of these products, leading to significant damage to brands and retailers both financially and reputationally. The primary reasons for these recalls often revolve around safety issues such as overheating, electric shock, and explosions.</p><p>Electrical devices can pose substantial risks to users’ safety. To mitigate such risks, legislatures worldwide have implemented comprehensive regulations governing equipment safety standards. Through TIC’s physical, mechanical, and electrical testing, we guarantee that your electrical and electronic products meet international safety standards and the requirements of your target market. Rely on our expertise in product testing to minimize recalls and uphold your brand reputation and customer loyalty.</p><p><b>Electrical switches, sockets and circuit breakers.</b> Electrical switches, sockets, and circuit breakers are critical components of electrical installations, providing safe control, connection, and protection against electrical hazards. TIC provides testing, inspection, and quality assurance services for electrical switches, sockets, breakers, and related electrical accessories to help manufacturers, importers, exporters, suppliers, and buyers verify product quality, safety, and compliance with applicable standards.</p><p>Our electrical product testing services evaluate key performance and safety characteristics to identify potential defects, manufacturing inconsistencies, and risks before products enter the market or are used in electrical installations.</p><p>TIC offers comprehensive testing and inspection solutions for a wide range of low-voltage electrical accessories, including:</p><ul><li>Electrical switches</li><li>Wall switches</li><li>Light switches</li><li>Electrical sockets and outlets</li><li>Plugs and socket outlets</li><li>Switch-socket combinations</li><li>Circuit breakers</li><li>Miniature Circuit Breakers (MCBs)</li><li>Residual Current Circuit Breakers (RCCBs)</li><li>Residual Current Devices (RCDs)</li><li>Distribution board accessories</li><li>Electrical connectors and terminals</li><li>Other low-voltage electrical accessories</li></ul><p>Testing requirements can vary depending on the product type, construction, application, destination market, and applicable technical standards.</p><p><i>Electrical switch testing.</i> Electrical switches must operate reliably while safely controlling electrical circuits. TIC can assess switches for relevant electrical, mechanical, constructional, and safety characteristics. Testing and inspection may include:</p><ul><li>Electrical operation and switching performance</li><li>Insulation characteristics</li><li>Dielectric strength</li><li>Resistance and conductivity</li><li>Temperature-rise performance</li><li>Mechanical endurance</li><li>Construction and dimensional checks</li><li>Terminal and connection verification</li><li>Protection against electric shock</li><li>Marking and labelling verification</li><li>Material and workmanship inspection</li></ul><p>These evaluations help identify issues that could affect the reliability, durability, or safe operation of electrical switches.</p><p><i>Electrical socket and outlet testing.</i> Sockets and outlets must provide secure electrical connections and adequate protection during normal use. Our electrical socket testing services can cover applicable safety and performance requirements based on the product specification and relevant standards. Typical evaluations may include:</p><ul><li>Contact and connection performance</li><li>Insulation resistance</li><li>Dielectric strength</li><li>Temperature-rise assessment</li><li>Mechanical strength</li><li>Endurance testing</li><li>Protection against electric shock</li><li>Terminal security</li><li>Dimensional verification</li><li>Construction and workmanship inspection</li><li>Marking and product identification</li></ul><p>Testing helps manufacturers and suppliers verify that socket products meet defined quality and safety requirements before distribution.</p><p><i>Circuit breaker testing.</i> Circuit breakers are designed to protect electrical circuits from conditions such as overloads and short circuits. Reliable breaker performance is therefore essential for electrical safety. TIC can provide testing and inspection services for circuit breakers, including MCBs, RCCBs, RCDs, and related protective devices, depending on the product and applicable requirements. Testing may include:</p><ul><li>Electrical performance testing</li><li>Insulation resistance</li><li>Dielectric withstand testing</li><li>Temperature-rise assessment</li><li>Mechanical operation</li><li>Electrical endurance</li><li>Tripping characteristics</li><li>Short-circuit performance, where applicable</li><li>Terminal and connection inspection</li><li>Construction and dimensional checks</li><li>Marking and labelling verification</li></ul><p>The specific test program is determined according to the product type, intended application, applicable standard, and customer requirements.</p><p><i>Standards and compliance.</i> Electrical switches, sockets, circuit breakers, and related products may be subject to different national and international standards depending on their design, application, voltage rating, market, and intended use. TIC can help clients identify relevant testing and inspection requirements and develop an appropriate evaluation program based on the applicable specifications and standards. Depending on the product, testing may reference relevant IEC, EN, national, or other applicable standards. The applicable standard and test parameters should always be confirmed according to the exact product specification, destination market, and regulatory requirements.</p><p><i>Why test electrical switches, sockets and circuit breakers?</i> Electrical accessories that fail to meet required safety or performance criteria can create risks such as electrical shock, overheating, short circuits, equipment damage, or fire. Independent testing and inspection can help businesses:</p><ul><li>Verify product safety and performance</li><li>Identify manufacturing defects</li><li>Improve product quality and reliability</li><li>Verify conformity with technical specifications</li><li>Reduce product failure and rejection risks</li><li>Support regulatory and market-entry requirements</li><li>Strengthen supplier quality control</li><li>Reduce customer complaints and returns</li><li>Support international trade and procurement requirements</li></ul><p><i>Quality assurance for electrical products.</i> Quality assurance is particularly important for electrical products because performance failures can have serious safety and operational consequences. Independent testing and inspection provide manufacturers, buyers, and suppliers with objective information about product quality and conformity. TIC combines testing, inspection, and quality assurance expertise to support businesses throughout the electrical product supply chain.</p><p><b>Hard goods and toys testing.</b> TIC provides comprehensive testing services for hard goods and toys products to ensure they adhere to the highest standards of safety, quality, and compliance. This encompasses everything from furniture, home improvement products, and sporting equipment to packaging, medical devices, personal protective equipment (PPE), and stationery.</p><p><b>Textile and clothes testing.</b> TIC provides an extensive array of services tailored to the textiles and clothing sector. Textile testing involves subjecting textile materials to various physical, chemical, or other applicable testing methods to examine their quality. This process ensures compliance with specified standards, ranging from safety requirements to overall quality assessments.</p><p>Product testing for apparel typically includes evaluating the composition, structure, properties (such as strength, elasticity, abrasion resistance, etc.), durability, and screening for potential harmful substances.</p><p><b>Cosmetics and hygiene testing.</b> Elevate your brand’s reputation in the cosmetics and hygiene industry by ensuring compliance with regulatory requirements with our comprehensive analytical, safety, and efficacy testing services.</p><p>At TIC, we offer customized solutions to meet your specific needs within the cosmetic and hygiene sector. Our testing services cover a wide range of products including cosmetics, household care items, absorbent hygiene products, and disinfectants.</p>"
+    - type: "who_needs_it"
+      value:
+        heading: "Who can use our electrical product testing services"
+        items:
+        - "Electrical product manufacturers"
+        - "Importers and exporters"
+        - "Distributors and suppliers"
+        - "Electrical equipment brands"
+        - "Retailers and procurement companies"
+        - "Contractors and project suppliers"
+        - "Trading companies"
+        - "Buyers and sourcing companies"
+        - "Construction and infrastructure companies"
+        - "Businesses developing a new electrical product, sourcing products from overseas, importing electrical accessories, or preparing a shipment for export"
+    - type: "how_it_works"
+      value:
+        heading: "Our electrical product testing process"
+        steps:
+        - title: "Requirement Review"
+          text: "We review the product type, specifications, intended application, destination market, and applicable requirements."
+          typical: ""
+        - title: "Test Program Development"
+          text: "The appropriate inspection and testing parameters are identified based on the product and applicable standards."
+          typical: ""
+        - title: "Sample Collection"
+          text: "Representative product samples are selected or submitted for evaluation."
+          typical: ""
+        - title: "Testing & Inspection"
+          text: "The agreed tests and inspections are conducted according to the applicable requirements."
+          typical: ""
+        - title: "Results Evaluation"
+          text: "Test results are reviewed against the specified acceptance criteria."
+          typical: ""
+        - title: "Technical Reporting"
+          text: "A detailed report is provided with the relevant observations, measurements, and results."
+          typical: ""
+    - type: "documents"
+      value:
+        heading: ""
+        items: []
+    - type: "what_you_get"
+      value:
+        heading: "Technical report"
+        items:
+        - "Electrical products: a detailed report with the relevant observations, measurements, and results."
+    - type: "standards"
+      value:
+        heading: "Standards and compliance"
+        standards:
+        - number: "IEC"
+          name: "Relevant IEC standards, depending on the product (switches, sockets, circuit breakers)"
+        - number: "EN"
+          name: "Relevant EN standards, depending on the product (switches, sockets, circuit breakers)"
+    - type: "where"
+      value:
+        heading: ""
+        text: ""
+    - type: "related"
+      value:
+        pages:
+        - "pre-shipment-inspection"
+        - "product-conformity-certification"
+        - "factory-and-supplier-audits"
+    - type: "qa"
+      value:
+        questions: []
+    - type: "contact"
+      value:
+        action_label: "Request a quote"
+        heading: "Tell us what you need"
+        schema: "quote"
+    - type: "reviewed"
+      value:
+        owner: ""
+  oil-gas-and-petroleum-testing:
+    source:
+    - "https://ticqc.ae/testing-oil-gas/"
+    - "https://ticqc.ae/oil-gas/"
+    summary: "Crude oil assay testing, and specification testing for gases based on international, national, trade or company-specific standards."
+    card_caption: "Oil & Gas"
+    intro: "As oil testing experts, we understand the critical importance of delivering the right crude oil to the appropriate refinery, minimizing issues related to yield, quality, and production. It is crucial for producers, traders, and distributors to prioritize quality control, especially when it comes to monitoring the absolute purity of gases."
+    parts:
+    - type: "what_it_is"
+      value:
+        heading: "Crude oil and gas testing"
+        text: "<p><b>Crude oil.</b> The benefits of conducting crude oil assay testing in TIC specialized laboratories are numerous. TIC provides thorough crude oil analysis to ensure alignment with refinery process requirements. This evaluation also ensures timely delivery of the final product, meeting expected standards of excellence with no disruptions to supply.</p><p>Our flexible assay solutions demonstrate your commitment to providing crude oil data that meets specific processing standards. A comprehensive understanding of your crude oil benefits both refinery teams and business planners, optimizing profit potential by maximizing efficiency and performance.</p><p><b>Gas.</b> The trading of goods such as gases has developed into a truly worldwide and extremely complex system. Gases are being transported in larger amounts than ever before and to locations that were once unimaginable. The transportation of hydrocarbon and chemical gases presents both significant profit opportunities and technical challenges while requiring specialized expertise.</p><p>At TIC, we perform extensive specification testing for gases based on various standards, including international, national, trade, or company-specific ones. Our gas laboratories’ network provides a wide variety of testing abilities, such as routine purity determination using GC, GC-MS, and more advanced GC-MS techniques if needed. Furthermore, we conduct conventional evaluations of fundamental physical characteristics like freezing point, density, vapor pressure, and dew point. Our worldwide network of laboratories is committed to delivering top-notch data for risk management to all parties involved.</p><p>Our laboratories test gas samples taken from refineries, storage facilities, chemical plants, and storage tanks. We provide standard tests described in contracts or trade specifications, along with customized testing for addressing specific known risks like COS testing on gas rundown samples.</p><p><b>Cargo measurement and quality control.</b> High-value bulk goods like oil, chemicals, fuels, and edible oils are measured, tested, and verified for shipment and inventory. Inspectors sample products from storage tanks, ships, barges, transfer facilities, railcars, and warehouses. TIC chemists use industry and regulatory standards to ensure accurate and reliable results. Our expert petroleum inspectors specialize in overseeing tanker loading and unloading, as well as performing detailed tests on crude oil, refined products, and petrochemicals. Our advanced laboratory network meets ASTM, ISO, and other industry standards.</p><p>The inspection process also covers sampling and thorough testing of petroleum products, including LPG/LNG and other liquid cargos. At ports, quality checks on oil and gas shipments include testing for density, viscosity, sulfur content, and composition to ensure compliance.</p><p><b>Pipeline integrity testing services.</b> We provide this service to ensure the structural integrity and safety of pipelines used in the transportation of oil and gas through rigorous testing and assessment.</p>"
+    - type: "who_needs_it"
+      value:
+        heading: ""
+        items: []
+    - type: "how_it_works"
+      value:
+        heading: ""
+        steps: []
+    - type: "documents"
+      value:
+        heading: ""
+        items: []
+    - type: "what_you_get"
+      value:
+        heading: ""
+        items: []
+    - type: "standards"
+      value:
+        heading: "Standards"
+        standards:
+        - number: "ASTM"
+          name: "Industry standards our advanced laboratory network meets"
+        - number: "ISO"
+          name: "Industry standards our advanced laboratory network meets"
+    - type: "where"
+      value:
+        heading: ""
+        text: ""
+    - type: "related"
+      value:
+        pages:
+        - "quantity-and-quality-inspection"
+        - "marine-and-cargo-surveys"
+        - "minerals-and-metals-testing"
+    - type: "qa"
+      value:
+        questions: []
+    - type: "contact"
+      value:
+        action_label: "Request a quote"
+        heading: "Tell us what you need"
+        schema: "quote"
+    - type: "reviewed"
+      value:
+        owner: ""
+  minerals-and-metals-testing:
+    source:
+    - "https://ticqc.ae/testing-minerals-metal/"
+    summary: "Tailored sample preparation and physical & chemical testing solutions for a wide range of raw, natural and manufactured mineral and metal commodities."
+    card_caption: "Minerals & Metal"
+    intro: "Ensure mineral and metal commodities meet contractual obligations with our global sample preparation and physical & chemical testing solutions, adhering to international standards."
+    parts:
+    - type: "what_it_is"
+      value:
+        heading: "Minerals and metal testing"
+        text: "<p>Integrity and quality are crucial in commodity trading, relying on precise data from consistent testing procedures.</p><p>We offer tailored sample preparation and physical &amp; chemical testing solutions for a wide range of raw, natural and manufactured mineral and metal commodities.</p><p>With our global network and expert partners, we meet testing needs across diverse environments. Our specialist partners use the latest protocols for reliable sample reduction and accurate analysis.</p>"
+    - type: "who_needs_it"
+      value:
+        heading: ""
+        items: []
+    - type: "how_it_works"
+      value:
+        heading: ""
+        steps: []
+    - type: "documents"
+      value:
+        heading: ""
+        items: []
+    - type: "what_you_get"
+      value:
+        heading: ""
+        items: []
+    - type: "standards"
+      value:
+        heading: ""
+        standards: []
+    - type: "where"
+      value:
+        heading: ""
+        text: ""
+    - type: "related"
+      value:
+        pages:
+        - "quantity-and-quality-inspection"
+        - "marine-and-cargo-surveys"
+        - "oil-gas-and-petroleum-testing"
+    - type: "qa"
+      value:
+        questions: []
+    - type: "contact"
+      value:
+        action_label: "Request a quote"
+        heading: "Tell us what you need"
+        schema: "quote"
+    - type: "reviewed"
+      value:
+        owner: ""
+  marine-and-cargo-surveys:
+    source:
+    - "https://ticqc.ae/marine/"
+    - "https://ticqc.ae/food-inspection/"
+    summary: "Draft surveys, ullage surveys, bunker surveys, sealing/unsealing, on/off hire surveys, carrier cleanliness inspections and hose tests, conducted by experienced marine surveyors."
+    card_caption: "Marine"
+    intro: "Our marine services include draft surveys, ullage surveys, bunker surveys, sealing/unsealing, on/off hire surveys, carrier cleanliness inspections, and hose tests, all conducted by experienced marine surveyors to ensure accuracy, security, and integrity in cargo handling and vessel operations."
+    parts:
+    - type: "what_it_is"
+      value:
+        heading: "Our marine services"
+        text: "<p><b>Draft survey.</b> The Draft Survey service assists customers in measuring cargo quantity on vessels. Conducted by our experienced marine surveyors, this service is performed both before loading or discharge operations commence and after their completion.</p><p><b>Ullage.</b> Ullage survey is offered to our clients to determine the amount of liquid cargo such as crude oil, petroleum products, chemicals and similar loaded or discharged on tanker ships. In short, it is a volume determination method. Our experienced marine surveyors measure the empty space above the load in the tanks and make some static calculations. In this way, the volume and weight of the cargo carried by the ship is calculated.</p><p><b>Bunker survey.</b> Bunker Survey is a service provided to our clients to measure the quantity of fuel delivered to a vessel during bunkering. Our experienced marine surveyors conduct this survey both before and after bunkering operations to ensure accuracy and transparency in fuel quantities.</p><p><b>On/off hire survey.</b> On/Off Hire Survey is a specialized service we offer to clients when hiring or off hiring a vessel. This independent survey is crucial for parties involved in vessel transactions to assess the vessel’s condition accurately. Our experienced marine surveyors conduct this survey to provide comprehensive information and minimize liabilities for all concerned parties.</p><p><b>Carrier cleanliness inspection.</b> Carrier Cleanliness Inspection is a service provided to ensure that carriers, such as vessels, containers, or trucks, are clean and ready to receive shipments before loading operations. Our experienced inspectors conduct thorough inspections to verify cleanliness standards, helping to maintain the integrity of the cargo and prevent contamination during transportation.</p><p><b>Hose test.</b> Hose test is a service offered to ensure the weatherproof integrity of vessel holds before loading operations. Conducted by our experienced inspectors, this test verifies that vessel holds are secure and prepared to receive intended shipments, minimizing the risk of cargo damage due to weather conditions during transportation.</p><p><b>Damage survey.</b> TIC Quality Control’s food damage survey entails a comprehensive assessment conducted by our experienced inspectors to evaluate the extent of damage, loss, or spoilage in food products. This survey aims to provide objective insights into any damages incurred during transportation, storage, or handling, assisting stakeholders in determining liability, insurance claims, and necessary remedial measures.</p>"
+    - type: "who_needs_it"
+      value:
+        heading: ""
+        items: []
+    - type: "how_it_works"
+      value:
+        heading: ""
+        steps: []
+    - type: "documents"
+      value:
+        heading: ""
+        items: []
+    - type: "what_you_get"
+      value:
+        heading: ""
+        items: []
+    - type: "standards"
+      value:
+        heading: ""
+        standards: []
+    - type: "where"
+      value:
+        heading: ""
+        text: ""
+    - type: "related"
+      value:
+        pages:
+        - "loading-and-discharge-supervision"
+        - "container-loading-inspection"
+        - "quantity-and-quality-inspection"
+    - type: "qa"
+      value:
+        questions: []
+    - type: "contact"
+      value:
+        action_label: "Request a quote"
+        heading: "Tell us what you need"
+        schema: "quote"
+    - type: "reviewed"
+      value:
+        owner: ""
+  vehicle-inspection:
+    source:
+    - "https://ticqc.ae/vehicle-and-automotive-inspection/"
+    summary: "We specialize in offering comprehensive third-party inspection services and Certificates of Conformity (COC) for vehicles."
+    card_caption: "Vehicles"
+    intro: "We specialize in offering comprehensive third-party inspection services and Certificates of Conformity (COC) for vehicles."
+    parts:
+    - type: "what_it_is"
+      value:
+        heading: "Third-party vehicle inspection"
+        text: "<p>Our third-party inspections involve a thorough and unbiased examination of vehicles to ensure they meet the required standards and regulations. This service helps to identify any potential issues or defects that may affect the vehicle’s performance, safety, or compliance with industry standards.</p><p><b>Vehicle damage survey.</b> A vehicle damage survey is a comprehensive evaluation process conducted to assess the extent and nature of damage sustained by a vehicle. This survey involves a detailed inspection by qualified professionals who meticulously examine various aspects of the vehicle to identify and document any damage.</p>"
+    - type: "who_needs_it"
+      value:
+        heading: ""
+        items: []
+    - type: "how_it_works"
+      value:
+        heading: "Essential elements of a vehicle damage survey"
+        steps:
+        - title: "Initial assessment"
+          text: "Visual inspection: the survey begins with a thorough visual inspection of the vehicle’s exterior and interior. This includes checking for dents, scratches, paint damage, and structural issues. Photographic evidence: detailed photographs are taken to document all visible damage, providing a visual record for reference."
+          typical: ""
+        - title: "Detailed inspection"
+          text: "Structural analysis: the vehicle’s frame and chassis are inspected to identify any structural damage, which is crucial for assessing the vehicle’s overall integrity and safety. Mechanical and electrical systems check: key components, including the engine, transmission, braking system, and electronic controls, are examined to detect any damage that might affect the vehicle’s operation."
+          typical: ""
+        - title: "Assessment of impact"
+          text: "Safety assessment: evaluating the impact of the damage on the vehicle’s safety features, such as airbags, seat belts, and crumple zones. Operational impact: assessing how the damage affects the vehicle’s functionality, performance, and reliability."
+          typical: ""
+    - type: "documents"
+      value:
+        heading: ""
+        items: []
+    - type: "what_you_get"
+      value:
+        heading: "Damage report and final evaluation"
+        items:
+        - "Damage report: a comprehensive report is prepared, detailing all observed damages. This report includes descriptions, photographs, and the severity of each issue."
+        - "Repair recommendations: based on the findings, recommendations for necessary repairs are provided, including an estimate of the costs involved."
+        - "Summary and conclusion: a final evaluation summarizes the overall condition of the vehicle and the extent of the damage. This helps in making informed decisions regarding repairs, insurance claims, and potential resale value."
+    - type: "standards"
+      value:
+        heading: ""
+        standards: []
+    - type: "where"
+      value:
+        heading: ""
+        text: ""
+    - type: "related"
+      value:
+        pages:
+        - "pre-shipment-inspection"
+        - "vendor-and-third-party-inspection"
+    - type: "qa"
+      value:
+        questions: []
+    - type: "contact"
+      value:
+        action_label: "Request a quote"
+        heading: "Tell us what you need"
+        schema: "quote"
+    - type: "reviewed"
+      value:
+        owner: ""
+  quantity-and-quality-inspection:
+    source:
+    - "https://ticqc.ae/oil-gas/"
+    - "https://ticqc.ae/commodities-consumer-products/"
+    - "https://ticqc.ae/tic-agri-services/"
+    summary: "High-value bulk goods like oil, chemicals, fuels, and edible oils are measured, tested, and verified for shipment and inventory."
+    card_caption: "Commodities"
+    intro: "Independent third-party inspections reduce the risk of defects by ensuring products meet customer standards and regulations, protecting your business and ensuring quality delivery."
+    parts:
+    - type: "what_it_is"
+      value:
+        heading: "Quality and quantity inspection"
+        text: "<p><b>Cargo measurement and quality control.</b> High-value bulk goods like oil, chemicals, fuels, and edible oils are measured, tested, and verified for shipment and inventory. Inspectors sample products from storage tanks, ships, barges, transfer facilities, railcars, and warehouses. TIC Quality Control chemists use industry and regulatory standards to ensure accurate and reliable results.</p><p>TIC delivers global chemical inspection services with 24/7 coordination and reporting at major chemical ports and production areas. Our advanced laboratory network meets ASTM, ISO, and other industry standards.</p><p><b>Inspection process.</b> The inspection process includes OBQ/ROB determination and quantity calculations, ullage gauging of cargo tanks, and bunker surveys. It involves overseeing loading and discharge operations, conducting on/off hire inspections, and ensuring cargo cleanliness through certification. The process also covers sampling and thorough testing of petroleum products, including LPG/LNG and other liquid cargos, with a strong focus on loss prevention and cargo integrity.</p><p><b>Oil and gas shipments.</b> At ports, our services verify the quality and quantity of oil and gas shipments, including crude oil, petroleum products, liquefied natural gas (LNG), and liquefied petroleum gas (LPG), during loading or unloading. Quality checks include testing for density, viscosity, sulfur content, and composition to ensure compliance. Quantity inspection involves precise measurement using calibrated equipment. These inspections uphold transparency, prevent disputes, and maintain transaction integrity.</p><p><b>Custody transfer inspection and bulk petroleum inventory.</b> This service ensures accurate measurement and verification of petroleum products during transfer and storage. It includes tank gauging, bunker surveys, atmospheric monitoring, and product sampling to industry standards. Services also cover tank cleanliness inspections, wall wash procedures, and tanker/offshore lightering. Additional capabilities include auto-sampling, investigation of cargo discrepancies, sampling and transport, additive treatment, and laboratory testing with sample retention. Crude oil rail car services and precise tank calibration further support reliable custody transfer and bulk inventory management.</p><p><b>Independent custody transfer inspection.</b> In the oil and liquid industry, custody transfer involves the exchange of liquid between two parties. It is also referred to as fiscal metering, a term used for transactions where fluids are exchanged or transferred between companies. The transfer can take place through various means, such as ships, tanks, or tankers. With our teams of expert engineers and surveyors, we ensure impartiality and accuracy in the measurement and documentation of the transferred fluids. This also entails accurate fluid measurement before and after the transfer using flowmeter devices.</p><p><b>Fertilizers and minerals.</b> Third-party inspection services for minerals provide impartial evaluations of mineral deposits (urea, phosphate, coal, coke, sulfur, etc.) ensuring they meet quality and quantity specifications. These assessments help verify compliance with industry standards and regulations, fostering trust among buyers and sellers.</p><p><b>Agricultural products.</b> Third-party inspection services for agricultural products (wheat, rice, corn, oilseeds, sugar, cotton) involve independent assessment of product quality, quantity, safety, and compliance with standards. They help ensure fair trade practices and enhance trust between buyers and sellers.</p><p><b>Product inspection services.</b> Grading, sampling and quality verification for grains, oilseeds, feedstuff, spices and soft commodities.</p><p><b>Sampling, visual examination and spot moisture test.</b> Representative sampling and on-site moisture checks give an early, reliable read on cargo condition.</p><p><b>Metals.</b> Third-party inspection services for metals (steel coils, rods and billet, copper, aluminum, etc.) encompass impartial evaluations of metal quality and quantity, verifying adherence to stringent industry standards and specifications. These assessments are instrumental in upholding the integrity of metal products, fostering trust and confidence among stakeholders.</p>"
+    - type: "who_needs_it"
+      value:
+        heading: ""
+        items: []
+    - type: "how_it_works"
+      value:
+        heading: ""
+        steps: []
+    - type: "documents"
+      value:
+        heading: ""
+        items: []
+    - type: "what_you_get"
+      value:
+        heading: ""
+        items: []
+    - type: "standards"
+      value:
+        heading: "Standards we inspect against: agricultural products"
+        standards:
+        - number: "FOSFA"
+          name: "Vegetable oil"
+        - number: "ISO · BIS · FOSFA"
+          name: "Oilseeds"
+        - number: "Codex Alimentarius (FAO/WHO)"
+          name: "Frozen foods"
+        - number: "BIS & ISO"
+          name: "Beverages (tea and coffee)"
+        - number: "Agmark"
+          name: "Spices"
+        - number: "BIS & ISO"
+          name: "Other agri products"
+    - type: "where"
+      value:
+        heading: ""
+        text: ""
+    - type: "related"
+      value:
+        pages:
+        - "loading-and-discharge-supervision"
+        - "oil-gas-and-petroleum-testing"
+        - "food-and-agricultural-testing"
+    - type: "qa"
+      value:
+        questions: []
+    - type: "contact"
+      value:
+        action_label: "Request a quote"
+        heading: "Tell us what you need"
+        schema: "quote"
+    - type: "reviewed"
+      value:
+        owner: ""
+  loading-and-discharge-supervision:
+    source:
+    - "https://ticqc.ae/oil-gas/"
+    - "https://ticqc.ae/tic-agri-services/"
+    summary: "Oversight of loading and offloading operations to ensure proper handling, safety protocols, and adherence to loading plans."
+    card_caption: "Supervision"
+    intro: "Oversight of loading and offloading operations to ensure proper handling, safety protocols, and adherence to loading plans."
+    parts:
+    - type: "what_it_is"
+      value:
+        heading: "Loading and offloading supervision"
+        text: "<p>Our expert petroleum inspectors specialize in overseeing tanker loading and unloading, as well as performing detailed tests on crude oil, refined products, and petrochemicals.</p><p><b>Agricultural trade: operational services.</b> Shipment supervision, loading/discharge, warehouse and transportation inspection across the full logistics chain.</p><ul><li>Shipment supervision</li><li>Loading / discharge supervision</li><li>Grading on-site and packing supervision</li><li>Plant to port risk management</li><li>Warehouse inspections</li><li>Transportation inspection (trucks, rail wagons, ships)</li></ul><p><b>Sample preparation and loading supervision.</b> Samples are prepared to trade standard while our inspectors supervise loading through to the vessel.</p><p><b>From farm to port.</b></p><ul><li>Factory / farm: upcountry origin</li><li>Warehouse and transport: truck and rail movement</li><li>Port / ICD transit: container and tally checks</li><li>Vessel loading: final export supervision</li></ul>"
+    - type: "who_needs_it"
+      value:
+        heading: ""
+        items: []
+    - type: "how_it_works"
+      value:
+        heading: ""
+        steps: []
+    - type: "documents"
+      value:
+        heading: ""
+        items: []
+    - type: "what_you_get"
+      value:
+        heading: ""
+        items: []
+    - type: "standards"
+      value:
+        heading: ""
+        standards: []
+    - type: "where"
+      value:
+        heading: ""
+        text: ""
+    - type: "related"
+      value:
+        pages:
+        - "marine-and-cargo-surveys"
+        - "container-loading-inspection"
+        - "quantity-and-quality-inspection"
+    - type: "qa"
+      value:
+        questions: []
+    - type: "contact"
+      value:
+        action_label: "Request a quote"
+        heading: "Tell us what you need"
+        schema: "quote"
+    - type: "reviewed"
+      value:
+        owner: ""
+  container-loading-inspection:
+    source:
+    - "https://ticqc.ae/food-inspection/"
+    - "https://ticqc.ae/tic-agri-services/"
+    - "https://ticqc.ae/marine/"
+    summary: "Loading Supervision (LS) is a quality control process during loading for shipment, ensuring correct products, quantities, and packaging according to specifications."
+    card_caption: "Containers"
+    intro: "Loading Supervision (LS) is a quality control process during loading for shipment, ensuring correct products, quantities, and packaging according to specifications."
+    parts:
+    - type: "what_it_is"
+      value:
+        heading: "Container inspection, tally and sealing"
+        text: "<p><b>Container inspections and tally supervision.</b> Interior condition, seal integrity, marks and container tally verified before and during stuffing.</p><p><b>Sealing and unsealing.</b> Sealing/Unsealing services are provided to ensure the security and integrity of shipments loaded onto vessels, containers, or trucks. Our inspectors use tamper-proof seals to secure shipments before transportation. During unsealing, the integrity of the seals is checked to ensure that the shipment has not been tampered with during transit.</p>"
+    - type: "who_needs_it"
+      value:
+        heading: ""
+        items: []
+    - type: "how_it_works"
+      value:
+        heading: ""
+        steps: []
+    - type: "documents"
+      value:
+        heading: ""
+        items: []
+    - type: "what_you_get"
+      value:
+        heading: ""
+        items: []
+    - type: "standards"
+      value:
+        heading: ""
+        standards: []
+    - type: "where"
+      value:
+        heading: ""
+        text: ""
+    - type: "related"
+      value:
+        pages:
+        - "pre-shipment-inspection"
+        - "loading-and-discharge-supervision"
+        - "marine-and-cargo-surveys"
+    - type: "qa"
+      value:
+        questions: []
+    - type: "contact"
+      value:
+        action_label: "Request a quote"
+        heading: "Tell us what you need"
+        schema: "quote"
+    - type: "reviewed"
+      value:
+        owner: ""
+  vendor-and-third-party-inspection:
+    source:
+    - "https://ticqc.ae/commodities-consumer-products/"
+    - "https://ticqc.ae/food-inspection/"
+    summary: "Third-party commodity inspection services ensure goods meet contractual, industry, and regulatory standards, offering impartial verification and assurance to all parties involved."
+    card_caption: "Third-party"
+    intro: "Third-party commodity inspection services by TIC Quality Control ensure goods meet contractual, industry, and regulatory standards, offering impartial verification and assurance to all parties involved."
+    parts:
+    - type: "what_it_is"
+      value:
+        heading: "Third-party inspection services"
+        text: "<p>Our experienced inspectors provide top-notch services. This service covers a wide range of commodities and consumer products.</p><p><b>Electrical and electronic.</b> Third-party inspection services for electrical and electronic products encompass independent evaluations of quality, safety, and adherence to regulatory standards. These services are critical in verifying product compliance and reliability, thereby enhancing consumer trust and safety.</p><p><b>Textiles.</b> In the realm of textiles, third-party inspection services entail rigorous evaluations of product quality, safety, and regulatory compliance. These assessments are instrumental in verifying adherence to standards, ensuring consumer safety, and fostering confidence in textile goods.</p><p><b>Hard goods and toys.</b> Third-party inspection services for hard goods and toys encompass independent evaluations of product quality, safety, and compliance with regulatory standards. These assessments are essential for verifying adherence to specifications, ensuring product reliability, and enhancing consumer confidence.</p><p><b>Cosmetics.</b> Third-party inspection services for cosmetics (skin care, makeup, hair care, fragrances) encompass impartial evaluations of product quality, safety, and adherence to regulatory standards. These assessments are pivotal in verifying product compliance, ensuring consumer safety, and fostering trust in cosmetic products.</p><p><b>Food.</b> Food inspection services are essential for upholding food safety and quality standards. They aim to monitor food production processes, enforce regulations, and educate industry stakeholders. These services are crucial for protecting public health and ensuring that food products are safe for consumption.</p><p>Food inspection acts as a specialized quality management tool and a crucial checkpoint to uphold the quality and safety standards of your products directly within your sourcing countries, right from the initial stages of logistics.</p><p>Globalization and technological advancements have transformed the food supply chain, making it intricate with various stakeholders. Without robust quality monitoring, logistics, and food handling practices, the safety and quality of food products can be compromised.</p><p><b>Scopes.</b></p><ul><li>Loading/offloading supervision</li><li>Quality control</li><li>Quantity control</li><li>Weight control</li><li>Sampling</li><li>Packing and marking inspection</li><li>Visual inspection</li><li>Damage surveys</li></ul>"
+    - type: "who_needs_it"
+      value:
+        heading: ""
+        items: []
+    - type: "how_it_works"
+      value:
+        heading: "Steps"
+        steps:
+        - title: "Initial production inspection"
+          text: "In this service, we assist customers in verifying whether the raw materials meet contractual quality specifications and confirm if production can proceed according to schedule. The Initial Production Inspection typically occurs upon receipt of raw materials and readiness of the factory to commence production."
+          typical: ""
+        - title: "During production inspection"
+          text: "During Production Inspection (DPI) is a quality control process conducted while production is ongoing. It involves inspecting a sample of products to ensure they meet required standards, identifying and rectifying issues early, and maintaining consistency and quality throughout production."
+          typical: ""
+        - title: "Final random inspection"
+          text: "Final Random Inspection (FRI) is a quality control process conducted at the end of production. It involves randomly checking samples to ensure they meet specifications and standards before shipment."
+          typical: ""
+    - type: "documents"
+      value:
+        heading: ""
+        items: []
+    - type: "what_you_get"
+      value:
+        heading: ""
+        items: []
+    - type: "standards"
+      value:
+        heading: ""
+        standards: []
+    - type: "where"
+      value:
+        heading: ""
+        text: ""
+    - type: "related"
+      value:
+        pages:
+        - "pre-shipment-inspection"
+        - "factory-and-supplier-audits"
+        - "container-loading-inspection"
+    - type: "qa"
+      value:
+        questions: []
+    - type: "contact"
+      value:
+        action_label: "Request a quote"
+        heading: "Tell us what you need"
+        schema: "quote"
+    - type: "reviewed"
+      value:
+        owner: ""
+  halal-certification:
+    source:
+    - "https://ticqc.ae/halal-certification/"
+    - "https://ticqc.ae/halal-webinar/"
+    summary: "Our HALAL certification program covers a wide range of product categories and service sectors across the full supply chain."
+    card_caption: "Halal"
+    intro: "An internationally recognized assurance that your products, processes, and services strictly comply with Shariah requirements, opening doors to global HALAL markets with confidence."
+    parts:
+    - type: "what_it_is"
+      value:
+        heading: "What is HALAL certification?"
+        text: "<p>HALAL Certification is an internationally recognized assurance that products, processes, and services strictly comply with Shariah (Islamic law) requirements. It guarantees that certified items are Halal (permissible), Tayyib (wholesome and hygienic), and free from Haram (prohibited) or Najis (impure) substances.</p><ul><li><b>Halal: permissible.</b> All ingredients, production methods, and handling must be fully permissible under Islamic law throughout the entire supply chain.</li><li><b>Tayyib: wholesome.</b> Products must be wholesome, hygienic, and of the highest quality, safe for consumption and free from contamination.</li><li><b>Free from Haram.</b> No prohibited substances, including pork derivatives, blood, alcohol, or improperly slaughtered animals, anywhere in the product.</li><li><b>Free from Najis.</b> Completely free from all impure substances as defined by Islamic jurisprudence, verified at every stage of production.</li></ul><p><b>Why choose TIC Quality Control HALAL certification.</b> We bring together global recognition, Shariah expertise, and ISO-backed rigour to deliver certification that opens markets worldwide.</p><ul><li><b>Global Recognition.</b> Access international HALAL markets with confidence.</li><li><b>Credibility and Trust.</b> Certification backed by ISO/IEC 17065 standards.</li><li><b>Expert Oversight.</b> Audits conducted by qualified HALAL auditors and Shariah experts.</li><li><b>Comprehensive Scope.</b> Covering meat and meat products, food, beverages, cosmetics, pharmaceuticals, and logistics.</li><li><b>Continuous Assurance.</b> Ongoing surveillance audits to maintain compliance.</li></ul><p>12+ countries covered. ISO/IEC 17065 accredited. 100% Shariah expert review. Ongoing surveillance.</p><p><b>Beyond compliance: global market readiness.</b> By partnering with TIC for HALAL certification, you demonstrate not only religious compliance but also quality assurance and global market readiness. Our certification program is designed to help manufacturers, processors, and service providers build lasting trust with consumers worldwide.</p><p><b>File a complaint.</b> If you have a complaint regarding any aspect of TIC's HALAL certification services, including audit conduct, certification decisions, or customer service, you may submit a formal complaint through our dedicated process. Complete and submit the official Complaints Form. Include all relevant documentation, certificate references, dates, and supporting evidence. Our Complaints Committee reviews and responds within the stipulated timeframe. You will be notified of the outcome with full written reasoning.</p><p><b>File an appeal.</b> If you wish to challenge a certification decision, including denial, suspension, or withdrawal of your HALAL certificate, you have the right to submit a formal appeal reviewed by an independent committee. Submit an appeal in writing, stating the grounds and providing all supporting evidence. The Appeals Committee, independent of the original decision, reviews the case. Where required, additional verification or re-audit may be conducted. A final decision is communicated with full written justification.</p>"
+    - type: "who_needs_it"
+      value:
+        heading: "Comprehensive certification scope"
+        items:
+        - "Meat & Meat Products"
+        - "Food & Food Ingredients"
+        - "Beverages"
+        - "Cosmetics & Personal Care"
+        - "Pharmaceuticals"
+        - "Nutraceuticals"
+        - "Logistics & Cold Chain"
+        - "Packaging Materials"
+        - "Animal Feed"
+        - "Food Service Facilities"
+        - "Slaughterhouses"
+        - "Processing Plants"
+    - type: "how_it_works"
+      value:
+        heading: "Our certification process"
+        steps:
+        - title: "Application & Review"
+          text: "Submit product and process details for initial evaluation. Our team assesses the scope and identifies applicable HALAL standards for your products and operations."
+          typical: ""
+        - title: "Quotation, Contract & Payment"
+          text: "Receive a tailored quotation based on your certification scope. Finalize the agreement and complete payment formalities to proceed to the audit phase."
+          typical: ""
+        - title: "Audit & Verification"
+          text: "On-site inspection of facilities, raw materials, ingredient traceability, and supply chain documentation, assessed against HALAL requirements at every stage."
+          typical: ""
+        - title: "Shariah Compliance Check"
+          text: "Religious validation by recognized Islamic scholars who review all audit findings, ingredient lists, and process documentation for full Shariah compliance."
+          typical: ""
+        - title: "Certification Decision"
+          text: "An independent Certification Decision Committee conducts an impartial review of all audit reports and Shariah findings before issuing your HALAL Certificate."
+          typical: ""
+        - title: "Surveillance & Renewal"
+          text: "Regular surveillance audits ensure continued compliance throughout the certification period, maintaining the integrity and ongoing validity of your HALAL certification."
+          typical: ""
+    - type: "documents"
+      value:
+        heading: "Documents"
+        items:
+        - "HALAL Certification Form, for new applicants: product details, facility information, and scope declaration."
+    - type: "what_you_get"
+      value:
+        heading: ""
+        items: []
+    - type: "standards"
+      value:
+        heading: "Standards"
+        standards:
+        - number: "ISO/IEC 17065"
+          name: "Certification backed by ISO/IEC 17065 standards"
+        - number: "ICAS-Halal v1 rev1.1"
+          name: "ICAS-Halal for Meat & Meat Products (Exports): standard compliance prerequisites for international export markets"
+    - type: "where"
+      value:
+        heading: ""
+        text: ""
+    - type: "related"
+      value:
+        pages:
+        - "product-conformity-certification"
+        - "food-and-agricultural-testing"
+    - type: "qa"
+      value:
+        questions: []
+    - type: "contact"
+      value:
+        action_label: "Request a quote"
+        heading: "Tell us what you need"
+        schema: "quote"
+    - type: "reviewed"
+      value:
+        owner: ""
+  csuas-drone-certification:
+    source:
+    - "https://ticqc.ae/csuas/"
+    summary: "UAS certification and compliance in India. We are currently undergoing the QCI approval process to become a UAS Certification Body."
+    card_caption: "UAS certification"
+    intro: "We are currently undergoing the QCI approval process to become a UAS Certification Body, enabling us to support drone manufacturers, OEMs, startups, and aviation innovators in meeting DGCA compliance requirements under the Drone Rules, 2021."
+    parts:
+    - type: "what_it_is"
+      value:
+        heading: "UAS certification and compliance in India"
+        text: "<p>The Government of India, through the Ministry of Civil Aviation and DGCA, has established a strong framework to create a world-leading drone ecosystem under the \"Make in India\" initiative. The introduction of Drone Rules 2021 and the Digital Sky Platform has enabled a fully digital, transparent, and scalable framework for drone registration, certification, and operations.</p><p>As part of this ecosystem, commercial deployment of drones requires compliance with applicable technical, operational, and safety standards defined by DGCA and QCI under the UAS Certification Scheme. We assist manufacturers in demonstrating conformity, airworthiness, reliability, and operational safety through a structured and efficient certification process.</p><p>ISO Accredited Services. Global Network of Experts. Fast Turnaround Times. 24/7 Client Support.</p><p><b>Why UAS certification matters.</b> In today's rapidly evolving drone ecosystem, certification is far more than a regulatory formality — it is a critical benchmark of safety, quality, reliability, and operational excellence.</p><ul><li><b>Regulatory Compliance and Market Readiness.</b> Certification ensures compliance with DGCA requirements and applicable Indian aviation regulations, enabling manufacturers and operators to legally deploy their drone solutions while avoiding regulatory delays.</li><li><b>Faster Commercial Deployment.</b> Certified drones gain quicker acceptance from customers, regulators, and enterprise users, reducing barriers to entry and accelerating time-to-market for commercial operations.</li><li><b>Enhanced Safety and Reliability.</b> Certification involves rigorous testing and evaluation of systems, components, software, and operational procedures, resulting in improved product reliability and safer flight operations.</li><li><b>Competitive Advantage.</b> Certification differentiates manufacturers and service providers from competitors by demonstrating adherence to recognized standards and best practices in the industry.</li><li><b>Government and Enterprise Eligibility.</b> Many government agencies, defence organizations, infrastructure projects, and large enterprises prefer or mandate certified UAS solutions for procurement and operational contracts.</li><li><b>Strengthened Brand Reputation.</b> A certified UAS reflects an organization's commitment to quality, safety, and regulatory excellence, enhancing brand credibility both domestically and internationally.</li></ul><p><b>Why choose us.</b> A team of aviation, aerospace, UAV, safety, regulatory, and industry experts committed to transparent, efficient, and impartial certification.</p><ul><li><b>Aviation and Drone Expertise.</b> Our team includes highly experienced professionals from aviation, UAV design, operations, maintenance, quality assurance, safety, and regulatory compliance backgrounds.</li><li><b>Transparent Certification Process.</b> We maintain a professional, structured, and time-bound approach to evaluations and certification activities with full transparency at every stage.</li><li><b>Faster Turnaround.</b> Efficient review mechanisms and technically competent evaluators help reduce delays while maintaining the highest standards of safety and quality.</li><li><b>Integrity and Impartiality.</b> We operate with complete independence, confidentiality, and impartiality throughout the entire certification lifecycle, in line with QCI standards.</li><li><b>Customer-Focused Approach.</b> We work closely with manufacturers to simplify the certification journey while ensuring compliance with all applicable standards and procedures.</li><li><b>Supporting Innovation.</b> We work closely with startups, research institutions, and technology innovators to bring compliant, safe, and market-ready drone solutions to India's drone ecosystem.</li></ul><p><b>Complaints and appeals.</b> We are committed to transparency and fairness. If you have a complaint or wish to appeal a certification decision, our dedicated process ensures every case is handled with impartiality and care, in accordance with QCI guidelines.</p>"
+    - type: "who_needs_it"
+      value:
+        heading: "Industries we serve"
+        items:
+        - "Agriculture & Precision Farming"
+        - "Infrastructure Inspection"
+        - "Powerline & Pipeline Monitoring"
+        - "Survey & Mapping"
+        - "Logistics & Delivery"
+        - "Mining Operations"
+        - "Emergency Response"
+        - "Defence & Security"
+        - "Media & Cinematography"
+        - "Smart Cities & Urban Planning"
+        - "Industrial Asset Inspection"
+        - "Environmental Monitoring"
+    - type: "how_it_works"
+      value:
+        heading: "Our UAS certification process"
+        steps:
+        - title: "Application Submission"
+          text: "Submit your application along with required technical documents, product specifications, and supporting compliance evidence to initiate the certification process."
+          typical: ""
+        - title: "Documentary Review"
+          text: "Our experts conduct a thorough review of submitted documents including design data, technical manuals, software documentation, and quality management records."
+          typical: ""
+        - title: "Testing & Evaluation"
+          text: "Products undergo comprehensive testing and technical evaluation to verify airworthiness, performance, safety, and compliance with DGCA standards and applicable UAS Certification Scheme requirements."
+          typical: ""
+        - title: "Inspection"
+          text: "On-site inspection of the UAS platform, manufacturing process, quality systems, and operational procedures is conducted to ensure end-to-end conformity with applicable standards."
+          typical: ""
+        - title: "Certification Issuance"
+          text: "Upon successful evaluation, the UAS Certification is issued, enabling your drone to be commercially deployed in compliance with Drone Rules 2021 and DGCA requirements."
+          typical: ""
+        - title: "Non-Conformity Resolution"
+          text: "Where non-conformities are identified during evaluation, our team provides clear guidance on corrective actions required before certification can proceed."
+          typical: ""
+    - type: "documents"
+      value:
+        heading: "Commonly required documents"
+        items:
+        - "Technical design data"
+        - "Product specifications"
+        - "Software documentation"
+        - "Test reports"
+        - "Quality management records"
+        - "Manufacturing process details"
+        - "Applicant declarations"
+        - "D1 Form: the application document required during initial submission for system assessment."
+        - "Specific requirements vary by product category and applicable certification route."
+    - type: "what_you_get"
+      value:
+        heading: ""
+        items: []
+    - type: "standards"
+      value:
+        heading: "Standards"
+        standards:
+        - number: "Drone Rules, 2021"
+          name: "Comprehensive legal framework, operating requirements, and statutory boundaries for unmanned aircraft systems"
+        - number: "CSUAS Scheme"
+          name: "Official rules and structure governing the Certification Scheme for Unmanned Aircraft Systems"
+    - type: "where"
+      value:
+        heading: "Where"
+        text: "<p>India: commercial deployment under the Drone Rules 2021 and the DGCA regulatory framework in India.</p>"
+    - type: "related"
+      value:
+        pages:
+        - "product-conformity-certification"
+        - "halal-certification"
+    - type: "qa"
+      value:
+        questions:
+        - question: "What is UAS Certification?"
+          answer: "<p>UAS Certification is a conformity assessment process through which a drone platform is evaluated against applicable DGCA standards and safety requirements under the Drone Rules 2021. It confirms that the UAS meets technical, operational, and safety benchmarks required for commercial deployment in India.</p>"
+        - question: "Who needs UAS Certification?"
+          answer: "<p>Drone manufacturers, OEMs, startups, and aviation innovators seeking commercial deployment approval under the DGCA regulatory framework in India require UAS Certification. This is especially relevant for entities targeting government procurement, enterprise applications, or regulated airspace operations.</p>"
+        - question: "What standards apply to UAS Certification in India?"
+          answer: "<p>Applicable standards are defined by DGCA and QCI under the UAS Certification Scheme, aligned with Drone Rules 2021 and the Digital Sky Platform framework. Requirements cover technical design, manufacturing quality, operational safety, and software systems.</p>"
+        - question: "How long does the UAS Certification process take?"
+          answer: "<p>Processing times vary depending on documentation completeness, product complexity, testing requirements, and inspection scheduling. Our streamlined processes and technically competent evaluators are designed to minimize delays and provide efficient turnaround times.</p>"
+        - question: "Does certification guarantee airspace access?"
+          answer: "<p>UAS Certification confirms product conformity with applicable standards, which is a prerequisite for commercial deployment. Operational permissions and airspace access may be subject to additional DGCA approvals and Digital Sky Platform requirements applicable to specific operations.</p>"
+        - question: "What happens if non-conformities are found?"
+          answer: "<p>Where non-conformities are identified during evaluation, our team provides detailed guidance on corrective actions required. After implementing and verifying the corrective actions, the product may be re-evaluated to proceed with certification.</p>"
+        - question: "Can startups and small manufacturers apply?"
+          answer: "<p>Yes. Our customer-focused approach is designed to support organizations of all sizes — from established manufacturers to startups and research institutions. We provide personalized guidance to simplify the certification journey regardless of organizational scale.</p>"
+    - type: "contact"
+      value:
+        action_label: "Request a quote"
+        heading: "Tell us what you need"
+        schema: "quote"
+    - type: "reviewed"
+      value:
+        owner: ""
+  product-conformity-certification:
+    source:
+    - "https://ticqc.ae/government-services-programs-gsp/"
+    - "https://ticqc.ae/home/"
+    summary: "We issue the mandatory certificate of conformity (CoC) required by the authorities of the importing country, once the conformity assessment process is complete."
+    card_caption: "Conformity"
+    intro: "We carry out extensive conformity evaluations before goods are shipped, carefully reviewing and verifying the documents, gathering samples for lab testing when required, and inspecting goods physically."
+    parts:
+    - type: "what_it_is"
+      value:
+        heading: "Certificates of conformity"
+        text: "<p>TIC Quality Control manages various governmental conformity verification programs, all carefully designed to maintain the quality and safety standards specified by the importing country. By implementing these initiatives, we focus on safeguarding consumers and the environment while also enhancing the standing of companies.</p><p>Once the conformity assessment process is complete, we issue the mandatory certificate required by the authorities of the importing country. This certificate of conformity (CoC) guarantees that shipments will not be rejected, allowing importers to smoothly clear their goods through customs.</p><p><b>Vehicles.</b> We specialize in offering comprehensive third-party inspection services and Certificates of Conformity (COC) for vehicles. Vehicles pre-export inspection and Certificate of Conformity (COC) are mandatory for exporting vehicles to many countries. TIC is an approved quality control company that provides quick and efficient vehicle inspections and Certificates of Conformity (COC) that meet specific vehicle standards and requirements determined by any country's government.</p>"
+    - type: "who_needs_it"
+      value:
+        heading: ""
+        items: []
+    - type: "how_it_works"
+      value:
+        heading: ""
+        steps: []
+    - type: "documents"
+      value:
+        heading: ""
+        items: []
+    - type: "what_you_get"
+      value:
+        heading: ""
+        items: []
+    - type: "standards"
+      value:
+        heading: ""
+        standards: []
+    - type: "where"
+      value:
+        heading: ""
+        text: ""
+    - type: "related"
+      value:
+        pages:
+        - "pre-shipment-inspection"
+        - "consumer-product-testing"
+    - type: "qa"
+      value:
+        questions: []
+    - type: "contact"
+      value:
+        action_label: "Request a quote"
+        heading: "Tell us what you need"
+        schema: "quote"
+    - type: "reviewed"
+      value:
+        owner: ""
+  factory-and-supplier-audits:
+    source:
+    - "https://ticqc.ae/ceramic-porcelain-tile-inspection-services/"
+    - "https://ticqc.ae/cosmetics-personal-care-products-inspection-services/"
+    summary: "A factory audit helps buyers make informed sourcing decisions and reduce supply chain risks."
+    card_caption: "Factory audit"
+    intro: "A quality product begins with a capable manufacturer. TIC Quality Control's factory audits provide buyers with valuable insight into a supplier's production capability, quality management systems, and operational practices before placing or expanding orders."
+    parts:
+    - type: "what_it_is"
+      value:
+        heading: "Factory audit services"
+        text: "<p><b>Ceramic and porcelain tiles.</b> Our audit evaluates:</p><ul><li>Manufacturing capacity</li><li>Production facilities</li><li>Machinery and equipment</li><li>Quality control procedures</li><li>Raw material storage</li><li>Workforce capability</li><li>Process controls</li><li>Calibration systems</li><li>Traceability</li><li>Health and safety practices</li><li>Environmental management</li><li>Packaging operations</li><li>Warehouse conditions</li><li>Export readiness</li></ul><p><b>Cosmetics and personal care.</b> Selecting the right manufacturing partner is critical for maintaining consistent cosmetic product quality. Our supplier audits evaluate:</p><ul><li>Manufacturing capability</li><li>Quality Management System</li><li>GMP implementation</li><li>Hygiene practices</li><li>Production capacity</li><li>Laboratory capability</li><li>Employee competency</li><li>Traceability</li><li>Storage conditions</li><li>Documentation</li><li>Corrective actions</li><li>Continuous improvement systems</li></ul><p>A factory audit helps buyers make informed sourcing decisions and reduce supply chain risks.</p>"
+    - type: "who_needs_it"
+      value:
+        heading: ""
+        items: []
+    - type: "how_it_works"
+      value:
+        heading: ""
+        steps: []
+    - type: "documents"
+      value:
+        heading: ""
+        items: []
+    - type: "what_you_get"
+      value:
+        heading: ""
+        items: []
+    - type: "standards"
+      value:
+        heading: ""
+        standards: []
+    - type: "where"
+      value:
+        heading: ""
+        text: ""
+    - type: "related"
+      value:
+        pages:
+        - "social-and-ethical-audits"
+        - "pre-shipment-inspection"
+        - "consumer-product-testing"
+    - type: "qa"
+      value:
+        questions: []
+    - type: "contact"
+      value:
+        action_label: "Request a quote"
+        heading: "Tell us what you need"
+        schema: "quote"
+    - type: "reviewed"
+      value:
+        owner: ""
+  sustainability-advisory:
+    source:
+    - "https://ticqc.ae/sustainability/"
+    summary: "ESG advisory, GHG accounting, life cycle assessment, ISO 26000 due diligence and EcoVadis advisory and readiness: a connected set of services designed to address different stages of the sustainability journey."
+    card_caption: "ESG advisory"
+    intro: "Organizations increasingly need to connect ESG intent with measurable performance, credible disclosures, responsible business practices and evidence-based improvement. Our integrated service portfolio brings these needs together — from strategy and measurement to readiness, assurance and continual improvement."
+    parts:
+    - type: "what_it_is"
+      value:
+        heading: "Our sustainability and ESG portfolio"
+        text: "<p><b>How the services connect.</b> Strategize, measure, prepare, verify, improve. The portfolio can be deployed as individual services or combined into a coordinated sustainability program based on organizational priorities.</p><p><b>ESG advisory.</b> Turning ESG commitments into practical strategy, governance and measurable performance. Strategy, governance, materiality, KPIs, targets, climate/social/governance risks, reporting readiness and change management.</p><ul><li><b>ESG Gap and Maturity.</b> Assess current ESG practices, maturity and improvement opportunities.</li><li><b>Sustainability Strategy.</b> Develop sustainability strategies and actionable roadmaps aligned with business priorities.</li><li><b>ESG Governance.</b> Establish governance frameworks, responsibilities, controls and decision-making structures.</li><li><b>Materiality and Stakeholders.</b> Support materiality assessments and stakeholder identification and engagement.</li><li><b>KPI and Performance.</b> Define KPIs, targets and performance monitoring mechanisms.</li><li><b>ESG Risk Advisory.</b> Address climate, social and governance risks and improvement opportunities.</li><li><b>Disclosure Readiness.</b> Support ESG disclosure and reporting readiness.</li><li><b>Change and Communication.</b> Support implementation, change management and ESG communication.</li></ul><p><b>GHG accounting.</b> Measure environmental performance at organization, product and value-chain levels. Organization-wide inventories, Scope 1, 2 and relevant Scope 3 emissions, baselines, hotspot analysis and reduction pathways.</p><ul><li>Develop organization-wide GHG inventories aligned with recognized methodologies and reporting standards.</li><li>Identify and quantify Scope 1, Scope 2 and relevant Scope 3 emissions.</li><li>Establish carbon footprint baselines for performance tracking and strategic planning.</li><li>Conduct emissions hotspot analysis and benchmarking.</li><li>Support ESG disclosures, sustainability reporting and assurance readiness.</li></ul><p><b>Life cycle assessment.</b> End-to-end LCA, product carbon footprint, environmental impact, hotspot and scenario analysis, comparative assessments and product sustainability.</p><ul><li>Conduct end-to-end LCA studies across raw materials, manufacturing, distribution, use, recycling and end-of-life.</li><li>Assess product carbon footprint and wider environmental impacts.</li><li>Identify environmental hotspots and improvement opportunities.</li><li>Perform scenario and comparative assessments for materials, products or technologies.</li><li>Integrate LCA insights with decarbonization, circular economy and product sustainability strategies.</li></ul><p><b>ISO 26000 due diligence.</b> Helping organizations integrate social responsibility into their strategy, culture and operations. Responsible business due diligence across governance, human rights, labor, environment, fair operating practices, consumer issues and community.</p><ul><li><b>Organizational Governance.</b> Ethical leadership, accountability and transparent decision-making.</li><li><b>Human Rights.</b> Respect, protect and promote human rights across operations and value chains.</li><li><b>Labour Practices.</b> Fair employment, safe working conditions and employee well-being.</li><li><b>The Environment.</b> Responsible resource use, pollution prevention and climate action.</li><li><b>Fair Operating Practices.</b> Ethical business conduct and fair competition.</li><li><b>Consumer Issues.</b> Product safety, responsible marketing and consumer protection.</li><li><b>Community Involvement and Development.</b> Contribute to the well-being and sustainable development of communities.</li></ul><p><b>EcoVadis advisory and readiness.</b> Supporting your journey towards higher EcoVadis ratings and stronger supply chain sustainability. Orientation, ESG readiness assessment, documentation review, evidence mapping, improvement roadmap and submission readiness.</p><ul><li><b>Readiness Assessment.</b> Gap analysis against EcoVadis requirements across Environment, Labour and Human Rights, Ethics and Sustainable Procurement.</li><li><b>Policy and Documentation Support.</b> Develop and strengthen policies, processes and evidence documentation.</li><li><b>Action Plan and Implementation.</b> Define and implement improvement actions to address identified gaps.</li><li><b>Support Through Assessment.</b> Guidance during questionnaire completion and evidence submission.</li><li><b>Continuous Improvement.</b> Ongoing support to enhance ratings and integrate sustainability into business practices.</li></ul><p><b>Why choose us.</b></p><ul><li><b>Industry Expertise.</b> Experienced professionals with deep knowledge across global markets.</li><li><b>Global Reach, Local Insights.</b> International standards with on-ground understanding.</li><li><b>Independent and Trusted.</b> Unbiased, transparent and reliable services that build confidence.</li><li><b>Tailored Solutions.</b> Practical, sector-specific solutions to meet your business needs.</li><li><b>Sustainability Focus.</b> Supporting your ESG and sustainability journey with actionable insights.</li><li><b>End-to-End Support.</b> From planning to certification, we are with you at every step.</li></ul>"
+    - type: "who_needs_it"
+      value:
+        heading: ""
+        items: []
+    - type: "how_it_works"
+      value:
+        heading: "Our EcoVadis readiness journey"
+        steps:
+        - title: "Assess"
+          text: "Understand current position and gaps"
+          typical: ""
+        - title: "Prepare"
+          text: "Develop policies and evidence"
+          typical: ""
+        - title: "Implement"
+          text: "Address gaps and strengthen practices"
+          typical: ""
+        - title: "Submit"
+          text: "Support during assessment"
+          typical: ""
+        - title: "Improve"
+          text: "Achieve higher ratings and drive long-term value"
+          typical: ""
+    - type: "documents"
+      value:
+        heading: ""
+        items: []
+    - type: "what_you_get"
+      value:
+        heading: "Value created"
+        items:
+        - "Stronger ESG foundation and governance"
+        - "Clear priorities, targets and implementation roadmaps"
+        - "Improved stakeholder trust and transparency"
+        - "Better integration of ESG into operational and strategic decision-making"
+    - type: "standards"
+      value:
+        heading: "Standards"
+        standards:
+        - number: "ISO 26000"
+          name: "Guidance for Social Responsibility"
+    - type: "where"
+      value:
+        heading: ""
+        text: ""
+    - type: "related"
+      value:
+        pages:
+        - "esg-assurance-and-verification"
+    - type: "qa"
+      value:
+        questions: []
+    - type: "contact"
+      value:
+        action_label: "Request a quote"
+        heading: "Tell us what you need"
+        schema: "quote"
+    - type: "reviewed"
+      value:
+        owner: ""
+  esg-assurance-and-verification:
+    source:
+    - "https://ticqc.ae/sustainability/"
+    summary: "Independent validation of ESG data, disclosures and sustainability commitments to strengthen accuracy, transparency and stakeholder confidence."
+    card_caption: "ESG assurance"
+    intro: "Independent assurance to build credibility, transparency and stakeholder confidence."
+    parts:
+    - type: "what_it_is"
+      value:
+        heading: "ESG assurance and verification"
+        text: "<p>Independent validation of ESG data, disclosures and sustainability commitments to strengthen accuracy, transparency and stakeholder confidence.</p><ul><li><b>Independent Validation.</b> Evaluate ESG data, disclosures and sustainability commitments for accuracy and reliability.</li><li><b>Regulatory and Disclosure Readiness.</b> Support compliance with global and local ESG reporting frameworks and standards.</li><li><b>Risk Reduction.</b> Identify gaps, mitigate risks and strengthen governance and internal controls.</li><li><b>Credibility of Claims.</b> Provide third-party assurance to enhance credibility with investors, customers and regulators.</li><li><b>Stakeholder Confidence.</b> Build trust through transparent, evidence-based assurance.</li><li><b>Continuous Improvement.</b> Deliver insights and recommendations to strengthen ESG performance over time.</li></ul>"
+    - type: "who_needs_it"
+      value:
+        heading: ""
+        items: []
+    - type: "how_it_works"
+      value:
+        heading: "Our assurance approach"
+        steps:
+        - title: "Plan"
+          text: "Define scope and criteria"
+          typical: ""
+        - title: "Assess"
+          text: "Evaluate data and processes"
+          typical: ""
+        - title: "Verify"
+          text: "Test and validate evidence"
+          typical: ""
+        - title: "Report"
+          text: "Deliver independent assurance statement"
+          typical: ""
+        - title: "Build Trust"
+          text: "Enable stakeholder confidence"
+          typical: ""
+    - type: "documents"
+      value:
+        heading: ""
+        items: []
+    - type: "what_you_get"
+      value:
+        heading: ""
+        items: []
+    - type: "standards"
+      value:
+        heading: ""
+        standards: []
+    - type: "where"
+      value:
+        heading: ""
+        text: ""
+    - type: "related"
+      value:
+        pages:
+        - "sustainability-advisory"
+    - type: "qa"
+      value:
+        questions: []
+    - type: "contact"
+      value:
+        action_label: "Request a quote"
+        heading: "Tell us what you need"
+        schema: "quote"
+    - type: "reviewed"
+      value:
+        owner: ""

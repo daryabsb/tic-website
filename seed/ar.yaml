@@ -614,6 +614,8 @@ strings:
     ar: "مستندات النقل (بوليصة الشحن أو غيرها)"
   - en: "[Any further item the Baghdad office confirms]"
     ar: "[أي بند آخر يؤكده مكتب بغداد]"
+  - en: "Client declaration form, completed and signed by the exporter"
+    ar: "إقرار العميل، مستوفى وموقّع من المصدّر"
   - en: "Start the request form"
     ar: "ابدأ نموذج الطلب"
   - en: "What the inspector checks"

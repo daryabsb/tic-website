@@ -12,8 +12,8 @@
       {% if page.duration %}<div class="kv__row"><dt>{% translate "Duration" %}</dt><dd>{{ page.duration }}</dd></div>{% endif %}
       {% if page.format_text %}<div class="kv__row"><dt>{% translate "Format" %}</dt><dd>{{ page.format_text }}</dd></div>{% endif %}
       <div class="kv__row"><dt>{% translate "Next dates" %}</dt><dd>{% for row in page.next_dates %}<span class="course__date">{{ row.start|date:"j M Y" }}{% if row.end and row.end != row.start %} – {{ row.end|date:"j M Y" }}{% endif %}{% if row.place %} · {{ row.place }}{% endif %}</span>{% empty %}{% translate "On request" %}{% endfor %}</dd></div>
-      <div class="kv__row"><dt>{% translate "Price" %}</dt><dd>{{ page.currency }} {{ page.price|floatformat:"-2g" }}{% if page.tax_note %}, {{ page.tax_note }}{% endif %}</dd></div>
-      <div class="kv__row"><dt>{% translate "Certificate" %}</dt><dd>{{ page.certificate_text }}, {% translate "issued by" %} {{ page.certificate_issuer }}</dd></div>
+      <div class="kv__row"><dt>{% translate "Price" %}</dt><dd>{% if page.price is not None %}{{ page.currency }} {{ page.price|floatformat:"-2g" }}{% if page.tax_note %}, {{ page.tax_note }}{% endif %}{% else %}{% translate "On request" %}{% endif %}</dd></div>
+      {% if page.certificate_text %}<div class="kv__row"><dt>{% translate "Certificate" %}</dt><dd>{{ page.certificate_text }}{% if page.certificate_issuer %}, {% translate "issued by" %} {{ page.certificate_issuer }}{% endif %}</dd></div>{% endif %}
       {% if page.trainer %}<div class="kv__row"><dt>{% translate "Trainer" %}</dt><dd>{{ page.trainer }}</dd></div>{% endif %}
       {% if page.prerequisites %}<div class="kv__row"><dt>{% translate "Prerequisites" %}</dt><dd>{{ page.prerequisites }}</dd></div>{% endif %}
     </dl>

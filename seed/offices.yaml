@@ -70,7 +70,7 @@ offices:
     country: "Pakistan"
     legal_entity: "[legal entity]"
     address: "P/130 M. A Johar Town, Lahore, Punjab"
-    phone: "[phone]"
+    phone: "+92 335 488 2213"  # the current site's footer (T43, D82)
     email: "info@ticqc.com"
     timezone: "Asia/Karachi"
   - slug: amman

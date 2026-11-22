@@ -95,6 +95,26 @@ PART_CHECKS = {
 }
 
 
+# A part with none of this is not drawn on the page (T43, D82): the current site gave
+# no text for it. "contact" and "reviewed" are always drawn.
+PART_CONTENT = {
+    "what_it_is": lambda v: _text(v.get("text")),
+    "who_needs_it": lambda v: _lines(v.get("items")),
+    "how_it_works": lambda v: _rows(v.get("steps"), "title"),
+    "documents": lambda v: _lines(v.get("items")),
+    "what_you_get": lambda v: _lines(v.get("items")) or v.get("sample_image"),
+    "standards": lambda v: _rows(v.get("standards"), "number"),
+    "where": lambda v: _text(v.get("text")) or list(v.get("offices") or []),
+    "related": lambda v: [page for page in v.get("pages") or [] if page],
+    "qa": lambda v: _rows(v.get("questions"), "question"),
+}
+
+
+def part_has_content(name: str, value) -> bool:
+    check = PART_CONTENT.get(name)
+    return True if check is None else bool(check(value))
+
+
 def _part_problems(name: str, value) -> list[str]:
     return [str(message) for check, message in PART_CHECKS.get(name, []) if not check(value)]
 

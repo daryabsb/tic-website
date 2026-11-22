@@ -11,7 +11,7 @@
     {% if contact %}{% include "people/person_card.html" with person=contact.person %}{% endif %}
   </aside>
   <div class="two-col__main">
-    {% for block in page.parts %}{% with num=forloop.counter|stringformat:"02d" %}{% include_block block with num=num first=forloop.first %}{% endwith %}{% endfor %}
+    {% for block in parts %}{% with num=forloop.counter|stringformat:"02d" %}{% include_block block with num=num first=forloop.first %}{% endwith %}{% endfor %}
   </div>
 </div>
 {% endblock %}

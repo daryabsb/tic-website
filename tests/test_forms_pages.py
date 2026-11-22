@@ -198,13 +198,20 @@ def publish_course(index, **facts):
     return CoursePage.objects.get(pk=course.pk)
 
 
-def test_the_ten_old_courses_wait_as_drafts(client, seeded):
+def test_the_ten_courses_are_live_with_the_current_sites_text(client, seeded):
+    """T43, D82: the course text is the current site's; it gives no price and no date,
+    so the catalogue and the course page show "On request"."""
     index = TrainingIndexPage.objects.get(locale__language_code="en")
     assert index.url == "/en/training/"
     courses = CoursePage.objects.child_of(index)
-    assert courses.count() == 10 and not courses.live().exists()
+    assert courses.count() == 10 and courses.live().count() == 10
     html = client.get(index.url).content.decode()
-    assert "being confirmed" in html and 'class="course"' not in html
+    assert html.count('class="course"') == 10 and "being confirmed" not in html
+    assert "<dt>Price</dt><dd>On request</dd>" in html
+    course = courses.get(slug="iso-9001-internal-auditor")
+    page = client.get(course.url).content.decode()
+    assert "Roles and responsibilities of auditors." in page  # the current site's row
+    assert "On request" in page and "issued by" not in page
     group = ServiceGroupPage.objects.get(slug="training", locale__language_code="en")
     assert group.see_also_id == index.pk
 
@@ -222,8 +229,8 @@ def test_a_published_course_shows_its_facts_and_only_coming_dates(client, seeded
     assert "2020" not in html.split('class="course"')[1]  # the past date is not shown
     assert f'href="/en/request/?topic={course.pk}"' in html
     assert "ISO 9001" in client.get(f"{index.url}?show=internal_auditor").content.decode()
-    online = client.get(f"{index.url}?show=awareness").content.decode()
-    assert 'class="course"' not in online
+    awareness = client.get(f"{index.url}?show=awareness").content.decode()
+    assert "AED 1,500" not in awareness  # an internal-auditor course is not in this list
     page = client.get(course.url).content.decode()
     assert "has no bearing on any TIC inspection or certification decision" in page
     assert "Certificate of attendance, issued by TIC Quality Control" in page

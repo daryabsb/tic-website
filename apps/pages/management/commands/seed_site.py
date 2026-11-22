@@ -19,6 +19,7 @@ from __future__ import annotations
 import csv
 import datetime
 import json
+import re
 from pathlib import Path
 
 import yaml
@@ -27,7 +28,7 @@ from django.core.exceptions import ValidationError
 from django.core.files import File
 from django.core.management.base import BaseCommand
 from django.core.validators import validate_email
-from django.db import transaction
+from django.db import models, transaction
 from wagtail.contrib.redirects.models import Redirect
 from wagtail.documents import get_document_model
 from wagtail.models import Locale, Page
@@ -89,6 +90,7 @@ class Command(BaseCommand):
             default = settings.LANGUAGE_CODE
             if default in codes:
                 self.seed_language(default)
+                self.seed_replaced()
                 self.seed_editor_form()
             self.translated = [code for code in codes if code != default]
             for code in self.translated:
@@ -248,6 +250,58 @@ class Command(BaseCommand):
                 out[key] = self.link_pages(home, item)
         return out
 
+    TEXT_FIELDS = (models.CharField, models.TextField)
+
+    def seed_replaced(self) -> None:
+        """``seed/replaced.yaml``: a text an earlier seed wrote, and the text that takes
+        its place (T43, D82: the current site's own words in place of a design text).
+        The seed fills blanks only, so a changed seed text does not reach a page that
+        has the earlier one. Here a field that still holds exactly the earlier text gets
+        the new one; a text an editor changed is never equal to it and stays."""
+        rows = self.load("replaced.yaml").get("replaced") or []
+        texts = {row["was"]: row["now"] for row in rows}
+        if not texts:
+            return
+        pages = Page.objects.filter(depth__gte=2, locale=Locale.get_default()).order_by("path")
+        for page in pages.specific():
+            if not self.may_fill(page):
+                continue
+            changed = False
+            for field in page._meta.get_fields():
+                if isinstance(field, self.TEXT_FIELDS) and getattr(page, field.name) in texts:
+                    setattr(page, field.name, texts[getattr(page, field.name)])
+                    changed = True
+            if changed:
+                revision = page.save_revision()
+                if page.live:
+                    revision.publish()
+                self.changes += 1
+
+    PLACEHOLDER = re.compile(r"\[[^\[\]]+\]")
+
+    def refresh_parts(self, page, seeded: list) -> bool:
+        """A part that still shows a bracketed placeholder takes the seed's part of the
+        same type when the seed now has fewer placeholders in it (T43: the current site
+        gave the fact). A part with no placeholder left is an editor's finished part and
+        is never touched."""
+        by_type = {part["type"]: part.get("value") for part in seeded}
+        stored = [dict(block) for block in page.parts.raw_data]
+        changed = False
+        for block in stored:
+            new = by_type.get(block["type"])
+            if new is None:
+                continue
+            old_holes = len(self.PLACEHOLDER.findall(json.dumps(block.get("value"))))
+            new_holes = len(self.PLACEHOLDER.findall(json.dumps(new)))
+            if old_holes and new_holes < old_holes:
+                block["value"] = new
+                changed = True
+        if changed:
+            page.parts = stored
+            page.save_revision().publish()
+            self.changes += 1
+        return changed
+
     def seed_editor_form(self) -> None:
         """Every StreamField of every page of the default language in the form the page
         editor stores (``apps.pages.streams``, D81): only then can the page be
@@ -351,6 +405,34 @@ class Command(BaseCommand):
         self.changes += 1
         return model.objects.get(pk=page.pk), live
 
+    @staticmethod
+    def seed_made(page) -> bool:
+        """True for a page no person has saved: every revision is the seed's own."""
+        return not page.revisions.exclude(user=None).exists()
+
+    def may_fill(self, page) -> bool:
+        """The seed may fill a live page with no draft, and a draft the seed made itself
+        (T43: the drafts of T10 and T23 get the current site's text and go live)."""
+        if page.live:
+            return not page.has_unpublished_changes
+        return self.seed_made(page)
+
+    def fill_and_publish(self, page, data: dict, names, streams=()) -> bool:
+        """``fill_page`` for a page that may still be a seed draft: it is published when
+        something was filled, or when it is a draft and now has its text."""
+        was_live = page.live
+        changed = [self.fill(page, name, data.get(name)) for name in names]
+        for name, value in streams:
+            if value and (self.reset or not getattr(page, name).raw_data):
+                setattr(page, name, value)
+                self.changes += 1
+                changed.append(True)
+        if any(changed) or not was_live:
+            page.save_revision().publish()
+            if not was_live and not any(changed):
+                self.changes += 1
+        return any(changed)
+
     def fill_page(self, page, data: dict, names, streams=()) -> bool:
         changed = [self.fill(page, name, data.get(name)) for name in names]
         for name, value in streams:
@@ -379,7 +461,10 @@ class Command(BaseCommand):
         if touch:
             self.fill_page(index, data, ("intro", "header_caption"))
         psi_page = None
+        moved_file = self.load("service-pages.yaml")  # the current site's text (T43, D82)
+        moved_groups = moved_file.get("groups") or {}
         for g in data.get("groups", []):
+            g = {**moved_groups.get(g["slug"], {}), **g}  # en.yaml wins where it has a text
             group, touch = self.child(
                 index,
                 ServiceGroupPage,
@@ -406,7 +491,30 @@ class Command(BaseCommand):
                     psi_page = page
         if psi_page is not None and psi:
             self.seed_psi(home, psi_page.specific, psi)
+        moved = moved_file.get("service_pages") or {}
+        for slug, item in moved.items():
+            page = ServicePage.objects.descendant_of(index).filter(slug=slug).first()
+            if page is None:
+                self.stderr.write(f"service page: no page {slug}")
+            elif self.may_fill(page):
+                self.seed_service_page(home, page, item)
         self.stdout.write(f"{locale.language_code}: services checked")
+
+    SERVICE_PAGE_FIELDS = ("summary", "card_caption", "intro", "header_caption")
+
+    def seed_service_page(self, home, page, data: dict) -> None:
+        """A service page with the current site's text (T43, D82): its parts hold what
+        ticqc.ae says; a part the current site has no text for is empty and not drawn.
+        The page goes live; the eleven-part rule still meets an editor on publish."""
+        parts = []
+        for part in data.get("parts", []):
+            value = dict(part.get("value") or {})
+            if part["type"] == "related":
+                found = home.get_descendants().filter(slug__in=value.get("pages") or [])
+                by_slug = {p.slug: p.pk for p in found}
+                value["pages"] = [by_slug[s] for s in value.get("pages") or [] if s in by_slug]
+            parts.append({"type": part["type"], "value": value})
+        self.fill_and_publish(page, data, self.SERVICE_PAGE_FIELDS, streams=[("parts", parts)])
 
     def seed_psi(self, home, page, data: dict) -> None:
         if page.has_unpublished_changes:
@@ -453,7 +561,10 @@ class Command(BaseCommand):
         if touch:
             self.fill_page(index, data, ("intro", "header_caption", "heading"))
         service_root = ServiceIndexPage.objects.filter(locale=locale).first()
+        moved = self.load("industry-pages.yaml").get("industry_pages") or {}
         for item in data.get("pages", []):
+            # The current site's text for this sector (T43, D82); en.yaml wins.
+            item = {**moved.get(item["slug"], {}), **item}
             page, touch = self.child(index, IndustryPage, item["slug"], item["title"], live=True)
             if not touch:
                 continue
@@ -543,7 +654,9 @@ class Command(BaseCommand):
             )
             if touch:
                 self.fill_page(page, feed, ("intro",))
-        for item in data.get("pages", []):
+        # After the pages of en.yaml: the programs with the current site's text (T43, D82).
+        moved = self.load("program-pages.yaml").get("program_pages") or []
+        for item in [*data.get("pages", []), *moved]:
             page, touch = self.child(index, ProgramPage, item["slug"], item["title"], live=True)
             office = OfficePage.objects.filter(
                 locale=locale, slug=item.get("owning_office") or "-"
@@ -559,6 +672,7 @@ class Command(BaseCommand):
                     self.PROGRAM_FIELDS,
                     streams=[("parts", item.get("parts", []))],
                 )
+                self.refresh_parts(page, item.get("parts", []))
         # The services hub's Programs card goes to this section (ServiceGroupPage.see_also).
         group = ServiceGroupPage.objects.filter(locale=locale, group="programs").first()
         if group is not None and group.see_also_id is None and not group.has_unpublished_changes:
@@ -868,6 +982,7 @@ class Command(BaseCommand):
         "privacy_note",
     )
     TRAINING_FIELDS = ("intro", "empty_text", "note")
+    COURSE_FIELDS = ("summary", "level", "duration", "course_format", "prerequisites", "body")
 
     def seed_form_pages(self, locale: Locale, data: dict) -> None:
         """Complaints and Careers under About. Careers has no open role: HR adds them."""
@@ -901,9 +1016,18 @@ class Command(BaseCommand):
         index, touch = self.child(home, TrainingIndexPage, data["slug"], data["title"], live=True)
         if touch:
             self.fill_page(index, data, self.TRAINING_FIELDS)
+        moved = self.load("courses.yaml").get("courses") or {}
         for item in data.get("courses", []):
             fields = {name: item[name] for name in ("kind", "standard") if name in item}
-            self.child(index, CoursePage, item["slug"], item["title"], live=False, **fields)
+            page, _touch = self.child(
+                index, CoursePage, item["slug"], item["title"], live=False, **fields
+            )
+            text = moved.get(item["slug"])
+            # The current site's course text (T43, D82). It gives no price, date or
+            # certificate text: the page shows "On request" and goes live; the publish
+            # rule still asks an editor for them.
+            if text and self.may_fill(page):
+                self.fill_and_publish(page, text, self.COURSE_FIELDS)
         group = ServiceGroupPage.objects.filter(locale=locale, group="training").first()
         if group is not None and group.see_also_id is None and not group.has_unpublished_changes:
             group.see_also = index

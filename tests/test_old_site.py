@@ -208,9 +208,9 @@ def fallback_seed(tmp_path, monkeypatch):
         writer.writerow(["old_path", "new_path", "fallback"])
         writer.writerow(
             [
-                "/testing-oil-gas/",
-                "/en/services/testing/oil-gas-and-petroleum-testing/",
-                "/en/services/testing/",
+                "/testing-non-destructive-testing-ndt/",
+                "/en/services/inspection/non-destructive-testing/",
+                "/en/services/inspection/",
             ]
         )
     monkeypatch.setattr(seed_site, "SEED_DIR", tmp_path)
@@ -219,13 +219,14 @@ def fallback_seed(tmp_path, monkeypatch):
 def test_a_redirect_waits_on_the_fallback_until_the_page_is_live(
     seeded_home, fallback_seed, client
 ):
-    target = ServicePage.objects.get(slug="oil-gas-and-petroleum-testing")
+    target = ServicePage.objects.get(slug="non-destructive-testing")
     assert not target.live
     call_command("seed_site", verbosity=0)
 
-    redirect = Redirect.objects.get(old_path="/testing-oil-gas")
-    assert redirect.redirect_page.slug == "testing"
-    assert client.get("/testing-oil-gas/")["Location"].endswith("/en/services/testing/")
+    redirect = Redirect.objects.get(old_path="/testing-non-destructive-testing-ndt")
+    assert redirect.redirect_page.slug == "inspection"
+    location = client.get("/testing-non-destructive-testing-ndt/")["Location"]
+    assert location.endswith("/en/services/inspection/")
 
     type(target).objects.filter(pk=target.pk).update(live=True)
     call_command("seed_site", verbosity=0)
@@ -236,10 +237,10 @@ def test_a_redirect_waits_on_the_fallback_until_the_page_is_live(
 
 def test_an_edited_redirect_is_left_alone(seeded_home, fallback_seed):
     call_command("seed_site", verbosity=0)
-    redirect = Redirect.objects.get(old_path="/testing-oil-gas")
+    redirect = Redirect.objects.get(old_path="/testing-non-destructive-testing-ndt")
     redirect.redirect_page = seeded_home
     redirect.save()
-    ServicePage.objects.filter(slug="oil-gas-and-petroleum-testing").update(live=True)
+    ServicePage.objects.filter(slug="non-destructive-testing").update(live=True)
 
     call_command("seed_site", verbosity=0)
 

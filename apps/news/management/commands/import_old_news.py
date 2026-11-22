@@ -12,6 +12,9 @@ A page that exists is not made again, so the command can run again.
 without a photo gets its post's main photo, in the "News" collection; this includes the
 seeded pages. A page whose photo has no alt text gets its post's alt text (T33).
 
+``--source seed/current-pages.json`` (T43, D82): the current site's product pages
+(``scripts/build_current_pages.py``), each as an article of kind "insight".
+
 ``--publish``: publish the imported pages. Without it they are drafts. On staging Darya
 publishes them all (Nov 17, 2026); for the launch a content manager decides (D62).
 No author is set (people are named only when they agree, P-16).
@@ -63,7 +66,7 @@ class Command(BaseCommand):
                 page = NewsPage(
                     title=post["title"],
                     slug=post["slug"],
-                    kind="news",
+                    kind=post.get("kind", "news"),  # "insight": a product page (T43)
                     date=post["date"],
                     standfirst=oldsite.standfirst(post["excerpt"], STANDFIRST_LIMIT, body),
                     body=body,
