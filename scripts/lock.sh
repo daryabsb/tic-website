@@ -49,7 +49,7 @@ for entry in "${PRIVATE[@]}"; do
 	[[ "$sha" =~ ^[0-9a-f]{40}$ ]] || { echo "no 40-char $name SHA in base.in" >&2; exit 1; }
 	git -C "$dir" cat-file -e "$sha^{commit}" 2>/dev/null \
 		|| { echo "commit $sha not in $dir (git -C $dir fetch)" >&2; exit 1; }
-	# Git Bash: E:/api/zeneon-cms (pwd -W); Linux: /home/.../zeneon-cms
+	# Git Bash: K:/api/zeneon-cms (pwd -W); Linux: /home/.../zeneon-cms
 	path="$(cd "$dir" && { pwd -W 2>/dev/null || pwd; })"
 	file_url="git+file:///${path#/}"
 	# ssh -> local file URL, in the inputs and in the old locks (kept as preferences)

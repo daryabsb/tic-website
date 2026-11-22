@@ -29,7 +29,7 @@ ssh stms-data 'cd ~/tic/dev && GH_TOKEN=x docker compose -p tic-dev -f deploy/co
 ssh -N -L 8000:127.0.0.1:8000 stms-data
 ```
 
-`ssh stms-data` uses the alias in `~/.ssh/config` (see `E:/api/stms/deploy/SERVERS.md`).
+`ssh stms-data` uses the alias in `~/.ssh/config` (see `K:/api/stms/deploy/SERVERS.md`).
 
 ## Run locally (reference only; D24 runs everything on the VM)
 
