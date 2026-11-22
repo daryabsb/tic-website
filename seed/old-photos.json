@@ -400,6 +400,240 @@
    "caption": "Baghdad · VoC event",
    "source": "tic",
    "credit": "TIC, VoC event in Baghdad"
+  },
+  {
+   "page": "services/inspection/loading-and-discharge-supervision",
+   "field": "header_image",
+   "file": "unsplash/Dzh-udFZXrA.jpg",
+   "alt": "Cranes load containers onto a ship at a port, with a forklift on the quay",
+   "source": "unsplash",
+   "credit": "Haris Illahi, https://unsplash.com/photos/Dzh-udFZXrA"
+  },
+  {
+   "page": "services/inspection/quantity-and-quality-inspection",
+   "field": "header_image",
+   "file": "unsplash/pSXFAwbheEA.jpg",
+   "alt": "A grain silo terminal on the waterfront, with its loading gantry over the quay",
+   "source": "unsplash",
+   "credit": "Jeffrey Mazer, https://unsplash.com/photos/pSXFAwbheEA"
+  },
+  {
+   "page": "services/inspection/container-loading-inspection",
+   "field": "header_image",
+   "file": "files/2024/09/1.-Port-Borders.jpeg",
+   "alt": "Container trucks at a port, with a cargo ship and stacked containers behind them"
+  },
+  {
+   "page": "services/inspection/vendor-and-third-party-inspection",
+   "field": "header_image",
+   "file": "files/2024/07/75cef290eddebe395eebf8dcb85fd01d.jpeg",
+   "alt": "Two inspectors in hard hats check a large pipe on site"
+  },
+  {
+   "page": "services/inspection/marine-and-cargo-surveys",
+   "field": "header_image",
+   "file": "files/2026/10/Complete-TICQC-Botswana-Standards-BOS-Compliance-Guide-COC.webp",
+   "alt": "A container ship alongside the quay under the port cranes"
+  },
+  {
+   "page": "services/inspection/vehicle-inspection",
+   "field": "header_image",
+   "file": "files/2024/06/3cc4563d99c7a1b409e6ef64bff9df16.jpeg",
+   "alt": "An inspector with a clipboard checks the engine of a car"
+  },
+  {
+   "page": "services/testing/food-and-agricultural-testing",
+   "field": "header_image",
+   "file": "files/2024/06/8c9d21a40dfad3a869b68adf76885786-scaled.jpeg",
+   "alt": "A laboratory analyst in gloves tests food samples beside a microscope"
+  },
+  {
+   "page": "services/testing/consumer-product-testing",
+   "field": "header_image",
+   "file": "files/2024/07/01ba6a9489c5d6e72673fc9eafb096ab-scaled.jpeg",
+   "alt": "Plastic toys spread out on a table for checking"
+  },
+  {
+   "page": "services/testing/oil-gas-and-petroleum-testing",
+   "field": "header_image",
+   "file": "files/2024/06/9cdcd4ee83383bb844faa2ce79b77512-1-scaled.jpeg",
+   "alt": "An oil refinery at dusk, its towers lit against the sky"
+  },
+  {
+   "page": "services/testing/minerals-and-metals-testing",
+   "field": "header_image",
+   "file": "files/2024/07/74474be7bd511344a65ea012ae94dd11-1-scaled.jpeg",
+   "alt": "Pieces of raw metal ore in close-up"
+  },
+  {
+   "page": "services/certification/product-conformity-certification",
+   "field": "header_image",
+   "file": "unsplash/dI_S0Kyq1Z0.jpg",
+   "alt": "A cargo ship stacked with containers at a port",
+   "source": "unsplash",
+   "credit": "Eilis Garvey, https://unsplash.com/photos/dI_S0Kyq1Z0"
+  },
+  {
+   "page": "services/certification/halal-certification",
+   "field": "header_image",
+   "file": "files/2024/06/d1c28941f99d0b6e6fb2d3c2b78aee82.jpeg",
+   "alt": "A worker in a hair net checks bottles of cooking oil on a production line"
+  },
+  {
+   "page": "services/certification/csuas-drone-certification",
+   "field": "header_image",
+   "file": "unsplash/ouuigywbXlI.jpg",
+   "alt": "A white drone with a camera flies over water",
+   "source": "unsplash",
+   "credit": "Josh Sorenson, https://unsplash.com/photos/ouuigywbXlI"
+  },
+  {
+   "page": "services/audits/factory-and-supplier-audits",
+   "field": "header_image",
+   "file": "unsplash/ZlOlRnWk8zU.jpg",
+   "alt": "Two women walk through a warehouse aisle, one with a clipboard",
+   "source": "unsplash",
+   "credit": "Centre for Ageing Better, https://unsplash.com/photos/ZlOlRnWk8zU"
+  },
+  {
+   "page": "services/sustainability/sustainability-advisory",
+   "field": "header_image",
+   "file": "unsplash/E4XEBPEkgUs.jpg",
+   "alt": "Rows of solar panels across a dry plain, with mountains behind",
+   "source": "unsplash",
+   "credit": "Priamo Mendez, https://unsplash.com/photos/E4XEBPEkgUs"
+  },
+  {
+   "page": "services/sustainability/esg-assurance-and-verification",
+   "field": "header_image",
+   "file": "unsplash/hBE96YanOlM.jpg",
+   "alt": "An engineer in a hard hat and safety vest checks a solar plant",
+   "source": "unsplash",
+   "credit": "Sikwe Scarter, https://unsplash.com/photos/hBE96YanOlM"
+  },
+  {
+   "page": "programs/egypt-certificate-of-conformity",
+   "field": "header_image",
+   "file": "unsplash/zpmvpEXM_Qc.jpg",
+   "alt": "The harbour of Alexandria with its boats and the city behind",
+   "source": "unsplash",
+   "credit": "Flo P, https://unsplash.com/photos/zpmvpEXM_Qc"
+  },
+  {
+   "page": "programs/botswana-certificate-of-conformity",
+   "field": "header_image",
+   "file": "unsplash/tyCcpbkgaR4.jpg",
+   "alt": "Gaborone from the air, with the central business district",
+   "source": "unsplash",
+   "credit": "Justice Hubane, https://unsplash.com/photos/tyCcpbkgaR4"
+  },
+  {
+   "page": "programs/libya-certificate-of-inspection",
+   "field": "header_image",
+   "file": "unsplash/A20ECcarNYM.jpg",
+   "alt": "The Ras Al Hallab lighthouse on the coast of Libya, from the air",
+   "source": "unsplash",
+   "credit": "Moayad Zaghdani, https://unsplash.com/photos/A20ECcarNYM"
+  },
+  {
+   "page": "news/frozen-meat-products-testing-and-inspection",
+   "field": "image",
+   "file": "files/2026/11/Frozen-Meat-Products-Testing-Inspection.jpg",
+   "alt": "Cuts of raw meat and poultry on a board"
+  },
+  {
+   "page": "news/glassware-inspection",
+   "field": "image",
+   "file": "files/2026/11/Glassware-Inspection-Services.jpg",
+   "alt": "Clear glasses, a jug and a teapot on a white surface"
+  },
+  {
+   "page": "news/bed-sheet-and-comforter-set-inspection",
+   "field": "image",
+   "file": "files/2026/11/Bed-Sheet-Comforter-Set-Inspection-Services-2.webp",
+   "alt": "A made bed with sheets and a comforter"
+  },
+  {
+   "page": "news/natural-stone-marble-and-granite-inspection",
+   "field": "image",
+   "file": "files/2026/10/Natural-Stone-Marble-Granite-Inspection-ticqc.webp",
+   "alt": "An inspector checks large marble slabs on a rack in a warehouse"
+  },
+  {
+   "page": "news/sanitary-ware-and-water-closet-inspection",
+   "field": "image",
+   "file": "files/2026/08/Sanitary-ware-water-closets.avif",
+   "alt": "Washbasins and toilets in a row for inspection"
+  },
+  {
+   "page": "news/electrical-switches-sockets-and-circuit-breakers-testing",
+   "field": "image",
+   "file": "files/2026/08/Electrical-Switch-Socket-Circuit-Breaker-Testing-TICQC.webp",
+   "alt": "A gloved hand on the circuit breakers of a labelled distribution board"
+  },
+  {
+   "page": "news/cosmetics-and-personal-care-products-inspection",
+   "field": "image",
+   "file": "files/2026/08/Cosmetics-personal-care-testing.avif",
+   "alt": "A laboratory analyst prepares a cosmetics sample"
+  },
+  {
+   "page": "news/textile-and-fabric-inspection",
+   "field": "image",
+   "file": "files/2026/08/Inspection-1.jpeg",
+   "alt": "Hands check the label and seams of a garment"
+  },
+  {
+   "page": "news/ceramic-and-porcelain-tile-inspection",
+   "field": "image",
+   "file": "files/2026/07/Ceramic-Porcelain-Tiles-inspection-service-ticqc.webp",
+   "alt": "A bathroom with large marble-pattern porcelain tiles"
+  },
+  {
+   "page": "news/noodles-inspection-and-quality-control",
+   "field": "image",
+   "file": "files/2026/07/noodles-inspection.jpg",
+   "alt": "Blocks of dried noodles in close-up"
+  },
+  {
+   "page": "news/household-electrical-appliance-inspection-and-testing",
+   "field": "image",
+   "file": "files/2024/07/Testing-Electronics.jpg",
+   "alt": "A technician checks a circuit board under a microscope"
+  },
+  {
+   "page": "news/iraq-verification-of-conformity-voc-program",
+   "field": "image",
+   "file": "files/2024/07/3.jpg",
+   "alt": "A speaker at the LOX and TIC event on the Iraq Verification of Conformity program"
+  },
+  {
+   "page": "news/iraq-coc-certificates-begin",
+   "field": "image",
+   "file": "files/2024/07/6.jpg",
+   "alt": "Guests talk at the LOX and TIC event on the Iraq program"
+  },
+  {
+   "page": "news/iraq-coc-certification-services-in-gujarat",
+   "field": "image",
+   "file": "files/2026/03/TIC-Quality-Control-CEO-visit-India-Gandhidham-lab-opening.jpg",
+   "alt": "The TIC team at the opening of the Gandhidham laboratory, during the CEO's visit"
+  },
+  {
+   "page": "news/rice-testing-and-inspection",
+   "field": "image",
+   "file": "unsplash/b-AYmZeowJQ.jpg",
+   "alt": "Rice grains with a measuring scoop",
+   "source": "unsplash",
+   "credit": "Matt L, https://unsplash.com/photos/b-AYmZeowJQ"
+  },
+  {
+   "page": "news/dairy-products-and-cheese-testing",
+   "field": "image",
+   "file": "unsplash/KaK2jp8ie8s.jpg",
+   "alt": "Cut wheels of cheese on a board",
+   "source": "unsplash",
+   "credit": "Alexander Maasch, https://unsplash.com/photos/KaK2jp8ie8s"
   }
  ]
 }

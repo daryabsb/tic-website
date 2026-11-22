@@ -93,10 +93,16 @@ def test_a_stock_photo_comes_from_the_stock_folder_with_its_credit(seeded_home, 
 def test_the_repository_rows_name_seeded_pages_and_fields(seeded_home):
     with open(seed_site.SEED_DIR / "old-photos.json", encoding="utf-8") as handle:
         rows = json.load(handle)["photos"]
+    with open(seed_site.SEED_DIR / "current-pages.json", encoding="utf-8") as handle:
+        articles = {post["slug"] for post in json.load(handle)["posts"]}
     home = HomePage.objects.get(pk=seeded_home.pk)
     assert len(rows) >= 30
     for row in rows:
         page = find_page(home, row["page"])
+        if page is None and row["page"].startswith("news/"):  # from import_old_news (T43)
+            assert row["page"].removeprefix("news/") in articles, row["page"]
+            assert row["field"] == "image", row["page"]
+            continue
         assert page is not None, row["page"]
         assert hasattr(page, f"{row['field']}_id"), (row["page"], row["field"])
         if row.get("source") == "unsplash":  # D68: placeholders carry their credit
