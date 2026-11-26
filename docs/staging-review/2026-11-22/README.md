@@ -47,3 +47,12 @@ every article, also under event reports.
 
 - The 35 empty photo places are filled (D86). PRG-100 now names the event photo.
 - New row MKT-82: the 15 pages with sample stock photos. 590 items.
+
+## Changed before the email (Nov 26)
+
+- The list names no language. Each office "Languages" row (14 rows) now also asks: if
+  your clients need the website in another language, name the language.
+- MKT-19 asks for the brochure "in other languages", not in named languages.
+- BGW-15 stays as it is: it asks for the Iraq product-label rules, not for a website language.
+- Email part 6 is now "Other languages": any office can ask for a language. Darya talks
+  to each office head about the languages later.
